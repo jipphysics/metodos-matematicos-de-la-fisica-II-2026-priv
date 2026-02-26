@@ -1,0 +1,309 @@
+\documentclass[11pt,spanish]{article}
+\usepackage[latin1]{inputenc}
+%\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\oddsidemargin=0.5cm
+\textwidth=16cm
+\textheight=52\baselineskip
+\topmargin=-1.5cm
+\parskip 2truemm
+\parindent 0pt
+\newcounter{problema}
+\typeout{****************************************}
+\typeout{****** Configuracion de Guia 11pt ******}
+\typeout{****************************************}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\renewcommand{\labelenumi}{\em \alph{enumi})}
+\renewcommand{\labelenumii}{\em \arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+\newcommand\re{\mbox{Re}}
+\newcommand\im{\mbox{Im}}
+%\newcommand\arg{\mbox{arg}}
+\newcommand\Arg{\mbox{Arg}}
+\newcommand{\prob}{\stepcounter{problema} \noindent{\bf Problema
+\arabic{problema}: }}
+\newcommand\pin[2]{\big\langle #1,#2 \big\rangle}
+\newcommand\bp[2]{\hat e_{#1}\otimes\hat e_{#2}}
+
+
+%\input{/home/ortiz/lib/definiciones.tex}
+\begin{center}
+{\large\sc Facultad de Matem\'atica, Astronom\'i­a, F\'isica y Computaci\'on, U.N.C.}
+
+\vspace{2mm}
+{\large M\'etodos Matem\'aticos de la Fi­sica II}
+
+\vspace{2mm}
+{\large Gu\'i­a N$^{\sf o}$ 1 (2021)}
+\end{center}
+
+\prob Sea $V$ el conjunto de todas las sucesiones reales infinitas (funciones de
+${\mathbb N}\to{\mathbb R}$). Pruebe que $V$ es un espacio vectorial con las
+operaciones de suma y multiplicaci\'on por n\'umeros reales:
+\begin{enumerate}
+\item $\{a_n\}_{n=1}^\infty + \{b_n\}_{n=1}^\infty = \{a_1+b_1, a_2+b_2, \dots,
+a_n+b_n, \dots\},$
+\item $\lambda \{a_n\}_{n=1}^\infty = \{\lambda a_1, \lambda a_2, \dots, \lambda a_n,
+\dots \}, \qquad \lambda\in {\mathbb R}.$
+\end{enumerate}
+?`Qu\'e dimensi\'on tiene este espacio vectorial?. Justifique.
+
+\prob Sea $B=\{v_1, v_2, \dots, v_n\}$ base de $V$. Muestre que las componentes
+de $\vec{u}\in V$ en la base $B$ est\'an un\'i­vocamente determinadas.
+
+\prob Suponga que $V$ admite una base de $n$ vectores. Pruebe que cualquier otra
+base de $V$ tiene tambi\'en $n$ vectores y por lo tanto $\mbox{dim}(V)$ est\'a bien
+definida.
+
+\prob Muestre el conjunto de todos los polinomios de variable compleja $z$ de
+grado menor o igual que $n$ constituyen, con la suma usual de polinomios y
+producto por n\'umeros complejos, un espacio vectorial de grado $n+1$ sobre los
+complejos y halle una base para dicho espacio.
+
+\prob Sea $V$ el conjunto de todos los $(x_1,x_2,x_3,x_4,x_5)$ de $\mathbb{R}^5$ que satisfacen
+\begin{equation*}
+\begin{array}{rrrrrrrrrrr}
+  2 x_1 & - & x_2 & + & (4/3) x_3 & - & x_4 &  &  & = & 0 \\
+  x_1 &  &  & + & (2/3) x_3 &  &  & - & x_5 & = & 0 \\
+  9 x_1 & - & 3 x_2 & + & 6 x_3 & - & 3 x_4 & - & 3 x_5 & = & 0
+\end{array}
+\end{equation*}
+Encontrar un conjunto finito de vectores que generan $V$.
+
+\prob Sea $V$ el espacio de todas las funciones ${\mathbb R}\to{\mathbb R}$; sea $V_p$ el subconjunto de las funciones pares, $f(-x) = f(x)$; sea $V_i$ el subconjunto de las funciones impares, $f(-x) = -f(x)$.
+\begin{enumerate}
+  \item Demostrar que $V_p$ y $V_i$ son subespacios de $V$.
+  \item Demostrar que $V_p + V_i = V$.
+  \item Demostrar que $V_p \cap V_i = \{0\}$.
+\end{enumerate}
+
+
+\prob Sea $\{\hat e_i,\quad i=1, \dots, n\}$ base de $V$ y $\{\hat e^i,\quad
+i=1, \dots, n\}$ su base dual (base de $V^*$). Si $\vec u\in V,$ y $\omega \in
+V^*,$ pruebe que las componentes de dichos vector y covector pueden calcularse
+como: $u^i = \hat e^i(\vec u)$ y $\omega_j = \hat e_j(\omega).$
+
+
+\prob Sea $\{\hat e_i,~i=1, \dots, n\}$ base de $V$ y $\{\hat e^i,~i=1, \dots,
+n\}$ su base dual. Probar que
+\begin{enumerate}
+\item Los $n^2$ tensores tipo (1,1), $\hat e_i \otimes \hat e^j,~i,j=1, 2,
+\dots, n,$ son linealmente independientes.
+\item Probar que todo tensor tipo (1,1) puede expandirse como combinaci\'on lineal
+del los tensores del punto anterior y por lo tanto dichos tensores constituyen
+una base de $T^1_1$ y $\mbox{dim}(T^1_1) = n^2.$
+\end{enumerate}
+
+\textbf{Problema 8bis:} Sea $V$ un espacio vestorial de dimensión 3 sobre los reales. Considere los vestores (dados como matrices $3 \times 1$, o sea columnas)
+$$\begin{pmatrix} 1 \\  2 \\ 1 \end{pmatrix}; \, \begin{pmatrix} -1/2 \\ -1 \\ -1\end{pmatrix}; \,\begin{pmatrix} -1 \\ -1 \\ 1\end{pmatrix}.$$
+\begin{enumerate}
+\item Pruebe que los vectores son linealmente independientes y, por lo tanto, constituyen una base.
+\item Calcule la co-base correspondiente de  $V^*$ expresando los covectores como matrices fila ($1 \times 3$).
+\item Explicite los 9 elementos de la base producto del espacio de tensores $T^1_1$.
+\item Explicite los 9 elementos de la base producto del espacio de tensores $T^0_2$. 
+\end{enumerate}
+
+
+\prob Sea $V$ un espacio vectorial tal que   $\mbox{dim}(V)=n$. Considere el espacio vectorial $T^0_2$ con  $\mbox{dim}(T^0_2)=n^2$. Sean $S$ el subconjunto de tensores tipo (0,2) y $A$ el subconjunto de tensores tipo (0,2) antisim\'etricos. Muestre que $S$ y $A$ son subespacios complementarios de $T^0_2$, que $\mbox{dim}(S)=\cfrac{n(n+1)}{2}$ y $\mbox{dim}(A)=\cfrac{n(n-1)}{2}$. De esta forma $T^0_2=S \otimes A$.
+
+\prob{} Sea $V$ un espacio vectorial de dimensión 3 y $\{\hat e_i,~i=1,2,3\}$
+una base. Sea $\mathbb{T}^2_0$ el espacio tensorial tipo $(2,0)$ asociado a $V$.
+Considere el tensor particular
+\begin{equation}\label{T}
+T = 4 \bp{1}{1} - \bp{1}{2} + 2\bp{1}{3} + 2\bp{2}{1} + \bp{2}{2} + 3\bp{3}{1} +
+3\bp{3}{2} + 3\bp{3}{3}
+\end{equation}
+Las partes {\em simética} y {\em antisimétrica} de $T$ se definen,
+respectivamente, como dos tensores $S$ y $A$ en $\mathbb{T}^2_0$ tales que
+\[\begin{split}
+S(\hat e^i, \hat e^j) =& \frac{1}{2}\Bigl(T(\hat e^i, \hat e^j) + T(\hat e^j,
+\hat e^i)\Bigr),\qquad \forall~i,j\\
+A(\hat e^i, \hat e^j) =& \frac{1}{2}\Bigl(T(\hat e^i, \hat e^j) - T(\hat e^j,
+\hat e^i)\Bigr),\qquad \forall~i,j
+\end{split}\]
+\begin{enumerate}
+\item Escriba $S$ y $A$ explícitamente en la base producto (como en \eqref{T}). 
+\item Calcule además $S+A$, >resulta igual a $T$?, >debería?. Explique.
+\end{enumerate}
+
+\prob Dadas las componentes $T_{ijk}$ de un tensor tipo (0,3) demostrar que las
+\[S_{ijk} = T_{ijk} + T_{jki} + T_{kij} + T_{ikj} + T_{kji} + T_{jik}\]
+son componentes de un tensor totalmente simétrico y las
+\[A_{ijk} = T_{ijk} + T_{jki} + T_{kij} - T_{ikj} - T_{kji} - T_{jik}\]
+son componentes de un tensor totalmente antisimétrico.
+
+
+
+\prob Demostrar que si $\vec{u}$, $\vec{v}$ y $\vec{w}$ son tres vectores del espacio vectorial $V$ de dimensión $n \geq 3$, las cantidades
+\begin{equation*}
+T_{ijk} =\left| \begin{array}{ccc}
+                 u_i & u_j & u_k \\
+                 v_i & v_j & v_k \\
+                 w_i & w_j & w_k
+               \end{array}\right|
+\end{equation*}
+son componentes de un tensor antisimétrico.
+
+\prob Sea $V$ el espacio vectorial tal que $V=\mathbb R^2$  y $\vec{u}  =
+\begin{pmatrix}
+x  \\
+y
+\end{pmatrix}
+\in V$. Verifique que las siguientes definiciones son normas:
+
+\begin{enumerate}
+\item $\vert \vert \vec{u} \vert \vert =  \mbox{max}\{\vert x \vert, \vert y \vert  \}$
+\item $\vert \vert \vec{u}\vert \vert = \sqrt{x^2 + y^2}$
+\item $\vert \vert \vec{u} \vert \vert =  \vert x \vert + \vert y \vert  $
+\end{enumerate}
+Indique cu\'ales de las normas provienen de un producto escalar. {\it Ayuda}: Demuestre, primero, que una norma que proviene de un producto escalar satisface $\vert \vert \vec{u}+ \vec{v} \vert \vert^2 + \vert \vert \vec{u}- \vec{v} \vert \vert^2 = 2(\vert \vert \vec{u} \vert \vert^2 + \vert \vert \vec{v} \vert \vert^2); \forall \, \vec{u}, \vec{v} \in V$.
+
+\prob Sea $V=\mathbb R^3$ con la norma Eucl\'idea, $\vert \vert (x\, y\, z)^T\vert \vert = \sqrt{x^2 + y^2+ z^2}$. Calcule la expresi\'on de la norma inducida en $V^*$.
+
+\prob Sean $V$ y $W$ espacios vectoriales sobre los mismos escalares y sea $T$ una transformaci\'on lineal de $V$ en $W$. Muestre que la imagen de $T$, $T(V)$, es un subespacio de $W$ y que el n\'ucleo de $T$, $ker(T)$, es un subespacio de $V$.
+
+\prob Sea $V$ un espacio vectorial con producto interno complejo de dimensión finita ($\pin{\vec{u}}{\vec{v}\,} \in \mathbb{C}$, $\forall \, \vec{u}, \vec{v} \in V$) y sea $T$ un operador lineal sobre $V$. Demostrar que $T$ es autoadjunto si, y solo si, $\pin{T(\vec{u})}{\vec{u}\,}$ es real para todo $\vec{u} \in V$.
+
+\prob Sea $\mathcal{L}$ el conjunto de todos los operadores sobre $V$, de dimensión finita. Sean $\vec{v}\in V$ y $A,$ $B\in\mathcal{L}$. Muestre que
+$$||A||=\max_{||\vec{v}||=1}||A\vec{v}||,$$
+define una norma. Muestre también que $||A\vec{v}||\leq||A||||\vec{v}||$ y que $||AB||\leq||A||||B||$
+
+
+\prob Sean $A$, $B$ operadores que admiten una representación matricial $n\times n$. Muestre que:
+\begin{enumerate}
+ \item $e^{(s+t)A}=e^{sA}e^{tA}$, con $s$, $t$ escalares.
+ \item Si $A$, $B$, son operadores que conmutan, i.e. $AB=BA$, entonces, $e^{A+B}=e^{A}e^B$.
+ \item $\det(e^A)=e^{\operatorname{tr}(A)}$. {\it Hint}: $\operatorname{tr}(A)=\hat{e}^i(A\hat{e}_i)$.
+ \item $\frac{d}{dt}e^{tA}=Ae^{tA}$, con $t$ escalar.
+\end{enumerate}
+
+\prob Sea $P:V\rightarrow V$ un proyector. Mostrar que todo $\vec{v}\in V$ puede descomponerse como $\vec{v}=\vec{u}+\vec{w}$, con $P\vec{u}=\vec{u}$ y $P\vec{w}=0$ y esta descomposición es única.
+
+
+\prob Encontrar los autovalores y autovercores normalizados de la matriz:
+$$A=\begin{pmatrix} 1 & 2 & 3 \\  4 & 5 & 6 \\ 7 & 8 & 9\end{pmatrix}.$$
+
+
+\prob En una dada base $\{ \hat{e}_i\}$ de un espacio vectorial abstracto, una transformación lineal y un vector de dicho espacio, quedan respectivamente determinados por:
+$$\begin{pmatrix} 2 & 1 & 0 \\  1 & 2 & 0 \\ 0 & 0 & 5\end{pmatrix}, \, \begin{pmatrix} 1 \\ 2 \\ 3\end{pmatrix}.$$
+Encontrar las representaciones matriciales de la transformación y del vector en una nueva base tal que la antigua queda representada por:
+$$\hat{e}_1=\begin{pmatrix} 1 \\  1 \\ 0 \end{pmatrix}, \, \hat{e}_2=\begin{pmatrix} 1 \\ -1 \\ 0\end{pmatrix}, \,\hat{e}_3=\begin{pmatrix} 0 \\ 0 \\ 1\end{pmatrix}.$$
+
+\prob Considere las bases $B = \{\vec{u}_1,\vec{u}_2,\vec{u}_3\}$ y $B' = \{\vec{v}_1,\vec{v}_2,\vec{v}_3\}$ en $\mathbb{R}^3$, en donde
+\begin{equation*}
+\vec{u}_1 = \left(\begin{array}{r}
+              -3 \\
+               0 \\
+              -3
+            \end{array}\right),\;\;
+\vec{u}_2 = \left(\begin{array}{r}
+              -3 \\
+               2 \\
+              -1
+            \end{array}\right),\;\;
+\vec{u}_3 = \left(\begin{array}{r}
+               1 \\
+               6 \\
+              -1
+            \end{array}\right),\;\;
+\vec{v}_1 = \left(\begin{array}{r}
+              -6 \\
+              -6 \\
+               0
+            \end{array}\right),\;\;
+\vec{v}_2 = \left(\begin{array}{r}
+              -2 \\
+              -6 \\
+               4
+            \end{array}\right),\;\;
+\vec{v}_3 = \left(\begin{array}{r}
+              -2 \\
+              -3 \\
+               7
+            \end{array}\right),
+\end{equation*}
+\begin{enumerate}
+ \item Halle la matriz de cambio de base de $B$ a $B'$.
+ \item Calcule las componentes del vector
+        \begin{equation*}
+        \vec{w} = \left(\begin{array}{r}
+                      -5 \\
+                       8 \\
+                      -5
+                    \end{array}\right),
+        \end{equation*}
+    en la base $B$ y utilice la matriz de cambio de base obtenida en {\it a)} para escribir el vector en la base $B'$.
+ \item Verifique el resultado obtenido en {\it b)} calculando directamente las componentes de $\vec{w}$ en $B'$.
+\end{enumerate}
+
+\prob Considere las bases $B = \{\mathbf{p}_1,\mathbf{p}_2\}$ y $B' = \{\mathbf{q}_1,\mathbf{q}_2\}$ para los polinomios de orden 1, en donde $\mathbf{p}_1 = 6 + 3\,x$,
+$\mathbf{p}_2 = 10 + 2\,x$, $\mathbf{q}_1 = 2$, $\mathbf{q}_2 = 3 + 2\,x$.
+\begin{enumerate}
+  \item Halle la matriz de cambio de base de $B$ a $B'$.
+  \item Calcule las componentes de $\mathbf{r} = -4 + x$ en $B$ y aplique la matriz obtenida en {\it a)} para calcular sus componentes en $B'$.
+  \item Verifique el resultado obtenido en {\it b)} calculando directamente las componentes de $\mathbf{r}$ en $B'$.
+  \item Halle la matriz de cambio de base de $B'$ a $B$.
+\end{enumerate}
+
+\prob Sea $V$ el espacio generado por $\mathbf{f}_1 = \sin(x)$ y $\mathbf{f}_2 = \cos(x)$.
+\begin{enumerate}
+  \item Demuestre que $\mathbf{g}_1 = 2\sin(x) + \cos(x)$ y $\mathbf{g}_2 = 3\cos(x)$ forman una base para $V$.
+  \item Halle la matriz de cambio de base de $B = \{\mathbf{f}_1,\mathbf{f}_2\}$ a $B' = \{\mathbf{g}_1,\mathbf{g}_2\}$.
+  \item Calcule las componentes de $\mathbf{h} = 2\sin(x) - 5\cos(x)$ en $B$ y aplique la matriz obtenida en {\it b)} para calcular sus componentes en $B'$.
+  \item Verifique el resultado obtenido en {\it c)} calculando directamente las componentes de $\mathbf{h}$ en $B'$.
+  \item Halle la matriz de cambio de base de $B'$ a $B$.
+\end{enumerate}
+
+\prob Encontrar la descomposición de Schur de:
+$$A=\begin{pmatrix} 1 & -2 & 2 \\  -1 & 1 & 1 \\ -2 & 0 & 3\end{pmatrix}.$$
+Dar la matriz triangular final y la matriz cambio de base total.
+
+\prob Halle la forma canónica de Jordan de las siguientes matrices, encuentre las correspondientes bases y los proyectores de los subespacios invariantes irreducibles, obtenga el desarrollo espectral $A = \sum_{j=1}^p \left(\lambda_j\, P_j + D_j\right)$ (\emph{puede ayudarse con un programa matemático}).
+\begin{equation*}
+\begin{split}
+\text{\it a)}\;
+A &= \left(\begin{array}{rrr}
+-1 & 1 & -1\\
+-10 & 6 & -5\\
+-6 & 3 & -2 \\
+      \end{array}
+    \right),\quad\;\;\,
+\text{\it b)}\;
+A = \left(\begin{array}{rrrr}
+        -1 &  1 &  0 &  1 \\
+         0 &  3 &  1 &  0 \\
+        -6 & -4 & -1 &  3 \\
+        -6 &  2 &  0 &  4 \\
+      \end{array}
+    \right)\\
+\text{\it c)}\;
+A &= \left(\begin{array}{rrrr}
+         4 &  1 & -1 &  2 \\
+        -2 &  7 & -2 &  4 \\
+         3 & -3 &  8 & -6 \\
+         2 & -2 &  2 &  1 \\
+      \end{array}
+    \right),\quad
+\text{\it d)}\;
+A = \left(\begin{array}{rrrrrr}
+         2 & 3 &  0 & -1 &  2 & -2 \\
+        -1 & 0 &  2 &  1 & -1 & -2 \\
+         1 & 3 &  2 &  0 &  1 & -4 \\
+         5 & 6 & -1 & -3 &  5 &  3 \\
+         3 & 3 & -1 & -2 &  3 & -1 \\
+         1 & 3 &  2 &  0 &  1 & -4 \\
+      \end{array}
+    \right)
+\end{split}
+\end{equation*}
+
+
+
+
+\end{document}
+
+
