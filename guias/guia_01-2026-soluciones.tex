@@ -321,6 +321,124 @@ Este conjunto forma la base de Fourier. Como los múltiplos $n$ pertenecen a los
 El espacio de todas las funciones reales continuas contiene familias de funciones linealmente independientes que son infinitas y no numerables (por ejemplo, $f_{c}(x) = e^{cx}$ para cada valor real de $c$). Por lo tanto, su dimensión se corresponde con la cardinalidad de los reales, denotada como infinito no numerable o $\aleph_{1}$.
 \end{itemize} 
 
+\subsection*{Problema 3}
+
+Este problema nos pide demostrar que ciertos conjuntos de vectores son bases para sus respectivos espacios. Recuerda que, para que un conjunto sea una base de un espacio vectorial, debe cumplir dos condiciones: ser un conjunto linealmente independiente (LI) y generar todo el espacio.
+
+\begin{itemize}
+\item[a)] Bases en $\mathbb{R}^{3}$:
+
+\begin{itemize}
+\item  
+El conjunto $\{\hat{x},\hat{y},\hat{z}\}$: Esta es la base canónica estándar de $\mathbb{R}^{3}$. Es trivialmente linealmente independiente (ninguno puede escribirse como combinación de los otros dos) y cualquier vector $(x, y, z)$ se puede escribir como $x\hat{x} + y\hat{y} + z\hat{z}$, por lo que genera el espacio.
+
+\item
+El conjunto $\{\hat{x}, \hat{x}+\hat{y}, \hat{x}+\hat{y}+\hat{z}\}$: Para probar que es base, dado que ya sabemos que la dimensión de $\mathbb{R}^{3}$ es 3, basta con demostrar que estos tres vectores son linealmente independientes. Planteamos la combinación lineal igualada al vector nulo:
+
+$$\alpha\hat{x} + \beta(\hat{x}+\hat{y}) + \gamma(\hat{x}+\hat{y}+\hat{z}) = 0$$
+
+Agrupando términos según la base canónica, obtenemos:
+
+$$(\alpha + \beta + \gamma)\hat{x} + (\beta + \gamma)\hat{y} + \gamma\hat{z} = 0$$
+
+Como $\{\hat{x},\hat{y},\hat{z}\}$ son independientes, cada coeficiente debe ser cero:
+\begin{enumerate}
+\item $\gamma = 0$
+\item $\beta + \gamma = 0 \Rightarrow \beta = 0$
+\item $\alpha + \beta + \gamma = 0 \Rightarrow \alpha = 0$
+Como la única solución es la trivial ($\alpha=\beta=\gamma=0$), los vectores son linealmente independientes y, por ende, forman una base.
+\end{enumerate}
+
+\item[b)] Base en $\{p_{N}(x)\}$:
+\begin{itemize}
+\item Nos pide mostrar que el conjunto $\{1,x,x^{2},...,x^{N}\}$ es base para el espacio de polinomios de grado a lo sumo N.
+
+\item Generador: Por definición, cualquier polinomio en este espacio se escribe como $c_{0} + c_{1}x + c_{2}x^{2} + ... + c_{N}x^{N}$, lo cual es explícitamente una combinación lineal de los elementos de este conjunto.
+
+\item Independencia Lineal: Si planteamos la suma $\sum_{i=0}^{N} c_{i}x^{i} = 0$ para todo valor de $x$, el teorema fundamental del álgebra nos dice que un polinomio no nulo de grado $N$ tiene a lo sumo $N$ raíces. Para que el polinomio sea cero para todo $x$ real, la única forma es que sea el polinomio nulo; es decir, todos los coeficientes $c_{i}$ deben ser estrictamente cero. Por lo tanto, el conjunto es linealmente independiente y conforma una base.
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\subsection*{Problema 4}
+
+\begin{itemize}
+\item El problema: Halle las componentes del polinomio $a_{0}+a_{1}x+a_{2}x^{2}+\cdot\cdot\cdot+a_{N}x^{N}$ en la base $\{1,x,x^{2},...,x^{N}\}$ del espacio $\{p_{N}(x)\}$.
+
+\item La solución: Las componentes (o coordenadas) de un vector respecto a una base son simplemente los escalares que multiplican a cada elemento de la base para formar dicho vector.
+\begin{itemize}
+\item Dado que el polinomio ya está expresado como una combinación lineal explícita de la base dada, las componentes son exactamente los coeficientes en ese orden.
+\item El vector de componentes se puede escribir como la n-upla (o vector columna/fila dependiendo de la convención de tu curso):
+$$(a_{0}, a_{1}, a_{2}, ..., a_{N})$$
+\end{itemize}
+\end{itemize}
+
+\subsection*{Problema 5}
+
+Para demostrar que un subconjunto es un subespacio vectorial, siempre debemos verificar tres cosas: que contenga al vector nulo, que sea cerrado bajo la suma y que sea cerrado bajo la multiplicación por escalares.
+
+\begin{itemize}
+\item[a)] El plano (x, y) y el eje z como subespacios de $\mathbb{R}^{3}$:
+El plano (x, y) está formado por los vectores $(x, y, 0)$. El vector nulo $(0, 0, 0)$ pertenece al conjunto. La suma de dos vectores de este plano, $(x_{1}, y_{1}, 0) + (x_{2}, y_{2}, 0)$, da como resultado $(x_{1}+x_{2}, y_{1}+y_{2}, 0)$, que sigue estando en el plano. Lo mismo ocurre al multiplicar por un escalar. El razonamiento es idéntico para el eje z, formado por vectores $(0, 0, z)$. Ambos son subespacios válidos.
+
+
+\item[b)] $\{p_{3}(x)\}$ es un subespacio de $\{p_{5}(x)\}$:
+El conjunto de polinomios de grado menor o igual a 3 es claramente un subconjunto de los polinomios de grado menor o igual a 5. Como vimos en los problemas anteriores, la suma de dos polinomios de grado $\le 3$ no superará el grado 3, y multiplicarlo por un escalar tampoco. Al contener al polinomio nulo, cumple todas las propiedades de subespacio.
+
+\item[c)] $\mathcal{C}^{N}[\mathbb{R}]$ es un subespacio de $\mathcal{C}^{M}[\mathbb{R}]$ si $M\le N$:
+El espacio $\mathcal{C}^{N}$ contiene funciones con $N$ derivadas continuas. Si una función es derivable $N$ veces de forma continua, lógicamente también es derivable $M$ veces (ya que $M$ es menor o igual a $N$). Por tanto, toda función en $\mathcal{C}^{N}$ está en $\mathcal{C}^{M}$. La linealidad de la derivada garantiza que la suma y el producto por escalares mantengan esta propiedad.
+
+\item[d)] Dimensión del span y dependencia lineal:
+El conjunto generador (span) de $k$ vectores está generado por esos mismos $k$ vectores. La dimensión de un espacio es el número de vectores que conforman su base. Si los $k$ vectores son linealmente independientes (LI), ellos mismos forman la base, por lo que la dimensión es exactamente $k$. Si son linealmente dependientes, alguno de ellos es redundante y la base tendrá menos de $k$ elementos, haciendo que la dimensión sea estrictamente menor a $k$. Por lo tanto, $dim(span) \le k$.
+\end{itemize}
+
+\subsection*{Problema 6}
+
+Aquí trabajamos con un operador o transformación lineal $\mathcal{A}$ y su núcleo (ker), que es el conjunto de vectores a los que la transformación envía al vector nulo.
+
+\begin{itemize}
+\item El $ker(\mathcal{A})$ es un subespacio de $V$ invariante bajo $\mathcal{A}$:
+Primero, probemos que es subespacio. Si tomamos dos vectores $v$ y $w$ en el núcleo, sabemos que $\mathcal{A}(v) = 0$ y $\mathcal{A}(w) = 0$. Por linealidad, $\mathcal{A}(v+w) = \mathcal{A}(v) + \mathcal{A}(w) = 0 + 0 = 0$, así que la suma está en el núcleo. Lo mismo pasa con los escalares: $\mathcal{A}(cv) = c\mathcal{A}(v) = c(0) = 0$.
+Ahora, la invariancia. Un subespacio es invariante bajo $\mathcal{A}$ si al aplicar $\mathcal{A}$ a cualquier vector del subespacio, el resultado sigue estando dentro del subespacio. Si $v \in ker(\mathcal{A})$, entonces $\mathcal{A}(v) = 0$. Como el vector nulo $0$ pertenece obligatoriamente al núcleo (ya que $\mathcal{A}(0) = 0$), el subespacio es invariante.
+
+\item Dimensión del núcleo: $dim(ker(\mathcal{A}))\ge dim(V)-dim(W)$:
+Esta es una aplicación directa del Teorema de las Dimensiones (o Teorema del Rango-Nulidad) para una transformación $\mathcal{A}:V\rightarrow W$. El teorema establece que:
+
+$$dim(V) = dim(ker(\mathcal{A})) + dim(Im(\mathcal{A}))$$
+
+Sabemos que la imagen de $\mathcal{A}$, denotada como $Im(\mathcal{A})$, es un subespacio del espacio de llegada $W$. Por lo tanto, su dimensión no puede exceder la de $W$:
+
+$$dim(Im(\mathcal{A})) \le dim(W)$$
+
+Si reemplazamos esta desigualdad en nuestro teorema original, obtenemos:
+
+$$dim(V) \le dim(ker(\mathcal{A})) + dim(W)$$
+
+Reordenando los términos algebraicamente, llegamos a lo que queríamos demostrar:
+
+$$dim(ker(\mathcal{A})) \ge dim(V) - dim(W)$$
+\end{itemize}
+
+\subsection*{Problema 7}
+
+\subsection*{Problema 8}
+
+\subsection*{Problema 9}
+
+\subsection*{Problema 10}
+
+\subsection*{Problema 11}
+
+\subsection*{Problema 12}
+
+\subsection*{Problema 13}
+
+\subsection*{Problema 14}
+
+\subsection*{Problema 15}
+
+\subsection*{Problema 16}
+
 \end{document}
 
 
