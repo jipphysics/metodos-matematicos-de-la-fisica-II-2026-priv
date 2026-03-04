@@ -274,39 +274,36 @@ se conocen como \emph{matrices de Pauli}. Muestre que
 
 \section*{Soluciones}
 
-\section*{Problema 1}
+% https://gemini.google.com/app/ac3e9a783975e709?utm_source=app_launcher&utm_medium=owned&utm_campaign=base_all&hl=es_419
+
+\subsection*{Problema 1}
 
 Debemos analizar cuáles de los siguientes conjuntos son espacios vectoriales y con qué cuerpo:
 
 \begin{itemize}
-\item a) Las ternas $(x, y, z)$ de números reales, $\{\mathbb{R}^{3}\}$:
+\item[a)] Las ternas $(x, y, z)$ de números reales, $\{\mathbb{R}^{3}\}$:
 Sí, es un espacio vectorial. Su cuerpo asociado es el de los números reales ($\mathbb{R}$). Cumple con todas las propiedades de cerradura bajo la suma de vectores y el producto por un escalar.
 
-\item 
-b) Las ternas $(x, y, z)$ de números racionales, $\{\mathbb{Q}^{3}\}$:
+\item[b)] Las ternas $(x, y, z)$ de números racionales, $\{\mathbb{Q}^{3}\}$:
 Sí, es un espacio vectorial, y su cuerpo asociado es el de los números racionales ($\mathbb{Q}$).
 
-\item 
-c) Los polinomios en una variable real de grado a lo sumo N, $\{p_{N}(x)\}$:
+\item[c)] Los polinomios en una variable real de grado a lo sumo N, $\{p_{N}(x)\}$:
 Sí, es un espacio vectorial sobre el cuerpo $\mathbb{R}$. La suma de dos polinomios de grado menor o igual a $N$ da como resultado otro polinomio de grado menor o igual a $N$, al igual que multiplicarlo por un escalar real.
 
-\item
-d) Las funciones a valores reales definidas sobre el intervalo real $[a, b]$:
+\item[d)] Las funciones a valores reales definidas sobre el intervalo real $[a, b]$:
 Sí, es un espacio vectorial sobre $\mathbb{R}$. Sumar dos funciones reales o multiplicarlas por un escalar produce otra función que también mapea del intervalo $[a, b]$ a $\mathbb{R}$.
 
-\item 
-e) Las funciones a valores reales positivos definidas sobre el intervalo real $[a, b]$:
+\item[e)] Las funciones a valores reales positivos definidas sobre el intervalo real $[a, b]$:
 No es un espacio vectorial. Este conjunto falla en varios axiomas fundamentales; por ejemplo, no existe el elemento neutro para la suma (la función nula $f(x) = 0$ no toma valores positivos) y no es cerrado bajo la multiplicación por escalares (si multiplicas una función positiva por $-1$, el resultado es una función negativa, saliendo del conjunto).
 
 \end{itemize}
 
-\section*{Problema 2}
+\subsection*{Problema 2}
 
 Aquí debemos demostrar la dimensión de diferentes espacios:
 
 \begin{itemize}
-\item
-a) $dim(\mathbb{R}^{3})=dim(\mathbb{C}^{3})=dim(\mathbb{Z}^{3})=3$:
+\item[a)] $dim(\mathbb{R}^{3})=dim(\mathbb{C}^{3})=dim(\mathbb{Z}^{3})=3$:
 
 \begin{itemize}
 \item Para $\mathbb{R}^{3}$ sobre $\mathbb{R}$, una base canónica es $\{(1,0,0), (0,1,0), (0,0,1)\}$, por lo que la dimensión es 3.
@@ -314,19 +311,15 @@ a) $dim(\mathbb{R}^{3})=dim(\mathbb{C}^{3})=dim(\mathbb{Z}^{3})=3$:
 \item Para $\mathbb{Z}^{3}$, técnicamente $\mathbb{Z}$ es un anillo y no un cuerpo, por lo que este conjunto forma un ``módulo libre'' y no un espacio vectorial estricto. Sin embargo, su "rango" (el equivalente a la dimensión) es 3, generado por la misma base.
 \end{itemize}
 
-\item 
-b) $dim(\{p_{N}(x)\})=N+1$:
+\item[b)] $dim(\{p_{N}(x)\})=N+1$:
 Cualquier polinomio de grado a lo sumo $N$ se puede escribir de forma única como una combinación lineal de la base canónica $\{1, x, x^{2}, ..., x^{N}\}$. Si contamos los elementos desde la potencia 0 hasta la potencia $N$, tenemos exactamente $N+1$ elementos linealmente independientes.
 
-\item 
-c) Dimensión del conjunto de funciones trigonométricas equivalentes a $\aleph_{0}$:
+\item[c)] Dimensión del conjunto de funciones trigonométricas equivalentes a $\aleph_{0}$:
 Este conjunto forma la base de Fourier. Como los múltiplos $n$ pertenecen a los números naturales, hay una cantidad infinita numerable de elementos base. Esta cardinalidad (infinito numerable) se denota como $\aleph_{0}$ (aleph cero).
 
-\item 
-d) $dim(\{f:[0,1]\rightarrow\mathbb{R}\})=\aleph_{1}$:
+\item[d)] $dim(\{f:[0,1]\rightarrow\mathbb{R}\})=\aleph_{1}$:
 El espacio de todas las funciones reales continuas contiene familias de funciones linealmente independientes que son infinitas y no numerables (por ejemplo, $f_{c}(x) = e^{cx}$ para cada valor real de $c$). Por lo tanto, su dimensión se corresponde con la cardinalidad de los reales, denotada como infinito no numerable o $\aleph_{1}$.
 \end{itemize} 
-
 
 \end{document}
 
