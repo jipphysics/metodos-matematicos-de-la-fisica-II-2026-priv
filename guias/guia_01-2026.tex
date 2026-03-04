@@ -1,0 +1,278 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=50\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Guía 1}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Guía N$^\txt{o}$ 1 -- 2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Problema 1
+\prob
+Diga cu\'ales de los siguientes conjuntos son espacios vectoriales (y con qu\'e cuerpo), y cu\'ales no:
+\begin{enumerate}
+\item $\{ \sca{R}^3 \}$, las ternas $(x,y,z)$ de n\'umeros reales;
+\item $\{ \sca{Q}^3 \}$, las  ternas $(x,y,z)$ de n\'umeros racionales;
+\item $\{p_N(x)\}$, los polinomios en una variable real~$x$ de grado a lo sumo~$N$;
+\item $\{f:[a,b]\to\mathbb{R}\}$, las funciones a valores reales definidas sobre el intervalo real $[a,b]$;
+\item $\{f:[a,b]\to\mathbb{R}_+\}$, las funciones a valores reales positivos definidas sobre el intervalo real $[a,b]$.
+\end{enumerate}
+
+% Problema 2
+\prob
+Demuestre que
+\begin{enumerate}
+\item $\dim(\mathbb{R}^3)=\dim(\mathbb{C}^3)=\dim(\mathbb{Z}^3)=3$;
+\item $\dim(\{p_N(x)\})=N+1$;
+\item $\dim( \{ \sen(nx), \cos(nx), x\in [0,2\pi], n\in \mathbb{N} \} )=\aleph_0$;
+\item $\dim( \{ f:[0,1]\to\mathbb{R} \} )=\aleph_1$;
+\end{enumerate}
+donde~$\aleph_0$ (aleph cero) es la cardinalidad de los enteros (infinito numerable) y~$\aleph_1$ (aleph uno) la de los reales (infinito no numerable).
+
+% Problema 3
+\prob
+Muestre que
+\begin{enumerate}
+\item en~$\sca{R}^3$, $\{\hat{x},\hat{y},\hat{z}\}$ es base, y $\{\hat{x},\hat{x}+\hat{y},\hat{x}+\hat{y}+\hat{z}\}$ tambi\'en;
+\item en~$\{p_N(x)\}$, $\{1,x,x^2,\dots,x^N\}$ es base.
+\end{enumerate}
+
+% Problema 5a
+\prob
+Halle las componentes de $a_0+a_1x+a_2x^2+\dots+a_Nx^N$ en la base $\{1,x,x^2,\dots,x^N\}$ de~$\{p_N(x)\}$.
+
+% Problema 6
+\prob
+Muestre que
+\begin{enumerate}
+\item el plano~$(x,y)$ y el eje~$z$ son subespacios de~$\mathbb{R}^3$;
+\item $\{p_3(x)\}$ es un subespacio de~$\{p_5(x)\}$;
+\item ${\cal C}^N[\mathbb{R}]$ es un subespacio de~${\cal C}^M[\mathbb{R}]$ si $M\leq N$;
+\item $\dim(\Span(\{\vec{x}_i\}_{i=1}^k)) \leq k \text{ ($=k$ sii $\{\vec{x}_i\}$ LI).}$
+\end{enumerate}
+
+% Problema 8
+\prob
+Dado $\op{A}:V\to V$, muestre que~$\ker({\cal A})$ es un subespacio de~$V$ invariante bajo~$\op{A}$; dado $\op{A}:V\to W$, muestre que~$\dim(\ker({\cal A})) \geq \dim(V) - \dim(W)$.
+
+% Problema 9
+\prob
+Muestre que $\Span( \{ e^{ax},\; a\in\mathbb{R} \} )$ es un subespacio de~${\cal C}^\infty [\mathbb{R}]$ invariante bajo~$\partial_x$.
+
+% Problema 11
+\prob
+Halle las componentes de~$\op{A}=a\partial_x^2-b\partial_x+c$ en la base $\{1,x,\dots,x^5\}$ de~$\{p_5(x)\}$; construya~$\ker(\op{A})$ algebraicamente, y verifique aplicando~$\op{A}$ a sus elementos.
+
+\newpage
+% Problema 14
+\prob
+\begin{enumerate}
+\item Considere el operador~$\op{P}_z$ que proyecta de~$\sca{R}^3$ al plano~$xy$, como un operador de~$\sca{R}^3$ en~$\sca{R}^3$. Escriba la matriz~$\mat{P}_z$ que lo representa en la base Cartesiana usual, y verifique que no tiene inversa.
+\item Considere el operador~$\op{R}_{z,\theta}$  en~$\sca{R}^3$, que rota un \'angulo~$\theta$ en sentido positivo alrededor del eje~$z$. Escriba la matriz~$\mat{R}_{z,\theta}$ que lo representa en la base Cartesiana usual, y muestre que su inversa es la matriz que representa al operador~$\op{R}_{z,-\theta}$.
+\item Muestre que~$\op{P}_z$ y ~$\op{R}_{z,\theta}$ conmutan.
+\end{enumerate}
+
+% Problema 16
+\prob
+Calcule $\exp\left(\begin{smallmatrix}x&a\\0&x\end{smallmatrix}\right)$, $\exp\left(\begin{smallmatrix}0&x&\\-x&0\end{smallmatrix}\right)$ y $\exp\left(\begin{smallmatrix}0&x&\\x&0\end{smallmatrix}\right)$.
+
+% Problema 17
+\prob
+Muestre que $[\mat{A},\mat{B}]=\mat{0}\implies e^{\mat{A}+\mat{B}}=e^\mat{A}e^\mat{B}$. ?`Qu\'e ocurre si $[\mat{A},\mat{B}]\neq\mat{0}$?
+
+%\newpage
+% Problema 18
+\prob
+Considere la transformaci\'on de semejanza $\mathsf{A}' =  \mathsf{S}^{-1} \mathsf{A} \mathsf{S}$. Muestre que
+\begin{enumerate}
+  \item $\det(\mathsf{A}') =\det(\mathsf{A})$;
+  \item $\trace(\mathsf{A}') =\trace(\mathsf{A})$;
+  \item $f(\mathsf{A}') =\mathsf{S}^{-1} f(\mathsf{A}) \mathsf{S}$ $\forall f$ desarrollable en serie de potencias;
+  \item $\mathsf{A}$ Hermitiana $\implies$ $\mathsf{A}'$ Hermitiana si~$\mat{S}$ unitaria;
+  \item $\mathsf{A}$ unitaria $\implies$ $\mathsf{A}'$ unitaria  si~$\mat{S}$ unitaria;
+  \item $\mathsf{A}$ ortogonal $\implies$ $\mathsf{A}'$ ortogonal si~$\mat{S}$ ortogonal;
+  \item $\mathsf{AB}=\mathsf{BA}$ $\implies$ $\mathsf{A}'\mathsf{B}'=\mathsf{B}'\mathsf{A}'$;
+  \item $\mathsf{B}=\mathsf{A}^{-1}$ $\implies$ $\mathsf{B}'=(\mathsf{A}')^{-1}$.
+\end{enumerate}
+
+% Problema 19
+\prob
+Sean $\vec{v}\in\sca{R}^2$ y $\aplic{\op{A}}{\sca{R}^2}{\sca{R}^2}$, representados en la base Cartesiana usual por
+\begin{equation*}
+\mat{v} = \begin{pmatrix}1\\2\end{pmatrix},\quad
+\mat{A} = \begin{pmatrix}1&\frac12\\\frac12&1\end{pmatrix},
+\end{equation*}
+y sea una nueva base definida por
+\begin{equation*}
+\pvec{e}_1 = \cos\theta\,\vec{e}_1 + \sen\theta\,\vec{e}_2,\quad
+\pvec{e}_2 =-\sen\theta\,\vec{e}_1 + \cos\theta\,\vec{e}_2.
+\end{equation*}
+Halle la representaci\'on de~$\op{A}\vec{v}$ en la vieja base, halle las representaciones~$\mat{v}'$ de~$\vec{v}$ y~$\mat{A}'$ de~$\op{A}$ en la nueva base, y verifique que $(\mat{A}\mat{v})'=\mat{A}'\mat{v}'$.
+
+% Problema 20
+\prob
+Construya la base dual $\{\cev{e}'^1,\cev{e}'^2\}$ de $\pvec{e}_1 = \vec{e}_1 + \vec{e}_2,\:\pvec{e}_2 = \vec{e}_1 - \vec{e}_2$ usando $\cev{e}'^i(\pvec{e}_j)=\delta\ud{i}{j}$, y verifique que $\cev{e}'^j = \bigl[\gmat{\upgamma}^{-1}\bigr]\ud{j}{i}\cev{e}^i$, donde $\pvec{e}_j=\vec{e}_i\gamma\ud{i}{j}$.
+
+% Problema 23
+\prob
+Asumiendo que~$\vec{e}_i\cdot\vec{e}_j=\delta_{ij}$, calcule  la m\'etrica en la base~$\{\pvec{e}_i\}$ dada por
+\begin{equation*}
+\pvec{e}_1 = \vec{e}_1 \, , \quad
+\pvec{e}_2 = \vec{e}_1 + \vec{e}_2 \, , \quad
+\pvec{e}_3 = \vec{e}_1 + \vec{e}_2 + \vec{e}_3 \, .
+\end{equation*}
+Calcule la norma de $\vec{e}_1 + 2\vec{e}_2 + 3\vec{e}_3$ en ambas bases. ?`Coinciden? ?`Porqu\'e?
+
+% Problema 27
+\prob
+El conjunto $V=\sca{C}^{2 \times 2}$ de las matrices~$2 \times 2$ con elementos complejos es un EV con~$\dim(V)=4$ (!`demu\'estrelo!). Las matrices en~$V$
+\begin{equation*}
+\gmat{\upsigma}_x = \begin{pmatrix} 0& 1\\1& 0 \end{pmatrix} ,
+\qquad
+\gmat{\upsigma}_y =\begin{pmatrix} 0&-i\\i& 0 \end{pmatrix} ,
+\qquad
+\gmat{\upsigma}_z = \begin{pmatrix} 1& 0\\0&-1 \end{pmatrix}
+\end{equation*}
+se conocen como \emph{matrices de Pauli}. Muestre que
+\begin{enumerate}
+\item $\epsilon_{klm} \gmat{\upsigma}_l \gmat{\upsigma}_m = 2 i \gmat{\upsigma}_k$, por lo que puede utilizarse la notaci\'on $\vec{\gmat{\upsigma}} \times \vec{\gmat{\upsigma}} = 2 i \vec{\gmat{\upsigma}}$, con $\vec{\gmat{\upsigma}} = (\gmat{\upsigma}_x, \gmat{\upsigma}_y, \gmat{\upsigma}_z)$;
+\item $\gmat{\upsigma}_j^2 = \mat{ I} \; \forall j$, donde $\mat{I}$ es la matriz identidad;
+\item $\{\mat{I},\gmat{\upsigma}_x,\gmat{\upsigma}_y,\gmat{\upsigma}_z\}$ es una base de~$\sca{C}^{2 \times 2}$.
+\end{enumerate}
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
