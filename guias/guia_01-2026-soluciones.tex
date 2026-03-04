@@ -423,60 +423,71 @@ $$dim(ker(\mathcal{A})) \ge dim(V) - dim(W)$$
 
 Se nos pide mostrar que el conjunto generado (span) por las exponenciales reales, $S = \text{span}(\{e^{ax}, a \in \mathbb{R}\})$, es un subespacio de las funciones infinitamente derivables $\mathcal{C}^{\infty}[\mathbb{R}]$ y que es invariante bajo el operador derivada $\partial_{x}$.
 
-* **Demostración de que es subespacio:**
+\begin{itemize}
+\item Demostración de que es subespacio:
 Por definición en álgebra lineal, el "span" o conjunto generador de cualquier subconjunto de un espacio vectorial forma automáticamente un subespacio vectorial. Como la suma de funciones exponenciales y su multiplicación por escalares resulta en otra combinación lineal que sigue perteneciendo al espacio de las funciones suaves $\mathcal{C}^{\infty}[\mathbb{R}]$, $S$ es un subespacio.
-* **Demostración de la invariancia bajo $\partial_{x}$:**
+
+\item Demostración de la invariancia bajo $\partial_{x}$:
 Un subespacio es invariante bajo un operador si, al aplicarle el operador a cualquier elemento del subespacio, el resultado sigue estando dentro del subespacio.
-1. Tomemos un elemento genérico $f(x) \in S$. Por definición del span, este elemento es una combinación lineal finita de funciones de la base:
+
+\begin{enumerate}
+\item Tomemos un elemento genérico $f(x) \in S$. Por definición del span, este elemento es una combinación lineal finita de funciones de la base:
 
 $$f(x) = \sum_{i=1}^{n} c_{i} e^{a_{i}x}$$
 
-
-2. Apliquemos el operador derivada $\partial_{x}$ a esta función:
+\item Apliquemos el operador derivada $\partial_{x}$ a esta función:
 
 $$\partial_{x} f(x) = \frac{d}{dx} \left( \sum_{i=1}^{n} c_{i} e^{a_{i}x} \right)$$
 
 
-3. Por la linealidad de la derivada, esto es:
+\item Por la linealidad de la derivada, esto es:
 
 $$\partial_{x} f(x) = \sum_{i=1}^{n} c_{i} a_{i} e^{a_{i}x}$$
 
-
-4. Si definimos nuevos escalares $k_{i} = c_{i} a_{i}$, nos queda que la derivada es $\sum_{i=1}^{n} k_{i} e^{a_{i}x}$. Esta expresión es, de nuevo, una combinación lineal finita de funciones de la forma $e^{ax}$.
+\item Si definimos nuevos escalares $k_{i} = c_{i} a_{i}$, nos queda que la derivada es $\sum_{i=1}^{n} k_{i} e^{a_{i}x}$. Esta expresión es, de nuevo, una combinación lineal finita de funciones de la forma $e^{ax}$.
 Por lo tanto, $\partial_{x} f(x) \in S$, demostrando que el subespacio es invariante.
+\end{enumerate}
+\end{itemize}
 
 \subsection*{Problema 8}
 
 Este problema requiere construir la representación matricial del operador diferencial $\mathcal{A} = a\partial_{x}^{2} - b\partial_{x} + c$ en la base de polinomios $\{1, x, x^{2}, x^{3}, x^{4}, x^{5}\}$.
 
-**1. Hallar las componentes (matriz del operador):**
+\begin{enumerate}
+\item Hallar las componentes (matriz del operador):
 Para construir la matriz, debemos aplicar el operador $\mathcal{A}$ a cada elemento de la base y expresar el resultado como un vector columna de componentes.
-
-* $\mathcal{A}(1) = a(0) - b(0) + c(1) = c$  $\rightarrow$ Componentes: $(c, 0, 0, 0, 0, 0)^{T}$
-* $\mathcal{A}(x) = a(0) - b(1) + c(x) = -b + cx$ $\rightarrow$ Componentes: $(-b, c, 0, 0, 0, 0)^{T}$
-* $\mathcal{A}(x^{2}) = a(2) - b(2x) + c(x^{2}) = 2a - 2bx + cx^{2}$ $\rightarrow$ Componentes: $(2a, -2b, c, 0, 0, 0)^{T}$
-* $\mathcal{A}(x^{3}) = 6ax - 3bx^{2} + cx^{3}$ $\rightarrow$ Componentes: $(0, 6a, -3b, c, 0, 0)^{T}$
-* $\mathcal{A}(x^{4}) = 12ax^{2} - 4bx^{3} + cx^{4}$ $\rightarrow$ Componentes: $(0, 0, 12a, -4b, c, 0)^{T}$
-* $\mathcal{A}(x^{5}) = 20ax^{3} - 5bx^{4} + cx^{5}$ $\rightarrow$ Componentes: $(0, 0, 0, 20a, -5b, c)^{T}$
+\begin{itemize}
+\item $\mathcal{A}(1) = a(0) - b(0) + c(1) = c$  $\rightarrow$ Componentes: $(c, 0, 0, 0, 0, 0)^{T}$
+\item $\mathcal{A}(x) = a(0) - b(1) + c(x) = -b + cx$ $\rightarrow$ Componentes: $(-b, c, 0, 0, 0, 0)^{T}$
+\item $\mathcal{A}(x^{2}) = a(2) - b(2x) + c(x^{2}) = 2a - 2bx + cx^{2}$ $\rightarrow$ Componentes: $(2a, -2b, c, 0, 0, 0)^{T}$
+\item $\mathcal{A}(x^{3}) = 6ax - 3bx^{2} + cx^{3}$ $\rightarrow$ Componentes: $(0, 6a, -3b, c, 0, 0)^{T}$
+\item $\mathcal{A}(x^{4}) = 12ax^{2} - 4bx^{3} + cx^{4}$ $\rightarrow$ Componentes: $(0, 0, 12a, -4b, c, 0)^{T}$
+\item $\mathcal{A}(x^{5}) = 20ax^{3} - 5bx^{4} + cx^{5}$ $\rightarrow$ Componentes: $(0, 0, 0, 20a, -5b, c)^{T}$
+\end{itemize}
 
 La matriz $M_{\mathcal{A}}$ de 6x6 que representa al operador es:
 
-
 $$M_{\mathcal{A}} = \begin{pmatrix} c & -b & 2a & 0 & 0 & 0 \\ 0 & c & -2b & 6a & 0 & 0 \\ 0 & 0 & c & -3b & 12a & 0 \\ 0 & 0 & 0 & c & -4b & 20a \\ 0 & 0 & 0 & 0 & c & -5b \\ 0 & 0 & 0 & 0 & 0 & c \end{pmatrix}$$
 
-2. Construcción de $ker(\mathcal{A})$ algebraicamente y verificación: 
+\item Construcción de $ker(\mathcal{A})$ algebraicamente y verificación: 
 El núcleo (o ker) está formado por los polinomios $p(x)$ tales que $\mathcal{A}(p) = 0$. Observando la matriz $M_{\mathcal{A}}$ (que es triangular superior), su determinante es el producto de su diagonal: $det(M_{\mathcal{A}}) = c^{6}$.
 
-* **Caso general ($c \neq 0$):** Si $c \neq 0$, la matriz es invertible (determinante no nulo). El único vector que la matriz envía al vector nulo es el vector nulo. Por lo tanto, $ker(\mathcal{A}) = \{0\}$ (solo el polinomio nulo).
+\begin{itemize}
+\item Caso general ($c \neq 0$): Si $c \neq 0$, la matriz es invertible (determinante no nulo). El único vector que la matriz envía al vector nulo es el vector nulo. Por lo tanto, $ker(\mathcal{A}) = \{0\}$ (solo el polinomio nulo).
 * *Verificación:* $\mathcal{A}(0) = a(0) - b(0) + c(0) = 0$.
 
 
-* **Caso especial 1 ($c = 0, b \neq 0$):** La matriz tiene ceros en la diagonal principal. Si resolvemos el sistema homogéneo asociado, la única variable libre está en la primera columna (asociada al vector base $1$). Esto significa que $ker(\mathcal{A}) = \text{span}(\{1\})$, es decir, las funciones constantes.
-* *Verificación:* Si aplicamos el operador $\mathcal{A} = a\partial_{x}^{2} - b\partial_{x}$ a una constante $k$: $\mathcal{A}(k) = a(0) - b(0) = 0$. Cumple.
+\item Caso especial 1 ($c = 0, b \neq 0$): La matriz tiene ceros en la diagonal principal. Si resolvemos el sistema homogéneo asociado, la única variable libre está en la primera columna (asociada al vector base $1$). Esto significa que $ker(\mathcal{A}) = \text{span}(\{1\})$, es decir, las funciones constantes.
+\begin{itemize}
+\item Verificación: Si aplicamos el operador $\mathcal{A} = a\partial_{x}^{2} - b\partial_{x}$ a una constante $k$: $\mathcal{A}(k) = a(0) - b(0) = 0$. Cumple.
+\end{itemize}
 
-
-* **Caso especial 2 ($c = 0, b = 0, a \neq 0$):** El operador es simplemente $a\partial_{x}^{2}$. El núcleo estará formado por polinomios cuya segunda derivada sea cero, es decir, polinomios lineales. $ker(\mathcal{A}) = \text{span}(\{1, x\})$.
-* *Verificación:* $\mathcal{A}(mx + n) = a\partial_{x}^{2}(mx + n) = a(0) = 0$. Cumple.
+\item Caso especial 2 ($c = 0, b = 0, a \neq 0$): El operador es simplemente $a\partial_{x}^{2}$. El núcleo estará formado por polinomios cuya segunda derivada sea cero, es decir, polinomios lineales. $ker(\mathcal{A}) = \text{span}(\{1, x\})$.
+\begin{itemize}
+\item Verificación: $\mathcal{A}(mx + n) = a\partial_{x}^{2}(mx + n) = a(0) = 0$. Cumple.
+\end{itemize}
+\end{itemize}
+\end{enumerate}
 
 \subsection*{Problema 9}
 
