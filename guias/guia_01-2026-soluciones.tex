@@ -491,400 +491,316 @@ El núcleo (o ker) está formado por los polinomios $p(x)$ tales que $\mathcal{A
 
 \subsection*{Problema 9}
 
-¡Sigamos adelante! Entramos a la segunda página de la guía, donde empezamos a ver operadores geométricos y el cálculo de funciones de matrices, específicamente la exponencial de una matriz. Aquí tienes las soluciones para los **Problemas 9 y 10**.
-
----
-
-Solución al Problema 9 
-
 Este problema nos pide trabajar con operadores de proyección y rotación en $\mathbb{R}^{3}$.
 
-* 
-a) Matriz de proyección $\mathcal{P}_{z}$ y su inversa:
-El operador $\mathcal{P}_{z}$ proyecta cualquier vector del espacio $\mathbb{R}^{3}$ sobre el plano $xy$. Esto significa que toma un vector $(x, y, z)$ y "aplasta" su componente $z$ a cero, dando como resultado $(x, y, 0)$.
+\begin{itemize}
+\item[a)] Matriz de proyección $\mathcal{P}_{z}$ y su inversa:
+El operador $\mathcal{P}_{z}$ proyecta cualquier vector del espacio $\mathbb{R}^{3}$ sobre el plano $xy$. Esto significa que toma un vector $(x, y, z)$ y ``aplasta'' su componente $z$ a cero, dando como resultado $(x, y, 0)$.
 Para hallar su matriz en la base canónica $\{\hat{x}, \hat{y}, \hat{z}\}$, aplicamos el operador a cada vector base:
 
-
-* $\mathcal{P}_{z}(1, 0, 0) = (1, 0, 0)$
-* $\mathcal{P}_{z}(0, 1, 0) = (0, 1, 0)$
-* $\mathcal{P}_{z}(0, 0, 1) = (0, 0, 0)$
-
+\begin{itemize}
+\item $\mathcal{P}_{z}(1, 0, 0) = (1, 0, 0)$
+\item $\mathcal{P}_{z}(0, 1, 0) = (0, 1, 0)$
+\item $\mathcal{P}_{z}(0, 0, 1) = (0, 0, 0)$
+\end{itemize}
 
 Acomodando estos resultados como columnas, la matriz representativa $P_{z}$ es:
 
 $$P_{z} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix}$$
 
+¿Tiene inversa? Para que una matriz tenga inversa, su determinante debe ser distinto de cero. El determinante de $P_{z}$ es $(1)(1)(0) = 0$. Físicamente, esto tiene sentido: una vez que proyectamos un vector 3D en un plano 2D perdiendo la información de la altura ($z$), no hay forma de revertir la operación para recuperar el vector original de manera única. Por tanto, no tiene inversa.
 
-
-**¿Tiene inversa?** Para que una matriz tenga inversa, su determinante debe ser distinto de cero. El determinante de $P_{z}$ es $(1)(1)(0) = 0$. Físicamente, esto tiene sentido: una vez que proyectamos un vector 3D en un plano 2D perdiendo la información de la altura ($z$), no hay forma de revertir la operación para recuperar el vector original de manera única. Por tanto, **no tiene inversa**.
-
-
-* 
-b) Matriz de rotación $\mathcal{R}_{z,\theta}$ y su inversa:
+\item[b)] Matriz de rotación $\mathcal{R}_{z,\theta}$ y su inversa:
 Una rotación en el plano $xy$ (es decir, alrededor del eje $z$) en un ángulo $\theta$ se representa clásicamente mediante las funciones seno y coseno. Aplicada a los vectores base de $\mathbb{R}^{3}$, obtenemos la matriz:
-
-
 
 $$R_{z,\theta} = \begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 \end{pmatrix}$$
 
-
 Para verificar que su inversa es la rotación en el ángulo opuesto $\mathcal{R}_{z,-\theta}$, construimos dicha matriz recordando que el coseno es una función par ($\cos(-\theta)=\cos\theta$) y el seno una función impar ($\sin(-\theta)=-\sin\theta$):
-
-
 
 $$R_{z,-\theta} = \begin{pmatrix} \cos\theta & \sin\theta & 0 \\ -\sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 \end{pmatrix}$$
 
-
-
 Si multiplicas estas dos matrices ($R_{z,\theta} \cdot R_{z,-\theta}$), verás que usando la identidad $\sin^{2}\theta + \cos^{2}\theta = 1$, el resultado es exactamente la matriz Identidad $\mathbb{I}_{3x3}$. Por lo tanto, son inversas entre sí.
 
-
-* 
-c) Conmutatividad de $\mathcal{P}_{z}$ y $\mathcal{R}_{z,\theta}$:
+\item[c)] Conmutatividad de $\mathcal{P}_{z}$ y $\mathcal{R}_{z,\theta}$:
 Dos operadores conmutan si aplicar uno y luego el otro da el mismo resultado que aplicarlos en el orden inverso ($AB = BA$). Vamos a multiplicar las matrices correspondientes:
-
-
 
 $$P_{z} \cdot R_{z,\theta} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 \end{pmatrix} = \begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 0 \end{pmatrix}$$
 
-
 $$R_{z,\theta} \cdot P_{z} = \begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix} = \begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 0 \end{pmatrix}$$
 
-
-Como ambas multiplicaciones dan la misma matriz resultante, queda demostrado que **conmutan**.
+Como ambas multiplicaciones dan la misma matriz resultante, queda demostrado que conmutan.
+\end{itemize}
 
 \subsection*{Problema 10}
 
 Este problema es un ejercicio clásico de exponenciales de matrices. La exponencial de una matriz $A$ se define mediante la serie de Taylor: $e^{A} = \sum_{n=0}^{\infty} \frac{A^{n}}{n!}$. Vamos a calcularla para los tres casos requeridos.
 
-1. Exponencial de $A = \begin{pmatrix} x & a \\ 0 & x \end{pmatrix}$ 
+\begin{enumerate}
+\item Exponencial de $A = \begin{pmatrix} x & a \\ 0 & x \end{pmatrix}$ 
 Podemos separar $A$ en la suma de una matriz diagonal y una matriz nilpotente:
 $A = x\mathbb{I} + N = \begin{pmatrix} x & 0 \\ 0 & x \end{pmatrix} + \begin{pmatrix} 0 & a \\ 0 & 0 \end{pmatrix}$
 Como la matriz Identidad $\mathbb{I}$ conmuta con cualquier matriz, podemos usar la propiedad $e^{x\mathbb{I}+N} = e^{x\mathbb{I}}e^{N}$.
-
-* $e^{x\mathbb{I}} = \begin{pmatrix} e^{x} & 0 \\ 0 & e^{x} \end{pmatrix}$
-* Para $e^{N}$, notamos que $N^{2} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}$. Por lo tanto, la serie de Taylor se corta en el primer término: $e^{N} = \mathbb{I} + N = \begin{pmatrix} 1 & a \\ 0 & 1 \end{pmatrix}$.
+\begin{itemize}
+\item $e^{x\mathbb{I}} = \begin{pmatrix} e^{x} & 0 \\ 0 & e^{x} \end{pmatrix}$
+\item Para $e^{N}$, notamos que $N^{2} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}$. Por lo tanto, la serie de Taylor se corta en el primer término: $e^{N} = \mathbb{I} + N = \begin{pmatrix} 1 & a \\ 0 & 1 \end{pmatrix}$.
 Multiplicando ambas:
 
 $$e^{A} = \begin{pmatrix} e^{x} & a e^{x} \\ 0 & e^{x} \end{pmatrix}$$
+\end{itemize}
 
-
-
-2. Exponencial de $B = \begin{pmatrix} 0 & x \\ -x & 0 \end{pmatrix}$ 
+\item Exponencial de $B = \begin{pmatrix} 0 & x \\ -x & 0 \end{pmatrix}$ 
 Podemos escribir esto como $B = x J$, donde $J = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$.
 Observa el patrón de las potencias de $J$:
-$J^{1} = J$
-$J^{2} = -\mathbb{I}$
-$J^{3} = -J$
-$J^{4} = \mathbb{I}$
+\begin{itemize}
+\item $J^{1} = J$
+\item $J^{2} = -\mathbb{I}$
+\item $J^{3} = -J$
+\item $J^{4} = \mathbb{I}$
+\end{itemize}
 Sustituyendo esto en la serie de Taylor $\sum_{n=0}^{\infty} \frac{x^{n}J^{n}}{n!}$, podemos agrupar los términos pares (que llevan la matriz $\mathbb{I}$) y los impares (que llevan la matriz $J$):
-
 
 $$e^{B} = \left( 1 - \frac{x^{2}}{2!} + \frac{x^{4}}{4!} - \dots \right)\mathbb{I} + \left( x - \frac{x^{3}}{3!} + \dots \right)J$$
 
-
 Reconociendo las series de Taylor del coseno y el seno, nos queda:
-
 
 $$e^{B} = \cos(x)\mathbb{I} + \sin(x)J = \begin{pmatrix} \cos(x) & \sin(x) \\ -\sin(x) & \cos(x) \end{pmatrix}$$
 
-3. Exponencial de $C = \begin{pmatrix} 0 & x \\ x & 0 \end{pmatrix}$ 
+\item Exponencial de $C = \begin{pmatrix} 0 & x \\ x & 0 \end{pmatrix}$ 
 Hacemos algo similar: $C = x K$, donde $K = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$.
 El patrón de potencias de $K$ es aún más sencillo:
-$K^{1} = K$
-$K^{2} = \mathbb{I}$
-$K^{3} = K$
-$K^{4} = \mathbb{I}$
+\begin{itemize}
+\item $K^{1} = K$
+\item $K^{2} = \mathbb{I}$
+\item $K^{3} = K$
+\item $K^{4} = \mathbb{I}$
+\end{itemize}
 Agrupando términos pares e impares en la serie de Taylor de manera idéntica al paso anterior, obtenemos las series del coseno hiperbólico ($\cosh$) y seno hiperbólico ($\sinh$):
-
 
 $$e^{C} = \left( 1 + \frac{x^{2}}{2!} + \dots \right)\mathbb{I} + \left( x + \frac{x^{3}}{3!} + \dots \right)K$$
 
 $$e^{C} = \cosh(x)\mathbb{I} + \sinh(x)K = \begin{pmatrix} \cosh(x) & \sinh(x) \\ \sinh(x) & \cosh(x) \end{pmatrix}$$
+\end{enumerate}
 
 \subsection*{Problema 11}
 
 Nos piden demostrar que si el conmutador de dos matrices es cero ($[A,B]=0$), entonces $e^{A+B} = e^{A}e^{B}$, y qué sucede si no conmutan.
 
-* **Demostración para $[A,B]=0$:**
+\begin{itemize}
+\item Demostración para $[A,B]=0$:
 Recordemos que la condición $[A,B]=0$ significa que las matrices conmutan, es decir, $AB = BA$.
 Usando la definición de la serie de Taylor para la exponencial de una matriz, tenemos:
 
-
-
 $$e^{A+B} = \sum_{n=0}^{\infty} \frac{(A+B)^n}{n!}$$
 
-
-
-Como $A$ y $B$ conmutan, podemos aplicar el **binomio de Newton** para expandir $(A+B)^n$ de la misma forma que lo haríamos con números reales:
+Como $A$ y $B$ conmutan, podemos aplicar el binomio de Newton para expandir $(A+B)^n$ de la misma forma que lo haríamos con números reales:
 
 $$(A+B)^n = \sum_{k=0}^{n} \frac{n!}{k!(n-k)!} A^k B^{n-k}$$
-
-
 
 Sustituyendo esto en la serie exponencial:
 
 $$e^{A+B} = \sum_{n=0}^{\infty} \frac{1}{n!} \sum_{k=0}^{n} \frac{n!}{k!(n-k)!} A^k B^{n-k} = \sum_{n=0}^{\infty} \sum_{k=0}^{n} \frac{A^k}{k!} \frac{B^{n-k}}{(n-k)!}$$
 
-
-
 Podemos cambiar los índices de la doble suma (haciendo $m = n-k$), lo que nos permite separar las sumatorias en dos series independientes desde $0$ hasta infinito:
 
 $$e^{A+B} = \left( \sum_{k=0}^{\infty} \frac{A^k}{k!} \right) \left( \sum_{m=0}^{\infty} \frac{B^m}{m!} \right) = e^{A}e^{B}$$
 
-
-* **¿Qué ocurre si $[A,B] \neq 0$?**
+\item ¿Qué ocurre si $[A,B] \neq 0$?
 Si las matrices no conmutan ($AB \neq BA$), no podemos aplicar el binomio de Newton. Por ejemplo, $(A+B)^2 = (A+B)(A+B) = A^2 + AB + BA + B^2$. Como $AB \neq BA$, esto no se simplifica a $A^2 + 2AB + B^2$.
-En consecuencia, la demostración anterior falla desde el principio y, por lo general, **$e^{A+B} \neq e^{A}e^{B}$**. Para lidiar con esto se utiliza la **Fórmula de Baker-Campbell-Hausdorff**, que nos dice que $e^{A}e^{B} = e^{A + B + \frac{1}{2}[A,B] + \dots}$.
+En consecuencia, la demostración anterior falla desde el principio y, por lo general, $e^{A+B} \neq e^{A}e^{B}$. Para lidiar con esto se utiliza la Fórmula de Baker-Campbell-Hausdorff, que nos dice que $e^{A}e^{B} = e^{A + B + \frac{1}{2}[A,B] + \dots}$.
+\end{itemize}
 
 \subsection*{Problema 12}
 
 Aquí consideramos una matriz $A$ y su transformación de semejanza $A^{\prime} = S^{-1} A S$. Debemos demostrar varias propiedades de esta transformación:
 
-* 
-**a) $det(A^{\prime}) = det(A)$:** 
+\begin{itemize}
+\item[a)] $det(A^{\prime}) = det(A)$:
 El determinante del producto de matrices es el producto de sus determinantes ($det(XYZ) = det(X)det(Y)det(Z)$):
-
-
 
 $$det(A^{\prime}) = det(S^{-1} A S) = det(S^{-1}) \cdot det(A) \cdot det(S)$$
 
-
-
 Como $det(S^{-1}) = \frac{1}{det(S)}$, se cancela con $det(S)$, quedando $det(A^{\prime}) = det(A)$.
-* 
-**b) $Tr(A^{\prime}) = Tr(A)$:** 
+
+\item[b)] $Tr(A^{\prime}) = Tr(A)$:
 Usamos la propiedad cíclica de la traza, que establece que $Tr(XYZ) = Tr(ZXY)$:
-
-
 
 $$Tr(A^{\prime}) = Tr(S^{-1} A S) = Tr(S S^{-1} A) = Tr(I \cdot A) = Tr(A)$$
 
-
-* 
-**c) $f(A^{\prime}) = S^{-1} f(A) S$ para $f$ desarrollable en serie de potencias:** 
+\item[c)] $f(A^{\prime}) = S^{-1} f(A) S$ para $f$ desarrollable en serie de potencias:
 Primero notemos qué pasa al elevar $A^{\prime}$ al cuadrado:
 $(A^{\prime})^2 = (S^{-1} A S)(S^{-1} A S) = S^{-1} A (S S^{-1}) A S = S^{-1} A I A S = S^{-1} A^2 S$.
 Por inducción, esto se cumple para cualquier potencia $n$: $(A^{\prime})^n = S^{-1} A^n S$.
 Si desarrollamos $f(A^{\prime}) = \sum c_n (A^{\prime})^n$, entonces:
 
-
-
 $$f(A^{\prime}) = \sum c_n (S^{-1} A^n S) = S^{-1} \left( \sum c_n A^n \right) S = S^{-1} f(A) S$$
 
-
-* 
-**d) A Hermitiana $\Rightarrow A^{\prime}$ Hermitiana si S es unitaria:** 
+\item[d)] A Hermitiana $\Rightarrow A^{\prime}$ Hermitiana si S es unitaria:
 Sabemos que $A^{\dagger} = A$ (Hermitiana) y que $S^{\dagger} = S^{-1}$ (Unitaria). Debemos probar que $(A^{\prime})^{\dagger} = A^{\prime}$:
-
-
 
 $$(A^{\prime})^{\dagger} = (S^{-1} A S)^{\dagger} = S^{\dagger} A^{\dagger} (S^{-1})^{\dagger} = S^{-1} A S = A^{\prime}$$
 
-
-* 
-**e) A unitaria $\Rightarrow A^{\prime}$ unitaria si S es unitaria:** 
+\item[e)] A unitaria $\Rightarrow A^{\prime}$ unitaria si S es unitaria:
 Sabemos que $A^{\dagger} = A^{-1}$ y $S^{\dagger} = S^{-1}$. Veamos si $(A^{\prime})^{\dagger} = (A^{\prime})^{-1}$:
-
-
 
 $$(A^{\prime})^{\dagger} = S^{\dagger} A^{\dagger} (S^{-1})^{\dagger} = S^{-1} A^{-1} S$$
 
-
-
 Por otro lado, la inversa es: $(A^{\prime})^{-1} = (S^{-1} A S)^{-1} = S^{-1} A^{-1} (S^{-1})^{-1} = S^{-1} A^{-1} S$. Como ambas coinciden, $A^{\prime}$ es unitaria.
-* 
-**f) A ortogonal $\Rightarrow A^{\prime}$ ortogonal si S es ortogonal:** 
+
+\item[f)] A ortogonal $\Rightarrow A^{\prime}$ ortogonal si S es ortogonal:
 Misma lógica que el punto anterior, pero usando transpuestas ($T$) en lugar de conjugadas transpuestas ($\dagger$). $A^T = A^{-1}$ y $S^T = S^{-1}$.
-
-
 
 $$(A^{\prime})^T = (S^{-1} A S)^T = S^T A^T (S^{-1})^T = S^{-1} A^{-1} S$$
 
-
-
 Como esto coincide con $(A^{\prime})^{-1}$, queda demostrado.
-* 
-**g) $AB = BA \Rightarrow A^{\prime}B^{\prime} = B^{\prime}A^{\prime}$:** 
+
+\item[g)] $AB = BA \Rightarrow A^{\prime}B^{\prime} = B^{\prime}A^{\prime}$:
 Multiplicamos las transformaciones de $A$ y $B$:
 
-
-
 $$A^{\prime}B^{\prime} = (S^{-1} A S) (S^{-1} B S) = S^{-1} A (S S^{-1}) B S = S^{-1} A B S$$
-
-
 
 Como $AB = BA$, podemos escribir:
 
 $$S^{-1} B A S = S^{-1} B (S S^{-1}) A S = (S^{-1} B S) (S^{-1} A S) = B^{\prime}A^{\prime}$$
 
-
-* 
-**h) $B = A^{-1} \Rightarrow B^{\prime} = (A^{\prime})^{-1}$:** 
+\item[h)] $B = A^{-1} \Rightarrow B^{\prime} = (A^{\prime})^{-1}$:
 Calculamos $B^{\prime}$ sabiendo que $B = A^{-1}$:
 
-
-
 $$B^{\prime} = S^{-1} B S = S^{-1} A^{-1} S$$
-
-
 
 Y comparamos con la inversa de $A^{\prime}$:
 
 $$(A^{\prime})^{-1} = (S^{-1} A S)^{-1} = S^{-1} A^{-1} (S^{-1})^{-1} = S^{-1} A^{-1} S$$
 
-
-
 Ambas expresiones son iguales.
+\end{itemize}
 
 \subsection*{Problema 13}
 
 Este ejercicio trata sobre cómo cambian las coordenadas de un vector $\vec{v}$ y la representación de un operador $\mathcal{A}$ al rotar la base.
 
-**1. Representación de $\mathcal{A}v$ en la vieja base:**
+\begin{enumerate}
+\item Representación de $\mathcal{A}v$ en la vieja base:
 Simplemente multiplicamos la matriz $A$ por el vector columna $v$:
-
 
 $$Av = \begin{pmatrix} 1 & \frac{1}{2} \\ \frac{1}{2} & 1 \end{pmatrix} \begin{pmatrix} 1 \\ 2 \end{pmatrix} = \begin{pmatrix} 1(1) + \frac{1}{2}(2) \\ \frac{1}{2}(1) + 1(2) \end{pmatrix} = \begin{pmatrix} 2 \\ \frac{5}{2} \end{pmatrix}$$
 
-**2. Representaciones $v^{\prime}$ y $A^{\prime}$ en la nueva base:**
+\item Representaciones $v^{\prime}$ y $A^{\prime}$ en la nueva base:
 La matriz de cambio de base $S$ (que pasa de coordenadas nuevas a viejas) se forma poniendo los nuevos vectores base como columnas:
-
 
 $$S = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$$
 
 Dado que $S$ es una matriz de rotación (ortogonal), su inversa es igual a su transpuesta: $S^{-1} = S^{T}$.
 Para hallar $v'$, aplicamos $S^{-1}$ a $v$:
 
-
 $$v^{\prime} = S^{-1}v = \begin{pmatrix} \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta \end{pmatrix} \begin{pmatrix} 1 \\ 2 \end{pmatrix} = \begin{pmatrix} \cos\theta + 2\sin\theta \\ -\sin\theta + 2\cos\theta \end{pmatrix}$$
 
 Para la matriz $A'$, usamos la transformación de semejanza $A^{\prime} = S^{-1}AS$. Multiplicando las tres matrices se obtiene:
 
-
 $$A^{\prime} = \begin{pmatrix} 1 + \sin\theta\cos\theta & \frac{1}{2}(\cos^2\theta - \sin^2\theta) \\ \frac{1}{2}(\cos^2\theta - \sin^2\theta) & 1 - \sin\theta\cos\theta \end{pmatrix}$$
 
-**3. Verificación de $(Av)^{\prime} = A^{\prime}v^{\prime}$:**
+\item Verificación de $(Av)^{\prime} = A^{\prime}v^{\prime}$:
 Por definición teórica, $(Av)^{\prime} = S^{-1}(Av)$. Si aplicamos $S^{-1}$ al vector $\begin{pmatrix} 2 \\ 5/2 \end{pmatrix}$, obtenemos el mismo vector resultante que al multiplicar nuestra matriz $A^{\prime}$ por el vector $v^{\prime}$. Esto confirma la consistencia de las transformaciones de base.
-
+\end{enumerate}
 
 \subsection*{Problema 14}
 
 La base dual es un conjunto de "funcionales" (vectores fila) que operan sobre los vectores de la base normal para dar la delta de Kronecker: $\overline{e}^{\prime i}(\vec{e}_{j}^{\prime})={\delta^{i}}_{j}$.
 
-**1. Construcción de la base dual:**
+\begin{enumerate}
+\item Construcción de la base dual:
 Nuestra nueva base es $\vec{e}_{1}^{\prime}=\vec{e}_{1}+\vec{e}_{2}$ y $\vec{e}_{2}^{\prime}=\vec{e}_{1}-\vec{e}_{2}$.
 Proponemos un funcional genérico $\overline{e}^{\prime 1} = a\overline{e}^1 + b\overline{e}^2$.
-
-* Al evaluarlo en $\vec{e}_{1}^{\prime}$: $a(1) + b(1) = 1$.
-* Al evaluarlo en $\vec{e}_{2}^{\prime}$: $a(1) + b(-1) = 0$.
+\begin{itemize}
+\item Al evaluarlo en $\vec{e}_{1}^{\prime}$: $a(1) + b(1) = 1$.
+\item Al evaluarlo en $\vec{e}_{2}^{\prime}$: $a(1) + b(-1) = 0$.
+\end{itemize}
 Resolviendo este sistema, $a = 1/2$ y $b = 1/2$. Así, $\overline{e}^{\prime 1} = \frac{1}{2}(\overline{e}^1 + \overline{e}^2)$.
 Aplicando la misma lógica para $\overline{e}^{\prime 2}$ (que debe dar 0 con $\vec{e}_{1}^{\prime}$ y 1 con $\vec{e}_{2}^{\prime}$), llegamos a $\overline{e}^{\prime 2} = \frac{1}{2}(\overline{e}^1 - \overline{e}^2)$.
 
-
-
-**2. Verificación usando la matriz de transición:**
+\item Verificación usando la matriz de transición:
 La matriz $\gamma$ que relaciona ambas bases es $\gamma = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$.
 La regla general dice que los elementos de la base dual se transforman con la matriz inversa $\gamma^{-1}$:
-
 
 $$\gamma^{-1} = -\frac{1}{2}\begin{pmatrix} -1 & -1 \\ -1 & 1 \end{pmatrix} = \begin{pmatrix} 1/2 & 1/2 \\ 1/2 & -1/2 \end{pmatrix}$$
 
 Las filas de esta matriz corresponden exactamente a los coeficientes $(1/2, 1/2)$ y $(1/2, -1/2)$ que hallamos manualmente, lo que verifica la relación.
-
+\end{enumerate}
 
 
 \subsection*{Problema 15}
 
 La métrica $g_{ij}$ contiene todos los productos escalares entre los vectores de una base.
 
-**1. Cálculo de la métrica $G^{\prime}$:**
+\begin{enumerate}
+\item Cálculo de la métrica $G^{\prime}$:
 Dado que la base original es ortonormal ($\vec{e}_{i}\cdot\vec{e}_{j}=\delta_{ij}$), calculamos los productos escalares de la nueva base:
-
-* $g'_{11} = \vec{e}_{1}\cdot\vec{e}_{1} = 1$
-* $g'_{12} = \vec{e}_{1}\cdot(\vec{e}_{1}+\vec{e}_{2}) = 1$
-* $g'_{22} = (\vec{e}_{1}+\vec{e}_{2})\cdot(\vec{e}_{1}+\vec{e}_{2}) = 1+1 = 2$
-* $g'_{33} = (\vec{e}_{1}+\vec{e}_{2}+\vec{e}_{3})\cdot(\vec{e}_{1}+\vec{e}_{2}+\vec{e}_{3}) = 3$
+\begin{itemize}
+\item $g'_{11} = \vec{e}_{1}\cdot\vec{e}_{1} = 1$
+\item $g'_{12} = \vec{e}_{1}\cdot(\vec{e}_{1}+\vec{e}_{2}) = 1$
+\item $g'_{22} = (\vec{e}_{1}+\vec{e}_{2})\cdot(\vec{e}_{1}+\vec{e}_{2}) = 1+1 = 2$
+\item $g'_{33} = (\vec{e}_{1}+\vec{e}_{2}+\vec{e}_{3})\cdot(\vec{e}_{1}+\vec{e}_{2}+\vec{e}_{3}) = 3$
+\end{itemize}
 Siguiendo esto, armamos la matriz simétrica $G'$:
-
-
 
 $$G' = \begin{pmatrix} 1 & 1 & 1 \\ 1 & 2 & 2 \\ 1 & 2 & 3 \end{pmatrix}$$
 
-
-
-**2. Cálculo de la norma en ambas bases:**
+\item Cálculo de la norma en ambas bases:
 Queremos la norma de $\vec{v} = \vec{e}_{1}+2\vec{e}_{2}+3\vec{e}_{3}$.
 
-* 
-**En la base original (ortonormal):** La norma es la raíz cuadrada de la suma de los componentes al cuadrado: $\sqrt{1^2 + 2^2 + 3^2} = \sqrt{14}$.
+\begin{itemize}
+\item En la base original (ortonormal): La norma es la raíz cuadrada de la suma de los componentes al cuadrado: $\sqrt{1^2 + 2^2 + 3^2} = \sqrt{14}$.
 
 
-* **En la base nueva:** Primero hallamos las componentes de $\vec{v}$ en la nueva base. Resolviendo el sistema $\vec{v} = c_1\vec{e}_{1}^{\prime} + c_2\vec{e}_{2}^{\prime} + c_3\vec{e}_{3}^{\prime}$, deducimos que el vector de componentes es $v^{\prime} = (-1, -1, 3)$.
+\item En la base nueva: Primero hallamos las componentes de $\vec{v}$ en la nueva base. Resolviendo el sistema $\vec{v} = c_1\vec{e}_{1}^{\prime} + c_2\vec{e}_{2}^{\prime} + c_3\vec{e}_{3}^{\prime}$, deducimos que el vector de componentes es $v^{\prime} = (-1, -1, 3)$.
 Para hallar la norma con la métrica nueva calculamos $\sqrt{v^{\prime T} G^{\prime} v^{\prime}}$:
-
-
 
 $$||v||^2 = (-1, -1, 3) \begin{pmatrix} 1 & 1 & 1 \\ 1 & 2 & 2 \\ 1 & 2 & 3 \end{pmatrix} \begin{pmatrix} -1 \\ -1 \\ 3 \end{pmatrix} = (-1, -1, 3) \begin{pmatrix} 1 \\ 3 \\ 6 \end{pmatrix} = -1 - 3 + 18 = 14$$
 
-
 La norma es $\sqrt{14}$.
-**¿Coinciden? ¿Por qué?** ¡Sí, coinciden! La longitud de un vector es una invariante geométrica. Independientemente del sistema de coordenadas (la base) que utilicemos para describirlo, el objeto físico sigue midiendo exactamente lo mismo.
 
+¿Coinciden? ¿Por qué? ¡Sí, coinciden! La longitud de un vector es una invariante geométrica. Independientemente del sistema de coordenadas (la base) que utilicemos para describirlo, el objeto físico sigue midiendo exactamente lo mismo.
+\end{itemize}
+\end{enumerate}
 
 
 
 \subsection*{Problema 16}
 
 
-Este clásico introduce las **matrices de Pauli**, piedras angulares para describir el espín en mecánica cuántica.
+Este clásico introduce las matrices de Pauli, piedras angulares para describir el espín en mecánica cuántica.
 Primero, la dimensión de las matrices $2\times2$ complejas es 4 porque necesitamos 4 parámetros complejos independientes $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$ para definir cualquier matriz, lo que implica 4 vectores base básicos.
 
-* **a) Relación de conmutación $\epsilon_{klm}\sigma_{l}\sigma_{m}=2i\sigma_{k}$:**
+\begin{itemize}
+\item[a)] Relación de conmutación $\epsilon_{klm}\sigma_{l}\sigma_{m}=2i\sigma_{k}$:
 El tensor de Levi-Civita $\epsilon_{klm}$ nos dice que esto es equivalente al conmutador. Tomemos $k=1$ (x), lo que evalúa a $\sigma_y\sigma_z - \sigma_z\sigma_y$.
-
-
 
 $$\sigma_y\sigma_z = \begin{pmatrix}0&-i\\i&0\end{pmatrix}\begin{pmatrix}1&0\\0&-1\end{pmatrix} = \begin{pmatrix}0&i\\i&0\end{pmatrix} = i\sigma_x$$
 
-
-
-
-
 $$\sigma_z\sigma_y = \begin{pmatrix}1&0\\0&-1\end{pmatrix}\begin{pmatrix}0&-i\\i&0\end{pmatrix} = \begin{pmatrix}0&-i\\-i&0\end{pmatrix} = -i\sigma_x$$
-
-
 
 Restando: $i\sigma_x - (-i\sigma_x) = 2i\sigma_x$. Esto se cumple cíclicamente para todas.
 
 
-* **b) $\sigma_{j}^{2}=I$ para todo $j$:**
+\item[b)] $\sigma_{j}^{2}=I$ para todo $j$:
 Al multiplicar cualquier matriz de Pauli por sí misma, se obtiene la identidad. Por ejemplo:
-
-
 
 $$\sigma_x^2 = \begin{pmatrix}0&1\\1&0\end{pmatrix}\begin{pmatrix}0&1\\1&0\end{pmatrix} = \begin{pmatrix}0(0)+1(1) & 0(1)+1(0) \\ 1(0)+0(1) & 1(1)+0(0)\end{pmatrix} = \begin{pmatrix}1&0\\0&1\end{pmatrix} = I$$
 
-
-
 La verificación es idéntica para las demás.
 
-
-* **c) Demostrar que $\{I,\sigma_{x},\sigma_{y},\sigma_{z}\}$ es una base:**
+\item[c)] Demostrar que $\{I,\sigma_{x},\sigma_{y},\sigma_{z}\}$ es una base:
 Para que sean base de un espacio de dimensión 4, basta demostrar que son linealmente independientes. Planteamos:
-
-
 
 $$\alpha I + \beta\sigma_x + \gamma\sigma_y + \delta\sigma_z = \begin{pmatrix} \alpha+\delta & \beta-i\gamma \\ \beta+i\gamma & \alpha-\delta \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}$$
 
-
-
 Igualando componente a componente obtenemos el sistema de ecuaciones:
+\begin{enumerate}
+\item $\alpha + \delta = 0$ y $\alpha - \delta = 0 \Rightarrow \alpha = 0, \delta = 0$
+\item $\beta - i\gamma = 0$ y $\beta + i\gamma = 0 \Rightarrow \beta = 0, \gamma = 0$
 
-
-1. $\alpha + \delta = 0$ y $\alpha - \delta = 0 \Rightarrow \alpha = 0, \delta = 0$
-2. $\beta - i\gamma = 0$ y $\beta + i\gamma = 0 \Rightarrow \beta = 0, \gamma = 0$
-Como la única solución es la trivial (todos los coeficientes son cero), las cuatro matrices son linealmente independientes. Siendo 4 matrices en un espacio de dimensión 4, **forman una base completa**.
+Como la única solución es la trivial (todos los coeficientes son cero), las cuatro matrices son linealmente independientes. Siendo 4 matrices en un espacio de dimensión 4, forman una base completa.
+\end{enumerate}
+\end{itemize}
 
 \end{document}
 
