@@ -1,0 +1,227 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{geometry}
+\usepackage{mathrsfs}
+\usepackage{calrsfs}
+\usepackage{dsfont}
+\usepackage{hyperref}
+
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+\title{Métodos Matemáticos de la Física II \\
+Guía de Trabajos Prácticos N° 1 \\
+\large Espacios Vectoriales, Álgebra Tensorial y Operadores}
+\author{Facultad de Matemática, Astronomía, Física y Computación --- UNC}
+\date{2026}
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Parte I: Problemas Centrales (para desarrollar en clase)}
+
+\subsection*{Clase 1: Fundamentos: Espacios Vectoriales, Bases y Subespacios}
+
+\begin{enumerate}[1.]
+\item Sea $V$ el conjunto de todas las sucesiones reales infinitas (funciones de $\mathbb{N} \to \mathbb{R}$). Pruebe que $V$ es un espacio vectorial con las operaciones usuales de suma y multiplicación por escalares. ¿Qué dimensión tiene este espacio? Justifique.
+
+\item Diga cuáles de los siguientes conjuntos son espacios vectoriales (indicando el cuerpo correspondiente) y cuáles no:
+\begin{enumerate}[a)]
+\item $\mathbb{R}^3$, las ternas $(x,y,z)$ de números reales.
+\item $\mathcal{P}_N(\mathbb{R})$, los polinomios en una variable real $x$ de grado a lo sumo $N$.
+\item $\{f:[a,b]\to\mathbb{R}\}$, las funciones a valores reales definidas sobre el intervalo $[a,b]$.
+\end{enumerate}
+
+\item Sea $V$ el espacio de todas las funciones $\mathbb{R}\to\mathbb{R}$. Sean:
+\begin{itemize}
+\item $V_p$: subconjunto de funciones pares ($f(-x)=f(x)$).
+\item $V_i$: subconjunto de funciones impares ($f(-x)=-f(x)$).
+\end{itemize}
+\begin{enumerate}[a)]
+\item Demostrar que $V_p$ y $V_i$ son subespacios de $V$.
+\item Demostrar que $V_p + V_i = V$ y que $V_p \cap V_i = \{0\}$.
+\end{enumerate}
+
+\item Sea $V$ el conjunto de todos los $(x_1,x_2,x_3,x_4,x_5)\in\mathbb{R}^5$ que satisfacen:
+\[
+\begin{cases}
+2x_1 - x_2 + \frac{4}{3}x_3 - x_4 = 0 \\
+x_1 + \frac{2}{3}x_3 - x_5 = 0 \\
+9x_1 - 3x_2 + 6x_3 - 3x_4 - 3x_5 = 0
+\end{cases}
+\]
+Encuentre un conjunto finito de vectores que generen $V$ y determine su dimensión.
+\end{enumerate}
+
+\subsection*{Clase 2: Espacio Dual y Construcción de Tensores}
+
+\begin{enumerate}[1.]
+\setcounter{enumi}{4}
+\item Sea $\{\hat{e}_i\}_{i=1}^n$ una base de $V$ y $\{\hat{e}^i\}_{i=1}^n$ su base dual (base de $V^*$).
+\begin{enumerate}[a)]
+\item Si $\bar{u}\in V$ y $\omega\in V^*$, pruebe que las componentes pueden calcularse como: $u^i = \hat{e}^i(\bar{u})$ y $\omega_j = \hat{e}_j(\omega)$.
+\item Explique por qué la base dual existe y es única.
+\end{enumerate}
+
+\item Sean los vectores en $\mathbb{R}^3$:
+\[
+\vec{v}_1=\begin{pmatrix}1 \\ 2 \\ 1\end{pmatrix},\quad
+\vec{v}_2=\begin{pmatrix}-1/2 \\ -1 \\ -1\end{pmatrix},\quad
+\vec{v}_3=\begin{pmatrix}-1 \\ -1 \\ 1\end{pmatrix}
+\]
+\begin{enumerate}[a)]
+\item Pruebe que los vectores son linealmente independientes y, por lo tanto, constituyen una base $B$.
+\item Calcule la co-base $\{\hat{e}^i\}$ de $V^*$ correspondiente a la base $B$, expresando los covectores como matrices fila.
+\item Verifique explícitamente que $\hat{e}^i(\vec{v}_j) = \delta^i_j$.
+\end{enumerate}
+
+\item Sea $\{\hat{e}_i\}_{i=1}^n$ base de $V$ y $\{\hat{e}^i\}_{i=1}^n$ su base dual.
+\begin{enumerate}[a)]
+\item Defina el producto tensorial $\hat{e}_i \otimes \hat{e}^j$. ¿Qué tipo de tensor es? ¿Cuál es su acción sobre un vector y un covector?
+\item Pruebe que los $n^2$ tensores $\hat{e}_i \otimes \hat{e}^j$ son linealmente independientes.
+\item Explique por qué esto demuestra que el espacio de tensores $T_1^1$ (tipo (1,1)) tiene dimensión $n^2$.
+\end{enumerate}
+
+\item Considere el espacio $T_2^0$ de tensores dos veces covariantes (tipo (0,2)).
+\begin{enumerate}[a)]
+\item Proponga una base para este espacio en términos de la base dual $\{\hat{e}^i\}$.
+\item Si $\dim(V)=3$, ¿cuántos elementos tiene esta base? Escríbalos explícitamente.
+\end{enumerate}
+\end{enumerate}
+
+\subsection*{Clase 3: Componentes, Simetrías y Operaciones con Tensores}
+
+\begin{enumerate}[1.]
+\setcounter{enumi}{8}
+\item Sea $V$ un EV con $\dim(V)=n$. Considere $T_2^0$, el espacio de tensores (0,2). Sean $\mathcal{S}$ el subconjunto de tensores simétricos ($S_{ij}=S_{ji}$) y $\mathcal{A}$ el de antisimétricos ($A_{ij}=-A_{ji}$).
+\begin{enumerate}[a)]
+\item Muestre que $\mathcal{S}$ y $\mathcal{A}$ son subespacios de $T_2^0$.
+\item Demuestre que $\dim(\mathcal{S})=\frac{n(n+1)}{2}$ y $\dim(\mathcal{A})=\frac{n(n-1)}{2}$.
+\item Muestre que $T_2^0 = \mathcal{S} \oplus \mathcal{A}$ (son complementarios).
+\end{enumerate}
+
+\item Sea $V$ un espacio vectorial de dimensión 3 y $\{\hat{e}_i\}$ una base. Considere el tensor particular en $T_2^0$:
+\[
+T = 4\hat{e}^1 \otimes \hat{e}^1 - \hat{e}^1 \otimes \hat{e}^2 + 2\hat{e}^1 \otimes \hat{e}^3 + 2\hat{e}^2 \otimes \hat{e}^1 + \hat{e}^2 \otimes \hat{e}^2 + 3\hat{e}^3 \otimes \hat{e}^1 + 3\hat{e}^3 \otimes \hat{e}^2 + 3\hat{e}^3 \otimes \hat{e}^3
+\]
+Las partes simétrica ($S$) y antisimétrica ($A$) de $T$ se definen como:
+\[
+S_{ij} = \frac{1}{2}(T_{ij}+T_{ji}), \quad A_{ij} = \frac{1}{2}(T_{ij}-T_{ji})
+\]
+\begin{enumerate}[a)]
+\item Escriba las componentes $T_{ij}$ en forma de matriz $3\times3$.
+\item Calcule las matrices de $S$ y $A$ y verifique que $T = S + A$.
+\end{enumerate}
+
+\item Dadas las componentes $T_{ijk}$ de un tensor tipo (0,3), demuestre que:
+\[
+S_{ijk}=T_{ijk}+T_{jki}+T_{kij}+T_{ikj}+T_{kji}+T_{jik}
+\]
+son componentes de un tensor totalmente simétrico.
+
+\item Demuestre que si $u,v,w$ son tres vectores de $V$ con $\dim(V)\geq3$, las cantidades
+\[
+T_{ijk}=\begin{vmatrix}
+u_i & u_j & u_k \\
+v_i & v_j & v_k \\
+w_i & w_j & w_k
+\end{vmatrix}
+\]
+son componentes de un tensor totalmente antisimétrico.
+\end{enumerate}
+
+\subsection*{Clase 4: Operadores, Cambio de Base y Aplicaciones}
+
+\begin{enumerate}[1.]
+\setcounter{enumi}{12}
+\item Considere las bases $B=\{\vec{u}_1,\vec{u}_2,\vec{u}_3\}$ y $B'=\{\vec{v}_1,\vec{v}_2,\vec{v}_3\}$ en $\mathbb{R}^3$:
+\[
+\vec{u}_1=\begin{pmatrix}-3 \\ 0 \\ -3\end{pmatrix},\;
+\vec{u}_2=\begin{pmatrix}-3 \\ 2 \\ -1\end{pmatrix},\;
+\vec{u}_3=\begin{pmatrix}1 \\ 6 \\ -1\end{pmatrix},\;
+\vec{v}_1=\begin{pmatrix}-6 \\ -6 \\ 0\end{pmatrix},\;
+\vec{v}_2=\begin{pmatrix}-2 \\ -6 \\ 4\end{pmatrix},\;
+\vec{v}_3=\begin{pmatrix}-2 \\ -3 \\ 7\end{pmatrix}
+\]
+\begin{enumerate}[a)]
+\item Halle la matriz de cambio de base de $B$ a $B'$.
+\item Dado $\vec{w}=(-5,8,-5)^T$, halle sus componentes en $B$ y utilice la matriz para hallar sus componentes en $B'$.
+\end{enumerate}
+
+\item En una base $\{\hat{e}_i\}$, una transformación lineal $T$ y un vector $\vec{v}$ están representados por:
+\[
+[T]=\begin{pmatrix}2 & 1 & 0 \\ 1 & 2 & 0 \\ 0 & 0 & 5\end{pmatrix},\quad
+[\vec{v}]=\begin{pmatrix}1 \\ 2 \\ 3\end{pmatrix}
+\]
+Encuentre las representaciones matriciales en la nueva base definida por:
+\[
+\hat{e}'_1=\hat{e}_1+\hat{e}_2,\quad
+\hat{e}'_2=\hat{e}_1-\hat{e}_2,\quad
+\hat{e}'_3=\hat{e}_3
+\]
+
+\item Sean $A,B$ operadores que admiten representación matricial. Muestre que:
+\begin{enumerate}[a)]
+\item $e^{(s+t)A} = e^{sA}e^{tA}$, con $s,t$ escalares.
+\item Si $AB=BA$, entonces $e^{A+B}=e^Ae^B$.
+\end{enumerate}
+Calcule:
+\[
+\exp\begin{pmatrix}0 & x \\ -x & 0\end{pmatrix},\quad
+\exp\begin{pmatrix}0 & x \\ x & 0\end{pmatrix}
+\]
+
+\item El conjunto de matrices $2\times2$ complejas $\mathbb{C}^{2\times2}$ es un EV con $\dim(V)=4$. Las matrices de Pauli:
+\[
+\sigma_x=\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix},\;
+\sigma_y=\begin{pmatrix}0 & -i \\ i & 0\end{pmatrix},\;
+\sigma_z=\begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}
+\]
+Muestre que $\{I,\sigma_x,\sigma_y,\sigma_z\}$ es una base de $\mathbb{C}^{2\times2}$ y que $\sigma_j^2 = I$.
+\end{enumerate}
+
+\section*{Parte II: Problemas Propuestos (para profundización y repaso)}
+
+\begin{enumerate}[1.]
+\setcounter{enumi}{16}
+
+\item Demuestre que en $\mathbb{R}^3$, $\{\hat{x},\hat{y},\hat{z}\}$ es base, y $\{\hat{x},\hat{x}+\hat{y},\hat{x}+\hat{y}+\hat{z}\}$ también.
+
+\item Dado $A: V \to W$ una transformación lineal, muestre que $\ker(A)$ es un subespacio de $V$ y que $\dim(\ker(A)) \geq \dim(V) - \dim(W)$.
+
+\item Considere el operador $P_z$ que proyecta de $\mathbb{R}^3$ al plano $xy$, como operador de $\mathbb{R}^3$ en $\mathbb{R}^3$. Escriba la matriz que lo representa en la base canónica. Muestre que el operador rotación $R_{z,\theta}$ conmuta con $P_z$.
+
+\item Sea $\{\hat{e}_i\}_{i=1}^n$ base de $V$ y $\{\hat{e}^i\}_{i=1}^n$ su base dual. Probar que todo tensor tipo (1,1) puede expandirse como combinación lineal de los tensores $\hat{e}_i\otimes\hat{e}^j$.
+
+\item Sea $V=\mathbb{R}^2$ con $\vec{u}=(x,y)^T\in V$. Verifique que las siguientes definiciones son normas:
+\[
+\|\vec{u}\|_1 = \max\{|x|,|y|\},\quad
+\|\vec{u}\|_2 = \sqrt{x^2+y^2},\quad
+\|\vec{u}\|_3 = |x|+|y|
+\]
+Indique cuáles provienen de un producto escalar.
+
+\item Considere la transformación de semejanza $A' = S^{-1}AS$. Muestre que $\det(A')=\det(A)$ y $\operatorname{tr}(A')=\operatorname{tr}(A)$.
+
+\item Construya la base dual $\{\hat{e}'^1,\hat{e}'^2\}$ de $\hat{e}'_1=\hat{e}_1+\hat{e}_2$, $\hat{e}'_2=\hat{e}_1-\hat{e}_2$ usando $\hat{e}'^i(\hat{e}'_j)=\delta^i_j$.
+
+\item Asumiendo $\hat{e}_i\cdot\hat{e}_j=\delta_{ij}$, calcule la métrica en la base $\{\hat{e}'_i\}$ dada por $\hat{e}'_1=\hat{e}_1$, $\hat{e}'_2=\hat{e}_1+\hat{e}_2$, $\hat{e}'_3=\hat{e}_1+\hat{e}_2+\hat{e}_3$. Calcule la norma de $\vec{v}=\hat{e}_1+2\hat{e}_2+3\hat{e}_3$ en ambas bases.
+
+\item Sea $V$ un EV con producto interno complejo y $T$ un operador lineal. Demuestre que $T$ es autoadjunto si y solo si $\langle T(u),u\rangle$ es real $\forall u\in V$.
+
+\item Sea $\mathcal{L}$ el conjunto de operadores sobre $V$. Muestre que $\|A\|=\max_{\|\vec{v}\|=1}\|A\vec{v}\|$ define una norma y que $\|AB\|\leq\|A\|\|B\|$.
+
+\item Sea $P:V\to V$ un proyector ($P^2=P$). Muestre que todo $\vec{v}\in V$ puede descomponerse únicamente como $\vec{v}=\vec{u}+\vec{w}$ con $P\vec{u}=\vec{u}$ y $P\vec{w}=0$.
+
+\item Encuentre los autovalores y autovectores normalizados de la matriz $A=\begin{pmatrix}1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9\end{pmatrix}$.
+
+\item Encuentre la forma canónica de Jordan de $A=\begin{pmatrix}1 & -2 & 2 \\ -1 & 1 & 1 \\ -2 & 0 & 3\end{pmatrix}$.
+\end{enumerate}
+
+\end{document}
