@@ -331,125 +331,23 @@ Indique cu\'ales provienen de un producto escalar.
 
 \subsection{Problema 1}
 
-\begin{itemize}
-
-\item \textbf{Demostración de que $V$ es un espacio vectorial.}
-
-Una sucesión real infinita puede denotarse como $(a_n) = (a_1,a_2,a_3,\dots)$, donde $a_n \in \mathbb{R}$. 
-Las operaciones usuales se definen término a término:
-
-\begin{itemize}
-\item Suma: $(a_n) + (b_n) = (a_n + b_n)$
-\item Producto por escalar: $\alpha (a_n) = (\alpha a_n)$, con $\alpha \in \mathbb{R}$.
-\end{itemize}
-
-Estas operaciones están bien definidas ya que la suma y el producto de números reales vuelven a ser números reales. 
-Además, las propiedades de espacio vectorial se verifican término a término a partir de las propiedades del cuerpo $\mathbb{R}$.
-
-En particular:
-
-\begin{itemize}
-\item La suma es asociativa y conmutativa porque la suma en $\mathbb{R}$ lo es.
-\item El elemento neutro es la sucesión nula
-\[
-V\ni (0)=(0,0,0,\dots),
-\]
-que satisface $(a_n)+(0)=(a_n)$.
-\item El inverso aditivo de $(a_n)$ es $(-a_n)$, ya que
-\[
-(a_n)+(-a_n)=(0).
-\]
-\item Las propiedades distributivas y de compatibilidad del producto escalar se verifican término a término, por ejemplo
-\[
-\alpha\big((a_n)+(b_n)\big)
-= (\alpha(a_n+b_n))
-= (\alpha a_n + \alpha b_n)
-= \alpha(a_n)+\alpha(b_n).
-\]
-\end{itemize}
-
-Por lo tanto, $V$ cumple todos los axiomas de espacio vectorial sobre $\mathbb{R}$.
-
-\item \textbf{Demostraci\'on de que $\dim V=2^{\aleph_0}$.}
-
-Repasemos algunas definiciones y algunos teoremas:
-\begin{itemize}
-\item Un subconjunto $S$ de $V$ es linealmente independiente, si todo subconjunto finito de $S$ es linealmente independiente.
-\item Un subconjunto $G$ de $V$ genera a $V$ si todo elemento $v$ de $V$ puede escribirse como una combinaci\'on lineal de un subconjunto finito de elementos de $G$.
-\item Un subconjunto $B$ de $V$ es base de $V$ si
-\begin{itemize}
-\item $B$ es linealmente independiente,
-\item $B$ genera a $V$.
-\end{itemize}
-\item El teorema de Steinitz dice que si $S\subset V$ es linealmente independiente y $G\subset V$ genera a $V$, luego $|S|\leq |G|$.
-El teorema se prueba facilmente escribiendo a los elementos de $S$ como combinaciones lineales de los elementos de $G$.
-\item Gracias al teorema de Steinitz, vemos que todas las bases de $V$ tienen la misma cardinalidad, y por ende, podemos definir a la dimensi\'on de $V$ como $\dim V=|B|$ para cualquier base $B$ de $V$.
-\end{itemize}
-
-A continuaci\'on, con las anteriores definiciones en mente, demostraremos que $\dim V=2^{\aleph_0}$.
-
-Primero notamos que si $B$ es una base de $V$, luego $\dim V = |B| \leq |V|=|\RR^{\NN}|=|\RR|^{|\NN|}=(2^{\aleph_0})^{\aleph_0}=2^{\aleph_0^2}=2^{\aleph_0}$.
-
-Luego notamos que existe un subconjunto $S$ linealmente independiente de $V$ de cardinalidad $2^{\aleph_0}$.
-Constructivamente, sea 
+Un elemento $v$ de $V$ viene dado por
 $$
-S=\{s_r=(1,2^r,3^r,...,n^r,...):r\in \RR\}
+v = (v_1,...,v_i,...)
 $$
-Consideremos ahora la combinaci\'on lineal
+donde $a_i\in \RR$ para cada $i=1,...,i,...$~.
+Si definimos la combinaci\'on lineal entre dos elementos $v$ y $w$ arbitrarios de $V$ por
 $$
-0
+av+bw
 =
-c_{r_1} s_{r_1} + ... c_{r_k} s_{r_k}
+(av_1+bw_1,...,av_i+bw_i,...)
 $$
-con $r_1 < r_2 < ... < r_k$.
-Esto implica que
-\begin{eqnarray}
-0 
-&=&
-c_1 n^{r_1}
-+
-c_2 n^{r_2}
-+
-...
-+
-c_k n^{r_k}
-\notag
-\\
-&=&
-c_1 n^{r_1-r_k}
-+
-c_1 n^{r_2-r_k}
-+
-...
-+
-c_{k-1} n^{r_{k-1}-r_k}
-+
-c_k n^{r_k-r_k}
-\notag
-\\
-&=&
-c_1 n^{-t_1}
-+
-c_1 n^{-t_2}
-+
-...
-+
-c_{k-1} n^{-t_{k-1}}
-+
-c_k
-\notag
-\end{eqnarray}
-con $t_i = r_i - r_k < 0$ y para cada $n\in \NN$.
-Luego, tomando el l\'imite $n\to \infty$ se concluye que $c_k=0$.
-Posteriormente, procedemos por induci\'on, probando que $c_{k-1}=0$, $c_{k-2}=0$, ..., $c_2=0$ y $c_1=0$.
-En otras palabras, se concluye que el subconjunto finito y arbitrario $\{s_{r_1},...,s_{r_k}\}$ de $S$ es linealmente independiente, y por ende, que $S$ es linealmente independiente.
-Por otro lado, notamos que $S$ tiene cardinalidad $|\RR|=2^{\aleph_0}$ porque se lo puede indexar por $r\in \RR$.
-En resumen, hemos encontrado un subconjunto $S$ de $V$ que es linealmente independiente y que tiene cardinalidad $2^{\aleph_0}$ como hab\'iamos proclamado.
-
-Finalmente, notando que si $B$ es una base de $V$, luego $\dim V = |B|\geq |S|=2^{\aleph_0}$, conclu\'imos que
-$2^{\aleph_0}\leq \dim V \leq 2^{\aleph_0}$ complentando la demostraci\'on.
-
-\end{itemize}
+para $a,b\in \RR$ arbitrarios, luego $V$ es un espacio vectorial porque:
+\begin{enumerate}
+\item El elemento $v=(0,...,0,...)$ hace las veces de vector $0\in V$ ya que $v+0=(v_1+0,...,v_i+0,...)=(v_1,...,v_i,...)=v$ para cualquier $v\in V$.
+\item $v+(-1)v=(v_1-v_1,...,v_i-v_i,...)=(0,...,0,...)=0\in V$ implica que $(-1)v=-v$ para cualquier $v\in V$.
+\item ...
+\end{enumerate}
 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
