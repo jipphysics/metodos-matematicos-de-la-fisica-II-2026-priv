@@ -451,6 +451,57 @@ $2^{\aleph_0}\leq \dim V \leq 2^{\aleph_0}$ complentando la demostraci\'on.
 
 \end{itemize}
 
+\subsection{Problema 2}
+
+Para determinar si un conjunto es un espacio vectorial sobre un cuerpo, debemos verificar si cumple con los axiomas de espacio vectorial bajo las operaciones de suma y producto por un escalar usuales. Cuando las operaciones son las estándar, la clave está en verificar tres cosas fundamentales: clausura bajo la suma, clausura bajo el producto por un escalar, y la existencia del elemento neutro (el ``vector cero'') dentro del conjunto.
+
+\begin{itemize}
+\item[$a)$] $\mathbb{R}^3$, las ternas $(x,y,z)$ de números reales.
+
+\begin{itemize}
+\item ¿Es un espacio vectorial? Sí.
+\item Cuerpo correspondiente: $\mathbb{R}$ (los números reales).
+\item Justificación: Este es el prototipo clásico de espacio vectorial de dimensión finita.
+\begin{itemize}
+\item Suma: Si tomas dos ternas $\vec{v}_1 = (x_1, y_1, z_1)$ y $\vec{v}_2 = (x_2, y_2, z_2)$, su suma definida por $\vec{v}_1+\vec{v}_2=(x_1+x_2, y_1+y_2, z_1+z_2)$ sigue siendo una terna de números reales, por lo que pertenece a $\mathbb{R}^3$.
+\item Producto por escalar: Para cualquier $\alpha \in \mathbb{R}$, el producto definido por $\alpha\vec{v}_1 = (\alpha x_1, \alpha y_1, \alpha z_1)$ también pertenece a $\mathbb{R}^3$.
+\item Elemento neutro: La terna $(0,0,0)$ pertenece al conjunto y, claramente, $\vec{v}+\vec{0}=(x+0,y+0,z+0)=(x,y,z)=\vec{v}$.
+\end{itemize}
+\end{itemize}
+Se cumplen trivialmente todos los axiomas (conmutatividad, asociatividad, distributividad, etc.) por las propiedades de los números reales.
+
+\item[$b)$] $\mathcal{P}_N(\mathbb{R})$, los polinomios en una variable real $x$ de grado a lo sumo $N$.
+
+\begin{itemize}
+\item ¿Es un espacio vectorial? Sí.
+\item Cuerpo correspondiente: $\mathbb{R}$ (los números reales).
+\item Justificación: Un polinomio de este conjunto tiene la forma $P(x) = a_0 + a_1 x + a_2 x^2 + \dots + a_N x^N$, con $a_i \in \mathbb{R}$.
+\begin{itemize}
+\item Suma: Si sumamos dos polinomios de grado menor o igual a $N$, el polinomio resultante no puede tener términos de grado mayor a $N$. A lo sumo, si los coeficientes principales son opuestos, el grado podría disminuir, pero seguirá siendo a lo sumo $N$. Por lo tanto, el conjunto es cerrado bajo la suma.
+\item Producto por escalar: Multiplicar un polinomio por una constante $\alpha \in \mathbb{R}$ escala sus coeficientes pero no añade potencias mayores de $x$.
+\item Elemento neutro: El polinomio nulo $a_0=0$ (cuyo grado se considera $-\infty$ o indefinido, pero ciertamente es $\le N$) está incluido en el conjunto.
+\end{itemize}
+\end{itemize}
+
+Nota: Si el conjunto fuera los polinomios de grado EXACTAMENTE $N$, entonces no sería un espacio vectorial, porque al sumar $x^N$ y $-x^N$ obtendrías $0$, que no tiene grado $N$, perdiendo la clausura y el elemento neutro.
+
+\item[$c)$] $\{f:[a,b]\to\mathbb{R}\}$, las funciones a valores reales definidas sobre el intervalo $[a,b]$.
+
+\begin{itemize}
+\item ¿Es un espacio vectorial? Sí.
+\item Cuerpo correspondiente: $\mathbb{R}$ (los números reales).
+\item Justificación: Este es un espacio funcional clásico (frecuentemente denotado como $\mathcal{F}([a,b], \mathbb{R})$).
+\begin{itemize}
+\item Las operaciones se definen punto a punto: $(f+g)(x) = f(x) + g(x)$ y $(\alpha f)(x) = \alpha f(x)$.
+\item Clausura: Si $f$ y $g$ asignan un número real a cada valor de $x \in [a,b]$, entonces la suma de esos dos números reales también es un número real, por lo que la función suma $f+g$ sigue estando bien definida en el intervalo $[a,b]$ hacia $\mathbb{R}$. Lo mismo ocurre al multiplicar por un escalar.
+\item Elemento neutro: La función idénticamente nula para todo $x \in [a,b]$ pertenece al conjunto y actúa como vector nulo.
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+Conclusión: Los tres conjuntos dados son efectivamente espacios vectoriales sobre el cuerpo de los números reales $\mathbb{R}$.
+
+
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
