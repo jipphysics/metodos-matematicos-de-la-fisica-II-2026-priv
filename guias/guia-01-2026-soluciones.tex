@@ -393,16 +393,16 @@ Primero notamos que si $B$ es una base de $V$, luego $\dim V = |B| \leq |V|=|\RR
 Luego notamos que existe un subconjunto $S$ linealmente independiente de $V$ de cardinalidad $2^{\aleph_0}$.
 Constructivamente, sea 
 $$
-S=\{s_r=(1,2^r,3^r,...,n^r,...):r\in \RR\}
+S=\{s_r=(1,2^r,3^r,...,n^r,...):r\in \RR\}.
 $$
 Consideremos ahora la combinaci\'on lineal
 $$
 0
 =
-c_{r_1} s_{r_1} + ... c_{r_k} s_{r_k}
+c_{r_1} s_{r_1} + ... + c_{r_k} s_{r_k}
 $$
 con $r_1 < r_2 < ... < r_k$.
-Esto implica que
+Esto implica que para cada $n\in \NN$ se tiene que
 \begin{eqnarray}
 0 
 &=&
@@ -439,14 +439,14 @@ c_{k-1} n^{-t_{k-1}}
 c_k
 \notag
 \end{eqnarray}
-con $t_i = r_i - r_k < 0$ y para cada $n\in \NN$.
+con $t_i = r_i - r_k < 0$.
 Luego, tomando el l\'imite $n\to \infty$ se concluye que $c_k=0$.
-Posteriormente, procedemos por induci\'on, probando que $c_{k-1}=0$, $c_{k-2}=0$, ..., $c_2=0$ y $c_1=0$.
+Posteriormente, procediendo por induci\'on, se prueba que $c_{k-1}=0$, luego que $c_{k-2}=0$, ..., $c_2=0$ y finalmente que $c_1=0$.
 En otras palabras, se concluye que el subconjunto finito y arbitrario $\{s_{r_1},...,s_{r_k}\}$ de $S$ es linealmente independiente, y por ende, que $S$ es linealmente independiente.
 Por otro lado, notamos que $S$ tiene cardinalidad $|\RR|=2^{\aleph_0}$ porque se lo puede indexar por $r\in \RR$.
 En resumen, hemos encontrado un subconjunto $S$ de $V$ que es linealmente independiente y que tiene cardinalidad $2^{\aleph_0}$ como hab\'iamos proclamado.
 
-Finalmente, notando que si $B$ es una base de $V$, luego $\dim V = |B|\geq |S|=2^{\aleph_0}$, conclu\'imos que
+Finalmente, notando que si $B$ es una base de $V$, luego $\dim V = |B|\geq |S|=2^{\aleph_0}$, y conclu\'imos que
 $2^{\aleph_0}\leq \dim V \leq 2^{\aleph_0}$ complentando la demostraci\'on.
 
 \end{itemize}
@@ -623,7 +623,106 @@ Como logramos expresar cualquier función $f \in V$ como la suma de un elemento 
 Conclusión: $V = V_p \oplus V_i$.
 
 \end{itemize}
- 
+
+\subsection{Problema 4}
+
+El conjunto $V$ está definido como el espacio de soluciones de un sistema de ecuaciones lineales homogéneo. Para encontrar un conjunto generador (una base) y determinar la dimensión de $V$, necesitamos resolver el sistema y expresar las soluciones en función de sus variables libres.
+
+\begin{itemize}
+\item Escribimos el sistema en forma matricial:
+La matriz de coeficientes asociada al sistema es:
+
+$$\begin{pmatrix}
+2 & -1 & 4/3 & -1 & 0 \\
+1 & 0 & 2/3 & 0 & -1 \\
+9 & -3 & 6 & -3 & -3
+\end{pmatrix}$$
+
+\item Reducción por filas (Eliminación de Gauss-Jordan):
+Vamos a llevar esta matriz a su forma escalonada reducida, siguiendo una serie de pasos:
+
+\begin{enumerate}
+\item Intercambiamos la Fila 1 y la Fila 2 para que sea más fácil operar con un 1 a la cabeza.
+
+$$\begin{pmatrix}
+1 & 0 & 2/3 & 0 & -1 \\
+2 & -1 & 4/3 & -1 & 0 \\
+9 & -3 & 6 & -3 & -3
+\end{pmatrix}$$
+
+\item Hacemos ceros por debajo del primer pivote (columna 1).
+
+\begin{itemize}
+\item $F_2 \leftarrow F_2 - 2F_1$
+\item $F_3 \leftarrow F_3 - 9F_1$
+\end{itemize}
+
+Calculando las nuevas filas:
+
+\begin{itemize}
+\item  Nueva $F_2$: $(2-2, -1-0, \frac{4}{3}-\frac{4}{3}, -1-0, 0 - (-2)) = (0, -1, 0, -1, 2)$
+\item  Nueva $F_3$: $(9-9, -3-0, 6-6, -3-0, -3 - (-9)) = (0, -3, 0, -3, 6)$
+\end{itemize}
+
+La matriz queda:
+
+$$\begin{pmatrix}
+1 & 0 & 2/3 & 0 & -1 \\
+0 & -1 & 0 & -1 & 2 \\
+0 & -3 & 0 & -3 & 6
+\end{pmatrix}$$
+
+\item Hacemos cero por debajo del segundo pivote (columna 2). 
+Para ello, observá que la Fila 3 es exactamente el triple de la Fila 2 y, por ende
+
+$$F_3 \leftarrow F_3 - 3F_2 \implies (0, 0, 0, 0, 0) .$$
+
+Luego multiplicamos la Fila 2 por $-1$ para dejar el pivote positivo:
+
+$$F_2 \leftarrow -F_2 \implies (0, 1, 0, 1, -2) .$$
+
+de manera que la matriz escalonada reducida final es:
+
+$$\begin{pmatrix}
+1 & 0 & 2/3 & 0 & -1 \\
+0 & 1 & 0 & 1 & -2 \\
+0 & 0 & 0 & 0 & 0
+\end{pmatrix}$$
+
+\end{enumerate}
+
+\item Parametrización de la solución:
+A partir de la matriz reducida, rearmamos las ecuaciones:
+
+\begin{itemize}
+\item $x_1 + \frac{2}{3}x_3 - x_5 = 0 \implies x_1 = -\frac{2}{3}x_3 + x_5$
+\item $x_2 + x_4 - 2x_5 = 0 \implies x_2 = -x_4 + 2x_5$
+\end{itemize}
+
+Tenemos dos variables principales ($x_1, x_2$) y tres variables libres ($x_3, x_4, x_5$).
+Un vector genérico $(x_1, x_2, x_3, x_4, x_5) \in V$ se puede escribir sustituyendo las variables principales:
+
+$$\begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{pmatrix} =
+\begin{pmatrix} -\frac{2}{3}x_3 + x_5 \\ -x_4 + 2x_5 \\ x_3 \\ x_4 \\ x_5 \end{pmatrix}$$
+
+Separamos este vector como una combinación lineal (suma) agrupando las variables libres:
+
+$$= x_3 \begin{pmatrix} -2/3 \\ 0 \\ 1 \\ 0 \\ 0 \end{pmatrix} + 
+x_4 \begin{pmatrix} 0 \\ -1 \\ 0 \\ 1 \\ 0 \end{pmatrix} + 
+x_5 \begin{pmatrix} 1 \\ 2 \\ 0 \\ 0 \\ 1 \end{pmatrix}$$
+
+\item Conclusión:
+
+\begin{itemize}
+\item Conjunto generador (Base): Hemos encontrado tres vectores linealmente independientes que generan cualquier solución del sistema. Para evitar fracciones (es opcional pero más elegante), podemos multiplicar el primer vector por $3$. El conjunto finito de vectores que genera $V$ es:
+
+$$B = \left\{ (-2, 0, 3, 0, 0), \ (0, -1, 0, 1, 0), \ (1, 2, 0, 0, 1) \right\}$$
+
+\item Dimensión: Como el conjunto generador (base) está compuesto por 3 vectores, la dimensión del espacio vectorial $V$ es $3$.
+
+\end{itemize}
+\end{itemize} 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
