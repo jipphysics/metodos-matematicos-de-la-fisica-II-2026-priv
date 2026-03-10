@@ -501,7 +501,128 @@ Nota: Si el conjunto fuera los polinomios de grado EXACTAMENTE $N$, entonces no 
 
 Conclusión: Los tres conjuntos dados son efectivamente espacios vectoriales sobre el cuerpo de los números reales $\mathbb{R}$.
 
+\subsection{Problema 3}
 
+Este es un problema clásico y fundamental en el álgebra lineal aplicada a la física (aparece muchísimo cuando se estudian series de Fourier o mecánica cuántica con el operador paridad).
+Lo resolvemos paso a paso.
+
+\begin{itemize}
+\item Demostrar que $V_p$ y $V_i$ son subespacios de $V$.
+
+Para demostrar que un subconjunto es un subespacio vectorial, debemos probar tres cosas: que contiene al vector nulo, que es cerrado bajo la suma y que es cerrado bajo el producto por escalares.
+
+Para el conjunto de funciones pares $V_p$:
+
+\begin{itemize}
+\item Vector nulo: La función nula $O(x) = 0$ para todo $x$. Evaluando en $-x$: $O(-x) = 0 = O(x)$. Por lo tanto, $O \in V_p$.
+\item Clausura bajo la suma: Sean $f, g \in V_p$. Veamos cómo se comporta su suma evaluada en $-x$:
+
+$$(f+g)(-x) = f(-x) + g(-x)$$
+
+Como $f$ y $g$ son pares, $f(-x)=f(x)$ y $g(-x)=g(x)$, entonces:
+
+$$(f+g)(-x) = f(x) + g(x) = (f+g)(x)$$
+
+Por lo tanto, $f+g \in V_p$.
+
+\item Clausura bajo el producto por escalar: Sea $f \in V_p$ y $\alpha \in \mathbb{R}$.
+
+$$(\alpha f)(-x) = \alpha \cdot f(-x) = \alpha \cdot f(x) = (\alpha f)(x)$$
+
+Por lo tanto, $\alpha f \in V_p$.
+
+\end{itemize}
+
+Al cumplir las tres condiciones, concluimos $V_p$ es un subespacio de $V$.
+
+Para el conjunto de funciones impares $V_i$:
+
+\begin{itemize}
+
+\item Vector nulo: La función nula cumple $O(-x) = 0 = -0 = -O(x)$. Así que $O \in V_i$.
+
+\item Clausura bajo la suma: Sean $f, g \in V_i$.
+
+$$(f+g)(-x) = f(-x) + g(-x)$$
+
+Como son impares, $f(-x)=-f(x)$ y $g(-x)=-g(x)$:
+
+$$(f+g)(-x) = -f(x) - g(x) = -(f(x) + g(x)) = -(f+g)(x)$$
+
+Por lo tanto, $f+g \in V_i$.
+
+\item Clausura bajo el producto por escalar: Sea $f \in V_i$ y $\alpha \in \mathbb{R}$.
+
+$$(\alpha f)(-x) = \alpha \cdot f(-x) = \alpha \cdot (-f(x)) = -(\alpha f)(x)$$
+
+Por lo tanto, $\alpha f \in V_i$.
+
+\end{itemize}
+
+Al cumplir las tres condiciones, concluimos $V_i$ es un subespacio de $V$.
+
+\item  Demostrar que $V=V_p\oplus V_i$, i.e. que $V_p + V_i = V$ y que $V_p \cap V_i = \{0\}$.
+
+\begin{itemize}
+
+\item Demostramos que $V_p \cap V_i = \{0\}$.
+
+Tomemos una función arbitraria $f$ que pertenezca a la intersección, es decir, $f \in V_p \cap V_i$.
+Esto significa que $f$ debe ser simultáneamente par e impar:
+
+\begin{itemize}
+\item Por ser par: $f(-x) = f(x)$.
+\item Por ser impar: $f(-x) = -f(x)$.
+\end{itemize}
+
+Igualando ambas expresiones obtenemos:
+
+$$f(x) = -f(x)$$
+
+por lo que
+
+$$2f(x) = 0 \implies f(x) = 0 \quad \text{para todo } x \in \mathbb{R}$$
+
+La única función que cumple esto es la función nula. Por lo tanto, $V_p \cap V_i = \{0\}$.
+
+\item  Demostramos que $V_p + V_i = V$.
+
+Para demostrar esto, debemos probar que cualquier función arbitraria $f \in V$ puede escribirse como la suma de una función par y una función impar.
+
+Propongamos la siguiente construcción (muy famosa en física):
+
+$$
+f(x) = \underbrace{\frac{f(x) + f(-x)}{2}}_{f_p(x)} + \underbrace{\frac{f(x) - f(-x)}{2}}_{f_i(x)}
+$$
+
+Verifiquemos que esto funciona:
+
+\begin{itemize}
+\item ¿La suma da $f(x)$?
+$$f_p(x) + f_i(x) = \frac{f(x) + f(-x) + f(x) - f(-x)}{2} = \frac{2f(x)}{2} = f(x)$$
+
+¡Sí!
+
+\item ¿Es $f_p(x)$ realmente una función par? Evaluemos en $-x$:
+
+$$f_p(-x) = \frac{f(-x) + f(-(-x))}{2} = \frac{f(-x) + f(x)}{2} = f_p(x)$$
+
+Sí, es par, por lo que $f_p \in V_p$.
+
+\item ¿Es $f_i(x)$ realmente una función impar? Evaluemos en $-x$:
+
+$$f_i(-x) = \frac{f(-x) - f(-(-x))}{2} = \frac{f(-x) - f(x)}{2} = -\left( \frac{f(x) - f(-x)}{2} \right) = -f_i(x)$$
+
+Sí, es impar, por lo que $f_i \in V_i$.
+
+\end{itemize}
+\end{itemize}
+
+Como logramos expresar cualquier función $f \in V$ como la suma de un elemento de $V_p$ y un elemento de $V_i$, queda demostrado que $V = V_p + V_i$.
+
+Conclusión: $V = V_p \oplus V_i$.
+
+\end{itemize}
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
