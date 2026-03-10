@@ -1,0 +1,363 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=50\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Guía 1}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Guía N$^\txt{o}$ 1 -- 2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{Parte I: Problemas Centrales (para desarrollar en clase)}
+
+\subsection*{Clase 1. Fundamentos: Espacios Vectoriales, Bases y Subespacios}
+
+\prob Sea $V$ el conjunto de todas las sucesiones reales infinitas (funciones de $\sca{N} \to \sca{R}$). Pruebe que $V$ es un espacio vectorial con las operaciones usuales de suma y multiplicación por escalares. ¿Qué dimensión tiene este espacio? Justifique.
+
+
+\prob Diga cuáles de los siguientes conjuntos son espacios vectoriales (indicando el cuerpo correspondiente) y cuáles no:
+\begin{enumerate}
+\item $\sca{R}^3$, las ternas $(x,y,z)$ de números reales;
+\item $\mathcal{P}_N(\sca{R})$, los polinomios en una variable real $x$ de grado a lo sumo $N$;
+\item $\{f:[a,b]\to\sca{R}\}$, las funciones a valores reales definidas sobre el intervalo $[a,b]$.
+\end{enumerate}
+
+\prob Sea $V$ el espacio de todas las funciones $\sca{R}\to\sca{R}$. Sean
+\begin{itemize}
+\item $V_p$: subconjunto de funciones pares ($f(-x)=f(x)$);
+\item $V_i$: subconjunto de funciones impares ($f(-x)=-f(x)$).
+\end{itemize}
+\begin{enumerate}
+\item Demuestre que $V_p$ y $V_i$ son subespacios de $V$.
+\item Demuestre que $V_p + V_i = V$ y que $V_p \cap V_i = \{0\}$.
+\end{enumerate}
+
+\prob Sea $V$ el conjunto de todos los $(x_1,x_2,x_3,x_4,x_5)\in\mathbb{R}^5$ que satisfacen
+\begin{align*}
+2x_1 - x_2 + \frac{4}{3}x_3 - x_4 &= 0, \\
+x_1 + \frac{2}{3}x_3 - x_5 &= 0, \\
+9x_1 - 3x_2 + 6x_3 - 3x_4 - 3x_5 &= 0.
+\end{align*}
+Encuentre un conjunto finito de vectores que generen $V$ y determine su dimensión.
+
+
+\subsection*{Clase 2. Espacio Dual y Construcción de Tensores}
+
+
+\prob Sea $\{\vec{e}_i\}_{i=1}^n$ una base de $V$ y $\{\svec{e}^i\}_{i=1}^n$ su base dual (base de $V^*$).
+\begin{enumerate}
+\item Si $\vec{u}\in V$ y $\vec{\omega}\in V^*$, pruebe que las componentes pueden calcularse como $u^i = \svec{e}^i(\vec{u})$ y $\omega_j = \vec{e}_j(\vec{\omega})$.
+\item Explique por qué la base dual existe y es única.
+\end{enumerate}
+
+\prob Sean los vectores $\vec{v}_1$, $\vec{v}_2$ y $\vec{v}_3$ en $\sca{R}^3$, representados en la base can\'onica como las matrices columna
+\[
+\mat{v}_1=\begin{pmatrix}1 \\ 2 \\ 1\end{pmatrix},\quad
+\mat{v}_2=\begin{pmatrix}-1/2 \\ -1 \\ -1\end{pmatrix},\quad
+\mat{v}_3=\begin{pmatrix}-1 \\ -1 \\ 1\end{pmatrix}
+\]
+\begin{enumerate}
+\item Pruebe que los vectores son linealmente independientes y, por lo tanto, constituyen una base $B$.
+\item Calcule la co-base $\{\svec{e}^i\}$ de $V^*$ correspondiente a la base $B$, expresando los covectores como matrices fila.
+\item Verifique explícitamente que $\svec{e}^i(\vec{v}_j) = \delta\ud{i}{j}$.
+\end{enumerate}
+
+\prob Sea $\{\vec{e}_i\}_{i=1}^n$ base de $V$ y $\{\svec{e}^i\}_{i=1}^n$ su base dual.
+\begin{enumerate}
+\item Defina el producto tensorial $\vec{e}_i \otimes \svec{e}^j$. ¿Qué tipo de tensor es? ¿Cuál es su acción sobre un vector y un covector?
+\item Pruebe que los $n^2$ tensores $\vec{e}_i \otimes \svec{e}^j$ son linealmente independientes.
+\item Explique por qué esto demuestra que el espacio $T_1^1$ de tensores tipo $(1,1)$ tiene dimensión $n^2$.
+\end{enumerate}
+
+\prob Dado un espacio vectorial $V$, considere el espacio $T_2^0$ de tensores dos veces covariantes, es decir tipo $(0,2)$.
+\begin{enumerate}
+\item Proponga una base para este espacio en términos de la base $\{\svec{e}^i\}$ de $V^*$.
+\item Si $\dim(V)=3$, ¿cuántos elementos tiene esta base? Escríbalos explícitamente.
+\end{enumerate}
+
+
+\subsection*{Clase 3. Componentes, Simetrías y Operaciones con Tensores}
+
+\prob Sea $V$ un EV con $\dim(V)=n$. Considere $T_2^0$, el espacio de tensores (0,2). Sean $\cal{S}$ el subconjunto de tensores simétricos ($S_{ij}=S_{ji}$) y $\cal{A}$ el de antisimétricos ($A_{ij}=-A_{ji}$).
+\begin{enumerate}
+\item Muestre que $\cal{S}$ y $\cal{A}$ son subespacios de $T_2^0$.
+\item Demuestre que $\dim({\cal S})=\frac{n(n+1)}{2}$ y $\dim({\cal A})=\frac{n(n-1)}{2}$.
+\item Muestre que $T_2^0 = \cal{S} \oplus \cal{A}$ (son complementarios).
+\end{enumerate}
+
+\prob Sea $V$ un espacio vectorial de dimensión 3 y $\{\vec{e}_i\}$ una base. Considere el tensor particular en $T_2^0$
+\[
+T = 4\,\svec {e}^1 \otimes \svec{e}^1 - \svec{e}^1 \otimes \svec{e}^2 + 2\,\svec{e}^1 \otimes \svec{e}^3 + 2\,\svec{e}^2 \otimes \svec{e}^1 + \svec{e}^2 \otimes \svec{e}^2 + 3\,\svec{e}^3 \otimes \svec{e}^1 + 3\,\svec{e}^3 \otimes \svec{e}^2 + 3\,\svec{e}^3 \otimes \svec{e}^3.
+\]
+Las partes simétrica ($S$) y antisimétrica ($A$) de $T$ se definen como
+\[
+S_{ij} = \frac{1}{2}(T_{ij}+T_{ji}), \quad A_{ij} = \frac{1}{2}(T_{ij}-T_{ji}).
+\]
+\begin{enumerate}
+\item Escriba las componentes $T_{ij}$ en forma de matriz $3\times3$.
+\item Calcule las matrices de $S$ y $A$ y verifique que $T = S + A$.
+\end{enumerate}
+
+\prob Dadas las componentes $T_{ijk}$ de un tensor tipo (0,3), demuestre que
+\[
+S_{ijk}=T_{ijk}+T_{jki}+T_{kij}+T_{ikj}+T_{kji}+T_{jik}
+\]
+son componentes de un tensor totalmente simétrico.
+
+\prob Demuestre que si $u,v,w$ son tres vectores de $V$ con $\dim(V)\geq3$, las cantidades
+\[
+T_{ijk}=\begin{vmatrix}
+u_i & u_j & u_k \\
+v_i & v_j & v_k \\
+w_i & w_j & w_k
+\end{vmatrix}
+\]
+son componentes de un tensor totalmente antisimétrico.
+
+
+\subsection*{Clase 4. Operadores, Cambio de Base y Aplicaciones}
+
+\prob Considere las bases $B=\{\vec{u}_1,\vec{u}_2,\vec{u}_3\}$ y $B'=\{\vec{v}_1,\vec{v}_2,\vec{v}_3\}$ en $\mathbb{R}^3$, representadas en la base can\'onica por las matrices columna
+\[
+\mat{u}_1=\begin{pmatrix}-3 \\ 0 \\ -3\end{pmatrix},\;
+\mat{u}_2=\begin{pmatrix}-3 \\ 2 \\ -1\end{pmatrix},\;
+\mat{u}_3=\begin{pmatrix}1 \\ 6 \\ -1\end{pmatrix},\;
+\mat{v}_1=\begin{pmatrix}-6 \\ -6 \\ 0\end{pmatrix},\;
+\mat{v}_2=\begin{pmatrix}-2 \\ -6 \\ 4\end{pmatrix},\;
+\mat{v}_3=\begin{pmatrix}-2 \\ -3 \\ 7\end{pmatrix}.
+\]
+\begin{enumerate}
+\item Halle la matriz de cambio de base de $B$ a $B'$.
+\item Dado $\mat{w}=(-5,8,-5)^T$, halle sus componentes en $B$ y utilice la matriz para hallar sus componentes en $B'$.
+\end{enumerate}
+
+\prob En una dada base $\{\vec{e}_i\}$, una transformación lineal $T$ y un vector $\vec{v}$ están representados por
+\[
+\mat{T}=\begin{pmatrix}2 & 1 & 0 \\ 1 & 2 & 0 \\ 0 & 0 & 5\end{pmatrix},\quad
+\mat{v}=\begin{pmatrix}1 \\ 2 \\ 3\end{pmatrix}.
+\]
+Encuentre sus representaciones matriciales en la nueva base definida por
+\[
+\pvec{e}_1=\vec{e}_1+\vec{e}_2,\quad
+\pvec{e}_2=\vec{e}_1-\vec{e}_2,\quad
+\pvec{e}_3=\vec{e}_3
+\]
+
+\prob Sean $A,B$ operadores que admiten representación matricial. Muestre que
+\begin{enumerate}
+\item $e^{(s+t)A} = e^{sA}e^{tA}$, con $s,t$ escalares;
+\item Si $AB=BA$, entonces $e^{A+B}=e^Ae^B$.
+\end{enumerate}
+Calcule
+\[
+\exp\begin{pmatrix}0 & x \\ -x & 0\end{pmatrix},\quad
+\exp\begin{pmatrix}0 & x \\ x & 0\end{pmatrix}.
+\]
+
+\prob El conjunto de matrices $2\times2$ complejas $\sca{C}^{2\times2}$ es un EV con $\dim(V)=4$. Dadas las matrices de Pauli
+\[
+\gmat{\sigma}_x=\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix},\quad
+\gmat{\sigma}_y=\begin{pmatrix}0 & -i \\ i & 0\end{pmatrix},\quad
+\gmat{\sigma}_z=\begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix},
+\]
+muestre que $\{\mat{I},\gmat{\sigma}_x,\gmat{\sigma}_y,\gmat{\sigma}_z\}$ es una base de $\sca{C}^{2\times2}$ y que $\gmat{\sigma}_j^2 = \mat{I}$.
+
+
+\section*{Parte II: Problemas Propuestos (para profundización y repaso)}
+
+\prob Demuestre que en $\sca{R}^3$, $\{\hat{x},\hat{y},\hat{z}\}$ es base, y $\{\hat{x},\hat{x}+\hat{y},\hat{x}+\hat{y}+\hat{z}\}$ también.
+
+\prob Dada una transformación lineal $A: V \to W$, muestre que $\ker(A)$ es un subespacio de $V$ y que $\dim(\ker(A)) \geq \dim(V) - \dim(W)$.
+
+\prob Considere el operador $P_z$ que proyecta de $\mathbb{R}^3$ al plano $xy$, como operador de $\mathbb{R}^3$ en $\mathbb{R}^3$. Escriba la matriz que lo representa en la base canónica. Muestre que el operador $R_{z,\theta}$ que rota en $\theta$ alrededor del eje $z$, conmuta con $P_z$.
+
+\prob Sea $\{\vec{e}_i\}_{i=1}^n$ base de $V$ y $\{\svec{e}^i\}_{i=1}^n$ su base dual. Probar que todo tensor tipo (1,1) puede desarrollarse como combinación lineal de los tensores $\vec{e}_i\otimes\svec{e}^j$.
+
+\prob Considere un vector $\vec{v}\in\sca{R}^2$ que en la base can\'onica puede representarse por $\mat{u}=(x,y)^\text{T}$. Verifique que las siguientes definiciones son normas:
+\[
+\norm{\vec{u}}_1 = \max\{|x|,|y|\},\quad
+\norm{\vec{u}}_2 = \sqrt{x^2+y^2},\quad
+\norm{\vec{u}}_3 = |x|+|y|
+\]
+Indique cu\'ales provienen de un producto escalar.
+
+\prob Considere la transformación de semejanza $A' = S^{-1}AS$. Muestre que $\det(A')=\det(A)$ y $\trace{(A')}=\trace{(A)}$.
+
+\prob Construya la base dual $\{\pvec{e}^1,\pvec{e}^2\}$ de $\pvec{e}_1=\vec{e}_1+\vec{e}_2$, $\pvec{e}_2=\vec{e}_1-\vec{e}_2$ usando $\pvec{e}^i(\pvec{e}_j)=\delta\ud{i}{j}$.
+
+\prob Asumiendo $\vec{e}_i\cdot\vec{e}_j=\delta_{ij}$, calcule la métrica en la base $\{\pvec{e}_i\}$ dada por $\pvec{e}_1=\vec{e}_1$, $\pvec{e}_2=\vec{e}_1+\vec{e}_2$, $\pvec{e}_3=\vec{e}_1+\vec{e}_2+\vec{e}_3$. Calcule la norma de $\vec{v}=\vec{e}_1+2\vec{e}_2+3\vec{e}_3$ en ambas bases.
+
+\prob Sea $V$ un EV con producto interno complejo y $T$ un operador lineal. Demuestre que $T$ es autoadjunto si y solo si $\inpr{T(\vec{u})}{\vec{u}}$ es real $\forall\vec{u}\in V$.
+
+\prob Sea $A,B\in\mathcal{L}$, el conjunto de operadores sobre $V$. Muestre que $\norm{A}=\max_{\norm{\vec{v}}=1}\norm{A\vec{v}}$ define una norma y que $\norm{AB}\leq\norm{A}\norm{B}$.
+
+\prob Sea $P:V\to V$ un proyector ($P^2=P$). Muestre que todo $\vec{v}\in V$ puede descomponerse de manera única como $\vec{v}=\vec{u}+\vec{w}$ con $P\vec{u}=\vec{u}$ y $P\vec{w}=0$.
+
+\prob Encuentre los autovalores y autovectores normalizados de la matriz $\mat{A}=\begin{pmatrix}1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9\end{pmatrix}$.
+
+\prob Encuentre la forma canónica de Jordan de $\mat{A}=\begin{pmatrix}1 & -2 & 2 \\ -1 & 1 & 1 \\ -2 & 0 & 3\end{pmatrix}$.
+
+\section{Soluciones}
+
+\subsection{Problema 1}
+
+Un elemento $v$ de $V$ viene dado por
+$$
+v = (v_1,...,v_i,...)
+$$
+donde $a_i\in \RR$ para cada $i=1,...,i,...$~.
+Si definimos la combinaci\'on lineal entre dos elementos $v$ y $w$ arbitrarios de $V$ por
+$$
+av+bw
+=
+(av_1+bw_1,...,av_i+bw_i,...)
+$$
+para $a,b\in \RR$ arbitrarios, luego $V$ es un espacio vectorial porque:
+\begin{enumerate}
+\item El elemento $v=(0,...,0,...)$ hace las veces de vector $0\in V$ ya que $v+0=(v_1+0,...,v_i+0,...)=(v_1,...,v_i,...)=v$ para cualquier $v\in V$.
+\item $v+(-1)v=(v_1-v_1,...,v_i-v_i,...)=(0,...,0,...)=0\in V$ implica que $(-1)v=-v$ para cualquier $v\in V$.
+\item ...
+\end{enumerate}
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
