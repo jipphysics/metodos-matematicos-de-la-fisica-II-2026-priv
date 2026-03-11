@@ -723,6 +723,283 @@ $$B = \left\{ (-2, 0, 3, 0, 0), \ (0, -1, 0, 1, 0), \ (1, 2, 0, 0, 1) \right\}$$
 \end{itemize}
 \end{itemize} 
 
+\subsection{Problema 5}
+
+Antes de empezar, recordemos la propiedad definitoria fundamental de una base dual $\{\tilde{e}^i\}$. Sus elementos (que son transformaciones lineales de $V \to \mathbb{R}$) se construyen para que, al aplicarlos sobre los vectores de la base original $\{\vec{e}_j\}$, cumplan con la delta de Kronecker:
+
+$$\tilde{e}^i(\vec{e}_j) = \delta^i_j = \begin{cases} 1 & \text{si } i = j \\ 0 & \text{si } i \neq j \end{cases}$$
+
+\begin{itemize}
+\item Cálculo de las componentes para el vector $\vec{u} \in V$.
+Como $\{\vec{e}_j\}_{j=1}^n$ es una base de $V$, cualquier vector $\vec{u}$ se puede escribir de forma única como una combinación lineal de estos elementos:
+
+$$\vec{u} = \sum_{j=1}^n u^j \vec{e}_j$$
+
+Queremos averiguar cuánto vale el coeficiente $u^i$. Para ello, le aplicamos el funcional lineal $\tilde{e}^i$ a todo el vector $\vec{u}$. Usando la propiedad de linealidad de $\tilde{e}^i$ (que permite sacar la sumatoria y las constantes afuera), tenemos:
+
+$$\tilde{e}^i(\vec{u}) = \tilde{e}^i \left( \sum_{j=1}^n u^j \vec{e}_j \right) = \sum_{j=1}^n u^j \tilde{e}^i(\vec{e}_j)$$
+
+Usando la propiedad de la base dual $\tilde{e}^i(\vec{e}_j) = \delta^i_j$:
+
+$$\tilde{e}^i(\vec{u}) = \sum_{j=1}^n u^j \delta^i_j$$
+
+En esta sumatoria, todos los términos son cero excepto cuando $j = i$, en cuyo caso $\delta^i_i = 1$. Por lo tanto, la sumatoria colapsa a un solo término:
+
+$$\tilde{e}^i(\vec{u}) = u^i$$
+
+¡Queda demostrado!
+
+\item Para el covector (funcional lineal) $\vec{\omega} \in V^*$, de manera análoga, como $\{\tilde{e}^i\}_{i=1}^n$ es una base del espacio dual $V^*$, cualquier covector $\vec{\omega}$ se puede escribir como combinación lineal de esta base:
+
+$$\vec{\omega} = \sum_{i=1}^n \omega_i \tilde{e}^i$$
+
+De esta manera
+
+$$
+\vec{e}_j(\vec{\omega})
+=
+\vec{\omega}(\vec{e}_j)
+=
+\left( \sum_{i=1}^n \omega_i \tilde{e}^i \right) (\vec{e}_j)$$
+donde hemos utilizado que $\vec{v}(\vec{\omega}) = \vec{\omega}(\vec{v})$ para cualquier vector $\vec{v}$ y covector $\vec{\omega}$ debido al isomorfismo natural $V\cong V^{**}$ que existe entre un espacio vectorial y su doble dual.
+
+Por la definición de la suma y producto por escalar de funciones:
+
+
+$$\vec{\omega}(\vec{e}_j) = \sum_{i=1}^n \omega_i \tilde{e}^i(\vec{e}_j) = \sum_{i=1}^n \omega_i \delta^i_j$$
+
+
+Nuevamente, todos los términos de la sumatoria se anulan salvo cuando $i = j$. Por lo tanto:
+
+
+$$\vec{\omega}(\vec{e}_j) = \omega_j$$
+
+
+¡Demostrado! Esto nos dice que las componentes de un vector/covector son simplemente el resultado de ``medirlo'' con los elementos de la base complementaria.
+
+\item Existencia y unicidad de la base dual.
+
+Para explicar por qué la base dual existe y es única, debemos apelar a un teorema fundamental del álgebra lineal: ``Una transformación lineal queda unívocamente determinada por su acción sobre los vectores de una base''.
+
+\begin{itemize}
+\item Existencia:
+El espacio dual $V^*$ es el conjunto de todas las transformaciones lineales de $V$ en $\mathbb{R}$.
+Para construir el objeto $\tilde{e}^i$, nosotros elegimos definir una transformación lineal asignándole los siguientes valores a la base de $V$: que valga $1$ si la evaluamos en $\vec{e}_i$, y $0$ si la evaluamos en cualquier otro $\vec{e}_j$ (con $j \neq i$).
+Como podemos elegir libremente a dónde enviar los elementos de una base para crear una transformación lineal válida, existe tal funcional $\tilde{e}^i$ para cada $i = 1, \dots, n$.
+
+\item Unicidad:
+Supongamos que existiera otro funcional, llamémoslo $f \in V^*$, que también cumpla $f(\vec{e}_j) = \delta^i_j$.
+Si evaluamos a ambos en un vector arbitrario $\vec{u} = \sum u^j \vec{e}_j$:
+
+$$f(\vec{u}) = \sum u^j f(\vec{e}_j) = \sum u^j \delta^i_j = u^i$$
+
+Pero ya vimos arriba que $\tilde{e}^i(\vec{u})$ también da $u^i$. Como $f(\vec{u}) = \tilde{e}^i(\vec{u})$ para cualquier vector $\vec{u}$ del espacio, entonces las funciones son idénticas: $f = \tilde{e}^i$.
+Por lo tanto, el elemento $\tilde{e}^i$ es único.
+
+Al repetir este argumento para cada $i$ desde $1$ hasta $n$, demostramos que el conjunto $\{\tilde{e}^1, \tilde{e}^2, \dots, \tilde{e}^n\}$ existe y es único para la base dada. 
+
+\item Independencia lineal:
+Para completar que es una base de $V^*$, se demuestra trivialmente que son linealmente independientes y generan el espacio.
+Para ello, notamos que
+$$
+\vec{0}
+=
+\sum_{i=1}^n c_i\tilde{e}^i
+$$
+implica que
+\begin{eqnarray}
+0
+&=&
+\vec{0}(\vec{e}_k)
+\notag
+\\
+&=&
+\sum_{i=1}^n
+c_i\tilde{e}^i(e_k)
+\notag
+\\
+&=&
+\sum_{i=1}^n
+c_i\delta^i{}_k
+\notag
+\\
+&=&
+c_k
+\notag
+\end{eqnarray}
+para todo $k=1,2,...,n$.
+\end{itemize}
+\end{itemize} 
+
+\subsection{Problema 6}
+
+
+Este es un ejercicio súper mecánico pero muy revelador sobre cómo se relacionan un espacio y su dual a nivel matricial.
+Lo desarrollaremos en una serie de pasos:
+
+\begin{itemize}
+\item Primero, probar que los vectores son linealmente independientes y forman base.
+Para saber si tres vectores en $\mathbb{R}^3$ son linealmente independientes, la forma más directa es armar una matriz cuyas columnas sean estos vectores y calcular su determinante. Si el determinante es distinto de cero, los vectores son independientes y, al ser $3$ vectores en un espacio de dimensión $3$, automáticamente forman una base $B$.
+
+Armamos la matriz $A$:
+
+$$A = \begin{pmatrix} 1 & -1/2 & -1 \\ 2 & -1 & -1 \\ 1 & -1 & 1 \end{pmatrix}$$
+
+Calculamos el determinante desarrollando por la primera fila:
+
+$$\det(A) = 1 \cdot ((-1)(1) - (-1)(-1)) - \left(-\frac{1}{2}\right) \cdot ((2)(1) - (-1)(1)) + (-1) \cdot ((2)(-1) - (-1)(1))$$
+
+$$\det(A) = 1(-1 - 1) + \frac{1}{2}(2 + 1) - 1(-2 + 1)$$
+
+$$\det(A) = 1(-2) + \frac{1}{2}(3) - 1(-1)$$
+
+$$\det(A) = -2 + \frac{3}{2} + 1 = -1 + 1.5 = 0.5 = \frac{1}{2}$$
+
+Como $\det(A) = \frac{1}{2} \neq 0$, los vectores son linealmente independientes y constituyen una base $B$ para $\mathbb{R}^3$.
+
+\item Segundo, calcular la co-base $\{\tilde{e}^i\}$ expresando los covectores como matrices fila.
+Acá hay un ``truco'' fundamental del álgebra lineal: las filas de la matriz inversa $A^{-1}$ son exactamente los covectores de la base dual.
+¿Por qué? Porque por definición $A^{-1} A = I$ (la matriz identidad). Si multiplicás la fila $i$ de $A^{-1}$ por la columna $j$ de $A$ (que es el vector $\vec{v}_j$), el resultado es $1$ si $i=j$ y $0$ si $i \neq j$. ¡Esa es exactamente la definición de la base dual $\tilde{e}^i(\vec{v}_j) = \delta^i_j$!
+
+Calculemos $A^{-1}$. Como $\det(A) = 1/2$, usamos la fórmula con la matriz adjunta $A^{-1} = \frac{1}{\det(A)} \text{Adj}(A) = 2 \cdot C^T$, donde $C$ es la matriz de cofactores.
+
+Calculando los cofactores $C_{ij}$:
+
+\begin{itemize}
+\item $C_{11} = (-1)(1) - (-1)(-1) = -2$
+\item $C_{12} = -((2)(1) - (-1)(1)) = -3$
+\item $C_{13} = (2)(-1) - (-1)(1) = -1$
+\item $C_{21} = -((-1/2)(1) - (-1)(-1)) = 3/2$
+\item $C_{22} = (1)(1) - (-1)(1) = 2$
+\item $C_{23} = -((1)(-1) - (-1/2)(1)) = 1/2$
+\item $C_{31} = (-1/2)(-1) - (-1)(-1) = -1/2$
+\item $C_{32} = -((1)(-1) - (2)(-1)) = -1$
+\item $C_{33} = (1)(-1) - (2)(-1/2) = 0$
+\end{itemize}
+
+Trasponemos para obtener la adjunta y multiplicamos por $2$ (que es $1/\det(A)$):
+
+
+$$A^{-1} = 2 \begin{pmatrix} -2 & 3/2 & -1/2 \\ -3 & 2 & -1 \\ -1 & 1/2 & 0 \end{pmatrix} = \begin{pmatrix} -4 & 3 & -1 \\ -6 & 4 & -2 \\ -2 & 1 & 0 \end{pmatrix}$$
+
+Por lo tanto, extrayendo las filas de esta matriz, la co-base está formada por los siguientes covectores (matrices fila):
+
+\begin{itemize}
+\item $\tilde{e}^1 = \begin{pmatrix} -4 & 3 & -1 \end{pmatrix}$
+\item $\tilde{e}^2 = \begin{pmatrix} -6 & 4 & -2 \end{pmatrix}$
+\item $\tilde{e}^3 = \begin{pmatrix} -2 & 1 & 0 \end{pmatrix}$
+\end{itemize}
+
+\item Tercero, verificar explícitamente que $\tilde{e}^i(\vec{v}_j) = \delta^i_j$. 
+Para ello, evaluamos aplicando el producto matricial fila por columna (producto punto estándar):
+
+\begin{itemize}
+\item Para $\tilde{e}^1$:
+\begin{itemize}
+\item $\tilde{e}^1(\vec{v}_1) = (-4)(1) + (3)(2) + (-1)(1) = -4 + 6 - 1 = 1$  $(\delta^1_1)$
+\item $\tilde{e}^1(\vec{v}_2) = (-4)(-1/2) + (3)(-1) + (-1)(-1) = 2 - 3 + 1 = 0$  $(\delta^1_2)$
+\item $\tilde{e}^1(\vec{v}_3) = (-4)(-1) + (3)(-1) + (-1)(1) = 4 - 3 - 1 = 0$  $(\delta^1_3)$
+\end{itemize}
+
+\item Para $\tilde{e}^2$:
+\begin{itemize}
+\item $\tilde{e}^2(\vec{v}_1) = (-6)(1) + (4)(2) + (-2)(1) = -6 + 8 - 2 = 0$  $(\delta^2_1)$
+\item $\tilde{e}^2(\vec{v}_2) = (-6)(-1/2) + (4)(-1) + (-2)(-1) = 3 - 4 + 2 = 1$  $(\delta^2_2)$
+\item $\tilde{e}^2(\vec{v}_3) = (-6)(-1) + (4)(-1) + (-2)(1) = 6 - 4 - 2 = 0$  $(\delta^2_3)$
+\end{itemize}
+
+\item Para $\tilde{e}^3$:
+\begin{itemize}
+\item $\tilde{e}^3(\vec{v}_1) = (-2)(1) + (1)(2) + (0)(1) = -2 + 2 + 0 = 0$  $(\delta^3_1)$
+\item $\tilde{e}^3(\vec{v}_2) = (-2)(-1/2) + (1)(-1) + (0)(-1) = 1 - 1 + 0 = 0$  $(\delta^3_2)$
+\item $\tilde{e}^3(\vec{v}_3) = (-2)(-1) + (1)(-1) + (0)(1) = 2 - 1 + 0 = 1$  $(\delta^3_3)$
+\end{itemize}
+
+\end{itemize}
+\end{itemize}
+
+Como se puede ver, calcular la base dual cuando tenés todo en $\mathbb{R}^n$ es exactamente equivalente a invertir la matriz de cambio de base.
+
+\subsection{Problema 7}
+
+Llegamos al terreno de los tensores, que son la herramienta definitiva para formular leyes físicas de manera independiente del sistema de coordenadas algo indispensable en Relatividad y Mecánica del Continuo.
+
+Vamos a desglosar el problema paso a paso.
+
+\begin{itemize}
+\item Paso 1: definición, tipo y acción del producto tensorial $\vec{e}_i \otimes \svec{e}^j$.
+
+\begin{itemize}
+\item Definición y tipo de tensor:
+El producto tensorial $\vec{e}_i \otimes \tilde{e}^j$ construye un nuevo objeto matemático (un tensor) a partir de un vector de la base $\vec{e}_i \in V$ y un covector de la base dual $\tilde{e}^j \in V^*$.
+Formalmente, este objeto se define como una aplicación bilineal (lineal en cada uno de sus argumentos). 
+Como tiene ``un índice arriba'' (proveniente del vector) y ``un índice abajo'' (proveniente del covector), decimos que es un tensor de tipo $(1,1)$ (una vez contravariante y una vez covariante).
+
+\item Acción sobre vectores y covectores:
+Un tensor de tipo $(1,1)$ es una ``máquina'' que ``come'' un covector y un vector, y ``escupe'' un número real. Su acción evaluada sobre un covector arbitrario $\vec{\omega} \in V^*$ y un vector arbitrario $\vec{v} \in V$ se define de la siguiente manera:
+
+$$(\vec{e}_i \otimes \tilde{e}^j)(\vec{\omega}, \vec{v}) = \vec{e}_i(\vec{\omega}) \cdot \tilde{e}^j(\vec{v})$$
+
+Recordando por el Problema 5 que los vectores pueden actuar sobre covectores evaluándolos ($\vec{e}_i(\vec{\omega}) = \omega_i$) y que la base dual evalúa componentes de vectores ($\tilde{e}^j(\vec{v}) = v^j$), la acción colapsa en el producto de las componentes:
+
+$$(\vec{e}_i \otimes \tilde{e}^j)(\vec{\omega}, \vec{v}) = \omega_i v^j$$
+
+\end{itemize}
+
+\item Paso 2: probar que los $n^2$ tensores $\vec{e}_i \otimes \svec{e}^j$ son linealmente independientes.
+
+Para demostrar independencia lineal, armamos una combinación lineal de todos estos $n^2$ elementos igualada al tensor nulo (la aplicación que siempre da cero, $\mathbf{0}$). La doble sumatoria corre sobre todos los posibles pares de $i$ y $j$:
+
+
+$$\sum_{i=1}^n \sum_{j=1}^n c^i_j (\vec{e}_i \otimes \tilde{e}^j) = \mathbf{0}$$
+
+Nuevamente, como esto es una igualdad entre funciones bilineales, debe cumplirse al evaluarlas con *cualquier* par de argumentos. Elegimos astutamente evaluarlo en los elementos de la base: un covector $\tilde{e}^k$ y un vector $\vec{e}_l$.
+
+Evaluamos el lado izquierdo:
+
+
+$$\left( \sum_{i,j} c^i_j (\vec{e}_i \otimes \tilde{e}^j) \right) (\tilde{e}^k, \vec{e}_l) = \sum_{i,j} c^i_j (\vec{e}_i \otimes \tilde{e}^j)(\tilde{e}^k, \vec{e}_l)$$
+
+Por la definición del producto tensorial que vimos arriba:
+
+
+$$= \sum_{i,j} c^i_j \, \vec{e}_i(\tilde{e}^k) \cdot \tilde{e}^j(\vec{e}_l)$$
+
+Y sabemos que la evaluación cruzada entre bases duales da deltas de Kronecker ($\vec{e}_i(\tilde{e}^k) = \delta^k_i$ y $\tilde{e}^j(\vec{e}_l) = \delta^j_l$). Reemplazando:
+
+
+$$= \sum_{i,j} c^i_j \, \delta^k_i \delta^j_l$$
+
+Las deltas "matan" todos los términos de la doble sumatoria excepto aquel donde $i = k$ y $j = l$. Todo el lado izquierdo colapsa a un único coeficiente: $c^k_l$.
+
+Por otro lado, el lado derecho evaluado es simplemente $\mathbf{0}(\tilde{e}^k, \vec{e}_l) = 0$.
+
+Igualando, obtenemos:
+
+$$c^k_l = 0$$
+
+Como esta demostración es válida para cualquier elección de $k$ y $l$ (desde $1$ hasta $n$), concluimos que todos los coeficientes de la combinación lineal deben ser cero.
+Por lo tanto, el conjunto de tensores $\vec{e}_i \otimes \tilde{e}^j$ es linealmente independiente.
+
+\item Paso 3: explicar por qué esto demuestra que $\dim(T_1^1) = n^2$.
+
+Para asegurar que la dimensión del espacio $T_1^1$ es $n^2$, necesitamos que el conjunto de $n^2$ elementos $\{\vec{e}_i \otimes \tilde{e}^j\}$ no solo sea linealmente independiente (lo que ya probamos), sino que también genere a todo el espacio $T_1^1$ (es decir, que sea una base).
+
+Cualquier tensor arbitrario $T \in T_1^1$ es una aplicación bilineal. Por las propiedades de bilinealidad, la acción de $T$ sobre cualquier par $(\vec{\omega}, \vec{v})$ queda totalmente determinada por lo que le hace $T$ a los vectores de la base. Si definimos los $n^2$ números reales $T^i_j$ como:
+
+$$T^i_j = T(\tilde{e}^i, \vec{e}_j)$$
+
+Podemos reconstruir el tensor $T$ completo como la combinación lineal:
+
+$$T = \sum_{i=1}^n \sum_{j=1}^n T^i_j (\vec{e}_i \otimes \tilde{e}^j)$$
+
+Como todo tensor de $T_1^1$ se puede escribir de esta forma, el conjunto $\{\vec{e}_i \otimes \tilde{e}^j\}$ genera el espacio. 
+Como, además, probamos que sus elementos son linealmente independientes, el conjunto es una base de $T_1^1$.
+
+La cantidad de elementos en esta base es $n$ vectores posibles $\times$ $n$ covectores posibles $= n^2$. Por lo tanto, la dimensión del espacio vectorial de los tensores tipo $(1,1)$ es $n^2$. (Si pensás en un tensor $(1,1)$ como una matriz que transforma vectores en vectores, ¡tiene sentido que tenga $n \times n$ componentes!).
+
+\end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
