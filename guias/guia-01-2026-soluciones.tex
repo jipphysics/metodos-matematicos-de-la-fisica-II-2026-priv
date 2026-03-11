@@ -953,24 +953,22 @@ Para demostrar independencia lineal, armamos una combinación lineal de todos es
 
 $$\sum_{i=1}^n \sum_{j=1}^n c^i_j (\vec{e}_i \otimes \tilde{e}^j) = \mathbf{0}$$
 
-Nuevamente, como esto es una igualdad entre funciones bilineales, debe cumplirse al evaluarlas con *cualquier* par de argumentos. Elegimos astutamente evaluarlo en los elementos de la base: un covector $\tilde{e}^k$ y un vector $\vec{e}_l$.
+Nuevamente, como esto es una igualdad entre funciones bilineales, debe cumplirse al evaluarlas con cualquier par de argumentos.
+Elegimos astutamente evaluarlo en los elementos de la base: un covector $\tilde{e}^k$ y un vector $\vec{e}_l$.
 
 Evaluamos el lado izquierdo:
-
 
 $$\left( \sum_{i,j} c^i_j (\vec{e}_i \otimes \tilde{e}^j) \right) (\tilde{e}^k, \vec{e}_l) = \sum_{i,j} c^i_j (\vec{e}_i \otimes \tilde{e}^j)(\tilde{e}^k, \vec{e}_l)$$
 
 Por la definición del producto tensorial que vimos arriba:
 
-
 $$= \sum_{i,j} c^i_j \, \vec{e}_i(\tilde{e}^k) \cdot \tilde{e}^j(\vec{e}_l)$$
 
 Y sabemos que la evaluación cruzada entre bases duales da deltas de Kronecker ($\vec{e}_i(\tilde{e}^k) = \delta^k_i$ y $\tilde{e}^j(\vec{e}_l) = \delta^j_l$). Reemplazando:
 
-
 $$= \sum_{i,j} c^i_j \, \delta^k_i \delta^j_l$$
 
-Las deltas "matan" todos los términos de la doble sumatoria excepto aquel donde $i = k$ y $j = l$. Todo el lado izquierdo colapsa a un único coeficiente: $c^k_l$.
+Las deltas ``matan'' todos los términos de la doble sumatoria excepto aquel donde $i = k$ y $j = l$. Todo el lado izquierdo colapsa a un único coeficiente: $c^k_l$.
 
 Por otro lado, el lado derecho evaluado es simplemente $\mathbf{0}(\tilde{e}^k, \vec{e}_l) = 0$.
 
