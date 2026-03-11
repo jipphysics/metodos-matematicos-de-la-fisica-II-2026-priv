@@ -923,7 +923,6 @@ Como se puede ver, calcular la base dual cuando tenés todo en $\mathbb{R}^n$ es
 \subsection{Problema 7}
 
 Llegamos al terreno de los tensores, que son la herramienta definitiva para formular leyes físicas de manera independiente del sistema de coordenadas algo indispensable en Relatividad y Mecánica del Continuo.
-
 Vamos a desglosar el problema paso a paso.
 
 \begin{itemize}
@@ -933,7 +932,7 @@ Vamos a desglosar el problema paso a paso.
 \item Definición y tipo de tensor:
 El producto tensorial $\vec{e}_i \otimes \tilde{e}^j$ construye un nuevo objeto matemático (un tensor) a partir de un vector de la base $\vec{e}_i \in V$ y un covector de la base dual $\tilde{e}^j \in V^*$.
 Formalmente, este objeto se define como una aplicación bilineal (lineal en cada uno de sus argumentos). 
-Como tiene ``un índice arriba'' (proveniente del vector) y ``un índice abajo'' (proveniente del covector), decimos que es un tensor de tipo $(1,1)$ (una vez contravariante y una vez covariante).
+Como tiene ``un índice arriba'' (proveniente del vector) y ``un índice abajo'' (proveniente del covector), decimos que es un tensor de tipo $(1,1)$, una vez contravariante y una vez covariante, respectivamente.
 
 \item Acción sobre vectores y covectores:
 Un tensor de tipo $(1,1)$ es una ``máquina'' que ``come'' un covector y un vector, y ``escupe'' un número real. Su acción evaluada sobre un covector arbitrario $\vec{\omega} \in V^*$ y un vector arbitrario $\vec{v} \in V$ se define de la siguiente manera:
@@ -948,53 +947,90 @@ $$(\vec{e}_i \otimes \tilde{e}^j)(\vec{\omega}, \vec{v}) = \omega_i v^j$$
 
 \item Paso 2: probar que los $n^2$ tensores $\vec{e}_i \otimes \svec{e}^j$ son linealmente independientes.
 
-Para demostrar independencia lineal, armamos una combinación lineal de todos estos $n^2$ elementos igualada al tensor nulo (la aplicación que siempre da cero, $\mathbf{0}$). La doble sumatoria corre sobre todos los posibles pares de $i$ y $j$:
+Para demostrar independencia lineal, armamos una combinación lineal de todos estos $n^2$ elementos igualada al tensor nulo $\mathbf{0}$. 
+M\'as precisamente, asumimos que los coeficientes $c^i{}_j\in \RR$ son tales que
 
+$$
+\mathbf{0}
+=
+\sum_{i=1}^n \sum_{j=1}^n c^i{}_j (\vec{e}_i \otimes \tilde{e}^j)
+$$
 
-$$\sum_{i=1}^n \sum_{j=1}^n c^i_j (\vec{e}_i \otimes \tilde{e}^j) = \mathbf{0}$$
-
-Nuevamente, como esto es una igualdad entre funciones bilineales, debe cumplirse al evaluarlas con cualquier par de argumentos.
-Elegimos astutamente evaluarlo en los elementos de la base: un covector $\tilde{e}^k$ y un vector $\vec{e}_l$.
-
-Evaluamos el lado izquierdo:
-
-$$\left( \sum_{i,j} c^i_j (\vec{e}_i \otimes \tilde{e}^j) \right) (\tilde{e}^k, \vec{e}_l) = \sum_{i,j} c^i_j (\vec{e}_i \otimes \tilde{e}^j)(\tilde{e}^k, \vec{e}_l)$$
-
-Por la definición del producto tensorial que vimos arriba:
-
-$$= \sum_{i,j} c^i_j \, \vec{e}_i(\tilde{e}^k) \cdot \tilde{e}^j(\vec{e}_l)$$
-
-Y sabemos que la evaluación cruzada entre bases duales da deltas de Kronecker ($\vec{e}_i(\tilde{e}^k) = \delta^k_i$ y $\tilde{e}^j(\vec{e}_l) = \delta^j_l$). Reemplazando:
-
-$$= \sum_{i,j} c^i_j \, \delta^k_i \delta^j_l$$
-
-Las deltas ``matan'' todos los términos de la doble sumatoria excepto aquel donde $i = k$ y $j = l$. Todo el lado izquierdo colapsa a un único coeficiente: $c^k_l$.
-
-Por otro lado, el lado derecho evaluado es simplemente $\mathbf{0}(\tilde{e}^k, \vec{e}_l) = 0$.
-
-Igualando, obtenemos:
-
-$$c^k_l = 0$$
-
+Luego,
+\begin{eqnarray}
+0
+&=&
+\mathbf{0}(\tilde{e}^k,\vec{e}_l)
+\notag
+\\
+&=&
+\bigg(
+\sum_{i=1}^n \sum_{j=1}^n c^i{}_j (\vec{e}_i \otimes \tilde{e}^j)
+\bigg)
+(\tilde{e}^k,\vec{e}_l)
+\notag
+\\
+&=&
+\sum_{i=1}^n \sum_{j=1}^n c^i{}_j (\vec{e}_i \otimes \tilde{e}^j)(\tilde{e}^k,\vec{e}_l)
+\notag
+\\
+&=&
+\sum_{i=1}^n \sum_{j=1}^n c^i{}_j\;\vec{e}_i(\tilde{e}^k)\, \tilde{e}^j(\vec{e}_l)
+\notag
+\\
+&=&
+\sum_{i=1}^n \sum_{j=1}^n c^i{}_j\;
+\delta_i{}^k
+\delta^j{}_l
+\notag
+\\
+&=&
+c^k{}_l
+\notag
+\end{eqnarray}
 Como esta demostración es válida para cualquier elección de $k$ y $l$ (desde $1$ hasta $n$), concluimos que todos los coeficientes de la combinación lineal deben ser cero.
 Por lo tanto, el conjunto de tensores $\vec{e}_i \otimes \tilde{e}^j$ es linealmente independiente.
 
 \item Paso 3: explicar por qué esto demuestra que $\dim(T_1^1) = n^2$.
 
-Para asegurar que la dimensión del espacio $T_1^1$ es $n^2$, necesitamos que el conjunto de $n^2$ elementos $\{\vec{e}_i \otimes \tilde{e}^j\}$ no solo sea linealmente independiente (lo que ya probamos), sino que también genere a todo el espacio $T_1^1$ (es decir, que sea una base).
+Para asegurar que la dimensión del espacio $T_1^1$ es $n^2$, necesitamos que el conjunto de $n^2$ elementos $\{\vec{e}_i \otimes \tilde{e}^j:i=1,...,n,j=1,...,n\}$ no solo sea linealmente independiente (lo que ya probamos), sino que también genere a todo el espacio $T_1^1$ (es decir, que sea una base).
 
-Cualquier tensor arbitrario $T \in T_1^1$ es una aplicación bilineal. Por las propiedades de bilinealidad, la acción de $T$ sobre cualquier par $(\vec{\omega}, \vec{v})$ queda totalmente determinada por lo que le hace $T$ a los vectores de la base. Si definimos los $n^2$ números reales $T^i_j$ como:
+Cualquier tensor arbitrario $T \in T_1^1$ es una aplicación bilineal. Por las propiedades de bilinealidad, la acción de $T$ sobre cualquier par $(\vec{\omega}, \vec{v})$ queda totalmente determinada por lo que le hace $T$ a los vectores de la base. Si definimos los $n^2$ números reales $T^i{}_j$ como:
 
-$$T^i_j = T(\tilde{e}^i, \vec{e}_j)$$
+$$T^i{}_j = T(\tilde{e}^i, \vec{e}_j)$$
 
-Podemos reconstruir el tensor $T$ completo como la combinación lineal:
+podemos reconstruir el tensor $T$ completo como la combinación lineal:
 
-$$T = \sum_{i=1}^n \sum_{j=1}^n T^i_j (\vec{e}_i \otimes \tilde{e}^j)$$
+$$T = \sum_{i=1}^n \sum_{j=1}^n T^i{}_j (\vec{e}_i \otimes \tilde{e}^j)$$
 
-Como todo tensor de $T_1^1$ se puede escribir de esta forma, el conjunto $\{\vec{e}_i \otimes \tilde{e}^j\}$ genera el espacio. 
-Como, además, probamos que sus elementos son linealmente independientes, el conjunto es una base de $T_1^1$.
+puesto que, por razones que ya mostramos
 
-La cantidad de elementos en esta base es $n$ vectores posibles $\times$ $n$ covectores posibles $= n^2$. Por lo tanto, la dimensión del espacio vectorial de los tensores tipo $(1,1)$ es $n^2$. (Si pensás en un tensor $(1,1)$ como una matriz que transforma vectores en vectores, ¡tiene sentido que tenga $n \times n$ componentes!).
+\begin{eqnarray}
+T(\tilde{e}^k, \vec{e}_l)
+&=&
+\bigg(
+\sum_{i=1}^n \sum_{j=1}^n T^i{}_j (\vec{e}_i \otimes \tilde{e}^j)
+\bigg)
+(\tilde{e}^k, \vec{e}_l)
+\notag
+\\
+&=&
+\sum_{i=1}^n \sum_{j=1}^n T^i{}_j (\vec{e}_i \otimes \tilde{e}^j)
+(\tilde{e}^k, \vec{e}_l)
+\notag
+\\
+&=&
+\sum_{i=1}^n \sum_{j=1}^n T^i{}_j 
+\delta_i{}^k
+\delta^j{}_l
+\notag
+\\
+&=&
+T^k{}_l
+\notag
+\end{eqnarray}
+
+probando el resultado mencionado.
 
 \end{itemize}
 
