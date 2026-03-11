@@ -1034,6 +1034,147 @@ probando el resultado mencionado.
 
 \end{itemize}
 
+\subsection{Problema 8}
+
+Este ejercicio nos lleva a un tipo de tensor sumamente importante en física: los tensores $(0,2)$, también conocidos como tensores dos veces covariantes. El ejemplo físico más famoso de este tipo de tensor es el tensor métrico (el que nos permite medir distancias y ángulos, o el que se curva en Relatividad General).
+Vamos a resolverlo paso a paso:
+
+\begin{itemize}
+\item Paso 1: Proponer una base para el espacio $T_2^0$.
+
+Un tensor de tipo $(0,2)$ es una aplicación bilineal que toma dos vectores de $V$ y devuelve un número real. Es decir, si $T \in T_2^0$, entonces $T: V \times V \to \mathbb{R}$.
+
+Dado que la base dual $\{\tilde{e}^i\}$ está formada por covectores (funcionales lineales que toman un vector y devuelven un escalar), podemos construir un objeto que tome dos vectores usando el producto tensorial de dos covectores.
+
+La propuesta natural para la base es el conjunto de todos los posibles productos tensoriales entre los elementos de la base dual:
+
+
+$$B_{T_2^0} = \{ \tilde{e}^i \otimes \tilde{e}^j \}_{i,j=1}^n$$
+
+¿Por qué esto funciona? La acción de uno de estos elementos base sobre dos vectores arbitrarios $\vec{u}, \vec{v} \in V$ se define como:
+
+$$
+(\tilde{e}^i \otimes \tilde{e}^j)(\vec{u}, \vec{v}) 
+=
+\tilde{e}^i(\vec{u}) \, \tilde{e}^j(\vec{v})
+=
+u^i v^j$$
+
+Cualquier tensor arbitrario $T \in T_2^0$ puede expresarse como una combinación lineal de estos elementos. Si evaluamos $T$ en los vectores de la base de $V$, obtenemos sus componentes $T_{ij} = T(\vec{e}_i, \vec{e}_j)$. Entonces, el tensor completo se escribe como:
+
+
+$$T = \sum_{i=1}^n \sum_{j=1}^n T_{ij} (\tilde{e}^i \otimes \tilde{e}^j)$$
+
+Como este conjunto genera todo el espacio y (usando un argumento idéntico al del problema anterior) sus elementos son linealmente independientes, el conjunto $\{ \tilde{e}^i \otimes \tilde{e}^j \}$ es efectivamente una base para $T_2^0$.
+
+\item Paso 2: Si $\dim(V)=3$, ¿Cuántos elementos tiene esta base? Escríbalos explícitamente.
+
+Si la dimensión del espacio vectorial original $V$ es $3$ (es decir, $n=3$), los índices $i$ y $j$ pueden tomar los valores $1, 2$ o $3$.
+Luego, la cantidad total de elementos en la base es el número de combinaciones posibles de $i$ y $j$, que es $3 \times 3 = 9$ elementos ya que, en general, la dimensión de $T_2^0$ es $n^2$.
+
+Escribiéndolos explícitamente, tenemos los 9 productos tensoriales
+
+\begin{eqnarray}
+&&
+\tilde{e}^1 \otimes \tilde{e}^1, \quad \tilde{e}^1 \otimes \tilde{e}^2, \quad \tilde{e}^1 \otimes \tilde{e}^3 \\ \notag
+&&
+\tilde{e}^2 \otimes \tilde{e}^1, \quad \tilde{e}^2 \otimes \tilde{e}^2, \quad \tilde{e}^2 \otimes \tilde{e}^3 \\ \notag
+&&
+\tilde{e}^3 \otimes \tilde{e}^1, \quad \tilde{e}^3 \otimes \tilde{e}^2, \quad \tilde{e}^3 \otimes \tilde{e}^3 \notag
+\end{eqnarray}
+
+\end{itemize}
+
+\subsection{Problema 9}
+
+\begin{itemize}
+\item[a)] Demostración de subespacios:
+
+Para que sean subespacios, debemos verificar que contienen al tensor nulo, y que son cerrados bajo la suma y la multiplicación por escalares.
+
+\begin{itemize}
+\item Para el subconjunto $\mathcal{S}$ (simétricos):
+\begin{itemize}
+\item Tensor nulo: El tensor $\mathbf{0}$ tiene componentes $0_{ij} = 0$. Claramente $0_{ij} = 0_{ji}$, por lo que $\mathbf{0} \in \mathcal{S}$.
+\item Suma: Sean $S, S' \in \cal{S}$. Sus componentes cumplen $(S+S')_{ij} = S_{ij} + S'_{ij}$. Por hipótesis, esto es igual a $S_{ji} + S'_{ji} = (S+S')_{ji}$. Luego, $S+S' \in \mathcal{S}$.
+\item Producto por escalar: Sea $c \in \mathbb{R}$ y $S \in \cal{S}$. $(cS)_{ij} = c(S_{ij}) = c(S_{ji}) = (cS)_{ji}$. Luego, $cS \in \mathcal{S}$.
+\end{itemize}
+Por lo tanto, $\mathcal{S}$ es un subespacio.
+
+\item Para el subconjunto $\mathcal{A}$ (antisimétricos):
+\begin{itemize}
+\item Tensor nulo: $0_{ij} = 0 = -0 = -0_{ji}$, por lo que $\mathbf{0} \in \mathcal{A}$.
+\item Suma: Sean $A, A' \in \mathcal{A}$. $(A+A')_{ij} = A_{ij} + A'_{ij} = -A_{ji} - A'_{ji} = -(A_{ji} + A'_{ji}) = -(A+A')_{ji}$. Luego, $A+A' \in \mathcal{A}$.
+\item Producto por escalar: $(cA)_{ij} = c(A_{ij}) = c(-A_{ji}) = -(cA)_{ji}$. Luego, $cA \in \mathcal{A}$.
+\end{itemize}
+Por lo tanto, $\mathcal{A}$ es un subespacio.
+\end{itemize}
+
+\item[b)] Cálculo de las dimensiones:
+
+La dimensión de un espacio es el número de componentes independientes que necesitamos para definir un elemento arbitrario. Pensemos en las componentes $T_{ij}$ como los elementos de una matriz $n \times n$.
+
+\begin{itemize}
+\item Dimensión de $\mathcal{S}$:
+Un tensor simétrico cumple $S_{ij} = S_{ji}$. Las componentes de la diagonal principal ($S_{ii}$) son independientes (hay $n$ de ellas). Para los elementos fuera de la diagonal, la mitad superior determina unívocamente a la mitad inferior.
+La cantidad total de elementos fuera de la diagonal es $n^2 - n$. La mitad de estos son independientes, es decir, $\frac{n^2-n}{2}$.
+Sumando la diagonal y la mitad superior:
+
+$$\dim(\mathcal{S}) = n + \frac{n^2-n}{2} = \frac{2n + n^2 - n}{2} = \frac{n^2+n}{2} = \frac{n(n+1)}{2}$$
+
+\item Dimensión de $\mathcal{A}$:
+Un tensor antisimétrico cumple $A_{ij} = -A_{ji}$. Para la diagonal ($i=j$), esto implica $A_{ii} = -A_{ii}$, lo que fuerza a que $2A_{ii} = 0 \implies A_{ii} = 0$. Es decir, ¡la diagonal no aporta grados de libertad!
+Solo tenemos elementos independientes estrictamente por encima de la diagonal. Al fijarlos, la parte inferior queda determinada con el signo opuesto.
+Como vimos, hay $\frac{n^2-n}{2}$ elementos por encima de la diagonal.
+
+$$\dim(\mathcal{A}) = \frac{n^2-n}{2} = \frac{n(n-1)}{2}$$
+\end{itemize}
+
+
+\item[c)] Demostración de que $T_2^0 = \mathcal{S} \oplus \mathcal{A}$:
+
+Para que el espacio total sea suma directa de ambos, se deben cumplir dos cosas: $\mathcal{S} \cap \mathcal{A} = \{\mathbf{0}\}$ y $T_2^0 = \mathcal{S} + \mathcal{A}$.
+Nota pedagógica: Este inciso es exactamente análogo a la demostración que hicimos en el Problema 3 para las funciones pares e impares.
+
+\begin{itemize}
+\item Intersección nula: Sea un tensor $T \in \mathcal{S} \cap \mathcal{A}$.
+Por estar en $\mathcal{S}$: $T_{ij} = T_{ji}$
+Por estar en $\mathcal{A}$: $T_{ij} = -T_{ji}$
+Igualando: $T_{ji} = -T_{ji} \implies 2T_{ji} = 0 \implies T_{ji} = 0$ para todo $i,j$. La única posibilidad es el tensor nulo, así que $\mathcal{S} \cap \mathcal{A} = \{\mathbf{0}\}$.
+\item Generación del espacio total: Debemos mostrar que cualquier tensor $T \in T_2^0$ puede escribirse como la suma de uno simétrico y uno antisimétrico.
+Construimos explícitamente estas partes:
+
+$$
+T_{ij} 
+= 
+\underbrace{\frac{1}{2}(T_{ij} + T_{ji})}_{S_{ij}} 
++ 
+\underbrace{\frac{1}{2}(T_{ij} - T_{ji})}_{A_{ij}}
+$$
+
+\begin{itemize}
+\item Es trivial ver que la suma de ambos términos da $T_{ij}$.
+\item $S_{ij}$ es claramente simétrico: $S_{ji} = \frac{1}{2}(T_{ji} + T_{ij}) = S_{ij}$.
+\item $A_{ij}$ es claramente antisimétrico: $A_{ji} = \frac{1}{2}(T_{ji} - T_{ij}) = -\frac{1}{2}(T_{ij} - T_{ji}) = -A_{ij}$.
+\end{itemize}
+
+\end{itemize}
+
+Como logramos escribir cualquier $T$ como $T = S + A$ (con $S \in \cal{S}$ y $A \in \cal{A}$) de forma única (por ser intersección nula), queda demostrado que $T_2^0 = \cal{S} \oplus \cal{A}$.
+Adicionalmente, podemos verificar la consistencia con el teorema de las dimensiones: 
+$$
+\dim(\mathcal{S}) + \dim(\mathcal{A}) 
+= 
+\frac{n^2+n}{2} + \frac{n^2-n}{2} 
+= 
+\frac{2n^2}{2} 
+= 
+n^2 = \dim(T_2^0)
+.
+$$
+
+\end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
