@@ -329,7 +329,7 @@ Indique cu\'ales provienen de un producto escalar.
 
 \section{Soluciones}
 
-\subsection*{Problema 1}
+\subsection{Problema 1}
 
 \begin{itemize}
 
@@ -451,7 +451,7 @@ $2^{\aleph_0}\leq \dim V \leq 2^{\aleph_0}$ complentando la demostraci\'on.
 
 \end{itemize}
 
-\subsection*{Problema 2}
+\subsection{Problema 2}
 
 Para determinar si un conjunto es un espacio vectorial sobre un cuerpo, debemos verificar si cumple con los axiomas de espacio vectorial bajo las operaciones de suma y producto por un escalar usuales. Cuando las operaciones son las estándar, la clave está en verificar tres cosas fundamentales: clausura bajo la suma, clausura bajo el producto por un escalar, y la existencia del elemento neutro (el ``vector cero'') dentro del conjunto.
 
@@ -501,7 +501,7 @@ Nota: Si el conjunto fuera los polinomios de grado EXACTAMENTE $N$, entonces no 
 
 Conclusión: Los tres conjuntos dados son efectivamente espacios vectoriales sobre el cuerpo de los números reales $\mathbb{R}$.
 
-\subsection*{Problema 3}
+\subsection{Problema 3}
 
 Este es un problema clásico y fundamental en el álgebra lineal aplicada a la física (aparece muchísimo cuando se estudian series de Fourier o mecánica cuántica con el operador paridad).
 Lo resolvemos paso a paso.
@@ -624,7 +624,7 @@ Conclusión: $V = V_p \oplus V_i$.
 
 \end{itemize}
 
-\subsection*{Problema 4}
+\subsection{Problema 4}
 
 El conjunto $V$ está definido como el espacio de soluciones de un sistema de ecuaciones lineales homogéneo. Para encontrar un conjunto generador (una base) y determinar la dimensión de $V$, necesitamos resolver el sistema y expresar las soluciones en función de sus variables libres.
 
@@ -723,7 +723,7 @@ $$B = \left\{ (-2, 0, 3, 0, 0), \ (0, -1, 0, 1, 0), \ (1, 2, 0, 0, 1) \right\}$$
 \end{itemize}
 \end{itemize} 
 
-\subsection*{Problema 5}
+\subsection{Problema 5}
 
 Antes de empezar, recordemos la propiedad definitoria fundamental de una base dual $\{\tilde{e}^i\}$. Sus elementos (que son transformaciones lineales de $V \to \mathbb{R}$) se construyen para que, al aplicarlos sobre los vectores de la base original $\{\vec{e}_j\}$, cumplan con la delta de Kronecker:
 
@@ -831,7 +831,7 @@ para todo $k=1,2,...,n$.
 \end{itemize}
 \end{itemize} 
 
-\subsection*{Problema 6}
+\subsection{Problema 6}
 
 
 Este es un ejercicio súper mecánico pero muy revelador sobre cómo se relacionan un espacio y su dual a nivel matricial.
@@ -920,7 +920,7 @@ Para ello, evaluamos aplicando el producto matricial fila por columna (producto 
 
 Como se puede ver, calcular la base dual cuando tenés todo en $\mathbb{R}^n$ es exactamente equivalente a invertir la matriz de cambio de base.
 
-\subsection*{Problema 7}
+\subsection{Problema 7}
 
 Llegamos al terreno de los tensores, que son la herramienta definitiva para formular leyes físicas de manera independiente del sistema de coordenadas algo indispensable en Relatividad y Mecánica del Continuo.
 Vamos a desglosar el problema paso a paso.
@@ -1034,7 +1034,7 @@ probando el resultado mencionado.
 
 \end{itemize}
 
-\subsection*{Problema 8}
+\subsection{Problema 8}
 
 Este ejercicio nos lleva a un tipo de tensor sumamente importante en física: los tensores $(0,2)$, también conocidos como tensores dos veces covariantes. El ejemplo físico más famoso de este tipo de tensor es el tensor métrico (el que nos permite medir distancias y ángulos, o el que se curva en Relatividad General).
 Vamos a resolverlo paso a paso:
@@ -1085,7 +1085,7 @@ Escribiéndolos explícitamente, tenemos los 9 productos tensoriales
 
 \end{itemize}
 
-\subsection*{Problema 9}
+\subsection{Problema 9}
 
 \begin{itemize}
 \item[a)] Demostración de subespacios:
@@ -1172,450 +1172,6 @@ $$
 n^2 = \dim(T_2^0)
 .
 $$
-
-\end{itemize}
-
-\subsection*{Problema 10}
-
-\begin{itemize}
-
-\item[a)] 
-Para demostrar que un subconjunto es un subespacio vectorial, debemos verificar que contiene al tensor nulo, y que es cerrado bajo la suma y el producto por un escalar.
-
-Para el conjunto de tensores simétricos $\cal{S}$:
-\begin{itemize}
-\item Tensor nulo: El tensor nulo $\mathbf{0}$ tiene componentes $0_{ij} = 0$. Claramente cumple que $0_{ij} = 0 = 0_{ji}$, por lo tanto $\mathbf{0} \in \cal{S}$.
-\item Clausura bajo la suma: Sean $S, S' \in \cal{S}$. Queremos ver si $S + S'$ es simétrico.
-    $$(S + S')_{ij} = S_{ij} + S'_{ij}$$
-    Como $S$ y $S'$ son simétricos, sabemos que $S_{ij} = S_{ji}$ y $S'_{ij} = S'_{ji}$. Reemplazando:
-    $$(S + S')_{ij} = S_{ji} + S'_{ji} = (S + S')_{ji}$$
-    Por lo tanto, $S + S' \in \cal{S}$.
-\item Clausura bajo el producto por escalar: Sea $S \in \cal{S}$ y $\alpha$ un escalar.
-    $$(\alpha S)_{ij} = \alpha S_{ij} = \alpha S_{ji} = (\alpha S)_{ji}$$
-    Por lo tanto, $\alpha S \in \cal{S}$.
-\end{itemize}
-
-Al cumplir las tres propiedades, $\cal{S}$ es un subespacio vectorial de $T_2^0$.
-
-Para el conjunto de tensores antisimétricos $\cal{A}$:
-\begin{itemize}
-\item Tensor nulo: El tensor nulo cumple que $0_{ij} = 0 = -0 = -0_{ji}$, por lo tanto $\mathbf{0} \in \cal{A}$.
-\item Clausura bajo la suma: Sean $A, A' \in \cal{A}$.
-    $$(A + A')_{ij} = A_{ij} + A'_{ij}$$
-    Como $A$ y $A'$ son antisimétricos ($A_{ij} = -A_{ji}$ y $A'_{ij} = -A'_{ji}$):
-    $$(A + A')_{ij} = -A_{ji} - A'_{ji} = -(A_{ji} + A'_{ji}) = -(A + A')_{ji}$$
-    Por lo tanto, $A + A' \in \cal{A}$.
-\item Clausura bajo el producto por escalar: Sea $A \in \cal{A}$ y $\alpha$ un escalar.
-    $$(\alpha A)_{ij} = \alpha A_{ij} = \alpha (-A_{ji}) = -(\alpha A)_{ji}$$
-    Por lo tanto, $\alpha A \in \cal{A}$.
-\end{itemize}
-
-Al cumplir las tres propiedades, $\cal{A}$ es un subespacio vectorial de $T_2^0$.
-
-\item[b)]
-Al elegir una base, cualquier tensor en $T_2^0$ puede representarse mediante una matriz cuadrada de $n \times n$. En total, la matriz tiene $n^2$ componentes.
-
-Dimensión de $\cal{S}$:
-Para una matriz simétrica, las componentes por debajo de la diagonal principal están completamente determinadas por las componentes por encima de la diagonal ($S_{ji} = S_{ij}$). Por lo tanto, las componentes independientes son las que están en la diagonal principal y por encima de ella.
-\begin{itemize}
-\item Número de elementos en la diagonal principal: $n$
-\item Número de elementos fuera de la diagonal principal: $n^2 - n$
-\item Como la mitad de los elementos fuera de la diagonal son independientes (los de la parte superior), tenemos: $\frac{n^2 - n}{2}$ elementos independientes.
-Sumando los de la diagonal y los de la parte superior:
-$$\dim({\cal S}) = n + \frac{n^2 - n}{2} = \frac{2n + n^2 - n}{2} = \frac{n^2 + n}{2} = \frac{n(n+1)}{2}$$
-\end{itemize}
-
-Dimensión de $\cal{A}$:
-Para una matriz antisimétrica, se debe cumplir que $A_{ij} = -A_{ji}$.
-Para los elementos de la diagonal principal ($i = j$), esto implica que $A_{ii} = -A_{ii}$, lo que significa que $2A_{ii} = 0 \implies A_{ii} = 0$. Es decir, todos los elementos de la diagonal son cero (0 componentes independientes).
-Los elementos por debajo de la diagonal están determinados por los que están por encima ($A_{ji} = -A_{ij}$). Por lo tanto, solo los elementos por encima de la diagonal son independientes.
-$$\dim({\cal A}) = \frac{n^2 - n}{2} = \frac{n(n-1)}{2}$$
-
-Nota de control: Si sumamos las dimensiones de ambos subespacios obtenemos $\frac{n(n+1)}{2} + \frac{n(n-1)}{2} = \frac{n^2+n+n^2-n}{2} = \frac{2n^2}{2} = n^2$, que es precisamente la dimensión del espacio total $T_2^0$.
-
-\item[c)]
-Para demostrar que un espacio es suma directa de dos subespacios ($T_2^0 = \cal{S} \oplus \cal{A}$), debemos probar dos cosas:
-\begin{itemize}
-\item  Su intersección es únicamente el elemento nulo: $\cal{S} \cap \cal{A} = \{\mathbf{0}\}$.
-\item   La suma de los subespacios genera todo el espacio: $T_2^0 = \cal{S} + \cal{A}$.
-\end{itemize}
-
-{\bf Intersección nula:}
-Sea $T \in \cal{S} \cap \cal{A}$. Como pertenece a ambos subespacios, debe cumplir simultáneamente:
-\begin{itemize}
-\item $T_{ij} = T_{ji}$ (por estar en $\cal{S}$)
-\item  $T_{ij} = -T_{ji}$ (por estar en $\cal{A}$)
-\end{itemize}
-
-Igualando ambas expresiones obtenemos:
-$$T_{ji} = -T_{ji} \implies 2T_{ji} = 0 \implies T_{ji} = 0$$ para todo $i,j$.
-La única matriz que cumple esto es la matriz nula, por lo que $\cal{S} \cap \cal{A} = \{\mathbf{0}\}$.
-
-{\bf Generación del espacio total:}
-Debemos mostrar que cualquier tensor $T \in T_2^0$ puede escribirse como la suma de un tensor simétrico y uno antisimétrico.
-Proponemos la siguiente construcción explícita para las componentes de cualquier tensor $T$:
-$$T_{ij} = \underbrace{\frac{1}{2}(T_{ij} + T_{ji})}_{S_{ij}} + \underbrace{\frac{1}{2}(T_{ij} - T_{ji})}_{A_{ij}}$$
-
-Verifiquemos que esto funciona:
-\begin{itemize}
-\item La suma de los dos términos nos da: $\frac{1}{2}T_{ij} + \frac{1}{2}T_{ji} + \frac{1}{2}T_{ij} - \frac{1}{2}T_{ji} = T_{ij}$.
-\item El primer término, $S_{ij}$, es efectivamente simétrico: $S_{ji} = \frac{1}{2}(T_{ji} + T_{ij}) = S_{ij}$. Luego, $S \in \cal{S}$.
-\item El segundo término, $A_{ij}$, es efectivamente antisimétrico: $A_{ji} = \frac{1}{2}(T_{ji} - T_{ij}) = -\frac{1}{2}(T_{ij} - T_{ji}) = -A_{ij}$. Luego, $A \in \cal{A}$.
-\end{itemize}
-
-Como pudimos escribir un tensor arbitrario $T$ como la suma $T = S + A$, donde $S \in \cal{S}$ y $A \in \cal{A}$, hemos demostrado que $T_2^0 = \cal{S} + \cal{A}$.
-
-Habiendo demostrado la intersección nula y la suma, concluimos que $T_2^0 = \cal{S} \oplus \cal{A}$.
- 
-\end{itemize}
-
-\subsection*{Problema 11}
-
-\begin{itemize}
-\item[a)]
-Cualquier tensor $T \in T_2^0$ se puede desarrollar en la base tensorial $\{\svec{e}^i \otimes \svec{e}^j\}$ como:
-$$T = \sum_{i,j=1}^3 T_{ij} \, \svec{e}^i \otimes \svec{e}^j$$
-
-Comparando esta expresión general con el tensor dado, podemos identificar directamente cada componente $T_{ij}$ observando el coeficiente que acompaña a cada par $\svec{e}^i \otimes \svec{e}^j$.
-\begin{itemize}
-\item Fila 1 ($i=1$): $T_{11} = 4$, $T_{12} = -1$, $T_{13} = 2$
-\item Fila 2 ($i=2$): $T_{21} = 2$, $T_{22} = 1$. Notemos que el término con $\svec{e}^2 \otimes \svec{e}^3$ no aparece, por lo tanto $T_{23} = 0$
-\item Fila 3 ($i=3$): $T_{31} = 3$, $T_{32} = 3$, $T_{33} = 3$
-\end{itemize}
-
-Ordenando estos coeficientes en una matriz $3\times3$ donde el índice $i$ denota la fila y el $j$ la columna, obtenemos:
-$$
-T = \begin{pmatrix}
-4 & -1 & 2 \\
-2 & 1 & 0 \\
-3 & 3 & 3
-\end{pmatrix}
-$$
-
-\item[b)]
-Para calcular las partes simétrica y antisimétrica, necesitaremos primero calcular la matriz transpuesta de $T$ ($T^\top$), cuyas componentes son $(T^\top)_{ij} = T_{ji}$:
-$$
-T^\top = \begin{pmatrix}
-4 & 2 & 3 \\
--1 & 1 & 3 \\
-2 & 0 & 3
-\end{pmatrix}
-$$
-
-Cálculo de la matriz S (parte simétrica):
-Usamos la definición matricial $S = \frac{1}{2}(T + T^\top)$:
-$$
-S = \frac{1}{2} \left[ \begin{pmatrix} 4 & -1 & 2 \\ 2 & 1 & 0 \\ 3 & 3 & 3 \end{pmatrix} + \begin{pmatrix} 4 & 2 & 3 \\ -1 & 1 & 3 \\ 2 & 0 & 3 \end{pmatrix} \right]
-$$
-$$
-S = \frac{1}{2} \begin{pmatrix} 4+4 & -1+2 & 2+3 \\ 2-1 & 1+1 & 0+3 \\ 3+2 & 3+0 & 3+3 \end{pmatrix}
-= \frac{1}{2} \begin{pmatrix} 8 & 1 & 5 \\ 1 & 2 & 3 \\ 5 & 3 & 6 \end{pmatrix}
-$$
-$$
-S = \begin{pmatrix} 4 & 1/2 & 5/2 \\ 1/2 & 1 & 3/2 \\ 5/2 & 3/2 & 3 \end{pmatrix}
-$$
-Efectivamente, observamos que $S$ es una matriz simétrica (igual a su transpuesta).
-
-Cálculo de la matriz A (parte antisimétrica):
-Usamos la definición matricial $A = \frac{1}{2}(T - T^\top)$:
-$$
-A = \frac{1}{2} \left[ \begin{pmatrix} 4 & -1 & 2 \\ 2 & 1 & 0 \\ 3 & 3 & 3 \end{pmatrix} - \begin{pmatrix} 4 & 2 & 3 \\ -1 & 1 & 3 \\ 2 & 0 & 3 \end{pmatrix} \right]
-$$
-$$
-A = \frac{1}{2} \begin{pmatrix} 4-4 & -1-2 & 2-3 \\ 2-(-1) & 1-1 & 0-3 \\ 3-2 & 3-0 & 3-3 \end{pmatrix}
-= \frac{1}{2} \begin{pmatrix} 0 & -3 & -1 \\ 3 & 0 & -3 \\ 1 & 3 & 0 \end{pmatrix}
-$$
-$$
-A = \begin{pmatrix} 0 & -3/2 & -1/2 \\ 3/2 & 0 & -3/2 \\ 1/2 & 3/2 & 0 \end{pmatrix}
-$$
-Efectivamente, observamos que $A$ es una matriz antisimétrica (su diagonal es nula y los elementos simétricos tienen el signo opuesto).
-
-Verificación $T = S + A$:
-Sumamos las matrices que acabamos de obtener:
-$$
-S + A = \begin{pmatrix} 4 & 1/2 & 5/2 \\ 1/2 & 1 & 3/2 \\ 5/2 & 3/2 & 3 \end{pmatrix} + \begin{pmatrix} 0 & -3/2 & -1/2 \\ 3/2 & 0 & -3/2 \\ 1/2 & 3/2 & 0 \end{pmatrix}
-$$
-$$
-S + A = \begin{pmatrix} 4+0 & \frac{1-3}{2} & \frac{5-1}{2} \\ \frac{1+3}{2} & 1+0 & \frac{3-3}{2} \\ \frac{5+1}{2} & \frac{3+3}{2} & 3+0 \end{pmatrix}
-$$
-$$
-S + A = \begin{pmatrix} 4 & -2/2 & 4/2 \\ 4/2 & 1 & 0 \\ 6/2 & 6/2 & 3 \end{pmatrix} = \begin{pmatrix} 4 & -1 & 2 \\ 2 & 1 & 0 \\ 3 & 3 & 3 \end{pmatrix}
-$$
-Vemos que el resultado es exactamente la matriz $T$ original, por lo que la relación se verifica correctamente.
-
-\end{itemize}
-
-\subsection*{Problema 13}
-
-Un tensor de orden 3, cuyas componentes son $S_{ijk}$, se denomina totalmente simétrico si el valor de sus componentes no cambia ante *cualquier* permutación de sus índices. Es decir, se debe cumplir que:
-$$S_{ijk} = S_{jik} = S_{ikj} = S_{kji} = S_{jki} = S_{kij}$$
-
-Observemos detenidamente la definición que nos dan para $S_{ijk}$:
-$$S_{ijk} = T_{ijk} + T_{jki} + T_{kij} + T_{ikj} + T_{kji} + T_{jik}$$
-
-Esta expresión es la suma de las componentes del tensor $T$ evaluadas en todas las permutaciones posibles de los tres índices $(i, j, k)$. Como tenemos 3 índices, el número total de permutaciones es $3! = 3 \times 2 \times 1 = 6$. Efectivamente, la suma tiene 6 términos que corresponden a:
-\begin{itemize}
-\item Permutaciones pares (cíclicas): $(i,j,k), (j,k,i), (k,i,j)$
-\item Permutaciones impares (intercambio de dos índices): $(i,k,j), (k,j,i), (j,i,k)$
-\end{itemize}
-
-Para demostrar que $S_{ijk}$ es totalmente simétrico, basta con verificar que la expresión es invariante bajo el intercambio de cualquier par de índices. Por ejemplo, intercambiemos los índices **$i$** y **$j$** para calcular $S_{jik}$:
-
-Reemplazando $i \to j$ y $j \to i$ en la definición original, obtenemos:
-$$S_{jik} = T_{jik} + T_{iki} \text{ (espera, reemplacemos bien)} $$
-Hagamos el reemplazo de forma cuidadosa en cada uno de los 6 términos de la definición original ($S_{ijk}=T_{ijk}+T_{jki}+T_{kij}+T_{ikj}+T_{kji}+T_{jik}$):
-\begin{itemize}
-\item El término $T_{ijk}$ se convierte en $T_{jik}$
-\item El término $T_{jki}$ se convierte en $T_{ikj}$
-\item El término $T_{kij}$ se convierte en $T_{kji}$
-\item El término $T_{ikj}$ se convierte en $T_{jki}$
-\item El término $T_{kji}$ se convierte en $T_{kij}$
-\item El término $T_{jik}$ se convierte en $T_{ijk}$
-\end{itemize}
-
-Sumando los nuevos términos obtenemos la expresión para $S_{jik}$:
-$$S_{jik} = T_{jik} + T_{ikj} + T_{kji} + T_{jki} + T_{kij} + T_{ijk}$$
-
-Si comparamos esta nueva suma con la suma original para $S_{ijk}$:
-$$S_{ijk} = T_{ijk} + T_{jki} + T_{kij} + T_{ikj} + T_{kji} + T_{jik}$$
-
-Podemos notar que son exactamente los mismos 6 términos, únicamente escritos en un orden diferente. Como la suma de números (las componentes del tensor son números reales o complejos) es conmutativa, el orden de los sumandos no altera el resultado.
-
-Por lo tanto:
-$$S_{jik} = S_{ijk}$$
-
-Este mismo razonamiento se aplica para cualquier otro intercambio de índices (por ejemplo, intercambiando $i$ con $k$, o $j$ con $k$). Al realizar cualquier permutación en los índices de $S$, lo único que ocurre en el lado derecho de la ecuación es que los sumandos cambian de lugar entre sí, pero el conjunto total de los 6 sumandos sigue siendo exactamente el mismo.
-
-En conclusión, como la expresión contiene todas las permutaciones posibles de los índices, cualquier permutación adicional solo reordena los términos de la suma, dejando el valor total inalterado. Esto demuestra que $S_{ijk}$ es un tensor totalmente simétrico.
-
-\subsection*{Problema 13}
-
-Un tensor de orden 3 cuyas componentes son $T_{ijk}$ se denomina **totalmente antisimétrico** si, ante el intercambio de cualquier par de sus índices, la componente cambia de signo. Es decir, se deben cumplir las siguientes relaciones para cualquier permutación impar de los índices:
-\begin{itemize}
-\item $T_{ijk} = -T_{jik}$ (intercambiando $i$ y $j$)
-\item $T_{ijk} = -T_{ikj}$ (intercambiando $j$ y $k$)
-\item $T_{ijk} = -T_{kji}$ (intercambiando $i$ y $k$)
-\end{itemize}
-
-Para demostrar esto, observemos la estructura matemática que define a las componentes $T_{ijk}$. Se trata del determinante de una matriz de $3 \times 3$:
-
-$$M = \begin{pmatrix} 
-u_i & u_j & u_k \\ 
-v_i & v_j & v_k \\ 
-w_i & w_j & w_k 
-\end{pmatrix}$$
-
-Notemos cómo están dispuestos los índices en la matriz $M$:
-\begin{itemize}
-\item La primera columna depende exclusivamente del índice $i$: $(u_i, v_i, w_i)^T$.
-\item La segunda columna depende exclusivamente del índice $j$: $(u_j, v_j, w_j)^T$.
-\item  La tercera columna depende exclusivamente del índice $k$: $(u_k, v_k, w_k)^T$.
-\end{itemize}
-
-Ahora, recordemos una propiedad fundamental de los determinantes: Si se intercambian dos columnas (o dos filas) de una matriz, el determinante de la nueva matriz cambia de signo (es decir, se multiplica por $-1$).
-
-Evaluemos qué sucede al intercambiar los índices. 
-
-\begin{itemize}
-\item Intercambio de los índices $i$ y $j$:
-Si calculamos $T_{jik}$, la expresión del determinante queda con la columna dependiente de $j$ en el primer lugar y la dependiente de $i$ en el segundo:
-$$T_{jik} = \begin{vmatrix} 
-u_j & u_i & u_k \\ 
-v_j & v_i & v_k \\ 
-w_j & w_i & w_k 
-\end{vmatrix}$$
-Esta matriz es exactamente la matriz original $M$, pero con la primera y segunda columna permutadas. Por la propiedad de los determinantes:
-$$T_{jik} = - \begin{vmatrix} 
-u_i & u_j & u_k \\ 
-v_i & v_j & v_k \\ 
-w_i & w_j & w_k 
-\end{vmatrix} = -T_{ijk}$$
-
-\item Intercambio de los índices $j$ y $k$:
-De forma análoga, calcular $T_{ikj}$ implica intercambiar las posiciones de los índices $j$ y $k$, lo que equivale a intercambiar la segunda y tercera columna de la matriz original:
-$$T_{ikj} = \begin{vmatrix} 
-u_i & u_k & u_j \\ 
-v_i & v_k & v_j \\ 
-w_i & w_k & w_j 
-\end{vmatrix} = - \begin{vmatrix} 
-u_i & u_j & u_k \\ 
-v_i & v_j & v_k \\ 
-w_i & w_j & w_k 
-\end{vmatrix} = -T_{ijk}$$
-
-\item Intercambio de los índices $i$ y $k$:
-Finalmente, intercambiar $i$ y $k$ equivale a permutar la primera y tercera columna:
-$$T_{kji} = \begin{vmatrix} 
-u_k & u_j & u_i \\ 
-v_k & v_j & v_i \\ 
-w_k & w_j & w_i 
-\end{vmatrix} = - \begin{vmatrix} 
-u_i & u_j & u_k \\ 
-v_i & v_j & v_k \\ 
-w_i & w_j & w_k 
-\end{vmatrix} = -T_{ijk}$$
-
-\end{itemize}
-
-Como el intercambio de cualquier par de índices da como resultado el intercambio de dos columnas en el determinante, el signo del resultado siempre se invierte. En consecuencia, hemos demostrado que $T_{ijk}$ constituye las componentes de un tensor totalmente antisimétrico. 
-
-Nota: Además, si dos índices son iguales, digamos $i=j$, la matriz tendrá dos columnas idénticas, y por propiedades de los determinantes $T_{iik} = 0$, lo cual es un requisito indispensable y corolario directo para un tensor totalmente antisimétrico).
-
-\subsection*{Problema 14}
-
-\begin{itemize}
-\item[a)] Halle la matriz de cambio de base de $B$ a $B'$.
-
-Para hallar la matriz de cambio de base de $B$ a $B'$ (que llamaremos $P$), podemos utilizar las matrices $U$ y $V$ cuyas columnas son los vectores de las bases $B$ y $B'$ respectivamente. 
-
-Sabemos que para cualquier vector, sus componentes en la base canónica se relacionan con sus componentes en una base cualquiera a través de la matriz de la base. Así, $U [\vec{x}]_B = V [\vec{x}]_{B'}$.
-Despejando $[\vec{x}]_{B'}$, obtenemos:
-$$[\vec{x}]_{B'} = V^{-1} U [\vec{x}]_B$$
-Por lo tanto, la matriz de cambio de base es $P = V^{-1} U$.
-
-Paso 1: Invertir la matriz $V$.
-$$V = \begin{pmatrix} -6 & -2 & -2 \\ -6 & -6 & -3 \\ 0 & 4 & 7 \end{pmatrix}$$
-
-El determinante de $V$ es:
-$$\det(V) = -6((-6)(7) - (-3)(4)) - (-2)((-6)(7) - (-3)(0)) + (-2)((-6)(4) - (-6)(0))$$
-$$\det(V) = -6(-42 + 12) + 2(-42) - 2(-24) = -6(-30) - 84 + 48 = 180 - 84 + 48 = 144$$
-
-Calculando la matriz adjunta y dividiendo por 144, obtenemos $V^{-1}$:
-$$V^{-1} = \frac{1}{144} \begin{pmatrix} -30 & 6 & -6 \\ 42 & -42 & -6 \\ -24 & 24 & 24 \end{pmatrix} = \frac{1}{24} \begin{pmatrix} -5 & 1 & -1 \\ 7 & -7 & -1 \\ -4 & 4 & 4 \end{pmatrix}$$
-
-Paso 2: Calcular $P = V^{-1} U$.
-$$P = \frac{1}{24} \begin{pmatrix} -5 & 1 & -1 \\ 7 & -7 & -1 \\ -4 & 4 & 4 \end{pmatrix} \begin{pmatrix} -3 & -3 & 1 \\ 0 & 2 & 6 \\ -3 & -1 & -1 \end{pmatrix}$$
-
-Realizando la multiplicación de matrices (fila por columna):
-\begin{itemize}
-\item Componente $P_{11}$: $(-5)(-3) + (1)(0) + (-1)(-3) = 15 + 0 + 3 = 18$
-\item Componente $P_{12}$: $(-5)(-3) + (1)(2) + (-1)(-1) = 15 + 2 + 1 = 18$
-\item Componente $P_{13}$: $(-5)(1) + (1)(6) + (-1)(-1) = -5 + 6 + 1 = 2$
-\item Componente $P_{21}$: $(7)(-3) + (-7)(0) + (-1)(-3) = -21 + 0 + 3 = -18$
-\item Componente $P_{22}$: $(7)(-3) + (-7)(2) + (-1)(-1) = -21 - 14 + 1 = -34$
-\item Componente $P_{23}$: $(7)(1) + (-7)(6) + (-1)(-1) = 7 - 42 + 1 = -34$
-\item Componente $P_{31}$: $(-4)(-3) + (4)(0) + (4)(-3) = 12 + 0 - 12 = 0$
-\item Componente $P_{32}$: $(-4)(-3) + (4)(2) + (4)(-1) = 12 + 8 - 4 = 16$
-\item Componente $P_{33}$: $(-4)(1) + (4)(6) + (4)(-1) = -4 + 24 - 4 = 16$
-\end{itemize}
-
-Por ende, la matriz de cambio de base $P$ es:
-$$P = \frac{1}{24} \begin{pmatrix} 18 & 18 & 2 \\ -18 & -34 & -34 \\ 0 & 16 & 16 \end{pmatrix} = \begin{pmatrix} 3/4 & 3/4 & 1/12 \\ -3/4 & -17/12 & -17/12 \\ 0 & 2/3 & 2/3 \end{pmatrix}$$
-
-\item[b)]
-{\bf Componentes en la base $B$:}
-Buscamos un vector columna $[\vec{w}]_B = (c_1, c_2, c_3)^T$ tal que $c_1\vec{u}_1 + c_2\vec{u}_2 + c_3\vec{u}_3 = \vec{w}$. 
-Si inspeccionamos los vectores de la base $B$ y el vector $\vec{w}$:
-$$\vec{u}_1 + \vec{u}_2 + \vec{u}_3 = \begin{pmatrix}-3 \\ 0 \\ -3\end{pmatrix} + \begin{pmatrix}-3 \\ 2 \\ -1\end{pmatrix} + \begin{pmatrix}1 \\ 6 \\ -1\end{pmatrix} = \begin{pmatrix}-3-3+1 \\ 0+2+6 \\ -3-1-1\end{pmatrix} = \begin{pmatrix}-5 \\ 8 \\ -5\end{pmatrix} = \vec{w}$$
-La combinación lineal es directa, por lo tanto, las componentes de $\vec{w}$ en la base $B$ son:
-$$[\vec{w}]_B = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$$
-Nota: Esto también se puede calcular rigurosamente haciendo $[\vec{w}]_B = U^{-1} \vec{w}$).
-
-{\bf Componentes en la base $B'$:}
-Utilizamos la matriz $P$ que acabamos de calcular para transformar las coordenadas:
-$$[\vec{w}]_{B'} = P [\vec{w}]_B$$
-$$[\vec{w}]_{B'} = \frac{1}{24} \begin{pmatrix} 18 & 18 & 2 \\ -18 & -34 & -34 \\ 0 & 16 & 16 \end{pmatrix} \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$$
-
-Como el vector $[\vec{w}]_B$ tiene puros $1$, el resultado es simplemente la suma de las columnas de $P$:
-\begin{itemize}
-\item Fila 1: $\frac{18 + 18 + 2}{24} = \frac{38}{24} = \frac{19}{12}$
-\item Fila 2: $\frac{-18 - 34 - 34}{24} = \frac{-86}{24} = -\frac{43}{12}$
-\item Fila 3: $\frac{0 + 16 + 16}{24} = \frac{32}{24} = \frac{4}{3} = \frac{16}{12}$
-\end{itemize}
-
-Por lo tanto, las componentes de $\vec{w}$ en la base $B'$ son:
-$$[\vec{w}]_{B'} = \begin{pmatrix} 19/12 \\ -43/12 \\ 4/3 \end{pmatrix}$$
-
-\end{itemize}
-
-\subsection*{Problema 15}
-
-\begin{itemize}
-\item
-La exponencial de una matriz se define a través de su serie de Taylor:
-$$e^X = \sum_{n=0}^{\infty} \frac{X^n}{n!}$$
-
-Aplicamos esta definición a $e^{(s+t)A}$:
-$$e^{(s+t)A} = \sum_{n=0}^{\infty} \frac{((s+t)A)^n}{n!} = \sum_{n=0}^{\infty} \frac{(s+t)^n A^n}{n!}$$
-
-Usamos el binomio de Newton para expandir $(s+t)^n$:
-$$e^{(s+t)A} = \sum_{n=0}^{\infty} \frac{A^n}{n!} \left( \sum_{k=0}^{n} \frac{n!}{k!(n-k)!} s^k t^{n-k} \right)$$
-
-Simplificando los factoriales $n!$ en el numerador y denominador y reordenando, obtenemos:
-$$e^{(s+t)A} = \sum_{n=0}^{\infty} \sum_{k=0}^{n} \frac{(sA)^k}{k!} \frac{(tA)^{n-k}}{(n-k)!}$$
-
-Esta doble sumatoria representa exactamente el producto de Cauchy de dos series. Si hacemos el cambio de variable $m = n-k$, las sumas se desacoplan completamente en dos series independientes:
-$$e^{(s+t)A} = \left( \sum_{k=0}^{\infty} \frac{(sA)^k}{k!} \right) \left( \sum_{m=0}^{\infty} \frac{(tA)^m}{m!} \right) = e^{sA} e^{tA}$$
-Quedando así demostrada la propiedad.
-
-Nota: De forma alternativa, esta propiedad también es un corolario directo del punto 2, ya que las matrices $sA$ y $tA$ conmutan trivialmente entre sí: $(sA)(tA) = stA^2 = (tA)(sA)$).
-
-\item
-Partimos de la definición en serie de Taylor para $e^{A+B}$:
-$$e^{A+B} = \sum_{n=0}^{\infty} \frac{(A+B)^n}{n!}$$
-
-Dado que $A$ y $B$ conmutan ($AB = BA$), es válido utilizar el binomio de Newton generalizado para matrices (si no conmutaran, el orden de los factores importaría y no podríamos agruparlos de esta forma):
-$$(A+B)^n = \sum_{k=0}^{n} \frac{n!}{k!(n-k)!} A^k B^{n-k}$$
-
-Sustituimos esto en la serie original:
-$$e^{A+B} = \sum_{n=0}^{\infty} \frac{1}{n!} \sum_{k=0}^{n} \frac{n!}{k!(n-k)!} A^k B^{n-k} = \sum_{n=0}^{\infty} \sum_{k=0}^{n} \frac{A^k}{k!} \frac{B^{n-k}}{(n-k)!}$$
-
-Igual que en el inciso anterior, reconocemos aquí el producto de Cauchy de las series correspondientes a $e^A$ y $e^B$. Desacoplando las sumatorias:
-$$e^{A+B} = \left( \sum_{k=0}^{\infty} \frac{A^k}{k!} \right) \left( \sum_{m=0}^{\infty} \frac{B^m}{m!} \right) = e^A e^B$$
-Lo cual concluye la demostración.
-
-\item Cálculo de exponenciales de matrices
-
-{\bf Primer cálculo: $\exp\begin{pmatrix}0 & x \\ -x & 0\end{pmatrix}$}
-
-Podemos reescribir la matriz extrayendo $x$:
-$$M = \begin{pmatrix} 0 & x \\ -x & 0 \end{pmatrix} = x \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} = x J$$
-donde $J = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$. 
-
-Analicemos las potencias de la matriz $J$:
-\begin{itemize}
-\item  $J^1 = J$
-\item  $J^2 = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix} = -I$
-\item  $J^3 = J^2 J = -I J = -J$
-\item $J^4 = (J^2)^2 = (-I)^2 = I$
-\end{itemize}
-
-Notamos un patrón cíclico similar al de la unidad imaginaria $i$. Separamos la serie de Taylor de $e^{xJ}$ en términos de potencias pares e impares:
-$$e^{xJ} = \sum_{n=0}^{\infty} \frac{(xJ)^n}{n!} = \sum_{m=0}^{\infty} \frac{x^{2m} J^{2m}}{(2m)!} + \sum_{m=0}^{\infty} \frac{x^{2m+1} J^{2m+1}}{(2m+1)!}$$
-
-Sustituyendo $J^{2m} = (-1)^m I$ y $J^{2m+1} = (-1)^m J$:
-$$e^{xJ} = I \left( \sum_{m=0}^{\infty} \frac{(-1)^m x^{2m}}{(2m)!} \right) + J \left( \sum_{m=0}^{\infty} \frac{(-1)^m x^{2m+1}}{(2m+1)!} \right)$$
-
-Las series entre paréntesis son las expansiones de Taylor clásicas del coseno y el seno, respectivamente:
-$$e^{xJ} = I \cos(x) + J \sin(x) = \begin{pmatrix} \cos x & 0 \\ 0 & \cos x \end{pmatrix} + \begin{pmatrix} 0 & \sin x \\ -\sin x & 0 \end{pmatrix}$$
-
-Por lo tanto:
-$$\exp\begin{pmatrix}0 & x \\ -x & 0\end{pmatrix} = \begin{pmatrix} \cos x & \sin x \\ -\sin x & \cos x \end{pmatrix}$$
-Ésta es la conocida matriz de rotación en 2D.
-
-{\bf Segundo cálculo: $\exp\begin{pmatrix}0 & x \\ x & 0\end{pmatrix}$}
-
-De forma similar, reescribimos la matriz:
-$$N = \begin{pmatrix} 0 & x \\ x & 0 \end{pmatrix} = x \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} = x K$$
-donde $K = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$.
-
-Analizamos las potencias de la matriz $K$:
-\begin{itemize}
-\item $K^1 = K$
-\item $K^2 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I$
-\item $K^3 = K^2 K = I K = K$
-\item $K^4 = (K^2)^2 = I^2 = I$
-\end{itemize}
-
-En este caso, el ciclo alterna entre $K$ e $I$ sin cambiar de signo. Separando la serie en potencias pares e impares:
-$$e^{xK} = \sum_{m=0}^{\infty} \frac{x^{2m} I}{(2m)!} + \sum_{m=0}^{\infty} \frac{x^{2m+1} K}{(2m+1)!}$$
-$$e^{xK} = I \left( \sum_{m=0}^{\infty} \frac{x^{2m}}{(2m)!} \right) + K \left( \sum_{m=0}^{\infty} \frac{x^{2m+1}}{(2m+1)!} \right)$$
-
-Estas series corresponden a las expansiones hiperbólicas $\cosh(x)$ y $\sinh(x)$:
-$$e^{xK} = I \cosh(x) + K \sinh(x) = \begin{pmatrix} \cosh x & 0 \\ 0 & \cosh x \end{pmatrix} + \begin{pmatrix} 0 & \sinh x \\ \sinh x & 0 \end{pmatrix}$$
-
-Por lo tanto:
-$$\exp\begin{pmatrix}0 & x \\ x & 0\end{pmatrix} = \begin{pmatrix} \cosh x & \sinh x \\ \sinh x & \cosh x \end{pmatrix}$$
 
 \end{itemize}
 
