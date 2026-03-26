@@ -1,0 +1,300 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=50\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Guía 2}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+\begin{document}
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Guía N$^\txt{o}$ 2 -- 2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+\section*{Parte I: Problemas Centrales (para desarrollar en clase)}
+
+\prob Sea $\mat{A} = \begin{pmatrix} 1 & 2 \\ 0 & 2 \end{pmatrix}$.
+\begin{enumerate}
+\item Halle los autovalores y los correspondientes autovectores a derecha e izquierda.
+\item Construya la matriz~$\mat{U}$ que tiene a los autovectores a izquierda como filas y la martiz~$\mat{V}$ que tiene a los autovectores a derecha como columnas, y verifique que $\mat{U}\mat{V}=\mat{I}$ y que $\mat{U}\mat{A}\mat{V}$ es diagonal.
+\item Halle la norma espectral de~$\mat{A}$.
+\item Muestre que~$\mat{A}$ no es normal.
+\end{enumerate}
+
+\prob Diagonalice la matriz $\mat{A}$, y escriba el vector $\mat{x}$ en la base donde $\mat{A}$ es diagonal, para
+\[
+\mat{A} = \begin{pmatrix} 
+0 & -i & 0 & 0 & 0 \\ 
+i & 0 & 0 & 0 & 0 \\ 
+0 & 0 & 3 & 0 & 0 \\ 
+0 & 0 & 0 & 1 & -i \\ 
+0 & 0 & 0 & i & 1 
+\end{pmatrix}, \qquad 
+\mat{x} = \begin{pmatrix} 1 \\ a \\ i \\ b \\ -1 \end{pmatrix}.
+\]
+
+\prob Halle la forma canónica de Jordan de la matriz
+\[
+\mat{A} = \begin{pmatrix} 
+2 & 1 & 0 & -1 & 3 & 1 \\ 
+0 & 2 & 0 & 0 & 1 & -3 \\ 
+0 & 0 & 2 & 1 & -1 & 0 \\ 
+0 & 0 & 0 & 2 & 1 & -2 \\ 
+0 & 0 & 0 & 0 & 2 & 1 \\ 
+0 & 0 & 0 & 0 & 0 & 2 
+\end{pmatrix}.
+\]
+
+\prob Demuestre las siguientes identidades vectoriales en coordenadas cartesianas:
+\begin{enumerate}
+\item $\nabla(\phi\psi) = \phi\nabla\psi + \psi\nabla\phi$;
+\item $\nabla \times (\phi\vec{F}) = (\nabla\phi) \times \vec{F} + \phi(\nabla \times \vec{F})$;
+\item $\nabla \cdot (\nabla \times \vec{F}) = 0$;
+\item $\nabla \times (\nabla \times \vec{F}) = \nabla(\nabla \cdot \vec{F}) - \nabla^2 \vec{F}$.
+\end{enumerate}
+
+\prob Considere el espacio $T^0_2$ de tensores dos veces covariantes sobre $V$ ($\dim(V)=3$), y los subespacios $S$ de tensores simétricos y $A$ de tensores antisimétricos. 
+\begin{enumerate}
+\item Proponga una base para $T^0_2$ en términos de la base $\{\svec{e}^i\}$ de $V^*$, y escriba explícitamente sus elementos.
+\item Escriba explícitamente los elementos de las correspondientes bases de $S$ y $A$. ?`Cuántos elementos tiene cada una?
+\end{enumerate}
+
+\prob Muestre que en coordenadas arbitrarias
+\begin{equation*}
+\epsilon^{ijk}\epsilon_{klm} = 
+\delta\ud{i}{l}\delta\ud{j}{m} - \delta\ud{i}{m}\delta\ud{j}{l} \, .
+\end{equation*}
+Ayuda: muestre primero que en coordenadas Cartesianas ortonormales, donde los \'indices pueden subirse y bajarse arbitrariamente, $\epsilon_{ijk}\epsilon_{klm} = \delta_{il}\delta_{jm} - \delta_{im}\delta_{jl}$, usando todas las simetr\'{\i}as disponibles para trabajar menos; luego suba los \'{\i}ndices que correspondan, transforme a coordenadas arbitrarias y verifique la cancelaci\'on de pesos en el lado izquierdo.
+
+\prob Determine el caracter tensorial (rango, tipo y peso) de las siguientes entidades:
+\begin{enumerate}
+\item La densidad de carga el\'ectrica de un cuerpo extenso, tomando en cuenta que la carga el\'ectrica total es un escalar.
+\item La densidad de masa de un cuerpo extenso, tomando en cuenta que la masa total es un escalar.
+\item El momento cuadrupolar el\'ectrico de un cuerpo puntual, tomando en cuenta que la energ\'{\i}a electrost\'atica de un cuadrupolo es un escalar, y que el campo el\'ectrico es un vector (determine su tipo).
+\item El ``tensor de inercia'' de un cuerpo r\'{\i}gido, tomando en cuenta que la energ\'{\i}a cin\'etica de rotaci\'on es un escalar, y que la velocidad angular es un {\em pseudovector} (densidad vectorial).
+\end{enumerate}
+
+\prob Considere la superficie $S$ definida por $z = \cos x \cos y$ en $\mathbb{R}^3$.
+\begin{enumerate}
+\item Parametrice $S$ y construya la métrica inducida.
+\item Calcule el diferencial de área escalar y el área del parche $x,y \in [-\pi,\pi]$.
+\item Calcule la longitud de la curva $x=y$, $z = \cos x \cos y$ desde $x=-\pi$ hasta $x=\pi$.
+\end{enumerate}
+
+\prob En coordenadas esféricas $(r,\theta,\phi)$:
+\begin{enumerate}
+\item Construya la métrica, los factores de escala y el diferencial de volumen.
+\item Calcule los símbolos de Christoffel (conexión de Levi-Civita).
+\item Escriba las expresiones del gradiente, divergencia, rotor y laplaciano en términos de componentes físicas.
+\end{enumerate}
+
+\prob El potencial electrostático de un dipolo $\vec{p} = p\hat{z}$ colocado en el origen, es $\varphi = \dfrac{p}{4\pi\epsilon_0} \dfrac{\cos\theta}{r^2}$ en coordenadas esféricas. Calcule $\vec{E} = -\nabla\varphi$, $\nabla \times \vec{E}$ y $\nabla \cdot \vec{E}$ en esféricas.
+
+\prob Considere coordenadas esferoidales proladas
+\[
+x = a \sinh\mu \sin\nu \cos\phi,\quad y = a \sinh\mu \sin\nu \sin\phi,\quad z = a \cosh\mu \cos\nu.
+\]
+\begin{enumerate}
+\item Muestre que son ortogonales y describa las superficies coordenadas.
+\item Calcule los factores de escala.
+\item Obtenga las fórmulas del gradiente, divergencia, rotor y laplaciano en componentes f\'{\i}sicas.
+\end{enumerate}
+
+\section*{Parte II: Problemas Propuestos (para profundización y repaso)}
+
+\prob Verifique que en coordenadas esféricas se cumple $\nabla(\phi\psi)=\phi\nabla\psi+\psi\nabla\phi$ y $\nabla\times(\phi\vec{F})=(\nabla\phi)\times\vec{F}+\phi(\nabla\times\vec{F})$.
+
+\prob Demuestre que si $A_{ij}$ es antisimétrico y $S_{ij}$ es simétrico, entonces $A_{ij}S^{ij}=0$. Muestre además que todo tensor de rango 2 se descompone en suma de su parte simétrica y antisimétrica.
+
+\prob Muestre que el operador identidad ${\cal I}:V\to V$ corresponde al tensor $I=\delta^i_{\,j}\,\mathbf{e}_i\otimes\mathbf{e}^j$ y calcule $\operatorname{Tr}(I)$.
+
+\prob Dado un tensor $T=T_{ijk}\,\svec{e}^i\otimes\svec{e}^j\otimes\svec{e}^k$, ¿es cierto que $T_{ijk}=T_{\{ijk\}}+T_{[ijk]}$? Justifique.
+
+\prob Demuestre que el producto tensorial de dos densidades tensoriales de pesos $p_1$ y $p_2$ es una densidad tensorial de peso $p_1+p_2$.
+
+\prob El potencial vector de un dipolo magnético $\vec{m}=m\hat{z}$ ubicado en el origen es $\vec{A}=\dfrac{\mu_0 m}{4\pi}\dfrac{1}{r^3}\hat{\phi}$ en coordenadas esféricas. Calcule $\vec{B}=\nabla\times\vec{A}$ y $\nabla\cdot\vec{B}$ en esféricas.
+
+\prob Encuentre los autovalores y autovectores de las matrices de Pauli
+\[
+\sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix},\quad \sigma_y=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\quad \sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+\]
+
+\prob Calcule la métrica inducida en la esfera $r=R$ a partir de la métrica euclídea en $\mathbb{R}^3$ en coordenadas esféricas.
+
+\prob Demuestre que $\nabla \cdot (\vec{F} \times \vec{G}) = (\nabla \times \vec{F}) \cdot \vec{G} - \vec{F} \cdot (\nabla \times \vec{G})$ en coordenadas cartesianas y verifíquelo en esféricas.
+
+\prob Halle la forma canónica de Jordan de $\mat{A}=\begin{pmatrix}1&-1&2\\2&-2&0\\2&-1&3\end{pmatrix}$.
+
+\section{Soluciones}
+
+\subsection*{Problema 1}
+
+\begin{itemize}
+\item Autovalores y autovectores a derecha e izquierdaPrimero, calculamos los autovalores ($\lambda$) resolviendo la ecuación característica $\det(\mat{A} - \lambda\mat{I}) = 0$:
+$$
+\det \begin{pmatrix} 1-\lambda & 2 \\ 0 & 2-\lambda \end{pmatrix} = (1-\lambda)(2-\lambda) = 0
+$$
+Los autovalores son $\lambda_1 = 1$ y $\lambda_2 = 2$.
+Ahora hallamos los autovectores a derecha; los usuales, representados como vectores columna $\mat{v}$, tales que $\mat{A}\mat{v} = \lambda\mat{v}$:
+Para $\lambda_1 = 1$:
+$$
+\begin{pmatrix} 0 & 2 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies y = 0
+$$
+Eligiendo $x=1$, obtenemos el autovector a derecha: $\mat{v}_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$.
+Para $\lambda_2 = 2$:
+$$
+\begin{pmatrix} -1 & 2 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies -x + 2y = 0 \implies x = 2y
+$$
+Eligiendo $y=1$, obtenemos el autovector a derecha: $\mat{v}_2 = \begin{pmatrix} 2 \\ 1 \end{pmatrix}$.
+Luego, hallamos los autovectores a izquierda representados como vectores fila $\mat{u}$, tales que $\mat{u}\mat{A} = \lambda\mat{u}$: 
+Para $\lambda_1 = 1$:
+$$
+\begin{pmatrix} u_x & u_y \end{pmatrix} \begin{pmatrix} 0 & 2 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 0 \end{pmatrix} \implies 2u_x + u_y = 0 \implies u_y = -2u_x
+$$
+Eligiendo $u_x = 1$, obtenemos el autovector a izquierda: $\mat{u}_1 = \begin{pmatrix} 1 & -2 \end{pmatrix}$.
+Para $\lambda_2 = 2$:
+$$
+\begin{pmatrix} u_x & u_y \end{pmatrix} \begin{pmatrix} -1 & 2 \\ 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 \end{pmatrix} \implies -u_x = 0 \implies u_x = 0
+$$
+Eligiendo $u_y = 1$, obtenemos el autovector a izquierda: $\mat{u}_2 = \begin{pmatrix} 0 & 1 \end{pmatrix}$.
+Nota: Los autovectores a izquierda y derecha asociados a distintos autovalores son ortogonales, y los hemos normalizado de manera tal que $\mat{u}_i \mat{v}_j = \delta_{ij}$. 
+Esto nos facilita el siguiente paso.
+\item Construcción de matrices y verificación.
+Construimos $\mat{V}$ con los autovectores a derecha como columnas, y $\mat{U}$ con los autovectores a izquierda como filas:
+$$
+\mat{V} = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}, \qquad \mat{U} = \begin{pmatrix} 1 & -2 \\ 0 & 1 \end{pmatrix}
+$$
+Verificamos que $\mat{U}\mat{V} = \mat{I}$:
+$$
+\mat{U}\mat{V} = \begin{pmatrix} 1 & -2 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1(1)+(-2)(0) & 1(2)+(-2)(1) \\ 0(1)+1(0) & 0(2)+1(1) \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \mat{I}
+$$
+Esto demuestra que $\mat{U} = \mat{V}^{-1}$.
+Verificamos que $\mat{U}\mat{A}\mat{V}$ es diagonal: 
+Primero calculamos $\mat{A}\mat{V}$:
+$$
+\mat{A}\mat{V} = \begin{pmatrix} 1 & 2 \\ 0 & 2 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 4 \\ 0 & 2 \end{pmatrix}
+$$
+Ahora multiplicamos por $\mat{U}$ por la izquierda:
+$$
+\mat{U}(\mat{A}\mat{V}) = \begin{pmatrix} 1 & -2 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 4 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1(1) + 0 & 1(4) - 2(2) \\ 0 + 0 & 0(4) + 1(2) \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}
+$$
+El resultado es, efectivamente, la matriz diagonal compuesta por los autovalores $\lambda_1 = 1$ y $\lambda_2 = 2$.
+\item Norma espectral de $\mat{A}$.
+La norma espectral de una matriz, también denotada como norma 2, $||\mat{A}||_2$, se define como la raíz cuadrada del mayor autovalor de la matriz $\mat{A}^\text{T}\mat{A}$.
+Calculamos $\mat{A}^\text{T}\mat{A}$:
+$$
+\mat{A}^\text{T}\mat{A} = \begin{pmatrix} 1 & 0 \\ 2 & 2 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 2 \\ 2 & 8 \end{pmatrix}
+$$
+Hallamos los autovalores de esta nueva matriz ($\mu$):
+$$
+\det \begin{pmatrix} 1-\mu & 2 \\ 2 & 8-\mu \end{pmatrix} = (1-\mu)(8-\mu) - 4 = \mu^2 - 9\mu + 8 - 4 = \mu^2 - 9\mu + 4 = 0
+$$
+Usando la fórmula resolvente cuadrática:
+$$
+\mu = \frac{9 \pm \sqrt{81 - 4(1)(4)}}{2} = \frac{9 \pm \sqrt{65}}{2}
+$$
+El mayor autovalor es $\mu_{\text{max}} = \frac{9 + \sqrt{65}}{2}$.
+Por lo tanto, la norma espectral de $\mat{A}$ es:
+$$
+||\mat{A}||_2 = \sqrt{\frac{9 + \sqrt{65}}{2}} \approx 2.92
+$$
+\item Mostrar que $\mat{A}$ no es normal.
+Una matriz es normal si y solo si conmuta con su traspuesta. 
+Es decir, $\mat{A}^\text{T}\mat{A} = \mat{A}\mat{A}^\text{T}$.
+Ya tenemos $\mat{A}^\text{T}\mat{A} = \begin{pmatrix} 1 & 2 \\ 2 & 8 \end{pmatrix}$.
+Ahora calculamos $\mat{A}\mat{A}^\text{T}$:
+$$
+\mat{A}\mat{A}^\text{T} = \begin{pmatrix} 1 & 2 \\ 0 & 2 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 2 & 2 \end{pmatrix} = \begin{pmatrix} 1+4 & 0+4 \\ 0+4 & 0+4 \end{pmatrix} = \begin{pmatrix} 5 & 4 \\ 4 & 4 \end{pmatrix}
+$$
+Como $\mat{A}^\text{T}\mat{A} \neq \mat{A}\mat{A}^\text{T}$, queda demostrado que $\mat{A}$ no es una matriz normal.
+\end{itemize}
+
+\end{document}
+
+
