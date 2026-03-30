@@ -1,0 +1,777 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=50\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Guía 2}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Guía N$^\txt{o}$ 2 -- 2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{Parte I: Problemas Centrales (para desarrollar en clase)}
+
+
+\prob Sea $\mat{A} = \begin{pmatrix} 1 & 2 \\ 0 & 2 \end{pmatrix}$.
+\begin{enumerate}
+\item Halle los autovalores y los correspondientes autovectores a derecha e izquierda.
+\item Construya la matriz~$\mat{U}$ que tiene a los autovectores a izquierda como filas y la martiz~$\mat{V}$ que tiene a los autovectores a derecha como columnas, y verifique que $\mat{U}\mat{V}=\mat{I}$ y que $\mat{U}\mat{A}\mat{V}$ es diagonal.
+\item Halle la norma espectral de~$\mat{A}$.
+\item Muestre que~$\mat{A}$ no es normal.
+\end{enumerate}
+
+\prob Diagonalice la matriz $\mat{A}$, y escriba el vector $\mat{x}$ en la base donde $\mat{A}$ es diagonal, para
+\[
+\mat{A} = \begin{pmatrix} 
+0 & -i & 0 & 0 & 0 \\ 
+i & 0 & 0 & 0 & 0 \\ 
+0 & 0 & 3 & 0 & 0 \\ 
+0 & 0 & 0 & 1 & -i \\ 
+0 & 0 & 0 & i & 1 
+\end{pmatrix}, \qquad 
+\mat{x} = \begin{pmatrix} 1 \\ a \\ i \\ b \\ -1 \end{pmatrix}.
+\]
+
+\prob Halle la forma canónica de Jordan de la matriz
+\[
+\mat{A} = \begin{pmatrix} 
+2 & 1 & 0 & -1 & 3 & 1 \\ 
+0 & 2 & 0 & 0 & 1 & -3 \\ 
+0 & 0 & 2 & 1 & -1 & 0 \\ 
+0 & 0 & 0 & 2 & 1 & -2 \\ 
+0 & 0 & 0 & 0 & 2 & 1 \\ 
+0 & 0 & 0 & 0 & 0 & 2 
+\end{pmatrix}.
+\]
+
+\prob Suponga que $\mat{A}$ tiene una descomposición de Schur $\mat{A}=\mat{UTU}^{\dagger}$.
+\begin{enumerate}
+\item Muestre que para cualquier polinomio $p$ vale que $p(\mat{A})=\mat{U}p(\mat{T})\mat{U}^{\dagger}$.
+\item Discuta porqué calcular $p(\mat{T})$ es más fácil que calcular $p(\mat{A})$. ?`Cómo luce $p(\mat{T})$?
+\item Si $\mat{A}$ es normal, es decir si $\mat{A}^{\dagger}\mat{A}=\mat{AA}^{\dagger}$, muestre que $\mat{T}$ es diagonal y que $\mat{A}$ es unitariamente diagonalizable. Muestre también que una matriz puede ser diagonalizable sin ser normal. 
+\end{enumerate}
+
+\prob Demuestre las siguientes identidades vectoriales en coordenadas cartesianas:
+\begin{enumerate}
+\item $\nabla(\phi\psi) = \phi\nabla\psi + \psi\nabla\phi$;
+\item $\nabla \times (\phi\vec{F}) = (\nabla\phi) \times \vec{F} + \phi(\nabla \times \vec{F})$;
+\item $\nabla \cdot (\nabla \times \vec{F}) = 0$;
+\item $\nabla \times (\nabla \times \vec{F}) = \nabla(\nabla \cdot \vec{F}) - \nabla^2 \vec{F}$.
+\end{enumerate}
+
+\prob Considere el espacio $T^0_2$ de tensores dos veces covariantes sobre $V$ ($\dim(V)=3$), y los subespacios $S$ de tensores simétricos y $A$ de tensores antisimétricos. 
+\begin{enumerate}
+\item Proponga una base para $T^0_2$ en términos de la base $\{\svec{e}^i\}$ de $V^*$, y escriba explícitamente sus elementos.
+\item Escriba explícitamente los elementos de las correspondientes bases de $S$ y $A$. ?`Cuántos elementos tiene cada una?
+\end{enumerate}
+
+\prob Muestre que en coordenadas arbitrarias
+\begin{equation*}
+\epsilon^{ijk}\epsilon_{klm} = 
+\delta\ud{i}{l}\delta\ud{j}{m} - \delta\ud{i}{m}\delta\ud{j}{l} \, .
+\end{equation*}
+Ayuda: muestre primero que en coordenadas Cartesianas ortonormales, donde los \'indices pueden subirse y bajarse arbitrariamente, $\epsilon_{ijk}\epsilon_{klm} = \delta_{il}\delta_{jm} - \delta_{im}\delta_{jl}$, usando todas las simetr\'{\i}as disponibles para trabajar menos; luego suba los \'{\i}ndices que correspondan, transforme a coordenadas arbitrarias y verifique la cancelaci\'on de pesos en el lado izquierdo.
+
+\prob Determine el caracter tensorial (rango, tipo y peso) de las siguientes entidades:
+\begin{enumerate}
+\item La densidad de carga el\'ectrica de un cuerpo extenso, tomando en cuenta que la carga el\'ectrica total es un escalar.
+\item La densidad de masa de un cuerpo extenso, tomando en cuenta que la masa total es un escalar.
+\item El momento cuadrupolar el\'ectrico de un cuerpo puntual, tomando en cuenta que la energ\'{\i}a electrost\'atica de un cuadrupolo es un escalar, y que el campo el\'ectrico es un vector (determine su tipo).
+\item El ``tensor de inercia'' de un cuerpo r\'{\i}gido, tomando en cuenta que la energ\'{\i}a cin\'etica de rotaci\'on es un escalar, y que la velocidad angular es un {\em pseudovector} (densidad vectorial).
+\end{enumerate}
+
+\prob Considere la superficie $S$ definida por $z = \cos x \cos y$ en $\mathbb{R}^3$.
+\begin{enumerate}
+\item Parametrice $S$ y construya la métrica inducida.
+\item Calcule el diferencial de área escalar y el área del parche $x,y \in [-\pi,\pi]$.
+\item Calcule la longitud de la curva $x=y$, $z = \cos x \cos y$ desde $x=-\pi$ hasta $x=\pi$.
+\end{enumerate}
+
+\prob En coordenadas esféricas $(r,\theta,\phi)$:
+\begin{enumerate}
+\item Construya la métrica, los factores de escala y el diferencial de volumen.
+\item Calcule los símbolos de Christoffel (conexión de Levi-Civita).
+\item Escriba las expresiones del gradiente, divergencia, rotor y laplaciano en términos de componentes físicas.
+\end{enumerate}
+
+\prob El potencial electrostático de un dipolo $\vec{p} = p\hat{z}$ colocado en el origen, es $\varphi = \dfrac{p}{4\pi\epsilon_0} \dfrac{\cos\theta}{r^2}$ en coordenadas esféricas. Calcule $\vec{E} = -\nabla\varphi$, $\nabla \times \vec{E}$ y $\nabla \cdot \vec{E}$ en esféricas.
+
+\prob Considere coordenadas esferoidales proladas
+\[
+x = a \sinh\mu \sin\nu \cos\phi,\quad y = a \sinh\mu \sin\nu \sin\phi,\quad z = a \cosh\mu \cos\nu.
+\]
+\begin{enumerate}
+\item Muestre que son ortogonales y describa las superficies coordenadas.
+\item Calcule los factores de escala.
+\item Obtenga las fórmulas del gradiente, divergencia, rotor y laplaciano en componentes f\'{\i}sicas.
+\end{enumerate}
+
+
+
+\section*{Parte II: Problemas Propuestos (para profundización y repaso)}
+
+\prob Verifique que en coordenadas esféricas se cumple $\nabla(\phi\psi)=\phi\nabla\psi+\psi\nabla\phi$ y $\nabla\times(\phi\vec{F})=(\nabla\phi)\times\vec{F}+\phi(\nabla\times\vec{F})$.
+
+\prob Demuestre que si $A_{ij}$ es antisimétrico y $S_{ij}$ es simétrico, entonces $A_{ij}S^{ij}=0$. Muestre además que todo tensor de rango 2 se descompone en suma de su parte simétrica y antisimétrica.
+
+\prob Muestre que el operador identidad ${\cal I}:V\to V$ corresponde al tensor $I=\delta^i_{\,j}\,\mathbf{e}_i\otimes\mathbf{e}^j$ y calcule $\operatorname{Tr}(I)$.
+
+\prob Dado un tensor $T=T_{ijk}\,\svec{e}^i\otimes\svec{e}^j\otimes\svec{e}^k$, ¿es cierto que $T_{ijk}=T_{\{ijk\}}+T_{[ijk]}$? Justifique.
+
+\prob Demuestre que el producto tensorial de dos densidades tensoriales de pesos $p_1$ y $p_2$ es una densidad tensorial de peso $p_1+p_2$.
+
+\prob El potencial vector de un dipolo magnético $\vec{m}=m\hat{z}$ ubicado en el origen es $\vec{A}=\dfrac{\mu_0 m}{4\pi}\dfrac{1}{r^3}\hat{\phi}$ en coordenadas esféricas. Calcule $\vec{B}=\nabla\times\vec{A}$ y $\nabla\cdot\vec{B}$ en esféricas.
+
+\prob Encuentre los autovalores y autovectores de las matrices de Pauli
+\[
+\sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix},\quad \sigma_y=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\quad \sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+\]
+
+\prob Calcule la métrica inducida en la esfera $r=R$ a partir de la métrica euclídea en $\mathbb{R}^3$ en coordenadas esféricas.
+
+\prob Demuestre que $\nabla \cdot (\vec{F} \times \vec{G}) = (\nabla \times \vec{F}) \cdot \vec{G} - \vec{F} \cdot (\nabla \times \vec{G})$ en coordenadas cartesianas y verifíquelo en esféricas.
+
+\prob Halle la forma canónica de Jordan de $\mat{A}=\begin{pmatrix}1&-1&2\\2&-2&0\\2&-1&3\end{pmatrix}$.
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Soluciones}
+
+\subsection*{Problema 1}
+
+\begin{itemize}
+\item Autovalores y autovectores a derecha e izquierdaPrimero, calculamos los autovalores ($\lambda$) resolviendo la ecuación característica $\det(\mat{A} - \lambda\mat{I}) = 0$:
+$$
+\det \begin{pmatrix} 1-\lambda & 2 \\ 0 & 2-\lambda \end{pmatrix} = (1-\lambda)(2-\lambda) = 0
+$$
+Los autovalores son $\lambda_1 = 1$ y $\lambda_2 = 2$.
+Ahora hallamos los autovectores a derecha; los usuales, representados como vectores columna $\mat{v}$, tales que $\mat{A}\mat{v} = \lambda\mat{v}$:
+Para $\lambda_1 = 1$:
+$$
+\begin{pmatrix} 0 & 2 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies y = 0
+$$
+Eligiendo $x=1$, obtenemos el autovector a derecha: $\mat{v}_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$.
+Para $\lambda_2 = 2$:
+$$
+\begin{pmatrix} -1 & 2 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies -x + 2y = 0 \implies x = 2y
+$$
+Eligiendo $y=1$, obtenemos el autovector a derecha: $\mat{v}_2 = \begin{pmatrix} 2 \\ 1 \end{pmatrix}$.
+Luego, hallamos los autovectores a izquierda representados como vectores fila $\mat{u}$, tales que $\mat{u}\mat{A} = \lambda\mat{u}$: 
+Para $\lambda_1 = 1$:
+$$
+\begin{pmatrix} u_x & u_y \end{pmatrix} \begin{pmatrix} 0 & 2 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 0 \end{pmatrix} \implies 2u_x + u_y = 0 \implies u_y = -2u_x
+$$
+Eligiendo $u_x = 1$, obtenemos el autovector a izquierda: $\mat{u}_1 = \begin{pmatrix} 1 & -2 \end{pmatrix}$.
+Para $\lambda_2 = 2$:
+$$
+\begin{pmatrix} u_x & u_y \end{pmatrix} \begin{pmatrix} -1 & 2 \\ 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 \end{pmatrix} \implies -u_x = 0 \implies u_x = 0
+$$
+Eligiendo $u_y = 1$, obtenemos el autovector a izquierda: $\mat{u}_2 = \begin{pmatrix} 0 & 1 \end{pmatrix}$.
+Nota: Los autovectores a izquierda y derecha asociados a distintos autovalores son ortogonales, y los hemos normalizado de manera tal que $\mat{u}_i \mat{v}_j = \delta_{ij}$. 
+Esto nos facilita el siguiente paso.
+\item Construcción de matrices y verificación.
+Construimos $\mat{V}$ con los autovectores a derecha como columnas, y $\mat{U}$ con los autovectores a izquierda como filas:
+$$
+\mat{V} = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}, \qquad \mat{U} = \begin{pmatrix} 1 & -2 \\ 0 & 1 \end{pmatrix}
+$$
+Verificamos que $\mat{U}\mat{V} = \mat{I}$:
+$$
+\mat{U}\mat{V} = \begin{pmatrix} 1 & -2 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1(1)+(-2)(0) & 1(2)+(-2)(1) \\ 0(1)+1(0) & 0(2)+1(1) \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \mat{I}
+$$
+Esto demuestra que $\mat{U} = \mat{V}^{-1}$.
+Verificamos que $\mat{U}\mat{A}\mat{V}$ es diagonal: 
+Primero calculamos $\mat{A}\mat{V}$:
+$$
+\mat{A}\mat{V} = \begin{pmatrix} 1 & 2 \\ 0 & 2 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 4 \\ 0 & 2 \end{pmatrix}
+$$
+Ahora multiplicamos por $\mat{U}$ por la izquierda:
+$$
+\mat{U}(\mat{A}\mat{V}) = \begin{pmatrix} 1 & -2 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 4 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1(1) + 0 & 1(4) - 2(2) \\ 0 + 0 & 0(4) + 1(2) \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}
+$$
+El resultado es, efectivamente, la matriz diagonal compuesta por los autovalores $\lambda_1 = 1$ y $\lambda_2 = 2$.
+\item Norma espectral de $\mat{A}$.
+La norma espectral de una matriz, también denotada como norma 2, $||\mat{A}||_2$, se define como la raíz cuadrada del mayor autovalor de la matriz $\mat{A}^\text{T}\mat{A}$.
+Calculamos $\mat{A}^\text{T}\mat{A}$:
+$$
+\mat{A}^\text{T}\mat{A} = \begin{pmatrix} 1 & 0 \\ 2 & 2 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 2 \\ 2 & 8 \end{pmatrix}
+$$
+Hallamos los autovalores de esta nueva matriz ($\mu$):
+$$
+\det \begin{pmatrix} 1-\mu & 2 \\ 2 & 8-\mu \end{pmatrix} = (1-\mu)(8-\mu) - 4 = \mu^2 - 9\mu + 8 - 4 = \mu^2 - 9\mu + 4 = 0
+$$
+Usando la fórmula resolvente cuadrática:
+$$
+\mu = \frac{9 \pm \sqrt{81 - 4(1)(4)}}{2} = \frac{9 \pm \sqrt{65}}{2}
+$$
+El mayor autovalor es $\mu_{\text{max}} = \frac{9 + \sqrt{65}}{2}$.
+Por lo tanto, la norma espectral de $\mat{A}$ es:
+$$
+||\mat{A}||_2 = \sqrt{\frac{9 + \sqrt{65}}{2}} \approx 2.92
+$$
+\item Mostrar que $\mat{A}$ no es normal.
+Una matriz es normal si y solo si conmuta con su traspuesta. 
+Es decir, $\mat{A}^\text{T}\mat{A} = \mat{A}\mat{A}^\text{T}$.
+Ya tenemos $\mat{A}^\text{T}\mat{A} = \begin{pmatrix} 1 & 2 \\ 2 & 8 \end{pmatrix}$.
+Ahora calculamos $\mat{A}\mat{A}^\text{T}$:
+$$
+\mat{A}\mat{A}^\text{T} = \begin{pmatrix} 1 & 2 \\ 0 & 2 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 2 & 2 \end{pmatrix} = \begin{pmatrix} 1+4 & 0+4 \\ 0+4 & 0+4 \end{pmatrix} = \begin{pmatrix} 5 & 4 \\ 4 & 4 \end{pmatrix}
+$$
+Como $\mat{A}^\text{T}\mat{A} \neq \mat{A}\mat{A}^\text{T}$, queda demostrado que $\mat{A}$ no es una matriz normal.
+\end{itemize}
+
+\subsection*{Problema 2}
+\begin{itemize}
+\item Diagonalización de la matriz $\mat{A}$.
+Notemos que la matriz $\mat{A}$ es hermítica ($\mat{A}^\dagger = \mat{A}$) y tiene una estructura diagonal por bloques:
+$$
+\mat{A} = \begin{pmatrix} \mat{A}_1 & \mathbf{0} & \mathbf{0} \\ \mathbf{0} & \mat{A}_2 & \mathbf{0} \\ \mathbf{0} & \mathbf{0} & \mat{A}_3 \end{pmatrix}
+$$
+Podemos diagonalizar cada bloque por separado para hallar los 5 autovalores y autovectores.
+Bloque 1 ($2\times 2$ superior izquierdo): 
+$$
+\mat{A}_1 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}
+$$
+¡Es la matriz de Pauli $\sigma_y$!.
+Ecuación característica: 
+$$
+\lambda^2 - 1 = 0 \implies \lambda_1 = 1, \ \lambda_2 = -1
+$$
+Autovector para $\lambda_1 = 1$: 
+$$
+\begin{pmatrix} -1 & -i \\ i & -1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies -x - iy = 0 \implies x = -iy
+$$
+Vector normalizado: 
+$$
+\mat{v}_1 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ i \end{pmatrix}
+$$
+Autovector para $\lambda_2 = -1$: 
+$$
+\begin{pmatrix} 1 & -i \\ i & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies x - iy = 0 \implies x = iy
+$$
+Vector normalizado: 
+$$
+\mat{v}_2 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -i \end{pmatrix}
+$$
+Bloque 2 ($1\times 1$ central): 
+$$
+\mat{A}_2 = (3)
+$$
+Es trivial. $\lambda_3 = 3$, con autovector $\mat{v}_3 = (1)$.
+Bloque 3 ($2\times 2$ inferior derecho): 
+$$
+\mat{A}_3 = \begin{pmatrix} 1 & -i \\ i & 1 \end{pmatrix}
+$$
+Ecuación característica: 
+$$
+(1-\lambda)^2 - 1 = 0 \implies 1-\lambda = \pm 1 \implies \lambda_4 = 0, \ \lambda_5 = 2
+$$
+Autovector para $\lambda_4 = 0$: 
+$$
+\begin{pmatrix} 1 & -i \\ i & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies x = iy
+$$
+Vector normalizado: 
+$$
+\mat{v}_4 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -i \end{pmatrix}
+$$
+Autovector para $\lambda_5 = 2$: 
+$$
+\begin{pmatrix} -1 & -i \\ i & -1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies x = -iy
+$$
+Vector normalizado: 
+$$
+\mat{v}_5 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ i \end{pmatrix}
+$$
+Por lo tanto, la matriz diagonal $\mat{D}$, con los autovalores en la diagonal principal, es:
+$$
+\mat{D} = \text{diag}(1, -1, 3, 0, 2)
+$$
+\item Expresar el vector $\mat{x}$ en la nueva base.
+Extrapolando los vectores hallados a $\mathbb{C}^5$, nuestra nueva base ortonormal $B' = \{\mat{u}_1, \mat{u}_2, \mat{u}_3, \mat{u}_4, \mat{u}_5\}$ es:
+$\mat{u}_1 = \frac{1}{\sqrt{2}}(1, i, 0, 0, 0)^\text{T}$
+$\mat{u}_2 = \frac{1}{\sqrt{2}}(1, -i, 0, 0, 0)^\text{T}$
+$\mat{u}_3 = (0, 0, 1, 0, 0)^\text{T}$
+$\mat{u}_4 = \frac{1}{\sqrt{2}}(0, 0, 0, 1, -i)^\text{T}$
+$\mat{u}_5 = \frac{1}{\sqrt{2}}(0, 0, 0, 1, i)^\text{T}$.
+Como la base es ortonormal (porque $\mat{A}$ es hermítica), las componentes $c_j$ del vector $\mat{x}$ en esta nueva base se calculan simplemente proyectando con el producto interno canónico complejo: 
+$$c_j = \mat{u}_j^\dagger \mat{x}$$
+$$c_1 = \frac{1}{\sqrt{2}} (1, -i, 0, 0, 0) \begin{pmatrix} 1 \\ a \\ i \\ b \\ -1 \end{pmatrix} = \frac{1}{\sqrt{2}} (1 - ia)$$
+$$c_2 = \frac{1}{\sqrt{2}} (1, i, 0, 0, 0) \begin{pmatrix} 1 \\ a \\ i \\ b \\ -1 \end{pmatrix} = \frac{1}{\sqrt{2}} (1 + ia)$$
+$$c_3 = (0, 0, 1, 0, 0) \begin{pmatrix} 1 \\ a \\ i \\ b \\ -1 \end{pmatrix} = i$$
+$$c_4 = \frac{1}{\sqrt{2}} (0, 0, 0, 1, i) \begin{pmatrix} 1 \\ a \\ i \\ b \\ -1 \end{pmatrix} = \frac{1}{\sqrt{2}} (b - i)$$
+$$c_5 = \frac{1}{\sqrt{2}} (0, 0, 0, 1, -i) \begin{pmatrix} 1 \\ a \\ i \\ b \\ -1 \end{pmatrix} = \frac{1}{\sqrt{2}} (b + i)$$
+El vector $\mat{x}$ escrito en la base donde $\mat{A}$ es diagonal es la matriz columna de estas componentes:
+$$
+\mat{x}' = \begin{pmatrix} \frac{1}{\sqrt{2}}(1 - ia) \\ \frac{1}{\sqrt{2}}(1 + ia) \\ i \\ \frac{1}{\sqrt{2}}(b - i) \\ \frac{1}{\sqrt{2}}(b + i) \end{pmatrix}
+$$
+\end{itemize}
+
+\subsection*{Problema 3}
+
+El objetivo es encontrar la forma canónica de Jordan para la matriz dada:
+
+$$A = \begin{pmatrix} 2 & 1 & 0 & -1 & 3 & 1 \\ 0 & 2 & 0 & 0 & 1 & -3 \\ 0 & 0 & 2 & 1 & -1 & 0 \\ 0 & 0 & 0 & 2 & 1 & -2 \\ 0 & 0 & 0 & 0 & 2 & 1 \\ 0 & 0 & 0 & 0 & 0 & 2 \end{pmatrix}$$
+
+\begin{itemize}
+\item Identificación de autovalores:
+Al ser $A$ una matriz triangular superior, sus autovalores se encuentran en la diagonal. Vemos que el único autovalor es $\lambda = 2$, con multiplicidad algebraica $\mu = 6$.
+
+\item Análisis de la matriz nilpotente $N = A - 2$:
+Para determinar el tamaño y cantidad de los bloques de Jordan, necesitamos estudiar el núcleo (o *kernel*) de las potencias de la matriz $N$:
+
+$$N = \begin{pmatrix} 0 & 1 & 0 & -1 & 3 & 1 \\ 0 & 0 & 0 & 0 & 1 & -3 \\ 0 & 0 & 0 & 1 & -1 & 0 \\ 0 & 0 & 0 & 0 & 1 & -2 \\ 0 & 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 & 0 & 0 \end{pmatrix}$$
+
+Calculamos el rango de $N$ viendo sus filas linealmente independientes. Las filas 1, 2, 3 y 5 son claramente independientes, mientras que la fila 4 es una combinación lineal de la 2 y la 5. 
+Por lo tanto, $\text{Rango}(N) = 4$. 
+La nulidad (dimensión del núcleo) nos da la cantidad de bloques de Jordan: $6 - 4 = 2$ bloques.
+
+\item Potencias sucesivas de $N$:
+Ahora calculamos $N^2$:
+$$N^2 = \begin{pmatrix} 0 & 0 & 0 & 0 & -1 & 2 \\ 0 & 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 & 1 & -3 \\ 0 & 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 \end{pmatrix}$$
+Analizando las filas, solo hay 2 linealmente independientes (la 2 y la 3, por ejemplo). $\text{Rango}(N^2) = 2 \implies \text{Nulidad}(N^2) = 4$.
+
+Calculamos $N^3$:
+$$N^3 = \begin{pmatrix} 0 & 0 & 0 & 0 & 0 & -1 \\ 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 \end{pmatrix}$$
+Evidentemente, el $\text{Rango}(N^3) = 1 \implies \text{Nulidad}(N^3) = 5$.
+
+Calculamos $N^4$:
+$$N^4 = 0 \implies \text{Rango}(N^4) = 0 \implies \text{Nulidad}(N^4) = 6.$$
+
+\item Estructura de los bloques de Jordan:
+Sea $d_k = \text{Nulidad}(N^k) - \text{Nulidad}(N^{k-1})$ la cantidad de bloques de tamaño mayor o igual a $k$.
+* $d_1 = 2 - 0 = 2$
+* $d_2 = 4 - 2 = 2$
+* $d_3 = 5 - 4 = 1$
+* $d_4 = 6 - 5 = 1$
+* $d_5 = 6 - 6 = 0$
+
+La cantidad de bloques de tamaño exactamente $k$ es $m_k = d_k - d_{k+1}$:
+* Bloques de tamaño 4: $m_4 = 1 - 0 = 1$
+* Bloques de tamaño 3: $m_3 = 1 - 1 = 0$
+* Bloques de tamaño 2: $m_2 = 2 - 1 = 1$
+* Bloques de tamaño 1: $m_1 = 2 - 2 = 0$
+
+\end{itemize}
+
+En conclusión, tenemos un bloque de $4 \times 4$ y un bloque de $2 \times 2$. La forma canónica de Jordan es:
+
+$$J = \begin{pmatrix} 2 & 1 & 0 & 0 & 0 & 0 \\ 0 & 2 & 1 & 0 & 0 & 0 \\ 0 & 0 & 2 & 1 & 0 & 0 \\ 0 & 0 & 0 & 2 & 0 & 0 \\ 0 & 0 & 0 & 0 & 2 & 1 \\ 0 & 0 & 0 & 0 & 0 & 2 \end{pmatrix}$$
+
+\subsection*{Problema 4}
+
+Partimos de que $A$ tiene una descomposición de Schur $A = U T U^\dagger$.
+
+\begin{itemize}
+\item[a)] Mostrar que $p(A) = U p(T) U^\dagger$ para cualquier polinomio $p$.
+
+\begin{itemize}
+\item Caso bas: Para $k = 0$, $A^0 = I$. Como $U$ es unitaria ($U U^\dagger = I$), tenemos $U T^0 U^\dagger = U I U^\dagger = I$.
+\item Potencia k-ésima: Calculamos $A^k$:
+    $$A^k = (U T U^\dagger)^k = (U T U^\dagger)(U T U^\dagger) \dots (U T U^\dagger)$$
+    Por la propiedad unitaria, los términos internos $U^\dagger U$ se cancelan (son iguales a $I$), resultando en:
+    $$A^k = U T^k U^\dagger$$
+\item Generalización a polinomios: Sea $p(x) = \sum_{k=0}^n c_k x^k$. Evaluando en $A$:
+    $$p(A) = \sum_{k=0}^n c_k A^k = \sum_{k=0}^n c_k (U T^k U^\dagger) = U \left( \sum_{k=0}^n c_k T^k \right) U^\dagger = U p(T) U^\dagger$$
+    Lo cual demuestra la proposición.
+\end{itemize}
+
+\item[b)] ¿Por qué calcular $p(T)$ es más fácil que calcular $p(A)$ y cómo luce $p(T)$?
+
+\begin{itemize}
+\item ¿Por qué es más fácil? En la descomposición de Schur, $T$ es una matriz triangular superior. Calcular potencias (y multiplicaciones) de matrices triangulares requiere muchas menos operaciones aritméticas (flops) que operar con matrices llenas como $A$. Además, las matrices triangulares son numéricamente más estables para este tipo de operaciones.
+\item ¿Cómo luce $p(T)$? La matriz $p(T)$ será también una matriz triangular superior. Una propiedad clave de las matrices triangulares es que los elementos de su diagonal son los autovalores de la matriz original (es decir, $T_{ii} = \lambda_i$). Al aplicar el polinomio, los elementos de la diagonal de $p(T)$ serán simplemente las evaluaciones escalares $p(\lambda_i)$.
+\end{itemize}
+
+\item[c)] Matrices normales y diagonalización.
+
+\begin{itemize}
+\item Mostrar que si $A$ es normal, $T$ es diagonal y $A$ es unitariamente diagonalizable.
+Sabiendo que $A$ es normal, se cumple $A^\dagger A = A A^\dagger$. Reemplazamos la descomposición de Schur:
+$$A^\dagger A = (U T U^\dagger)^\dagger (U T U^\dagger) = U T^\dagger U^\dagger U T U^\dagger = U T^\dagger T U^\dagger$$
+$$A A^\dagger = (U T U^\dagger) (U T U^\dagger)^\dagger = U T U^\dagger U T^\dagger U^\dagger = U T T^\dagger U^\dagger$$
+Igualando ambas expresiones y pre/post-multiplicando por $U^\dagger$ y $U$ respectivamente, llegamos a:
+$$T^\dagger T = T T^\dagger$$
+Esto significa que $T$ también es normal. El único modo de que una matriz triangular superior conmute con su conjugada transpuesta (que es triangular inferior) es que sus elementos fuera de la diagonal sean estrictamente nulos. Por lo tanto, $T$ es diagonal.
+Como $T$ es diagonal y $U$ es unitaria, la descomposición de Schur $A = U T U^\dagger$ resulta ser, por definición, una diagonalización unitaria.
+
+\item Mostrar que una matriz puede ser diagonalizable sin ser normal.
+Para demostrarlo, basta con un contraejemplo sencillo. Consideremos la matriz:
+$$M = \begin{pmatrix} 1 & 1 \\ 0 & 2 \end{pmatrix}$$
+\begin{itemize}
+\item Es diagonalizable: Sus autovalores son 1 y 2 (están en la diagonal). Al ser distintos, la matriz tiene autovectores linealmente independientes y, por ende, es diagonalizable.
+\item No es normal. Calculamos los productos:
+    $$M^\dagger M = \begin{pmatrix} 1 & 0 \\ 1 & 2 \end{pmatrix} \begin{pmatrix} 1 & 1 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ 1 & 5 \end{pmatrix}$$
+    $$M M^\dagger = \begin{pmatrix} 1 & 1 \\ 0 & 2 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 1 & 2 \end{pmatrix} = \begin{pmatrix} 2 & 2 \\ 2 & 4 \end{pmatrix}$$
+    Como $M^\dagger M \neq M M^\dagger$, la matriz no es normal.
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\subsection*{Problema 5}
+
+Lo más elegante e instructiva es utilizar la notación de índices (con el convenio de suma de Einstein) y las propiedades del símbolo de Levi-Civita $\epsilon_{ijk}$ y la delta de Kronecker $\delta_{ij}$.
+
+Trabajaremos en coordenadas cartesianas, donde el operador nabla en su componente $i$-ésima se escribe como $\nabla_i = \partial_i = \frac{\partial}{\partial x_i}$.
+
+\begin{itemize}
+\item[a)] Demostrar que $\nabla(\phi\psi) = \phi\nabla\psi + \psi\nabla\phi$.
+
+Evaluamos la componente $i$-ésima del gradiente aplicado al producto de dos campos escalares $\phi$ y $\psi$:
+$$[\nabla(\phi\psi)]_i = \partial_i (\phi\psi)$$
+
+Aplicando la regla del producto habitual para derivadas parciales:
+$$\partial_i (\phi\psi) = (\partial_i \phi)\psi + \phi(\partial_i \psi)$$
+
+Reordenando los términos para que coincidan con la notación vectorial estándar:
+$$[\nabla(\phi\psi)]_i = \psi (\partial_i \phi) + \phi (\partial_i \psi) = \psi [\nabla\phi]_i + \phi [\nabla\psi]_i$$
+
+Como esta igualdad se cumple para cada componente $i$, la identidad vectorial queda demostrada:
+$$\nabla(\phi\psi) = \psi\nabla\phi + \phi\nabla\psi$$
+
+\item[b)] Demostrar que $\nabla \times (\phi\vec{F}) = (\nabla\phi) \times \vec{F} + \phi(\nabla \times \vec{F})$.
+
+Escribimos la componente $i$-ésima del rotor usando el símbolo de Levi-Civita:
+$$[\nabla \times (\phi\vec{F})]_i = \epsilon_{ijk} \partial_j (\phi F_k)$$
+
+Nuevamente, aplicamos la regla del producto para la derivada $\partial_j$:
+$$\epsilon_{ijk} \partial_j (\phi F_k) = \epsilon_{ijk} [(\partial_j \phi) F_k + \phi (\partial_j F_k)]$$
+
+Distribuimos el símbolo $\epsilon_{ijk}$:
+$$= \epsilon_{ijk} (\partial_j \phi) F_k + \epsilon_{ijk} \phi (\partial_j F_k)$$
+$$= \epsilon_{ijk} (\partial_j \phi) F_k + \phi [\epsilon_{ijk} \partial_j F_k]$$
+
+Reconocemos las expresiones para el producto cruz y el rotor en notación de índices:
+\begin{itemize}
+\item $\epsilon_{ijk} (\partial_j \phi) F_k$ es la componente $i$ de $(\nabla\phi) \times \vec{F}$.
+\item $\epsilon_{ijk} \partial_j F_k$ es la componente $i$ de $\nabla \times \vec{F}$.
+\end{itemize}
+
+Por lo tanto:
+$$[\nabla \times (\phi\vec{F})]_i = [(\nabla\phi) \times \vec{F}]_i + \phi [\nabla \times \vec{F}]_i$$
+Lo que demuestra la identidad vectorial.
+
+\item[c)] Demostrar que $\nabla \cdot (\nabla \times \vec{F}) = 0$.
+
+Escribimos la divergencia de un rotor en notación de índices:
+$$\nabla \cdot (\nabla \times \vec{F}) = \partial_i [\nabla \times \vec{F}]_i = \partial_i (\epsilon_{ijk} \partial_j F_k)$$
+
+Como las derivadas parciales conmutan (Teorema de Clairaut/Schwarz para campos suficientemente suaves), el operador $\partial_i \partial_j$ es simétrico respecto al intercambio de los índices $i$ y $j$.
+Por otro lado, el símbolo de Levi-Civita $\epsilon_{ijk}$ es antisimétrico respecto al intercambio de los mismos índices ($\epsilon_{ijk} = -\epsilon_{jik}$).
+
+$$\partial_i \partial_j F_k \epsilon_{ijk} = \frac{1}{2} (\partial_i \partial_j + \partial_j \partial_i) F_k \epsilon_{ijk} = 0$$
+
+La contracción de un tensor simétrico con uno antisimétrico siempre da cero. Por lo tanto:
+$$\nabla \cdot (\nabla \times \vec{F}) = 0$$
+
+\item[d)] Demostrar que $\nabla \times (\nabla \times \vec{F}) = \nabla(\nabla \cdot \vec{F}) - \nabla^2 \vec{F}$.
+
+Evaluamos la componente $i$-ésima de este ``rotor del rotor'':
+$$[\nabla \times (\nabla \times \vec{F})]_i = \epsilon_{ijk} \partial_j [\nabla \times \vec{F}]_k$$
+
+Reemplazamos la componente $k$ del rotor interior por su definición con un nuevo par de índices mudos (por ejemplo, $l$ y $m$):
+$$= \epsilon_{ijk} \partial_j (\epsilon_{klm} \partial_l F_m)$$
+
+Agrupamos los símbolos de Levi-Civita. Recordando que $\epsilon_{klm} = \epsilon_{lmk}$ (permutación cíclica):
+$$= \epsilon_{ijk} \epsilon_{klm} \partial_j \partial_l F_m = \epsilon_{kij} \epsilon_{klm} \partial_j \partial_l F_m$$
+
+Utilizamos la fundamental identidad de contracción del producto de dos Levi-Civita:
+$$\epsilon_{kij} \epsilon_{klm} = \delta_{il} \delta_{jm} - \delta_{im} \delta_{jl}$$
+
+Sustituimos esto en nuestra ecuación:
+$$= (\delta_{il} \delta_{jm} - \delta_{im} \delta_{jl}) \partial_j \partial_l F_m$$
+
+Distribuimos y aplicamos las deltas de Kronecker (que simplemente renombran los índices):
+$$= \delta_{il} \delta_{jm} \partial_j \partial_l F_m - \delta_{im} \delta_{jl} \partial_j \partial_l F_m$$
+$$= \partial_j \partial_i F_j - \partial_j \partial_j F_i$$
+
+Ahora, reordenamos las derivadas en el primer término (conmutan) e identificamos las operaciones vectoriales en ambos términos:
+\begin{itemize}
+\item $\partial_j \partial_i F_j = \partial_i (\partial_j F_j) = \partial_i (\nabla \cdot \vec{F}) = [\nabla(\nabla \cdot \vec{F})]_i$
+\item $\partial_j \partial_j F_i = \nabla^2 F_i = [\nabla^2 \vec{F}]_i$
+\end{itemize}
+
+Ensamblando el resultado final:
+$$[\nabla \times (\nabla \times \vec{F})]_i = [\nabla(\nabla \cdot \vec{F})]_i - [\nabla^2 \vec{F}]_i$$
+Demostrando así la identidad deseada.
+
+\end{itemize}
+
+\subsection*{Problema 6}
+
+
+El espacio $T_2^0$  es el espacio de los tensores dos veces covariantes (es decir, tensores de tipo $(0,2)$) sobre un espacio vectorial $V$ de dimensión 3. Estos tensores toman dos vectores de $V$ y devuelven un escalar, por lo que se construyen a partir del producto tensorial del espacio dual $V^*$.
+
+\begin{itemize}
+\item[a)] Base para $T_2^0$ y sus elementos explícitos.
+
+Dado que el tensor de rango 2 se forma por el producto tensorial de elementos del espacio dual, una base para $T_2^0$ se construye tomando todos los posibles productos tensoriales cruzados de los vectores de la base $\{\vec{e}^i\}$ de $V^*$.
+
+La base del espacio $T_2^0$ está dada por el conjunto:
+$$B = \{ \vec{e}^i \otimes \vec{e}^j \}_{i,j=1}^3$$
+
+Como los índices $i$ y $j$ varían independientemente entre 1 y 3, la dimensión total de este espacio es $3 \times 3 = 9$. Los 9 elementos explícitos de esta base son:
+\begin{enumerate}
+\item $\vec{e}^1 \otimes \vec{e}^1$
+\item $\vec{e}^1 \otimes \vec{e}^2$
+\item $\vec{e}^1 \otimes \vec{e}^3$
+\item $\vec{e}^2 \otimes \vec{e}^1$
+\item $\vec{e}^2 \otimes \vec{e}^2$
+\item $\vec{e}^2 \otimes \vec{e}^3$
+\item $\vec{e}^3 \otimes \vec{e}^1$
+\item $\vec{e}^3 \otimes \vec{e}^2$
+\item $\vec{e}^3 \otimes \vec{e}^3$
+\end{enumerate}
+
+Cualquier tensor $T \in T_2^0$ se puede escribir como una combinación lineal de estos elementos: $T = T_{ij} \vec{e}^i \otimes \vec{e}^j$.
+
+\item[b)] Bases para los subespacios $S$ (simétrico) y $A$ (antisimétrico).
+
+Cualquier tensor de segundo rango se puede descomponer unívocamente en una parte totalmente simétrica y una totalmente antisimétrica. 
+
+\begin{itemize}
+\item Subespacio $S$ (Tensores Simétricos).
+Un tensor es simétrico si sus componentes cumplen $S_{ij} = S_{ji}$. Para construir una base de este subespacio, agrupamos los elementos de la base original en combinaciones lineales simétricas. 
+
+La base de $S$ está formada por los productos tensoriales simétricos (a veces denotados con el producto $\vee$). Los elementos explícitos son:
+\begin{itemize}
+\item Términos diagonales ($i = j$):
+\begin{itemize}
+\item $\vec{e}^1 \otimes \vec{e}^1$
+\item $\vec{e}^2 \otimes \vec{e}^2$
+\item $\vec{e}^3 \otimes \vec{e}^3$
+\end{itemize}  
+\item Términos cruzados simetrizados ($i < j$):
+\begin{itemize}
+\item $\vec{e}^1 \otimes \vec{e}^2 + \vec{e}^2 \otimes \vec{e}^1$
+\item $\vec{e}^1 \otimes \vec{e}^3 + \vec{e}^3 \otimes \vec{e}^1$
+\item $\vec{e}^2 \otimes \vec{e}^3 + \vec{e}^3 \otimes \vec{e}^2$
+\end{itemize}
+\item Cantidad de elementos de $S$: Contando los elementos listados arriba, vemos que la base tiene 6 elementos. En general, para dimensión $n$, la dimensión del subespacio simétrico es $\frac{n(n+1)}{2}$.
+\end{itemize}
+
+\item Subespacio $A$ (Tensores Antisimétricos).
+Un tensor es antisimétrico si sus componentes cumplen $A_{ij} = -A_{ji}$. Para construir esta base, usamos combinaciones lineales antisimétricas de la base original (productos cuña o exteriores, $\wedge$). Notemos que los términos diagonales se anulan al antisimetrizar ($\vec{e}^i \otimes \vec{e}^i - \vec{e}^i \otimes \vec{e}^i = 0$).
+
+Los elementos explícitos de la base de $A$ son exclusivamente los términos cruzados antisimetrizados ($i < j$):
+\begin{itemize}
+\item $\vec{e}^1 \otimes \vec{e}^2 - \vec{e}^2 \otimes \vec{e}^1$
+\item $\vec{e}^1 \otimes \vec{e}^3 - \vec{e}^3 \otimes \vec{e}^1$
+\item $\vec{e}^2 \otimes \vec{e}^3 - \vec{e}^3 \otimes \vec{e}^2$
+\end{itemize}
+
+Cantidad de elementos de $A$: La base tiene 3 elementos. En general, para dimensión $n$, la dimensión del subespacio antisimétrico es $\frac{n(n-1)}{2}$.
+\end{itemize}
+
+Como cierre o comprobación (ideal para mencionarle a los chicos en clase), la suma de las dimensiones de ambos subespacios es directa: $\dim(S) + \dim(A) = 6 + 3 = 9$, lo que recupera exactamente la dimensión del espacio tensorial completo $T_2^0$.
+\end{itemize}
+
+\subsection*{Problema 7}
+
+Se nos pide demostrar que en coordenadas arbitrarias se cumple:
+$$\epsilon^{ijk}\epsilon_{klm} = \delta^i_l\delta^j_m - \delta^i_m\delta^j_l$$
+
+Siguiendo la sugerencia, lo dividiremos en tres pasos lógicos:
+
+\begin{itemize}
+\item Paso 1: Demostración en coordenadas cartesianas ortonormales.
+En coordenadas cartesianas, la métrica es euclídea ($g_{ij} = \delta_{ij}$), por lo que no hay distinción numérica entre índices covariantes y contravariantes. Trabajaremos todo abajo para simplificar. Queremos probar que:
+$$\epsilon_{ijk}\epsilon_{klm} = \delta_{il}\delta_{jm} - \delta_{im}\delta_{jl}$$
+
+Aprovecharemos las simetrías:
+\begin{itemize}
+\item El lado izquierdo (LHS) es antisimétrico frente al intercambio de $i \leftrightarrow j$ (por el primer Levi-Civita) y de $l \leftrightarrow m$ (por el segundo).
+\item El lado derecho (RHS) exhibe exactamente las mismas antisimetrías.
+\end{itemize}
+
+Debido a esto, solo necesitamos analizar los casos fundamentales para los índices $i, j, l, m$:
+\begin{itemize}
+\item Caso A: Índices repetidos en el mismo símbolo (ej. $i = j$).
+    El LHS es trivialmente 0 porque $\epsilon_{iik} = 0$. 
+    El RHS queda $\delta_{il}\delta_{im} - \delta_{im}\delta_{il} = 0$. ¡Coincide!
+\item Caso B: Pares de índices distintos. Para que el LHS sea distinto de cero en la sumatoria sobre $k$, los pares $(i,j)$ y $(l,m)$ deben estar formados por los mismos dos números (los que sobran de $k$). Supongamos, sin pérdida de generalidad, que $\{i,j\} = \{1,2\}$. Esto fuerza a que $k=3$.
+\begin{itemize}
+\item Subcaso B1 ($i=l=1, j=m=2$): 
+
+LHS = $\epsilon_{123}\epsilon_{312}$. 
+
+Por permutación cíclica, $\epsilon_{312} = \epsilon_{123} = 1$. 
+
+\hspace{1cm} LHS = $(1)(1) = 1$.
+        
+\hspace{1cm} RHS = $\delta_{11}\delta_{22} - \delta_{12}\delta_{21} = (1)(1) - (0)(0) = 1$. 
+
+¡Coincide!
+
+\item Subcaso B2 ($i=m=1, j=l=2$):
+
+\hspace{1cm} LHS = $\epsilon_{123}\epsilon_{321}$. 
+
+Como $\epsilon_{321} = -1$, LHS = $(1)(-1) = -1$.
+
+\hspace{1cm} RHS = $\delta_{12}\delta_{21} - \delta_{11}\delta_{22} = (0)(0) - (1)(1) = -1$. 
+
+¡Coincide!
+\end{itemize}
+\end{itemize}
+
+Como comprobamos todos los casos independientes aprovechando las simetrías, la identidad queda demostrada en coordenadas cartesianas.
+
+\item Paso 2: Subir los índices en cartesianas.
+En nuestro sistema cartesiano ortonormal, subir un índice con la métrica (que es la matriz identidad) no altera los valores de las componentes. Es decir, $\delta_{il} = \delta^i_l$ y $\epsilon_{ijk} = \epsilon^{ijk}$. 
+Por lo tanto, la ecuación demostrada en el paso anterior se puede reescribir trivialmente en su forma mixta:
+$$
+\epsilon^{ijk}\epsilon_{klm} = \delta^i_l\delta^j_m - \delta^i_m\delta^j_l
+$$
+
+\item Paso 3: Transformación a coordenadas arbitrarias y cancelación de pesos.
+Ahora invocamos el poderoso principio de covariancia y el análisis de densidades tensoriales. 
+
+Definamos un objeto geométrico que sea la diferencia entre ambos lados de nuestra ecuación:
+$$T^{ij}_{lm} = \epsilon^{ijk}\epsilon_{klm} - (\delta^i_l\delta^j_m - \delta^i_m\delta^j_l)$$
+
+Analicemos el carácter tensorial de cada término:
+\begin{itemize}
+\item La delta de Kronecker $\delta^a_b$ es el tensor identidad, que es un tensor absoluto (o de peso $W=0$) de tipo (1,1) en cualquier sistema de coordenadas. El producto de deltas da un tensor absoluto de tipo (2,2).
+\item El símbolo de Levi-Civita covariante $\epsilon_{klm}$ no es un tensor absoluto, sino una densidad tensorial de peso $W = -1$.
+\item El símbolo de Levi-Civita contravariante $\epsilon^{ijk}$ es una densidad tensorial de peso $W = +1$.
+\item Por lo tanto, al multiplicar $\epsilon^{ijk}\epsilon_{klm}$, los pesos se suman: $W_{total} = (+1) + (-1) = 0$. 
+\end{itemize}
+
+El producto $\epsilon^{ijk}\epsilon_{klm}$ es, en consecuencia, un tensor absoluto (peso nulo) de tipo (2,2).
+
+Dado que todos los términos que componen a $T^{ij}_{lm}$ son tensores absolutos de tipo (2,2), $T^{ij}_{lm}$ es un tensor absoluto. 
+En el Paso 2 demostramos que las componentes de este tensor son todas nulas ($T^{ij}_{lm} = 0$) en un sistema de coordenadas específico (el cartesiano ortonormal). Una de las propiedades fundamentales del cálculo tensorial dicta que si un tensor absoluto es nulo en un sistema de coordenadas, entonces es nulo en cualquier sistema de coordenadas arbitrarias.
+
+Por lo tanto, $T^{ij}_{lm} = 0 \implies \epsilon^{ijk}\epsilon_{klm} = \delta^i_l\delta^j_m - \delta^i_m\delta^j_l$ vale universalmente. ¡C.Q.D!
+\end{itemize}
+
+\end{document}
+
+
