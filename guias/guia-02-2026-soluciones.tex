@@ -534,7 +534,7 @@ $$M = \begin{pmatrix} 1 & 1 \\ 0 & 2 \end{pmatrix}$$
 \end{itemize}
 \end{itemize}
 
-\subsection*{Problema 6}
+\subsection*{Problema 5}
 
 Lo más elegante e instructiva es utilizar la notación de índices (con el convenio de suma de Einstein) y las propiedades del símbolo de Levi-Civita $\epsilon_{ijk}$ y la delta de Kronecker $\delta_{ij}$.
 
@@ -621,6 +621,75 @@ Ensamblando el resultado final:
 $$[\nabla \times (\nabla \times \vec{F})]_i = [\nabla(\nabla \cdot \vec{F})]_i - [\nabla^2 \vec{F}]_i$$
 Demostrando así la identidad deseada.
 
+\end{itemize}
+
+\subsection*{Problema 6}
+
+
+El espacio $T_2^0$  es el espacio de los tensores dos veces covariantes (es decir, tensores de tipo $(0,2)$) sobre un espacio vectorial $V$ de dimensión 3. Estos tensores toman dos vectores de $V$ y devuelven un escalar, por lo que se construyen a partir del producto tensorial del espacio dual $V^*$.
+
+\begin{itemize}
+\item[a)] Base para $T_2^0$ y sus elementos explícitos.
+
+Dado que el tensor de rango 2 se forma por el producto tensorial de elementos del espacio dual, una base para $T_2^0$ se construye tomando todos los posibles productos tensoriales cruzados de los vectores de la base $\{\vec{e}^i\}$ de $V^*$.
+
+La base del espacio $T_2^0$ está dada por el conjunto:
+$$B = \{ \vec{e}^i \otimes \vec{e}^j \}_{i,j=1}^3$$
+
+Como los índices $i$ y $j$ varían independientemente entre 1 y 3, la dimensión total de este espacio es $3 \times 3 = 9$. Los 9 elementos explícitos de esta base son:
+\begin{enumerate}
+\item $\vec{e}^1 \otimes \vec{e}^1$
+\item $\vec{e}^1 \otimes \vec{e}^2$
+\item $\vec{e}^1 \otimes \vec{e}^3$
+\item $\vec{e}^2 \otimes \vec{e}^1$
+\item $\vec{e}^2 \otimes \vec{e}^2$
+\item $\vec{e}^2 \otimes \vec{e}^3$
+\item $\vec{e}^3 \otimes \vec{e}^1$
+\item $\vec{e}^3 \otimes \vec{e}^2$
+\item $\vec{e}^3 \otimes \vec{e}^3$
+\end{enumerate}
+
+Cualquier tensor $T \in T_2^0$ se puede escribir como una combinación lineal de estos elementos: $T = T_{ij} \vec{e}^i \otimes \vec{e}^j$.
+
+\item[b)] Bases para los subespacios $S$ (simétrico) y $A$ (antisimétrico).
+
+Cualquier tensor de segundo rango se puede descomponer unívocamente en una parte totalmente simétrica y una totalmente antisimétrica. 
+
+\begin{itemize}
+\item Subespacio $S$ (Tensores Simétricos).
+Un tensor es simétrico si sus componentes cumplen $S_{ij} = S_{ji}$. Para construir una base de este subespacio, agrupamos los elementos de la base original en combinaciones lineales simétricas. 
+
+La base de $S$ está formada por los productos tensoriales simétricos (a veces denotados con el producto $\vee$). Los elementos explícitos son:
+\begin{itemize}
+\item Términos diagonales ($i = j$):
+\begin{itemize}
+\item $\vec{e}^1 \otimes \vec{e}^1$
+\item $\vec{e}^2 \otimes \vec{e}^2$
+\item $\vec{e}^3 \otimes \vec{e}^3$
+\end{itemize}  
+\item Términos cruzados simetrizados ($i < j$):
+\begin{itemize}
+\item $\vec{e}^1 \otimes \vec{e}^2 + \vec{e}^2 \otimes \vec{e}^1$
+\item $\vec{e}^1 \otimes \vec{e}^3 + \vec{e}^3 \otimes \vec{e}^1$
+\item $\vec{e}^2 \otimes \vec{e}^3 + \vec{e}^3 \otimes \vec{e}^2$
+\end{itemize}
+\item Cantidad de elementos de $S$: Contando los elementos listados arriba, vemos que la base tiene 6 elementos. En general, para dimensión $n$, la dimensión del subespacio simétrico es $\frac{n(n+1)}{2}$.
+\end{itemize}
+
+\item Subespacio $A$ (Tensores Antisimétricos).
+Un tensor es antisimétrico si sus componentes cumplen $A_{ij} = -A_{ji}$. Para construir esta base, usamos combinaciones lineales antisimétricas de la base original (productos cuña o exteriores, $\wedge$). Notemos que los términos diagonales se anulan al antisimetrizar ($\vec{e}^i \otimes \vec{e}^i - \vec{e}^i \otimes \vec{e}^i = 0$).
+
+Los elementos explícitos de la base de $A$ son exclusivamente los términos cruzados antisimetrizados ($i < j$):
+\begin{itemize}
+\item $\vec{e}^1 \otimes \vec{e}^2 - \vec{e}^2 \otimes \vec{e}^1$
+\item $\vec{e}^1 \otimes \vec{e}^3 - \vec{e}^3 \otimes \vec{e}^1$
+\item $\vec{e}^2 \otimes \vec{e}^3 - \vec{e}^3 \otimes \vec{e}^2$
+\end{itemize}
+
+Cantidad de elementos de $A$: La base tiene 3 elementos. En general, para dimensión $n$, la dimensión del subespacio antisimétrico es $\frac{n(n-1)}{2}$.
+\end{itemize}
+
+Como cierre o comprobación (ideal para mencionarle a los chicos en clase), la suma de las dimensiones de ambos subespacios es directa: $\dim(S) + \dim(A) = 6 + 3 = 9$, lo que recupera exactamente la dimensión del espacio tensorial completo $T_2^0$.
 \end{itemize}
 
 \end{document}
