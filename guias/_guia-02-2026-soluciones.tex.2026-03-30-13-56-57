@@ -8,11 +8,6 @@
 \usepackage{upgreek}
 \usepackage{fancyhdr}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Page layout by CBB 2023.03.13
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \oddsidemargin=0.0cm
 \textwidth=17cm
 \topmargin=-1.5cm
@@ -24,10 +19,6 @@
 \fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Guía 2}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
 \renewcommand{\headrulewidth}{.5pt}
 \renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Added by CBB 2023.03.06
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \DeclareMathOperator{\real}{Re}
 \DeclareMathOperator{\imag}{Im}
@@ -63,10 +54,6 @@
 \newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
 \newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Counters definitions (old)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \newcounter{problema}
 
 \newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
@@ -75,14 +62,7 @@
 \newcommand\al{\alpha}
 \newcommand\noi{\noindent}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{document}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Begin custom header - by CBB 2023.03.13
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \thispagestyle{empty} % no LaTeX-generated header for 1st page
 
@@ -117,21 +97,7 @@
 %%%
 \end{minipage}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% End custom header
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Begin text (problems)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 \section*{Parte I: Problemas Centrales (para desarrollar en clase)}
-
 
 \prob Sea $\mat{A} = \begin{pmatrix} 1 & 2 \\ 0 & 2 \end{pmatrix}$.
 \begin{enumerate}
@@ -164,13 +130,6 @@ i & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 & 2 
 \end{pmatrix}.
 \]
-
-\prob Suponga que $\mat{A}$ tiene una descomposición de Schur $\mat{A}=\mat{UTU}^{\dagger}$.
-\begin{enumerate}
-\item Muestre que para cualquier polinomio $p$ vale que $p(\mat{A})=\mat{U}p(\mat{T})\mat{U}^{\dagger}$.
-\item Discuta porqué calcular $p(\mat{T})$ es más fácil que calcular $p(\mat{A})$. ?`Cómo luce $p(\mat{T})$?
-\item Si $\mat{A}$ es normal, es decir si $\mat{A}^{\dagger}\mat{A}=\mat{AA}^{\dagger}$, muestre que $\mat{T}$ es diagonal y que $\mat{A}$ es unitariamente diagonalizable. Muestre también que una matriz puede ser diagonalizable sin ser normal. 
-\end{enumerate}
 
 \prob Demuestre las siguientes identidades vectoriales en coordenadas cartesianas:
 \begin{enumerate}
@@ -227,8 +186,6 @@ x = a \sinh\mu \sin\nu \cos\phi,\quad y = a \sinh\mu \sin\nu \sin\phi,\quad z = 
 \item Obtenga las fórmulas del gradiente, divergencia, rotor y laplaciano en componentes f\'{\i}sicas.
 \end{enumerate}
 
-
-
 \section*{Parte II: Problemas Propuestos (para profundización y repaso)}
 
 \prob Verifique que en coordenadas esféricas se cumple $\nabla(\phi\psi)=\phi\nabla\psi+\psi\nabla\phi$ y $\nabla\times(\phi\vec{F})=(\nabla\phi)\times\vec{F}+\phi(\nabla\times\vec{F})$.
@@ -254,14 +211,175 @@ x = a \sinh\mu \sin\nu \cos\phi,\quad y = a \sinh\mu \sin\nu \sin\phi,\quad z = 
 
 \prob Halle la forma canónica de Jordan de $\mat{A}=\begin{pmatrix}1&-1&2\\2&-2&0\\2&-1&3\end{pmatrix}$.
 
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% End text (problems)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Soluciones}
+
+\subsection*{Problema 1}
+
+\begin{itemize}
+\item Autovalores y autovectores a derecha e izquierdaPrimero, calculamos los autovalores ($\lambda$) resolviendo la ecuación característica $\det(\mat{A} - \lambda\mat{I}) = 0$:
+$$
+\det \begin{pmatrix} 1-\lambda & 2 \\ 0 & 2-\lambda \end{pmatrix} = (1-\lambda)(2-\lambda) = 0
+$$
+Los autovalores son $\lambda_1 = 1$ y $\lambda_2 = 2$.
+Ahora hallamos los autovectores a derecha; los usuales, representados como vectores columna $\mat{v}$, tales que $\mat{A}\mat{v} = \lambda\mat{v}$:
+Para $\lambda_1 = 1$:
+$$
+\begin{pmatrix} 0 & 2 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies y = 0
+$$
+Eligiendo $x=1$, obtenemos el autovector a derecha: $\mat{v}_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$.
+Para $\lambda_2 = 2$:
+$$
+\begin{pmatrix} -1 & 2 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies -x + 2y = 0 \implies x = 2y
+$$
+Eligiendo $y=1$, obtenemos el autovector a derecha: $\mat{v}_2 = \begin{pmatrix} 2 \\ 1 \end{pmatrix}$.
+Luego, hallamos los autovectores a izquierda representados como vectores fila $\mat{u}$, tales que $\mat{u}\mat{A} = \lambda\mat{u}$: 
+Para $\lambda_1 = 1$:
+$$
+\begin{pmatrix} u_x & u_y \end{pmatrix} \begin{pmatrix} 0 & 2 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 0 \end{pmatrix} \implies 2u_x + u_y = 0 \implies u_y = -2u_x
+$$
+Eligiendo $u_x = 1$, obtenemos el autovector a izquierda: $\mat{u}_1 = \begin{pmatrix} 1 & -2 \end{pmatrix}$.
+Para $\lambda_2 = 2$:
+$$
+\begin{pmatrix} u_x & u_y \end{pmatrix} \begin{pmatrix} -1 & 2 \\ 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 \end{pmatrix} \implies -u_x = 0 \implies u_x = 0
+$$
+Eligiendo $u_y = 1$, obtenemos el autovector a izquierda: $\mat{u}_2 = \begin{pmatrix} 0 & 1 \end{pmatrix}$.
+Nota: Los autovectores a izquierda y derecha asociados a distintos autovalores son ortogonales, y los hemos normalizado de manera tal que $\mat{u}_i \mat{v}_j = \delta_{ij}$. 
+Esto nos facilita el siguiente paso.
+\item Construcción de matrices y verificación.
+Construimos $\mat{V}$ con los autovectores a derecha como columnas, y $\mat{U}$ con los autovectores a izquierda como filas:
+$$
+\mat{V} = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}, \qquad \mat{U} = \begin{pmatrix} 1 & -2 \\ 0 & 1 \end{pmatrix}
+$$
+Verificamos que $\mat{U}\mat{V} = \mat{I}$:
+$$
+\mat{U}\mat{V} = \begin{pmatrix} 1 & -2 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1(1)+(-2)(0) & 1(2)+(-2)(1) \\ 0(1)+1(0) & 0(2)+1(1) \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \mat{I}
+$$
+Esto demuestra que $\mat{U} = \mat{V}^{-1}$.
+Verificamos que $\mat{U}\mat{A}\mat{V}$ es diagonal: 
+Primero calculamos $\mat{A}\mat{V}$:
+$$
+\mat{A}\mat{V} = \begin{pmatrix} 1 & 2 \\ 0 & 2 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 4 \\ 0 & 2 \end{pmatrix}
+$$
+Ahora multiplicamos por $\mat{U}$ por la izquierda:
+$$
+\mat{U}(\mat{A}\mat{V}) = \begin{pmatrix} 1 & -2 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 4 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1(1) + 0 & 1(4) - 2(2) \\ 0 + 0 & 0(4) + 1(2) \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}
+$$
+El resultado es, efectivamente, la matriz diagonal compuesta por los autovalores $\lambda_1 = 1$ y $\lambda_2 = 2$.
+\item Norma espectral de $\mat{A}$.
+La norma espectral de una matriz, también denotada como norma 2, $||\mat{A}||_2$, se define como la raíz cuadrada del mayor autovalor de la matriz $\mat{A}^\text{T}\mat{A}$.
+Calculamos $\mat{A}^\text{T}\mat{A}$:
+$$
+\mat{A}^\text{T}\mat{A} = \begin{pmatrix} 1 & 0 \\ 2 & 2 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 2 \\ 2 & 8 \end{pmatrix}
+$$
+Hallamos los autovalores de esta nueva matriz ($\mu$):
+$$
+\det \begin{pmatrix} 1-\mu & 2 \\ 2 & 8-\mu \end{pmatrix} = (1-\mu)(8-\mu) - 4 = \mu^2 - 9\mu + 8 - 4 = \mu^2 - 9\mu + 4 = 0
+$$
+Usando la fórmula resolvente cuadrática:
+$$
+\mu = \frac{9 \pm \sqrt{81 - 4(1)(4)}}{2} = \frac{9 \pm \sqrt{65}}{2}
+$$
+El mayor autovalor es $\mu_{\text{max}} = \frac{9 + \sqrt{65}}{2}$.
+Por lo tanto, la norma espectral de $\mat{A}$ es:
+$$
+||\mat{A}||_2 = \sqrt{\frac{9 + \sqrt{65}}{2}} \approx 2.92
+$$
+\item Mostrar que $\mat{A}$ no es normal.
+Una matriz es normal si y solo si conmuta con su traspuesta. 
+Es decir, $\mat{A}^\text{T}\mat{A} = \mat{A}\mat{A}^\text{T}$.
+Ya tenemos $\mat{A}^\text{T}\mat{A} = \begin{pmatrix} 1 & 2 \\ 2 & 8 \end{pmatrix}$.
+Ahora calculamos $\mat{A}\mat{A}^\text{T}$:
+$$
+\mat{A}\mat{A}^\text{T} = \begin{pmatrix} 1 & 2 \\ 0 & 2 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 2 & 2 \end{pmatrix} = \begin{pmatrix} 1+4 & 0+4 \\ 0+4 & 0+4 \end{pmatrix} = \begin{pmatrix} 5 & 4 \\ 4 & 4 \end{pmatrix}
+$$
+Como $\mat{A}^\text{T}\mat{A} \neq \mat{A}\mat{A}^\text{T}$, queda demostrado que $\mat{A}$ no es una matriz normal.
+\end{itemize}
+
+\subsection*{Problema 2}
+\begin{itemize}
+\item Diagonalización de la matriz $\mat{A}$.
+Notemos que la matriz $\mat{A}$ es hermítica ($\mat{A}^\dagger = \mat{A}$) y tiene una estructura diagonal por bloques:
+$$
+\mat{A} = \begin{pmatrix} \mat{A}_1 & \mathbf{0} & \mathbf{0} \\ \mathbf{0} & \mat{A}_2 & \mathbf{0} \\ \mathbf{0} & \mathbf{0} & \mat{A}_3 \end{pmatrix}
+$$
+Podemos diagonalizar cada bloque por separado para hallar los 5 autovalores y autovectores.
+Bloque 1 ($2\times 2$ superior izquierdo): 
+$$
+\mat{A}_1 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}
+$$
+¡Es la matriz de Pauli $\sigma_y$!.
+Ecuación característica: 
+$$
+\lambda^2 - 1 = 0 \implies \lambda_1 = 1, \ \lambda_2 = -1
+$$
+Autovector para $\lambda_1 = 1$: 
+$$
+\begin{pmatrix} -1 & -i \\ i & -1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies -x - iy = 0 \implies x = -iy
+$$
+Vector normalizado: 
+$$
+\mat{v}_1 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ i \end{pmatrix}
+$$
+Autovector para $\lambda_2 = -1$: 
+$$
+\begin{pmatrix} 1 & -i \\ i & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies x - iy = 0 \implies x = iy
+$$
+Vector normalizado: 
+$$
+\mat{v}_2 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -i \end{pmatrix}
+$$
+Bloque 2 ($1\times 1$ central): 
+$$
+\mat{A}_2 = (3)
+$$
+Es trivial. $\lambda_3 = 3$, con autovector $\mat{v}_3 = (1)$.
+Bloque 3 ($2\times 2$ inferior derecho): 
+$$
+\mat{A}_3 = \begin{pmatrix} 1 & -i \\ i & 1 \end{pmatrix}
+$$
+Ecuación característica: 
+$$
+(1-\lambda)^2 - 1 = 0 \implies 1-\lambda = \pm 1 \implies \lambda_4 = 0, \ \lambda_5 = 2
+$$
+Autovector para $\lambda_4 = 0$: 
+$$
+\begin{pmatrix} 1 & -i \\ i & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies x = iy
+$$
+Vector normalizado: 
+$$
+\mat{v}_4 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -i \end{pmatrix}
+$$
+Autovector para $\lambda_5 = 2$: 
+$$
+\begin{pmatrix} -1 & -i \\ i & -1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies x = -iy
+$$
+Vector normalizado: 
+$$
+\mat{v}_5 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ i \end{pmatrix}
+$$
+Por lo tanto, la matriz diagonal $\mat{D}$, con los autovalores en la diagonal principal, es:
+$$
+\mat{D} = \text{diag}(1, -1, 3, 0, 2)
+$$
+\item Expresar el vector $\mat{x}$ en la nueva base.
+Extrapolando los vectores hallados a $\mathbb{C}^5$, nuestra nueva base ortonormal $B' = \{\mat{u}_1, \mat{u}_2, \mat{u}_3, \mat{u}_4, \mat{u}_5\}$ es:
+$\mat{u}_1 = \frac{1}{\sqrt{2}}(1, i, 0, 0, 0)^\text{T}$
+$\mat{u}_2 = \frac{1}{\sqrt{2}}(1, -i, 0, 0, 0)^\text{T}$
+$\mat{u}_3 = (0, 0, 1, 0, 0)^\text{T}$
+$\mat{u}_4 = \frac{1}{\sqrt{2}}(0, 0, 0, 1, -i)^\text{T}$
+$\mat{u}_5 = \frac{1}{\sqrt{2}}(0, 0, 0, 1, i)^\text{T}$.
+Como la base es ortonormal (porque $\mat{A}$ es hermítica), las componentes $c_j$ del vector $\mat{x}$ en esta nueva base se calculan simplemente proyectando con el producto interno canónico complejo: 
+$$c_j = \mat{u}_j^\dagger \mat{x}$$
+$$c_1 = \frac{1}{\sqrt{2}} (1, -i, 0, 0, 0) \begin{pmatrix} 1 \\ a \\ i \\ b \\ -1 \end{pmatrix} = \frac{1}{\sqrt{2}} (1 - ia)$$
+$$c_2 = \frac{1}{\sqrt{2}} (1, i, 0, 0, 0) \begin{pmatrix} 1 \\ a \\ i \\ b \\ -1 \end{pmatrix} = \frac{1}{\sqrt{2}} (1 + ia)$$
+$$c_3 = (0, 0, 1, 0, 0) \begin{pmatrix} 1 \\ a \\ i \\ b \\ -1 \end{pmatrix} = i$$
+$$c_4 = \frac{1}{\sqrt{2}} (0, 0, 0, 1, i) \begin{pmatrix} 1 \\ a \\ i \\ b \\ -1 \end{pmatrix} = \frac{1}{\sqrt{2}} (b - i)$$
+$$c_5 = \frac{1}{\sqrt{2}} (0, 0, 0, 1, -i) \begin{pmatrix} 1 \\ a \\ i \\ b \\ -1 \end{pmatrix} = \frac{1}{\sqrt{2}} (b + i)$$
+El vector $\mat{x}$ escrito en la base donde $\mat{A}$ es diagonal es la matriz columna de estas componentes:
+$$
+\mat{x}' = \begin{pmatrix} \frac{1}{\sqrt{2}}(1 - ia) \\ \frac{1}{\sqrt{2}}(1 + ia) \\ i \\ \frac{1}{\sqrt{2}}(b - i) \\ \frac{1}{\sqrt{2}}(b + i) \end{pmatrix}
+$$
+\end{itemize}
 
 \end{document}
 
