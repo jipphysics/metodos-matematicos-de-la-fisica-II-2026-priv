@@ -450,7 +450,7 @@ $$N = \begin{pmatrix} 0 & 1 & 0 & -1 & 3 & 1 \\ 0 & 0 & 0 & 0 & 1 & -3 \\ 0 & 0 
 
 Calculamos el rango de $N$ viendo sus filas linealmente independientes. Las filas 1, 2, 3 y 5 son claramente independientes, mientras que la fila 4 es una combinación lineal de la 2 y la 5. 
 Por lo tanto, $\text{Rango}(N) = 4$. 
-La nulidad (dimensión del núcleo) nos da la **cantidad de bloques de Jordan**: $6 - 4 = 2$ bloques.
+La nulidad (dimensión del núcleo) nos da la cantidad de bloques de Jordan: $6 - 4 = 2$ bloques.
 
 \item Potencias sucesivas de $N$:
 Ahora calculamos $N^2$:
@@ -506,14 +506,14 @@ Partimos de que $A$ tiene una descomposición de Schur $A = U T U^\dagger$.
 
 \begin{itemize}
 \item ¿Por qué es más fácil? En la descomposición de Schur, $T$ es una matriz triangular superior. Calcular potencias (y multiplicaciones) de matrices triangulares requiere muchas menos operaciones aritméticas (flops) que operar con matrices llenas como $A$. Además, las matrices triangulares son numéricamente más estables para este tipo de operaciones.
-\item ¿Cómo luce $p(T)$? La matriz $p(T)$ será **también una matriz triangular superior**. Una propiedad clave de las matrices triangulares es que los elementos de su diagonal son los autovalores de la matriz original (es decir, $T_{ii} = \lambda_i$). Al aplicar el polinomio, los elementos de la diagonal de $p(T)$ serán simplemente las evaluaciones escalares $p(\lambda_i)$.
+\item ¿Cómo luce $p(T)$? La matriz $p(T)$ será también una matriz triangular superior. Una propiedad clave de las matrices triangulares es que los elementos de su diagonal son los autovalores de la matriz original (es decir, $T_{ii} = \lambda_i$). Al aplicar el polinomio, los elementos de la diagonal de $p(T)$ serán simplemente las evaluaciones escalares $p(\lambda_i)$.
 \end{itemize}
 
 \item[c)] Matrices normales y diagonalización.
 
 \begin{itemize}
 \item Mostrar que si $A$ es normal, $T$ es diagonal y $A$ es unitariamente diagonalizable.
-Sabiendo que $A$ es normal, se cumple $A^\dagger A = A A^\dagger$[cite: 20]. Reemplazamos la descomposición de Schur:
+Sabiendo que $A$ es normal, se cumple $A^\dagger A = A A^\dagger$. Reemplazamos la descomposición de Schur:
 $$A^\dagger A = (U T U^\dagger)^\dagger (U T U^\dagger) = U T^\dagger U^\dagger U T U^\dagger = U T^\dagger T U^\dagger$$
 $$A A^\dagger = (U T U^\dagger) (U T U^\dagger)^\dagger = U T U^\dagger U T^\dagger U^\dagger = U T T^\dagger U^\dagger$$
 Igualando ambas expresiones y pre/post-multiplicando por $U^\dagger$ y $U$ respectivamente, llegamos a:
@@ -690,6 +690,86 @@ Cantidad de elementos de $A$: La base tiene 3 elementos. En general, para dimens
 \end{itemize}
 
 Como cierre o comprobación (ideal para mencionarle a los chicos en clase), la suma de las dimensiones de ambos subespacios es directa: $\dim(S) + \dim(A) = 6 + 3 = 9$, lo que recupera exactamente la dimensión del espacio tensorial completo $T_2^0$.
+\end{itemize}
+
+\subsection*{Problema 7}
+
+Se nos pide demostrar que en coordenadas arbitrarias se cumple:
+$$\epsilon^{ijk}\epsilon_{klm} = \delta^i_l\delta^j_m - \delta^i_m\delta^j_l$$
+
+Siguiendo la sugerencia, lo dividiremos en tres pasos lógicos:
+
+\begin{itemize}
+\item Paso 1: Demostración en coordenadas cartesianas ortonormales.
+En coordenadas cartesianas, la métrica es euclídea ($g_{ij} = \delta_{ij}$), por lo que no hay distinción numérica entre índices covariantes y contravariantes. Trabajaremos todo abajo para simplificar. Queremos probar que:
+$$\epsilon_{ijk}\epsilon_{klm} = \delta_{il}\delta_{jm} - \delta_{im}\delta_{jl}$$
+
+Aprovecharemos las simetrías:
+\begin{itemize}
+\item El lado izquierdo (LHS) es antisimétrico frente al intercambio de $i \leftrightarrow j$ (por el primer Levi-Civita) y de $l \leftrightarrow m$ (por el segundo).
+\item El lado derecho (RHS) exhibe exactamente las mismas antisimetrías.
+\end{itemize}
+
+Debido a esto, solo necesitamos analizar los casos fundamentales para los índices $i, j, l, m$:
+\begin{itemize}
+\item Caso A: Índices repetidos en el mismo símbolo (ej. $i = j$).
+    El LHS es trivialmente 0 porque $\epsilon_{iik} = 0$. 
+    El RHS queda $\delta_{il}\delta_{im} - \delta_{im}\delta_{il} = 0$. ¡Coincide!
+\item Caso B: Pares de índices distintos. Para que el LHS sea distinto de cero en la sumatoria sobre $k$, los pares $(i,j)$ y $(l,m)$ deben estar formados por los mismos dos números (los que sobran de $k$). Supongamos, sin pérdida de generalidad, que $\{i,j\} = \{1,2\}$. Esto fuerza a que $k=3$.
+\begin{itemize}
+\item Subcaso B1 ($i=l=1, j=m=2$): 
+
+LHS = $\epsilon_{123}\epsilon_{312}$. 
+
+Por permutación cíclica, $\epsilon_{312} = \epsilon_{123} = 1$. 
+
+\hspace{1cm} LHS = $(1)(1) = 1$.
+        
+\hspace{1cm} RHS = $\delta_{11}\delta_{22} - \delta_{12}\delta_{21} = (1)(1) - (0)(0) = 1$. 
+
+¡Coincide!
+
+\item Subcaso B2 ($i=m=1, j=l=2$):
+
+\hspace{1cm} LHS = $\epsilon_{123}\epsilon_{321}$. 
+
+Como $\epsilon_{321} = -1$, LHS = $(1)(-1) = -1$.
+
+\hspace{1cm} RHS = $\delta_{12}\delta_{21} - \delta_{11}\delta_{22} = (0)(0) - (1)(1) = -1$. 
+
+¡Coincide!
+\end{itemize}
+\end{itemize}
+
+Como comprobamos todos los casos independientes aprovechando las simetrías, la identidad queda demostrada en coordenadas cartesianas.
+
+\item Paso 2: Subir los índices en cartesianas.
+En nuestro sistema cartesiano ortonormal, subir un índice con la métrica (que es la matriz identidad) no altera los valores de las componentes. Es decir, $\delta_{il} = \delta^i_l$ y $\epsilon_{ijk} = \epsilon^{ijk}$. 
+Por lo tanto, la ecuación demostrada en el paso anterior se puede reescribir trivialmente en su forma mixta:
+$$
+\epsilon^{ijk}\epsilon_{klm} = \delta^i_l\delta^j_m - \delta^i_m\delta^j_l
+$$
+
+\item Paso 3: Transformación a coordenadas arbitrarias y cancelación de pesos.
+Ahora invocamos el poderoso principio de covariancia y el análisis de densidades tensoriales. 
+
+Definamos un objeto geométrico que sea la diferencia entre ambos lados de nuestra ecuación:
+$$T^{ij}_{lm} = \epsilon^{ijk}\epsilon_{klm} - (\delta^i_l\delta^j_m - \delta^i_m\delta^j_l)$$
+
+Analicemos el carácter tensorial de cada término:
+\begin{itemize}
+\item La delta de Kronecker $\delta^a_b$ es el tensor identidad, que es un tensor absoluto (o de peso $W=0$) de tipo (1,1) en cualquier sistema de coordenadas. El producto de deltas da un tensor absoluto de tipo (2,2).
+\item El símbolo de Levi-Civita covariante $\epsilon_{klm}$ no es un tensor absoluto, sino una densidad tensorial de peso $W = -1$.
+\item El símbolo de Levi-Civita contravariante $\epsilon^{ijk}$ es una densidad tensorial de peso $W = +1$.
+\item Por lo tanto, al multiplicar $\epsilon^{ijk}\epsilon_{klm}$, los pesos se suman: $W_{total} = (+1) + (-1) = 0$. 
+\end{itemize}
+
+El producto $\epsilon^{ijk}\epsilon_{klm}$ es, en consecuencia, un tensor absoluto (peso nulo) de tipo (2,2).
+
+Dado que todos los términos que componen a $T^{ij}_{lm}$ son tensores absolutos de tipo (2,2), $T^{ij}_{lm}$ es un tensor absoluto. 
+En el Paso 2 demostramos que las componentes de este tensor son todas nulas ($T^{ij}_{lm} = 0$) en un sistema de coordenadas específico (el cartesiano ortonormal). Una de las propiedades fundamentales del cálculo tensorial dicta que si un tensor absoluto es nulo en un sistema de coordenadas, entonces es nulo en cualquier sistema de coordenadas arbitrarias.
+
+Por lo tanto, $T^{ij}_{lm} = 0 \implies \epsilon^{ijk}\epsilon_{klm} = \delta^i_l\delta^j_m - \delta^i_m\delta^j_l$ vale universalmente. ¡C.Q.D!
 \end{itemize}
 
 \end{document}
