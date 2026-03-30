@@ -1,0 +1,1632 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=50\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Guía 1}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Guía N$^\txt{o}$ 1 -- 2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{Parte I: Problemas Centrales (para desarrollar en clase)}
+
+\subsection*{Clase 1. Fundamentos: Espacios Vectoriales, Bases y Subespacios}
+
+\prob Sea $V$ el conjunto de todas las sucesiones reales infinitas (funciones de $\sca{N} \to \sca{R}$). Pruebe que $V$ es un espacio vectorial con las operaciones usuales de suma y multiplicación por escalares. ¿Qué dimensión tiene este espacio? Justifique.
+
+
+\prob Diga cuáles de los siguientes conjuntos son espacios vectoriales (indicando el cuerpo correspondiente) y cuáles no:
+\begin{enumerate}
+\item $\sca{R}^3$, las ternas $(x,y,z)$ de números reales;
+\item $\mathcal{P}_N(\sca{R})$, los polinomios en una variable real $x$ de grado a lo sumo $N$;
+\item $\{f:[a,b]\to\sca{R}\}$, las funciones a valores reales definidas sobre el intervalo $[a,b]$.
+\end{enumerate}
+
+\prob Sea $V$ el espacio de todas las funciones $\sca{R}\to\sca{R}$. Sean
+\begin{itemize}
+\item $V_p$: subconjunto de funciones pares ($f(-x)=f(x)$);
+\item $V_i$: subconjunto de funciones impares ($f(-x)=-f(x)$).
+\end{itemize}
+\begin{enumerate}
+\item Demuestre que $V_p$ y $V_i$ son subespacios de $V$.
+\item Demuestre que $V_p + V_i = V$ y que $V_p \cap V_i = \{0\}$.
+\end{enumerate}
+
+\prob Sea $V$ el conjunto de todos los $(x_1,x_2,x_3,x_4,x_5)\in\mathbb{R}^5$ que satisfacen
+\begin{align*}
+2x_1 - x_2 + \frac{4}{3}x_3 - x_4 &= 0, \\
+x_1 + \frac{2}{3}x_3 - x_5 &= 0, \\
+9x_1 - 3x_2 + 6x_3 - 3x_4 - 3x_5 &= 0.
+\end{align*}
+Encuentre un conjunto finito de vectores que generen $V$ y determine su dimensión.
+
+
+\subsection*{Clase 2. Espacio Dual y Construcción de Tensores}
+
+
+\prob Sea $\{\vec{e}_i\}_{i=1}^n$ una base de $V$ y $\{\svec{e}^i\}_{i=1}^n$ su base dual (base de $V^*$).
+\begin{enumerate}
+\item Si $\vec{u}\in V$ y $\vec{\omega}\in V^*$, pruebe que las componentes pueden calcularse como $u^i = \svec{e}^i(\vec{u})$ y $\omega_j = \vec{e}_j(\vec{\omega})$.
+\item Explique por qué la base dual existe y es única.
+\end{enumerate}
+
+\prob Sean los vectores $\vec{v}_1$, $\vec{v}_2$ y $\vec{v}_3$ en $\sca{R}^3$, representados en la base can\'onica como las matrices columna
+\[
+\mat{v}_1=\begin{pmatrix}1 \\ 2 \\ 1\end{pmatrix},\quad
+\mat{v}_2=\begin{pmatrix}-1/2 \\ -1 \\ -1\end{pmatrix},\quad
+\mat{v}_3=\begin{pmatrix}-1 \\ -1 \\ 1\end{pmatrix}
+\]
+\begin{enumerate}
+\item Pruebe que los vectores son linealmente independientes y, por lo tanto, constituyen una base $B$.
+\item Calcule la co-base $\{\svec{e}^i\}$ de $V^*$ correspondiente a la base $B$, expresando los covectores como matrices fila.
+\item Verifique explícitamente que $\svec{e}^i(\vec{v}_j) = \delta\ud{i}{j}$.
+\end{enumerate}
+
+\prob Sea $\{\vec{e}_i\}_{i=1}^n$ base de $V$ y $\{\svec{e}^i\}_{i=1}^n$ su base dual.
+\begin{enumerate}
+\item Defina el producto tensorial $\vec{e}_i \otimes \svec{e}^j$. ¿Qué tipo de tensor es? ¿Cuál es su acción sobre un vector y un covector?
+\item Pruebe que los $n^2$ tensores $\vec{e}_i \otimes \svec{e}^j$ son linealmente independientes.
+\item Explique por qué esto demuestra que el espacio $T_1^1$ de tensores tipo $(1,1)$ tiene dimensión $n^2$.
+\end{enumerate}
+
+\prob Dado un espacio vectorial $V$, considere el espacio $T_2^0$ de tensores dos veces covariantes, es decir tipo $(0,2)$.
+\begin{enumerate}
+\item Proponga una base para este espacio en términos de la base $\{\svec{e}^i\}$ de $V^*$.
+\item Si $\dim(V)=3$, ¿cuántos elementos tiene esta base? Escríbalos explícitamente.
+\end{enumerate}
+
+
+\subsection*{Clase 3. Componentes, Simetrías y Operaciones con Tensores}
+
+\prob Sea $V$ un EV con $\dim(V)=n$. Considere $T_2^0$, el espacio de tensores (0,2). Sean $\cal{S}$ el subconjunto de tensores simétricos ($S_{ij}=S_{ji}$) y $\cal{A}$ el de antisimétricos ($A_{ij}=-A_{ji}$).
+\begin{enumerate}
+\item Muestre que $\cal{S}$ y $\cal{A}$ son subespacios de $T_2^0$.
+\item Demuestre que $\dim({\cal S})=\frac{n(n+1)}{2}$ y $\dim({\cal A})=\frac{n(n-1)}{2}$.
+\item Muestre que $T_2^0 = \cal{S} \oplus \cal{A}$ (son complementarios).
+\end{enumerate}
+
+\prob Sea $V$ un espacio vectorial de dimensión 3 y $\{\vec{e}_i\}$ una base. Considere el tensor particular en $T_2^0$
+\[
+T = 4\,\svec {e}^1 \otimes \svec{e}^1 - \svec{e}^1 \otimes \svec{e}^2 + 2\,\svec{e}^1 \otimes \svec{e}^3 + 2\,\svec{e}^2 \otimes \svec{e}^1 + \svec{e}^2 \otimes \svec{e}^2 + 3\,\svec{e}^3 \otimes \svec{e}^1 + 3\,\svec{e}^3 \otimes \svec{e}^2 + 3\,\svec{e}^3 \otimes \svec{e}^3.
+\]
+Las partes simétrica ($S$) y antisimétrica ($A$) de $T$ se definen como
+\[
+S_{ij} = \frac{1}{2}(T_{ij}+T_{ji}), \quad A_{ij} = \frac{1}{2}(T_{ij}-T_{ji}).
+\]
+\begin{enumerate}
+\item Escriba las componentes $T_{ij}$ en forma de matriz $3\times3$.
+\item Calcule las matrices de $S$ y $A$ y verifique que $T = S + A$.
+\end{enumerate}
+
+\prob Dadas las componentes $T_{ijk}$ de un tensor tipo (0,3), demuestre que
+\[
+S_{ijk}=T_{ijk}+T_{jki}+T_{kij}+T_{ikj}+T_{kji}+T_{jik}
+\]
+son componentes de un tensor totalmente simétrico.
+
+\prob Demuestre que si $u,v,w$ son tres vectores de $V$ con $\dim(V)\geq3$, las cantidades
+\[
+T_{ijk}=\begin{vmatrix}
+u_i & u_j & u_k \\
+v_i & v_j & v_k \\
+w_i & w_j & w_k
+\end{vmatrix}
+\]
+son componentes de un tensor totalmente antisimétrico.
+
+
+\subsection*{Clase 4. Operadores, Cambio de Base y Aplicaciones}
+
+\prob Considere las bases $B=\{\vec{u}_1,\vec{u}_2,\vec{u}_3\}$ y $B'=\{\vec{v}_1,\vec{v}_2,\vec{v}_3\}$ en $\mathbb{R}^3$, representadas en la base can\'onica por las matrices columna
+\[
+\mat{u}_1=\begin{pmatrix}-3 \\ 0 \\ -3\end{pmatrix},\;
+\mat{u}_2=\begin{pmatrix}-3 \\ 2 \\ -1\end{pmatrix},\;
+\mat{u}_3=\begin{pmatrix}1 \\ 6 \\ -1\end{pmatrix},\;
+\mat{v}_1=\begin{pmatrix}-6 \\ -6 \\ 0\end{pmatrix},\;
+\mat{v}_2=\begin{pmatrix}-2 \\ -6 \\ 4\end{pmatrix},\;
+\mat{v}_3=\begin{pmatrix}-2 \\ -3 \\ 7\end{pmatrix}.
+\]
+\begin{enumerate}
+\item Halle la matriz de cambio de base de $B$ a $B'$.
+\item Dado $\mat{w}=(-5,8,-5)^T$, halle sus componentes en $B$ y utilice la matriz para hallar sus componentes en $B'$.
+\end{enumerate}
+
+\prob En una dada base $\{\vec{e}_i\}$, una transformación lineal $T$ y un vector $\vec{v}$ están representados por
+\[
+\mat{T}=\begin{pmatrix}2 & 1 & 0 \\ 1 & 2 & 0 \\ 0 & 0 & 5\end{pmatrix},\quad
+\mat{v}=\begin{pmatrix}1 \\ 2 \\ 3\end{pmatrix}.
+\]
+Encuentre sus representaciones matriciales en la nueva base definida por
+\[
+\pvec{e}_1=\vec{e}_1+\vec{e}_2,\quad
+\pvec{e}_2=\vec{e}_1-\vec{e}_2,\quad
+\pvec{e}_3=\vec{e}_3
+\]
+
+\prob Sean $A,B$ operadores que admiten representación matricial. Muestre que
+\begin{enumerate}
+\item $e^{(s+t)A} = e^{sA}e^{tA}$, con $s,t$ escalares;
+\item Si $AB=BA$, entonces $e^{A+B}=e^Ae^B$.
+\end{enumerate}
+Calcule
+\[
+\exp\begin{pmatrix}0 & x \\ -x & 0\end{pmatrix},\quad
+\exp\begin{pmatrix}0 & x \\ x & 0\end{pmatrix}.
+\]
+
+\prob El conjunto de matrices $2\times2$ complejas $\sca{C}^{2\times2}$ es un EV con $\dim(V)=4$. Dadas las matrices de Pauli
+\[
+\gmat{\sigma}_x=\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix},\quad
+\gmat{\sigma}_y=\begin{pmatrix}0 & -i \\ i & 0\end{pmatrix},\quad
+\gmat{\sigma}_z=\begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix},
+\]
+muestre que $\{\mat{I},\gmat{\sigma}_x,\gmat{\sigma}_y,\gmat{\sigma}_z\}$ es una base de $\sca{C}^{2\times2}$ y que $\gmat{\sigma}_j^2 = \mat{I}$.
+
+
+\section*{Parte II: Problemas Propuestos (para profundización y repaso)}
+
+\prob Demuestre que en $\sca{R}^3$, $\{\hat{x},\hat{y},\hat{z}\}$ es base, y $\{\hat{x},\hat{x}+\hat{y},\hat{x}+\hat{y}+\hat{z}\}$ también.
+
+\prob Dada una transformación lineal $A: V \to W$, muestre que $\ker(A)$ es un subespacio de $V$ y que $\dim(\ker(A)) \geq \dim(V) - \dim(W)$.
+
+\prob Considere el operador $P_z$ que proyecta de $\mathbb{R}^3$ al plano $xy$, como operador de $\mathbb{R}^3$ en $\mathbb{R}^3$. Escriba la matriz que lo representa en la base canónica. Muestre que el operador $R_{z,\theta}$ que rota en $\theta$ alrededor del eje $z$, conmuta con $P_z$.
+
+\prob Sea $\{\vec{e}_i\}_{i=1}^n$ base de $V$ y $\{\svec{e}^i\}_{i=1}^n$ su base dual. Probar que todo tensor tipo (1,1) puede desarrollarse como combinación lineal de los tensores $\vec{e}_i\otimes\svec{e}^j$.
+
+\prob Considere un vector $\vec{v}\in\sca{R}^2$ que en la base can\'onica puede representarse por $\mat{u}=(x,y)^\text{T}$. Verifique que las siguientes definiciones son normas:
+\[
+\norm{\vec{u}}_1 = \max\{|x|,|y|\},\quad
+\norm{\vec{u}}_2 = \sqrt{x^2+y^2},\quad
+\norm{\vec{u}}_3 = |x|+|y|
+\]
+Indique cu\'ales provienen de un producto escalar.
+
+\prob Considere la transformación de semejanza $A' = S^{-1}AS$. Muestre que $\det(A')=\det(A)$ y $\trace{(A')}=\trace{(A)}$.
+
+\prob Construya la base dual $\{\pvec{e}^1,\pvec{e}^2\}$ de $\pvec{e}_1=\vec{e}_1+\vec{e}_2$, $\pvec{e}_2=\vec{e}_1-\vec{e}_2$ usando $\pvec{e}^i(\pvec{e}_j)=\delta\ud{i}{j}$.
+
+\prob Asumiendo $\vec{e}_i\cdot\vec{e}_j=\delta_{ij}$, calcule la métrica en la base $\{\pvec{e}_i\}$ dada por $\pvec{e}_1=\vec{e}_1$, $\pvec{e}_2=\vec{e}_1+\vec{e}_2$, $\pvec{e}_3=\vec{e}_1+\vec{e}_2+\vec{e}_3$. Calcule la norma de $\vec{v}=\vec{e}_1+2\vec{e}_2+3\vec{e}_3$ en ambas bases.
+
+\prob Sea $V$ un EV con producto interno complejo y $T$ un operador lineal. Demuestre que $T$ es autoadjunto si y solo si $\inpr{T(\vec{u})}{\vec{u}}$ es real $\forall\vec{u}\in V$.
+
+\prob Sea $A,B\in\mathcal{L}$, el conjunto de operadores sobre $V$. Muestre que $\norm{A}=\max_{\norm{\vec{v}}=1}\norm{A\vec{v}}$ define una norma y que $\norm{AB}\leq\norm{A}\norm{B}$.
+
+\prob Sea $P:V\to V$ un proyector ($P^2=P$). Muestre que todo $\vec{v}\in V$ puede descomponerse de manera única como $\vec{v}=\vec{u}+\vec{w}$ con $P\vec{u}=\vec{u}$ y $P\vec{w}=0$.
+
+\prob Encuentre los autovalores y autovectores normalizados de la matriz $\mat{A}=\begin{pmatrix}1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9\end{pmatrix}$.
+
+\prob Encuentre la forma canónica de Jordan de $\mat{A}=\begin{pmatrix}1 & -2 & 2 \\ -1 & 1 & 1 \\ -2 & 0 & 3\end{pmatrix}$.
+
+\section{Soluciones}
+
+\subsection*{Problema 1}
+
+\begin{itemize}
+
+\item \textbf{Demostración de que $V$ es un espacio vectorial.}
+
+Una sucesión real infinita puede denotarse como $(a_n) = (a_1,a_2,a_3,\dots)$, donde $a_n \in \mathbb{R}$. 
+Las operaciones usuales se definen término a término:
+
+\begin{itemize}
+\item Suma: $(a_n) + (b_n) = (a_n + b_n)$
+\item Producto por escalar: $\alpha (a_n) = (\alpha a_n)$, con $\alpha \in \mathbb{R}$.
+\end{itemize}
+
+Estas operaciones están bien definidas ya que la suma y el producto de números reales vuelven a ser números reales. 
+Además, las propiedades de espacio vectorial se verifican término a término a partir de las propiedades del cuerpo $\mathbb{R}$.
+
+En particular:
+
+\begin{itemize}
+\item La suma es asociativa y conmutativa porque la suma en $\mathbb{R}$ lo es.
+\item El elemento neutro es la sucesión nula
+\[
+V\ni (0)=(0,0,0,\dots),
+\]
+que satisface $(a_n)+(0)=(a_n)$.
+\item El inverso aditivo de $(a_n)$ es $(-a_n)$, ya que
+\[
+(a_n)+(-a_n)=(0).
+\]
+\item Las propiedades distributivas y de compatibilidad del producto escalar se verifican término a término, por ejemplo
+\[
+\alpha\big((a_n)+(b_n)\big)
+= (\alpha(a_n+b_n))
+= (\alpha a_n + \alpha b_n)
+= \alpha(a_n)+\alpha(b_n).
+\]
+\end{itemize}
+
+Por lo tanto, $V$ cumple todos los axiomas de espacio vectorial sobre $\mathbb{R}$.
+
+\item \textbf{Demostraci\'on de que $\dim V=2^{\aleph_0}$.}
+
+Repasemos algunas definiciones y algunos teoremas:
+\begin{itemize}
+\item Un subconjunto $S$ de $V$ es linealmente independiente, si todo subconjunto finito de $S$ es linealmente independiente.
+\item Un subconjunto $G$ de $V$ genera a $V$ si todo elemento $v$ de $V$ puede escribirse como una combinaci\'on lineal de un subconjunto finito de elementos de $G$.
+\item Un subconjunto $B$ de $V$ es base de $V$ si
+\begin{itemize}
+\item $B$ es linealmente independiente,
+\item $B$ genera a $V$.
+\end{itemize}
+\item El teorema de Steinitz dice que si $S\subset V$ es linealmente independiente y $G\subset V$ genera a $V$, luego $|S|\leq |G|$.
+El teorema se prueba facilmente escribiendo a los elementos de $S$ como combinaciones lineales de los elementos de $G$.
+\item Gracias al teorema de Steinitz, vemos que todas las bases de $V$ tienen la misma cardinalidad, y por ende, podemos definir a la dimensi\'on de $V$ como $\dim V=|B|$ para cualquier base $B$ de $V$.
+\end{itemize}
+
+A continuaci\'on, con las anteriores definiciones en mente, demostraremos que $\dim V=2^{\aleph_0}$.
+
+Primero notamos que si $B$ es una base de $V$, luego $\dim V = |B| \leq |V|=|\RR^{\NN}|=|\RR|^{|\NN|}=(2^{\aleph_0})^{\aleph_0}=2^{\aleph_0^2}=2^{\aleph_0}$.
+
+Luego notamos que existe un subconjunto $S$ linealmente independiente de $V$ de cardinalidad $2^{\aleph_0}$.
+Constructivamente, sea 
+$$
+S=\{s_r=(1,2^r,3^r,...,n^r,...):r\in \RR\}.
+$$
+Consideremos ahora la combinaci\'on lineal
+$$
+0
+=
+c_{r_1} s_{r_1} + ... + c_{r_k} s_{r_k}
+$$
+con $r_1 < r_2 < ... < r_k$.
+Esto implica que para cada $n\in \NN$ se tiene que
+\begin{eqnarray}
+0 
+&=&
+c_1 n^{r_1}
++
+c_2 n^{r_2}
++
+...
++
+c_k n^{r_k}
+\notag
+\\
+&=&
+c_1 n^{r_1-r_k}
++
+c_1 n^{r_2-r_k}
++
+...
++
+c_{k-1} n^{r_{k-1}-r_k}
++
+c_k n^{r_k-r_k}
+\notag
+\\
+&=&
+c_1 n^{-t_1}
++
+c_1 n^{-t_2}
++
+...
++
+c_{k-1} n^{-t_{k-1}}
++
+c_k
+\notag
+\end{eqnarray}
+con $t_i = r_i - r_k < 0$.
+Luego, tomando el l\'imite $n\to \infty$ se concluye que $c_k=0$.
+Posteriormente, procediendo por induci\'on, se prueba que $c_{k-1}=0$, luego que $c_{k-2}=0$, ..., $c_2=0$ y finalmente que $c_1=0$.
+En otras palabras, se concluye que el subconjunto finito y arbitrario $\{s_{r_1},...,s_{r_k}\}$ de $S$ es linealmente independiente, y por ende, que $S$ es linealmente independiente.
+Por otro lado, notamos que $S$ tiene cardinalidad $|\RR|=2^{\aleph_0}$ porque se lo puede indexar por $r\in \RR$.
+En resumen, hemos encontrado un subconjunto $S$ de $V$ que es linealmente independiente y que tiene cardinalidad $2^{\aleph_0}$ como hab\'iamos proclamado.
+
+Finalmente, notando que si $B$ es una base de $V$, luego $\dim V = |B|\geq |S|=2^{\aleph_0}$, y conclu\'imos que
+$2^{\aleph_0}\leq \dim V \leq 2^{\aleph_0}$ complentando la demostraci\'on.
+
+\end{itemize}
+
+\subsection*{Problema 2}
+
+Para determinar si un conjunto es un espacio vectorial sobre un cuerpo, debemos verificar si cumple con los axiomas de espacio vectorial bajo las operaciones de suma y producto por un escalar usuales. Cuando las operaciones son las estándar, la clave está en verificar tres cosas fundamentales: clausura bajo la suma, clausura bajo el producto por un escalar, y la existencia del elemento neutro (el ``vector cero'') dentro del conjunto.
+
+\begin{itemize}
+\item[$a)$] $\mathbb{R}^3$, las ternas $(x,y,z)$ de números reales.
+
+\begin{itemize}
+\item ¿Es un espacio vectorial? Sí.
+\item Cuerpo correspondiente: $\mathbb{R}$ (los números reales).
+\item Justificación: Este es el prototipo clásico de espacio vectorial de dimensión finita.
+\begin{itemize}
+\item Suma: Si tomas dos ternas $\vec{v}_1 = (x_1, y_1, z_1)$ y $\vec{v}_2 = (x_2, y_2, z_2)$, su suma definida por $\vec{v}_1+\vec{v}_2=(x_1+x_2, y_1+y_2, z_1+z_2)$ sigue siendo una terna de números reales, por lo que pertenece a $\mathbb{R}^3$.
+\item Producto por escalar: Para cualquier $\alpha \in \mathbb{R}$, el producto definido por $\alpha\vec{v}_1 = (\alpha x_1, \alpha y_1, \alpha z_1)$ también pertenece a $\mathbb{R}^3$.
+\item Elemento neutro: La terna $(0,0,0)$ pertenece al conjunto y, claramente, $\vec{v}+\vec{0}=(x+0,y+0,z+0)=(x,y,z)=\vec{v}$.
+\end{itemize}
+\end{itemize}
+Se cumplen trivialmente todos los axiomas (conmutatividad, asociatividad, distributividad, etc.) por las propiedades de los números reales.
+
+\item[$b)$] $\mathcal{P}_N(\mathbb{R})$, los polinomios en una variable real $x$ de grado a lo sumo $N$.
+
+\begin{itemize}
+\item ¿Es un espacio vectorial? Sí.
+\item Cuerpo correspondiente: $\mathbb{R}$ (los números reales).
+\item Justificación: Un polinomio de este conjunto tiene la forma $P(x) = a_0 + a_1 x + a_2 x^2 + \dots + a_N x^N$, con $a_i \in \mathbb{R}$.
+\begin{itemize}
+\item Suma: Si sumamos dos polinomios de grado menor o igual a $N$, el polinomio resultante no puede tener términos de grado mayor a $N$. A lo sumo, si los coeficientes principales son opuestos, el grado podría disminuir, pero seguirá siendo a lo sumo $N$. Por lo tanto, el conjunto es cerrado bajo la suma.
+\item Producto por escalar: Multiplicar un polinomio por una constante $\alpha \in \mathbb{R}$ escala sus coeficientes pero no añade potencias mayores de $x$.
+\item Elemento neutro: El polinomio nulo $a_0=0$ (cuyo grado se considera $-\infty$ o indefinido, pero ciertamente es $\le N$) está incluido en el conjunto.
+\end{itemize}
+\end{itemize}
+
+Nota: Si el conjunto fuera los polinomios de grado EXACTAMENTE $N$, entonces no sería un espacio vectorial, porque al sumar $x^N$ y $-x^N$ obtendrías $0$, que no tiene grado $N$, perdiendo la clausura y el elemento neutro.
+
+\item[$c)$] $\{f:[a,b]\to\mathbb{R}\}$, las funciones a valores reales definidas sobre el intervalo $[a,b]$.
+
+\begin{itemize}
+\item ¿Es un espacio vectorial? Sí.
+\item Cuerpo correspondiente: $\mathbb{R}$ (los números reales).
+\item Justificación: Este es un espacio funcional clásico (frecuentemente denotado como $\mathcal{F}([a,b], \mathbb{R})$).
+\begin{itemize}
+\item Las operaciones se definen punto a punto: $(f+g)(x) = f(x) + g(x)$ y $(\alpha f)(x) = \alpha f(x)$.
+\item Clausura: Si $f$ y $g$ asignan un número real a cada valor de $x \in [a,b]$, entonces la suma de esos dos números reales también es un número real, por lo que la función suma $f+g$ sigue estando bien definida en el intervalo $[a,b]$ hacia $\mathbb{R}$. Lo mismo ocurre al multiplicar por un escalar.
+\item Elemento neutro: La función idénticamente nula para todo $x \in [a,b]$ pertenece al conjunto y actúa como vector nulo.
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+Conclusión: Los tres conjuntos dados son efectivamente espacios vectoriales sobre el cuerpo de los números reales $\mathbb{R}$.
+
+\subsection*{Problema 3}
+
+Este es un problema clásico y fundamental en el álgebra lineal aplicada a la física (aparece muchísimo cuando se estudian series de Fourier o mecánica cuántica con el operador paridad).
+Lo resolvemos paso a paso.
+
+\begin{itemize}
+\item Demostrar que $V_p$ y $V_i$ son subespacios de $V$.
+
+Para demostrar que un subconjunto es un subespacio vectorial, debemos probar tres cosas: que contiene al vector nulo, que es cerrado bajo la suma y que es cerrado bajo el producto por escalares.
+
+Para el conjunto de funciones pares $V_p$:
+
+\begin{itemize}
+\item Vector nulo: La función nula $O(x) = 0$ para todo $x$. Evaluando en $-x$: $O(-x) = 0 = O(x)$. Por lo tanto, $O \in V_p$.
+\item Clausura bajo la suma: Sean $f, g \in V_p$. Veamos cómo se comporta su suma evaluada en $-x$:
+
+$$(f+g)(-x) = f(-x) + g(-x)$$
+
+Como $f$ y $g$ son pares, $f(-x)=f(x)$ y $g(-x)=g(x)$, entonces:
+
+$$(f+g)(-x) = f(x) + g(x) = (f+g)(x)$$
+
+Por lo tanto, $f+g \in V_p$.
+
+\item Clausura bajo el producto por escalar: Sea $f \in V_p$ y $\alpha \in \mathbb{R}$.
+
+$$(\alpha f)(-x) = \alpha \cdot f(-x) = \alpha \cdot f(x) = (\alpha f)(x)$$
+
+Por lo tanto, $\alpha f \in V_p$.
+
+\end{itemize}
+
+Al cumplir las tres condiciones, concluimos $V_p$ es un subespacio de $V$.
+
+Para el conjunto de funciones impares $V_i$:
+
+\begin{itemize}
+
+\item Vector nulo: La función nula cumple $O(-x) = 0 = -0 = -O(x)$. Así que $O \in V_i$.
+
+\item Clausura bajo la suma: Sean $f, g \in V_i$.
+
+$$(f+g)(-x) = f(-x) + g(-x)$$
+
+Como son impares, $f(-x)=-f(x)$ y $g(-x)=-g(x)$:
+
+$$(f+g)(-x) = -f(x) - g(x) = -(f(x) + g(x)) = -(f+g)(x)$$
+
+Por lo tanto, $f+g \in V_i$.
+
+\item Clausura bajo el producto por escalar: Sea $f \in V_i$ y $\alpha \in \mathbb{R}$.
+
+$$(\alpha f)(-x) = \alpha \cdot f(-x) = \alpha \cdot (-f(x)) = -(\alpha f)(x)$$
+
+Por lo tanto, $\alpha f \in V_i$.
+
+\end{itemize}
+
+Al cumplir las tres condiciones, concluimos $V_i$ es un subespacio de $V$.
+
+\item  Demostrar que $V=V_p\oplus V_i$, i.e. que $V_p + V_i = V$ y que $V_p \cap V_i = \{0\}$.
+
+\begin{itemize}
+
+\item Demostramos que $V_p \cap V_i = \{0\}$.
+
+Tomemos una función arbitraria $f$ que pertenezca a la intersección, es decir, $f \in V_p \cap V_i$.
+Esto significa que $f$ debe ser simultáneamente par e impar:
+
+\begin{itemize}
+\item Por ser par: $f(-x) = f(x)$.
+\item Por ser impar: $f(-x) = -f(x)$.
+\end{itemize}
+
+Igualando ambas expresiones obtenemos:
+
+$$f(x) = -f(x)$$
+
+por lo que
+
+$$2f(x) = 0 \implies f(x) = 0 \quad \text{para todo } x \in \mathbb{R}$$
+
+La única función que cumple esto es la función nula. Por lo tanto, $V_p \cap V_i = \{0\}$.
+
+\item  Demostramos que $V_p + V_i = V$.
+
+Para demostrar esto, debemos probar que cualquier función arbitraria $f \in V$ puede escribirse como la suma de una función par y una función impar.
+
+Propongamos la siguiente construcción (muy famosa en física):
+
+$$
+f(x) = \underbrace{\frac{f(x) + f(-x)}{2}}_{f_p(x)} + \underbrace{\frac{f(x) - f(-x)}{2}}_{f_i(x)}
+$$
+
+Verifiquemos que esto funciona:
+
+\begin{itemize}
+\item ¿La suma da $f(x)$?
+$$f_p(x) + f_i(x) = \frac{f(x) + f(-x) + f(x) - f(-x)}{2} = \frac{2f(x)}{2} = f(x)$$
+
+¡Sí!
+
+\item ¿Es $f_p(x)$ realmente una función par? Evaluemos en $-x$:
+
+$$f_p(-x) = \frac{f(-x) + f(-(-x))}{2} = \frac{f(-x) + f(x)}{2} = f_p(x)$$
+
+Sí, es par, por lo que $f_p \in V_p$.
+
+\item ¿Es $f_i(x)$ realmente una función impar? Evaluemos en $-x$:
+
+$$f_i(-x) = \frac{f(-x) - f(-(-x))}{2} = \frac{f(-x) - f(x)}{2} = -\left( \frac{f(x) - f(-x)}{2} \right) = -f_i(x)$$
+
+Sí, es impar, por lo que $f_i \in V_i$.
+
+\end{itemize}
+\end{itemize}
+
+Como logramos expresar cualquier función $f \in V$ como la suma de un elemento de $V_p$ y un elemento de $V_i$, queda demostrado que $V = V_p + V_i$.
+
+Conclusión: $V = V_p \oplus V_i$.
+
+\end{itemize}
+
+\subsection*{Problema 4}
+
+El conjunto $V$ está definido como el espacio de soluciones de un sistema de ecuaciones lineales homogéneo. Para encontrar un conjunto generador (una base) y determinar la dimensión de $V$, necesitamos resolver el sistema y expresar las soluciones en función de sus variables libres.
+
+\begin{itemize}
+\item Escribimos el sistema en forma matricial:
+La matriz de coeficientes asociada al sistema es:
+
+$$\begin{pmatrix}
+2 & -1 & 4/3 & -1 & 0 \\
+1 & 0 & 2/3 & 0 & -1 \\
+9 & -3 & 6 & -3 & -3
+\end{pmatrix}$$
+
+\item Reducción por filas (Eliminación de Gauss-Jordan):
+Vamos a llevar esta matriz a su forma escalonada reducida, siguiendo una serie de pasos:
+
+\begin{enumerate}
+\item Intercambiamos la Fila 1 y la Fila 2 para que sea más fácil operar con un 1 a la cabeza.
+
+$$\begin{pmatrix}
+1 & 0 & 2/3 & 0 & -1 \\
+2 & -1 & 4/3 & -1 & 0 \\
+9 & -3 & 6 & -3 & -3
+\end{pmatrix}$$
+
+\item Hacemos ceros por debajo del primer pivote (columna 1).
+
+\begin{itemize}
+\item $F_2 \leftarrow F_2 - 2F_1$
+\item $F_3 \leftarrow F_3 - 9F_1$
+\end{itemize}
+
+Calculando las nuevas filas:
+
+\begin{itemize}
+\item  Nueva $F_2$: $(2-2, -1-0, \frac{4}{3}-\frac{4}{3}, -1-0, 0 - (-2)) = (0, -1, 0, -1, 2)$
+\item  Nueva $F_3$: $(9-9, -3-0, 6-6, -3-0, -3 - (-9)) = (0, -3, 0, -3, 6)$
+\end{itemize}
+
+La matriz queda:
+
+$$\begin{pmatrix}
+1 & 0 & 2/3 & 0 & -1 \\
+0 & -1 & 0 & -1 & 2 \\
+0 & -3 & 0 & -3 & 6
+\end{pmatrix}$$
+
+\item Hacemos cero por debajo del segundo pivote (columna 2). 
+Para ello, observá que la Fila 3 es exactamente el triple de la Fila 2 y, por ende
+
+$$F_3 \leftarrow F_3 - 3F_2 \implies (0, 0, 0, 0, 0) .$$
+
+Luego multiplicamos la Fila 2 por $-1$ para dejar el pivote positivo:
+
+$$F_2 \leftarrow -F_2 \implies (0, 1, 0, 1, -2) .$$
+
+de manera que la matriz escalonada reducida final es:
+
+$$\begin{pmatrix}
+1 & 0 & 2/3 & 0 & -1 \\
+0 & 1 & 0 & 1 & -2 \\
+0 & 0 & 0 & 0 & 0
+\end{pmatrix}$$
+
+\end{enumerate}
+
+\item Parametrización de la solución:
+A partir de la matriz reducida, rearmamos las ecuaciones:
+
+\begin{itemize}
+\item $x_1 + \frac{2}{3}x_3 - x_5 = 0 \implies x_1 = -\frac{2}{3}x_3 + x_5$
+\item $x_2 + x_4 - 2x_5 = 0 \implies x_2 = -x_4 + 2x_5$
+\end{itemize}
+
+Tenemos dos variables principales ($x_1, x_2$) y tres variables libres ($x_3, x_4, x_5$).
+Un vector genérico $(x_1, x_2, x_3, x_4, x_5) \in V$ se puede escribir sustituyendo las variables principales:
+
+$$\begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{pmatrix} =
+\begin{pmatrix} -\frac{2}{3}x_3 + x_5 \\ -x_4 + 2x_5 \\ x_3 \\ x_4 \\ x_5 \end{pmatrix}$$
+
+Separamos este vector como una combinación lineal (suma) agrupando las variables libres:
+
+$$= x_3 \begin{pmatrix} -2/3 \\ 0 \\ 1 \\ 0 \\ 0 \end{pmatrix} + 
+x_4 \begin{pmatrix} 0 \\ -1 \\ 0 \\ 1 \\ 0 \end{pmatrix} + 
+x_5 \begin{pmatrix} 1 \\ 2 \\ 0 \\ 0 \\ 1 \end{pmatrix}$$
+
+\item Conclusión:
+
+\begin{itemize}
+\item Conjunto generador (Base): Hemos encontrado tres vectores linealmente independientes que generan cualquier solución del sistema. Para evitar fracciones (es opcional pero más elegante), podemos multiplicar el primer vector por $3$. El conjunto finito de vectores que genera $V$ es:
+
+$$B = \left\{ (-2, 0, 3, 0, 0), \ (0, -1, 0, 1, 0), \ (1, 2, 0, 0, 1) \right\}$$
+
+\item Dimensión: Como el conjunto generador (base) está compuesto por 3 vectores, la dimensión del espacio vectorial $V$ es $3$.
+
+\end{itemize}
+\end{itemize} 
+
+\subsection*{Problema 5}
+
+Antes de empezar, recordemos la propiedad definitoria fundamental de una base dual $\{\tilde{e}^i\}$. Sus elementos (que son transformaciones lineales de $V \to \mathbb{R}$) se construyen para que, al aplicarlos sobre los vectores de la base original $\{\vec{e}_j\}$, cumplan con la delta de Kronecker:
+
+$$\tilde{e}^i(\vec{e}_j) = \delta^i_j = \begin{cases} 1 & \text{si } i = j \\ 0 & \text{si } i \neq j \end{cases}$$
+
+\begin{itemize}
+\item Cálculo de las componentes para el vector $\vec{u} \in V$.
+Como $\{\vec{e}_j\}_{j=1}^n$ es una base de $V$, cualquier vector $\vec{u}$ se puede escribir de forma única como una combinación lineal de estos elementos:
+
+$$\vec{u} = \sum_{j=1}^n u^j \vec{e}_j$$
+
+Queremos averiguar cuánto vale el coeficiente $u^i$. Para ello, le aplicamos el funcional lineal $\tilde{e}^i$ a todo el vector $\vec{u}$. Usando la propiedad de linealidad de $\tilde{e}^i$ (que permite sacar la sumatoria y las constantes afuera), tenemos:
+
+$$\tilde{e}^i(\vec{u}) = \tilde{e}^i \left( \sum_{j=1}^n u^j \vec{e}_j \right) = \sum_{j=1}^n u^j \tilde{e}^i(\vec{e}_j)$$
+
+Usando la propiedad de la base dual $\tilde{e}^i(\vec{e}_j) = \delta^i_j$:
+
+$$\tilde{e}^i(\vec{u}) = \sum_{j=1}^n u^j \delta^i_j$$
+
+En esta sumatoria, todos los términos son cero excepto cuando $j = i$, en cuyo caso $\delta^i_i = 1$. Por lo tanto, la sumatoria colapsa a un solo término:
+
+$$\tilde{e}^i(\vec{u}) = u^i$$
+
+¡Queda demostrado!
+
+\item Para el covector (funcional lineal) $\vec{\omega} \in V^*$, de manera análoga, como $\{\tilde{e}^i\}_{i=1}^n$ es una base del espacio dual $V^*$, cualquier covector $\vec{\omega}$ se puede escribir como combinación lineal de esta base:
+
+$$\vec{\omega} = \sum_{i=1}^n \omega_i \tilde{e}^i$$
+
+De esta manera
+
+$$
+\vec{e}_j(\vec{\omega})
+=
+\vec{\omega}(\vec{e}_j)
+=
+\left( \sum_{i=1}^n \omega_i \tilde{e}^i \right) (\vec{e}_j)$$
+donde hemos utilizado que $\vec{v}(\vec{\omega}) = \vec{\omega}(\vec{v})$ para cualquier vector $\vec{v}$ y covector $\vec{\omega}$ debido al isomorfismo natural $V\cong V^{**}$ que existe entre un espacio vectorial y su doble dual.
+
+Por la definición de la suma y producto por escalar de funciones:
+
+
+$$\vec{\omega}(\vec{e}_j) = \sum_{i=1}^n \omega_i \tilde{e}^i(\vec{e}_j) = \sum_{i=1}^n \omega_i \delta^i_j$$
+
+
+Nuevamente, todos los términos de la sumatoria se anulan salvo cuando $i = j$. Por lo tanto:
+
+
+$$\vec{\omega}(\vec{e}_j) = \omega_j$$
+
+
+¡Demostrado! Esto nos dice que las componentes de un vector/covector son simplemente el resultado de ``medirlo'' con los elementos de la base complementaria.
+
+\item Existencia y unicidad de la base dual.
+
+Para explicar por qué la base dual existe y es única, debemos apelar a un teorema fundamental del álgebra lineal: ``Una transformación lineal queda unívocamente determinada por su acción sobre los vectores de una base''.
+
+\begin{itemize}
+\item Existencia:
+El espacio dual $V^*$ es el conjunto de todas las transformaciones lineales de $V$ en $\mathbb{R}$.
+Para construir el objeto $\tilde{e}^i$, nosotros elegimos definir una transformación lineal asignándole los siguientes valores a la base de $V$: que valga $1$ si la evaluamos en $\vec{e}_i$, y $0$ si la evaluamos en cualquier otro $\vec{e}_j$ (con $j \neq i$).
+Como podemos elegir libremente a dónde enviar los elementos de una base para crear una transformación lineal válida, existe tal funcional $\tilde{e}^i$ para cada $i = 1, \dots, n$.
+
+\item Unicidad:
+Supongamos que existiera otro funcional, llamémoslo $f \in V^*$, que también cumpla $f(\vec{e}_j) = \delta^i_j$.
+Si evaluamos a ambos en un vector arbitrario $\vec{u} = \sum u^j \vec{e}_j$:
+
+$$f(\vec{u}) = \sum u^j f(\vec{e}_j) = \sum u^j \delta^i_j = u^i$$
+
+Pero ya vimos arriba que $\tilde{e}^i(\vec{u})$ también da $u^i$. Como $f(\vec{u}) = \tilde{e}^i(\vec{u})$ para cualquier vector $\vec{u}$ del espacio, entonces las funciones son idénticas: $f = \tilde{e}^i$.
+Por lo tanto, el elemento $\tilde{e}^i$ es único.
+
+Al repetir este argumento para cada $i$ desde $1$ hasta $n$, demostramos que el conjunto $\{\tilde{e}^1, \tilde{e}^2, \dots, \tilde{e}^n\}$ existe y es único para la base dada. 
+
+\item Independencia lineal:
+Para completar que es una base de $V^*$, se demuestra trivialmente que son linealmente independientes y generan el espacio.
+Para ello, notamos que
+$$
+\vec{0}
+=
+\sum_{i=1}^n c_i\tilde{e}^i
+$$
+implica que
+\begin{eqnarray}
+0
+&=&
+\vec{0}(\vec{e}_k)
+\notag
+\\
+&=&
+\sum_{i=1}^n
+c_i\tilde{e}^i(e_k)
+\notag
+\\
+&=&
+\sum_{i=1}^n
+c_i\delta^i{}_k
+\notag
+\\
+&=&
+c_k
+\notag
+\end{eqnarray}
+para todo $k=1,2,...,n$.
+\end{itemize}
+\end{itemize} 
+
+\subsection*{Problema 6}
+
+
+Este es un ejercicio súper mecánico pero muy revelador sobre cómo se relacionan un espacio y su dual a nivel matricial.
+Lo desarrollaremos en una serie de pasos:
+
+\begin{itemize}
+\item Primero, probar que los vectores son linealmente independientes y forman base.
+Para saber si tres vectores en $\mathbb{R}^3$ son linealmente independientes, la forma más directa es armar una matriz cuyas columnas sean estos vectores y calcular su determinante. Si el determinante es distinto de cero, los vectores son independientes y, al ser $3$ vectores en un espacio de dimensión $3$, automáticamente forman una base $B$.
+
+Armamos la matriz $A$:
+
+$$A = \begin{pmatrix} 1 & -1/2 & -1 \\ 2 & -1 & -1 \\ 1 & -1 & 1 \end{pmatrix}$$
+
+Calculamos el determinante desarrollando por la primera fila:
+
+$$\det(A) = 1 \cdot ((-1)(1) - (-1)(-1)) - \left(-\frac{1}{2}\right) \cdot ((2)(1) - (-1)(1)) + (-1) \cdot ((2)(-1) - (-1)(1))$$
+
+$$\det(A) = 1(-1 - 1) + \frac{1}{2}(2 + 1) - 1(-2 + 1)$$
+
+$$\det(A) = 1(-2) + \frac{1}{2}(3) - 1(-1)$$
+
+$$\det(A) = -2 + \frac{3}{2} + 1 = -1 + 1.5 = 0.5 = \frac{1}{2}$$
+
+Como $\det(A) = \frac{1}{2} \neq 0$, los vectores son linealmente independientes y constituyen una base $B$ para $\mathbb{R}^3$.
+
+\item Segundo, calcular la co-base $\{\tilde{e}^i\}$ expresando los covectores como matrices fila.
+Acá hay un ``truco'' fundamental del álgebra lineal: las filas de la matriz inversa $A^{-1}$ son exactamente los covectores de la base dual.
+¿Por qué? Porque por definición $A^{-1} A = I$ (la matriz identidad). Si multiplicás la fila $i$ de $A^{-1}$ por la columna $j$ de $A$ (que es el vector $\vec{v}_j$), el resultado es $1$ si $i=j$ y $0$ si $i \neq j$. ¡Esa es exactamente la definición de la base dual $\tilde{e}^i(\vec{v}_j) = \delta^i_j$!
+
+Calculemos $A^{-1}$. Como $\det(A) = 1/2$, usamos la fórmula con la matriz adjunta $A^{-1} = \frac{1}{\det(A)} \text{Adj}(A) = 2 \cdot C^T$, donde $C$ es la matriz de cofactores.
+
+Calculando los cofactores $C_{ij}$:
+
+\begin{itemize}
+\item $C_{11} = (-1)(1) - (-1)(-1) = -2$
+\item $C_{12} = -((2)(1) - (-1)(1)) = -3$
+\item $C_{13} = (2)(-1) - (-1)(1) = -1$
+\item $C_{21} = -((-1/2)(1) - (-1)(-1)) = 3/2$
+\item $C_{22} = (1)(1) - (-1)(1) = 2$
+\item $C_{23} = -((1)(-1) - (-1/2)(1)) = 1/2$
+\item $C_{31} = (-1/2)(-1) - (-1)(-1) = -1/2$
+\item $C_{32} = -((1)(-1) - (2)(-1)) = -1$
+\item $C_{33} = (1)(-1) - (2)(-1/2) = 0$
+\end{itemize}
+
+Trasponemos para obtener la adjunta y multiplicamos por $2$ (que es $1/\det(A)$):
+
+
+$$A^{-1} = 2 \begin{pmatrix} -2 & 3/2 & -1/2 \\ -3 & 2 & -1 \\ -1 & 1/2 & 0 \end{pmatrix} = \begin{pmatrix} -4 & 3 & -1 \\ -6 & 4 & -2 \\ -2 & 1 & 0 \end{pmatrix}$$
+
+Por lo tanto, extrayendo las filas de esta matriz, la co-base está formada por los siguientes covectores (matrices fila):
+
+\begin{itemize}
+\item $\tilde{e}^1 = \begin{pmatrix} -4 & 3 & -1 \end{pmatrix}$
+\item $\tilde{e}^2 = \begin{pmatrix} -6 & 4 & -2 \end{pmatrix}$
+\item $\tilde{e}^3 = \begin{pmatrix} -2 & 1 & 0 \end{pmatrix}$
+\end{itemize}
+
+\item Tercero, verificar explícitamente que $\tilde{e}^i(\vec{v}_j) = \delta^i_j$. 
+Para ello, evaluamos aplicando el producto matricial fila por columna (producto punto estándar):
+
+\begin{itemize}
+\item Para $\tilde{e}^1$:
+\begin{itemize}
+\item $\tilde{e}^1(\vec{v}_1) = (-4)(1) + (3)(2) + (-1)(1) = -4 + 6 - 1 = 1$  $(\delta^1_1)$
+\item $\tilde{e}^1(\vec{v}_2) = (-4)(-1/2) + (3)(-1) + (-1)(-1) = 2 - 3 + 1 = 0$  $(\delta^1_2)$
+\item $\tilde{e}^1(\vec{v}_3) = (-4)(-1) + (3)(-1) + (-1)(1) = 4 - 3 - 1 = 0$  $(\delta^1_3)$
+\end{itemize}
+
+\item Para $\tilde{e}^2$:
+\begin{itemize}
+\item $\tilde{e}^2(\vec{v}_1) = (-6)(1) + (4)(2) + (-2)(1) = -6 + 8 - 2 = 0$  $(\delta^2_1)$
+\item $\tilde{e}^2(\vec{v}_2) = (-6)(-1/2) + (4)(-1) + (-2)(-1) = 3 - 4 + 2 = 1$  $(\delta^2_2)$
+\item $\tilde{e}^2(\vec{v}_3) = (-6)(-1) + (4)(-1) + (-2)(1) = 6 - 4 - 2 = 0$  $(\delta^2_3)$
+\end{itemize}
+
+\item Para $\tilde{e}^3$:
+\begin{itemize}
+\item $\tilde{e}^3(\vec{v}_1) = (-2)(1) + (1)(2) + (0)(1) = -2 + 2 + 0 = 0$  $(\delta^3_1)$
+\item $\tilde{e}^3(\vec{v}_2) = (-2)(-1/2) + (1)(-1) + (0)(-1) = 1 - 1 + 0 = 0$  $(\delta^3_2)$
+\item $\tilde{e}^3(\vec{v}_3) = (-2)(-1) + (1)(-1) + (0)(1) = 2 - 1 + 0 = 1$  $(\delta^3_3)$
+\end{itemize}
+
+\end{itemize}
+\end{itemize}
+
+Como se puede ver, calcular la base dual cuando tenés todo en $\mathbb{R}^n$ es exactamente equivalente a invertir la matriz de cambio de base.
+
+\subsection*{Problema 7}
+
+Llegamos al terreno de los tensores, que son la herramienta definitiva para formular leyes físicas de manera independiente del sistema de coordenadas algo indispensable en Relatividad y Mecánica del Continuo.
+Vamos a desglosar el problema paso a paso.
+
+\begin{itemize}
+\item Paso 1: definición, tipo y acción del producto tensorial $\vec{e}_i \otimes \svec{e}^j$.
+
+\begin{itemize}
+\item Definición y tipo de tensor:
+El producto tensorial $\vec{e}_i \otimes \tilde{e}^j$ construye un nuevo objeto matemático (un tensor) a partir de un vector de la base $\vec{e}_i \in V$ y un covector de la base dual $\tilde{e}^j \in V^*$.
+Formalmente, este objeto se define como una aplicación bilineal (lineal en cada uno de sus argumentos). 
+Como tiene ``un índice arriba'' (proveniente del vector) y ``un índice abajo'' (proveniente del covector), decimos que es un tensor de tipo $(1,1)$, una vez contravariante y una vez covariante, respectivamente.
+
+\item Acción sobre vectores y covectores:
+Un tensor de tipo $(1,1)$ es una ``máquina'' que ``come'' un covector y un vector, y ``escupe'' un número real. Su acción evaluada sobre un covector arbitrario $\vec{\omega} \in V^*$ y un vector arbitrario $\vec{v} \in V$ se define de la siguiente manera:
+
+$$(\vec{e}_i \otimes \tilde{e}^j)(\vec{\omega}, \vec{v}) = \vec{e}_i(\vec{\omega}) \cdot \tilde{e}^j(\vec{v})$$
+
+Recordando por el Problema 5 que los vectores pueden actuar sobre covectores evaluándolos ($\vec{e}_i(\vec{\omega}) = \omega_i$) y que la base dual evalúa componentes de vectores ($\tilde{e}^j(\vec{v}) = v^j$), la acción colapsa en el producto de las componentes:
+
+$$(\vec{e}_i \otimes \tilde{e}^j)(\vec{\omega}, \vec{v}) = \omega_i v^j$$
+
+\end{itemize}
+
+\item Paso 2: probar que los $n^2$ tensores $\vec{e}_i \otimes \svec{e}^j$ son linealmente independientes.
+
+Para demostrar independencia lineal, armamos una combinación lineal de todos estos $n^2$ elementos igualada al tensor nulo $\mathbf{0}$. 
+M\'as precisamente, asumimos que los coeficientes $c^i{}_j\in \RR$ son tales que
+
+$$
+\mathbf{0}
+=
+\sum_{i=1}^n \sum_{j=1}^n c^i{}_j (\vec{e}_i \otimes \tilde{e}^j)
+$$
+
+Luego,
+\begin{eqnarray}
+0
+&=&
+\mathbf{0}(\tilde{e}^k,\vec{e}_l)
+\notag
+\\
+&=&
+\bigg(
+\sum_{i=1}^n \sum_{j=1}^n c^i{}_j (\vec{e}_i \otimes \tilde{e}^j)
+\bigg)
+(\tilde{e}^k,\vec{e}_l)
+\notag
+\\
+&=&
+\sum_{i=1}^n \sum_{j=1}^n c^i{}_j (\vec{e}_i \otimes \tilde{e}^j)(\tilde{e}^k,\vec{e}_l)
+\notag
+\\
+&=&
+\sum_{i=1}^n \sum_{j=1}^n c^i{}_j\;\vec{e}_i(\tilde{e}^k)\, \tilde{e}^j(\vec{e}_l)
+\notag
+\\
+&=&
+\sum_{i=1}^n \sum_{j=1}^n c^i{}_j\;
+\delta_i{}^k
+\delta^j{}_l
+\notag
+\\
+&=&
+c^k{}_l
+\notag
+\end{eqnarray}
+Como esta demostración es válida para cualquier elección de $k$ y $l$ (desde $1$ hasta $n$), concluimos que todos los coeficientes de la combinación lineal deben ser cero.
+Por lo tanto, el conjunto de tensores $\vec{e}_i \otimes \tilde{e}^j$ es linealmente independiente.
+
+\item Paso 3: explicar por qué esto demuestra que $\dim(T_1^1) = n^2$.
+
+Para asegurar que la dimensión del espacio $T_1^1$ es $n^2$, necesitamos que el conjunto de $n^2$ elementos $\{\vec{e}_i \otimes \tilde{e}^j:i=1,...,n,j=1,...,n\}$ no solo sea linealmente independiente (lo que ya probamos), sino que también genere a todo el espacio $T_1^1$ (es decir, que sea una base).
+
+Cualquier tensor arbitrario $T \in T_1^1$ es una aplicación bilineal. Por las propiedades de bilinealidad, la acción de $T$ sobre cualquier par $(\vec{\omega}, \vec{v})$ queda totalmente determinada por lo que le hace $T$ a los vectores de la base. Si definimos los $n^2$ números reales $T^i{}_j$ como:
+
+$$T^i{}_j = T(\tilde{e}^i, \vec{e}_j)$$
+
+podemos reconstruir el tensor $T$ completo como la combinación lineal:
+
+$$T = \sum_{i=1}^n \sum_{j=1}^n T^i{}_j (\vec{e}_i \otimes \tilde{e}^j)$$
+
+puesto que, por razones que ya mostramos
+
+\begin{eqnarray}
+T(\tilde{e}^k, \vec{e}_l)
+&=&
+\bigg(
+\sum_{i=1}^n \sum_{j=1}^n T^i{}_j (\vec{e}_i \otimes \tilde{e}^j)
+\bigg)
+(\tilde{e}^k, \vec{e}_l)
+\notag
+\\
+&=&
+\sum_{i=1}^n \sum_{j=1}^n T^i{}_j (\vec{e}_i \otimes \tilde{e}^j)
+(\tilde{e}^k, \vec{e}_l)
+\notag
+\\
+&=&
+\sum_{i=1}^n \sum_{j=1}^n T^i{}_j 
+\delta_i{}^k
+\delta^j{}_l
+\notag
+\\
+&=&
+T^k{}_l
+\notag
+\end{eqnarray}
+
+probando el resultado mencionado.
+
+\end{itemize}
+
+\subsection*{Problema 8}
+
+Este ejercicio nos lleva a un tipo de tensor sumamente importante en física: los tensores $(0,2)$, también conocidos como tensores dos veces covariantes. El ejemplo físico más famoso de este tipo de tensor es el tensor métrico (el que nos permite medir distancias y ángulos, o el que se curva en Relatividad General).
+Vamos a resolverlo paso a paso:
+
+\begin{itemize}
+\item Paso 1: Proponer una base para el espacio $T_2^0$.
+
+Un tensor de tipo $(0,2)$ es una aplicación bilineal que toma dos vectores de $V$ y devuelve un número real. Es decir, si $T \in T_2^0$, entonces $T: V \times V \to \mathbb{R}$.
+
+Dado que la base dual $\{\tilde{e}^i\}$ está formada por covectores (funcionales lineales que toman un vector y devuelven un escalar), podemos construir un objeto que tome dos vectores usando el producto tensorial de dos covectores.
+
+La propuesta natural para la base es el conjunto de todos los posibles productos tensoriales entre los elementos de la base dual:
+
+
+$$B_{T_2^0} = \{ \tilde{e}^i \otimes \tilde{e}^j \}_{i,j=1}^n$$
+
+¿Por qué esto funciona? La acción de uno de estos elementos base sobre dos vectores arbitrarios $\vec{u}, \vec{v} \in V$ se define como:
+
+$$
+(\tilde{e}^i \otimes \tilde{e}^j)(\vec{u}, \vec{v}) 
+=
+\tilde{e}^i(\vec{u}) \, \tilde{e}^j(\vec{v})
+=
+u^i v^j$$
+
+Cualquier tensor arbitrario $T \in T_2^0$ puede expresarse como una combinación lineal de estos elementos. Si evaluamos $T$ en los vectores de la base de $V$, obtenemos sus componentes $T_{ij} = T(\vec{e}_i, \vec{e}_j)$. Entonces, el tensor completo se escribe como:
+
+
+$$T = \sum_{i=1}^n \sum_{j=1}^n T_{ij} (\tilde{e}^i \otimes \tilde{e}^j)$$
+
+Como este conjunto genera todo el espacio y (usando un argumento idéntico al del problema anterior) sus elementos son linealmente independientes, el conjunto $\{ \tilde{e}^i \otimes \tilde{e}^j \}$ es efectivamente una base para $T_2^0$.
+
+\item Paso 2: Si $\dim(V)=3$, ¿Cuántos elementos tiene esta base? Escríbalos explícitamente.
+
+Si la dimensión del espacio vectorial original $V$ es $3$ (es decir, $n=3$), los índices $i$ y $j$ pueden tomar los valores $1, 2$ o $3$.
+Luego, la cantidad total de elementos en la base es el número de combinaciones posibles de $i$ y $j$, que es $3 \times 3 = 9$ elementos ya que, en general, la dimensión de $T_2^0$ es $n^2$.
+
+Escribiéndolos explícitamente, tenemos los 9 productos tensoriales
+
+\begin{eqnarray}
+&&
+\tilde{e}^1 \otimes \tilde{e}^1, \quad \tilde{e}^1 \otimes \tilde{e}^2, \quad \tilde{e}^1 \otimes \tilde{e}^3 \\ \notag
+&&
+\tilde{e}^2 \otimes \tilde{e}^1, \quad \tilde{e}^2 \otimes \tilde{e}^2, \quad \tilde{e}^2 \otimes \tilde{e}^3 \\ \notag
+&&
+\tilde{e}^3 \otimes \tilde{e}^1, \quad \tilde{e}^3 \otimes \tilde{e}^2, \quad \tilde{e}^3 \otimes \tilde{e}^3 \notag
+\end{eqnarray}
+
+\end{itemize}
+
+\subsection*{Problema 9}
+
+\begin{itemize}
+\item[a)] Demostración de subespacios:
+
+Para que sean subespacios, debemos verificar que contienen al tensor nulo, y que son cerrados bajo la suma y la multiplicación por escalares.
+
+\begin{itemize}
+\item Para el subconjunto $\mathcal{S}$ (simétricos):
+\begin{itemize}
+\item Tensor nulo: El tensor $\mathbf{0}$ tiene componentes $0_{ij} = 0$. Claramente $0_{ij} = 0_{ji}$, por lo que $\mathbf{0} \in \mathcal{S}$.
+\item Suma: Sean $S, S' \in \cal{S}$. Sus componentes cumplen $(S+S')_{ij} = S_{ij} + S'_{ij}$. Por hipótesis, esto es igual a $S_{ji} + S'_{ji} = (S+S')_{ji}$. Luego, $S+S' \in \mathcal{S}$.
+\item Producto por escalar: Sea $c \in \mathbb{R}$ y $S \in \cal{S}$. $(cS)_{ij} = c(S_{ij}) = c(S_{ji}) = (cS)_{ji}$. Luego, $cS \in \mathcal{S}$.
+\end{itemize}
+Por lo tanto, $\mathcal{S}$ es un subespacio.
+
+\item Para el subconjunto $\mathcal{A}$ (antisimétricos):
+\begin{itemize}
+\item Tensor nulo: $0_{ij} = 0 = -0 = -0_{ji}$, por lo que $\mathbf{0} \in \mathcal{A}$.
+\item Suma: Sean $A, A' \in \mathcal{A}$. $(A+A')_{ij} = A_{ij} + A'_{ij} = -A_{ji} - A'_{ji} = -(A_{ji} + A'_{ji}) = -(A+A')_{ji}$. Luego, $A+A' \in \mathcal{A}$.
+\item Producto por escalar: $(cA)_{ij} = c(A_{ij}) = c(-A_{ji}) = -(cA)_{ji}$. Luego, $cA \in \mathcal{A}$.
+\end{itemize}
+Por lo tanto, $\mathcal{A}$ es un subespacio.
+\end{itemize}
+
+\item[b)] Cálculo de las dimensiones:
+
+La dimensión de un espacio es el número de componentes independientes que necesitamos para definir un elemento arbitrario. Pensemos en las componentes $T_{ij}$ como los elementos de una matriz $n \times n$.
+
+\begin{itemize}
+\item Dimensión de $\mathcal{S}$:
+Un tensor simétrico cumple $S_{ij} = S_{ji}$. Las componentes de la diagonal principal ($S_{ii}$) son independientes (hay $n$ de ellas). Para los elementos fuera de la diagonal, la mitad superior determina unívocamente a la mitad inferior.
+La cantidad total de elementos fuera de la diagonal es $n^2 - n$. La mitad de estos son independientes, es decir, $\frac{n^2-n}{2}$.
+Sumando la diagonal y la mitad superior:
+
+$$\dim(\mathcal{S}) = n + \frac{n^2-n}{2} = \frac{2n + n^2 - n}{2} = \frac{n^2+n}{2} = \frac{n(n+1)}{2}$$
+
+\item Dimensión de $\mathcal{A}$:
+Un tensor antisimétrico cumple $A_{ij} = -A_{ji}$. Para la diagonal ($i=j$), esto implica $A_{ii} = -A_{ii}$, lo que fuerza a que $2A_{ii} = 0 \implies A_{ii} = 0$. Es decir, ¡la diagonal no aporta grados de libertad!
+Solo tenemos elementos independientes estrictamente por encima de la diagonal. Al fijarlos, la parte inferior queda determinada con el signo opuesto.
+Como vimos, hay $\frac{n^2-n}{2}$ elementos por encima de la diagonal.
+
+$$\dim(\mathcal{A}) = \frac{n^2-n}{2} = \frac{n(n-1)}{2}$$
+\end{itemize}
+
+
+\item[c)] Demostración de que $T_2^0 = \mathcal{S} \oplus \mathcal{A}$:
+
+Para que el espacio total sea suma directa de ambos, se deben cumplir dos cosas: $\mathcal{S} \cap \mathcal{A} = \{\mathbf{0}\}$ y $T_2^0 = \mathcal{S} + \mathcal{A}$.
+Nota pedagógica: Este inciso es exactamente análogo a la demostración que hicimos en el Problema 3 para las funciones pares e impares.
+
+\begin{itemize}
+\item Intersección nula: Sea un tensor $T \in \mathcal{S} \cap \mathcal{A}$.
+Por estar en $\mathcal{S}$: $T_{ij} = T_{ji}$
+Por estar en $\mathcal{A}$: $T_{ij} = -T_{ji}$
+Igualando: $T_{ji} = -T_{ji} \implies 2T_{ji} = 0 \implies T_{ji} = 0$ para todo $i,j$. La única posibilidad es el tensor nulo, así que $\mathcal{S} \cap \mathcal{A} = \{\mathbf{0}\}$.
+\item Generación del espacio total: Debemos mostrar que cualquier tensor $T \in T_2^0$ puede escribirse como la suma de uno simétrico y uno antisimétrico.
+Construimos explícitamente estas partes:
+
+$$
+T_{ij} 
+= 
+\underbrace{\frac{1}{2}(T_{ij} + T_{ji})}_{S_{ij}} 
++ 
+\underbrace{\frac{1}{2}(T_{ij} - T_{ji})}_{A_{ij}}
+$$
+
+\begin{itemize}
+\item Es trivial ver que la suma de ambos términos da $T_{ij}$.
+\item $S_{ij}$ es claramente simétrico: $S_{ji} = \frac{1}{2}(T_{ji} + T_{ij}) = S_{ij}$.
+\item $A_{ij}$ es claramente antisimétrico: $A_{ji} = \frac{1}{2}(T_{ji} - T_{ij}) = -\frac{1}{2}(T_{ij} - T_{ji}) = -A_{ij}$.
+\end{itemize}
+
+\end{itemize}
+
+Como logramos escribir cualquier $T$ como $T = S + A$ (con $S \in \cal{S}$ y $A \in \cal{A}$) de forma única (por ser intersección nula), queda demostrado que $T_2^0 = \cal{S} \oplus \cal{A}$.
+Adicionalmente, podemos verificar la consistencia con el teorema de las dimensiones: 
+$$
+\dim(\mathcal{S}) + \dim(\mathcal{A}) 
+= 
+\frac{n^2+n}{2} + \frac{n^2-n}{2} 
+= 
+\frac{2n^2}{2} 
+= 
+n^2 = \dim(T_2^0)
+.
+$$
+
+\end{itemize}
+
+\subsection*{Problema 10}
+
+\begin{itemize}
+
+\item[a)] 
+Para demostrar que un subconjunto es un subespacio vectorial, debemos verificar que contiene al tensor nulo, y que es cerrado bajo la suma y el producto por un escalar.
+
+Para el conjunto de tensores simétricos $\cal{S}$:
+\begin{itemize}
+\item Tensor nulo: El tensor nulo $\mathbf{0}$ tiene componentes $0_{ij} = 0$. Claramente cumple que $0_{ij} = 0 = 0_{ji}$, por lo tanto $\mathbf{0} \in \cal{S}$.
+\item Clausura bajo la suma: Sean $S, S' \in \cal{S}$. Queremos ver si $S + S'$ es simétrico.
+    $$(S + S')_{ij} = S_{ij} + S'_{ij}$$
+    Como $S$ y $S'$ son simétricos, sabemos que $S_{ij} = S_{ji}$ y $S'_{ij} = S'_{ji}$. Reemplazando:
+    $$(S + S')_{ij} = S_{ji} + S'_{ji} = (S + S')_{ji}$$
+    Por lo tanto, $S + S' \in \cal{S}$.
+\item Clausura bajo el producto por escalar: Sea $S \in \cal{S}$ y $\alpha$ un escalar.
+    $$(\alpha S)_{ij} = \alpha S_{ij} = \alpha S_{ji} = (\alpha S)_{ji}$$
+    Por lo tanto, $\alpha S \in \cal{S}$.
+\end{itemize}
+
+Al cumplir las tres propiedades, $\cal{S}$ es un subespacio vectorial de $T_2^0$.
+
+Para el conjunto de tensores antisimétricos $\cal{A}$:
+\begin{itemize}
+\item Tensor nulo: El tensor nulo cumple que $0_{ij} = 0 = -0 = -0_{ji}$, por lo tanto $\mathbf{0} \in \cal{A}$.
+\item Clausura bajo la suma: Sean $A, A' \in \cal{A}$.
+    $$(A + A')_{ij} = A_{ij} + A'_{ij}$$
+    Como $A$ y $A'$ son antisimétricos ($A_{ij} = -A_{ji}$ y $A'_{ij} = -A'_{ji}$):
+    $$(A + A')_{ij} = -A_{ji} - A'_{ji} = -(A_{ji} + A'_{ji}) = -(A + A')_{ji}$$
+    Por lo tanto, $A + A' \in \cal{A}$.
+\item Clausura bajo el producto por escalar: Sea $A \in \cal{A}$ y $\alpha$ un escalar.
+    $$(\alpha A)_{ij} = \alpha A_{ij} = \alpha (-A_{ji}) = -(\alpha A)_{ji}$$
+    Por lo tanto, $\alpha A \in \cal{A}$.
+\end{itemize}
+
+Al cumplir las tres propiedades, $\cal{A}$ es un subespacio vectorial de $T_2^0$.
+
+\item[b)]
+Al elegir una base, cualquier tensor en $T_2^0$ puede representarse mediante una matriz cuadrada de $n \times n$. En total, la matriz tiene $n^2$ componentes.
+
+Dimensión de $\cal{S}$:
+Para una matriz simétrica, las componentes por debajo de la diagonal principal están completamente determinadas por las componentes por encima de la diagonal ($S_{ji} = S_{ij}$). Por lo tanto, las componentes independientes son las que están en la diagonal principal y por encima de ella.
+\begin{itemize}
+\item Número de elementos en la diagonal principal: $n$
+\item Número de elementos fuera de la diagonal principal: $n^2 - n$
+\item Como la mitad de los elementos fuera de la diagonal son independientes (los de la parte superior), tenemos: $\frac{n^2 - n}{2}$ elementos independientes.
+Sumando los de la diagonal y los de la parte superior:
+$$\dim({\cal S}) = n + \frac{n^2 - n}{2} = \frac{2n + n^2 - n}{2} = \frac{n^2 + n}{2} = \frac{n(n+1)}{2}$$
+\end{itemize}
+
+Dimensión de $\cal{A}$:
+Para una matriz antisimétrica, se debe cumplir que $A_{ij} = -A_{ji}$.
+Para los elementos de la diagonal principal ($i = j$), esto implica que $A_{ii} = -A_{ii}$, lo que significa que $2A_{ii} = 0 \implies A_{ii} = 0$. Es decir, todos los elementos de la diagonal son cero (0 componentes independientes).
+Los elementos por debajo de la diagonal están determinados por los que están por encima ($A_{ji} = -A_{ij}$). Por lo tanto, solo los elementos por encima de la diagonal son independientes.
+$$\dim({\cal A}) = \frac{n^2 - n}{2} = \frac{n(n-1)}{2}$$
+
+Nota de control: Si sumamos las dimensiones de ambos subespacios obtenemos $\frac{n(n+1)}{2} + \frac{n(n-1)}{2} = \frac{n^2+n+n^2-n}{2} = \frac{2n^2}{2} = n^2$, que es precisamente la dimensión del espacio total $T_2^0$.
+
+\item[c)]
+Para demostrar que un espacio es suma directa de dos subespacios ($T_2^0 = \cal{S} \oplus \cal{A}$), debemos probar dos cosas:
+\begin{itemize}
+\item  Su intersección es únicamente el elemento nulo: $\cal{S} \cap \cal{A} = \{\mathbf{0}\}$.
+\item   La suma de los subespacios genera todo el espacio: $T_2^0 = \cal{S} + \cal{A}$.
+\end{itemize}
+
+{\bf Intersección nula:}
+Sea $T \in \cal{S} \cap \cal{A}$. Como pertenece a ambos subespacios, debe cumplir simultáneamente:
+\begin{itemize}
+\item $T_{ij} = T_{ji}$ (por estar en $\cal{S}$)
+\item  $T_{ij} = -T_{ji}$ (por estar en $\cal{A}$)
+\end{itemize}
+
+Igualando ambas expresiones obtenemos:
+$$T_{ji} = -T_{ji} \implies 2T_{ji} = 0 \implies T_{ji} = 0$$ para todo $i,j$.
+La única matriz que cumple esto es la matriz nula, por lo que $\cal{S} \cap \cal{A} = \{\mathbf{0}\}$.
+
+{\bf Generación del espacio total:}
+Debemos mostrar que cualquier tensor $T \in T_2^0$ puede escribirse como la suma de un tensor simétrico y uno antisimétrico.
+Proponemos la siguiente construcción explícita para las componentes de cualquier tensor $T$:
+$$T_{ij} = \underbrace{\frac{1}{2}(T_{ij} + T_{ji})}_{S_{ij}} + \underbrace{\frac{1}{2}(T_{ij} - T_{ji})}_{A_{ij}}$$
+
+Verifiquemos que esto funciona:
+\begin{itemize}
+\item La suma de los dos términos nos da: $\frac{1}{2}T_{ij} + \frac{1}{2}T_{ji} + \frac{1}{2}T_{ij} - \frac{1}{2}T_{ji} = T_{ij}$.
+\item El primer término, $S_{ij}$, es efectivamente simétrico: $S_{ji} = \frac{1}{2}(T_{ji} + T_{ij}) = S_{ij}$. Luego, $S \in \cal{S}$.
+\item El segundo término, $A_{ij}$, es efectivamente antisimétrico: $A_{ji} = \frac{1}{2}(T_{ji} - T_{ij}) = -\frac{1}{2}(T_{ij} - T_{ji}) = -A_{ij}$. Luego, $A \in \cal{A}$.
+\end{itemize}
+
+Como pudimos escribir un tensor arbitrario $T$ como la suma $T = S + A$, donde $S \in \cal{S}$ y $A \in \cal{A}$, hemos demostrado que $T_2^0 = \cal{S} + \cal{A}$.
+
+Habiendo demostrado la intersección nula y la suma, concluimos que $T_2^0 = \cal{S} \oplus \cal{A}$.
+ 
+\end{itemize}
+
+\subsection*{Problema 11}
+
+\begin{itemize}
+\item[a)]
+Cualquier tensor $T \in T_2^0$ se puede desarrollar en la base tensorial $\{\svec{e}^i \otimes \svec{e}^j\}$ como:
+$$T = \sum_{i,j=1}^3 T_{ij} \, \svec{e}^i \otimes \svec{e}^j$$
+
+Comparando esta expresión general con el tensor dado, podemos identificar directamente cada componente $T_{ij}$ observando el coeficiente que acompaña a cada par $\svec{e}^i \otimes \svec{e}^j$.
+\begin{itemize}
+\item Fila 1 ($i=1$): $T_{11} = 4$, $T_{12} = -1$, $T_{13} = 2$
+\item Fila 2 ($i=2$): $T_{21} = 2$, $T_{22} = 1$. Notemos que el término con $\svec{e}^2 \otimes \svec{e}^3$ no aparece, por lo tanto $T_{23} = 0$
+\item Fila 3 ($i=3$): $T_{31} = 3$, $T_{32} = 3$, $T_{33} = 3$
+\end{itemize}
+
+Ordenando estos coeficientes en una matriz $3\times3$ donde el índice $i$ denota la fila y el $j$ la columna, obtenemos:
+$$
+T = \begin{pmatrix}
+4 & -1 & 2 \\
+2 & 1 & 0 \\
+3 & 3 & 3
+\end{pmatrix}
+$$
+
+\item[b)]
+Para calcular las partes simétrica y antisimétrica, necesitaremos primero calcular la matriz transpuesta de $T$ ($T^\top$), cuyas componentes son $(T^\top)_{ij} = T_{ji}$:
+$$
+T^\top = \begin{pmatrix}
+4 & 2 & 3 \\
+-1 & 1 & 3 \\
+2 & 0 & 3
+\end{pmatrix}
+$$
+
+Cálculo de la matriz S (parte simétrica):
+Usamos la definición matricial $S = \frac{1}{2}(T + T^\top)$:
+$$
+S = \frac{1}{2} \left[ \begin{pmatrix} 4 & -1 & 2 \\ 2 & 1 & 0 \\ 3 & 3 & 3 \end{pmatrix} + \begin{pmatrix} 4 & 2 & 3 \\ -1 & 1 & 3 \\ 2 & 0 & 3 \end{pmatrix} \right]
+$$
+$$
+S = \frac{1}{2} \begin{pmatrix} 4+4 & -1+2 & 2+3 \\ 2-1 & 1+1 & 0+3 \\ 3+2 & 3+0 & 3+3 \end{pmatrix}
+= \frac{1}{2} \begin{pmatrix} 8 & 1 & 5 \\ 1 & 2 & 3 \\ 5 & 3 & 6 \end{pmatrix}
+$$
+$$
+S = \begin{pmatrix} 4 & 1/2 & 5/2 \\ 1/2 & 1 & 3/2 \\ 5/2 & 3/2 & 3 \end{pmatrix}
+$$
+Efectivamente, observamos que $S$ es una matriz simétrica (igual a su transpuesta).
+
+Cálculo de la matriz A (parte antisimétrica):
+Usamos la definición matricial $A = \frac{1}{2}(T - T^\top)$:
+$$
+A = \frac{1}{2} \left[ \begin{pmatrix} 4 & -1 & 2 \\ 2 & 1 & 0 \\ 3 & 3 & 3 \end{pmatrix} - \begin{pmatrix} 4 & 2 & 3 \\ -1 & 1 & 3 \\ 2 & 0 & 3 \end{pmatrix} \right]
+$$
+$$
+A = \frac{1}{2} \begin{pmatrix} 4-4 & -1-2 & 2-3 \\ 2-(-1) & 1-1 & 0-3 \\ 3-2 & 3-0 & 3-3 \end{pmatrix}
+= \frac{1}{2} \begin{pmatrix} 0 & -3 & -1 \\ 3 & 0 & -3 \\ 1 & 3 & 0 \end{pmatrix}
+$$
+$$
+A = \begin{pmatrix} 0 & -3/2 & -1/2 \\ 3/2 & 0 & -3/2 \\ 1/2 & 3/2 & 0 \end{pmatrix}
+$$
+Efectivamente, observamos que $A$ es una matriz antisimétrica (su diagonal es nula y los elementos simétricos tienen el signo opuesto).
+
+Verificación $T = S + A$:
+Sumamos las matrices que acabamos de obtener:
+$$
+S + A = \begin{pmatrix} 4 & 1/2 & 5/2 \\ 1/2 & 1 & 3/2 \\ 5/2 & 3/2 & 3 \end{pmatrix} + \begin{pmatrix} 0 & -3/2 & -1/2 \\ 3/2 & 0 & -3/2 \\ 1/2 & 3/2 & 0 \end{pmatrix}
+$$
+$$
+S + A = \begin{pmatrix} 4+0 & \frac{1-3}{2} & \frac{5-1}{2} \\ \frac{1+3}{2} & 1+0 & \frac{3-3}{2} \\ \frac{5+1}{2} & \frac{3+3}{2} & 3+0 \end{pmatrix}
+$$
+$$
+S + A = \begin{pmatrix} 4 & -2/2 & 4/2 \\ 4/2 & 1 & 0 \\ 6/2 & 6/2 & 3 \end{pmatrix} = \begin{pmatrix} 4 & -1 & 2 \\ 2 & 1 & 0 \\ 3 & 3 & 3 \end{pmatrix}
+$$
+Vemos que el resultado es exactamente la matriz $T$ original, por lo que la relación se verifica correctamente.
+
+\end{itemize}
+
+\subsection*{Problema 13}
+
+Un tensor de orden 3, cuyas componentes son $S_{ijk}$, se denomina totalmente simétrico si el valor de sus componentes no cambia ante *cualquier* permutación de sus índices. Es decir, se debe cumplir que:
+$$S_{ijk} = S_{jik} = S_{ikj} = S_{kji} = S_{jki} = S_{kij}$$
+
+Observemos detenidamente la definición que nos dan para $S_{ijk}$:
+$$S_{ijk} = T_{ijk} + T_{jki} + T_{kij} + T_{ikj} + T_{kji} + T_{jik}$$
+
+Esta expresión es la suma de las componentes del tensor $T$ evaluadas en todas las permutaciones posibles de los tres índices $(i, j, k)$. Como tenemos 3 índices, el número total de permutaciones es $3! = 3 \times 2 \times 1 = 6$. Efectivamente, la suma tiene 6 términos que corresponden a:
+\begin{itemize}
+\item Permutaciones pares (cíclicas): $(i,j,k), (j,k,i), (k,i,j)$
+\item Permutaciones impares (intercambio de dos índices): $(i,k,j), (k,j,i), (j,i,k)$
+\end{itemize}
+
+Para demostrar que $S_{ijk}$ es totalmente simétrico, basta con verificar que la expresión es invariante bajo el intercambio de cualquier par de índices. Por ejemplo, intercambiemos los índices **$i$** y **$j$** para calcular $S_{jik}$:
+
+Reemplazando $i \to j$ y $j \to i$ en la definición original, obtenemos:
+$$S_{jik} = T_{jik} + T_{iki} \text{ (espera, reemplacemos bien)} $$
+Hagamos el reemplazo de forma cuidadosa en cada uno de los 6 términos de la definición original ($S_{ijk}=T_{ijk}+T_{jki}+T_{kij}+T_{ikj}+T_{kji}+T_{jik}$):
+\begin{itemize}
+\item El término $T_{ijk}$ se convierte en $T_{jik}$
+\item El término $T_{jki}$ se convierte en $T_{ikj}$
+\item El término $T_{kij}$ se convierte en $T_{kji}$
+\item El término $T_{ikj}$ se convierte en $T_{jki}$
+\item El término $T_{kji}$ se convierte en $T_{kij}$
+\item El término $T_{jik}$ se convierte en $T_{ijk}$
+\end{itemize}
+
+Sumando los nuevos términos obtenemos la expresión para $S_{jik}$:
+$$S_{jik} = T_{jik} + T_{ikj} + T_{kji} + T_{jki} + T_{kij} + T_{ijk}$$
+
+Si comparamos esta nueva suma con la suma original para $S_{ijk}$:
+$$S_{ijk} = T_{ijk} + T_{jki} + T_{kij} + T_{ikj} + T_{kji} + T_{jik}$$
+
+Podemos notar que son exactamente los mismos 6 términos, únicamente escritos en un orden diferente. Como la suma de números (las componentes del tensor son números reales o complejos) es conmutativa, el orden de los sumandos no altera el resultado.
+
+Por lo tanto:
+$$S_{jik} = S_{ijk}$$
+
+Este mismo razonamiento se aplica para cualquier otro intercambio de índices (por ejemplo, intercambiando $i$ con $k$, o $j$ con $k$). Al realizar cualquier permutación en los índices de $S$, lo único que ocurre en el lado derecho de la ecuación es que los sumandos cambian de lugar entre sí, pero el conjunto total de los 6 sumandos sigue siendo exactamente el mismo.
+
+En conclusión, como la expresión contiene todas las permutaciones posibles de los índices, cualquier permutación adicional solo reordena los términos de la suma, dejando el valor total inalterado. Esto demuestra que $S_{ijk}$ es un tensor totalmente simétrico.
+
+\subsection*{Problema 13}
+
+Un tensor de orden 3 cuyas componentes son $T_{ijk}$ se denomina **totalmente antisimétrico** si, ante el intercambio de cualquier par de sus índices, la componente cambia de signo. Es decir, se deben cumplir las siguientes relaciones para cualquier permutación impar de los índices:
+\begin{itemize}
+\item $T_{ijk} = -T_{jik}$ (intercambiando $i$ y $j$)
+\item $T_{ijk} = -T_{ikj}$ (intercambiando $j$ y $k$)
+\item $T_{ijk} = -T_{kji}$ (intercambiando $i$ y $k$)
+\end{itemize}
+
+Para demostrar esto, observemos la estructura matemática que define a las componentes $T_{ijk}$. Se trata del determinante de una matriz de $3 \times 3$:
+
+$$M = \begin{pmatrix} 
+u_i & u_j & u_k \\ 
+v_i & v_j & v_k \\ 
+w_i & w_j & w_k 
+\end{pmatrix}$$
+
+Notemos cómo están dispuestos los índices en la matriz $M$:
+\begin{itemize}
+\item La primera columna depende exclusivamente del índice $i$: $(u_i, v_i, w_i)^T$.
+\item La segunda columna depende exclusivamente del índice $j$: $(u_j, v_j, w_j)^T$.
+\item  La tercera columna depende exclusivamente del índice $k$: $(u_k, v_k, w_k)^T$.
+\end{itemize}
+
+Ahora, recordemos una propiedad fundamental de los determinantes: Si se intercambian dos columnas (o dos filas) de una matriz, el determinante de la nueva matriz cambia de signo (es decir, se multiplica por $-1$).
+
+Evaluemos qué sucede al intercambiar los índices. 
+
+\begin{itemize}
+\item Intercambio de los índices $i$ y $j$:
+Si calculamos $T_{jik}$, la expresión del determinante queda con la columna dependiente de $j$ en el primer lugar y la dependiente de $i$ en el segundo:
+$$T_{jik} = \begin{vmatrix} 
+u_j & u_i & u_k \\ 
+v_j & v_i & v_k \\ 
+w_j & w_i & w_k 
+\end{vmatrix}$$
+Esta matriz es exactamente la matriz original $M$, pero con la primera y segunda columna permutadas. Por la propiedad de los determinantes:
+$$T_{jik} = - \begin{vmatrix} 
+u_i & u_j & u_k \\ 
+v_i & v_j & v_k \\ 
+w_i & w_j & w_k 
+\end{vmatrix} = -T_{ijk}$$
+
+\item Intercambio de los índices $j$ y $k$:
+De forma análoga, calcular $T_{ikj}$ implica intercambiar las posiciones de los índices $j$ y $k$, lo que equivale a intercambiar la segunda y tercera columna de la matriz original:
+$$T_{ikj} = \begin{vmatrix} 
+u_i & u_k & u_j \\ 
+v_i & v_k & v_j \\ 
+w_i & w_k & w_j 
+\end{vmatrix} = - \begin{vmatrix} 
+u_i & u_j & u_k \\ 
+v_i & v_j & v_k \\ 
+w_i & w_j & w_k 
+\end{vmatrix} = -T_{ijk}$$
+
+\item Intercambio de los índices $i$ y $k$:
+Finalmente, intercambiar $i$ y $k$ equivale a permutar la primera y tercera columna:
+$$T_{kji} = \begin{vmatrix} 
+u_k & u_j & u_i \\ 
+v_k & v_j & v_i \\ 
+w_k & w_j & w_i 
+\end{vmatrix} = - \begin{vmatrix} 
+u_i & u_j & u_k \\ 
+v_i & v_j & v_k \\ 
+w_i & w_j & w_k 
+\end{vmatrix} = -T_{ijk}$$
+
+\end{itemize}
+
+Como el intercambio de cualquier par de índices da como resultado el intercambio de dos columnas en el determinante, el signo del resultado siempre se invierte. En consecuencia, hemos demostrado que $T_{ijk}$ constituye las componentes de un tensor totalmente antisimétrico. 
+
+Nota: Además, si dos índices son iguales, digamos $i=j$, la matriz tendrá dos columnas idénticas, y por propiedades de los determinantes $T_{iik} = 0$, lo cual es un requisito indispensable y corolario directo para un tensor totalmente antisimétrico).
+
+\subsection*{Problema 14}
+
+\begin{itemize}
+\item[a)] Halle la matriz de cambio de base de $B$ a $B'$.
+
+Para hallar la matriz de cambio de base de $B$ a $B'$ (que llamaremos $P$), podemos utilizar las matrices $U$ y $V$ cuyas columnas son los vectores de las bases $B$ y $B'$ respectivamente. 
+
+Sabemos que para cualquier vector, sus componentes en la base canónica se relacionan con sus componentes en una base cualquiera a través de la matriz de la base. Así, $U [\vec{x}]_B = V [\vec{x}]_{B'}$.
+Despejando $[\vec{x}]_{B'}$, obtenemos:
+$$[\vec{x}]_{B'} = V^{-1} U [\vec{x}]_B$$
+Por lo tanto, la matriz de cambio de base es $P = V^{-1} U$.
+
+Paso 1: Invertir la matriz $V$.
+$$V = \begin{pmatrix} -6 & -2 & -2 \\ -6 & -6 & -3 \\ 0 & 4 & 7 \end{pmatrix}$$
+
+El determinante de $V$ es:
+$$\det(V) = -6((-6)(7) - (-3)(4)) - (-2)((-6)(7) - (-3)(0)) + (-2)((-6)(4) - (-6)(0))$$
+$$\det(V) = -6(-42 + 12) + 2(-42) - 2(-24) = -6(-30) - 84 + 48 = 180 - 84 + 48 = 144$$
+
+Calculando la matriz adjunta y dividiendo por 144, obtenemos $V^{-1}$:
+$$V^{-1} = \frac{1}{144} \begin{pmatrix} -30 & 6 & -6 \\ 42 & -42 & -6 \\ -24 & 24 & 24 \end{pmatrix} = \frac{1}{24} \begin{pmatrix} -5 & 1 & -1 \\ 7 & -7 & -1 \\ -4 & 4 & 4 \end{pmatrix}$$
+
+Paso 2: Calcular $P = V^{-1} U$.
+$$P = \frac{1}{24} \begin{pmatrix} -5 & 1 & -1 \\ 7 & -7 & -1 \\ -4 & 4 & 4 \end{pmatrix} \begin{pmatrix} -3 & -3 & 1 \\ 0 & 2 & 6 \\ -3 & -1 & -1 \end{pmatrix}$$
+
+Realizando la multiplicación de matrices (fila por columna):
+\begin{itemize}
+\item Componente $P_{11}$: $(-5)(-3) + (1)(0) + (-1)(-3) = 15 + 0 + 3 = 18$
+\item Componente $P_{12}$: $(-5)(-3) + (1)(2) + (-1)(-1) = 15 + 2 + 1 = 18$
+\item Componente $P_{13}$: $(-5)(1) + (1)(6) + (-1)(-1) = -5 + 6 + 1 = 2$
+\item Componente $P_{21}$: $(7)(-3) + (-7)(0) + (-1)(-3) = -21 + 0 + 3 = -18$
+\item Componente $P_{22}$: $(7)(-3) + (-7)(2) + (-1)(-1) = -21 - 14 + 1 = -34$
+\item Componente $P_{23}$: $(7)(1) + (-7)(6) + (-1)(-1) = 7 - 42 + 1 = -34$
+\item Componente $P_{31}$: $(-4)(-3) + (4)(0) + (4)(-3) = 12 + 0 - 12 = 0$
+\item Componente $P_{32}$: $(-4)(-3) + (4)(2) + (4)(-1) = 12 + 8 - 4 = 16$
+\item Componente $P_{33}$: $(-4)(1) + (4)(6) + (4)(-1) = -4 + 24 - 4 = 16$
+\end{itemize}
+
+Por ende, la matriz de cambio de base $P$ es:
+$$P = \frac{1}{24} \begin{pmatrix} 18 & 18 & 2 \\ -18 & -34 & -34 \\ 0 & 16 & 16 \end{pmatrix} = \begin{pmatrix} 3/4 & 3/4 & 1/12 \\ -3/4 & -17/12 & -17/12 \\ 0 & 2/3 & 2/3 \end{pmatrix}$$
+
+\item[b)]
+{\bf Componentes en la base $B$:}
+Buscamos un vector columna $[\vec{w}]_B = (c_1, c_2, c_3)^T$ tal que $c_1\vec{u}_1 + c_2\vec{u}_2 + c_3\vec{u}_3 = \vec{w}$. 
+Si inspeccionamos los vectores de la base $B$ y el vector $\vec{w}$:
+$$\vec{u}_1 + \vec{u}_2 + \vec{u}_3 = \begin{pmatrix}-3 \\ 0 \\ -3\end{pmatrix} + \begin{pmatrix}-3 \\ 2 \\ -1\end{pmatrix} + \begin{pmatrix}1 \\ 6 \\ -1\end{pmatrix} = \begin{pmatrix}-3-3+1 \\ 0+2+6 \\ -3-1-1\end{pmatrix} = \begin{pmatrix}-5 \\ 8 \\ -5\end{pmatrix} = \vec{w}$$
+La combinación lineal es directa, por lo tanto, las componentes de $\vec{w}$ en la base $B$ son:
+$$[\vec{w}]_B = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$$
+Nota: Esto también se puede calcular rigurosamente haciendo $[\vec{w}]_B = U^{-1} \vec{w}$).
+
+{\bf Componentes en la base $B'$:}
+Utilizamos la matriz $P$ que acabamos de calcular para transformar las coordenadas:
+$$[\vec{w}]_{B'} = P [\vec{w}]_B$$
+$$[\vec{w}]_{B'} = \frac{1}{24} \begin{pmatrix} 18 & 18 & 2 \\ -18 & -34 & -34 \\ 0 & 16 & 16 \end{pmatrix} \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$$
+
+Como el vector $[\vec{w}]_B$ tiene puros $1$, el resultado es simplemente la suma de las columnas de $P$:
+\begin{itemize}
+\item Fila 1: $\frac{18 + 18 + 2}{24} = \frac{38}{24} = \frac{19}{12}$
+\item Fila 2: $\frac{-18 - 34 - 34}{24} = \frac{-86}{24} = -\frac{43}{12}$
+\item Fila 3: $\frac{0 + 16 + 16}{24} = \frac{32}{24} = \frac{4}{3} = \frac{16}{12}$
+\end{itemize}
+
+Por lo tanto, las componentes de $\vec{w}$ en la base $B'$ son:
+$$[\vec{w}]_{B'} = \begin{pmatrix} 19/12 \\ -43/12 \\ 4/3 \end{pmatrix}$$
+
+\end{itemize}
+
+\subsection*{Problema 15}
+
+\begin{itemize}
+\item
+La exponencial de una matriz se define a través de su serie de Taylor:
+$$e^X = \sum_{n=0}^{\infty} \frac{X^n}{n!}$$
+
+Aplicamos esta definición a $e^{(s+t)A}$:
+$$e^{(s+t)A} = \sum_{n=0}^{\infty} \frac{((s+t)A)^n}{n!} = \sum_{n=0}^{\infty} \frac{(s+t)^n A^n}{n!}$$
+
+Usamos el binomio de Newton para expandir $(s+t)^n$:
+$$e^{(s+t)A} = \sum_{n=0}^{\infty} \frac{A^n}{n!} \left( \sum_{k=0}^{n} \frac{n!}{k!(n-k)!} s^k t^{n-k} \right)$$
+
+Simplificando los factoriales $n!$ en el numerador y denominador y reordenando, obtenemos:
+$$e^{(s+t)A} = \sum_{n=0}^{\infty} \sum_{k=0}^{n} \frac{(sA)^k}{k!} \frac{(tA)^{n-k}}{(n-k)!}$$
+
+Esta doble sumatoria representa exactamente el producto de Cauchy de dos series. Si hacemos el cambio de variable $m = n-k$, las sumas se desacoplan completamente en dos series independientes:
+$$e^{(s+t)A} = \left( \sum_{k=0}^{\infty} \frac{(sA)^k}{k!} \right) \left( \sum_{m=0}^{\infty} \frac{(tA)^m}{m!} \right) = e^{sA} e^{tA}$$
+Quedando así demostrada la propiedad.
+
+Nota: De forma alternativa, esta propiedad también es un corolario directo del punto 2, ya que las matrices $sA$ y $tA$ conmutan trivialmente entre sí: $(sA)(tA) = stA^2 = (tA)(sA)$).
+
+\item
+Partimos de la definición en serie de Taylor para $e^{A+B}$:
+$$e^{A+B} = \sum_{n=0}^{\infty} \frac{(A+B)^n}{n!}$$
+
+Dado que $A$ y $B$ conmutan ($AB = BA$), es válido utilizar el binomio de Newton generalizado para matrices (si no conmutaran, el orden de los factores importaría y no podríamos agruparlos de esta forma):
+$$(A+B)^n = \sum_{k=0}^{n} \frac{n!}{k!(n-k)!} A^k B^{n-k}$$
+
+Sustituimos esto en la serie original:
+$$e^{A+B} = \sum_{n=0}^{\infty} \frac{1}{n!} \sum_{k=0}^{n} \frac{n!}{k!(n-k)!} A^k B^{n-k} = \sum_{n=0}^{\infty} \sum_{k=0}^{n} \frac{A^k}{k!} \frac{B^{n-k}}{(n-k)!}$$
+
+Igual que en el inciso anterior, reconocemos aquí el producto de Cauchy de las series correspondientes a $e^A$ y $e^B$. Desacoplando las sumatorias:
+$$e^{A+B} = \left( \sum_{k=0}^{\infty} \frac{A^k}{k!} \right) \left( \sum_{m=0}^{\infty} \frac{B^m}{m!} \right) = e^A e^B$$
+Lo cual concluye la demostración.
+
+\item Cálculo de exponenciales de matrices
+
+{\bf Primer cálculo: $\exp\begin{pmatrix}0 & x \\ -x & 0\end{pmatrix}$}
+
+Podemos reescribir la matriz extrayendo $x$:
+$$M = \begin{pmatrix} 0 & x \\ -x & 0 \end{pmatrix} = x \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} = x J$$
+donde $J = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$. 
+
+Analicemos las potencias de la matriz $J$:
+\begin{itemize}
+\item  $J^1 = J$
+\item  $J^2 = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix} = -I$
+\item  $J^3 = J^2 J = -I J = -J$
+\item $J^4 = (J^2)^2 = (-I)^2 = I$
+\end{itemize}
+
+Notamos un patrón cíclico similar al de la unidad imaginaria $i$. Separamos la serie de Taylor de $e^{xJ}$ en términos de potencias pares e impares:
+$$e^{xJ} = \sum_{n=0}^{\infty} \frac{(xJ)^n}{n!} = \sum_{m=0}^{\infty} \frac{x^{2m} J^{2m}}{(2m)!} + \sum_{m=0}^{\infty} \frac{x^{2m+1} J^{2m+1}}{(2m+1)!}$$
+
+Sustituyendo $J^{2m} = (-1)^m I$ y $J^{2m+1} = (-1)^m J$:
+$$e^{xJ} = I \left( \sum_{m=0}^{\infty} \frac{(-1)^m x^{2m}}{(2m)!} \right) + J \left( \sum_{m=0}^{\infty} \frac{(-1)^m x^{2m+1}}{(2m+1)!} \right)$$
+
+Las series entre paréntesis son las expansiones de Taylor clásicas del coseno y el seno, respectivamente:
+$$e^{xJ} = I \cos(x) + J \sin(x) = \begin{pmatrix} \cos x & 0 \\ 0 & \cos x \end{pmatrix} + \begin{pmatrix} 0 & \sin x \\ -\sin x & 0 \end{pmatrix}$$
+
+Por lo tanto:
+$$\exp\begin{pmatrix}0 & x \\ -x & 0\end{pmatrix} = \begin{pmatrix} \cos x & \sin x \\ -\sin x & \cos x \end{pmatrix}$$
+ Ésta es la conocida matriz de rotación en 2D.
+
+{\bf Segundo cálculo: $\exp\begin{pmatrix}0 & x \\ x & 0\end{pmatrix}$}
+
+De forma similar, reescribimos la matriz:
+$$N = \begin{pmatrix} 0 & x \\ x & 0 \end{pmatrix} = x \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} = x K$$
+donde $K = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$.
+
+Analizamos las potencias de la matriz $K$:
+\begin{itemize}
+\item $K^1 = K$
+\item $K^2 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I$
+\item $K^3 = K^2 K = I K = K$
+\item $K^4 = (K^2)^2 = I^2 = I$
+\end{itemize}
+
+En este caso, el ciclo alterna entre $K$ e $I$ sin cambiar de signo. Separando la serie en potencias pares e impares:
+$$e^{xK} = \sum_{m=0}^{\infty} \frac{x^{2m} I}{(2m)!} + \sum_{m=0}^{\infty} \frac{x^{2m+1} K}{(2m+1)!}$$
+$$e^{xK} = I \left( \sum_{m=0}^{\infty} \frac{x^{2m}}{(2m)!} \right) + K \left( \sum_{m=0}^{\infty} \frac{x^{2m+1}}{(2m+1)!} \right)$$
+
+Estas series corresponden a las expansiones hiperbólicas $\cosh(x)$ y $\sinh(x)$:
+$$e^{xK} = I \cosh(x) + K \sinh(x) = \begin{pmatrix} \cosh x & 0 \\ 0 & \cosh x \end{pmatrix} + \begin{pmatrix} 0 & \sinh x \\ \sinh x & 0 \end{pmatrix}$$
+
+Por lo tanto:
+$$\exp\begin{pmatrix}0 & x \\ x & 0\end{pmatrix} = \begin{pmatrix} \cosh x & \sinh x \\ \sinh x & \cosh x \end{pmatrix}$$
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
