@@ -534,6 +534,95 @@ $$M = \begin{pmatrix} 1 & 1 \\ 0 & 2 \end{pmatrix}$$
 \end{itemize}
 \end{itemize}
 
+\subsection*{Problema 6}
+
+Lo más elegante e instructiva es utilizar la notación de índices (con el convenio de suma de Einstein) y las propiedades del símbolo de Levi-Civita $\epsilon_{ijk}$ y la delta de Kronecker $\delta_{ij}$.
+
+Trabajaremos en coordenadas cartesianas, donde el operador nabla en su componente $i$-ésima se escribe como $\nabla_i = \partial_i = \frac{\partial}{\partial x_i}$.
+
+\begin{itemize}
+\item[a)] Demostrar que $\nabla(\phi\psi) = \phi\nabla\psi + \psi\nabla\phi$.
+
+Evaluamos la componente $i$-ésima del gradiente aplicado al producto de dos campos escalares $\phi$ y $\psi$:
+$$[\nabla(\phi\psi)]_i = \partial_i (\phi\psi)$$
+
+Aplicando la regla del producto habitual para derivadas parciales:
+$$\partial_i (\phi\psi) = (\partial_i \phi)\psi + \phi(\partial_i \psi)$$
+
+Reordenando los términos para que coincidan con la notación vectorial estándar:
+$$[\nabla(\phi\psi)]_i = \psi (\partial_i \phi) + \phi (\partial_i \psi) = \psi [\nabla\phi]_i + \phi [\nabla\psi]_i$$
+
+Como esta igualdad se cumple para cada componente $i$, la identidad vectorial queda demostrada:
+$$\nabla(\phi\psi) = \psi\nabla\phi + \phi\nabla\psi$$
+
+\item[b)] Demostrar que $\nabla \times (\phi\vec{F}) = (\nabla\phi) \times \vec{F} + \phi(\nabla \times \vec{F})$.
+
+Escribimos la componente $i$-ésima del rotor usando el símbolo de Levi-Civita:
+$$[\nabla \times (\phi\vec{F})]_i = \epsilon_{ijk} \partial_j (\phi F_k)$$
+
+Nuevamente, aplicamos la regla del producto para la derivada $\partial_j$:
+$$\epsilon_{ijk} \partial_j (\phi F_k) = \epsilon_{ijk} [(\partial_j \phi) F_k + \phi (\partial_j F_k)]$$
+
+Distribuimos el símbolo $\epsilon_{ijk}$:
+$$= \epsilon_{ijk} (\partial_j \phi) F_k + \epsilon_{ijk} \phi (\partial_j F_k)$$
+$$= \epsilon_{ijk} (\partial_j \phi) F_k + \phi [\epsilon_{ijk} \partial_j F_k]$$
+
+Reconocemos las expresiones para el producto cruz y el rotor en notación de índices:
+\begin{itemize}
+\item $\epsilon_{ijk} (\partial_j \phi) F_k$ es la componente $i$ de $(\nabla\phi) \times \vec{F}$.
+\item $\epsilon_{ijk} \partial_j F_k$ es la componente $i$ de $\nabla \times \vec{F}$.
+\end{itemize}
+
+Por lo tanto:
+$$[\nabla \times (\phi\vec{F})]_i = [(\nabla\phi) \times \vec{F}]_i + \phi [\nabla \times \vec{F}]_i$$
+Lo que demuestra la identidad vectorial.
+
+\item[c)] Demostrar que $\nabla \cdot (\nabla \times \vec{F}) = 0$.
+
+Escribimos la divergencia de un rotor en notación de índices:
+$$\nabla \cdot (\nabla \times \vec{F}) = \partial_i [\nabla \times \vec{F}]_i = \partial_i (\epsilon_{ijk} \partial_j F_k)$$
+
+Como las derivadas parciales conmutan (Teorema de Clairaut/Schwarz para campos suficientemente suaves), el operador $\partial_i \partial_j$ es simétrico respecto al intercambio de los índices $i$ y $j$.
+Por otro lado, el símbolo de Levi-Civita $\epsilon_{ijk}$ es antisimétrico respecto al intercambio de los mismos índices ($\epsilon_{ijk} = -\epsilon_{jik}$).
+
+$$\partial_i \partial_j F_k \epsilon_{ijk} = \frac{1}{2} (\partial_i \partial_j + \partial_j \partial_i) F_k \epsilon_{ijk} = 0$$
+
+La contracción de un tensor simétrico con uno antisimétrico siempre da cero. Por lo tanto:
+$$\nabla \cdot (\nabla \times \vec{F}) = 0$$
+
+\item[d)] Demostrar que $\nabla \times (\nabla \times \vec{F}) = \nabla(\nabla \cdot \vec{F}) - \nabla^2 \vec{F}$.
+
+Evaluamos la componente $i$-ésima de este ``rotor del rotor'':
+$$[\nabla \times (\nabla \times \vec{F})]_i = \epsilon_{ijk} \partial_j [\nabla \times \vec{F}]_k$$
+
+Reemplazamos la componente $k$ del rotor interior por su definición con un nuevo par de índices mudos (por ejemplo, $l$ y $m$):
+$$= \epsilon_{ijk} \partial_j (\epsilon_{klm} \partial_l F_m)$$
+
+Agrupamos los símbolos de Levi-Civita. Recordando que $\epsilon_{klm} = \epsilon_{lmk}$ (permutación cíclica):
+$$= \epsilon_{ijk} \epsilon_{klm} \partial_j \partial_l F_m = \epsilon_{kij} \epsilon_{klm} \partial_j \partial_l F_m$$
+
+Utilizamos la fundamental identidad de contracción del producto de dos Levi-Civita:
+$$\epsilon_{kij} \epsilon_{klm} = \delta_{il} \delta_{jm} - \delta_{im} \delta_{jl}$$
+
+Sustituimos esto en nuestra ecuación:
+$$= (\delta_{il} \delta_{jm} - \delta_{im} \delta_{jl}) \partial_j \partial_l F_m$$
+
+Distribuimos y aplicamos las deltas de Kronecker (que simplemente renombran los índices):
+$$= \delta_{il} \delta_{jm} \partial_j \partial_l F_m - \delta_{im} \delta_{jl} \partial_j \partial_l F_m$$
+$$= \partial_j \partial_i F_j - \partial_j \partial_j F_i$$
+
+Ahora, reordenamos las derivadas en el primer término (conmutan) e identificamos las operaciones vectoriales en ambos términos:
+\begin{itemize}
+\item $\partial_j \partial_i F_j = \partial_i (\partial_j F_j) = \partial_i (\nabla \cdot \vec{F}) = [\nabla(\nabla \cdot \vec{F})]_i$
+\item $\partial_j \partial_j F_i = \nabla^2 F_i = [\nabla^2 \vec{F}]_i$
+\end{itemize}
+
+Ensamblando el resultado final:
+$$[\nabla \times (\nabla \times \vec{F})]_i = [\nabla(\nabla \cdot \vec{F})]_i - [\nabla^2 \vec{F}]_i$$
+Demostrando así la identidad deseada.
+
+\end{itemize}
+
 \end{document}
 
 
