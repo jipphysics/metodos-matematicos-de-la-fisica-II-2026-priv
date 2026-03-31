@@ -921,6 +921,109 @@ Al igual que el área, esto corresponde a una integral elíptica de segunda espe
 
 \end{itemize}
 
+\subsection*{Problema 10}
+
+Este es un clásico fundamental que establece las bases para trabajar en coordenadas esféricas, algo que los alumnos usarán en Electromagnetismo y Cuántica constantemente.
+
+\begin{itemize}
+\item Métrica, factores de escala y diferencial de volumen.
+
+La transformación de coordenadas cartesianas a esféricas estándar (convención de física) es:
+$$x = r \sin\theta \cos\phi, \quad y = r \sin\theta \sin\phi, \quad z = r \cos\theta$$
+
+Calculando el diferencial exacto de la posición $d\vec{r} = dx\,\hat{i} + dy\,\hat{j} + dz\,\hat{k}$ y tomando el producto escalar $ds^2 = d\vec{r} \cdot d\vec{r}$, obtenemos el elemento de línea:
+$$ds^2 = dr^2 + r^2 d\theta^2 + r^2 \sin^2\theta d\phi^2$$
+
+A partir de esto, identificamos las componentes del tensor métrico $g_{ij}$ (que es diagonal por ser un sistema ortogonal):
+$$g_{rr} = 1, \quad g_{\theta\theta} = r^2, \quad g_{\phi\phi} = r^2 \sin^2\theta$$
+
+Los factores de escala se definen como $h_i = \sqrt{g_{ii}}$:
+\begin{itemize}
+\item $h_r = 1$
+\item $h_\theta = r$
+\item $h_\phi = r \sin\theta$
+\end{itemize}
+
+El diferencial de volumen se calcula a partir del determinante de la métrica $g = \det(g_{ij})$ o el producto de los factores de escala:
+$$
+dV = \sqrt{g} \, dr \, d\theta \, d\phi = h_r h_\theta h_\phi \, dr \, d\theta \, d\phi = r^2 \sin\theta \, dr \, d\theta \, d\phi
+$$
+
+\item Símbolos de Christoffel (Conexión de Levi-Civita).
+
+La fórmula general para los símbolos de Christoffel de segunda especie es:
+$$\Gamma^k_{ij} = \frac{1}{2} g^{kl} (\partial_i g_{jl} + \partial_j g_{il} - \partial_l g_{ij})$$
+
+Dado que nuestra métrica es diagonal, la matriz inversa $g^{kl}$ también es diagonal con $g^{ii} = 1/g_{ii}$. Esto simplifica enormemente el cálculo a $\Gamma^k_{ij} = \frac{1}{2g_{kk}} (\partial_i g_{jk} + \partial_j g_{ik} - \partial_k g_{ij})$.
+Primero, notemos cuáles son las únicas derivadas no nulas de las componentes de la métrica:
+$\partial_r g_{\theta\theta} = 2r$
+$\partial_r g_{\phi\phi} = 2r\sin^2\theta$
+$\partial_\theta g_{\phi\phi} = 2r^2\sin\theta\cos\theta$
+
+Ahora, calculamos sistemáticamente los símbolos no nulos (recordando la simetría $\Gamma^k_{ij} = \Gamma^k_{ji}$):
+\begin{itemize}
+\item Para $k = r$:
+\begin{itemize}
+\item $\Gamma^r_{\theta\theta} = -\frac{1}{2g_{rr}} \partial_r g_{\theta\theta} = -\frac{1}{2(1)} (2r) = -r$
+\item $\Gamma^r_{\phi\phi} = -\frac{1}{2g_{rr}} \partial_r g_{\phi\phi} = -\frac{1}{2(1)} (2r\sin^2\theta) = -r\sin^2\theta$
+\end{itemize}
+\item Para $k = \theta$:
+\begin{itemize}
+\item $\Gamma^\theta_{r\theta} = \Gamma^\theta_{\theta r} = \frac{1}{2g_{\theta\theta}} \partial_r g_{\theta\theta} = \frac{1}{2r^2} (2r) = \frac{1}{r}$
+\item $\Gamma^\theta_{\phi\phi} = -\frac{1}{2g_{\theta\theta}} \partial_\theta g_{\phi\phi} = -\frac{1}{2r^2} (2r^2\sin\theta\cos\theta) = -\sin\theta\cos\theta$
+\end{itemize}    
+\item Para $k = \phi$:
+\begin{itemize}
+\item $\Gamma^\phi_{r\phi} = \Gamma^\phi_{\phi r} = \frac{1}{2g_{\phi\phi}} \partial_r g_{\phi\phi} = \frac{1}{2r^2\sin^2\theta} (2r\sin^2\theta) = \frac{1}{r}$
+\item $\Gamma^\phi_{\theta\phi} = \Gamma^\phi_{\phi\theta} = \frac{1}{2g_{\phi\phi}} \partial_\theta g_{\phi\phi} = \frac{1}{2r^2\sin^2\theta} (2r^2\sin\theta\cos\theta) = \frac{\cos\theta}{\sin\theta} = \cot\theta$
+\end{itemize}
+\end{itemize}
+
+Todos los demás símbolos de Christoffel son cero.
+
+\item Operadores diferenciales en componentes físicas.
+
+En componentes físicas (donde los vectores base tienen norma 1, es decir, $\hat{e}_i = \frac{1}{h_i}\partial_i$), usamos las fórmulas generales para coordenadas ortogonales curvilíneas. 
+Sea $f$ un campo escalar y $\vec{A} = A_r\hat{e}_r + A_\theta\hat{e}_\theta + A_\phi\hat{e}_\phi$ un campo vectorial.
+
+Gradiente:
+$$
+\nabla f = \frac{1}{h_r} \frac{\partial f}{\partial r} \hat{e}_r + \frac{1}{h_\theta} \frac{\partial f}{\partial \theta} \hat{e}_\theta + \frac{1}{h_\phi} \frac{\partial f}{\partial \phi} \hat{e}_\phi
+$$
+$$
+\nabla f = \frac{\partial f}{\partial r} \hat{e}_r + \frac{1}{r} \frac{\partial f}{\partial \theta} \hat{e}_\theta + \frac{1}{r\sin\theta} \frac{\partial f}{\partial \phi} \hat{e}_\phi
+$$
+
+Divergencia:
+$$
+\nabla \cdot \vec{A} = \frac{1}{h_r h_\theta h_\phi} \left[ \frac{\partial}{\partial r}(h_\theta h_\phi A_r) + \frac{\partial}{\partial \theta}(h_r h_\phi A_\theta) + \frac{\partial}{\partial \phi}(h_r h_\theta A_\phi) \right]
+$$
+$$
+\nabla \cdot \vec{A} = \frac{1}{r^2\sin\theta} \left[ \frac{\partial}{\partial r}(r^2\sin\theta A_r) + \frac{\partial}{\partial \theta}(r\sin\theta A_\theta) + \frac{\partial}{\partial \phi}(r A_\phi) \right]
+$$
+$$
+\nabla \cdot \vec{A} = \frac{1}{r^2} \frac{\partial}{\partial r}(r^2 A_r) + \frac{1}{r\sin\theta} \frac{\partial}{\partial \theta}(\sin\theta A_\theta) + \frac{1}{r\sin\theta} \frac{\partial A_\phi}{\partial \phi}
+$$
+
+Rotor:
+$$
+\nabla \times \vec{A} = \frac{1}{h_r h_\theta h_\phi} \begin{vmatrix} h_r \hat{e}_r & h_\theta \hat{e}_\theta & h_\phi \hat{e}_\phi \\ \partial_r & \partial_\theta & \partial_\phi \\ h_r A_r & h_\theta A_\theta & h_\phi A_\phi \end{vmatrix} = \frac{1}{r^2\sin\theta} \begin{vmatrix} \hat{e}_r & r \hat{e}_\theta & r\sin\theta \hat{e}_\phi \\ \partial_r & \partial_\theta & \partial_\phi \\ A_r & r A_\theta & r\sin\theta A_\phi \end{vmatrix}
+$$
+Expandiendo el determinante:
+$$
+\nabla \times \vec{A} = \frac{1}{r\sin\theta} \left( \frac{\partial}{\partial \theta}(\sin\theta A_\phi) - \frac{\partial A_\theta}{\partial \phi} \right) \hat{e}_r + \frac{1}{r} \left( \frac{1}{\sin\theta}\frac{\partial A_r}{\partial \phi} - \frac{\partial}{\partial r}(r A_\phi) \right) \hat{e}_\theta + \frac{1}{r} \left( \frac{\partial}{\partial r}(r A_\theta) - \frac{\partial A_r}{\partial \theta} \right) \hat{e}_\phi
+$$
+
+Laplaciano:
+Se obtiene combinando la divergencia y el gradiente ($\nabla^2 f = \nabla \cdot (\nabla f)$):
+$$
+\nabla^2 f = \frac{1}{r^2\sin\theta} \left[ \frac{\partial}{\partial r}\left(r^2\sin\theta \frac{\partial f}{\partial r}\right) + \frac{\partial}{\partial \theta}\left(\sin\theta \frac{\partial f}{\partial \theta}\right) + \frac{\partial}{\partial \phi}\left(\frac{1}{\sin\theta} \frac{\partial f}{\partial \phi}\right) \right]
+$$
+$$
+\nabla^2 f = \frac{1}{r^2} \frac{\partial}{\partial r}\left(r^2 \frac{\partial f}{\partial r}\right) + \frac{1}{r^2\sin\theta} \frac{\partial}{\partial \theta}\left(\sin\theta \frac{\partial f}{\partial \theta}\right) + \frac{1}{r^2\sin^2\theta} \frac{\partial^2 f}{\partial \phi^2}
+$$
+\end{itemize}
+
 \end{document}
 
 
