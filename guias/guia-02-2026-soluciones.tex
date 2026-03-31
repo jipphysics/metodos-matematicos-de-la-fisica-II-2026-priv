@@ -1110,6 +1110,105 @@ $$
 Nota importante: Este resultado, $\nabla \cdot \vec{E} = 0$, es válido para todo punto del espacio excepto en el origen ($r=0$), que es precisamente donde está ubicada la fuente (la carga del dipolo puntual). En una formulación distribucional estricta, la divergencia tendría un término extra que involucra un gradiente de la delta de Dirac para dar cuenta de la fuente en el origen.
 \end{itemize}
 
+\subsection*{Problema 12}
+
+Este problema nos lleva a trabajar con un sistema de coordenadas ortogonales menos trivial: las coordenadas esferoidales proladas.
+
+\begin{itemize}
+\item Ortogonalidad y superficies coordenadas.
+
+Para demostrar la ortogonalidad, debemos verificar que los vectores tangentes a las líneas coordenadas, $\vec{e}_i = \frac{\partial \vec{r}}{\partial q_i}$ (donde $q_i \in \{\mu, \nu, \phi\}$ y $\vec{r} = (x,y,z)$), son perpendiculares entre sí, es decir, $\vec{e}_i \cdot \vec{e}_j = 0$ para $i \neq j$.
+
+Calculamos los vectores tangentes:
+\begin{itemize}
+\item $\vec{e}_\mu = \frac{\partial \vec{r}}{\partial \mu} = (a \cosh\mu \sin\nu \cos\phi, \ a \cosh\mu \sin\nu \sin\phi, \ a \sinh\mu \cos\nu)$
+\item $\vec{e}_\nu = \frac{\partial \vec{r}}{\partial \nu} = (a \sinh\mu \cos\nu \cos\phi, \ a \sinh\mu \cos\nu \sin\phi, \ -a \cosh\mu \sin\nu)$
+\item $\vec{e}_\phi = \frac{\partial \vec{r}}{\partial \phi} = (-a \sinh\mu \sin\nu \sin\phi, \ a \sinh\mu \sin\nu \cos\phi, \ 0)$
+\end{itemize}
+
+Ahora, comprobamos los productos escalares:
+\begin{itemize}
+\item $\vec{e}_\mu \cdot \vec{e}_\nu = a^2 \cosh\mu \sinh\mu \sin\nu \cos\nu (\cos^2\phi + \sin^2\phi) - a^2 \sinh\mu \cosh\mu \cos\nu \sin\nu = a^2 \cosh\mu \sinh\mu \sin\nu \cos\nu (1 - 1) = 0$
+\item $\vec{e}_\mu \cdot \vec{e}_\phi = -a^2 \cosh\mu \sinh\mu \sin^2\nu \cos\phi \sin\phi + a^2 \cosh\mu \sinh\mu \sin^2\nu \sin\phi \cos\phi + 0 = 0$
+\item $\vec{e}_\nu \cdot \vec{e}_\phi = -a^2 \sinh^2\mu \cos\nu \sin\nu \cos\phi \sin\phi + a^2 \sinh^2\mu \cos\nu \sin\nu \sin\phi \cos\phi + 0 = 0$
+\end{itemize}
+Como todos los productos escalares cruzados son nulos, el sistema es ortogonal.
+
+Descripción de las superficies coordenadas:
+\begin{itemize}
+\item Superficies $\mu = \text{cte}$: Usando la identidad $\cos^2\nu + \sin^2\nu = 1$, notamos que $\frac{x^2+y^2}{a^2\sinh^2\mu} = \sin^2\nu$ y $\frac{z^2}{a^2\cosh^2\mu} = \cos^2\nu$. Sumando ambas:
+    $$\frac{x^2+y^2}{a^2\sinh^2\mu} + \frac{z^2}{a^2\cosh^2\mu} = 1$$
+    Como $\cosh\mu > \sinh\mu$, el semieje mayor está en $z$. Esto representa elipsoides de revolución alargados (prolados) a lo largo del eje $z$.
+\item Superficies $\nu = \text{cte}$: Usando la identidad $\cosh^2\mu - \sinh^2\mu = 1$, despejamos $\frac{z^2}{a^2\cos^2\nu} = \cosh^2\mu$ y $\frac{x^2+y^2}{a^2\sin^2\nu} = \sinh^2\mu$. Restando la segunda de la primera:
+    $$\frac{z^2}{a^2\cos^2\nu} - \frac{x^2+y^2}{a^2\sin^2\nu} = 1$$
+    Esto representa hiperboloides de revolución de dos hojas a lo largo del eje $z$.
+\item Superficies $\phi = \text{cte}$: Si dividimos $y$ por $x$, obtenemos $y/x = \tan\phi$, lo cual corresponde a semiplanos que contienen al eje $z$ (igual que en cilíndricas o esféricas).
+\end{itemize}
+
+\item Factores de escala.
+
+Los factores de escala son las normas de los vectores tangentes: $h_i = |\vec{e}_i| = \sqrt{\vec{e}_i \cdot \vec{e}_i}$.
+\begin{itemize}
+\item Para $\mu$:
+    $h_\mu^2 = a^2 \cosh^2\mu \sin^2\nu (\cos^2\phi + \sin^2\phi) + a^2 \sinh^2\mu \cos^2\nu$
+    $h_\mu^2 = a^2 (\cosh^2\mu \sin^2\nu + \sinh^2\mu \cos^2\nu)$
+    Usando $\cosh^2\mu = 1 + \sinh^2\mu$:
+    $h_\mu^2 = a^2 [ (1 + \sinh^2\mu)\sin^2\nu + \sinh^2\mu \cos^2\nu ] = a^2 [ \sin^2\nu + \sinh^2\mu(\sin^2\nu + \cos^2\nu) ] = a^2 (\sinh^2\mu + \sin^2\nu)$
+    $\implies h_\mu = a \sqrt{\sinh^2\mu + \sin^2\nu}$
+
+\item Para $\nu$:
+    $h_\nu^2 = a^2 \sinh^2\mu \cos^2\nu (\cos^2\phi + \sin^2\phi) + a^2 \cosh^2\mu \sin^2\nu$
+    $h_\nu^2 = a^2 (\sinh^2\mu \cos^2\nu + \cosh^2\mu \sin^2\nu)$
+    ¡Es la misma expresión a la que llegamos para $h_\mu$!
+    $\implies h_\nu = a \sqrt{\sinh^2\mu + \sin^2\nu}$
+
+\item Para $\phi$:
+    $h_\phi^2 = a^2 \sinh^2\mu \sin^2\nu (\sin^2\phi + \cos^2\phi) = a^2 \sinh^2\mu \sin^2\nu$
+    $\implies h_\phi = a \sinh\mu \sin\nu$
+\end{itemize}
+
+Para simplificar las notaciones posteriores, definimos $h \equiv h_\mu = h_\nu = a \sqrt{\sinh^2\mu + \sin^2\nu}$.
+
+\item Operadores diferenciales en componentes físicas.
+
+Simplemente insertamos los factores de escala en las fórmulas generales para coordenadas ortogonales. Sean $f$ un campo escalar y $\vec{A} = A_\mu \hat{e}_\mu + A_\nu \hat{e}_\nu + A_\phi \hat{e}_\phi$ un campo vectorial.
+
+Gradiente:
+$$
+\nabla f = \frac{1}{h} \frac{\partial f}{\partial \mu} \hat{e}_\mu + \frac{1}{h} \frac{\partial f}{\partial \nu} \hat{e}_\nu + \frac{1}{h_\phi} \frac{\partial f}{\partial \phi} \hat{e}_\phi
+$$
+$$
+\nabla f = \frac{1}{a\sqrt{\sinh^2\mu + \sin^2\nu}} \left( \frac{\partial f}{\partial \mu} \hat{e}_\mu + \frac{\partial f}{\partial \nu} \hat{e}_\nu \right) + \frac{1}{a\sinh\mu\sin\nu} \frac{\partial f}{\partial \phi} \hat{e}_\phi
+$$
+
+Divergencia:
+$$
+\nabla \cdot \vec{A} = \frac{1}{h^2 h_\phi} \left[ \frac{\partial}{\partial \mu}(h h_\phi A_\mu) + \frac{\partial}{\partial \nu}(h h_\phi A_\nu) + \frac{\partial}{\partial \phi}(h^2 A_\phi) \right]
+$$
+Sustituyendo el prefactor $\frac{1}{h^2 h_\phi} = \frac{1}{a^3 (\sinh^2\mu + \sin^2\nu) \sinh\mu \sin\nu}$:
+$$
+\nabla \cdot \vec{A} = \frac{1}{a (\sinh^2\mu + \sin^2\nu) \sinh\mu \sin\nu} \left[ \frac{\partial}{\partial \mu}(\sqrt{\sinh^2\mu + \sin^2\nu} \sinh\mu \sin\nu A_\mu) + \frac{\partial}{\partial \nu}(\sqrt{\sinh^2\mu + \sin^2\nu} \sinh\mu \sin\nu A_\nu) \right] + \frac{1}{a \sinh\mu \sin\nu} \frac{\partial A_\phi}{\partial \phi}
+$$
+
+Rotor:
+$$\nabla \times \vec{A} = \frac{1}{h^2 h_\phi} \begin{vmatrix} h \hat{e}_\mu & h \hat{e}_\nu & h_\phi \hat{e}_\phi \\ \partial_\mu & \partial_\nu & \partial_\phi \\ h A_\mu & h A_\nu & h_\phi A_\phi \end{vmatrix}$$
+$$\nabla \times \vec{A} = \frac{1}{h h_\phi} \left( \frac{\partial (h_\phi A_\phi)}{\partial \nu} - \frac{\partial (h A_\nu)}{\partial \phi} \right) \hat{e}_\mu + \frac{1}{h h_\phi} \left( \frac{\partial (h A_\mu)}{\partial \phi} - \frac{\partial (h_\phi A_\phi)}{\partial \mu} \right) \hat{e}_\nu + \frac{1}{h^2} \left( \frac{\partial (h A_\nu)}{\partial \mu} - \frac{\partial (h A_\mu)}{\partial \nu} \right) \hat{e}_\phi$$
+Se dejan expresados explícitamente los $h$ para evitar expresiones inusualmente largas que oscurezcan la estructura física del operador).
+
+Laplaciano:
+$$
+\nabla^2 f = \frac{1}{h^2 h_\phi} \left[ \frac{\partial}{\partial \mu}\left( \frac{h h_\phi}{h} \frac{\partial f}{\partial \mu} \right) + \frac{\partial}{\partial \nu}\left( \frac{h h_\phi}{h} \frac{\partial f}{\partial \nu} \right) + \frac{\partial}{\partial \phi}\left( \frac{h^2}{h_\phi} \frac{\partial f}{\partial \phi} \right) \right]
+$$
+Notemos que $\frac{h h_\phi}{h} = h_\phi$. Esto simplifica las derivadas respecto a $\mu$ y $\nu$:
+$$
+\nabla^2 f = \frac{1}{a^2 (\sinh^2\mu + \sin^2\nu) \sinh\mu \sin\nu} \left[ \frac{\partial}{\partial \mu}\left( \sinh\mu \sin\nu \frac{\partial f}{\partial \mu} \right) + \frac{\partial}{\partial \nu}\left( \sinh\mu \sin\nu \frac{\partial f}{\partial \nu} \right) \right] + \frac{1}{a^2 \sinh^2\mu \sin^2\nu} \frac{\partial^2 f}{\partial \phi^2}
+$$
+Sacando los términos independientes de las derivadas:
+$$
+\nabla^2 f = \frac{1}{a^2 (\sinh^2\mu + \sin^2\nu)} \left[ \frac{1}{\sinh\mu} \frac{\partial}{\partial \mu}\left( \sinh\mu \frac{\partial f}{\partial \mu} \right) + \frac{1}{\sin\nu} \frac{\partial}{\partial \nu}\left( \sin\nu \frac{\partial f}{\partial \nu} \right) \right] + \frac{1}{a^2 \sinh^2\mu \sin^2\nu} \frac{\partial^2 f}{\partial \phi^2}
+$$
+\end{itemize}
+
 \end{document}
 
 
