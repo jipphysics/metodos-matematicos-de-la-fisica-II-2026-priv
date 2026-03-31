@@ -772,6 +772,155 @@ En el Paso 2 demostramos que las componentes de este tensor son todas nulas ($T^
 Por lo tanto, $T^{ij}_{lm} = 0 \implies \epsilon^{ijk}\epsilon_{klm} = \delta^i_l\delta^j_m - \delta^i_m\delta^j_l$ vale universalmente. ¡C.Q.D!
 \end{itemize}
 
+\subsection*{Problema 8}
+
+Este es un ejercicio fundamental para entender cómo se transforman las cantidades físicas bajo cambios de coordenadas y por qué es importante distinguir entre tensores y densidades tensoriales.
+
+Para resolver esto, recordemos la convención estándar del peso tensorial ($W$): si bajo un cambio de coordenadas $x \to x'$ una cantidad adquiere un factor del jacobiano $J = \det(\partial x' / \partial x)$ elevado a la potencia $-W$ (o $|J|^{-W}$), decimos que tiene peso $W$. Un tensor "verdadero" (escalar, vector, etc.) tiene peso $W=0$.
+
+\begin{itemize}
+\item La densidad de carga eléctrica de un cuerpo extenso.
+\begin{itemize}
+\item Análisis: Sabemos que la carga total $Q$ es un invariante (un escalar verdadero, rango 0, tipo (0,0), peso $W=0$). La carga se calcula integrando la densidad sobre el volumen: $Q = \int \rho \, d^3x$.
+\item Bajo un cambio de coordenadas, el elemento de volumen se transforma con el jacobiano: $d^3x' = J \, d^3x$ (asumiendo transformaciones que preservan orientación, por lo que actúa como si tuviera peso $-1$). 
+\item Para que la integral $Q$ se mantenga invariante (peso 0), la densidad $\rho$ debe contrarrestar exactamente el factor del volumen, es decir, debe transformarse como $\rho' = J^{-1} \rho$.
+\item Conclusión: La densidad de carga eléctrica $\rho$ es una densidad escalar.
+\begin{itemize}
+\item Rango: 0
+\item Tipo: (0,0)
+\item Peso: +1
+\end{itemize}
+\end{itemize}
+
+\item La densidad de masa de un cuerpo extenso.
+\begin{itemize}
+\item Análisis: El razonamiento es exactamente idéntico al de la densidad de carga eléctrica. La masa total $M = \int \rho_m \, d^3x$ es un escalar invariante, por lo que la densidad de masa debe compensar la transformación del elemento de volumen.
+\item Conclusión: La densidad de masa $\rho_m$ es también una densidad escalar.
+\begin{itemize}
+\item Rango: 0
+\item Tipo: (0,0)
+\item Peso: +1
+\end{itemize}
+\end{itemize}
+
+\item El momento cuadrupolar eléctrico de un cuerpo puntual.
+\begin{itemize}
+\item Análisis: La energía de interacción de un cuadrupolo con un campo externo está dada por $U = \frac{1}{6} \sum Q^{ij} \partial_i E_j$. 
+\item Primero, determinemos el tipo del campo eléctrico $\vec{E}$. Como el campo deriva de un potencial escalar ($\vec{E} = -\nabla \phi$), y el gradiente de un escalar natural produce un covector (sus componentes se transforman con la matriz jacobiana inversa), $\vec{E}$ es un tensor tipo (0,1).
+\item La derivada espacial del campo $\partial_i E_j$ añade otro índice covariante, convirtiéndolo en un tensor de tipo (0,2).
+\item Dado que la energía electrostática $U$ es un escalar verdadero (rango 0, tipo (0,0), peso 0), la contracción de $Q$ con $\partial_i E_j$ debe anular completamente los índices y el peso.
+\item Conclusión: Para cancelar los dos índices covariantes (abajo) de $\partial_i E_j$, el momento cuadrupolar debe tener dos índices contravariantes (arriba). Como el campo y la energía no son densidades, el peso es cero.
+\begin{itemize}
+\item Rango: 2
+\item Tipo: (2,0) (tensor dos veces contravariante)
+\item Peso: 0
+\end{itemize}
+\end{itemize}
+
+\item El ``tensor de inercia'' de un cuerpo rígido.
+\begin{itemize}
+\item Análisis: La energía cinética de rotación está dada por la expresión $T = \frac{1}{2} I_{ij} \omega^i \omega^j$. El enunciado nos indica que $T$ es un escalar verdadero (peso 0) y que la velocidad angular $\vec{\omega}$ es un pseudovector o densidad vectorial. 
+\item Como $\vec{\omega}$ es una densidad vectorial, tiene tipo (1,0) (un índice contravariante) y, convencionalmente, un peso $W = +1$.
+\item En el producto $\omega^i \omega^j$, tenemos un objeto de tipo (2,0) y un peso combinado de $+1 + 1 = +2$.
+\item Para que la contracción final $I_{ij} \omega^i \omega^j$ resulte en un escalar verdadero de peso 0, el tensor de inercia $I_{ij}$ debe compensar tanto los índices como el peso. Necesita dos índices covariantes para contraerse con los contravariantes de $\omega$, y debe tener un peso de $-2$.
+\item Conclusión: El tensor de inercia $I_{ij}$ es una capacidad tensorial (tensor con peso negativo).
+\begin{itemize}
+\item Rango: 2
+\item Tipo: (0,2) (tensor dos veces covariante)
+\item Peso: -2
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\subsection*{Problema 9}
+
+El Problema 9 es una excelente aplicación de la geometría diferencial de superficies (parametrización, métrica inducida, áreas y longitudes de arco). 
+
+\begin{itemize}
+\item Parametrización y métrica inducida.
+
+Como la superficie está dada explícitamente por una función $z = f(x,y)$, la forma más natural de parametrizarla es usar la parametrización de Monge, donde las coordenadas $(x,y)$ sirven como nuestros parámetros $(u,v)$.
+El vector posición de un punto en la superficie es:
+$$\vec{r}(x,y) = (x, y, \cos x \cos y)$$
+
+Para encontrar la métrica inducida (también conocida como la Primera Forma Fundamental), calculamos los vectores tangentes a las líneas coordenadas:
+\begin{itemize}
+\item Derivada respecto a $x$: $\vec{e}_x = \frac{\partial \vec{r}}{\partial x} = (1, 0, -\sin x \cos y)$
+\item Derivada respecto a $y$: $\vec{e}_y = \frac{\partial \vec{r}}{\partial y} = (0, 1, -\cos x \sin y)$
+\end{itemize}
+
+Las componentes del tensor métrico covariante $g_{ij} = \vec{e}_i \cdot \vec{e}_j$ son:
+\begin{itemize}
+\item $g_{xx} = \vec{e}_x \cdot \vec{e}_x = 1^2 + 0^2 + (-\sin x \cos y)^2 = 1 + \sin^2 x \cos^2 y$
+\item $g_{yy} = \vec{e}_y \cdot \vec{e}_y = 0^2 + 1^2 + (-\cos x \sin y)^2 = 1 + \cos^2 x \sin^2 y$
+\item $g_{xy} = g_{yx} = \vec{e}_x \cdot \vec{e}_y = (1)(0) + (0)(1) + (-\sin x \cos y)(-\cos x \sin y) = \sin x \cos x \sin y \cos y$
+\end{itemize}
+
+Por lo tanto, la métrica inducida en la base coordenada $\{dx, dy\}$ se escribe como:
+$$
+ds^2 = (1 + \sin^2 x \cos^2 y) dx^2 + 2(\sin x \cos x \sin y \cos y) dx dy + (1 + \cos^2 x \sin^2 y) dy^2
+$$
+O en forma matricial:
+$$
+g = \begin{pmatrix} 1 + \sin^2 x \cos^2 y & \sin x \cos x \sin y \cos y \\ \sin x \cos x \sin y \cos y & 1 + \cos^2 x \sin^2 y \end{pmatrix}
+$$
+
+\item Diferencial de área escalar y área del parche.
+
+El diferencial de área escalar está dado por $dA = \sqrt{\det(g)} \, dx \, dy$.
+Calculamos el determinante de la matriz métrica:
+$$
+\det(g) = g_{xx} g_{yy} - (g_{xy})^2
+$$
+$$
+\det(g) = (1 + \sin^2 x \cos^2 y)(1 + \cos^2 x \sin^2 y) - (\sin x \cos x \sin y \cos y)^2
+$$
+Desarrollando el producto:
+$$
+\det(g) = 1 + \cos^2 x \sin^2 y + \sin^2 x \cos^2 y + (\sin^2 x \cos^2 y \cos^2 x \sin^2 y) - (\sin^2 x \cos^2 x \sin^2 y \cos^2 y)
+$$
+Observamos que el término de cuarto orden se cancela exactamente con el cuadrado del término cruzado, dejándonos con:
+$$
+\det(g) = 1 + \sin^2 x \cos^2 y + \cos^2 x \sin^2 y
+$$
+
+Entonces, el diferencial de área escalar es:
+$$dA = \sqrt{1 + \sin^2 x \cos^2 y + \cos^2 x \sin^2 y} \, dx \, dy$$
+
+El área total del parche es la integral de este diferencial en la región dada:
+$$
+A = \int_{-\pi}^{\pi} \int_{-\pi}^{\pi} \sqrt{1 + \sin^2 x \cos^2 y + \cos^2 x \sin^2 y} \, dx \, dy
+$$
+Nota pedagógica: Esta es una integral elíptica que no tiene solución analítica en términos de funciones elementales, por lo que dejarla expresada es el resultado esperado en este punto, a menos que utilicen software para integración numérica en el curso.
+
+\item Longitud de la curva.
+
+La curva está definida por $x=y$. Podemos parametrizarla con un parámetro $t$ tal que $x(t) = t$ e $y(t) = t$, con $t \in [-\pi, \pi]$.
+Sobre esta curva, los diferenciales son $dx = dt$ y $dy = dt$. 
+
+Sustituimos esto en nuestra métrica inducida $ds^2$ para encontrar el elemento de longitud de arco de la curva:
+$$
+ds^2 = g_{xx}(t,t) dt^2 + 2g_{xy}(t,t) dt dt + g_{yy}(t,t) dt^2
+$$
+$$
+ds^2 = \left[ (1 + \sin^2 t \cos^2 t) + 2(\sin t \cos t \sin t \cos t) + (1 + \cos^2 t \sin^2 t) \right] dt^2
+$$
+Agrupando términos semejantes:
+$$
+ds^2 = \left( 2 + 4\sin^2 t \cos^2 t \right) dt^2
+$$
+Usando la identidad trigonométrica $\sin(2t) = 2\sin t \cos t$, notamos que $4\sin^2 t \cos^2 t = \sin^2(2t)$.
+$$
+ds^2 = (2 + \sin^2(2t)) dt^2 \implies ds = \sqrt{2 + \sin^2(2t)} \, dt
+$$
+Finalmente, la longitud de la curva $L$ se calcula integrando $ds$ a lo largo de los límites de $t$:
+$$
+L = \int_{-\pi}^{\pi} \sqrt{2 + \sin^2(2t)} \, dt
+$$
+Al igual que el área, esto corresponde a una integral elíptica de segunda especie que basta con dejar planteada.
+
+\end{itemize}
+
 \end{document}
 
 
