@@ -227,8 +227,6 @@ x = a \sinh\mu \sin\nu \cos\phi,\quad y = a \sinh\mu \sin\nu \sin\phi,\quad z = 
 \item Obtenga las fórmulas del gradiente, divergencia, rotor y laplaciano en componentes f\'{\i}sicas.
 \end{enumerate}
 
-
-
 \section*{Parte II: Problemas Propuestos (para profundización y repaso)}
 
 \prob Verifique que en coordenadas esféricas se cumple $\nabla(\phi\psi)=\phi\nabla\psi+\psi\nabla\phi$ y $\nabla\times(\phi\vec{F})=(\nabla\phi)\times\vec{F}+\phi(\nabla\times\vec{F})$.
@@ -1022,6 +1020,94 @@ $$
 $$
 \nabla^2 f = \frac{1}{r^2} \frac{\partial}{\partial r}\left(r^2 \frac{\partial f}{\partial r}\right) + \frac{1}{r^2\sin\theta} \frac{\partial}{\partial \theta}\left(\sin\theta \frac{\partial f}{\partial \theta}\right) + \frac{1}{r^2\sin^2\theta} \frac{\partial^2 f}{\partial \phi^2}
 $$
+\end{itemize}
+
+\subsection*{Problema 11}
+
+Este es un ejercicio clásico de electromagnetismo donde ponemos en práctica los operadores diferenciales en coordenadas esféricas que dedujiste en el problema anterior.
+
+Para simplificar la notación en los pasos intermedios, definamos la constante $k = \frac{p}{4\pi\epsilon_0}$, de modo que el potencial es $\varphi = k \frac{\cos\theta}{r^2}$.
+
+\begin{itemize}
+\item Cálculo del campo eléctrico ($\vec{E} = -\nabla\varphi$).
+
+Usamos la expresión del gradiente en componentes físicas para coordenadas esféricas (obtenida en el Problema 10):
+$$
+\nabla \varphi = \frac{\partial \varphi}{\partial r} \hat{e}_r + \frac{1}{r} \frac{\partial \varphi}{\partial \theta} \hat{e}_\theta + \frac{1}{r\sin\theta} \frac{\partial \varphi}{\partial \phi} \hat{e}_\phi
+$$
+
+Calculamos las derivadas parciales de $\varphi$:
+\begin{itemize}
+\item Componente radial: $\frac{\partial \varphi}{\partial r} = \frac{\partial}{\partial r} \left( k \cos\theta \, r^{-2} \right) = -2k \frac{\cos\theta}{r^3}$
+\item Componente polar: $\frac{\partial \varphi}{\partial \theta} = \frac{k}{r^2} \frac{\partial}{\partial \theta} (\cos\theta) = -k \frac{\sin\theta}{r^2}$
+\item Componente azimutal: $\frac{\partial \varphi}{\partial \phi} = 0$ (ya que el potencial tiene simetría azimutal).
+\end{itemize}
+
+Sustituyendo en la fórmula del gradiente y multiplicando por $-1$:
+$$
+\vec{E} = -\left( -2k \frac{\cos\theta}{r^3} \hat{e}_r - \frac{1}{r} k \frac{\sin\theta}{r^2} \hat{e}_\theta \right)
+$$
+$$
+\vec{E} = \frac{k}{r^3} \left( 2\cos\theta \hat{e}_r + \sin\theta \hat{e}_\theta \right)
+$$
+
+Restituyendo la constante $k$, obtenemos el campo eléctrico del dipolo:
+$$
+\vec{E} = \frac{p}{4\pi\epsilon_0 r^3} \left( 2\cos\theta \hat{e}_r + \sin\theta \hat{e}_\theta \right)
+$$
+
+\item Cálculo del rotor ($\nabla \times \vec{E}$).
+
+Teóricamente, sabemos de antemano que $\nabla \times \vec{E} = \vec{0}$ porque el campo eléctrico deriva de un potencial escalar ($\nabla \times (-\nabla\varphi) \equiv 0$). Sin embargo, vamos a verificarlo explícitamente calculándolo.
+Las componentes de nuestro campo son $E_r = \frac{2k\cos\theta}{r^3}$, $E_\theta = \frac{k\sin\theta}{r^3}$ y $E_\phi = 0$.
+
+De la fórmula del rotor en esféricas:
+$$
+\nabla \times \vec{E} = \frac{1}{r\sin\theta} \left( \frac{\partial}{\partial \theta}(\sin\theta E_\phi) - \frac{\partial E_\theta}{\partial \phi} \right) \hat{e}_r + \frac{1}{r} \left( \frac{1}{\sin\theta}\frac{\partial E_r}{\partial \phi} - \frac{\partial}{\partial r}(r E_\phi) \right) \hat{e}_\theta + \frac{1}{r} \left( \frac{\partial}{\partial r}(r E_\theta) - \frac{\partial E_r}{\partial \theta} \right) \hat{e}_\phi
+$$
+
+\begin{itemize}
+\item Componente $\hat{e}_r$: Como $E_\phi = 0$ y $E_\theta$ no depende de $\phi$, esta componente se anula.
+\item Componente $\hat{e}_\theta$: Como $E_r$ no depende de $\phi$ y $E_\phi = 0$, esta componente también se anula.
+\item Componente $\hat{e}_\phi$: Calculamos los términos dentro del paréntesis:
+    $$
+    \frac{\partial}{\partial r}(r E_\theta) = \frac{\partial}{\partial r} \left( r \frac{k\sin\theta}{r^3} \right) = \frac{\partial}{\partial r} \left( k\sin\theta \, r^{-2} \right) = -2k \frac{\sin\theta}{r^3}
+    $$
+    $$
+    \frac{\partial E_r}{\partial \theta} = \frac{\partial}{\partial \theta} \left( \frac{2k\cos\theta}{r^3} \right) = -2k \frac{\sin\theta}{r^3}
+    $$
+    Restando ambos términos: $\left(-2k \frac{\sin\theta}{r^3}\right) - \left(-2k \frac{\sin\theta}{r^3}\right) = 0$.
+
+Por lo tanto, queda verificado que:
+$$
+\nabla \times \vec{E} = \vec{0}
+$$
+\end{itemize}
+
+\item Cálculo de la divergencia ($\nabla \cdot \vec{E}$).
+
+Usamos la fórmula de la divergencia en coordenadas esféricas:
+$$
+\nabla \cdot \vec{E} = \frac{1}{r^2} \frac{\partial}{\partial r}(r^2 E_r) + \frac{1}{r\sin\theta} \frac{\partial}{\partial \theta}(\sin\theta E_\theta) + \frac{1}{r\sin\theta} \frac{\partial E_\phi}{\partial \phi}
+$$
+
+Nuevamente $E_\phi = 0$, así que el tercer término es nulo. Evaluamos los dos primeros:
+
+\begin{itemize}
+\item Término radial:
+    $$\frac{1}{r^2} \frac{\partial}{\partial r}(r^2 E_r) = \frac{1}{r^2} \frac{\partial}{\partial r} \left( r^2 \frac{2k\cos\theta}{r^3} \right) = \frac{1}{r^2} \frac{\partial}{\partial r} \left( \frac{2k\cos\theta}{r} \right) = \frac{1}{r^2} \left( - \frac{2k\cos\theta}{r^2} \right) = - \frac{2k\cos\theta}{r^4}$$
+\item Término polar:
+    $$\frac{1}{r\sin\theta} \frac{\partial}{\partial \theta}(\sin\theta E_\theta) = \frac{1}{r\sin\theta} \frac{\partial}{\partial \theta} \left( \sin\theta \frac{k\sin\theta}{r^3} \right) = \frac{k}{r^4\sin\theta} \frac{\partial}{\partial \theta}(\sin^2\theta)$$
+    Aplicando la regla de la cadena, $\frac{\partial}{\partial \theta}(\sin^2\theta) = 2\sin\theta\cos\theta$, lo que nos da:
+    $$\frac{k}{r^4\sin\theta} (2\sin\theta\cos\theta) = \frac{2k\cos\theta}{r^4}$$
+\end{itemize}
+
+Sumando ambos términos:
+$$
+\nabla \cdot \vec{E} = - \frac{2k\cos\theta}{r^4} + \frac{2k\cos\theta}{r^4} = 0
+$$
+
+Nota importante: Este resultado, $\nabla \cdot \vec{E} = 0$, es válido para todo punto del espacio excepto en el origen ($r=0$), que es precisamente donde está ubicada la fuente (la carga del dipolo puntual). En una formulación distribucional estricta, la divergencia tendría un término extra que involucra un gradiente de la delta de Dirac para dar cuenta de la fuente en el origen.
 \end{itemize}
 
 \end{document}
