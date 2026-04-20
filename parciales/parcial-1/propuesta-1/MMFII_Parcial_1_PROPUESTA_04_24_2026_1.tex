@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Parcial 1 - Métodos Matemáticos de la Física}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+
+\item[\textbf{Problema 1}] Sea \(V\) un espacio vectorial real de dimensión \(n\) con un producto interno \(\langle \cdot , \cdot \rangle\) (métrica euclídea). Sea \(T \in \mathcal{T}^0_2(V)\) un tensor dos veces covariante.
+
+\begin{enumerate}
+    \item[a)] Demuestre que \(T\) puede descomponerse de manera única como \(T = S + A\), donde \(S\) es un tensor simétrico (\(S_{ij} = S_{ji}\)) y \(A\) es antisimétrico (\(A_{ij} = -A_{ji}\)).
+    
+    \item[b)] Dada una base ortonormal \(\{e_i\}\) de \(V\), defina la \textit{traza métrica} de \(T\) como 
+    \[
+    \operatorname{tr}_g(T) = \sum_{i=1}^n T(e_i, e_i).
+    \]
+    Muestre que \(\operatorname{tr}_g(A) = 0\) para todo tensor antisimétrico \(A\).
+    
+    \item[c)] Si en una base ortonormal las componentes de \(T\) son 
+    \[
+    T_{ij} = 2\delta_{ij} + \epsilon_{ijk}v^k,
+    \]
+    donde \(\epsilon_{ijk}\) es el símbolo de Levi-Civita (\(\epsilon_{123}=1\)) y \(v^k\) son las componentes de un vector \(\mathbf{v}\), calcule explícitamente las componentes de \(S\) y \(A\) y la traza de \(T\).
+\end{enumerate}
+
+\vspace{1cm}
+
+\item[\textbf{Problema 2}] En \(\mathbb{R}^3\) se consideran dos bases:
+\[
+B = \{ \mathbf{u}_1, \mathbf{u}_2, \mathbf{u}_3 \}, \qquad
+B' = \{ \mathbf{v}_1, \mathbf{v}_2, \mathbf{v}_3 \}
+\]
+cuyas componentes en la base canónica son:
+\[
+\mathbf{u}_1 = \begin{pmatrix}1\\0\\1\end{pmatrix},\;
+\mathbf{u}_2 = \begin{pmatrix}0\\1\\1\end{pmatrix},\;
+\mathbf{u}_3 = \begin{pmatrix}1\\1\\0\end{pmatrix},\qquad
+\mathbf{v}_1 = \begin{pmatrix}1\\1\\0\end{pmatrix},\;
+\mathbf{v}_2 = \begin{pmatrix}1\\0\\1\end{pmatrix},\;
+\mathbf{v}_3 = \begin{pmatrix}0\\1\\1\end{pmatrix}.
+\]
+
+\begin{enumerate}
+    \item[a)] Halle la matriz de cambio de base \(P\) tal que \([\mathbf{w}]_{B'} = P [\mathbf{w}]_{B}\) para todo \(\mathbf{w} \in \mathbb{R}^3\).
+    
+    \item[b)] Sea \(T: \mathbb{R}^3 \to \mathbb{R}^3\) el operador lineal cuya matriz en la base \(B\) es
+    \[
+    [T]_B = \begin{pmatrix} 3 & 1 & 0 \\ 1 & 3 & 0 \\ 0 & 0 & 2 \end{pmatrix}.
+    \]
+    Calcule \([T]_{B'}\) usando la relación de semejanza.
+    
+    \item[c)] Encuentre los autovalores y autovectores de \(T\) y verifique que son independientes de la base elegida.
+\end{enumerate}
+
+\vspace{1cm}
+
+\item[\textbf{Problema 3}] Sea \(A\), \(B \in \mathcal{L}\), el conjunto de operadores sobre \(V\). Muestre que 
+\[
+\|A\| = \max_{\|\vec{v}\|=1} \|A\vec{v}\|
+\]
+define una norma y que \(\|AB\| \leq \|A\|\|B\|\).
+
+\vspace{1cm}
+
+\item[\textbf{Problema 4}] Considere la superficie \(S\) definida por \(z = \cos x \cos y\) en \(\mathbb{R}^3\).
+
+\begin{enumerate}
+    \item[a)] Parametrice \(S\) y construya la métrica inducida.
+    \item[b)] Calcule el diferencial de área escalar y el área del parche \(x,y \in [-\pi, \pi]\).
+    \item[c)] Calcule la longitud de la curva \(x = y\), \(z = \cos x \cos y\) desde \(x = -\pi\) hasta \(x = \pi\).
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
