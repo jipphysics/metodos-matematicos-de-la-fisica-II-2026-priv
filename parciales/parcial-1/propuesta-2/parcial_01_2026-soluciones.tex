@@ -514,7 +514,7 @@ P^{-1} =
 \end{pmatrix}
 $$
 
-Paso 1: calcular $P,T_{\mathcal{B}}$
+Paso 1: calcular $PT_{\mathcal{B}}$:
 $$
 P T_{\mathcal{B}} =
 \begin{pmatrix}
@@ -582,7 +582,155 @@ La semejanza con una permutación reordena los ejes, moviendo bloques de la matr
 {\bf Soluci\'on }{\em 2.c)}
 \vspace{0.5cm}
 
+Objetivo.
+Encontrar:
+\begin{itemize}
+\item Autovalores de $T$.
+\item Autovectores de $T$.
+\item Verificar que son independientes de la base.
+\end{itemize}
+Trabajamos con la matriz en la base $\mathcal{B}$:
+$$
+T_{\mathcal{B}} =
+\begin{pmatrix}
+3 & 1 & 0 \\
+1 & 3 & 0 \\
+0 & 0 & 2
+\end{pmatrix}
+$$
 
+Paso 1: autovalores.
+La matriz ya está casi en bloques:
+\begin{itemize}
+\item Un bloque $2\times 2$:
+$$
+ \begin{pmatrix}
+3 & 1 \\
+1 & 3
+\end{pmatrix}
+$$
+\item Y un bloque $1\times 1$: $(2)$.
+\end{itemize}
+
+Subbloque $2\times2$:
+$$
+\det
+\begin{pmatrix}
+3-\lambda & 1 \\
+1 & 3-\lambda
+\end{pmatrix}
+= (3-\lambda)^2 - 1 = 0
+$$
+
+$$
+(3-\lambda) = \pm 1 \;\; \Rightarrow \;\; \lambda = 4,2.
+$$
+
+Dado el bloque restante, el tercer autovalor es $\lambda = 2$.
+
+En resumen, los autovalores son:
+$$
+\boxed{\lambda = 4,2,2.}
+$$
+
+Paso 2: autovectores.
+Para $\lambda = 4$.
+Resolvemos:
+$$
+(T - 4I)\vec x = 0
+$$
+
+$$
+\begin{pmatrix}
+-1 & 1 & 0 \\
+1 & -1 & 0 \\
+0 & 0 & -2
+\end{pmatrix}
+\begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix}
+=
+\begin{pmatrix}0\\0\\0\end{pmatrix}
+\;\;
+\Rightarrow 
+\;\;
+x_1 = x_2,\; x_3 = 0.
+$$
+Entonces:
+$$
+\vec x = (1,1,0)^T.
+$$
+
+Para $\lambda = 2$:
+$$
+(T - 2I) =
+\begin{pmatrix}
+1 & 1 & 0 \\
+1 & 1 & 0 \\
+0 & 0 & 0
+\end{pmatrix}
+\begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix}
+=
+\begin{pmatrix}0\\0\\0\end{pmatrix}
+$$
+implica la ecuación:
+$$
+x_1 + x_2 = 0 \;\; \Rightarrow \;\; x_2 = -x_1
+$$
+y $x_3$ libre.
+Entonces, los otros autovectores son:
+$$
+\vec x = (1,-1,0)^T, \quad \vec x = (0,0,1)^T
+$$
+
+En resumen, los autovectores son:
+\begin{itemize}
+\item Para $\lambda = 4$:
+$$
+  \boxed{(1,1,0)^T}
+$$
+
+\item Para $\lambda = 2$:
+$$
+  \boxed{(1,-1,0)^T, (0,0,1)^T}
+$$
+
+\end{itemize}
+
+Paso 3: independencia de la base.
+Acá está el punto conceptual clave.
+Las matrices $T_{\mathcal{B}}$ y $T_{\mathcal{B}'}$ están relacionadas por:
+$$
+T_{\mathcal{B}'} = PT_{\mathcal{B}}P^{-1}
+$$
+Esto es una transformación de semejanza.
+
+Resultado fundamental.
+Las matrices semejantes:
+\begin{itemize}
+\item Tienen los mismos autovalores.
+\item Representan el mismo operador lineal.
+\end{itemize}
+
+¿Qué pasa con los autovectores?
+\begin{itemize}
+\item Los autovectores cambian de coordenadas.
+\item Pero representan los mismos vectores geométricos.
+\end{itemize}
+
+Si $[v]_{\mathcal{B}}$ es autovector, entonces:
+$$
+[v]_{\mathcal{B}'} = P [v]_{\mathcal{B}}
+$$
+
+Conclusión.
+\begin{itemize}
+\item Los autovalores:
+$$
+  \boxed{4,2,2}
+$$
+son independientes de la base.
+
+\item Los autovectores cambian su representación, pero no el subespacio propio.
+\end{itemize}
 
 \prob Sea \(A\), \(B \in \mathcal{L}\), el conjunto de operadores lineales sobre \(V\). Muestre que 
 \[
