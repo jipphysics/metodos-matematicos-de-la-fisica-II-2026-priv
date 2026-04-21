@@ -1,0 +1,201 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=50\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Primer Parcial}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Parcial N$^\circ$ 1 -- 24/04/2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\prob Sea \(V\) un espacio vectorial real de dimensión \(n\) con un producto interno \(\langle \cdot , \cdot \rangle\) (métrica Euclídea). Sea \(T \in \mathcal{T}^0_2(V)\) un tensor dos veces covariante.
+\begin{enumerate}
+    \item Demuestre que \(T\) puede descomponerse de manera única como \(T = S + A\), donde \(S\) es un tensor simétrico y \(A\) uno antisimétrico.  
+    \item Dada una base ortonormal \(\{\hat e_i\}\) de \(V\), defina la \textit{traza métrica} de \(T\) como 
+    \[
+    \operatorname{tr}_g(T) = \sum_{i=1}^n T(\hat e_i, \hat e_i).
+    \]
+    Muestre que \(\operatorname{tr}_g(A) = 0\) para todo tensor antisimétrico \(A\).
+    \item Si en una base ortonormal las componentes de \(T\) son 
+    \[
+    T_{ij} = 2\delta_{ij} + \epsilon_{ijk}v^k,
+    \]
+    donde \(\epsilon_{ijk}\) es el símbolo de Levi-Civita (\(\epsilon_{123}=1\)) y \(v^k\) son las componentes de un vector \(\mathbf{v}\), calcule explícitamente las componentes de \(S\) y \(A\) y la traza de \(T\).
+\end{enumerate}
+
+
+\prob En \(\mathbb{R}^3\) se consideran dos bases
+\[
+B = \{ \vec{u}_1, \vec{u}_2, \vec{u}_3 \}, \qquad
+B' = \{ \vec{v}_1, \vec{v}_2, \vec{v}_3 \},
+\]
+cuyas componentes en la base canónica son
+\[
+\mat{u}_1 = \begin{pmatrix}1\\0\\1\end{pmatrix},\;
+\mat{u}_2 = \begin{pmatrix}0\\1\\1\end{pmatrix},\;
+\mat{u}_3 = \begin{pmatrix}1\\1\\0\end{pmatrix},\qquad
+\mat{v}_1 = \begin{pmatrix}1\\1\\0\end{pmatrix},\;
+\mat{v}_2 = \begin{pmatrix}1\\0\\1\end{pmatrix},\;
+\mat{v}_3 = \begin{pmatrix}0\\1\\1\end{pmatrix}.
+\]
+\begin{enumerate}
+    \item Halle la matriz de cambio de base \(\mat P\) tal que \(\mat{w}_{B'} = \mat{P} \mat{w}_{B}\) para todo \(\vec{w} \in \mathbb{R}^3\).
+    \item Sea \(T: \mathbb{R}^3 \to \mathbb{R}^3\) el operador lineal cuya matriz en la base \(B\) es
+    \[
+    \mat{T}_B = \begin{pmatrix} 3 & 1 & 0 \\ 1 & 3 & 0 \\ 0 & 0 & 2 \end{pmatrix}.
+    \]
+    Calcule \(\mat{T}_{B'}\) usando la relación de semejanza.
+    \item Encuentre los autovalores y autovectores de \(T\) y verifique que son independientes de la base elegida.
+\end{enumerate}
+
+
+\prob Sea \(A\), \(B \in \mathcal{L}\), el conjunto de operadores lineales sobre \(V\). Muestre que 
+\[
+\|A\| = \max_{\|\vec{v}\|=1} \|A\vec{v}\|
+\]
+define una norma y que \(\|AB\| \leq \|A\|\|B\|\).
+
+
+\prob Considere la superficie \(S\) definida por \(z = \cos x \cos y\) en el espacio \(\mathbb{R}^3\) con la m\'etrica Euclidiana, donde \(x,y,z\) son coordenadas Cartesianas.
+\begin{enumerate}
+    \item Parametrice \(S\) y construya la métrica inducida (escriba sus componentes).
+    \item Calcule el diferencial de área escalar y el área del parche \(x,y \in [-\pi, \pi]\).
+    \item Calcule la longitud de la curva \(x = y\), \(z = \cos x \cos y\) desde \(x = -\pi\) hasta \(x = \pi\).
+\end{enumerate}
+
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
