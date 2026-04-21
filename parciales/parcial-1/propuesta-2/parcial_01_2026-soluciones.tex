@@ -738,6 +738,99 @@ son independientes de la base.
 \]
 define una norma y que \(\|AB\| \leq \|A\|\|B\|\).
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 3)}
+\vspace{0.5cm}
+
+Para operadores lineales $A, B \in \mathcal{L}(V)$, definir:
+$$
+|A| = \max_{|\vec v| = 1} |A\vec v|
+$$
+y demostrar:
+\begin{enumerate}
+\item que $|\cdot|$ es una norma, y
+\item que $|AB| \le |A| |B|$.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+Parte 1: ver que es una norma.
+Hay que chequear 3 propiedades:
+
+{\em i)} Positividad:
+$$
+|A| = \max_{|\vec v|=1} |A\vec v| \ge 0
+$$
+Además, cabe notar que que es definida positiva, puesto que:
+\begin{itemize}
+\item Si $A = 0$, entonces $|A| = 0$.
+\item Si $|A| = 0$, entonces $A\vec v = 0$ para todo $\vec v \Rightarrow A = 0$.
+\end{itemize}
+Luego $|A|=0 \Leftrightarrow A=0$.
+
+{\em ii)} Homogeneidad:
+Para $\lambda \in \mathbb{R}$:
+$$
+|\lambda A| = \max_{|\vec v|=1} |\lambda A \vec v| = |\lambda| \max_{|\vec v|=1} |A\vec v| = |\lambda| |A|
+$$
+i.e.:
+$$
+\boxed{|\lambda A| = |\lambda| |A|}
+$$
+
+{\em iii)} Desigualdad triangular:
+Notamos que:
+$$
+|(A+B)\vec v| = |A\vec v +B\vec v| \leq |A\vec v|+|B\vec v| \le |A| + |B|
+$$
+para todo $|\vec v|=1$, donde en la primera desigualdad utilizamos la ya conocida desigualdad triangular sobre vectores.
+Luego, tomando máximo obtenemos:
+$$
+|A+B| \le |A| + |B|
+$$
+por lo que concluimos que $\boxed{|\cdot|}$ satisface {\em iii)} y por ende que es una norma.
+
+\vspace{0.5cm}
+
+Parte 2: submultiplicatividad.
+
+Queremos probar que:
+$$
+|AB| \le |A|\,|B|
+$$
+
+Demostración.
+Tomemos un $\vec v$ arbitrario con $|\vec v| = 1$.
+Luego:
+$$
+|AB\vec v| = |A(B\vec v)|
+.
+$$
+Ahora, por definición de norma de operador:
+$$
+|A w| \le |A| |w|
+$$
+y, por ende, aplicando este resultado al caso particualr $w = B\vec v$, obtenemos que:
+$$
+|AB\vec v| \le |A| |B\vec v|
+.
+$$
+Luego, aplicamos nuevamente la definici\'on de norma de operador y obtenemos que:
+$$
+|B\vec v| \le |B|
+.
+$$
+Entonces, combinando resultados vemos que:
+$$
+|AB\vec v| \le |A| |B|
+$$
+vale para todo $|\vec v| = 1$.
+Luego, vale que:
+$$
+\boxed{|AB| = \max_{|\vec v|=1} |A\vec v| \le |A| |B|}
+$$
+probando el resultado que busc\'abamos.
+
 
 \prob Considere la superficie \(S\) definida por \(z = \cos x \cos y\) en el espacio \(\mathbb{R}^3\) con la m\'etrica Euclidiana, donde \(x,y,z\) son coordenadas Cartesianas.
 \begin{enumerate}
