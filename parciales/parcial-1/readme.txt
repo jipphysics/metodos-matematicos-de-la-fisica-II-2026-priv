@@ -23,7 +23,7 @@ El problema 4 es el problema 9 de la parte 1 de la guía 2.
 Ya hice los problemas 3 y 4. Estoy haciendo los problemas 1 y 2. A priori no veo mayor dificultad. Creo que los estudiantes deberían poder resolverlos en 3 horas. 
 
 Saludos  Jorge
-********************************************************************************
+--------------------------------------------------------------------------------
 Hola a todos. ¡Gracias Jorge por la propuesta! También me gusta. 
 
 Sugiero hacer algunos retoques en los enunciados.
