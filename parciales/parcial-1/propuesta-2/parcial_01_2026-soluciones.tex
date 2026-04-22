@@ -839,12 +839,168 @@ probando el resultado que busc\'abamos.
     \item Calcule la longitud de la curva \(x = y\), \(z = \cos x \cos y\) desde \(x = -\pi\) hasta \(x = \pi\).
 \end{enumerate}
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4.a)}
+\vspace{0.5cm}
+
+Superficie:
+$$
+z = \cos x \cos y.
+$$
+Una parametrización natural es:
+$$
+\vec r(x,y) = (x, y, \cos x \cos y)
+$$
+
+Vectores tangentes:
+$$
+\vec r_x = \frac{\partial \vec r}{\partial x} = (1,0,-\sin x \cos y)
+$$
+$$
+\vec r_y = \frac{\partial \vec r}{\partial y} = (0,1,-\cos x \sin y)
+$$
+
+Métrica inducida:
+$$
+g_{ij} = \vec r_i \cdot \vec r_j
+$$
+Componentes:
+$$
+g_{xx} = \vec r_x \cdot \vec r_x = 1 + \sin^2 x \cos^2 y
+$$
+$$
+g_{yy} = \vec r_y \cdot \vec r_y = 1 + \cos^2 x \sin^2 y
+$$
+$$
+g_{xy} = \vec r_x \cdot \vec r_y = \sin x \cos x \sin y \cos y
+$$
+
+Resultado (métrica):
+$$
+\boxed{
+g =
+\begin{pmatrix}
+1 + \sin^2 x \cos^2 y & \sin x \cos x \sin y \cos y \\
+\sin x \cos x \sin y \cos y & 1 + \cos^2 x \sin^2 y
+\end{pmatrix}
+}
+$$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4.b)}
+\vspace{0.5cm}
+
+Elemento de área:
+$$
+dA = \sqrt{\det g}\, dx\,dy
+$$
+
+Determinante:
+$$
+\det g = g_{xx}g_{yy} - g_{xy}^2
+$$
+
+Sustituyendo:
+$$
+\det g =
+(1 + \sin^2 x \cos^2 y)(1 + \cos^2 x \sin^2 y)
+(\sin x \cos x \sin y \cos y)^2
+$$
+
+Si expandís (vale la pena hacerlo con cuidado), se simplifica mucho:
+$$
+\det g = 1 + \sin^2 x \cos^2 y + \cos^2 x \sin^2 y
+$$
+
+Elemento de área:
+$$
+\boxed{
+dA = \sqrt{1 + \sin^2 x \cos^2 y + \cos^2 x \sin^2 y}\, dx\,dy
+}
+$$
+
+Área total:
+$$
+A = \int_{-\pi}^{\pi} \int_{-\pi}^{\pi}
+\sqrt{1 + \sin^2 x \cos^2 y + \cos^2 x \sin^2 y}\, dx\,dy
+$$
+
+Comentario importante.
+Esta integral no tiene una forma cerrada simple.
+Lo correcto en un examen es:
+\begin{itemize}
+\item dejarla planteada correctamente, 
+\item o decir que se evalúa numéricamente.
+\end{itemize}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4.c)}
+\vspace{0.5cm}
+
+Curva
+$$
+x = y, \quad z = \cos x \cos y = \cos^2 x
+$$
+
+Entonces la curva es:
+$$
+\vec r(x) = (x, x, \cos^2 x), \quad x \in [-\pi, \pi]
+$$
+
+Vector tangente:
+$$
+\vec r'(x) = (1,1,-2\cos x \sin x)
+$$
+Luego, usando:
+$$
+-2\cos x \sin x = -\sin(2x)
+$$
+obtenemos:
+$$
+\vec r'(x) = (1,1,-\sin 2x)
+$$
+
+Norma:
+$$
+|\vec r'(x)| = \sqrt{1 + 1 + \sin^2(2x)} = \sqrt{2 + \sin^2(2x)}
+$$
+
+Longitud:
+$$
+\boxed{
+L = \int_{-\pi}^{\pi} \sqrt{2 + \sin^2(2x)}\, dx
+}
+$$
+
+De nuevo.
+Esta integral tampoco tiene forma elemental simple. 
+Se deja así o se evalúa numéricamente.
+
+Resumen final.
+\begin{itemize}
+\item Parametrización:
+$$
+(x,y,\cos x \cos y)
+$$
+
+\item Métrica inducida: calculada explícitamente.
+
+\item Área:
+$$
+\int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \sqrt{1 + \sin^2 x \cos^2 y + \cos^2 x \sin^2 y}\,dx\,dy
+$$
+
+\item Longitud:
+$$
+\int_{-\pi}^{\pi} \sqrt{2 + \sin^2(2x)}\,dx
+$$
+\end{itemize}
+
+%Si querés, podemos ir más allá y:
+%* aproximar numéricamente el área o la longitud
+%* o simplificar la expresión del determinante usando identidades trigonométricas más elegantes (hay una forma bastante linda)
 
 
-
-
-
- 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
