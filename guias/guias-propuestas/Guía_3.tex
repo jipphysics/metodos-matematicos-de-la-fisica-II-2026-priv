@@ -1,0 +1,169 @@
+\documentclass[11pt,spanish]{article}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+%\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\oddsidemargin=0.5cm
+\textwidth=16cm
+\textheight=48\baselineskip
+\topmargin=-1.5cm
+\parskip 2truemm
+\parindent 0pt
+\newcounter{problema}
+\typeout{****************************************}
+\typeout{****** Configuracion de Guia 11pt ******}
+\typeout{****************************************}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\renewcommand{\labelenumi}{\em \alph{enumi})}
+\renewcommand{\labelenumii}{\em \arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\n{\nabla}
+\newcommand\F{\vec F}
+\newcommand\G{\vec G}
+\newcommand\noi{\noindent}
+\newcommand\re{\mbox{Re}}
+\newcommand\im{\mbox{Im}}
+%\newcommand\arg{\mbox{arg}}
+\newcommand\Arg{\mbox{Arg}}
+\newcommand{\prob}{\stepcounter{problema} \noindent{\bf Problema
+\arabic{problema}: }}
+\newcommand\pin[2]{\big\langle #1,#2 \big\rangle}
+
+%\input{/home/ortiz/lib/definiciones.tex}
+\begin{center}
+{\large\sc Facultad de Matem\'atica, Astronom\'ia, F\'isica y Computaci\'on, U.N.C.}
+
+\vspace{2mm}
+{\large M\'etodos Matem\'aticos de la F\'isica II}
+
+\vspace{2mm}
+{\large Gu\'ia N$^{\sf o}$ 3 (2021)}
+\end{center}
+
+\prob Sea la norma $l^p$:
+\begin{equation*}
+\|u\|_{l^p} = \Bigl(\sum_{j=0}^\infty |u^j|^p\Bigr)^{1/p}, \qquad p \ge 1.
+\end{equation*}
+\begin{enumerate}
+  \item Probar que está bien definida.
+  \item Probar que el subconjunto de sucesiones con norma $l^p$ finita está contenido en el subconjunto de las sucesiones con norma $l^q$ finita si $p<q.$
+\end{enumerate}
+
+\prob Sea la norma $L^p$:
+\begin{equation*}
+\|u\|_{L^p} = \left(\int_a^b |u(x)|^p~dx\right)^{1/p}, \qquad p\ge 1.
+\end{equation*}
+Probar que vale la desigualdad
+\[
+\|uv\|_{L^s} \le \|u\|_{L^p}~\|v\|_{L^q}, \quad \mbox{para}\quad s^{-1} = p^{-1}
++ q^{-1}.
+\]
+{\em Sugerencia:} Utilizar la desigualdad de Hölder para la función $(uv)^s$.
+
+\prob Pruebe que
+\begin{equation*}
+\|x\| = \sqrt{\langle x, x\rangle},
+\end{equation*}
+satisface la desigualdad triangular. A tal fin utilice la desigualdad de Schwarz.
+
+\prob Probar que si $T:X \to Y$ es lineal ($X$ e $Y$ son espacios de
+Banach) entonces $T$ es contínua en todo punto de $X$ si y solo si $T$ es
+contínua en cero.
+
+\prob Considere el espacio de sucesiones infinitas de números complejos, pero
+limitado a las que tienen norma $l^2$ finita. Sea $\hat e_i \in l^2$ la sucesión
+que tiene un 1 en el $i$-ésimo lugar y cero en todos los restantes. Pruebe que
+definiendo estos elementos de $l^2$ para $i=1, 2, \dots$ el conjunto $B=\{\hat
+e_1, \hat e_2, \dots\}\subset l^2$ es una base ortonormal de $l^2$.
+
+\prob Sea $H$ un espacio de Hilbert separable y $\{\hat e_1, \hat e_2,
+\dots\}$ una base ortonormal. Pruebe que si $x\in H,$
+\begin{enumerate}
+\item $\displaystyle{x = \sum_{j=1}^\infty \langle \hat e_j, x\rangle~\hat e_j}$.
+\item Identidad de Parseval:
+\[
+\|x\|^2 = \sum_{j=1}^\infty |\langle \hat e_j,x\rangle|^2.
+\]
+\end{enumerate}
+
+
+\prob Sea $H$ un espacio de Hilbert y $\{\hat e_1, \hat e_2,
+\dots, \hat e_N\}$ un conjunto ortonormal (no necesariamente una base). Pruebe que
+\begin{enumerate}
+\item Identidad de Pitágoras. Si $x\in H$,
+\[
+\|x\|^2 = \sum_{j=1}^N |\langle \hat e_j, x\rangle|^2 + \|x- \sum_{j=1}^N
+\langle \hat e_j, x\rangle~\hat e_j \|^2.
+\]
+\item Desigualdad de Bessel. Si $x\in H$
+\[
+\sum_{j=1}^N |\langle \hat e_j, x\rangle|^2 \le \|x\|^2.
+\]
+\end{enumerate}
+
+
+\prob Muestre que $C_0^\infty(\mathbb{R})$ no es solo un espacio vectorial, sino además un álgebra con el producto usual de funciones. Halle el soporte de $fg$ en términos de los soportes de $f$ y $g$.
+
+\prob Demostrar que $h(x)\in C^\infty(\mathbb{R})$, donde
+$$h(x)=\left\{\begin{array}{ll}
+        0 & \text{si } x\leq 0,\\
+        \exp(-1/x^2) & \text{si } x>0.
+        \end{array}\right.
+$$
+
+\prob Muestre que en el caso de tener un espacio de Banach, con la noción de convergencia dada por la norma, la definición de continuidad de una funcional coincide con la definición usual $\varepsilon$-$\delta$. Muestre además que como con cualquier noción de continuidad, para ser verificada en el caso de una funcional lineal, es suficiente verificarla en un solo punto y eso garantiza la continuidad en todos lados.
+
+\prob Sea $f\in L^1(\mathbb{R})$ y sea $T_f$ la funcional definida como:
+$$T_f(\varphi)=\int_0^{\infty}f(x)\varphi(x)dx,$$
+para todo $\varphi\in \mathcal{D}$. Mostrar que $T_f$ es una distribución.
+
+\prob Pensando a la delta de Dirac como una función generalizada, pruebe las siguientes propiedades:
+\begin{enumerate}
+ \item $\int_{-a}^{b} \delta(t)dt=1$, para $a$, $b>0$.
+ \item $\int\delta(t-a)dt=1$, si el rango de integración incluye a $t=a$.
+ \item $\delta(t)=\delta(-t)$.
+ \item $\delta(at)=\frac{1}{|a|}\delta(t)$.
+ \item $t^n\delta(t)=0$, con $n>0$.
+ \item $\delta(h(t))=\sum_i\frac{\delta(t-t_i)}{|h'(t_i)|}$, donde $t_i$ son todos los valores de $t$ para los cuales $h(t)=0$.
+ \item $h(t)\delta'(t-a)=h(a)\delta'(t-a)-h'(a)\delta(t-a)$
+
+\end{enumerate}
+
+\prob Demostrar que la derivada de una distribución es lineal.
+
+\prob Sea
+$$h(x)=\left\{\begin{array}{ll}
+        \exp(x+1), & \text{si } x< -1\\
+        x^4, & \text{si } -1\leq x\leq 0\\
+        \sin(x) & \text{si } 0< x<\pi/2\\
+        1& \text{si } \pi/2\leq x\end{array}\right.
+$$
+calcule las dos primeras derivadas de $f$ en el sentido distribucional.
+
+\prob{} Sean $f: \mathbb{R} \rightarrow \mathbb{R}, \phi$ y $\psi$ dos funciones de prueba. Considere la distribuci\'on definida como
+\[
+T_f(\phi)=\int_{-\infty}^{\infty} f(x) \phi(x) dx
+\]
+\begin{enumerate}
+\item Muestre que $\sin(ax) \delta'(x)= -a \delta(x)$, con $a \in \mathbb{R}$
+\item Demuestre que $(\phi \psi)'= \phi' \psi + \phi \psi'$ en el sentido distribucional.
+\item Utilizando los incisos anteriores, muestre que $\cfrac{d^2}{dx^2} \left[H(x) \sin(ax) \right]= a \delta(x) - H(x) a^2 \sin(ax)$, donde $H(x)$ es la funci\'on escal\'on.
+\end{enumerate}
+
+\prob Considere la ecuación diferencial ordinaria 
+\[
+\frac{d^2u}{dx^2} - \gamma^2 u = \delta(x^2-3x+2), \qquad u(x)\in \mathbb{R},
+\]
+donde $\gamma >0$ y $\delta(x)$ es la Delta de Dirac. Utilizando Transformada de Fourier halle la solución
+$u(x)$ suponinedo que es una función que decae rápidamente cuando $|x|\to
+\infty$. 
+
+
+%\prob Calcular la transformada de Fourier de $\delta'(x-a)$, con $a\in\mathbb{R}$.
+
+\end{document}
+
+
+
