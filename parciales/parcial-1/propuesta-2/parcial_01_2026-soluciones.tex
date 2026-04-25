@@ -842,7 +842,7 @@ probando el resultado que busc\'abamos.
 {\bf Soluci\'on }{\em 4.a)}
 \vspace{0.5cm}
 
-\url{https://chatgpt.com/share/69e8bec0-b0a4-8325-a5d5-6a045a4fdb2c}.
+%\url{https://chatgpt.com/share/69e8bec0-b0a4-8325-a5d5-6a045a4fdb2c}.
 
 Superficie:
 $$
@@ -905,6 +905,7 @@ Sustituyendo:
 $$
 \det g =
 (1 + \sin^2 x \cos^2 y)(1 + \cos^2 x \sin^2 y)
+-
 (\sin x \cos x \sin y \cos y)^2
 $$
 
@@ -996,6 +997,362 @@ $$
 \int_{-\pi}^{\pi} \sqrt{2 + \sin^2(2x)}\,dx
 $$
 \end{itemize}
+
+{\bf Soluci\'on alternativa:}
+
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4.a)}
+\vspace{0.5cm}
+
+Utilizamos el cambio de coordenadas
+$$
+u = x
+$$
+$$
+v = y
+$$
+$$
+w = z - \cos x\cos y
+$$
+with inverse
+$$
+x = u
+$$
+$$
+y = v
+$$
+$$
+z = w + \cos u\cos v
+.
+$$
+Denotando la m\'etrica canonica en las coordenadas $x$, $y$ y $z$ por las coordenadas
+$$
+g_{xx} = g_{yy} = g_{zz} = 1
+$$
+y
+$$
+g_{xy} = g_{yx} = g_{xz} = g_{zx} = g_{yz} = g_{zy} = 0
+.
+$$
+Las coordenadas de la m\'etrica en las nuevas coordenadas $u$, $v$ y $w$ vienen dadas por
+$$
+g_{uu}
+=
+g_{xx}
+\frac{\partial x}{\partial u}
+\frac{\partial x}{\partial u}
++
+g_{yy}
+\frac{\partial y}{\partial u}
+\frac{\partial y}{\partial u}
++
+g_{zz}
+\frac{\partial z}{\partial u}
+\frac{\partial z}{\partial u}
++
+0
+...
+=
+1
++
+0
++
+\sin^2 u\cos^2 v
+=
+1
++
+\sin^2 u\cos^2 v
+$$
+$$
+g_{uv}
+=
+g_{xx}
+\frac{\partial x}{\partial u}
+\frac{\partial x}{\partial v}
++
+g_{yy}
+\frac{\partial y}{\partial u}
+\frac{\partial y}{\partial v}
++
+g_{zz}
+\frac{\partial z}{\partial u}
+\frac{\partial z}{\partial v}
++
+0
+...
+=
+0
++
+0
++
+\sin u\cos v
+\cos u\sin v
+=
+\sin u\cos u
+\sin v\cos v
+$$
+$$
+g_{uw}
+=
+g_{xx}
+\frac{\partial x}{\partial u}
+\frac{\partial x}{\partial w}
++
+g_{yy}
+\frac{\partial y}{\partial u}
+\frac{\partial y}{\partial w}
++
+g_{zz}
+\frac{\partial z}{\partial u}
+\frac{\partial z}{\partial w}
++
+0
+...
+=
+0
++
+0
+-
+\sin u\cos v
+=
+-
+\sin u\cos v
+$$
+$$
+g_{vu}
+=
+g_{uv}
+=
+\sin u\cos v
+\cos u\sin v
+$$
+$$
+g_{vv}
+=
+g_{xx}
+\frac{\partial x}{\partial v}
+\frac{\partial x}{\partial v}
++
+g_{yy}
+\frac{\partial y}{\partial v}
+\frac{\partial y}{\partial v}
++
+g_{zz}
+\frac{\partial z}{\partial v}
+\frac{\partial z}{\partial v}
++
+0
+...
+=
+0
++
+1
++
+\cos^2 u\sin^2 v
+=
+1
++
+\cos^2 u\sin^2 v
+$$
+$$
+g_{vw}
+=
+g_{xx}
+\frac{\partial x}{\partial v}
+\frac{\partial x}{\partial w}
++
+g_{yy}
+\frac{\partial y}{\partial v}
+\frac{\partial y}{\partial w}
++
+g_{zz}
+\frac{\partial z}{\partial v}
+\frac{\partial z}{\partial w}
+=
+0
++
+0
+-
+\cos u\sin v
+=
+-
+\cos u\sin v
+$$
+$$
+g_{wu} 
+=
+g_{uw}
+=
+\sin u\cos v\cos u\sin v
+$$
+$$
+g_{wv}
+=
+g_{vw}
+=
+-\cos u\sin v
+$$
+$$
+g_{ww}
+=
+g_{xx}
+\frac{\partial x}{\partial w}
+\frac{\partial x}{\partial w}
++
+g_{yy}
+\frac{\partial y}{\partial w}
+\frac{\partial y}{\partial w}
++
+g_{zz}
+\frac{\partial z}{\partial w}
+\frac{\partial z}{\partial w}
+=
+0
++
+0
++
+1
+=
+1
+.
+$$
+Matricialmente
+$$
+\boxed{
+g =
+\begin{pmatrix}
+1 + \sin^2 u \cos^2 v & \sin u \cos u \sin v \cos v & -\sin u\cos v\\
+\sin u \cos u \sin v \cos v & 1 + \cos^2 u \sin^2 v & -\cos u\sin v \\
+-\sin u\cos v & -\cos u\sin v & 1
+\end{pmatrix}
+}
+$$
+
+El sistema de coordenadas $u$, $v$ y $w$ nos permite parametrizar la superficie $S$ variando $u$ y $v$, y fijando $w=0$.
+Un vector tangente a $S$ en un punto arbitrario de $S$ es ortogonal al versor $\hat{e}_w=\frac{\partial}{\partial w}$.
+Si denotamos por $h$ a la m\'etrica inducida sobre $S$, sus coordenadas son
+$h_{uu} = g_{uu}$, 
+$h_{uv} = h_{vu} = g_{uv}$ y
+$h_{vv} = g_{vv}$.
+
+Un elemento differencial de área en $S$ viene dado por
+$$
+dS
+=
+\sqrt{\det h}\, du\,dv
+$$
+donde
+\begin{eqnarray}
+\det h
+&=&
+h_{uu}
+h_{vv}
+-
+h_{uv}^2
+\notag
+\\
+&=&
+(1+\sin^2 u\cos^2 v)
+(1+\cos^2 u\sin^2 v)
+-
+(\sin u \cos u \sin v \cos v)^2
+\notag
+\\
+&=&
+1
++
+\sin^2 u\cos^2 v
++
+\cos^2 u\sin^2 v
++
+\sin^2 u \cos^2 u \sin^2 v \cos^2 v
+-
+\sin^2 u \cos^2 u \sin^2 v \cos^2 v
+\notag
+\\
+&=&
+1
++
+\sin^2 u\cos^2 v
++
+\cos^2 u\sin^2 v
+\notag
+,
+\end{eqnarray}
+por lo que
+$$
+dS
+=
+\sqrt{
+1
++
+\sin^2 u\cos^2 v
++
+\cos^2 u\sin^2 v
+}\,
+du\,dv
+.
+$$
+De manera similar, un elemento diferencial de l\'inea sobre $S$ viene dado por
+$$
+d\ell
+=
+\sqrt{
+h_{uu}\frac{du}{dt}\frac{du}{dt}
++
+h_{uv}\frac{du}{dt}\frac{dv}{dt}
++
+h_{vu}\frac{dv}{dt}\frac{du}{dt}
++
+h_{vv}\frac{dv}{dt}\frac{dv}{dt}
+}\,
+dt
+$$
+donde la curva que general $d\ell$ viene parametrizada por dos funciones $\RR\ni t\to u(t)\in \RR$ y $\RR\ni t\to v(t)\in \RR$.
+En particular, se pide considerar la curva dada por $u(t)=t=v(t)$ para $t\in [-\pi,\pi]$.
+Luego, el elemento diferencial de l\'inea sobre $S$ viene dado por
+\begin{eqnarray}
+d\ell
+&=&
+\sqrt{
+1+\sin^2 u\cos^2 v
++
+2\sin u\cos u\sin v\cos v
++
+1+\cos^2 u\sin^2 v
+}\,
+dt
+\notag
+\\
+&=&
+\sqrt{
+2
++
+4\sin^2 u\cos^2 u
+}\,
+dt
+\notag
+.
+\end{eqnarray}
+Luego, usando la identidad
+$$
+2\cos u\sin u
+=
+\sin(2u)
+$$
+la expresi\'on del diferencial de longitud de l\'inea se reduce a
+$$
+d\ell
+=
+\sqrt{
+2
++
+\sin^2 (2u)
+}\,
+dt
+.
+$$
 
 %Si querés, podemos ir más allá y:
 %* aproximar numéricamente el área o la longitud
