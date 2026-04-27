@@ -1019,175 +1019,138 @@ $$
 \subsection{Proof of equivalences}
 
 The fundamental theorem is usually proving equivalence between the three core definitions:
-
 \begin{itemize}
-\item Curves
-\item Derivations
+\item Curves.
+\item Derivations.
 \item Coordinate vectors ($\mathbb R^n$).
 \end{itemize}
-
 Once those are equivalent, the embedded and implicit definitions follow fairly naturally.
 
-\subsubsection{Theorem}
-For an $n$-dimensional smooth manifold $M$ and $p\in M$,
-
+\vspace{0.5cm}
+{\bf Theorem:} For an $n$-dimensional smooth manifold $M$ and $p\in M$,
 $$
 T_pM
 $$
-
 defined via curves, derivations, or coordinate vectors are naturally isomorphic.
 
-{\bf Part I}: Curves $\Longleftrightarrow$ coordinate vectors
+\vspace{0.5cm}
+\noindent
+{\bf Part I}: Curves $\Longleftrightarrow$ coordinate vectors.
 
 Take a chart around $p$:
-
 $$
 (x^1,\dots,x^n).
 $$
-
 Let $\gamma(t)$ be a curve with
-
 $$
 \gamma(0)=p.
 $$
-
 Define
-
 $$
 v^i
 =
 \frac d{dt}(x^i\circ \gamma)(0).
 $$
-
 Collect:
-
 $$
 v=(v^1,\dots,v^n)\in \mathbb R^n.
 $$
-
 So every curve determines a coordinate vector.
 
-
+\vspace{0.5cm}
+\noindent
 {\em Independence of chart:}
 
 Suppose another chart
-
 $$
 y^\alpha.
 $$
-
 Then by chain rule,
-
 $$
 \frac d{dt}(y^\alpha\circ\gamma)
 =
 \frac{\partial y^\alpha}{\partial x^i}
 \frac d{dt}(x^i\circ\gamma).
 $$
-
 So components transform by Jacobian:
-
 $$
 v^\alpha
 =
 \frac{\partial y^\alpha}{\partial x^i}v^i.
 $$
-
 Exactly the transformation law for tangent vectors.
-
 So this is geometric.
 
+\vspace{0.5cm}
+\noindent
 {\em Converse:}
 
 Given any
-
 $$
 (v^1,\dots,v^n),
 $$
-
 construct curve
-
 $$
 \gamma(t)
 =
 (x^1(p)+tv^1,\dots,x^n(p)+tv^n)
 $$
-
 in coordinates.
-
 Its velocity is $v$.
-
 So every coordinate vector comes from a curve.
-
 Thus:
-
 $$
 \boxed{
 \text{curves } \cong \mathbb R^n
 }
 $$
 
----
-
+\vspace{0.5cm}
+\noindent
 {\bf Part II:} Curves $\Longrightarrow$ derivations.
 
 Given curve $\gamma$, define:
-
 $$
 D_\gamma(f)
 =
 \frac d{dt}f(\gamma(t))\Big|_{0}.
 $$
-
-Linearity obvious.
-
-Leibniz:
-
+Linearity is obvious.
+Leibniz rule:
 $$
 D_\gamma(fg)
 =
 \frac d{dt}(fg)(\gamma(t)).
 $$
-
 Product rule:
-
 $$
 f(p)D_\gamma(g)
 +
 g(p)D_\gamma(f).
 $$
-
 So it's a derivation.
 
+\vspace{0.5cm}
+\noindent
 {\bf Part III:} Derivations $\Longrightarrow$ coordinate vectors.
 
 Suppose
-
 $$
 D
 $$
-
 is a derivation.
-
 Define components
-
 $$
 v^i:=D(x^i).
 $$
-
 Claim:
-
 $$
 D=
 v^i
 \frac{\partial}{\partial x^i}.
 $$
-
-Need to prove.
-
-Take smooth $f$.
-Taylor expand near $p$:
-
+Need to be proven.
+For this, take smooth $f$ and Taylor expand near $p$:
 $$
 f
 =
@@ -1198,54 +1161,42 @@ f(p)
 +
 \text{quadratic}.
 $$
-
 Derivation kills constants:
-
 $$
 D(f(p))=0.
 $$
-
 Quadratic terms lie in $\mathfrak m^2$, derivations kill those.
-
 So:
-
 $$
 D(f)
 =
 D(x^i)
 \frac{\partial f}{\partial x^i}(p).
 $$
-
 Thus
-
 $$
 D
 =
 v^i \partial_i.
 $$
-
 Every derivation has coordinate components.
 
+\vspace{0.5cm}
+\noindent
 {\em Converse:}
 
 Given
-
 $$
 v^i
 $$
-
 define
-
 $$
 D
 =
 v^i\partial_i.
 $$
-
 Clearly derivation.
-
 So
-
 $$
 \boxed{
 \text{derivations}
@@ -1253,9 +1204,7 @@ $$
 \mathbb R^n
 }
 $$
-
 Combining:
-
 $$
 \boxed{
 \text{curves}
@@ -1265,19 +1214,17 @@ $$
 \mathbb R^n
 }
 $$
-
 proved.
 
+\vspace{0.5cm}
+\noindent
 {\em Embedded definition follows:}
 
 For embedding
-
 $$
 r(u^1,\dots,u^m),
 $$
-
 pushforward gives
-
 $$
 dr_p\left(
 \frac{\partial}{\partial u^i}
@@ -1285,71 +1232,57 @@ dr_p\left(
 =
 \frac{\partial r}{\partial u^i}.
 $$
-
 So embedded tangent vectors are just images of coordinate derivations.
-
 Equivalent.
 
+\vspace{0.5cm}
+\noindent
 {\em Implicit definition follows:}
 
 If
-
 $$
 M={F=0},
 $$
-
 and $\gamma\subset M$,
 then
-
 $$
 F(\gamma(t))=0.
 $$
-
 Differentiate:
-
 $$
 dF_p(\gamma'(0))=0.
 $$
-
 So
-
 $$
 T_pM\subseteq \ker dF_p.
 $$
-
 Dimensions agree, so
-
 $$
 T_pM=\ker dF_p.
 $$
-
 Equivalent.
 
+\vspace{0.5cm}
+\noindent
 {\bf Elegant summary:}
 
 All these are manifestations of first-order information at a point.
 A tangent vector is:
-
 \begin{itemize}
 \item a first derivative of a curve,
 \item a first-order differential operator,
 \item a first-order coordinate increment.
 \end{itemize}
-
 All are the same notion.
 
 This proof essentially shows:
-
 $$
 T_pM
 \cong
 (\mathfrak m_p/\mathfrak m_p^2)^*
 $$
-
 because derivations depend only on first-order Taylor terms.
-
 That is why all this works.
-
 It’s really a theorem about first-order infinitesimals.
 
 %If you'd like, we can even prove why derivations annihilate (\mathfrak m^2), which is a beautiful little argument.
