@@ -699,9 +699,660 @@ g_{zz}
 
 %\onecolumngrid
 
-%\appendix
-%
-%\section{Apendice A}
+\appendix
+
+\section{Definiciones alternativas de espacio tangente}
+
+Basado en ChatGPT-2026-04-26:
+\url{https://chatgpt.com/share/69e8bec0-b0a4-8325-a5d5-6a045a4fdb2c}.
+
+For a smooth manifold $M$ and point $p\in M$, the tangent space $T_pM$ can be defined in several equivalent ways.
+
+\subsection{Tangent vectors as velocities of curves (Geometric definition)}
+
+A tangent vector at (p) is an equivalence class of smooth curves
+
+$$
+\gamma:(-\epsilon,\epsilon)\to M
+$$
+
+with
+
+$$
+\gamma(0)=p.
+$$
+
+Two curves are equivalent if they have the same first-order behavior at (p), meaning in any (equivalently every) chart
+
+$$
+\frac{d(x^i\circ \gamma_1)}{dt}(0)
+=
+\frac{d(x^i\circ \gamma_2)}{dt}(0).
+$$
+
+Then
+
+$$
+v=\gamma'(0)
+$$
+
+is a tangent vector.
+
+So
+
+$$
+T_pM
+=
+{\text{velocities of curves through }p}.
+$$
+
+\subsubsection{Intuition:}
+
+Tangent vectors are infinitesimal motions.
+
+\subsection{Tangent vectors as derivations (Operator definition)}
+
+A tangent vector is a linear map
+
+$$
+v:C^\infty(M)\to \mathbb R
+$$
+
+such that
+
+$$
+v(fg)
+=
+f(p)v(g)+g(p)v(f).
+$$
+
+(Leibniz rule.)
+
+These are derivations at $p$.
+
+Then
+
+$$
+T_pM
+=
+{\text{all derivations at }p}.
+$$
+
+Coordinate basis:
+
+$$
+\frac{\partial}{\partial x^i}.
+$$
+
+General vector:
+
+$$
+v=v^i \frac{\partial}{\partial x^i}.
+$$
+
+\subsubsection{Intuition:}
+
+Tangent vectors are directional derivatives.
+
+\subsection{Tangent vectors as coordinate tuples (Local coordinate definition)}
+
+Choose coordinates near $p$:
+
+$$
+(x^1,\dots,x^n).
+$$
+
+Then a tangent vector is just
+
+$$
+(v^1,\dots,v^n)\in \mathbb R^n.
+$$
+
+with basis
+
+$$
+\frac{\partial}{\partial x^i}.
+$$
+
+Thus
+
+$$
+T_pM\simeq \mathbb R^n
+$$
+
+locally.
+
+This is often how physicists first meet tangent spaces.
+
+\subsection{Tangent vectors as equivalence classes of germs (More algebraic)}
+
+Take germs of functions vanishing at $p$, let
+
+$$
+\mathfrak m_p
+$$
+
+be the maximal ideal.
+
+Then
+
+$$
+T_pM
+\cong
+(\mathfrak m_p/\mathfrak m_p^2)^*.
+$$
+
+This says tangent vectors are dual to first-order infinitesimals.
+
+Very elegant algebraic definition.
+
+\subsection{Tangent vectors as pushforwards of coordinate vectors (Embedded viewpoint)}
+
+If
+
+$$
+r(u^1,\dots,u^n)
+$$
+
+parametrizes a manifold, then tangent vectors are spanned by
+
+$$
+\frac{\partial r}{\partial u^i}.
+$$
+
+Thus
+
+$$
+T_pM
+=
+\text{span}
+\{
+\partial_i r
+\}
+.
+$$
+
+This is what Briozzo used in Problem 4.
+
+For surfaces in $\mathbb R^3$, this is the most concrete picture.
+
+\subsection{Tangent space as best linear approximation (Differential viewpoint)}
+
+A manifold near $p$ looks infinitesimally like a vector space:
+
+$$
+T_pM
+$$
+
+is the linear space approximating $M$ near $p$.
+
+This is the ``linearization'' viewpoint.
+
+\subsection{If $M\subset \mathbb R^n$ is given implicitly (Constraint definition)}
+
+Suppose
+
+$$
+M={x:F(x)=0}
+$$
+
+with
+
+$$
+F:\mathbb R^n\to \mathbb R^k.
+$$
+
+Then
+
+$$
+T_pM
+=
+\ker dF_p.
+$$
+
+Equivalent:
+
+vectors satisfying linearized constraints.
+
+Example:
+Sphere
+
+$$
+x^2+y^2+z^2=1
+$$
+
+gives
+
+$$
+2xv_x+2yv_y+2zv_z=0.
+$$
+
+So tangent vectors are orthogonal to radius.
+
+Very important in physics.
+
+\subsection{As dual of cotangent space (Covector duality)}
+
+Define cotangent space first:
+
+$$
+T_p^*M.
+$$
+
+Then
+
+$$
+T_pM=(T_p^*M)^*.
+$$
+
+Especially natural in modern geometry.
+
+\subsection{All equivalent}
+
+These all define the same object.
+There are natural isomorphisms:
+Curve velocity
+$
+\longleftrightarrow
+$
+Derivation
+$
+\longleftrightarrow
+$
+Coordinate vector
+$
+\longleftrightarrow
+$
+Embedded tangent arrow
+$
+\longleftrightarrow
+$
+Kernel of constraint map
+$
+\longleftrightarrow
+$
+Dual of infinitesimals.
+All these are different representations of the same tangent vector.
+
+Summary table:
+
+%| Viewpoint                | Tangent vector is...             |
+%| ------------------------ | -------------------------------- |
+%| Curves                   | Velocity class (\gamma'(0))      |
+%| Derivations              | Directional derivative           |
+%| Coordinates              | Tuple ((v^1,\dots,v^n))          |
+%| Parametrized submanifold | Span of (\partial_i r)           |
+%| Implicit manifold        | Kernel of (dF)                   |
+%| Algebraic                | ((\mathfrak m/\mathfrak m^2)^*)  |
+%| Linearization            | Best infinitesimal approximation |
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Viewpoint} & \textbf{Tangent vector is...} \\
+\hline
+Curves & Velocity class $\gamma'(0)$ \\
+Derivations & Directional derivative \\
+Coordinates & Tuple $(v^1,\dots,v^n)$ \\
+Parametrized submanifold & Span of $\partial_i r$ \\
+Implicit manifold & Kernel of $dF$ \\
+Algebraic & $(\mathfrak m/\mathfrak m^2)^*$ \\
+Linearization & Best infinitesimal approximation \\
+\hline
+\end{tabular}
+\caption{Equivalent viewpoints on tangent vectors.}
+\end{table}
+
+My recommendation (for physics). Keep these three always linked:
+
+$$
+\boxed{
+\text{velocity}
+\leftrightarrow
+\text{derivation}
+\leftrightarrow
+\text{embedded arrow}
+}
+$$
+
+\subsection{Proof of equivalences}
+
+The fundamental theorem is usually proving equivalence between the three core definitions:
+
+\begin{itemize}
+\item Curves
+\item Derivations
+\item Coordinate vectors ($\mathbb R^n$).
+\end{itemize}
+
+Once those are equivalent, the embedded and implicit definitions follow fairly naturally.
+
+\subsubsection{Theorem}
+For an $n$-dimensional smooth manifold $M$ and $p\in M$,
+
+$$
+T_pM
+$$
+
+defined via curves, derivations, or coordinate vectors are naturally isomorphic.
+
+{\bf Part I}: Curves $\Longleftrightarrow$ coordinate vectors
+
+Take a chart around $p$:
+
+$$
+(x^1,\dots,x^n).
+$$
+
+Let $\gamma(t)$ be a curve with
+
+$$
+\gamma(0)=p.
+$$
+
+Define
+
+$$
+v^i
+=
+\frac d{dt}(x^i\circ \gamma)(0).
+$$
+
+Collect:
+
+$$
+v=(v^1,\dots,v^n)\in \mathbb R^n.
+$$
+
+So every curve determines a coordinate vector.
+
+
+{\em Independence of chart:}
+
+Suppose another chart
+
+$$
+y^\alpha.
+$$
+
+Then by chain rule,
+
+$$
+\frac d{dt}(y^\alpha\circ\gamma)
+=
+\frac{\partial y^\alpha}{\partial x^i}
+\frac d{dt}(x^i\circ\gamma).
+$$
+
+So components transform by Jacobian:
+
+$$
+v^\alpha
+=
+\frac{\partial y^\alpha}{\partial x^i}v^i.
+$$
+
+Exactly the transformation law for tangent vectors.
+
+So this is geometric.
+
+{\em Converse:}
+
+Given any
+
+$$
+(v^1,\dots,v^n),
+$$
+
+construct curve
+
+$$
+\gamma(t)
+=
+(x^1(p)+tv^1,\dots,x^n(p)+tv^n)
+$$
+
+in coordinates.
+
+Its velocity is $v$.
+
+So every coordinate vector comes from a curve.
+
+Thus:
+
+$$
+\boxed{
+\text{curves } \cong \mathbb R^n
+}
+$$
+
+---
+
+{\bf Part II:} Curves $\Longrightarrow$ derivations.
+
+Given curve $\gamma$, define:
+
+$$
+D_\gamma(f)
+=
+\frac d{dt}f(\gamma(t))\Big|_{0}.
+$$
+
+Linearity obvious.
+
+Leibniz:
+
+$$
+D_\gamma(fg)
+=
+\frac d{dt}(fg)(\gamma(t)).
+$$
+
+Product rule:
+
+$$
+f(p)D_\gamma(g)
++
+g(p)D_\gamma(f).
+$$
+
+So it's a derivation.
+
+{\bf Part III:} Derivations $\Longrightarrow$ coordinate vectors.
+
+Suppose
+
+$$
+D
+$$
+
+is a derivation.
+
+Define components
+
+$$
+v^i:=D(x^i).
+$$
+
+Claim:
+
+$$
+D=
+v^i
+\frac{\partial}{\partial x^i}.
+$$
+
+Need to prove.
+
+Take smooth $f$.
+Taylor expand near $p$:
+
+$$
+f
+=
+f(p)
++
+(x^i-x^i(p))
+\frac{\partial f}{\partial x^i}(p)
++
+\text{quadratic}.
+$$
+
+Derivation kills constants:
+
+$$
+D(f(p))=0.
+$$
+
+Quadratic terms lie in $\mathfrak m^2$, derivations kill those.
+
+So:
+
+$$
+D(f)
+=
+D(x^i)
+\frac{\partial f}{\partial x^i}(p).
+$$
+
+Thus
+
+$$
+D
+=
+v^i \partial_i.
+$$
+
+Every derivation has coordinate components.
+
+{\em Converse:}
+
+Given
+
+$$
+v^i
+$$
+
+define
+
+$$
+D
+=
+v^i\partial_i.
+$$
+
+Clearly derivation.
+
+So
+
+$$
+\boxed{
+\text{derivations}
+\cong
+\mathbb R^n
+}
+$$
+
+Combining:
+
+$$
+\boxed{
+\text{curves}
+\cong
+\text{derivations}
+\cong
+\mathbb R^n
+}
+$$
+
+proved.
+
+{\em Embedded definition follows:}
+
+For embedding
+
+$$
+r(u^1,\dots,u^m),
+$$
+
+pushforward gives
+
+$$
+dr_p\left(
+\frac{\partial}{\partial u^i}
+\right)
+=
+\frac{\partial r}{\partial u^i}.
+$$
+
+So embedded tangent vectors are just images of coordinate derivations.
+
+Equivalent.
+
+{\em Implicit definition follows:}
+
+If
+
+$$
+M={F=0},
+$$
+
+and $\gamma\subset M$,
+then
+
+$$
+F(\gamma(t))=0.
+$$
+
+Differentiate:
+
+$$
+dF_p(\gamma'(0))=0.
+$$
+
+So
+
+$$
+T_pM\subseteq \ker dF_p.
+$$
+
+Dimensions agree, so
+
+$$
+T_pM=\ker dF_p.
+$$
+
+Equivalent.
+
+{\bf Elegant summary:}
+
+All these are manifestations of first-order information at a point.
+A tangent vector is:
+
+\begin{itemize}
+\item a first derivative of a curve,
+\item a first-order differential operator,
+\item a first-order coordinate increment.
+\end{itemize}
+
+All are the same notion.
+
+This proof essentially shows:
+
+$$
+T_pM
+\cong
+(\mathfrak m_p/\mathfrak m_p^2)^*
+$$
+
+because derivations depend only on first-order Taylor terms.
+
+That is why all this works.
+
+It’s really a theorem about first-order infinitesimals.
+
+%If you'd like, we can even prove why derivations annihilate (\mathfrak m^2), which is a beautiful little argument.
 
 
 \end{document}
