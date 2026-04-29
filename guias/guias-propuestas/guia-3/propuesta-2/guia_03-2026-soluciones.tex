@@ -1,0 +1,344 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=50\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Guía 3}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Guía N$^\txt{o}$ 3 -- 2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{Parte I: Problemas Centrales (para desarrollar en clase)}
+
+% https://gemini.google.com/app/723624546b22fe0d?hl=es_419
+
+\prob Determine cuáles de las siguientes funciones están en $L^2(0,\infty)$; para aquellas que lo estén, calcule su norma.\\
+\begin{center}
+a) $e^{-x}$.\qquad
+b) $\operatorname{sen} x$.\qquad
+c) $\displaystyle \frac{1}{1+x}$.\qquad
+d) $\displaystyle \frac{1}{\sqrt{x}}$.
+\end{center}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1)}
+\vspace{0.5cm}
+
+Para que una función pertenezca a $L^2(0,\infty)$, su norma al cuadrado debe ser finita: $\int_0^\infty |f(x)|^2 dx < \infty$.
+
+{\bf a)} $f(x) = e^{-x}$
+
+$$\int_0^\infty (e^{-x})^2 dx = \int_0^\infty e^{-2x} dx = \left[ -\frac{1}{2} e^{-2x} \right]_0^\infty = 0 - \left(-\frac{1}{2}\right) = \frac{1}{2}$$
+Como el resultado es finito, sí pertenece a $L^2(0,\infty)$. Su norma es $\|f\| = \sqrt{\frac{1}{2}} = \frac{\sqrt{2}}{2}$.
+
+{\bf b)} $f(x) = \operatorname{sen}(x)$
+
+$$\int_0^\infty \operatorname{sen}^2(x) dx = \int_0^\infty \frac{1 - \cos(2x)}{2} dx$$
+La integral de la constante $1/2$ diverge a infinito cuando el límite superior tiende a infinito. Por lo tanto, no pertenece a $L^2(0,\infty)$.
+
+{\bf c)} $f(x) = \frac{1}{1+x}$
+
+$$\int_0^\infty \left( \frac{1}{1+x} \right)^2 dx = \lim_{b \to \infty} \left[ -\frac{1}{1+x} \right]_0^b = 0 - (-1) = 1$$
+El resultado es finito, por lo que sí pertenece a $L^2(0,\infty)$. Su norma es $\|f\| = \sqrt{1} = 1$.
+
+{\bf d)} $f(x) = \frac{1}{\sqrt{x}}$
+
+$$\int_0^\infty \left( \frac{1}{\sqrt{x}} \right)^2 dx = \int_0^\infty \frac{1}{x} dx = \lim_{b \to \infty, a \to 0^+} \left[ \ln(x) \right]_a^b$$
+La integral diverge tanto en el límite superior ($\infty$) como en el inferior (0). No pertenece a $L^2(0,\infty)$.
+
+
+\prob Determine el límite en $L^2$ de cada una de las siguientes sucesiones de funciones, si existe.\\
+\begin{center}
+a) $\sqrt{x}$, $0\le x\le 1$.\qquad
+b) $\displaystyle \begin{cases}
+nx, & 0 \le x < 1/n,\\
+1, & 1/n \le x \le 1.
+\end{cases}$\qquad
+c) $n x (1-x)^n$, $0\le x\le 1$.
+\end{center}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+\prob Muestre que las funciones $\{1, \cos(nx), \operatorname{sen}(nx),\; n=1,2,\dots\}$ son ortogonales dos a dos en $L^2[-\pi,\pi]$. Ídem para las funciones $\{e^{inx},\; n\in\mathbb{Z}\}$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 3)}
+\vspace{0.5cm}
+
+\prob (Desigualdad de Hölder) Sea la norma $L^p$:
+\[
+\|u\|_{L^p} = \left( \int_a^b |u(x)|^p \,dx \right)^{1/p}, \qquad p\ge 1.
+\]
+Pruebe que vale la desigualdad
+\[
+\|uv\|_{L^s} \le \|u\|_{L^p} \|v\|_{L^q}, \qquad \text{para } s^{-1}=p^{-1}+q^{-1}.
+\]
+Sugerencia: Utilice la desigualdad de Hölder para la función $(uv)^s$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4)}
+\vspace{0.5cm}
+
+\prob Pruebe que si $T:X\to Y$ es lineal ($X$ e $Y$ son espacios de Banach) entonces $T$ es continua en todo punto de $X$ si y solo si $T$ es continua en cero.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 5)}
+\vspace{0.5cm}
+
+\prob Sea $H$ un espacio de Hilbert separable y $\{\hat{e}_1,\hat{e}_2,\dots\}$ una base ortonormal. Pruebe que si $x\in H$,
+\[
+\text{a) } x = \sum_{j=1}^{\infty} \langle \hat{e}_j, x \rangle \hat{e}_j, \qquad
+\text{b) Identidad de Parseval: } \|x\|^2 = \sum_{j=1}^{\infty} |\langle \hat{e}_j, x \rangle|^2.
+\]
+
+\prob Considere la función de prueba $\varphi \in C_0^\infty(\mathbb{R})$ definida como
+\[
+\varphi(x) = \begin{cases}
+e^{-\frac{1}{1-x^2}}, & |x| < 1,\\
+0, & |x| \geq 1.
+\end{cases}
+\]
+Muestre que, efectivamente, $\varphi$ y todas sus derivadas son continuas en $\mathbb{R}$.
+
+\prob Considere la sucesión de funciones en $C^\infty(\mathbb{R})$
+\[
+f_n = \frac{n}{\sqrt{\pi}} e^{-n^2 x^2}.
+\]
+Muestre que
+\[
+f_n \xrightarrow{n \to \infty} \delta.
+\]
+¿A qué converge $f'_n$? ¿Y $f_n^{(k)}$? (Ayuda: note que toda función de prueba en $C_0^\infty(\mathbb{R})$ o $\mathcal{S}(\mathbb{R})$ es entera, y por consiguiente tiene un desarrollo de Taylor con radio de convergencia infinito.)
+
+\prob Muestre que
+\[
+\int_a^b f(x)\,\delta(g(x))\,dx = \frac{f(x_0)}{|g'(x_0)|},
+\]
+asumiendo que la ecuación $g(x)=0$ posee una sola raíz en el intervalo $a<x<b$.
+
+\prob Sea $f\in L^1(\mathbb{R})$ y sea $T_f$ la funcional definida como
+\[
+T_f(\varphi) = \int_0^{\infty} f(x)\varphi(x)\,dx,
+\]
+para toda $\varphi\in\mathcal{D}(\mathbb{R})$. Muestre que $T_f$ es una distribución.
+
+\prob Pensando a la delta de Dirac como una función generalizada, pruebe las siguientes propiedades:
+\begin{enumerate}
+\item $\displaystyle \int_{-a}^{b} \delta(t)\,dt = 1$, para $a,b>0$.
+\item $\displaystyle \int \delta(t-a)\,dt = 1$, si el rango de integración incluye $t=a$.
+\item $\delta(t) = \delta(-t)$.
+\item $\displaystyle \delta(at) = \frac{1}{|a|}\delta(t)$.
+\item $t^n\delta(t)=0$, con $n>0$.
+\item $\displaystyle \delta(h(t)) = \sum_i \frac{\delta(t-t_i)}{|h'(t_i)|}$, donde $t_i$ son todos los valores de $t$ para los cuales $h(t)=0$.
+\item $\displaystyle h(t)\delta'(t-a) = h(a)\delta'(t-a) - h'(a)\delta(t-a)$.
+\end{enumerate}
+
+\prob Sean $f:\mathbb{R}\to\mathbb{R}$, $\varphi$ y $\psi$ dos funciones de prueba. Considere la distribución definida como
+\[
+T_f(\phi) = \int_{-\infty}^{\infty} f(x)\phi(x)\,dx.
+\]
+\begin{enumerate}
+\item Muestre que $\operatorname{sen}(ax)\,\delta'(x) = -a\delta(x)$, con $a\in\mathbb{R}$.
+\item Demuestre que $(\varphi\psi)' = \varphi'\psi + \varphi\psi'$ en el sentido distribucional.
+\item Utilizando los incisos anteriores, muestre que
+\[
+\frac{d^2}{dx^2}\bigl[H(x)\operatorname{sen}(ax)\bigr] = a\delta(x) - H(x)\,a^2\operatorname{sen}(ax),
+\]
+donde $H(x)$ es la función escalón de Heaviside.
+\end{enumerate}
+
+
+
+\section*{Parte II: Problemas Propuestos (para profundización y repaso)}
+
+
+\prob Sea la norma $l^p$:
+\[
+\|u\|_{l^p} = \left( \sum_{j=0}^{\infty} |u^j|^p \right)^{1/p}, \qquad p\ge 1.
+\]
+\begin{enumerate}
+\item Pruebe que está bien definida.
+\item Pruebe que el subconjunto de sucesiones con norma $l^p$ finita está contenido en el subconjunto de las sucesiones con norma $l^q$ finita si $p<q$.
+\end{enumerate}
+
+\prob Pruebe que $\|x\| = \sqrt{\langle x,x\rangle}$ satisface la desigualdad triangular. A tal fin utilice la desigualdad de Schwarz.
+
+\prob Considere el espacio de sucesiones infinitas de números complejos con norma $l^2$ finita. Sea $\hat{e}_i\in l^2$ la sucesión que tiene un $1$ en el $i$-ésimo lugar y cero en todos los restantes. Pruebe que definiendo estos elementos para $i=1,2,\dots$, el conjunto $B=\{\hat{e}_1,\hat{e}_2,\dots\}\subset l^2$ es una base ortonormal de $l^2$.
+
+\prob Sea $H$ un espacio de Hilbert y $\{\hat{e}_1,\hat{e}_2,\dots,\hat{e}_N\}$ un conjunto ortonormal (no necesariamente una base). Pruebe que
+\begin{enumerate}
+\item Identidad de Pitágoras: si $x\in H$,
+\[
+\|x\|^2 = \sum_{j=1}^{N} |\langle \hat{e}_j,x\rangle|^2 + \Bigl\|x - \sum_{j=1}^{N} \langle \hat{e}_j,x\rangle \hat{e}_j\Bigr\|^2.
+\]
+\item Desigualdad de Bessel: $\displaystyle \sum_{j=1}^{N} |\langle \hat{e}_j,x\rangle|^2 \le \|x\|^2$.
+\end{enumerate}
+
+\prob Muestre que $C_0^\infty(\mathbb{R})$ no s\'olo es un espacio vectorial, sino además un álgebra con el producto usual de funciones. Halle el soporte de $fg$ en términos de los soportes de $f$ y $g$.
+
+\prob Demuestre que $h(x)\in C^\infty(\mathbb{R})$, donde
+\[
+h(x) = \begin{cases}
+0, & \text{si } x\le 0,\\
+\exp(-1/x^2), & \text{si } x>0.
+\end{cases}
+\]
+
+\prob Muestre que en el caso de tener un espacio de Banach con la noción de convergencia dada por la norma, la definición de continuidad de una funcional coincide con la definición usual $\varepsilon$-$\delta$. Muestre además que, como con cualquier noción de continuidad, para ser verificada en el caso de una funcional lineal, es suficiente verificarla en un solo punto y eso garantiza la continuidad en todos lados.
+
+\prob Demuestre que la derivada de una distribución es lineal.
+
+\prob Dada
+\[
+h(x) = \begin{cases}
+\exp(x+1), & \text{si } x<-1,\\
+x^4, & \text{si } -1\le x\le 0,\\
+\operatorname{sen}(x), & \text{si } 0<x<\pi/2,\\
+1, & \text{si } \pi/2\le x,
+\end{cases}
+\]
+calcule las dos primeras derivadas de $h$ en el sentido distribucional.
+
+%\prob Considere la ecuación diferencial ordinaria
+%\[
+%\frac{d^2 u}{dx^2} - \gamma^2 u = \delta(x^2-3x+2), \qquad u(x)\in\mathbb{R},
+%\]
+%donde $\gamma>0$ y $\delta(x)$ es la delta de Dirac. Utilizando transformada de Fourier, halle la solución $u(x)$ suponiendo que es una función que decae rápidamente cuando $|x|\to\infty$.
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
