@@ -1236,6 +1236,10 @@ $h_{uu} = g_{uu}$,
 $h_{uv} = h_{vu} = g_{uv}$ y
 $h_{vv} = g_{vv}$.
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4.b)}
+\vspace{0.5cm}
+
 Un elemento differencial de área en $S$ viene dado por
 $$
 dS
@@ -1294,6 +1298,11 @@ dS
 du\,dv
 .
 $$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4.c)}
+\vspace{0.5cm}
+
 De manera similar, un elemento diferencial de l\'inea sobre $S$ viene dado por
 $$
 d\ell
@@ -1353,6 +1362,158 @@ d\ell
 dt
 .
 $$
+
+Alternativamente, podríamos calcular la m\'etrica inducida sobre la subvariedad que define la curva.
+Es decir, notando que la curva viene dada por las restricciones:
+$$
+y-x=0
+$$
+y
+$$
+z-\cos^2 x = 0,
+$$
+consideramos el cambio de coordenadas dado por:
+$$
+u=x
+$$
+$$
+v=x-y
+$$
+y
+$$
+w = z-\cos^2 x
+$$
+y las restricciones $v=0$ y $w=0$.
+
+Si invertimos el cambio de coodenadas, obtenemos:
+$$
+u=x
+$$
+$$
+y = u+v
+$$
+y
+$$
+z = w + \cos^2 u
+.
+$$
+Luego,
+\begin{eqnarray}
+ds^2
+&=&
+dx^2
++
+dy^2
++
+dz^2
+\notag
+\\
+&=&
+du^2
++
+d(u+v)^2
++
+d(w+\cos^2 u)^2
+\notag
+\\
+&=&
+du^2
++
+(du + dv)^2
++
+(dw - 2\sin u\cos u)^2
+\notag
+\\
+&=&
+du^2
++
+d(u+v)^2
++
+d(w+\cos^2 u)^2
+\notag
+\\
+&=&
+du^2
++
+du^2 + 2\,du\,dv + dv^2
++
+(dw - \sin 2u\,du)^2
+\notag
+\\
+&=&
+du^2
++
+du^2 + 2\,du\,dv + dv^2
++
+dw^2 - 2\sin 2u\,du\,dw + \sin^2 2u\, du^2
+.
+\notag
+\end{eqnarray}
+Ahora, sobre el espacio tangente definido por la curva vale que $dv=dw=0$, puesto que $v=w=\mathrm{constante}=0$ sobre la curva.
+De esta manera, 
+\begin{eqnarray}
+ds^2
+&=&
+dx^2
++
+dy^2
++
+dz^2
+\notag
+\\
+&=&
+du^2
++
+d(u+v)^2
++
+d(w+\cos^2 u)^2
+\notag
+\\
+&=&
+du^2
++
+(du + dv)^2
++
+(dw - 2\sin u\cos u)^2
+\notag
+\\
+&=&
+du^2
++
+d(u+v)^2
++
+d(w+\cos^2 u)^2
+\notag
+\\
+&=&
+du^2
++
+du^2 + 2\,du\,dv + dv^2
++
+(dw - \sin 2u\,du)^2
+\notag
+\\
+&=&
+(2+\sin^2 2u)\, du^2
+.
+\notag
+\end{eqnarray}
+por lo que la m\'etrica inducida sobre la curva tiene una \'unica componente y es
+$$
+h_{uu}
+=
+2+\sin^2 2u
+.
+$$
+Luego, un elemento diferencial de l\'inea sobre la curva viene dado por
+$$
+d\ell
+=
+\sqrt{h_{uu}\frac{du}{dt}\frac{du}{dt}}\, dt
+=
+\sqrt{2+\sin^2 2t}\, dt
+$$
+ya que $u(t)=t$, recuper\'andose el resultado anteriormente obtenido por otro m\'etodo.
 
 %Si querés, podemos ir más allá y:
 %* aproximar numéricamente el área o la longitud
