@@ -148,17 +148,45 @@ d) $\displaystyle \frac{1}{\sqrt{x}}$.
 
 Para que una función pertenezca a $L^2(0,\infty)$, su norma al cuadrado debe ser finita: $\int_0^\infty |f(x)|^2 dx < \infty$.
 
-{\bf a)} $f(x) = e^{-x}$
+{\bf a)} $f(x) = e^{-x}$:
 
 $$\int_0^\infty (e^{-x})^2 dx = \int_0^\infty e^{-2x} dx = \left[ -\frac{1}{2} e^{-2x} \right]_0^\infty = 0 - \left(-\frac{1}{2}\right) = \frac{1}{2}$$
 Como el resultado es finito, sí pertenece a $L^2(0,\infty)$. Su norma es $\|f\| = \sqrt{\frac{1}{2}} = \frac{\sqrt{2}}{2}$.
 
-{\bf b)} $f(x) = \operatorname{sen}(x)$
+{\bf b)} $f(x) = \operatorname{sen}(x)$:
 
-$$\int_0^\infty \operatorname{sen}^2(x) dx = \int_0^\infty \frac{1 - \cos(2x)}{2} dx$$
-La integral de la constante $1/2$ diverge a infinito cuando el límite superior tiende a infinito. Por lo tanto, no pertenece a $L^2(0,\infty)$.
+\begin{eqnarray}
+\int_0^\infty \operatorname{sen}^2(x) dx 
+&=& 
+\lim_{R\to \infty}
+\int_0^R \operatorname{sen}^2(x) dx 
+\notag
+\\
+&=&
+\lim_{R\to \infty}
+\int_0^R \frac{1 - \cos(2x)}{2} dx
+\notag
+\\
+&=&
+\lim_{R\to \infty}
+\frac{R}{2}
+-
+\frac{1}{2}
+\int_0^R \cos(2x)\, dx
+\notag
+\\
+&=&
+\lim_{R\to \infty}
+\frac{R}{2}
+-
+\frac{1}{4}
+\sin(2R)
+\notag
+\end{eqnarray}
+El primer t\'ermino diverge mientras que el segundo est\'a acotado.
+Luego, la integral diverge y por ende, no pertenece a $L^2(0,\infty)$.
 
-{\bf c)} $f(x) = \frac{1}{1+x}$
+{\bf c)} $f(x) = \frac{1}{1+x}$:
 
 $$\int_0^\infty \left( \frac{1}{1+x} \right)^2 dx = \lim_{b \to \infty} \left[ -\frac{1}{1+x} \right]_0^b = 0 - (-1) = 1$$
 El resultado es finito, por lo que sí pertenece a $L^2(0,\infty)$. Su norma es $\|f\| = \sqrt{1} = 1$.
@@ -182,6 +210,28 @@ c) $n x (1-x)^n$, $0\le x\le 1$.
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 2)}
 \vspace{0.5cm}
+
+{\bf a)} $f_n(x) = \sqrt{x}, \quad 0 \le x \le 1$:
+
+Al no depender de $n$, se trata de una sucesión constante. Converge trivialmente a sí misma en $L^2$, es decir, el límite es $f(x) = \sqrt{x}$.
+
+\vspace{0.5cm}
+{\bf b)} $f_n(x) = \begin{cases} nx, & 0 \le x < 1/n \\ 1, & 1/n \le x \le 1 \end{cases}$:
+
+El límite puntual de esta sucesión es $f(x) = 1$ para todo $x \in (0, 1]$. Evaluamos si converge a $1$ en la norma $L^2$:
+$$\int_0^1 |f_n(x) - 1|^2 dx = \int_0^{1/n} (nx - 1)^2 dx + \int_{1/n}^1 (1 - 1)^2 dx$$
+$$= \left[ \frac{(nx - 1)^3}{3n} \right]_0^{1/n} + 0 = \frac{0 - (-1)^3}{3n} = \frac{1}{3n}$$
+Tomando el límite: $\lim_{n \to \infty} \frac{1}{3n} = 0$. Por lo tanto, la sucesión converge en $L^2$ a la función constante $f(x) = 1$.
+
+\vspace{0.5cm}
+{\bf c)} $f_n(x) = nx(1-x)^n, \quad 0 \le x \le 1$:
+
+El límite puntual es la función nula $f(x) = 0$. Calculamos la norma $L^2$ de la diferencia con $0$:
+$$\int_0^1 (nx(1-x)^n - 0)^2 dx = n^2 \int_0^1 x^2 (1-x)^{2n} dx$$
+Esta integral es la función Beta $B(\alpha, \beta) = \int_0^1 x^{\alpha-1}(1-x)^{\beta-1} dx = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$ con $\alpha=3$ y $\beta=2n+1$:
+$$n^2 B(3, 2n+1) = n^2 \frac{\Gamma(3)\Gamma(2n+1)}{\Gamma(2n+4)} = n^2 \frac{2!}{(2n+3)(2n+2)(2n+1)}$$
+El numerador crece como $2n^2$ y el denominador como $8n^3$. Al tomar el límite $n \to \infty$, la expresión tiende a $0$. Por ende, la sucesión converge en $L^2$ a $f(x) = 0$.
+
 
 \prob Muestre que las funciones $\{1, \cos(nx), \operatorname{sen}(nx),\; n=1,2,\dots\}$ son ortogonales dos a dos en $L^2[-\pi,\pi]$. Ídem para las funciones $\{e^{inx},\; n\in\mathbb{Z}\}$.
 
