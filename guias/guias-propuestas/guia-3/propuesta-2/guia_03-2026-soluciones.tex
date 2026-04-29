@@ -211,6 +211,9 @@ c) $n x (1-x)^n$, $0\le x\le 1$.
 {\bf Soluci\'on }{\em 2)}
 \vspace{0.5cm}
 
+Matemáticamente, decimos que $f_n \xrightarrow{L^2} f$ si:
+$$\lim_{n \to \infty} \|f_n - f\|_{L^2} = 0$$
+
 {\bf a)} $f_n(x) = \sqrt{x}, \quad 0 \le x \le 1$:
 
 Al no depender de $n$, se trata de una sucesión constante. Converge trivialmente a sí misma en $L^2$, es decir, el límite es $f(x) = \sqrt{x}$.
@@ -239,6 +242,30 @@ El numerador crece como $2n^2$ y el denominador como $8n^3$. Al tomar el límite
 {\bf Soluci\'on }{\em 3)}
 \vspace{0.5cm}
 
+Dos funciones son ortogonales si su producto interno $\langle f, g \rangle = \int_{-\pi}^\pi f(x)\overline{g(x)} dx$ es igual a cero.
+
+\begin{itemize}
+
+\item Entre $1$ y $\cos(nx)$ o $\operatorname{sen}(nx)$:
+    $$\int_{-\pi}^\pi 1 \cdot \cos(nx) dx = \left[ \frac{\operatorname{sen}(nx)}{n} \right]_{-\pi}^\pi = 0$$
+    $$\int_{-\pi}^\pi 1 \cdot \operatorname{sen}(nx) dx = 0 \quad \text{(la integral de una función impar en un intervalo simétrico es 0)}$$
+
+\item Entre $\operatorname{sen}(nx)$ y $\cos(mx)$:
+    $$\int_{-\pi}^\pi \operatorname{sen}(nx)\cos(mx) dx = 0 \quad \text{(el producto de una función impar y una par es impar)}$$
+
+\item Entre cosenos de distintos índices ($n \neq m$):
+    Utilizando la identidad $\cos(a)\cos(b) = \frac{1}{2}[\cos(a-b) + \cos(a+b)]$:
+    $$\frac{1}{2} \int_{-\pi}^\pi [\cos((n-m)x) + \cos((n+m)x)] dx = 0$$
+puesto que el coseno es par, por lo que la primitiva resultante (el seno) es impar y como el intervalo es simétrico, la integral definida resulta identicamente cero.
+
+\item Para la base exponencial $\{e^{inx}, n \in \mathbb{Z}\}$:
+    Con $n \neq m$, el producto interno es:
+    $$\langle e^{inx}, e^{imx} \rangle = \int_{-\pi}^\pi e^{inx} e^{-imx} dx = \int_{-\pi}^\pi e^{i(n-m)x} dx$$
+    $$= \left[ \frac{e^{i(n-m)x}}{i(n-m)} \right]_{-\pi}^\pi = \frac{e^{i(n-m)\pi} - e^{-i(n-m)\pi}}{i(n-m)}$$
+    Como $e^{ik\pi} = (-1)^k$ para todo entero $k$, ambos términos del numerador son iguales, dando un resultado de $0$.
+
+\end{itemize}
+
 \prob (Desigualdad de Hölder) Sea la norma $L^p$:
 \[
 \|u\|_{L^p} = \left( \int_a^b |u(x)|^p \,dx \right)^{1/p}, \qquad p\ge 1.
@@ -253,11 +280,38 @@ Sugerencia: Utilice la desigualdad de Hölder para la función $(uv)^s$.
 {\bf Soluci\'on }{\em 4)}
 \vspace{0.5cm}
 
+La desigualdad de Hölder estándar establece que para funciones $f \in L^{p'}$ y $g \in L^{q'}$ donde $\frac{1}{p'} + \frac{1}{q'} = 1$, se cumple:
+$$\int_a^b |f(x)g(x)| dx \le \left( \int_a^b |f(x)|^{p'} dx \right)^{1/p'} \left( \int_a^b |g(x)|^{q'} dx \right)^{1/q'}$$
+Definimos $f(x) = |u(x)|^s$ y $g(x) = |v(x)|^s$. Para aplicar Hölder, elegimos los exponentes conjugados $p' = \frac{p}{s}$ y $q' = \frac{q}{s}$. Verificamos que suman 1:
+$$\frac{1}{p'} + \frac{1}{q'} = \frac{s}{p} + \frac{s}{q} = s \left( \frac{1}{p} + \frac{1}{q} \right) = s \left( \frac{1}{s} \right) = 1$$
+Aplicando la desigualdad a estas funciones:
+$$\int_a^b |u(x)|^s |v(x)|^s dx \le \left( \int_a^b (|u(x)|^s)^{p/s} dx \right)^{s/p} \left( \int_a^b (|v(x)|^s)^{q/s} dx \right)^{s/q}$$
+Simplificando los exponentes:
+$$\int_a^b |u(x)v(x)|^s dx \le \left( \int_a^b |u(x)|^p dx \right)^{s/p} \left( \int_a^b |v(x)|^q dx \right)^{s/q}$$
+Finalmente, elevamos ambos lados a la potencia $1/s$:
+$$\left( \int_a^b |u(x)v(x)|^s dx \right)^{1/s} \le \left( \int_a^b |u(x)|^p dx \right)^{1/p} \left( \int_a^b |v(x)|^q dx \right)^{1/q}$$
+Lo que se traduce exactamente en su forma de norma como $\|uv\|_{L^s} \le \|u\|_{L^p} \|v\|_{L^q}$.
+
+
 \prob Pruebe que si $T:X\to Y$ es lineal ($X$ e $Y$ son espacios de Banach) entonces $T$ es continua en todo punto de $X$ si y solo si $T$ es continua en cero.
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 5)}
 \vspace{0.5cm}
+
+\begin{itemize}
+
+\item Ida ($\implies$): Si $T$ es continua en todo el espacio $X$, entonces lógicamente es continua en el punto específico $x = 0$.
+
+\item Vuelta ($\impliedby$): Supongamos que $T$ es continua en $0$. Esto implica que para cualquier sucesión $h_n \to 0$ en $X$, se tiene que $T(h_n) \to T(0)$. Dado que $T$ es un operador lineal, $T(0) = T(0-0) = 0$, por lo que $T(h_n) \to 0$.
+    Ahora, tomemos un punto arbitrario $x_0 \in X$ y una sucesión cualquiera $x_n \to x_0$.
+    Definimos $h_n = x_n - x_0$. Es evidente que cuando $x_n \to x_0$, la diferencia $h_n \to 0$.
+    Usando la continuidad de $T$ en cero, sabemos que $T(h_n) \to 0$. Por la linealidad de $T$:
+    $$T(h_n) = T(x_n - x_0) = T(x_n) - T(x_0)$$
+    Por ende, $T(x_n) - T(x_0) \to 0$, lo cual equivale a decir que $T(x_n) \to T(x_0)$. Como esto se cumple para cualquier $x_0$, hemos demostrado que la continuidad en el origen garantiza la continuidad en todo el espacio $X$.
+
+\end{itemize}
+
 
 \prob Sea $H$ un espacio de Hilbert separable y $\{\hat{e}_1,\hat{e}_2,\dots\}$ una base ortonormal. Pruebe que si $x\in H$,
 \[
