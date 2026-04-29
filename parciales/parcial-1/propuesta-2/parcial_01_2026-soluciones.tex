@@ -1230,11 +1230,41 @@ g =
 $$
 
 El sistema de coordenadas $u$, $v$ y $w$ nos permite parametrizar la superficie $S$ variando $u$ y $v$, y fijando $w=0$.
-Un vector tangente a $S$ en un punto arbitrario de $S$ es ortogonal al versor $\hat{e}_w=\frac{\partial}{\partial w}$.
-Si denotamos por $h$ a la m\'etrica inducida sobre $S$, sus coordenadas son
+Un vector tangente a $S$ en un punto arbitrario de $S$ es ortogonal al vector $\hat{e}_w=\frac{\partial}{\partial w}$.
+Por ende, para cualquier punto $p$ de $S$, $dw(a)=0$ para todo vector $a$ en el plano tangente $T_pS$.
+Por ende, si $a,b\in T_pS$ son dos vectores arbitrarios en dicho plano tangente, luego
+$$
+g(a,b)
+=
+g_{uu}a^ub^u
++
+g_{uv}a^ub^v
++
+g_{vu}a^vb^u
++
+g_{vv}a^vb^v
++
+0
++
+...
++
+0
+$$
+ya que $a^w=b^w=0$.
+De esta manera, si denotamos por $h$ a la m\'etrica inducida sobre $S$, sus coordenadas resultan
 $h_{uu} = g_{uu}$, 
 $h_{uv} = h_{vu} = g_{uv}$ y
-$h_{vv} = g_{vv}$.
+$h_{vv} = g_{vv}$ o, matricialmente
+$$
+\boxed{
+h =
+\begin{pmatrix}
+1 + \sin^2 u \cos^2 v & \sin u \cos u \sin v \cos v\\
+\sin u \cos u \sin v \cos v & 1 + \cos^2 u \sin^2 v
+\end{pmatrix}
+.
+}
+$$
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 4.b)}
