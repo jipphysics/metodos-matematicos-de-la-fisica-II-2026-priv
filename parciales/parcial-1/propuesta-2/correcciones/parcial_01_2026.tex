@@ -1,0 +1,211 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=50\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Primer Parcial}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+\newcommand{\comentario}[1]{{\color{red} {\bf [Comentario:} #1 {\bf ]}}}
+\newcommand{\idot}[2]{\langle #1 , #2 \rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+%\mbox{}\\
+%\begin{minipage}[c][0cm]{\textwidth}
+%%%
+%\begin{tabular}{lcr}
+%%
+%\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+%&
+%%
+%\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+%\centering
+%{\large Métodos Matemáticos de la Física II} \\
+%\centering
+%{\large Parcial N$^\circ$ 1 -- 24/04/2026}  \\[-0.4\baselineskip]
+%\mbox{}
+%%
+%\end{minipage}
+%%
+%&
+%%
+%\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+%\end{tabular}
+%%%
+%\\[5pt]
+%\hrule
+%\mbox{}\\[5\baselineskip]
+%%%
+%\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{0.5cm}
+\noindent {\bf Thommen Joaqu\'in:}
+\vspace{0.5cm}
+
+Considero la superficie $S$ definida por $z=\cos x\cos y$ en el espacio $\mathbb{R}^3$ con la m\'etrica euclideana, donde $x$, $y$ y $z$ son las coordenadas cartesianas.
+
+
+{\bf 4a)}
+
+Defindo las siguientes coordenadas $u=x$, $t=y$ y $k=z-\cos x\cos y$.
+En estas coordenadas, $S$ est\'a parametrizada por  $(u,t,k)=(x,y,0)$.
+\comentario{Esto est\'a mal. Lo correcto es decir que la superficie queda parametrizada por las funciones $x(u,t,k)$, $y(u,t,k)$ y $z(u,t,k)$ fijando $k=0$ mientras se var\'ian libremente a $u$ y $t$.}
+
+Quiero ahora hallar la m\'etrica inducida.
+Sean $\{e_i\}$ y $\{e'_i\}$ dos bases y $\idot{\cdot}{\cdot}$ el producto interno, tal que:
+$$
+\idot{e_i}{e_j} = \delta_{ij}
+$$
+y con $e'_i = \lambda_i{}^j e_j$ definiendo la matriz $\lambda$ cambio de base.
+Puesto que $g'_{ij} = \idot{e'_i}{e'_j}$ es la m\'etrica inducida en la base $\{e'_i\}$. 
+\comentario{Lo correcto es decir ``Denotemos por $g'_{ij}$ a las componentes de la m\'etrica en la base $\{e'_i\}$''. La m\'etrica inducida surge de restringir la m\'etrica dada en $\mathbb{R}^3$ a los espacios tangentes de $S$.}
+Resulta:
+$$
+g'_{ij}
+=
+\idot{e'_i}{e'_j}
+=
+\idot{\lambda_i{}^k e_k}{\lambda_j{}^s e_s}
+=
+\lambda_i{}^k \lambda_j{}^s
+\idot{e_k}{e_s}
+=
+\lambda_i{}^k \lambda_j{}^s
+g_{ks}
+=
+\lambda_i{}^k \lambda_j{}^s
+\delta_{ks}
+=
+\lambda_i{}^k \lambda_j{}^k
+=
+[\lambda^T \lambda]_{ij}
+$$
+\comentario{Ojo con el uso de notaci\'on matricial para calcular coordenadas de una m\'etrica.}
+%\begin{eqnarray}
+%\idot{e_j}{A(e_i)} & = & \idot{A^T(e_j)}{e_i} \notag \\
+%\idot{e_j}{A_i{}^k e_k} & = & \idot{(A^T)_j{}^k e_k}{e_i} \notag \\
+%A_i{}^k \idot{e_j}{e_k} & = & (A^T)_j{}^k \idot{e_k}{e_i} \notag \\
+%A_i{}^k g_{kj} & = & (A^T)_j{}^k g_{ik} \notag \\
+%A_i{}^k g_{kj}g^{jt} & = & (A^T)_j{}^k g_{ik}g^{jt} \notag \\
+%A_i{}^k \delta_k{}^t & = & (A^T)_j{}^k g_{ik}g^{jt} \notag \\
+%A_i{}^t & = & (A^T)^t{}_i \notag 
+%.
+%\end{eqnarray}
+En el caso de la m\'etrica necesaria en este ejercicio, los elementos de entrada $\{dx^i\}$ son covariantes, por lo tanto, ante cambios de base de $V$, transforman a la forma inversa de los elementos de la base de $V$:
+$$
+dx'^i
+=
+\frac{\partial x'^i}{\partial x^j} dx^j
+\,\,
+\Rightarrow
+\,\,
+\lambda_{ij}
+=
+\frac{\partial x'^i}{\partial x^j}
+$$
+\comentario{Si $\lambda$ es la matriz de cambio de base de vectores covariantes, entonces  no}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
