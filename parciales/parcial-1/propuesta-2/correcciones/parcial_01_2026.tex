@@ -196,7 +196,98 @@ dx'^i
 =
 \frac{\partial x'^i}{\partial x^j}
 $$
-\comentario{Si $\lambda$ es la matriz de cambio de base de vectores covariantes, entonces  no}
+\comentario{Si $\lambda$ es la matriz de cambio de base de vectores covariantes como $\{e_i\}$, entonces  no es la matriz de cambio de base vectores contravariantes como $\{dx^i\}$.}
+Para el caso de este ejercicio:
+$$
+\frac{\partial u}{\partial x}=1;\,\,
+\frac{\partial u}{\partial y}=0;\,\,
+\frac{\partial u}{\partial z}=0
+$$
+$$
+\frac{\partial t}{\partial x}=0;\,\,
+\frac{\partial t}{\partial y}=1;\,\,
+\frac{\partial t}{\partial z}=0
+$$
+$$
+\frac{\partial k}{\partial x}=\sin x\cos y;\,\,
+\frac{\partial k}{\partial y}=\cos x\sin y;\,\,
+\frac{\partial k}{\partial z}=1
+$$
+puedo calcular a las nuevas coordenadas a partir de lo ya previamente explicado
+\begin{eqnarray}
+g'
+&=&
+\lambda^T
+\lambda
+\notag
+\\
+&=&
+\begin{pmatrix}
+1 & 0 & \sin x\cos y\\
+0 & 1 & \cos x\sin y\\
+0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+\sin x\cos y & \cos x\sin y & 1
+\end{pmatrix}
+\notag
+\\
+&=&
+\begin{pmatrix}
+1+\sin^2 x\cos^2 y & \sin x\cos x\sin y\cos y & ... \\
+\sin x\cos x\sin y\cos y & 1+\cos^2 x\sin^2 y & ... \\
+... & ... & ... 
+\end{pmatrix}
+\notag
+\end{eqnarray}
+donde hemos omitido expresar las componentes que no interesan para calcular la m\'etrica inducida sobre la superficie $S$ en donde la variable $k$ est\'a fija.
+\comentario{Esto no es correcto. Lo correcto es observar que $g_{ij}$ son componentes de un tensor dos veces covariante y por ende hay que utilizar la f\'ormula
+$$
+g'_{ij}
+=
+\frac{\partial x^s}{\partial x'^i}
+\frac{\partial x^r}{\partial x'^j}
+g_{sr}
+.
+$$
+Esta forma puede deducirse recordando que cuando los \'indices est\'an abajo, como en la indexaci\'on de los vectores de la base, las coordenadas de la matr\'iz $\Lambda$ del cambio de base $\{e_i\} \to \{e'_i\}$ vienen dadas por:
+$$
+\frac{\partial}{\partial x'^i}
+=
+e'_i 
+=
+\Lambda_i{}^j e_j
+=
+\frac{\partial x^j}{\partial x'^i}
+\frac{\partial}{\partial x^j}
+$$
+i.e. 
+$$ 
+\Lambda_i{}^j
+=
+\frac{\partial x^j}{\partial x'^i},
+$$
+mientras que cuando los \'indices est\'an arriba, como en la indexaci\'on de los covectores de la cobase, las coordenadas de la matr\'iz $\Lambda^{-1}$ del cambio de cobase $\{dx^i\} \to \{dx'^i\}$ vienen dadas por
+$$
+dx'^i 
+= 
+(\Lambda^{-1})^i{}_j 
+dx^j 
+= 
+\frac{\partial x'^i}{\partial x^j} 
+dx^j
+$$
+i.e. 
+$$ 
+(\Lambda^{-1})^i{}_j 
+= 
+\frac{\partial x'^i}{\partial x^j} 
+.
+$$
+
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
