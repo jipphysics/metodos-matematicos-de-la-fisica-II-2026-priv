@@ -131,6 +131,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+ChatGPT 2026-05-03: \url{https://chatgpt.com/share/69f4c28e-7f1c-8331-bd13-e8bd7c0f1230}
+
 \vspace{0.5cm}
 \noindent {\Large \bf Thommen Joaqu\'in:}
 
@@ -544,6 +546,66 @@ $$
 \int_{-\pi}^{\pi}
 \sqrt{2+\sin^2 (2x)}\,dx
 $$
+
+\vspace{0.5cm}
+\noindent {\Large \bf Maero Novillo, Juan Pablo:}
+
+\vspace{0.5cm}
+{\bf 4c)}
+\vspace{0.5cm}
+
+Teniendo en cuenta que de forma gen\'erica
+$$
+L_c = \int_a^b ds
+$$
+donde $ds$ el el diferencial de longitud escalar.
+
+Por otro lado, se tiene que
+$$
+ds^2 = h_1^2 (dx)^2 + h_2^2 (dy)^2
+$$
+con $h_1 = g_{11}$ y $h_2 = g_{22}$.
+\comentario{La anterior f\'ormula es incorrecta. La f\'orumula correcta es:
+$$
+d\ell = \sqrt{g_{ij}\frac{dx^i}{dt}\frac{dx^j}{dt}}dt
+$$
+Los t\'erminos cruzados como $g_{xy}$ tienen que aparecer.
+Las coordenadas de la m\'etrica, $g_{ij}$, no aparecen al cuadrado.
+}
+
+Ahora bien, como la curva se define para $x=y$, $z=\cos x\cos y$, $x\in [-\pi,\pi]$, luego
+$$
+ds^2 = h_1^2 (dx)^2 + h_2^2 (dx)^2 = (h_1^2 + h_2^2)(dx)^2
+$$
+Como
+$$
+h_1 = 1 + (\sin x\cos x)^2
+$$
+$$
+h_2 = 1 - (\sin x\cos x)^2
+$$
+\comentario{Donde sale el signo menos?}
+Luego
+$$
+h_1^2 = 1 + 2(\sin x\cos x)^2 + (\sin x\cos x)^4
+$$
+$$
+h_2^2 = 1 + 2(\sin x\cos x)^2 - (\sin x\cos x)^4
+$$
+\comentario{Partiendo de lo supuesto por el alumno, los signos del segundo y tercer t\'ermino son incorrectos.}
+de modo que
+$$
+ds^2 = (2 + 4\cos^2 x\sin^2 x) (dx)^2
+$$
+y por ende
+$$
+ds = \sqrt{2 + 4\cos^2 x\sin^2 x} dx
+$$
+Luego, teniendo en cuenta la propiedad $\sin x\cos x = 2\sin(2x)$ se obtiene
+$$
+L = \int_{-\pi}^{\pi} \sqrt{2 + (2\sin(2x))^2} dx
+$$
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
