@@ -338,8 +338,29 @@ J^T
 $$
 
 \comentario{
-Imagino que est\'a usando $S(x,y) = (s_1(x,y),s_2(x,y),s_3(x,y))$ con $s_1(x,y)=x$, $s_2(x,y)=y$ y $s_3(x,y)=\cos x\cos y$.
+Imagino que el alumno usa $S(x,y) = (s_1(x,y),s_2(x,y),s_3(x,y))$ con $s_1(x,y)=x$, $s_2(x,y)=y$ y $s_3(x,y)=\cos x\cos y$.
+Podr\'iamos decir que las viejas coordenadas son $q^1=x$, $q^2=y$  y $q^3=z$, y las nuevas coordenadas son $q'^1=s_1$, $q'^2=s_2$ y $q'^3=s_3$.
+Las coordenadas de la m\'etrica en las nuevas coordenadas viene dada por
+$$
+g'_{ij}
+=
+\frac{\partial x^r}{\partial x'^i}
+\frac{\partial x^t}{\partial x'^j}
+g_{rt}
+.
+$$
+Matricialmente,
+$$
+g'_{ij}
+=
+(A^T)_i{}^r g_{rt} A^t{}_j
+$$
+donde 
+$A^t{}_j=\frac{\partial x^t}{\partial x'^j}$ 
+y 
+$(A^T)_i{}^r = \frac{\partial x^r}{\partial x'^i}$.
 }
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
