@@ -314,9 +314,7 @@ $$
 {\bf 4a)}
 \vspace{0.5cm}
 
-$S(x,y) = (x,y,\cos x\cos y)$.
-
-Calculo el Jacobiani as\'i puedo usar $g=J^TJ$.
+$S(x,y) = (x,y,\cos x\cos y)$. Calculo el Jacobiano as\'i puedo usar $g=J^TJ$.
 
 $$
 J
@@ -336,11 +334,57 @@ J^T
 \frac{\partial s_1}{\partial y} & \frac{\partial s_2}{\partial y} & \frac{\partial s_3}{\partial y} 
 \end{pmatrix}
 $$
+Luego calculo
+$$
+\frac{\partial S}{\partial x}
+=
+\bigg(
+\frac{\partial s_1}{\partial x},
+\frac{\partial s_2}{\partial x},
+\frac{\partial s_3}{\partial x}
+\bigg)
+=
+(1,0,-\sin x\cos y)
+$$
+y
+$$
+\frac{\partial S}{\partial y}
+=
+\bigg(
+\frac{\partial s_1}{\partial y},
+\frac{\partial s_2}{\partial y},
+\frac{\partial s_3}{\partial y}
+\bigg)
+=
+(0,1,-\cos x\sin y)
+.
+$$
+As\'i
+$$
+J^TJ
+=
+\begin{pmatrix}
+1 & 0 & -\sin x\cos y \\
+0 & 1 & -\cos x\sin y
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 \\
+0 & 1 \\
+-\sin x\cos y & -\cos x\sin y
+\end{pmatrix}
+=
+\begin{pmatrix}
+1+\sin^2 x\cos^2 y & \sin x\cos x \sin y\cos y \\
+\sin x\cos x \sin y\cos y & 1 + \cos^2 x\sin^2 y
+\end{pmatrix}
+.
+$$
+
 
 \comentario{
 Imagino que el alumno usa $S(x,y) = (s_1(x,y),s_2(x,y),s_3(x,y))$ con $s_1(x,y)=x$, $s_2(x,y)=y$ y $s_3(x,y)=\cos x\cos y$.
 Podr\'iamos decir que las viejas coordenadas son $q^1=x$, $q^2=y$  y $q^3=z$, y las nuevas coordenadas son $q'^1=s_1$, $q'^2=s_2$ y $q'^3=s_3$.
-Las coordenadas de la m\'etrica en las nuevas coordenadas viene dada por
+De esta manera, las coordenadas de la m\'etrica en las nuevas coordenadas vienen dadas por
 $$
 g'_{ij}
 =
@@ -355,12 +399,151 @@ g'_{ij}
 =
 (A^T)_i{}^r g_{rt} A^t{}_j
 $$
-donde 
+si es que
 $A^t{}_j=\frac{\partial x^t}{\partial x'^j}$ 
 y 
 $(A^T)_i{}^r = \frac{\partial x^r}{\partial x'^i}$.
+Sin embargo, las ecuaciones toman mejor sentido si asumimos que las coordenadas $s_1$, $s_2$ y $s_3$ en funci\'on de $x$ e $y$ parametrizan la superficie en $\mathbb{R}^3$. 
+Luego, la forma de calcular del alumno es la que usualmente utilizan los alumnos
+$$
+g_{xx} = \frac{\partial \vec{s}}{\partial x} \cdot \frac{\partial \vec{s}}{\partial x}
+$$
+$$
+g_{xy} = \frac{\partial \vec{s}}{\partial x} \cdot \frac{\partial \vec{s}}{\partial y}
+$$
+$$
+g_{yy} = \frac{\partial \vec{s}}{\partial y} \cdot \frac{\partial \vec{s}}{\partial y},
+$$
+lo cual es\'a bien.
 }
 
+
+\vspace{0.5cm}
+\noindent {\Large \bf Tagarelli Giovanni:}
+
+\vspace{0.5cm}
+{\bf 4a)}
+\vspace{0.5cm}
+
+Parametrizaci\'on de la curva
+$$
+g(x,y) = (x,y,\cos x\cos y)
+$$
+
+$$
+\frac{\partial g}{\partial x}
+=
+(1,0,-\sin x\cos y)
+$$
+$$
+\frac{\partial g}{\partial y}
+=
+(0,1,-\cos x\sin y)
+$$
+
+$\frac{\partial g}{\partial x}$ y $\frac{\partial g}{\partial y}$ son mis elementos de la base de la superficie $dx^1$ y $dx^2$.
+
+Entonces
+$$
+g_{ij} = dx^i \otimes dx^j
+$$
+
+$$
+dx^1 \otimes dx^1 
+=
+1+\sin^2 \cos^2 y\, (dx)^2
+$$
+$$
+dx^1 \otimes dx^2 
+=
+\sin x\cos x\cos y\sin y\, dx\, dy
+$$
+$$
+dx^2 \otimes dx^1
+=
+\sin x\cos x\cos y\sin y\, dx\, dy
+$$
+$$
+dx^2 \otimes dx^2 
+=
+1+\cos^2 \sin^2 y\, (dx)^2
+$$
+
+$$
+g
+=
+\begin{pmatrix}
+1+\sin^2 x\cos^2 y & \sin x\cos y\sin y\cos y \\
+\sin x\cos y\sin y\cos y & 1+\cos^2 x\sin^2 y
+\end{pmatrix}
+$$
+
+\vspace{0.5cm}
+{\bf 4b)}
+\vspace{0.5cm}
+
+Para hallar el $DA$ yo me muevo una cantidad diferencial en la direcci\'on del primer elemento de la base y otra cantidad diferencial en el otro elemento de la base
+$$
+\vec{v}^1 = dx^1\, dx
+$$
+$$
+\vec{v}^2 = dx^2\, dy
+$$
+donde $dx^1 = \vec{e}_1$ y $dx^2 = \vec{e}_2$.
+Sabiendo que
+$$
+dA = |\vec{v}_1 \times \vec{v}_2| = |dx^1 dx \times dx^2 dy|
+$$
+Aqu\'i $dx$ y $dy$ son cantidades escalares positivas por lo que puedo sacarlas fuera del producto cruz y fuera de la norma
+$$
+dA = |dx^1 \times dx^2 | dx dy
+$$
+Usando que $|A\times B|^2 = |A|^2 . |B|^2 - (A.B)^2$ tenemos que
+$$
+|dx^1 \times dx^2|
+=
+dx^1 . dx^2 - (dx_1.dx^2)^2 
+= 
+\det g
+$$
+con
+$$
+\det g
+=
+1+\cos^2 x\sin^2 y + \sin^2 x\cos^2 y
+$$
+
+\vspace{0.5cm}
+{\bf 4c)}
+\vspace{0.5cm}
+
+Primero parametrizo la curva:
+$$
+P(x) = (x,x,\cos^2 x)
+$$
+Luego
+$$
+\frac{\partial P}{\partial x}
+=
+(1,1,-2\cos x\sin x) 
+=
+dx^1
+$$
+Luego este es mi \'unico elemento de la base para construir la m\'etrica
+$$
+g 
+= 
+dx^1 \otimes dx^1
+=
+1^2 + 1^2 + (2\cos x\sin x)^2
+=
+2+\sin^2(2x) dx^1
+$$
+Luego, avanzo un diferencial en la direcci\'on de la base:
+$$
+\int_{-\pi}^{\pi}
+\sqrt{2+\sin^2 (2x)}\,dx
+$$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
