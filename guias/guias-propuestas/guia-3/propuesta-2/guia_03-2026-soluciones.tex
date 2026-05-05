@@ -611,15 +611,10 @@ $$|T_f(\varphi_n)| \le C \|\varphi_n\|_{\infty}$$
 Finalmente, como $\varphi_n \to 0$ uniformemente, sabemos que el máximo $\|\varphi_n\|_{\infty} \to 0$ cuando $n \to \infty$. Por consiguiente:
 $$\lim_{n \to \infty} |T_f(\varphi_n)| \le C \cdot 0 = 0$$
 Lo que implica que $T_f(\varphi_n) \to 0$.
-Finalmente, recordando el Problema 5, sabemos que una funci\'on lineal es cont\'inua en todas partes si es cont\'inua en 0.
+Finalmente, recordando el Problema 5, conclu\'imos que, por ser lineal, $T$ es cont\'inua en todas partes por ser cont\'inua en $\varphi=0$.
 \end{itemize}
 
 Hemos demostrado que la funcional es tanto lineal como continua, por lo que $T_f$ es formalmente una distribución.
-
-
-
-
-
 
 
 
@@ -634,6 +629,97 @@ Hemos demostrado que la funcional es tanto lineal como continua, por lo que $T_f
 \item $\displaystyle h(t)\delta'(t-a) = h(a)\delta'(t-a) - h'(a)\delta(t-a)$.
 \end{enumerate}
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 11)}
+\vspace{0.5cm}
+
+
+Todas estas propiedades se demuestran aplicando la distribución sobre una función de prueba genérica $\varphi(t) \in \mathcal{D}(\mathbb{R})$ y utilizando la definición fundamental de la delta de Dirac: $\langle \delta(t), \varphi(t) \rangle = \int_{-\infty}^{\infty} \delta(t)\varphi(t) dt = \varphi(0)$.
+
+\begin{enumerate}
+
+\item $\int_{-a}^{b} \delta(t)\,dt = 1$, para $a,b>0$:
+
+Podemos reescribir esta integral pensándola como la acción de la delta sobre una función indicatriz o escalón que vale $1$ en el intervalo $(-a, b)$ y $0$ fuera de él. Llamemos a esta función $\varphi(t)$.
+$$\int_{-a}^{b} \delta(t)\,dt = \int_{-\infty}^{\infty} \delta(t)\varphi(t) dt = \langle \delta, \varphi \rangle$$
+Por la propiedad fundamental de la delta, sabemos que esto es igual a evaluar la función en el origen: $\varphi(0)$.
+Dado que $a > 0$ y $b > 0$, el origen $t=0$ está estrictamente contenido dentro del intervalo $(-a, b)$. Por lo tanto, la función evaluada en cero vale $1$.
+$$\varphi(0) = 1 \implies \int_{-a}^{b} \delta(t)\,dt = 1$$
+
+\item $\int \delta(t-a)\,dt = 1$, si el rango de integración incluye $t=a$:
+
+Análogamente al caso anterior, si el rango de integración (digamos desde $c$ hasta $d$) incluye al punto $t=a$, significa que $c < a < d$.
+Consideramos una función de prueba $\varphi(t)$ que valga $1$ en $(c, d)$ y $0$ fuera.
+$$\int_c^d \delta(t-a)\,dt = \int_{-\infty}^{\infty} \delta(t-a)\varphi(t) dt = \langle \delta(t-a), \varphi(t) \rangle$$
+La delta desplazada $\delta(t-a)$ evalúa la función de prueba en el punto de desplazamiento $t=a$.
+Como $a$ está en el intervalo donde $\varphi(t) = 1$, entonces $\varphi(a) = 1$, lo que demuestra la propiedad.
+
+\item $\delta(t) = \delta(-t)$ (La delta de Dirac es una distribución par):
+
+Aplicamos $\delta(-t)$ a una función de prueba $\varphi(t)$:
+$$\langle \delta(-t), \varphi(t) \rangle = \int_{-\infty}^{\infty} \delta(-t)\varphi(t) dt$$
+Hacemos un cambio de variable $u = -t$, lo que implica $du = -dt$. Además, los límites de integración se invierten (de $\infty$ a $-\infty$):
+$$= \int_{\infty}^{-\infty} \delta(u)\varphi(-u)(-du) = \int_{-\infty}^{\infty} \delta(u)\varphi(-u) du = \langle \delta(u), \varphi(-u) \rangle$$
+Por definición, la delta evalúa su argumento en $u=0$:
+$$= \varphi(-0) = \varphi(0) = \langle \delta(t), \varphi(t) \rangle$$
+Como la acción sobre cualquier función de prueba es idéntica, concluimos que $\delta(t) = \delta(-t)$.
+
+\item $\delta(at) = \frac{1}{|a|}\delta(t)$:
+
+Aplicamos $\delta(at)$ a una función de prueba arbitraria $\varphi(t)$ asumiendo que $a \neq 0$:
+$$\langle \delta(at), \varphi(t) \rangle = \int_{-\infty}^{\infty} \delta(at)\varphi(t) dt$$
+Planteamos el cambio de variable $u = at$, entonces $dt = \frac{du}{a}$. Aquí debemos separar en dos casos según el signo de $a$:
+\begin{itemize}
+\item Si $a > 0$: Los límites de integración no cambian.
+    $$= \int_{-\infty}^{\infty} \delta(u)\varphi\left(\frac{u}{a}\right) \frac{du}{a} = \frac{1}{a} \varphi(0) = \frac{1}{|a|}\int_{-\infty}^{\infty} \delta(t) \varphi(t)\,dt$$
+\item Si $a < 0$: Los límites de integración se invierten de $\infty$ a $-\infty$. Para volver a ordenarlos de menor a mayor, multiplicamos por $-1$:
+    $$= \int_{\infty}^{-\infty} \delta(u)\varphi\left(\frac{u}{a}\right) \frac{du}{a} = - \int_{-\infty}^{\infty} \delta(u)\varphi\left(\frac{u}{a}\right) \frac{du}{a} = -\frac{1}{a} \varphi(0)= \frac{1}{|a|}\int_{-\infty}^{\infty} \delta(t) \varphi(t)\,dt$$
+Podemos combinar ambos resultados notando que $a$ cuando $a>0$, y $-a$ cuando $a<0$, son exactamente la definición de valor absoluto $|a|$. Por ende:
+$$\langle \delta(at), \varphi(t) \rangle = \frac{1}{|a|} \varphi(0) = \frac{1}{|a|} \langle \delta(t), \varphi(t) \rangle$$
+Lo que prueba que $\delta(at) = \frac{1}{|a|}\delta(t)$.
+\end{itemize}
+
+\item $t^n\delta(t)=0$, con $n>0$:
+
+Aplicamos la distribución $t^n\delta(t)$ a una función de prueba $\varphi(t)$:
+$$\langle t^n\delta(t), \varphi(t) \rangle = \int_{-\infty}^{\infty} t^n \delta(t) \varphi(t) dt$$
+Podemos agrupar $t^n \varphi(t)$ como una nueva función de prueba $\psi(t) = t^n \varphi(t)$. Evaluamos la acción de la delta:
+$$= \langle \delta(t), \psi(t) \rangle = \psi(0) = 0^n \cdot \varphi(0)$$
+Como $n > 0$, $0^n = 0$. Entonces el resultado es $0$. En el sentido distribucional, $t^n\delta(t) = 0$.
+
+\item $\delta(h(t)) = \sum_i \frac{\delta(t-t_i)}{|h'(t_i)|}$:
+
+(Nota: Asumimos raíces simples, es decir, $h'(t_i) \neq 0$).
+Esta propiedad es la generalización directa de lo que demostramos en el Problema 9.
+Para evaluarla sobre una función de prueba, notamos que $\delta(h(t))$ solo es no nula cerca de los puntos $t_i$ donde $h(t_i) = 0$.
+Podemos separar la integral en la suma de pequeñas integrales alrededor de cada raíz $t_i$:
+$$\langle \delta(h(t)), \varphi(t) \rangle = \sum_i \int_{t_i-\epsilon}^{t_i+\epsilon} \delta(h(t))\varphi(t) dt$$
+Para cada una de estas integrales locales, la función $h(t)$ cruza por cero una sola vez. Aplicando exactamente el resultado del Problema 9 a cada término de la sumatoria:
+$$\int_{t_i-\epsilon}^{t_i+\epsilon} \delta(h(t))\varphi(t) dt = \frac{\varphi(t_i)}{|h'(t_i)|}$$
+Por lo tanto:
+$$\langle \delta(h(t)), \varphi(t) \rangle = \sum_i \frac{\varphi(t_i)}{|h'(t_i)|} = \sum_i \frac{1}{|h'(t_i)|} \langle \delta(t-t_i), \varphi(t) \rangle$$
+$$\delta(h(t)) = \sum_i \frac{\delta(t-t_i)}{|h'(t_i)|}$$
+
+\item $h(t)\delta'(t-a) = h(a)\delta'(t-a) - h'(a)\delta(t-a)$:
+
+Aplicamos la distribución de la izquierda a una función de prueba $\varphi(t)$:
+$$\langle h(t)\delta'(t-a), \varphi(t) \rangle = \langle \delta'(t-a), h(t)\varphi(t) \rangle$$
+Recordemos la definición de la derivada de una distribución: $\langle T', \psi \rangle = -\langle T, \psi' \rangle$.
+$$= - \left\langle \delta(t-a), \frac{d}{dt}[h(t)\varphi(t)] \right\rangle$$
+Aplicamos la regla del producto para la derivada:
+$$= - \langle \delta(t-a), h'(t)\varphi(t) + h(t)\varphi'(t) \rangle$$
+La delta evalúa esta función en $t=a$:
+$$= - \left( h'(a)\varphi(a) + h(a)\varphi'(a) \right) = - h'(a)\varphi(a) - h(a)\varphi'(a) \quad \text{--- (Ec. 1)}$$
+
+Ahora, tomamos la expresión de la derecha del enunciado y la aplicamos a la misma función $\varphi(t)$:
+$$\langle h(a)\delta'(t-a) - h'(a)\delta(t-a), \varphi(t) \rangle = h(a)\langle \delta'(t-a), \varphi(t) \rangle - h'(a)\langle \delta(t-a), \varphi(t) \rangle$$
+$$= h(a) (-\varphi'(a)) - h'(a) \varphi(a)$$
+$$= - h(a)\varphi'(a) - h'(a)\varphi(a) \quad \text{--- (Ec. 2)}$$
+Como vemos, la (Ec. 1) y la (Ec. 2) son idénticas, lo que demuestra que ambas expresiones distribucionales son equivalentes.
+
+\end{enumerate}
+
+
 \prob Sean $f:\mathbb{R}\to\mathbb{R}$, $\varphi$ y $\psi$ dos funciones de prueba. Considere la distribución definida como
 \[
 T_f(\phi) = \int_{-\infty}^{\infty} f(x)\phi(x)\,dx.
@@ -646,6 +732,74 @@ T_f(\phi) = \int_{-\infty}^{\infty} f(x)\phi(x)\,dx.
 \frac{d^2}{dx^2}\bigl[H(x)\operatorname{sen}(ax)\bigr] = a\delta(x) - H(x)\,a^2\operatorname{sen}(ax),
 \]
 donde $H(x)$ es la función escalón de Heaviside.
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 12)}
+\vspace{0.5cm}
+
+\begin{enumerate}
+
+\item Demostrar que $\operatorname{sen}(ax)\,\delta'(x) = -a\delta(x)$
+
+Para demostrar esta igualdad distribucional, aplicaremos la distribución de la izquierda a una función de prueba genérica $\phi(x) \in \mathcal{D}(\mathbb{R})$:
+$$\langle \operatorname{sen}(ax)\delta'(x), \phi(x) \rangle = \langle \delta'(x), \operatorname{sen}(ax)\phi(x) \rangle$$
+
+Por la definición de la derivada de una distribución ($\langle T', \phi \rangle = -\langle T, \phi' \rangle$), el operador derivada pasa a la función de la derecha con un cambio de signo:
+$$= -\left\langle \delta(x), \frac{d}{dx}[\operatorname{sen}(ax)\phi(x)] \right\rangle$$
+
+Aplicamos la regla del producto clásica en el término a derivar:
+$$= -\langle \delta(x), a\cos(ax)\phi(x) + \operatorname{sen}(ax)\phi'(x) \rangle$$
+
+La acción de la delta de Dirac es evaluar la función de prueba en $x=0$:
+$$= -\left[ a\cos(a\cdot 0)\phi(0) + \operatorname{sen}(a\cdot 0)\phi'(0) \right]$$
+$$= -\left[ a(1)\phi(0) + (0)\phi'(0) \right] = -a\phi(0)$$
+
+Podemos reescribir este resultado usando nuevamente la definición de la delta de Dirac:
+$$-a\phi(0) = \langle -a\delta(x), \phi(x) \rangle$$
+
+Como se cumple para cualquier función de prueba $\phi$, concluimos que $\operatorname{sen}(ax)\,\delta'(x) = -a\delta(x)$.
+
+\item Demostrar que $(\varphi\psi)' = \varphi'\psi + \varphi\psi'$ en sentido distribucional
+
+Sean $\varphi$ y $\psi$ funciones de prueba. Su producto $(\varphi\psi)$ es una función regular $C_0^\infty(\mathbb{R})$ y genera una distribución. Evaluamos su derivada distribucional sobre otra función de prueba $\phi$:
+$$\langle (\varphi\psi)', \phi \rangle = -\langle \varphi\psi, \phi' \rangle = -\int_{-\infty}^{\infty} \varphi(x)\psi(x)\phi'(x) dx$$
+
+Podemos resolver esta integral aplicando integración por partes. Como todas las funciones involucradas son de prueba (tienen soporte compacto, es decir, se anulan en los infinitos), el término de borde evaluado en $\pm\infty$ es cero:
+$$\int_{-\infty}^{\infty} u \, dv = u \, v\Big|_{-\infty}^{\infty} - \int_{-\infty}^{\infty} v \, du \implies -\int_{-\infty}^{\infty} (\varphi\psi) \phi' dx = \int_{-\infty}^{\infty} (\varphi\psi)' \phi \, dx$$
+
+Dado que $\varphi$ y $\psi$ son funciones suaves, su derivada clásica existe y cumple la regla de Leibniz, $(\varphi\psi)' = \varphi'\psi + \varphi\psi'$. Reemplazando en la integral:
+$$= \int_{-\infty}^{\infty} (\varphi'\psi + \varphi\psi') \phi \, dx = \langle \varphi'\psi + \varphi\psi', \phi \rangle$$
+
+Esto prueba que la derivada distribucional coincide con la clásica regla del producto cuando trabajamos con funciones regulares. Esta regla es extensible al producto de una distribución y una función infinitamente diferenciable.
+
+\item Calcular la derivada segunda de $H(x)\operatorname{sen}(ax)$
+
+Basándonos en el inciso anterior, si generalizamos la regla del producto para la segunda derivada (similar a desarrollar un binomio al cuadrado), obtenemos:
+$$(uv)'' = (u'v + uv')' = u''v + 2u'v' + uv''$$
+
+Asignamos $u(x) = H(x)$ y $v(x) = \operatorname{sen}(ax)$. El inciso 2 nos garantiza que podemos usar esta regla del producto. Procedemos a encontrar las derivadas de cada función:
+\begin{itemize}
+\item Para $u(x) = H(x)$ sabemos que su primera derivada distribucional es la delta de Dirac, $u'(x) = \delta(x)$. Por ende, $u''(x) = \delta'(x)$.
+\item Para la función suave $v(x) = \operatorname{sen}(ax)$, sus derivadas son regulares: $v'(x) = a\cos(ax)$ y $v''(x) = -a^2\operatorname{sen}(ax)$.
+\end{itemize}
+
+Sustituimos estos componentes en nuestra fórmula de la segunda derivada:
+$$\frac{d^2}{dx^2}\bigl[H(x)\operatorname{sen}(ax)\bigr] = \delta'(x)\operatorname{sen}(ax) + 2\delta(x)a\cos(ax) + H(x)(-a^2\operatorname{sen}(ax))$$
+
+Ahora, simplificamos cada término aprovechando las propiedades distribucionales que ya conocemos:
+\begin{itemize}
+\item Primer término: Por el inciso 1 que acabamos de demostrar, sabemos que $\delta'(x)\operatorname{sen}(ax) = -a\delta(x)$.
+\item Segundo término: Utilizamos la propiedad del producto de una delta por una función suave $\alpha(x)\delta(x) = \alpha(0)\delta(x)$. En este caso $\alpha(x) = 2a\cos(ax)$, la cual evaluada en el origen es $2a\cos(0) = 2a$. Así, el término se reduce a $2a\delta(x)$.
+\item Tercer término: Este término no requiere reducción, simplemente acomodamos los factores a $-a^2 H(x)\operatorname{sen}(ax)$.
+\end{itemize}
+
+Sumando los tres términos simplificados obtenemos:
+$$\frac{d^2}{dx^2}\bigl[H(x)\operatorname{sen}(ax)\bigr] = -a\delta(x) + 2a\delta(x) - a^2H(x)\operatorname{sen}(ax)$$
+$$\frac{d^2}{dx^2}\bigl[H(x)\operatorname{sen}(ax)\bigr] = a\delta(x) - a^2H(x)\operatorname{sen}(ax)$$
+
+Con esto queda concluida y demostrada la proposición del inciso 3.
+
 \end{enumerate}
 
 
