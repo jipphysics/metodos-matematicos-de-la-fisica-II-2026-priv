@@ -509,6 +509,52 @@ $$f_n^{(k)} \xrightarrow{n \to \infty} \delta^{(k)}$$
 \int_a^b f(x)\,\delta(g(x))\,dx = \frac{f(x_0)}{|g'(x_0)|},
 \]
 asumiendo que la ecuación $g(x)=0$ posee una sola raíz en el intervalo $a<x<b$.
+{\color{red} [Habría que agregar la hipótesis $g'(x_0)\neq 0$ y aclarar que $x_0$ denota la raíz es $g$ mencioanda.]}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 9)}
+\vspace{0.5cm}
+
+Sabemos por hipótesis que la función $g(x)$ tiene un único cero en $x = x_0$ dentro del intervalo de integración $(a, b)$. Es decir, $g(x_0) = 0$. La distribución delta de Dirac, $\delta(g(x))$, solo es no nula cuando su argumento es cero, por lo que toda la contribución a la integral proviene de un entorno infinitamente pequeño alrededor de $x_0$.
+
+Para resolver la integral, proponemos un cambio de variable:
+$$u = g(x)$$
+Diferenciando esta expresión, obtenemos:
+$$du = g'(x) dx \implies dx = \frac{du}{g'(x)}$$
+
+Para realizar el cambio de variable en la integral, debemos considerar el signo de la derivada $g'(x_0)$ (asumimos que $g'(x_0) \neq 0$, es decir, es una raíz simple). Hay dos casos posibles: que la función sea creciente o decreciente al pasar por $x_0$.
+
+\begin{itemize}
+\item Caso 1: $g'(x_0) > 0$ (La función es creciente en $x_0$)
+Si $g(x)$ es creciente al cruzar el cero en $x_0$, entonces $g(a) < 0$ y $g(b) > 0$.
+Aplicamos el cambio de variable a la integral:
+$$\int_a^b f(x)\,\delta(g(x))\,dx = \int_{g(a)}^{g(b)} f(x(u))\,\delta(u)\,\frac{du}{g'(x(u))}$$
+Dado que el nuevo intervalo de integración va desde un valor negativo $g(a)$ hasta un valor positivo $g(b)$, el punto $u=0$ está incluido. Usando la propiedad fundamental de la delta de Dirac $\int \varphi(u)\delta(u)du = \varphi(0)$, evaluamos el integrando en $u=0$.
+Recordemos que cuando $u=0$, la variable original es $x=x_0$.
+$$= \left[ \frac{f(x(u))}{g'(x(u))} \right]_{u=0} = \frac{f(x_0)}{g'(x_0)}$$
+Como $g'(x_0) > 0$, entonces $g'(x_0) = |g'(x_0)|$, por lo que el resultado se puede escribir como $\frac{f(x_0)}{|g'(x_0)|}$.
+
+\item Caso 2: $g'(x_0) < 0$ (i.e. la función es decreciente en $x_0$).
+Si $g(x)$ es decreciente al cruzar el cero, entonces arranca de un valor positivo y termina en uno negativo: $g(a) > 0$ y $g(b) < 0$.
+Al hacer el cambio de variable, los límites de integración quedan invertidos respecto al caso anterior:
+$$\int_a^b f(x)\,\delta(g(x))\,dx = \int_{g(a)}^{g(b)} f(x(u))\,\delta(u)\,\frac{du}{g'(x(u))}$$
+Para usar la propiedad de la delta en su forma estándar, necesitamos que el límite inferior sea menor que el superior. Invertimos los límites de integración, lo cual introduce un signo menos:
+$$= -\int_{g(b)}^{g(a)} f(x(u))\,\delta(u)\,\frac{du}{g'(x(u))}$$
+Ahora integramos desde un valor negativo $g(b)$ hasta uno positivo $g(a)$, incluyendo el $u=0$. Evaluando el integrando en $u=0$ (es decir, $x=x_0$):
+$$= -\frac{f(x_0)}{g'(x_0)}$$
+Como en este caso $g'(x_0)$ es un número negativo, se cumple que $-g'(x_0) = |g'(x_0)|$. Sustituyendo esto, obtenemos nuevamente:
+$$= \frac{f(x_0)}{|g'(x_0)|}$$
+\end{itemize}
+
+Conclusión. 
+En ambos casos, sin importar si la función $g(x)$ cruza el eje horizontal creciendo o decreciendo en $x_0$, el valor de la integral es el mismo:
+$$\int_a^b f(x)\,\delta(g(x))\,dx = \frac{f(x_0)}{|g'(x_0)|}$$
+Lo cual concluye la demostración. (Nota: Esta es la base para la propiedad más general $\delta(g(x)) = \sum_i \frac{\delta(x-x_i)}{|g'(x_i)|}$ que usarás más adelante).
+
+
+
+
+
 
 \prob Sea $f\in L^1(\mathbb{R})$ y sea $T_f$ la funcional definida como
 \[
