@@ -319,6 +319,60 @@ Lo que se traduce exactamente en su forma de norma como $\|uv\|_{L^s} \le \|u\|_
 \text{b) Identidad de Parseval: } \|x\|^2 = \sum_{j=1}^{\infty} |\langle \hat{e}_j, x \rangle|^2.
 \]
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 6)}
+\vspace{0.5cm}
+
+{\bf a)}
+Demostración de $x = \sum_{j=1}^{\infty} \langle \hat{e}_j, x \rangle \hat{e}_j$.
+
+Para probar esto, debemos recordar qué significa que $\{\hat{e}_1, \hat{e}_2, \dots\}$ sea una base ortonormal (o un sistema ortonormal completo) en un espacio de Hilbert $H$. Por definición, significa que los vectores son mutuamente ortogonales y de norma 1 ($\langle \hat{e}_j, \hat{e}_k \rangle = \delta_{jk}$) y que el único vector que es ortogonal a todos los elementos de la base es el vector nulo.
+
+Definamos la suma parcial (que es la proyección ortogonal de $x$ sobre el subespacio generado por los primeros $N$ vectores de la base):
+$$S_N = \sum_{j=1}^N \langle \hat{e}_j, x \rangle \hat{e}_j$$
+
+Queremos ver que el límite de $S_N$ cuando $N \to \infty$ es exactamente $x$. Para ello, analicemos el vector diferencia o "vector error" $r_N = x - S_N$. 
+
+Veamos el producto interno de este vector $r_N$ con un vector cualquiera de la base $\hat{e}_k$ (asumiendo $k \le N$):
+$$\langle \hat{e}_k, x - S_N \rangle = \langle \hat{e}_k, x \rangle - \langle \hat{e}_k, S_N \rangle$$
+$$\langle \hat{e}_k, x - S_N \rangle = \langle \hat{e}_k, x \rangle - \left\langle \hat{e}_k, \sum_{j=1}^N \langle \hat{e}_j, x \rangle \hat{e}_j \right\rangle$$
+
+Por la linealidad del producto interno, podemos sacar la sumatoria y los escalares $\langle \hat{e}_j, x \rangle$:
+$$\langle \hat{e}_k, x - S_N \rangle = \langle \hat{e}_k, x \rangle - \sum_{j=1}^N \langle \hat{e}_j, x \rangle \langle \hat{e}_k, \hat{e}_j \rangle$$
+
+Como el conjunto es ortonormal, $\langle \hat{e}_k, \hat{e}_j \rangle = 1$ si $j=k$, y $0$ si $j \neq k$. Por lo tanto, toda la sumatoria colapsa al término donde $j=k$:
+$$\langle \hat{e}_k, x - S_N \rangle = \langle \hat{e}_k, x \rangle - \langle \hat{e}_k, x \rangle \cdot 1 = 0$$
+
+Esto demuestra que el vector $(x - \lim_{N \to \infty} S_N)$ es ortogonal a todos los vectores de la base $\hat{e}_k$. Puesto que la base es un conjunto completo en el espacio de Hilbert $H$, el único vector ortogonal a todo el espacio es el vector nulo. Por consiguiente:
+$$x - \lim_{N \to \infty} S_N = 0 \implies x = \lim_{N \to \infty} \sum_{j=1}^N \langle \hat{e}_j, x \rangle \hat{e}_j = \sum_{j=1}^{\infty} \langle \hat{e}_j, x \rangle \hat{e}_j$$
+Lo que concluye la demostración.
+
+\vspace{0.5cm}
+{\bf b)} Demostración de la Identidad de Parseval: $\|x\|^2 = \sum_{j=1}^{\infty} |\langle \hat{e}_j, x \rangle|^2$.
+
+Partiendo del resultado que acabamos de demostrar en {\bf a)}, sabemos que podemos expresar la norma al cuadrado del vector $x$ usando el producto interno de $x$ consigo mismo y reemplazando $x$ por su desarrollo en la base ortonormal:
+$$\|x\|^2 = \langle x, x \rangle$$
+
+Sustituimos la serie infinita:
+$$\|x\|^2 = \left\langle \lim_{N \to \infty} \sum_{j=1}^N \langle \hat{e}_j, x \rangle \hat{e}_j , \lim_{M \to \infty} \sum_{k=1}^M \langle \hat{e}_k, x \rangle \hat{e}_k \right\rangle$$
+
+Debido a que el producto interno en un espacio de Hilbert es una función continua, podemos sacar el límite fuera del producto interno:
+$$\|x\|^2 = \lim_{N \to \infty} \left\langle \sum_{j=1}^N \langle \hat{e}_j, x \rangle \hat{e}_j , \sum_{k=1}^N \langle \hat{e}_k, x \rangle \hat{e}_k \right\rangle$$
+
+Aplicamos la linealidad (y antilinealidad) del producto interno para expandir las sumas:
+$$\|x\|^2 = \lim_{N \to \infty} \sum_{j=1}^N \sum_{k=1}^N \overline{\langle \hat{e}_j, x \rangle} \langle \hat{e}_k, x \rangle \langle \hat{e}_j, \hat{e}_k \rangle$$
+
+Nuevamente, utilizamos la condición de ortonormalidad $\langle \hat{e}_j, \hat{e}_k \rangle = \delta_{jk}$. Esto hace que de la doble sumatoria solo sobrevivan los términos donde $j = k$ (la diagonal):
+$$\|x\|^2 = \lim_{N \to \infty} \sum_{j=1}^N \overline{\langle \hat{e}_j, x \rangle} \langle \hat{e}_j, x \rangle$$
+
+Recordando que para cualquier número complejo $z$, el producto $z \overline{z} = |z|^2$, obtenemos:
+$$\|x\|^2 = \lim_{N \to \infty} \sum_{j=1}^N |\langle \hat{e}_j, x \rangle|^2$$
+$$\|x\|^2 = \sum_{j=1}^{\infty} |\langle \hat{e}_j, x \rangle|^2$$
+
+Con esto queda demostrada la Identidad de Parseval.
+
+
+
 \prob Considere la función de prueba $\varphi \in C_0^\infty(\mathbb{R})$ definida como
 \[
 \varphi(x) = \begin{cases}
@@ -327,6 +381,55 @@ e^{-\frac{1}{1-x^2}}, & |x| < 1,\\
 \end{cases}
 \]
 Muestre que, efectivamente, $\varphi$ y todas sus derivadas son continuas en $\mathbb{R}$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 7)}
+\vspace{0.5cm}
+
+
+Para demostrar que $\varphi \in C_0^\infty(\mathbb{R})$ (es decir, que tiene soporte compacto y es infinitamente diferenciable), debemos comprobar que no existen discontinuidades ni en la función ni en ninguna de sus derivadas en todo el dominio real. 
+
+Primero, analicemos los intervalos abiertos:
+\begin{itemize}
+\item Para $|x| > 1$, la función es una constante ($\varphi(x) = 0$), la cual es continua y tiene derivadas continuas (todas nulas).
+\item Para $|x| < 1$, la función es $\varphi(x) = e^{-\frac{1}{1-x^2}}$. Como el denominador $(1-x^2)$ nunca se anula en el intervalo $(-1, 1)$, esta función es una composición de funciones elementales suaves (la exponencial y una función racional), por lo que es infinitamente diferenciable y continua dentro del intervalo.
+\end{itemize}
+
+El único ``problema'' está en las fronteras de estos intervalos, es decir, en los puntos de unión $x = 1$ y $x = -1$. Demostraremos que la función y sus derivadas se ``pegan'' suavemente con el cero en estos puntos. Por simetría (la función es par), basta con analizar qué ocurre cuando $x \to 1$.
+
+\begin{enumerate}
+\item Continuidad de $\varphi(x)$ en $x = 1$.
+Debemos verificar que $\lim_{x \to 1^-} \varphi(x) = \lim_{x \to 1^+} \varphi(x) = \varphi(1)$.
+Por la definición para $|x|\ge 1$, sabemos que el límite por la derecha es $0$ y $\varphi(1) = 0$.
+Veamos el límite por la izquierda:
+$$\lim_{x \to 1^-} \varphi(x) = \lim_{x \to 1^-} e^{-\frac{1}{1-x^2}}$$
+Hagamos el cambio de variable $u = \frac{1}{1-x^2}$. Cuando $x$ se acerca a $1$ desde números más pequeños ($1^-$), el término $1-x^2$ tiende a $0$ por valores positivos ($0^+$). Por lo tanto, $u \to +\infty$.
+$$\lim_{u \to \infty} e^{-u} = \lim_{u \to \infty} \frac{1}{e^u} = 0$$
+Ambos límites laterales coinciden y valen $0$. La función es continua en todo $\mathbb{R}$.
+
+\item Continuidad de la primera derivada en $x = 1$.
+Calculemos la primera derivada para $|x| < 1$ usando la regla de la cadena:
+$$\varphi'(x) = \frac{d}{dx} \left( e^{-\frac{1}{1-x^2}} \right) = e^{-\frac{1}{1-x^2}} \cdot \frac{d}{dx} \left( -(1-x^2)^{-1} \right)$$
+$$\varphi'(x) = e^{-\frac{1}{1-x^2}} \cdot \left[ (1-x^2)^{-2} \cdot (-2x) \right] = \frac{-2x}{(1-x^2)^2} e^{-\frac{1}{1-x^2}}$$
+Calculamos su límite cuando $x \to 1^-$ usando el mismo cambio de variable $u = \frac{1}{1-x^2}$ (notando que $(1-x^2)^2 = 1/u^2$):
+$$\lim_{x \to 1^-} \varphi'(x) = \lim_{u \to \infty} (-2 \cdot 1 \cdot u^2) e^{-u} = -2 \lim_{u \to \infty} \frac{u^2}{e^u}$$
+Nos enfrentamos a una indeterminación del tipo $\infty / \infty$. Sin embargo, es un hecho conocido del análisis matemático que la función exponencial $e^u$ crece asintóticamente mucho más rápido que cualquier polinomio en $u$. (Podemos aplicar la Regla de L'Hôpital dos veces para comprobarlo). Por lo tanto, el denominador gana y el límite es exacto:
+$$\lim_{x \to 1^-} \varphi'(x) = 0$$
+Como la derivada por la derecha es $0$ (derivada de una constante), concluimos que $\varphi'(1)$ existe y vale $0$. La primera derivada es continua.
+
+\item Continuidad de la derivada $k$-ésima.
+Podemos generalizar este resultado. Si seguimos derivando repetidamente usando la regla del producto y de la cadena para $|x| < 1$, es posible demostrar por inducción que cualquier derivada de orden $k$ tendrá la forma general:
+$$\varphi^{(k)}(x) = \frac{P_k(x)}{(1-x^2)^{m_k}} e^{-\frac{1}{1-x^2}}$$
+Donde $P_k(x)$ es un polinomio de cierto grado, y $m_k$ es un entero positivo.
+Si tomamos el límite cuando $x \to 1^-$, al hacer el reemplazo $u = \frac{1}{1-x^2}$, la expresión $\frac{1}{(1-x^2)^{m_k}}$ se convierte en $u^{m_k}$. El límite siempre tomará la forma de:
+$$\lim_{u \to \infty} (\text{Polinomio en } u) \cdot e^{-u} = \lim_{u \to \infty} \frac{\text{Polinomio}(u)}{e^u}$$
+Nuevamente, debido a que el crecimiento exponencial domina el crecimiento polinómico de cualquier grado, este límite será siempre $0$.
+Por lo tanto, $\lim_{x \to \pm 1} \varphi^{(k)}(x) = 0$ para todo número natural $k$. 
+
+Esto prueba formalmente que todas las derivadas de la función existen, se empalman suavemente con la región nula y son continuas, lo que confirma que la función "campana" modificada $\varphi$ es de clase $C^\infty(\mathbb{R})$.
+\end{enumerate}
+
+
 
 \prob Considere la sucesión de funciones en $C^\infty(\mathbb{R})$
 \[
@@ -337,6 +440,69 @@ Muestre que
 f_n \xrightarrow{n \to \infty} \delta.
 \]
 ¿A qué converge $f'_n$? ¿Y $f_n^{(k)}$? (Ayuda: note que toda función de prueba en $C_0^\infty(\mathbb{R})$ o $\mathcal{S}(\mathbb{R})$ es entera, y por consiguiente tiene un desarrollo de Taylor con radio de convergencia infinito.)
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 8)}
+\vspace{0.5cm}
+
+\begin{enumerate}
+\item Demostrar que $f_n \xrightarrow{n \to \infty} \delta$.
+
+Para demostrar que una sucesión de funciones converge a la delta de Dirac en el sentido distribucional, debemos probar que para cualquier función de prueba $\varphi(x)$, el límite del producto interno (la integral) coincide con la acción de la delta sobre dicha función:
+$$\lim_{n \to \infty} \langle f_n, \varphi \rangle = \lim_{n \to \infty} \int_{-\infty}^{\infty} f_n(x) \varphi(x) dx = \varphi(0)$$
+
+Siguiendo la ayuda sugerida, expandimos la función de prueba $\varphi(x)$ en su serie de Taylor alrededor del origen $x=0$:
+$$\varphi(x) = \varphi(0) + \varphi'(0)x + \frac{\varphi''(0)}{2!}x^2 + \frac{\varphi'''(0)}{3!}x^3 + \dots = \sum_{m=0}^{\infty} \frac{\varphi^{(m)}(0)}{m!} x^m$$
+
+Sustituimos esta expansión en la integral:
+$$\langle f_n, \varphi \rangle = \int_{-\infty}^{\infty} \frac{n}{\sqrt{\pi}} e^{-n^2 x^2} \left( \sum_{m=0}^{\infty} \frac{\varphi^{(m)}(0)}{m!} x^m \right) dx$$
+
+Podemos intercambiar la suma y la integral (asumiendo convergencia adecuada gracias a que $\varphi$ es una función de prueba):
+$$\langle f_n, \varphi \rangle = \sum_{m=0}^{\infty} \frac{\varphi^{(m)}(0)}{m!} \int_{-\infty}^{\infty} \frac{n}{\sqrt{\pi}} e^{-n^2 x^2} x^m dx$$
+
+Ahora analizamos estas integrales dependientes del grado $m$:
+\begin{itemize}
+\item Si $m$ es impar: La función $e^{-n^2 x^2} x^m$ es impar, y al estar integrada en un intervalo simétrico $(-\infty, \infty)$, la integral es exactamente 0. Por lo tanto, todos los términos con derivadas impares desaparecen.
+\item Si $m$ es par ($m = 2k$): Hacemos el cambio de variable $y = nx \implies dx = \frac{dy}{n}$ y $x^{2k} = \frac{y^{2k}}{n^{2k}}$:
+    $$\int_{-\infty}^{\infty} \frac{n}{\sqrt{\pi}} e^{-n^2 x^2} x^{2k} dx = \int_{-\infty}^{\infty} \frac{n}{\sqrt{\pi}} e^{-y^2} \frac{y^{2k}}{n^{2k}} \frac{dy}{n} = \frac{1}{n^{2k}} \left( \frac{1}{\sqrt{\pi}} \int_{-\infty}^{\infty} e^{-y^2} y^{2k} dy \right)$$
+    El término entre paréntesis es simplemente una constante que no depende de $n$.
+\end{itemize}
+
+Observemos el factor $\frac{1}{n^{2k}}$. 
+\begin{itemize}
+\item Para $k = 0$ (es decir, $m = 0$), el factor es $\frac{1}{n^0} = 1$. La integral vale $\frac{1}{\sqrt{\pi}} \int e^{-y^2} dy = 1$.
+\item Para $k \ge 1$ (es decir, $m \ge 2$), el factor $\frac{1}{n^{2k}}$ hará que ese término tienda a cero cuando $n \to \infty$.
+\end{itemize}
+
+Tomando el límite de toda la suma cuando $n \to \infty$, todos los términos con $m \ge 1$ se anulan y solo sobrevive el término con $m=0$:
+$$\lim_{n \to \infty} \langle f_n, \varphi \rangle = \frac{\varphi(0)}{0!} \cdot 1 + 0 + 0 + \dots = \varphi(0)$$
+
+Como la acción de la delta de Dirac se define precisamente como $\langle \delta, \varphi \rangle = \varphi(0)$, concluimos que:
+$$f_n \xrightarrow{n \to \infty} \delta$$
+
+\item Convergencia de $f'_n$.
+
+En la teoría de distribuciones, la convergencia es compatible con la derivación. Es decir, si una sucesión converge a una distribución, las derivadas de la sucesión convergen a la derivada de la distribución. Demostrémoslo formalmente usando la definición de derivada distribucional:
+$$\langle f'_n, \varphi \rangle = - \langle f_n, \varphi' \rangle$$
+
+Dado que $\varphi$ es una función de prueba, su derivada $\varphi'$ también lo es. Podemos aplicar el resultado que acabamos de demostrar en el Paso a) para la función de prueba $\varphi'$:
+$$\lim_{n \to \infty} \langle f'_n, \varphi \rangle = -\lim_{n \to \infty} \langle f_n, \varphi' \rangle = - \varphi'(0)$$
+
+Por definición, la acción de la derivada de la delta de Dirac sobre una función de prueba es $\langle \delta', \varphi \rangle = -\varphi'(0)$. Por lo tanto:
+$$f'_n \xrightarrow{n \to \infty} \delta'$$
+
+\item Convergencia de $f_n^{(k)}$.
+
+Aplicando inducción y la misma lógica generalizada para la derivada $k$-ésima:
+$$\langle f_n^{(k)}, \varphi \rangle = (-1)^k \langle f_n, \varphi^{(k)} \rangle$$
+
+Sabiendo que $\varphi^{(k)}$ sigue siendo una función de prueba, tomamos el límite $n \to \infty$:
+$$\lim_{n \to \infty} \langle f_n^{(k)}, \varphi \rangle = (-1)^k \lim_{n \to \infty} \langle f_n, \varphi^{(k)} \rangle = (-1)^k \varphi^{(k)}(0)$$
+
+Esta expresión $(-1)^k \varphi^{(k)}(0)$ es la definición matemática de la acción de la $k$-ésima derivada de la delta de Dirac, es decir, $\langle \delta^{(k)}, \varphi \rangle$. Por consiguiente:
+$$f_n^{(k)} \xrightarrow{n \to \infty} \delta^{(k)}$$
+\end{enumerate}
+
 
 \prob Muestre que
 \[
