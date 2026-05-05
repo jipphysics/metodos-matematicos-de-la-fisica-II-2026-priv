@@ -561,6 +561,67 @@ Lo cual concluye la demostración. (Nota: Esta es la base para la propiedad más
 T_f(\varphi) = \int_0^{\infty} f(x)\varphi(x)\,dx,
 \]
 para toda $\varphi\in\mathcal{D}(\mathbb{R})$. Muestre que $T_f$ es una distribución.
+{\color{red} $\mathcal{D}(\mathbb{R})$ es espacio de las funciones de prueba. Podr\'ia ser el conjunto de las funciones definidas sobre los números reales que son infinitamente diferenciables, $C_0^{\infty}(\mathbb{R})$, o el espacio de Schwartz, $\mathcal{S}(\mathbb{R})$, i.e. el espacio de funciones infinitamente diferenciables definidas en los reales que, junto con todas sus derivadas, decaen a cero más rápido que cualquier polinomio cuando $x \to \pm\infty$ (por ejemplo, $e^{-x^2}$).}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 10)}
+\vspace{0.5cm}
+
+Para demostrar que una funcional $T_f : \mathcal{D}(\mathbb{R}) \to \mathbb{R}$ (o $\mathbb{C}$) es una distribución, debemos probar que cumple con dos propiedades fundamentales: Linealidad y Continuidad.
+
+\begin{itemize}
+\item Linealidad:
+Debemos probar que para cualesquiera funciones de prueba $\varphi, \psi \in \mathcal{D}(\mathbb{R})$ y constantes $\alpha, \beta \in \mathbb{C}$, se cumple que $T_f(\alpha\varphi + \beta\psi) = \alpha T_f(\varphi) + \beta T_f(\psi)$.
+
+Partimos de la definición de la funcional:
+$$T_f(\alpha\varphi + \beta\psi) = \int_0^{\infty} f(x) \left[ \alpha\varphi(x) + \beta\psi(x) \right] dx$$
+
+Utilizando la propiedad distributiva del producto y la linealidad de la integral, podemos separar los términos y sacar las constantes:
+$$T_f(\alpha\varphi + \beta\psi) = \int_0^{\infty} \alpha f(x)\varphi(x) dx + \int_0^{\infty} \beta f(x)\psi(x) dx$$
+$$T_f(\alpha\varphi + \beta\psi) = \alpha \int_0^{\infty} f(x)\varphi(x) dx + \beta \int_0^{\infty} f(x)\psi(x) dx$$
+
+Sustituyendo nuevamente por la definición de $T_f$:
+$$T_f(\alpha\varphi + \beta\psi) = \alpha T_f(\varphi) + \beta T_f(\psi)$$
+Con esto queda demostrada la linealidad.
+
+\item Continuidad:
+La continuidad en el sentido de las distribuciones significa que si una sucesión de funciones de prueba $\varphi_n$ converge a $0$ en el espacio $\mathcal{D}(\mathbb{R})$ (denotado como $\varphi_n \xrightarrow{\mathcal{D}} 0$), entonces la sucesión de números reales (o complejos) $T_f(\varphi_n)$ converge a $0$.
+
+Recordemos qué significa que $\varphi_n \xrightarrow{\mathcal{D}} 0$:
+\begin{itemize}
+\item Existe un conjunto compacto $K \subset \mathbb{R}$ tal que el soporte de todas las funciones $\varphi_n$ está contenido en $K$ (es decir, $\operatorname{supp}(\varphi_n) \subset K$ para todo $n$).
+\item La sucesión $\varphi_n(x)$ y todas sus derivadas convergen uniformemente a $0$ en $K$.
+\end{itemize}
+
+Vamos a evaluar el valor absoluto (o módulo) de la funcional aplicada a la sucesión:
+$$|T_f(\varphi_n)| = \left| \int_0^{\infty} f(x)\varphi_n(x) dx \right|$$
+
+Por la desigualdad triangular para integrales, el valor absoluto de una integral es menor o igual a la integral del valor absoluto:
+$$|T_f(\varphi_n)| \le \int_0^{\infty} |f(x)| |\varphi_n(x)| dx$$
+
+Como sabemos que $\varphi_n$ tiene soporte compacto en $K$, la función $\varphi_n(x)$ vale exactamente cero fuera de $K$. Por lo tanto, podemos restringir la región de integración al conjunto $K_+ = K \cap [0, \infty)$:
+$$|T_f(\varphi_n)| \le \int_{K_+} |f(x)| |\varphi_n(x)| dx$$
+
+Dado que $\varphi_n$ converge uniformemente a 0 en $K$, podemos acotar $|\varphi_n(x)|$ por su valor máximo en $K_+$, al que llamaremos $\|\varphi_n\|_{\infty}$. Podemos sacar este término de la integral:
+$$|T_f(\varphi_n)| \le \|\varphi_n\|_{\infty} \int_{K_+} |f(x)| dx$$
+
+Como por hipótesis $f \in L^1(\mathbb{R})$, sabemos que la integral de su valor absoluto sobre todo $\mathbb{R}$ (y en consecuencia, sobre cualquier subconjunto $K_+$) es finita Sea $C = \int_{K_+} |f(x)| dx < \infty$. Entonces:
+$$|T_f(\varphi_n)| \le C \|\varphi_n\|_{\infty}$$
+
+Finalmente, como $\varphi_n \to 0$ uniformemente, sabemos que el máximo $\|\varphi_n\|_{\infty} \to 0$ cuando $n \to \infty$. Por consiguiente:
+$$\lim_{n \to \infty} |T_f(\varphi_n)| \le C \cdot 0 = 0$$
+Lo que implica que $T_f(\varphi_n) \to 0$.
+Finalmente, recordando el Problema 5, sabemos que una funci\'on lineal es cont\'inua en todas partes si es cont\'inua en 0.
+\end{itemize}
+
+Hemos demostrado que la funcional es tanto lineal como continua, por lo que $T_f$ es formalmente una distribución.
+
+
+
+
+
+
+
 
 \prob Pensando a la delta de Dirac como una función generalizada, pruebe las siguientes propiedades:
 \begin{enumerate}
