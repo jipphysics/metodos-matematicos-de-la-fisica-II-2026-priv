@@ -141,6 +141,188 @@
 \item La derivada de la delta de Dirac: $\delta'(x-a)$.
 \end{enumerate}
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1a)}
+\vspace{0.5cm}
+
+
+Calcular la transformada de Fourier de la distribución de Heaviside
+
+$$
+\Theta(x-a).
+$$
+
+Voy a usar la convención
+
+$$
+\widehat{f}(k)=\int_{-\infty}^{\infty} dx\, f(x)e^{-ikx}.
+$$
+
+La función escalón puede escribirse como una traslación:
+
+$$
+\Theta(x-a)=\Theta(y), \qquad y=x-a.
+$$
+
+Entonces
+
+$$
+\hat{\Theta}(x-a)(k)
+=
+\int_{-\infty}^{\infty} dx\, \Theta(x-a)e^{-ikx}.
+$$
+
+Haciendo el cambio de variable $u=x-a$,
+
+$$
+x=u+a,
+\qquad
+dx=du,
+$$
+
+queda
+
+$$
+\widehat{\Theta(x-a)}(k)
+=
+e^{-ika}
+\int_{-\infty}^{\infty}du\,\Theta(u)e^{-iku}.
+$$
+
+Pero
+
+$$
+\Theta(u)=
+\begin{cases}
+0, & u<0,\\
+1, & u>0,
+\end{cases}
+$$
+
+de modo que
+
+$$
+\int_{-\infty}^{\infty}du\,\Theta(u)e^{-iku}
+=
+\int_0^\infty du\,e^{-iku}.
+$$
+
+Esta integral no converge ordinariamente, sino en el sentido de distribuciones. Regularizamos:
+
+$$
+\int_0^\infty du\, e^{-(\varepsilon+ik)u}
+=
+\frac{1}{\varepsilon+ik},
+\qquad \varepsilon>0.
+$$
+
+Tomando $$\varepsilon\to0^+$$,
+
+$$
+\frac{1}{\varepsilon+ik}
+=
+-i\frac{1}{k-i\varepsilon}.
+$$
+
+Usando la identidad distributiva de Sokhotski–Plemelj,
+
+$$
+\lim_{\varepsilon\to0^+}\frac{1}{k-i\varepsilon}
+=
+\mathrm{PV}!\left(\frac1k\right)+i\pi\delta(k),
+$$
+
+obtenemos
+
+$$
+\int_0^\infty e^{-iku},du
+=
+\pi\delta(k)-i,\mathrm{PV}!\left(\frac1k\right).
+$$
+
+Por lo tanto,
+
+$$
+\boxed{
+\widehat{\Theta(x-a)}(k)
+=
+e^{-ika}
+\left[
+\pi\delta(k)
+-i,\mathrm{PV}!\left(\frac1k\right)
+\right]
+}.
+$$
+
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1b)}
+\vspace{0.5cm}
+
+Calcular la transformada de Fourier de
+
+$$
+\delta'(x-a).
+$$
+
+Usamos la propiedad distributiva
+
+$$
+\langle \delta'(x-a)\,\varphi(x)\rangle
+=
+-\varphi'(a).
+$$
+
+Entonces
+
+$$
+\widehat{\delta'(x-a)}(k)
+=
+\int_{-\infty}^{\infty} dx\,\delta'(x-a)e^{-ikx}.
+$$
+
+Tomamos
+
+$$
+\varphi(x)=e^{-ikx}.
+$$
+
+Luego
+
+$$
+\varphi'(x)=-ik\,e^{-ikx},
+$$
+
+y por definición de derivada de distribución,
+
+$$
+\int dx\, \delta'(x-a)e^{-ikx}
+=
+-\varphi'(a).
+$$
+
+Así,
+
+$$
+-\varphi'(a)
+=
+-(-ik e^{-ika})
+ik\,e^{-ika}.
+$$
+
+Finalmente,
+
+$$
+\boxed{
+\widehat{\delta'(x-a)}(k)
+=
+ik\,e^{-ika}
+}.
+$$
+
+El factor $e^{-ika}$ aparece por la traslación, y el factor $ik$ porque derivar en el espacio real corresponde a multiplicar por $ik$ en el espacio de Fourier.
+
+
 \prob Encuentre por transformada de Fourier la soluci\'on general de la ecuaci\'on de movimiento
 \[
 \ddot{x} + \omega_0^2 x = 0, \qquad -\infty < t < \infty
