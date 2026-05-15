@@ -1,0 +1,182 @@
+\documentclass[11pt,spanish]{article}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amsmath,amssymb}
+
+
+\oddsidemargin=0.5cm
+\textwidth=16cm
+\textheight=48\baselineskip
+\topmargin=-1.5cm
+\parskip 2truemm
+\parindent 0pt
+\newcounter{problema}
+\typeout{****************************************}
+\typeout{****** Configuracion de Guia 11pt ******}
+\typeout{****************************************}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\renewcommand{\labelenumi}{\em \alph{enumi})}
+\renewcommand{\labelenumii}{\em \arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\n{\nabla}
+\newcommand\F{\vec F}
+\newcommand\G{\vec G}
+\newcommand\noi{\noindent}
+\newcommand\re{\mbox{Re}}
+\newcommand\im{\mbox{Im}}
+%\newcommand\arg{\mbox{arg}}
+\newcommand\Arg{\mbox{Arg}}
+\newcommand{\prob}{\stepcounter{problema} \noindent{\bf Problema
+\arabic{problema}: }}
+\newcommand\pin[2]{\big\langle #1,#2 \big\rangle}
+\newcommand\pd[2]{\frac{\partial #1}{\partial #2}}
+\newcommand\R{\mathbb{R}}
+
+%\input{/home/ortiz/lib/definiciones.tex}
+\begin{center}
+{\large\sc Facultad de Matem\'atica, Astronom\'ia, F\'isica y Computaci\'on, U.N.C.}
+
+\vspace{2mm}
+{\large M\'etodos Matem\'aticos de la F\'isica II}
+
+\vspace{2mm}
+{\large Gu\'ia N$^{\sf o}$ 6 (2021)}
+\end{center}
+
+\prob{} Verificar que 
+$$
+u_p(x,t) = \frac{1}{2c} \int_0^t\int_{x-c(t-\tau)}^{x+c(t-\tau)}
+\psi(s,\tau)~ds~d\tau.
+$$
+satisface el problema
+$$
+\pd{^2u}{t^2} - c^2\pd{^2u}{x^2} = \psi(x,t), \qquad u:D\subset\R^2\to
+\R,
+$$
+con dato inicial cero.
+
+
+
+
+\prob{}
+Resolver la ecuaci\'on $u_{tt}=c^2 u_{xx}$ con las siguientes condiciones:
+
+\begin{enumerate}
+\item $u(x,0)=0$ y $u_t(x,0)=\sin x$
+
+\item $u(x,0)=e^x$ y $u_t(x,0)=\cos x$
+
+\end{enumerate}
+
+
+\prob{} Probar que si los datos iniciales $f(x)$ y $g(x)$ tienen soporte
+compacto, o decaen junto con sus derivadas primeras suficientemente rápido a
+cero cuando $|x|\to\infty$, y el problema 
+\begin{equation*}\begin{split}
+\pd{^2u}{t^2} - c^2\pd{^2u}{x^2} =& 0, \qquad u:D\subset\R^2\to
+\R,\\
+u(x,0) =& f(x),\\
+\pd{u}{t}(x,0) =& g(x).
+\end{split}
+\end{equation*}
+conserva la energía de la solución. {\em Sugerencia:} Muestre que la derivada de
+$E(t)$ respecto al tiempo es cero, y por lo tanto $E(t) = E(0)$ para todo $t>0.$
+
+\prob{} Resolver el problema de las oscilaciones transversales propias de una cuerda homogenea de longitud $L$ si:
+
+\begin{enumerate}
+\item Los extremos de la cuerda estan fijos r\'igidamente. 
+
+\item los extremos de la cuerda estan libres. Es decir, $\cfrac{du}{dx}=0$ en los extremos de la cuerda. Esto tiene lugas cuando los extremos de la cuerda est\'an sujetos mediante anillos (de masas despreciables), que se deslizan sin rozamiento sobre barras paralelas.
+
+
+\end{enumerate}
+\prob{} Defina la Energía para el problema 
+\begin{equation*}\begin{split}
+&\pd{^2u}{t^2} - c^2\pd{^2u}{x^2} = 0, \qquad u:[0,L]\times[0,\infty)\subset\R^2\to
+\R,\\
+&u(0,x) = f(x),\quad  \pd{u}{t}(0,x) = g(x),\qquad \mbox{(datos iniciales)}\\
+&u(0,t) = u(L,t)=  0, \qquad t\ge 0, \qquad \mbox{(condiciones de contorno)}
+\end{split}
+\end{equation*}
+y muestre que esta es constante en el tiempo.
+
+\prob{} Condidere el problema para la cuerda de guitarra, igual al anterior
+salvo por la introducción de una pequeña disipación, representada mediante un término de derivada temporal primera. La ecuación diferencial es entonces
+\[
+\pd{^2u}{t^2} - c^2\pd{^2u}{x^2} + \gamma \pd{u}{t} = 0, \qquad 0 < \gamma <
+\frac{2\pi c}{L}.
+\]
+Resuelva el problema. Muestre que la solución y su energía en este caso decaen
+con el tiempo. >Con qué ley temporal?
+
+\prob{} Hallar a solución de la ecuación de ondas homogénea en la franja
+$(x,t) \in D = [0,1]\times [0,\infty),$ con condiciones iniciales homogéneas, es
+decir
+\[
+u(x,0) = 0, \qquad \pd{u}{t}(x,0) = 0,
+\]
+y con condiciones de contorno 
+
+\begin{equation}\label{bc_frontera_izq}
+\pd{u}{t}(x_0,t) + c\pd{u}{x}(x_0,t) = h_0(t).
+\end{equation}
+en la frontera $x=0$ con
+\[
+h_0(t) = \begin{cases}
+1 &  0<t\le 1,\\
+0 &  1<t,
+\end{cases}
+\]
+y condición de reflección 
+\[
+\pd{u}{x}(1,t) = 0
+\]
+sobre la frontera $x=1.$
+
+\prob{} Resuelva la ecuaci\'on de ondas, $c^2 \Delta u = u_{tt}$, para una membrana circular de radio $R$ con el borde fijo sabiendo que $u(r,\theta,0)=0$ y $u_t(r,\theta,0)=r \sen (3\theta)$. 
+
+\prob{} Resolver la ecuaci\'on de onda de una membrana en forma de cu\~na que se encuentra inicialmente en reposo con las condiciones de borde tal como muestra la figura.  En $t=0$ la membrana tiene la forma $f(r,\theta,0)=r\sin(6 \theta)$.
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+  \filldraw[fill=gray!40!white, draw=black!50!black]
+    (2,0) -- (4,0) arc (0:35:4) -- (0,0);
+\draw[<-] (5,0) -- (0,0); 
+\draw[<-] (0,2.5) -- (0,0);
+\node at (5,-0.2) {\it \large x};
+\node at (-0.2,2.5) {\it \large y};
+\node at (4,-0.2) {\it \large a};
+\node at (2.7,0.8) {$c^2 \Delta u =u_{tt}$};
+\node at (4.3,1.2) {$u=0$};
+\node [rotate=35 ]  at (1.5,1.3) {$u=0$};
+\node at (2,-0.2) {$u=0$};
+\draw [<-] (1,0) arc (0:60:16.5pt);
+\node at (1.4,0.25) {$\alpha=\frac{\pi}{3}$};
+\end{tikzpicture}   
+\end{center}
+
+
+\prob{} Considere la  ecuaci\'on de ondas $u_{tt}= c^2\Delta u$ en el interior de una esfera de radio $a$ tal que $u=u(r,t)$. 
+
+a) Discuta una transformaci\'on de tipo $u = r^{\alpha}\psi$ para reducir esta ecuaci\'on a la  ecuaci\'on del onda usual.
+
+b) Resuelva la ecuación anterior que satisface las conidicones $u(r=a,t)=0$, $u(r,0)=\beta$ y $u_t(r,0)=0$, donde $\beta$ es una constante.
+
+\prob{} Cierta cuerda de largo $L$ cuya densidad es variable est\'a tensada por sus extremos que est\'an fijos y sus desplazamientos $u$ (respecto de la posici\'on de equilibrio) est\'an bien modelados por la ecuaci\'on (de onda)
+\[ u_{tt} = c^2 (1+ \epsilon x )^2 u_{xx}\;,\;\; 0<x<L\;,\]
+donde $\epsilon >0$.
+Determine los modos de esta cuerda.\\
+\textit{Sugerencia:} Use la transformaci\'on de variables  $y:= 1+ \epsilon x$ para reescribir la ecuaci\'on.\\
+
+
+
+\end{document}
+
+
+

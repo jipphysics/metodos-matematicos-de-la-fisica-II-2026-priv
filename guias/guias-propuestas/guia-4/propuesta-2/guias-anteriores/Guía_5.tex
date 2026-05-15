@@ -1,0 +1,79 @@
+\documentclass[11pt,spanish]{article}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amsmath,amssymb}
+
+\oddsidemargin=0.5cm
+\textwidth=16cm
+\textheight=48\baselineskip
+\topmargin=-1.5cm
+\parskip 2truemm
+\parindent 0pt
+\newcounter{problema}
+\typeout{****************************************}
+\typeout{****** Configuracion de Guia 11pt ******}
+\typeout{****************************************}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\renewcommand{\labelenumi}{\em \alph{enumi})}
+\renewcommand{\labelenumii}{\em \arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\n{\nabla}
+\newcommand\F{\vec F}
+\newcommand\G{\vec G}
+\newcommand\noi{\noindent}
+\newcommand\re{\mbox{Re}}
+\newcommand\im{\mbox{Im}}
+%\newcommand\arg{\mbox{arg}}
+\newcommand\Arg{\mbox{Arg}}
+\newcommand{\prob}{\stepcounter{problema} \noindent{\bf Problema
+\arabic{problema}: }}
+\newcommand\pin[2]{\big\langle #1,#2 \big\rangle}
+
+%\input{/home/ortiz/lib/definiciones.tex}
+\begin{center}
+{\large\sc Facultad de Matem\'atica, Astronom\'ia, F\'isica y Computaci\'on, U.N.C.}
+
+\vspace{2mm}
+{\large M\'etodos Matem\'aticos de la F\'isica II}
+
+\vspace{2mm}
+{\large Gu\'ia N$^{\sf o}$ 5 (2021\color[rgb]{0,0,0})}
+\end{center}
+
+\prob{} Considere la ecuaci\'on de calor $\kappa \Delta u= \cfrac{\partial u}{\partial t}$ dentro de una caja delimitada por $0<x<L$, $0 < y <H$ y $0 < z <W$.  En $t=0$ la distribuci\'on de tempratura es $u=2y \sen(x)$.
+Las condiciones de borde son:
+
+\begin{tabular}{ccc}
+$u(0,y,z,t)=0$ \hspace{1cm} & $\cfrac{\partial u}{\partial y} (x,0,z,t)=0$ \hspace{1cm} & $\cfrac{\partial u}{\partial z} (x,y,0,t)=0$ \\
+$u(L,y,z,t)=0$ \hspace{1cm} & $\cfrac{\partial u}{\partial y} (x,H,z,t)=0$ \hspace{1cm} & $u(x,y,W,t)=0$ \\
+
+\end{tabular}
+
+\prob{} Resuelva la ecuación de calor $\kappa \Delta u= \cfrac{\partial u}{\partial t}$ dentro de un cilindro de radio $a$ y altura $H$ con condiciones de borde $u(r,\theta,0,t)=0$, $u(r,\theta,H,t)=0$ y $u(a,\theta,z,t)=0$. Inicialmente el cilindro tiene una distribución de temperatua dada por $u(r,\theta,z,0)=rz$.
+
+\prob{} Encuentre la distribuci\'on de temperatura, $u(r,\theta,\phi,t)$,   dentro de una esfera de radio $a$ si $u(a,\theta,\phi,t)=0$ y $u(r,\theta,\phi,0)=\sen(\theta)$, donde $\theta \in [0, \pi]$.
+
+\prob{} Considere una placa metálica semicircular de radio $a$, es decir $0 < \theta < \pi$ y $0 < r < a$. Resuelva la ecuación de calor $\kappa \Delta u= \cfrac{\partial u}{\partial t}$ en el semicírculo, con las condiciones de contorno de Dirichlet:
+$u(r,0,t) = 0$, $u(r,\pi,t) = 0$, $u(a,\theta,t) = 0$, y la condición inicial $u(r,\theta,0) = r \sen^2(\theta)$.
+
+\prob{} Resuelva la ecuación de calor $\kappa \Delta u= \cfrac{\partial u}{\partial t}$ dentro de un cuarto de círculo, con las condiciones de contorno: $u(r,0,t) = 0$, $u(r,\pi/2,t) = 0$, $\cfrac{\partial u}{\partial r}\,(R,\theta,t) = 0$, y la condición inicial $u(r,\theta,0) = r^2 \cos(3\theta)$.
+
+\prob{} Considere la ecuación de calor unidimensional con un término fuente
+\[\cfrac{\partial u}{\partial t} = \cfrac{\partial^2 u}{\partial x^2} + Q(x),\]
+siendo $0 < x < L$ y $t > 0$, con las condiciones de contorno: $u(0,t) = 0$, $u(L,t) = 0$ y la condición inicial $u(x,0) = f(x)$. Resuelva dicha ecuación para el caso en que $L = 2$, $f(x) = 2x-x^2$, $Q(x) = 1 - |x-1|$.
+
+\prob{} Resuelva la ecuación
+\[\cfrac{\partial u}{\partial t} = \cfrac{\partial^2 u}{\partial x^2} + \alpha\,u,\]
+siendo $0 < x < 2$ y $t > 0$, con las condiciones de contorno: $\cfrac{\partial u}{\partial x}\,(0,t) = 0$, $\cfrac{\partial u}{\partial x}\,(2,t) = 0$, y la condición inicial $u(x,0) = 4x-x^3$.
+\emph{Ayuda}: Realice el cambio de variable $u = A(x,t)\,v$ y determine la función $A(x,t)$ que lleve a resolver una ecuación de calor para $v(x,t)$ sin ningún término fuente (como $\alpha\,u$).
+
+
+\end{document}
+
+
