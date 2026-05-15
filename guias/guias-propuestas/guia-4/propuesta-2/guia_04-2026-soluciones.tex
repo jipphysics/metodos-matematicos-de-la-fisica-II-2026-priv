@@ -248,6 +248,39 @@ e^{-ika}
 }.
 $$
 
+\vspace{0.5cm}
+{\bf Ayuda:} ¿Qué es el Valor Principal?
+\vspace{0.5cm}
+
+El Valor Principal (P.V.) o Valor Principal de Cauchy es un método para asignar un valor a integrales impropias que, de otro modo, serían divergentes debido a una singularidad en el intervalo de integración.
+
+\vspace{0.5cm}
+{\em Definición Matemática.}
+\vspace{0.5cm}
+
+Si tenemos una función con una singularidad en $x=c$, el valor principal se define como el límite simétrico alrededor de ese punto:
+
+$$PV \int_{a}^{b} f(x) dx = \lim_{\epsilon \to 0^+} \left( \int_{a}^{c-\epsilon} f(x) dx + \int_{c+\epsilon}^{b} f(x) dx \right)$$
+
+\vspace{0.5cm}
+{\em ¿Por qué aparece en la Transformada de Heaviside?}
+\vspace{0.5cm}
+
+Aparece porque la función $1/k$ tiene una singularidad en $k=0$. En el contexto de las distribuciones, la escritura 
+$$
+\mathrm{P.V.}
+\left(
+\frac{1}{k}
+\right)
+=
+\frac{1}{\text{PV}(k)}
+$$ 
+indica que, al integrar esta distribución con una función de prueba $\phi(k)$, debemos tomar el límite simétrico para evitar la divergencia en el origen:
+
+$$\left\langle \frac{1}{\text{PV}(k)} , \phi(k) \right\rangle = \lim_{\epsilon \to 0^+} \int_{|k|>\epsilon} \frac{\phi(k)}{k} dk$$
+
+Esto permite ``cancelar'' las áreas infinitas de signo opuesto que se encuentran a ambos lados del eje vertical en la función $1/k$.
+
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 1b)}
