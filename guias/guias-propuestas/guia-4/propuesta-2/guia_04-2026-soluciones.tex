@@ -155,38 +155,26 @@ $$
 Voy a usar la convención
 
 $$
-\widehat{f}(k)=\int_{-\infty}^{\infty} dx\, f(x)e^{-ikx}.
+\hat{f}(k)
+=
+\int_{-\infty}^{\infty} dx\, f(x)e^{-ikx}.
 $$
 
 La función escalón puede escribirse como una traslación:
 
 $$
-\Theta(x-a)=\Theta(y), \qquad y=x-a.
+\Theta(x-a)=\Theta(u), \qquad u=x-a.
 $$
 
 Entonces
 
 $$
-\hat{\Theta}(x-a)(k)
+\hat{\Theta}_a(k)
 =
-\int_{-\infty}^{\infty} dx\, \Theta(x-a)e^{-ikx}.
-$$
-
-Haciendo el cambio de variable $u=x-a$,
-
-$$
-x=u+a,
-\qquad
-dx=du,
-$$
-
-queda
-
-$$
-\widehat{\Theta(x-a)}(k)
+\int_{-\infty}^{\infty} dx\, \Theta(x-a)e^{-ikx}
 =
 e^{-ika}
-\int_{-\infty}^{\infty}du\,\Theta(u)e^{-iku}.
+\int_{-\infty}^{\infty} du\, \Theta(u)e^{-iku}.
 $$
 
 Pero
@@ -216,7 +204,7 @@ $$
 \qquad \varepsilon>0.
 $$
 
-Tomando $$\varepsilon\to0^+$$,
+Tomando $\varepsilon\to0^+$,
 
 $$
 \frac{1}{\varepsilon+ik}
@@ -229,27 +217,33 @@ Usando la identidad distributiva de Sokhotski–Plemelj,
 $$
 \lim_{\varepsilon\to0^+}\frac{1}{k-i\varepsilon}
 =
-\mathrm{PV}!\left(\frac1k\right)+i\pi\delta(k),
+\mathrm{P.V.}\left(\frac1k\right)+i\pi\delta(k),
 $$
 
 obtenemos
 
 $$
-\int_0^\infty e^{-iku},du
+\int_0^\infty 
+du\,
+e^{-iku}
 =
-\pi\delta(k)-i,\mathrm{PV}!\left(\frac1k\right).
+\pi\delta(k)-i\,\mathrm{P.V.}\left(\frac1k\right).
 $$
 
 Por lo tanto,
 
 $$
 \boxed{
-\widehat{\Theta(x-a)}(k)
+\hat{\Theta}_a(k)
 =
 e^{-ika}
 \left[
 \pi\delta(k)
--i,\mathrm{PV}!\left(\frac1k\right)
+-i\,
+\mathrm{P.V.}
+\left(
+\frac{1}{k}
+\right)
 \right]
 }.
 $$
@@ -268,7 +262,7 @@ $$
 Usamos la propiedad distributiva
 
 $$
-\langle \delta'(x-a)\,\varphi(x)\rangle
+\langle \delta'(x-a) , \varphi(x)\rangle
 =
 -\varphi'(a).
 $$
@@ -276,7 +270,9 @@ $$
 Entonces
 
 $$
-\widehat{\delta'(x-a)}(k)
+\hat{\delta}'_a(k)
+=
+\int_{-\infty}^{\infty} dx\,\delta'_a(x)e^{-ikx}
 =
 \int_{-\infty}^{\infty} dx\,\delta'(x-a)e^{-ikx}.
 $$
@@ -296,7 +292,7 @@ $$
 y por definición de derivada de distribución,
 
 $$
-\int dx\, \delta'(x-a)e^{-ikx}
+\int dx\, \delta'_a(x)e^{-ikx}
 =
 -\varphi'(a).
 $$
@@ -314,7 +310,7 @@ Finalmente,
 
 $$
 \boxed{
-\widehat{\delta'(x-a)}(k)
+\hat{\delta}'_a(x)(k)
 =
 ik\,e^{-ika}
 }.
