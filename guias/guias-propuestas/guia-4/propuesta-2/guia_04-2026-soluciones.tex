@@ -1,0 +1,353 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=50\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Guía 4}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+\newcommand{\tder}[2]{\frac{d #1}{d #2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Guía N$^\txt{o}$ 4 -- 2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{Parte I: Problemas Centrales (para desarrollar en clase)}
+
+
+\prob Calcule las transformadas de Fourier de las siguientes distribuciones:
+\begin{enumerate}
+\item La distribución de Heaviside (escalón): $\Theta(x-a)$.
+\item La derivada de la delta de Dirac: $\delta'(x-a)$.
+\end{enumerate}
+
+\prob Encuentre por transformada de Fourier la soluci\'on general de la ecuaci\'on de movimiento
+\[
+\ddot{x} + \omega_0^2 x = 0, \qquad -\infty < t < \infty
+\]
+para un oscilador arm\'onico de frecuencia natural~$\omega_0$ sin forzamiento ni disipaci\'on.
+
+\prob Considere el siguiente problema de Neumann en el intervalo $[0, L]$:
+\[
+y'' = \lambda y,\qquad y'(0)=y'(L)=0.
+\]
+\begin{enumerate}
+\item Sin usar la forma explícita de los autovalores y autofunciones, muestre vía el producto escalar
+\[
+\langle f, g\rangle := L^{-1}\int_0^L f(x)g(x)\,dx
+\]
+que los autovalores son negativos y que las autofunciones a distintos autovalores son ortogonales respecto del producto escalar.
+\item Determine los autovalores y autofunciones.
+\end{enumerate}
+
+\prob Obtenga dos soluciones LI de la ecuación de Legendre
+\[
+(1-x^2)y'' - 2xy' + \alpha(\alpha+1)y = 0, \quad -1<x<1,
+\]
+donde $\alpha(\alpha+1)\in\sca{R}$ es el autovalor.
+\begin{enumerate}
+\item Muestre que $x_0=0$ es un punto regular de la ecuaci\'on, y que por lo tanto pueden escribirse soluciones en forma de serie de potencias
+\[
+y = \sum_{n=0}^{\infty} a_n x^{n}.
+\]
+\item Muestre que la relaci\'on de recurrencia para los coeficientes de la serie se escribe
+\[
+a_{n+2} = -\frac{(\alpha-n)(\alpha+n+1)}{(n+1)(n+2)}a_n, \quad n=2,3,4,\ldots\,,
+\]
+donde~$a_0$ y~$a_1$ pueden elegirse libremente.
+\item Eligiendo $a_0=1$ y  $a_1=0$, obtenga la serie de potencias pares en $x$
+\[
+y_{\text{par}} = 1 + \sum_{n=1}^\infty
+    (-1)^n\,\frac{\alpha(\alpha-2)\dots(\alpha-2n+2)\cdot 
+                  (\alpha+1)(\alpha+3)\dots(\alpha+2n-1)}{(2n)!} x^{2n}.
+\]
+\item Eligiendo $a_0=0$ y  $a_1=1$, obtenga la serie de potencias impares en $x$
+\[
+y_{\text{impar}} =  x + \sum_{n=1}^\infty
+    (-1)^n\,\frac{(\alpha-1)(\alpha-3)\dots(\alpha-2n+1)\cdot
+                  (\alpha+2)(\alpha+4)\dots(\alpha+2n)}{(2n+1)!} x^{2n+1}.
+\]
+\item Muestre que ambas soluciones, $y_{\text{par}}$ y $y_{\text{impar}}$, son LI en $-1<x<1$.
+\item Muestre que ambas soluciones convergen en $-1<x<1$, pero divergen en $x = \pm 1$ si la serie es infinita.
+\item Finalmente, muestre que eligiendo apropiadamente $\alpha$ una de las dos series se trunca a un polinomio, evitando así la divergencia. Muestre tambi\'en que en cada caso la otra soluci\'on sigue siendo una serie infinita.
+\end{enumerate}
+
+\prob Usando el m\'etodo de Frobenius, obtenga soluciones de la ecuación de Bessel
+\[
+x^2 y'' + x y' + (x^2-\alpha^2) y = 0, \quad \real{\alpha}>0, \quad -\infty<x<\infty.
+\]
+\begin{enumerate}
+\item Muestre que $x_0=0$ es un punto singular regular de la ecuaci\'on, y que por lo tanto pueden escribirse soluciones en forma de serie de potencias generalizada
+\[
+y = \abs{x}^\alpha \sum_{n=0}^\infty a_n x^n, \quad a_0 \neq 0.
+\]
+\item Muestre que las ra\'{\i}ces del polinomio indicial son $r_1=\alpha$ y $r_2=-\alpha$.
+\item Para la soluci\'on correspondiente a~$r_1$, muestre que la relaci\'on de recurrencia para los coeficientes de la serie generalizada se escribe
+\begin{align*}
+\bigl[ (\alpha+1)^2 - \alpha^2 \bigr] a_1 &= 0,\\
+\bigl[ (\alpha+n)^2 - \alpha^2 \bigr] a_n &= -a_{n-2},
+\quad n = 2,3,\ldots\,,
+\end{align*}
+y que por lo tanto $a_n=0$ para~$n$ impar y
+\[
+a_n = -\frac{a_{n-2}}{n(n+2\alpha)}
+\]
+para~$n$ par.
+\item Muestre que la soluci\'on correspondiente a~$r_1$ puede escribirse
+\[
+J_\alpha(x) = \left( \frac{x}{2} \right)^\alpha \sum_{n=0}^\infty \frac{(-1)^n}{n!\,\Gamma(n+1+\alpha)}  \left( \frac{x}{2} \right)^{2n}, \quad 0<x<\infty,
+\]
+que se conoce como la \emph{funci\'on de Bessel de primera especie y orden}~$\alpha$. Note que esta soluci\'on es regular en $x=0$.
+\item Muestre que si $2\alpha\neq0,1,2,\ldots$, una segunda soluci\'on, correspondiente a~$r_2$ y LI de~$J_\alpha$, puede escribirse
+\[
+J_{-\alpha}(x) = \left( \frac{x}{2} \right)^{-\alpha} \sum_{n=0}^\infty \frac{(-1)^n}{n!\,\Gamma(n+1-\alpha)}  \left( \frac{x}{2} \right)^{2n}, \quad 0<x<\infty.
+\]
+Note que esta soluci\'on es singular en $x=0$.
+\end{enumerate}
+
+\prob Un conjunto de funciones $u_n(x)$ satisfacen la ecuación de Sturm-Liouville
+\[
+\frac{d}{dx}\left[p(x)\frac{d}{dx}u_n(x)\right] + \lambda_n u_n(x) = 0.
+\]
+Las funciones $u_m$ y $u_n$ satisfacen condiciones de contorno que llevan a la ortogonalidad. Los correspondientes autovalores $\lambda_m$ y $\lambda_n$ son distintos. Pruebe que, con condiciones de contorno apropiadas, $u_m(x)$ y $u_n(x)$ son ortogonales con función de peso $p(x)$.
+
+\prob Considere la EDO
+\[
+\tilde{L}(y) = a_0(x)y'' + a_1(x) y' + a_2(x) y = f(x), \quad x\in (a,b),
+\]
+con $a_0\in{\cal C}^1[a,b]$ que no se anula en~$(a,b)$, y $a_1,a_2\in{\cal C}[a,b]$.
+\begin{enumerate}
+\item Muestre que definiendo un factor integrante
+\[
+\rho(x) = \frac{c}{a_0(x)} \exp\left(\int^x \frac{a_1(x')}{a_0(x')}\,dx'\right),
+\]
+donde~$c$ es una constante, y el nuevo operador $L=\rho\tilde{L}$, la EDO puede escribirse
+\[
+Ly = \rho f(x), \quad x\in (a,b),
+\]
+con
+\[
+L = \tder{}{x}\left( p(x)\tder{}{x} \right) + r(x)
+\]
+y $p=\rho a_0$, $r=\rho a_2$.
+\item Muestre que si~$x=a$ es un punto singular regular de la EDO, entonces $p(a)=0$, y que si~$\phi_1$ y~$\phi_2$ son dos soluciones LI, al menos una de ellas debe ser singular en~$x=a$. (Idem para $x=b$).
+\end{enumerate}
+
+\prob Resuelva, usando el método de las características, los siguientes problemas escalares de primer orden:
+\begin{enumerate}
+\item $\displaystyle \frac{1}{\sigma}\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y} = 0,\quad x>0,\quad u(x,0)=g(x).$
+\item $\displaystyle x\frac{\partial u}{\partial x} - 2y\frac{\partial u}{\partial y} = 0,\quad u(1,y)=1+2y.$
+\item $\displaystyle x\frac{\partial u}{\partial x} - 2y\frac{\partial u}{\partial y} = u^2,\quad u(x,0)=x^3.$
+\item $\displaystyle y\frac{\partial u}{\partial x} - x\frac{\partial u}{\partial y} = e^{u},\quad u(0,y)=y^2-1.$
+\end{enumerate}
+
+
+
+\section*{Parte II: Problemas Propuestos (para profundización y repaso)}
+
+
+\prob Obtenga dos soluciones LI de la ecuación de Hermite
+\[
+y'' - 2xy' + 2\alpha y = 0, \quad -\infty<x<\infty,
+\]
+donde $\alpha\in\sca{R}$ es el autovalor, repitiendo los pasos del Problema~4. En particular:
+\begin{enumerate}
+\item Muestre que ambas soluciones en forma de serie (una par y la otra impar) son convergentes para $-\infty<x<\infty$, y que el cociente de coeficientes sucesivos se comporta, para índices grandes, como el cociente de los coeficientes del desarrollo en serie de la función $\exp(-x^2)$.
+\item Muestre que eligiendo apropiadamente el parámetro $\alpha$, la solución en serie de potencias pares o impares puede ser truncada a polinomios finitos. Estos son conocidos como \emph{polinomios de Hermite}.
+\end{enumerate}
+
+\prob Continuando con el Problema 5, muestre que si en la ecuaci\'on de Bessel tenemos $\alpha=0$, una segunda soluci\'on LI de~$J_0$ puede escribirse
+\[
+K_0(x) = -\sum_{m=1}^\infty \frac{(-1)^m}{((2m)!!)^2}
+           \left( 1+\frac{1}{2}+\dots+\frac{1}{m} \right)
+           \left( \frac{x}{2} \right)^{2m}
+        + \ln(x)J_0(x),
+\]
+que se conoce como \emph{funci\'on de Bessel de segunda especie y orden~0}.
+
+\prob Considere un sistema lineal invariante en el tiempo. Su función de transferencia $G(\omega)$ satisface que cuando la entrada es
+\[
+f(t)=\begin{cases}
+0, & t<0,\\
+e^{-\lambda t}, & t>0,
+\end{cases}
+\]
+(donde $\lambda$ es una constante fija), la salida resultante es
+\[
+F(t)=\begin{cases}
+0, & t<0,\\
+(1-e^{-\alpha t})e^{-\lambda t}, & t>0,
+\end{cases}
+\]
+donde $\alpha$ es otra constante fija.
+\begin{enumerate}
+\item Calcule $G(\omega)$.
+\item Calcule la respuesta del sistema a la entrada $f(t)=A\delta(t)$.
+\end{enumerate}
+
+\prob Muestre que la solución de la EDO
+\[
+-\frac{d^2u}{dx^2}+k_0^2 u = h(x),\qquad -\infty<x<\infty,
+\]
+está dada por
+\[
+u(x)=\frac{1}{2k_0}\int_{-\infty}^{\infty} e^{-k_0|x-x'|}h(x')\,dx'.
+\]
+Discuta qué está asumiendo sobre las condiciones de contorno satisfechas por $u$ y $h$ en $x=\pm\infty$.
+
+\prob Calcule la transformada de Fourier de la función de onda para un electrón $2p$ en el átomo de hidrógeno,
+\[
+\phi(\vec{x}) = \frac{1}{\sqrt{32\pi a_0^5}}\,z\,\exp\left(-\frac{r}{2a_0}\right),
+\]
+donde $a_0$ es el radio de Bohr, $z$ es la coordenada cartesiana y $r=\|\vec{x}\|$.
+
+\prob Utilizando la representación integral
+\[
+J_0(x)=\frac{1}{\pi}\int_0^{\pi}\cos(x\sin\theta)\,d\theta,
+\]
+calcule la transformada de Laplace de $J_0(x)$.
+
+\prob ¿De qué función es
+\[
+\frac{1}{(s^2+1)(s-1)}
+\]
+la transformada de Laplace?
+
+\prob Tres núcleos radiactivos decaen sucesivamente en serie, de forma tal que los números $N(t)$ de cada tipo obedecen las ecuaciones
+\[
+\frac{dN_1}{dt}=-\lambda_1 N_1,\quad \frac{dN_2}{dt}=\lambda_1 N_1-\lambda_2 N_2,\quad \frac{dN_3}{dt}=\lambda_2 N_2-\lambda_3 N_3.
+\]
+Si inicialmente $N_1=N$, $N_2=0$, $N_3=n$, calcule $N_3(t)$ utilizando transformadas de Laplace.
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
