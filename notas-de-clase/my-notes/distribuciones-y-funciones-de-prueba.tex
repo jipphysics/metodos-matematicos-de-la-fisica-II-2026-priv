@@ -255,7 +255,42 @@ $$
 
 \section{Topological space}
 
-...
+Previous definitions of open and closed sets depend on the existence of a metric distance.
+It is possible to generalize the formalism using a weaker, i.e. more general, requirement.
+Namely, the notions of open and closed sets can be defined when the set is equipped with a notion of topology, which provides a weaker notion of space, than that of a metric.
+
+%\subsection{Topological space}
+
+A {\em topological space} is a set $X$ equipped with a collection $T$ of subsets of $X$ called {\em open sets} that satisfy the following properties:
+\begin{enumerate}
+\item
+$X$ and $\emptyset$ belong to $T$.
+\item
+Arbitrary unions of open sets are open.
+Formally, for any $R\subset T$, then 
+$$
+\cup_{U\in R}\, U \in T.
+$$
+\item
+Finite intersections of open sets are open.
+Formally, for any $R\subset T$ such that $|R|\in \NN$, then
+$$
+\cap_{U\in R}\, U \in T.
+$$
+\end{enumerate}
+In other words, the notion of openness is a primite definition.
+
+The notions of complement set and closed set are analogous to those previously defined.
+Namely, the complement of a subset $S$ of $X$ is the subset $S\backslash X := \{x\in X:x\notin S\}$ of $X$, and a subset $Y$ of $X$ is closed if its complement $Y\backslash X$ is open.
+
+\subsection{Closure set}
+
+The closure $\overline{A}$ of a subset $A$ of $X$ is defined as
+$$
+\overline{A}
+=
+\cap_{F:A\subset F,\,F\, \text{is closed.}}\,F
+$$
 
 \section{Test functions}
 
