@@ -231,16 +231,19 @@ In particular, we can think of the complement $X\backslash \RR^n$.
 
 A subset $F$ of $\RR^n$ is {\em closed} if its complement $F\backslash \RR^n$ is open.
 
-\subsection{Limiting or accumulation point}
+\subsection{
+Limit or accumulation point
+\label{sec:limit_point_metric}
+}
 
-A point $x$ is a {\em limiting point} of a subset $A$ of $\RR^n$ if, for every $r>0$, it holds that
+A point $x$ is a {\em limit point} (or {\em accumulation point}) of a subset $A$ of $\RR^n$ if, for every $r>0$, it holds that
 $$
-(B_r(x)\backslash \{x\})\cap A \neq \emptyset
+(B_r(x)\backslash \{x\})\cap A \neq \emptyset.
 $$
-or, in other words, there are points in $A$ that are arbitrarily close to $x$.
+In other words, there are points in $A$ that are arbitrarily close to $x$.
 
 {\em Example:}
-The points $0$ and $1$ are limiting points of the open interval $(0,1)$.
+The points $0$ and $1$ are limit points of the open interval $(0,1)$.
 
 \subsection{Closure set}
 
@@ -253,6 +256,14 @@ $$
 
 {\em Examples:} the closed interval $[0,1]$ is the closure of itself and the subsets $(0,1)$, $[0,1)$, $(0,1]$ and $(0,1/2)\cup (1/2,1)$.
 
+\subsection{Bounded set}
+
+A subset $A$ of $\RR^n$ is {\em bounded} if there exists a finite $r>0$ such that $B_r(0)\cap A=A$.
+
+\subsection{Compact set}
+
+A subset $K$ of $\RR^n$ is {\em compact} if $K$ is closed and bounded.
+
 \section{Topological space}
 
 Previous definitions of open and closed sets depend on the existence of a metric distance.
@@ -261,7 +272,7 @@ Namely, the notions of open and closed sets can be defined when the set is equip
 
 %\subsection{Topological space}
 
-A {\em topological space} is a set $X$ equipped with a collection $T$ of subsets of $X$ called {\em open sets} that satisfy the following properties:
+A {\em topological space} is a set $X$ equipped with a collection $T$ of subsets of $X$ called {\em open} sets that satisfy the following properties:
 \begin{enumerate}
 \item
 $X$ and $\emptyset$ belong to $T$.
@@ -269,28 +280,89 @@ $X$ and $\emptyset$ belong to $T$.
 Arbitrary unions of open sets are open.
 Formally, for any $R\subset T$, then 
 $$
-\cup_{U\in R}\, U \in T.
+\bigg( \bigcup_{U\in R}\, U \bigg) \in T.
 $$
 \item
 Finite intersections of open sets are open.
 Formally, for any $R\subset T$ such that $|R|\in \NN$, then
 $$
-\cap_{U\in R}\, U \in T.
+\bigg( \bigcap_{U\in R}\, U \bigg) \in T.
 $$
 \end{enumerate}
 In other words, the notion of openness is a primite definition.
 
-The notions of complement set and closed set are analogous to those previously defined.
+The notions of {\em complement} set and {\em closed} set are analogous to those previously defined.
 Namely, the complement of a subset $S$ of $X$ is the subset $S\backslash X := \{x\in X:x\notin S\}$ of $X$, and a subset $Y$ of $X$ is closed if its complement $Y\backslash X$ is open.
 
 \subsection{Closure set}
 
-The closure $\overline{A}$ of a subset $A$ of $X$ is defined as
+The {\em closure} $\overline{A}$ of a subset $A$ of $X$ is defined as the intersection of all closed subsets of $X$ that contain $A$.
+Formally,
 $$
 \overline{A}
 =
-\cap_{F:A\subset F,\,F\, \text{is closed.}}\,F
+\bigcap_{F:F\subset X,\,A\subset F,\,F\, \text{is closed}}\,F.
 $$
+
+\subsection{Limit point}
+
+A point $x$ is a {\em limit point} (or {\em accumulation point}) of a subset $A$ of $X$ if, for each open subset $U$ of $X$ such that $x\in U$, then
+$$
+(U\backslash \{x\})\cap A \neq \emptyset.
+$$
+This is the purely topological generalization of the notion defined in section~\ref{sec:limit_point_metric}.
+
+\subsection{Open cover}
+
+A family of open sets $\{U_i:i\in I\}\subset\mathcal T$ is called an {\em open cover} of $K$ if
+$$
+K\subset \bigcup_{i\in I} U_i.
+$$
+
+\subsection{Compact set}
+
+A subset $K$ of $X$ is {\em compact} if for every open cover $\{U_i:i\in I\}$ of $K$, there exists a finite subset
+$$
+\{i_1,\dots,i_n\}\subset I
+$$
+such that
+$$
+K\subset
+U_{i_1}\cup\cdots\cup U_{i_n}.
+$$
+The finite family
+$$
+{U_{i_1},\dots,U_{i_n}}
+$$
+is called a {\em finite subcover}.
+
+{\em Example:}
+The family
+$$
+U_n=\left(\frac1n,1\right),
+\qquad n\in\mathbb N,
+$$
+is an open cover of $(0,1)$ because
+$$
+(0,1)
+=
+\bigcup_{n=1}^\infty
+\left(\frac1n,1\right),
+$$
+but no finite subcollection of it covers $(0,1)$.
+Namely, if we choose finitely many:
+$$
+U_{n_1},\dots,U_{n_k}.
+$$
+then 
+$$
+U_{n_1}\cup\cdots\cup U_{n_k}
+=
+\left(\frac1N,1\right).
+$$
+with $N=\max(n_1,\dots,n_k)$, missing all points in $(0,1/N]$.
+Hence, the finite union does not cover $(0,1)$.
+Thus $(0,1)$ admits an open cover with no finite subcover, and therefore it is not compact.
 
 \section{Test functions}
 
