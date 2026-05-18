@@ -444,29 +444,58 @@ To eventually define the notion of a continuous distribution, it is useful to re
 The continuity of a function $f:\RR^n \to \RR$ can be defined in terms of sequences.
 Therefore, it makes sense to review first the notion of the convergence of a sequence.
 
-When a sequence $\{x_n:n\in \NN\}$ converges to $x$ we say that $x_n\to x$ when $n\to \infty$.
-Formally, this means that, for any $\epsilon>0$, there exists an $N\in \NN$ such that $|x_n-x|<\epsilon$ for every $n\geq N$.
+When a sequence $\{x_j:j\in \NN\}$ converges to $x$ we say that $x_j\to x$ when $j\to \infty$.
+Formally, this means that, for any $\epsilon>0$, there exists an $N\in \NN$ such that $|x_j-x|<\epsilon$ for every $j\geq N$.
 
 \subsection{The topology of $C_c^{\infty}(\RR^n)$}
 
-We say that a sequence of test functions $\{\varphi_n \in C_c^{\infty}(\RR^n) : n\in \NN\}$ converges to a test function $\varphi\in C_c^{\infty}(\RR^n)$, i.e. $\varphi_n\to \varphi$ when $n\to \infty$, if:
+We say that a sequence of test functions $\{\varphi_j \in C_c^{\infty}(\RR^n) : j\in \NN\}$ converges to a test function $\varphi\in C_c^{\infty}(\RR^n)$, i.e. $\varphi_j\to \varphi$ when $j\to \infty$, if:
 \begin{enumerate}
 
 \item
-the support of $\varphi$ and each $\varphi_n$ lies within a common compact subset $K$ of $\RR^n$, and
+the support of $\varphi$ and each $\varphi_j$ lies within a common compact subset $K$ of $\RR^n$, and
 
-\item 
-$\lim_{n\to \infty}\, \supr{x\in K}\, |\varphi_n(x)-\varphi(x)| = 0.$
+\item for any $\alpha_1,...,\alpha_n \in \{0,1,2,...\}$, it holds that
+$$
+\lim_{j\to \infty}\,\,
+\supr{x\in K}\,\, 
+\left|
+\partial^{\alpha_1}...\partial^{\alpha_n}
+\varphi_j(x)
+-
+\partial^{\alpha_1}...\partial^{\alpha_n}
+\varphi(x)
+\right| = 0.
+$$
+In other words, that every derivative converges uniformly on $K$.
 
 \end{enumerate}
 
 \subsection{The topology of $\mathcal{D}(\RR^n)$}
 
+We say that a sequence of test functions $\{\varphi_j \in \mathcal{S}(\RR^n) : j\in \NN\}$ converges to a test function $\varphi\in \mathcal{S}(\RR^n)$, i.e. $\varphi_j\to \varphi$ when $j\to \infty$, if for any $\alpha_1,...,\alpha_n,\beta_1,...,\beta_n\in \{0,1,2,...\}$, then 
+$$
+\lim_{j\to \infty}\,\, 
+\supr{x\in \RR^n}\, 
+\left|
+x_1^{\beta_1}
+...
+x_n^{\beta_n}
+\partial^{\alpha_1}
+...
+\partial^{\alpha_n}
+(\varphi_j(x)-\varphi(x))
+\right| 
+= 
+0.
+$$
+
+
 \section{Distributions}
 
 \subsection{Review on function continuity}
 
-We say that $f$ is continuous at $x$ if for any sequence $\{x_n:n\in \NN\}$ that converges to $x$ and for any $\epsilon>0$, there is an $N\in \NN$ such that $|f(x_n)-f(x)|<\epsilon$ for every $n\geq N$.
+We say that $f$ is continuous at $x$ if for any sequence $\{x_j:j\in \NN\}$ that converges to $x$ and for any $\epsilon>0$, there is an $N\in \NN$ such that $|f(x_j)-f(x)|<\epsilon$ for every $j\geq N$.
 
 \end{document}
 %
