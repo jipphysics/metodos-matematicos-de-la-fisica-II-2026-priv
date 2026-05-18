@@ -494,9 +494,45 @@ $$
 
 \section{Distributions}
 
+\subsection{Functionals}
+
+Consider a space of test functions $\mathcal{F}(\RR^n)$.
+Here, $\mathcal{F}$ may denote, for example, $C_c^{\infty}$ or $\mathcal{S}$.
+A {\em functional} on $\mathcal{F}$ is a function $\Phi:\mathcal{F}(\RR^n)\to \RR$.
+Hence, for any test function $\varphi\in \mathcal{F}(\RR^n)$, the evaluation $\Phi(\varphi)$ is just a number in $\RR$.
+
 \subsection{Review on function continuity}
 
-We say that $f$ is continuous at $x$ if for any sequence $\{x_j:j\in \NN\}$ that converges to $x$ and for any $\epsilon>0$, there is an $N\in \NN$ such that $|f(x_j)-f(x)|<\epsilon$ for every $j\geq N$.
+We say that a function $f:\RR^n\to \RR$ is continuous at $x\in \RR^n$ if for any sequence $\{x_j\in \RR^n:j\in \NN\}$ that converges to $x$ and for any $\epsilon>0$, there is an $N\in \NN$ such that $|f(x_j)-f(x)|<\epsilon$ for every $j\geq N$.
+
+\subsection{Continuous functional}
+
+A functional $\Phi:\mathcal{F}(\RR^n)\to \RR$ is continuous at $\varphi\in \mathcal{F}(\RR^n)$ if, for any sequence of test functions $\{\varphi_j\in \mathcal{F}(\RR^n): j \in \NN\}$ that converges to some test function $\varphi\in \mathcal{F}(\RR^n)$, i.e. $\varphi_j \to \varphi$ as $j\to \infty$, then 
+$$
+\Phi(\varphi_j) \to \Phi(\varphi)
+$$
+as $j\to \infty$.
+Notice that $\Phi(\varphi_j)\to \Phi(\varphi)$ denotes a convergence of numbers.
+In other words, we are saying that $\Phi$ is continuous in $\varphi$ if
+$$
+\varphi_j \to \varphi 
+\,\,\,
+\Rightarrow
+\,\,\,
+\Phi(\varphi_j) \to \Phi(\varphi).
+$$
+Of course, the convergence of $\varphi_j \to \varphi$ is defined in terms of the particular choice of $\mathcal{F}(\RR^n)$.
+
+\subsection{Distribution}
+
+A functional $\Phi:\mathcal{F}(\RR^n) \to \RR$ is a {\em distribution} if:
+\begin{enumerate}
+\item it is continuous at each $\varphi\in \mathcal{F}(\RR^n)$, and
+\item it is linear.
+\end{enumerate}
+
+{\em Excercise:}
+Show that if $\Phi:\mathcal{F}(\RR^n)\to \RR$ is a linear functional that is continuous at $\varphi=0\in \mathcal{F}(\RR^n)$, then it is continuous at every $\varphi\in \mathcal{F}(\RR^n)$.
 
 \end{document}
 %
