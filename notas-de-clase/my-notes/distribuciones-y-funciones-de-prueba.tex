@@ -133,6 +133,7 @@
 %\newcommand{\supp}{\mathsf{supp}}
 \newcommand{\supp}{\mathrm{supp}}
 \newcommand{\csupp}{\overline{\mathrm{supp}}}
+\newcommand{\supr}[2]{\underset{#1}{\text{supr}}}
 
 \begin{document}
 
@@ -366,43 +367,63 @@ Thus $(0,1)$ admits an open cover with no finite subcover, and therefore it is n
 
 \section{Test functions}
 
-\subsection{The closure of a set}
-
-The {\em closure} of a subset $S$ of $\RR^n$ is the set
-$$
-\overline{S}
-=
-...
-$$
-
-\subsection{The support of a function}
+\subsection{Support of a function}
 
 The {\em support} of a function $\varphi : \RR^n\to \RR$, is the subset $K$ of $\RR^n$ given by:
 $$
 \supp(\varphi)
 =
+\overline{
 \left\{
 x\in \RR^n
 :
 \varphi(x) \neq 0
-\right\}.
+\right\}
+}.
 $$
-%While the {\em clossed support} is
+In other words, it is the closure of the complement of the kernel of $\varphi$.
 
-\subsection{The space of smooth compactly supported functions}
+\subsection{Space of compactly supported smooth test functions}
 
-Let $C_c^{\infty}(\RR^n)$ denote the {\em space of smooth compactly supported functions}.
-That is, if $\varphi\in C_c^{\infty}(\RR^n)$, then:
+The (vector) {\em space of smooth compactly supported functions} $C_c^{\infty}(\RR^n)=\mathcal{D}(\RR^n)$ is such that, if $\varphi\in C_c^{\infty}(\RR^n)$, then:
 \begin{enumerate}
 \item
-$\varphi : \RR^n \to \RR$,
+$\varphi : \RR^n \to \RR$.
 
 \item
 $\varphi \in C^{\infty}(\RR^n)$, i.e. it is infinitely differentiable.
 
 \item
-
+The support $\supp(\varphi)$ is compact.
 \end{enumerate}
+The members of $C_c^{\infty}(\RR^n)$ are called {\em compactly supported smooth test functions}.
+
+{\em Excercise:} 
+Show that the linear combination and the product of compactly supported smooth test functions are also compactly supported smooth test functions.
+
+\subsection{Schwartz space of functions}
+
+The {\em Schwartz (vector) space of functions} $\mathcal{S}(\RR^n)$ is such that, if $\varphi\in \mathcal{S}(\RR^n)$, then:
+\begin{enumerate}
+\item
+$\varphi : \RR^n \to \RR$.
+
+\item
+$\varphi \in C^{\infty}(\RR^n)$, i.e. it is infinitely differentiable.
+
+\item For every $\alpha_1,...,\alpha_n,\beta_1,...,\beta_n\in \{0,1,2,...\}$, it holds that
+$$
+\supr{x\in \RR^n}\,\left|x_1^{\alpha_1}...x_n^{\alpha_n}\partial_1^{\beta_1}...\partial_n^{\beta_n}\varphi(x)\right|<\infty.
+$$
+In other words, all the derivatives of $\varphi$ multiplied by arbitrary powers of the components of $x$ are bounded in $\RR^n$.
+\end{enumerate}
+The members of $\mathcal{S}(\RR^n)$ are called {\em Schwartz test functions}.
+
+{\em Excercise:} 
+Show that the linear combination and the product of Schwartz test functions are also Schwartz test functions.
+
+\section{Distributions}
+
 
 
 \end{document}
