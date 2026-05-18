@@ -195,7 +195,7 @@ Bla bla bla... resumen...
 
 \section{Metric space}
 
-A set $X$ is called a {\em metric space} if it is equiped with a notion of {\em metric distance}, i.e. a function $d:X\times X\to \RR$ such that, for any three {\em points} $x$, $y$ and $z$ in $X$, it holds:
+A set $X$ is called a {\em metric space} if it is equiped with a notion of {\em metric distance}, i.e. a function $d:X\times X\to \RR$ such that, for any three elements $x$, $y$ and $z$ in $X$, which are called {\em points}, it holds:
 \begin{enumerate}
 \item $d(x,y) \geq 0$, i.e. it is {\em non-negative}.
 \item $d(x,y) = 0$ implies $x=y$, i.e. it is {\em positive definite}.
@@ -269,7 +269,14 @@ A subset $K$ of $\RR^n$ is {\em compact} if $K$ is closed and bounded.
 
 Previous definitions of open and closed sets depend on the existence of a metric distance.
 It is possible to generalize the formalism using a weaker, i.e. more general, requirement.
-Namely, the notions of open and closed sets can be defined when the set is equipped with a notion of topology, which provides a weaker notion of space, than that of a metric.
+The notions of open and closed sets can be defined when the set is equipped with a topology, which provides a weaker notion of space, than that of a metric space.
+Informally, a topology is essentially the structure that specifies:
+\begin{itemize}
+\item which sets are open,
+\item which sequences converge in a given set, and
+\item which functions are continuous over such set.
+\end{itemize}
+
 
 %\subsection{Topological space}
 
@@ -426,15 +433,40 @@ The members of $\mathcal{S}(\RR^n)$ are called {\em Schwartz test functions}.
 {\em Excercise:} 
 Show that the linear combination and the product of Schwartz test functions are also Schwartz test functions.
 
-\section{Topology on the space of test functions}
+\section{Topologies on the spaces of test functions}
 
-\subsubsection{The topology of $C_c^{\infty}(\RR^n)$}
+To eventually define distributions, a notion of convergence should be introduced to each of the spaces of test functions.
+More specifically, the uniform converge of test functions is required, because it gives strong control over functions and their derivatives.
 
-\subsubsection{The topology of $\mathcal{D}(\RR^n)$}
+\subsection{Review on the convergence of sequences}
+
+To eventually define the notion of a continuous distribution, it is useful to review the notion of continuity of standard functions.
+The continuity of a function $f:\RR^n \to \RR$ can be defined in terms of sequences.
+Therefore, it makes sense to review first the notion of the convergence of a sequence.
+
+When a sequence $\{x_n:n\in \NN\}$ converges to $x$ we say that $x_n\to x$ when $n\to \infty$.
+Formally, this means that, for any $\epsilon>0$, there exists an $N\in \NN$ such that $|x_n-x|<\epsilon$ for every $n\geq N$.
+
+\subsection{The topology of $C_c^{\infty}(\RR^n)$}
+
+We say that a sequence of test functions $\{\varphi_n \in C_c^{\infty}(\RR^n) : n\in \NN\}$ converges to a test function $\varphi\in C_c^{\infty}(\RR^n)$, i.e. $\varphi_n\to \varphi$ when $n\to \infty$, if:
+\begin{enumerate}
+
+\item
+the support of $\varphi$ and each $\varphi_n$ lies within a common compact subset $K$ of $\RR^n$, and
+
+\item 
+$\lim_{n\to \infty}\, \supr{x\in K}\, |\varphi_n(x)-\varphi(x)| = 0.$
+
+\end{enumerate}
+
+\subsection{The topology of $\mathcal{D}(\RR^n)$}
 
 \section{Distributions}
 
+\subsection{Review on function continuity}
 
+We say that $f$ is continuous at $x$ if for any sequence $\{x_n:n\in \NN\}$ that converges to $x$ and for any $\epsilon>0$, there is an $N\in \NN$ such that $|f(x_n)-f(x)|<\epsilon$ for every $n\geq N$.
 
 \end{document}
 %
