@@ -205,43 +205,44 @@ A set $X$ is called a {\em metric space} if it is equiped with a notion of {\em 
 
 {\em Example:} The set $\RR^n$ with the euclidean distance $d(x,y) = \sqrt{\sum_{i=1}^n (x_i-y_i)^2}$ is a metric space.
 
+{\em Remark:} There are metric spaces that are not finite-dimensional.
+
 \subsection{Open ball}
 
 The set
 $$
 B_r(x)
 =
-\{y\in \RR^n: d(x,y)<r\}
+\{y\in X: d(x,y)<r\}
 $$
-is called the {\em open ball} of $\RR^n$ centered at $x$ and of radious $r>0$.
+is called the {\em open ball} of $X$ centered at $x$ and of radious $r>0$.
 
 \subsection{Open set}
 
-A subset $U$ of $\RR^n$ is {\em open} if for every $x\in U$ there exists an open ball $B_r(x) \subset U$.
+A subset $U$ of $X$ is {\em open} if for every $x\in U$ there exists an open ball $B_r(x) \subset U$.
 
 \subsection{Complement set}
 
-Consider two subsets $X$ and $Y$ of $\RR^n$ such that $X\subset Y$.
-The {\em complement} $X\backslash Y$ of $X$ in $Y$ is the subset of $\RR^n$ given by
+Consider two subsets $Y$ and $Z$ of $X$ such that $Y\subset Z$.
+The {\em complement} $Y\backslash Z$ of $Y$ in $Z$ is the subset of $X$ given by
 $$
-X\backslash Y := \{y\in Y:y\notin X\}.
+Y\backslash Z := \{y\in Y:y\notin Z\}.
 $$
-In particular, we can think of the complement $X\backslash \RR^n$.
 
 \subsection{Closed set}
 
-A subset $F$ of $\RR^n$ is {\em closed} if its complement $F\backslash \RR^n$ is open.
+A subset $F$ of $X$ is {\em closed} if its complement $F\backslash X$ is open.
 
 \subsection{
 Limit or accumulation point
 \label{sec:limit_point_metric}
 }
 
-A point $x$ is a {\em limit point} (or {\em accumulation point}) of a subset $A$ of $\RR^n$ if, for every $r>0$, it holds that
+A point $x$ is a {\em limit point} (or {\em accumulation point}) of a subset $A$ of $X$ if, for every $r>0$, it holds that
 $$
 (B_r(x)\backslash \{x\})\cap A \neq \emptyset.
 $$
-In other words, there are points in $A$ that are arbitrarily close to $x$.
+Informally, this means that there are points in $A$ that are different but arbitrarily close to $x$.
 
 {\em Example:}
 The points $0$ and $1$ are limit points of the open interval $(0,1)$.
@@ -259,27 +260,44 @@ $$
 
 \subsection{Bounded set}
 
-A subset $A$ of $\RR^n$ is {\em bounded} if there exists a finite $r>0$ such that $B_r(0)\cap A=A$.
+A subset $A$ of $X$ is {\em bounded} if there exists a finite $r>0$ such that $A \subset B_r(0)$.
 
 \subsection{Compact set}
 
-A subset $K$ of $\RR^n$ is {\em compact} if $K$ is closed and bounded.
+Assume that $X$ is a finite-dimensional metric space.
+A subset $K$ of $X$ is {\em compact} if $K$ is closed and bounded.
+
+{\color{red} 
+{\em Remark:}
+In an infinite-dimensional metric space, compactness is defined differently and the definitions are not necessarily equivalent in all cases.
+See~\url{https://chatgpt.com/share/6a0c5541-7498-83e9-a94f-8ca91aa5e791}.
+}
 
 \subsection{Convergence}
 
-We say that a sequence $\{x_j\in X:j\in \NN\}$ {\em converges} to a value $x\in X$ if, for each $\epsilon>0$, there exists an $N\in \NN$ such that $|x_j-x|<\epsilon$ for every $j\geq N$.
-It can be easily shown that, when it converges, the value $x$ is unique.
+We say that a sequence $\{x_j\in X:j\in \NN\}$ {\em converges} to a value $x\in X$ if, for each $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_j,x)<\epsilon$ for every $j\geq N$.
+It can be easily shown that, when the sequence is convergent, then the value of $x$ is unique.
 
 The convergence of the sequence is abbreviately denoted by $x_j\to x$ as $j\to \infty$.
 
 \subsection{Cauchy sequence}
 
-A sequence $\{x_j\in X:j\in \NN\}$ is a {\em Cauchy sequence} if, for every $\epsilon>0$, there exists an $N\in \NN$ such that $|x_j-x_i|<\epsilon$ for every $i,j\geq N$.
+A sequence $\{x_j\in X:j\in \NN\}$ is a {\em Cauchy sequence} if, for every $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_i,x_j)<\epsilon$ for every $i,j\geq N$.
 
 \subsection{Complete metric space}
 
 A metric space $X$ equipped with a metric $d$ is called {\em complete} if every Cauchy sequence in it converges to an element in it.
-More formally, if $\{x_j\in X:j\in \NN\}$ is a Cauchy sequence, then there exists an $x\in X$ such that, for every $\epsilon>0$, there exists an $N\in \NN$ such that $|x_j-x|<\epsilon$ for every $j\geq N$.
+More formally, if $\{x_j\in X:j\in \NN\}$ is a Cauchy sequence, then there exists an $x\in X$ such that, for every $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_j,x)<\epsilon$ for every $j\geq N$.
+
+{\em Example:}
+Consider the sequence given by
+$$
+x_j = \sum_{i=0}^j \frac{1}{i!}.
+$$
+Clearly, $x_j\to e$ as $j\to \infty$, i.e. it converges to Euler's number.
+This is a Cauchy sequence in $\QQ$ but it does not converge to a value in $\QQ$ because $e$ is irrational.
+It converges to a value in $\RR$.
+Therefore, $\QQ$ is not a complete space.
 
 \section{Normed vector space}
 
@@ -289,7 +307,7 @@ A {\em normed vector space} $V$ over a field $\FF$ is a vector space equipped wi
 \item absolute homogeneity, $|\alpha v|=|\alpha||v|$, and
 \item positive definiteness, $|v|=0$ implies $v=0$.
 \end{enumerate}
-In particular, a {\em semidefinite norm} is a norm without property 3.
+In particular, a {\em semi-norm} is a norm without property 3.
 
 \subsection{A normed vector space is a metric space}
 
@@ -310,9 +328,10 @@ A complete normed vector space is called a {\em Banach space}.
 In other words, as we already saw, a normed vector space is a metric space.
 If additionally, such metric space is complete, meaning that all Cauchy sequences in it converge to vectors in it, then it is called a Banach space.
 
-\subsection{Continuous functions}
+\subsection{Continuous function}
 
-A function $f:V\to \RR$ is continuous at $v$ if, 
+Consider two metric spaces $X$ and $Y$.
+A function $f:X\to Y$ is continuous at $x\in X$ if, for every convergent sequence $x_j \to x$ it holds that $f(x_j)\to f(x)$.
 
 \section{Hilber space}
 
