@@ -208,99 +208,6 @@ A set $X$ is called a {\em metric space} if it is equipped with a notion of {\em
 
 {\em Remark:} There are metric spaces that are not finite-dimensional.
 
-\subsection{Open ball}
-
-The set
-$$
-B_r(x)
-=
-\{y\in X: d(x,y)<r\}
-$$
-is called the {\em open ball} of $X$ centered at $x$ and of radius $r>0$.
-
-\subsection{Open set}
-
-A subset $U$ of $X$ is {\em open} if for every $x\in U$ there exists an open ball $B_r(x) \subset U$.
-
-\subsection{Complement set}
-
-Consider two subsets $Y$ and $Z$ of $X$.
-The {\em complement} $Y\backslash Z$ of $Y$ in $Z$ is the subset of $X$ given by
-$$
-Y\backslash Z := \{y\in Y:y\notin Z\}.
-$$
-In other words, by the elements in $Y$ that are not in $Z$.
-In particular, $Y^c = X/Y$ is the subset of elements in $X$ that are not in $Y$.
-
-\subsection{Closed set}
-
-A subset $F$ of $X$ is {\em closed} if its complement $X\backslash F$ is open.
-
-\subsection{
-Limit or accumulation point
-\label{sec:limit_point_metric}
-}
-
-A point $x$ is a {\em limit point} (or {\em accumulation point}) of a subset $A$ of $X$ if, for every $r>0$, it holds that
-$$
-(B_r(x)\backslash \{x\})\cap A \neq \emptyset.
-$$
-Informally, this means that there are points in $A$ that are different but arbitrarily close to $x$.
-
-{\em Example:}
-The points $0$ and $1$ are limit points of the open interval $(0,1)$.
-
-\subsection{Closure set}
-
-The {\em closure} $\overline{A}$ of a subset $A$ of $X$ is defined by
-$$
-\overline{A}
-=
-A \cup \{\mbox{all limit points of $A$}\}.
-$$
-
-{\em Examples:} the closed interval $[0,1]$ is the closure of itself and the subsets $(0,1)$, $[0,1)$, $(0,1]$ and $(0,1/2)\cup (1/2,1)$.
-
-\subsection{Bounded set}
-
-A subset $A$ of $X$ is {\em bounded} if there exists an $x\in X$ and a finite $r>0$ such that $A \subset B_r(x)$.
-
-%\subsection{Compact set}
-%
-%When $X$ is a finite-dimensional metric space, a subset $K$ of $X$ is called {\em compact} if it is closed and bounded.
-%
-%{\color{red} 
-%{\em Remark:}
-%The notion of compactness works differently in infinite-dimensional metric spaces.
-%See appendix~\ref{app:A}.
-%}
-
-\subsection{Convergence}
-
-We say that a sequence $\{x_j\in X:j\in \NN\}$ {\em converges} to a value $x\in X$ if, for each $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_j,x)<\epsilon$ for every $j\geq N$.
-It can be easily shown that, when the sequence is convergent, then the value of $x$ is unique.
-
-The convergence of the sequence is abbreviated by $x_j\to x$ as $j\to \infty$.
-
-\subsection{Cauchy sequence}
-
-A sequence $\{x_j\in X:j\in \NN\}$ is a {\em Cauchy sequence} if, for every $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_i,x_j)<\epsilon$ for every $i,j\geq N$.
-
-\subsection{Complete metric space}
-
-A metric space $X$ equipped with a metric $d$ is called {\em complete} if every Cauchy sequence in it converges to an element in it.
-More formally, if $\{x_j\in X:j\in \NN\}$ is a Cauchy sequence, then there exists an $x\in X$ such that, for every $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_j,x)<\epsilon$ for every $j\geq N$.
-
-{\em Example:}
-Consider the sequence given by
-$$
-x_j = \sum_{i=0}^j \frac{1}{i!}.
-$$
-Clearly, $x_j\to e$ as $j\to \infty$, i.e. it converges to Euler's number.
-This is a Cauchy sequence in $\QQ$ but it does not converge to a value in $\QQ$ because $e$ is irrational.
-It converges to a value in $\RR$.
-Therefore, $\QQ$ is not a complete space.
-
 \section{Normed vector space}
 
 A {\em normed vector space} $V$ over a field $\FF$ is a vector space equipped with a norm, which is a mapping $V\ni v\to |v|\in \RR$ that, for any $v,w\in V$ and $\alpha\in \FF$, it satisfies:
@@ -323,6 +230,53 @@ $$
 d(v,w) = |v-w| = |v-u+u-w| \leq |v-u|+|u-w| = d(v,u) + d(u,w)
 $$
 holds for any $v,u,w\in V$ due to property 1 of the norm.
+
+{\em Remark:}
+The converse is not true.
+There are metric distances that do not be obtained from a norm.
+For instance, given a norm $|\cdot|_a$, the expression
+$$
+d(x,y)
+=
+\frac{|x-y|_a}{1+|x-y|_a}
+$$
+defines a metric distance over $\RR^n$ that cannot be written as $d(x,y)=|x-y|_b$ for any norm $|\cdot|_b$.
+
+\section{Banach space}
+
+\subsection{Convergence}
+
+We say that a sequence $\{x_j\in X:j\in \NN\}$ {\em converges} to a value $x\in X$ if, for each $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_j,x)<\epsilon$ for every $j\geq N$.
+It can be easily shown that, when the sequence is convergent, then the value of $x$ is unique.
+
+The convergence of the sequence is abbreviated by $x_j\to x$ as $j\to \infty$, or even more simply by just $x_j\to x$.
+
+\subsection{
+Cauchy sequence
+\label{sec:cauchy}
+}
+
+A sequence $\{x_j\in X:j\in \NN\}$ is a {\em Cauchy sequence} if, for every $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_i,x_j)<\epsilon$ for every $i,j\geq N$.
+
+{\em Remark:} Not every Cauchy sequence in a metric space $X$ converges to a value in $X$.
+The following example illustrates this idea.
+
+{\em Example:}
+Consider the sequence given by
+$$
+x_j = \sum_{i=0}^j \frac{1}{i!}.
+$$
+Clearly, $x_j\to e$ as $j\to \infty$, i.e. it converges to Euler's number $e=2.71828...$~.
+This is a Cauchy sequence in $\QQ$ but it does not converge to a value in $\QQ$ because $e$ is irrational.
+In other words, it converges to a value in $\RR$ that is not in $\QQ$.
+
+\subsection{Complete metric space}
+
+A metric space $X$ equipped with a metric $d$ is called {\em complete} if every Cauchy sequence in it converges to an element in it.
+More formally, if $X$ is a metric space, then for any Cauchy sequence $\{x_j\in X:j\in \NN\}$, there exists an $x\in X$ such that, for every $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_j,x)<\epsilon$ for every $j\geq N$.
+
+{\em Remark:}
+The example of previous section,~\ref{sec:cauchy} implies that $\QQ$ is not a complete space.
 
 \subsection{Banach space}
 
