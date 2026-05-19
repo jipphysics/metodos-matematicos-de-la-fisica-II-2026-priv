@@ -147,6 +147,7 @@
 %Title of paper
 \title{
 M\'etodos Matem\'aticos de la F\'isica II\\
+Part I:
 Structure of Banach and Hilbert spaces
 }
 
@@ -234,6 +235,49 @@ dx\,
 $$
 At difference with previous example, this is a metric space that is associated to an infinite-dimensional vector space.
 
+\subsection{Convergence}
+
+We say that a sequence $\{x_j\in X:j\in \NN\}$ {\em converges} to a value $x\in X$ if, for each $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_j,x)<\epsilon$ for every $j\geq N$.
+It can be easily shown that, when the sequence is convergent, then the value of $x$ is unique.
+
+The convergence of the sequence is abbreviated by $x_j\to x$ as $j\to \infty$, or even more simply by just $x_j\to x$.
+
+
+\subsection{Continuous function}
+
+The notion of convergence enables the definition of the continuity of a function.
+Namely, consider two metric spaces $X$ and $Y$.
+A function $f:X\to Y$ is continuous at $x\in X$ if, for every convergent sequence $x_j \to x$ it holds that $f(x_j)\to f(x)$.
+
+\subsection{
+Cauchy sequence
+\label{sec:cauchy}
+}
+
+A sequence $\{x_j\in X:j\in \NN\}$ is a {\em Cauchy sequence} if, for every $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_i,x_j)<\epsilon$ for every $i,j\geq N$.
+
+{\em Excercise:} Show that a convergent sequence is a Cauchy sequence.
+
+{\em Remark:} Not every Cauchy sequence in a metric space $X$ converges to a value in $X$.
+The following example illustrates this idea.
+
+{\em Example:}
+Consider the sequence given by
+$$
+x_j = \sum_{i=0}^j \frac{1}{i!}.
+$$
+Clearly, $x_j\to e$ as $j\to \infty$, i.e. it converges to Euler's number $e=2.71828...$~.
+This is a Cauchy sequence in $\QQ$ but it does not converge to a value in $\QQ$ because $e$ is irrational.
+In other words, it converges to a value in $\RR$ that is not in $\QQ$.
+
+\subsection{Complete metric space}
+
+A metric space $X$ equipped with a metric $d$ is called {\em complete} if every Cauchy sequence in it converges to an element in it.
+More formally, if $X$ is a metric space, then for any Cauchy sequence $\{x_j\in X:j\in \NN\}$, there exists an $x\in X$ such that, for every $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_j,x)<\epsilon$ for every $j\geq N$.
+
+{\em Remark:}
+The example of previous section,~\ref{sec:cauchy} implies that $\QQ$ is not a complete space.
+
 \section{Normed vector space}
 
 A {\em normed vector space} $V$ over a field $\FF$ is a vector space equipped with a norm, which is a mapping $V\ni v\to |v|\in \RR$ that, for any $v,w\in V$ and $\alpha\in \FF$, it satisfies:
@@ -290,54 +334,16 @@ defines a metric distance over $\RR^n$ that cannot be written as $d(x,y)=|x-y|_b
 
 \section{Banach space}
 
-\subsection{Convergence}
-
-We say that a sequence $\{x_j\in X:j\in \NN\}$ {\em converges} to a value $x\in X$ if, for each $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_j,x)<\epsilon$ for every $j\geq N$.
-It can be easily shown that, when the sequence is convergent, then the value of $x$ is unique.
-
-The convergence of the sequence is abbreviated by $x_j\to x$ as $j\to \infty$, or even more simply by just $x_j\to x$.
-
-\subsection{
-Cauchy sequence
-\label{sec:cauchy}
-}
-
-A sequence $\{x_j\in X:j\in \NN\}$ is a {\em Cauchy sequence} if, for every $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_i,x_j)<\epsilon$ for every $i,j\geq N$.
-
-{\em Remark:} Not every Cauchy sequence in a metric space $X$ converges to a value in $X$.
-The following example illustrates this idea.
-
-{\em Example:}
-Consider the sequence given by
-$$
-x_j = \sum_{i=0}^j \frac{1}{i!}.
-$$
-Clearly, $x_j\to e$ as $j\to \infty$, i.e. it converges to Euler's number $e=2.71828...$~.
-This is a Cauchy sequence in $\QQ$ but it does not converge to a value in $\QQ$ because $e$ is irrational.
-In other words, it converges to a value in $\RR$ that is not in $\QQ$.
-
-\subsection{Complete metric space}
-
-A metric space $X$ equipped with a metric $d$ is called {\em complete} if every Cauchy sequence in it converges to an element in it.
-More formally, if $X$ is a metric space, then for any Cauchy sequence $\{x_j\in X:j\in \NN\}$, there exists an $x\in X$ such that, for every $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_j,x)<\epsilon$ for every $j\geq N$.
-
-{\em Remark:}
-The example of previous section,~\ref{sec:cauchy} implies that $\QQ$ is not a complete space.
-
-\subsection{Banach space}
-
 A complete normed vector space is called a {\em Banach space}.
 In other words, as we already saw, a normed vector space is a metric space.
 If additionally, such metric space is complete, meaning that all Cauchy sequences in it converge to vectors in it, then it is called a Banach space.
 
-\subsection{Continuous function}
+{\em Remark:}
+Why we need Banach spaces?
+Why are normed spaces not enough?
+These questions will be answered in Part II but, essentially, because we want infinite series  to be convergent within the space itself.
 
-Consider two metric spaces $X$ and $Y$.
-A function $f:X\to Y$ is continuous at $x\in X$ if, for every convergent sequence $x_j \to x$ it holds that $f(x_j)\to f(x)$.
-
-\section{Hilbert space}
-
-\subsection{Inner product space}
+\section{Inner product space}
 
 Given a vector space $V$ over $\CC$, an {\em hermitian inner product} is a function $V\times V\ni (v,w) \to v\cdot w \in \CC$ satisfying, for each $v,w,u\in V$ and $\alpha,\beta\in \CC$, the following properties:
 \begin{enumerate}
@@ -365,10 +371,15 @@ which holds for all $v,w\in V$.
 {\em Excercise:}
 Prove the Cauchy-Schwartz inequality.
 
-\subsection{Hilbert space}
+\section{Hilbert space}
 
 A Hilbert space is a complete hermitian inner product space.
 In other words, in a Hilbert space $H$, all Cauchy sequences converge to a vector in $H$, where the induced norm is used to determine convergence.
+
+{\em Remark:}
+Why we need Hilbert spaces?
+Why are inner product spaces not enough?
+As with Banach spaces, these questions will be answered in Part II These questions will be answered in Part II but, essentially, because we want linear combinations with infinite terms to be convergent within the space itself.
 
 %\appendix
 %
