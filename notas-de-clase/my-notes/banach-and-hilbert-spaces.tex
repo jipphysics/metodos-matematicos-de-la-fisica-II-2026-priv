@@ -270,6 +270,8 @@ A subset $K$ of $\RR^n$ is {\em compact} if $K$ is closed and bounded.
 We say that a sequence $\{x_j\in X:j\in \NN\}$ {\em converges} to a value $x\in X$ if, for each $\epsilon>0$, there exists an $N\in \NN$ such that $|x_j-x|<\epsilon$ for every $j\geq N$.
 It can be easily shown that, when it converges, the value $x$ is unique.
 
+The convergence of the sequence is abbreviately denoted by $x_j\to x$ as $j\to \infty$.
+
 \subsection{Cauchy sequence}
 
 A sequence $\{x_j\in X:j\in \NN\}$ is a {\em Cauchy sequence} if, for every $\epsilon>0$, there exists an $N\in \NN$ such that $|x_j-x_i|<\epsilon$ for every $i,j\geq N$.
@@ -289,7 +291,9 @@ A {\em normed vector space} $V$ over a field $\FF$ is a vector space equipped wi
 \end{enumerate}
 In particular, a {\em semidefinite norm} is a norm without property 3.
 
-Crucially, a normed vector space is a metric space because a norm defines a metric distance
+\subsection{A normed vector space is a metric space}
+
+A normed vector space is a metric space because a norm defines a metric distance
 $$
 d(v,w) = |v-w|.
 $$
@@ -299,6 +303,20 @@ $$
 d(v,w) = |v-w| = |v-u+u-w| \leq |v-u|+|u-w| = d(v,u) + d(u,w)
 $$
 holds for any $v,u,w\in V$ due to property 1 of the norm.
+
+\subsection{Banach space}
+
+A complete normed vector space is called a {\em Banach space}.
+In other words, as we already saw, a normed vector space is a metric space.
+If additionally, such metric space is complete, meaning that all Cauchy sequences in it converge to vectors in it, then it is called a Banach space.
+
+\subsection{Continuous functions}
+
+A function $f:V\to \RR$ is continuous at $v$ if, 
+
+\section{Hilber space}
+
+
 
 \end{document}
 %
