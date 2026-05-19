@@ -1,0 +1,466 @@
+%% ****** Start of file apstemplate.tex ****** %
+%%
+%%
+%%   This file is part of the APS files in the REVTeX 4.2 distribution.
+%%   Version 4.2a of REVTeX, January, 2015
+%%
+%%
+%%   Copyright (c) 2015 The American Physical Society.
+%%
+%%   See the REVTeX 4 README file for restrictions and more information.
+%%
+%
+% This is a template for producing manuscripts for use with REVTEX 4.2
+% Copy this file to another name and then work on that file.
+% That way, you always have this original template file to use.
+%
+% Group addresses by affiliation; use superscriptaddress for long
+% author lists, or if there are many overlapping affiliations.
+% For Phys. Rev. appearance, change preprint to twocolumn.
+% Choose pra, prb, prc, prd, pre, prl, prstab, prstper, or rmp for journal
+%  Add 'draft' option to mark overfull boxes with black boxes
+%  Add 'showkeys' option to make keywords appear
+%\documentclass[aps,prl,preprint,groupedaddress]{revtex4-2}
+\documentclass[aps,prl,twocolumn,groupedaddress]{revtex4-2}
+%\documentclass[aps,prl,preprint,superscriptaddress]{revtex4-2}
+%\documentclass[aps,prl,reprint,groupedaddress]{revtex4-2}
+
+% You should use BibTeX and apsrev.bst for references
+% Choosing a journal automatically selects the correct APS
+% BibTeX style file (bst file), so only uncomment the line
+% below if necessary.
+%\bibliographystyle{apsrev4-2}
+
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{caption}
+%\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+%\usepackage{amsthm}
+%\usepackage{amsfonts}
+%\usepackage{subfigure}
+%\usepackage{hhline}
+%\usepackage[miktex]{gnuplottex}
+%\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{hyperref}
+%\usepackage[percent]{overpic}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{wasysym}
+\usepackage{tikz-cd}
+%\usepackage{linearb}
+%\usepackage{wsuipa}
+\usepackage{calc}
+\usepackage{tipa}
+
+%\usepackage{stix} %\fisheye
+\usepackage{stackengine,scalerel}
+
+% so sections, subsections, etc. become numerated.
+\setcounter{secnumdepth}{3}
+
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\GG}{\mathbb{G}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\avrg}[1]{\left\langle #1 \right\rangle}
+\newcommand{\nelta}{\bar{\delta}}
+\newcommand{\bra}[1]{\left\langle #1\right|}
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\sbra}[1]{\langle #1|}
+\newcommand{\sket}[1]{| #1 \rangle}
+\newcommand{\bek}[3]{\left\langle #1 \right| #2 \left| #3 \right\rangle}
+\newcommand{\sbek}[3]{\langle #1 | #2 | #3 \rangle}
+\newcommand{\braket}[2]{\left\langle #1 \middle| #2 \right\rangle}
+\newcommand{\ketbra}[2]{\left| #1 \middle\rangle \middle\langle #2  \right|}
+\newcommand{\sbraket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\sketbra}[2]{| #1 \rangle  \langle #2 |}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\snorm}[1]{\lVert#1\rVert}
+\newcommand{\bvec}[1]{\boldsymbol{\mathsf{#1}}}
+\newcommand{\bcov}[1]{\boldsymbol{#1}}
+\newcommand{\bdua}[1]{\boldsymbol{\check{#1}}}
+%\newcommand{\bdov}[1]{\boldsymbol{\breve{#1}}}
+\newcommand{\bdov}[1]{\breve{#1}}
+%\newcommand{\bten}[1]{\boldsymbol{\mathfrak{#1}}}
+\newcommand{\bten}[1]{\boldsymbol{\mathfrak{#1}}}
+\newcommand{\forany}{\tilde{\forall}}
+\newcommand{\qed}{$\overset{\circ}{.}\;$}
+\newcommand{\bigo}{\mathcal{O}}
+\newcommand{\spn}{\mathrm{spn}\,}
+\newcommand{\krn}{\mathrm{krn}\,}
+\newcommand{\biy}{\leftrightarrow}
+\newcommand{\ugh}{\mathbin{\textlinb{\BPwheel}}}
+
+\newcommand\bigeye{\ensurestackMath{\stackinset{c}{}{c}{-.3pt}%
+  {\bullet}{\scriptstyle\bigcirc}}}
+\newcommand\eye{\scalerel*{\bigeye}{x}}
+%\newcommand*{\fisheye}{%
+%    \mathbin{%
+%        \ooalign{$\circledcirc$\cr\hidewidth$\bullet$\hidewidth}%
+%    }%
+%}
+
+% double angle-bracket
+% https://tex.stackexchange.com/questions/79657/how-to-get-double-angle-bracket-without-using-mnsymbol-package
+\makeatletter
+\newsavebox{\@brx}
+\newcommand{\llangle}[1][]{\savebox{\@brx}{\(\m@th{#1\langle}\)}%
+  \mathopen{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+\newcommand{\rrangle}[1][]{\savebox{\@brx}{\(\m@th{#1\rangle}\)}%
+  \mathclose{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+\makeatother
+
+% https://tex.stackexchange.com/questions/297362/bar-through-letter-in-mathmode
+%\usepackage{calc}
+\newsavebox\CBox
+\newcommand\hcancel[2][0.5pt]{%
+  \ifmmode\sbox\CBox{$#2$}\else\sbox\CBox{#2}\fi%
+  \makebox[0pt][l]{\usebox\CBox}%  
+  \rule[0.77\ht\CBox-#1/2]{\wd\CBox}{#1}}
+\newcommand{\cb}{\hcancel{b}}
+\newcommand{\cd}{\hcancel{d}}
+\newcommand{\ct}{\hcancel{\partial}}
+%\newcommand{\supp}{\mathsf{supp}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\csupp}{\overline{\mathrm{supp}}}
+\newcommand{\supr}[2]{\underset{#1}{\text{supr}}}
+
+\begin{document}
+
+% Use the \preprint command to place your local institutional report
+% number in the upper righthand corner of the title page in preprint mode.
+% Multiple \preprint commands are allowed.
+% Use the 'preprintnumbers' class option to override journal defaults
+% to display numbers if necessary
+%\preprint{}
+
+%Title of paper
+\title{
+M\'etodos Matem\'aticos de la F\'isica II
+}
+
+% repeat the \author .. \affiliation  etc. as needed
+% \email, \thanks, \homepage, \altaffiliation all apply to the current
+% author. Explanatory text should go in the []'s, actual e-mail
+% address or url should go in the {}'s for \email and \homepage.
+% Please use the appropriate macro foreach each type of information
+
+% \affiliation command applies to all authors since the last
+% \affiliation command. The \affiliation command should follow the
+% other information
+% \affiliation can be followed by \email, \homepage, \thanks as well.
+\author{Juan I. Perotti}
+\email[]{juan.perotti@unc.edu.ar}
+%\homepage[]{Your web page}
+%\thanks{}
+%\altaffiliation{}
+%\affiliation{}
+\affiliation{Instituto de F\'isica Enrique Gaviola (IFEG-CONICET), Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+\affiliation{Facultad de Matem\'atica, Astronom\'ia, F\'isica y Computaci\'on, Universidad Nacional de C\'ordoba, Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+
+% \author{Colaborador}
+% \affiliation{Instituto de F\'isica Enrique Gaviola (IFEG-CONICET), Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+% \affiliation{Facultad de Matem\'atica, Astronom\'ia, F\'isica y Computaci\'on, Universidad Nacional de C\'ordoba, Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+% \email[E-mail: ]{xxx.yyy@unc.edu.ar }
+
+%Collaboration name if desired (requires use of superscriptaddress
+%option in \documentclass). \noaffiliation is required (may also be
+%used with the \author command).
+%\collaboration can be followed by \email, \homepage, \thanks as well.
+%\collaboration{Claudio J. Tessone}
+%\noaffiliation
+
+\date{\today}
+
+\begin{abstract}
+Bla bla bla... resumen...
+\end{abstract}
+
+% insert suggested keywords - APS authors don't need to do this
+%\keywords{}
+
+%\maketitle must follow title, authors, abstract, and keywords
+\maketitle
+\onecolumngrid
+
+\section{Metric space}
+
+A set $X$ is called a {\em metric space} if it is equipped with a notion of {\em metric distance}, i.e. a function $d:X\times X\to \RR$ such that, for any three elements $x$, $y$ and $z$ in $X$, which are called {\em points}, it holds:
+\begin{enumerate}
+\item $d(x,y) \geq 0$, i.e. it is {\em non-negative}.
+\item $d(x,y) = 0$ implies $x=y$, i.e. it is {\em positive definite}.
+\item $d(x,y) = d(y,x)$, i.e. it is {\em symmetric}.
+\item $d(x,z) \leq  d(x,y) + d(y,z)$, i.e. it satisfies the {\em triangle inequality}.
+\end{enumerate}
+
+{\em Example:} The set $\RR^n$ with the euclidean distance $d(x,y) = \sqrt{\sum_{i=1}^n (x_i-y_i)^2}$ is a metric space.
+
+{\em Remark:} There are metric spaces that are not finite-dimensional.
+
+\subsection{Open ball}
+
+The set
+$$
+B_r(x)
+=
+\{y\in X: d(x,y)<r\}
+$$
+is called the {\em open ball} of $X$ centered at $x$ and of radius $r>0$.
+
+\subsection{Open set}
+
+A subset $U$ of $X$ is {\em open} if for every $x\in U$ there exists an open ball $B_r(x) \subset U$.
+
+\subsection{Complement set}
+
+Consider two subsets $Y$ and $Z$ of $X$.
+The {\em complement} $Y\backslash Z$ of $Y$ in $Z$ is the subset of $X$ given by
+$$
+Y\backslash Z := \{y\in Y:y\notin Z\}.
+$$
+In other words, by the elements in $Y$ that are not in $Z$.
+In particular, $Y^c = X/Y$ is the subset of elements in $X$ that are not in $Y$.
+
+\subsection{Closed set}
+
+A subset $F$ of $X$ is {\em closed} if its complement $X\backslash F$ is open.
+
+\subsection{
+Limit or accumulation point
+\label{sec:limit_point_metric}
+}
+
+A point $x$ is a {\em limit point} (or {\em accumulation point}) of a subset $A$ of $X$ if, for every $r>0$, it holds that
+$$
+(B_r(x)\backslash \{x\})\cap A \neq \emptyset.
+$$
+Informally, this means that there are points in $A$ that are different but arbitrarily close to $x$.
+
+{\em Example:}
+The points $0$ and $1$ are limit points of the open interval $(0,1)$.
+
+\subsection{Closure set}
+
+The {\em closure} $\overline{A}$ of a subset $A$ of $X$ is defined by
+$$
+\overline{A}
+=
+A \cup \{\mbox{all limit points of $A$}\}.
+$$
+
+{\em Examples:} the closed interval $[0,1]$ is the closure of itself and the subsets $(0,1)$, $[0,1)$, $(0,1]$ and $(0,1/2)\cup (1/2,1)$.
+
+\subsection{Bounded set}
+
+A subset $A$ of $X$ is {\em bounded} if there exists an $x\in X$ and a finite $r>0$ such that $A \subset B_r(x)$.
+
+%\subsection{Compact set}
+%
+%When $X$ is a finite-dimensional metric space, a subset $K$ of $X$ is called {\em compact} if it is closed and bounded.
+%
+%{\color{red} 
+%{\em Remark:}
+%The notion of compactness works differently in infinite-dimensional metric spaces.
+%See appendix~\ref{app:A}.
+%}
+
+\subsection{Convergence}
+
+We say that a sequence $\{x_j\in X:j\in \NN\}$ {\em converges} to a value $x\in X$ if, for each $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_j,x)<\epsilon$ for every $j\geq N$.
+It can be easily shown that, when the sequence is convergent, then the value of $x$ is unique.
+
+The convergence of the sequence is abbreviated by $x_j\to x$ as $j\to \infty$.
+
+\subsection{Cauchy sequence}
+
+A sequence $\{x_j\in X:j\in \NN\}$ is a {\em Cauchy sequence} if, for every $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_i,x_j)<\epsilon$ for every $i,j\geq N$.
+
+\subsection{Complete metric space}
+
+A metric space $X$ equipped with a metric $d$ is called {\em complete} if every Cauchy sequence in it converges to an element in it.
+More formally, if $\{x_j\in X:j\in \NN\}$ is a Cauchy sequence, then there exists an $x\in X$ such that, for every $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_j,x)<\epsilon$ for every $j\geq N$.
+
+{\em Example:}
+Consider the sequence given by
+$$
+x_j = \sum_{i=0}^j \frac{1}{i!}.
+$$
+Clearly, $x_j\to e$ as $j\to \infty$, i.e. it converges to Euler's number.
+This is a Cauchy sequence in $\QQ$ but it does not converge to a value in $\QQ$ because $e$ is irrational.
+It converges to a value in $\RR$.
+Therefore, $\QQ$ is not a complete space.
+
+\section{Normed vector space}
+
+A {\em normed vector space} $V$ over a field $\FF$ is a vector space equipped with a norm, which is a mapping $V\ni v\to |v|\in \RR$ that, for any $v,w\in V$ and $\alpha\in \FF$, it satisfies:
+\begin{enumerate}
+\item triangle inequality, $|v+w|\leq |v|+|w|$,
+\item absolute homogeneity, $|\alpha v|=|\alpha||v|$, and
+\item positive definiteness, $|v|=0$ implies $v=0$.
+\end{enumerate}
+In particular, a {\em semi-norm} is a norm without property 3.
+
+\subsection{A normed vector space is a metric space}
+
+A normed vector space is a metric space because a norm defines a metric distance
+$$
+d(v,w) = |v-w|.
+$$
+To see this, it is enough to check that it actually satisfies the triangle inequality, because the remaining metric properties follow directly from the norm axioms.
+Namely,
+$$
+d(v,w) = |v-w| = |v-u+u-w| \leq |v-u|+|u-w| = d(v,u) + d(u,w)
+$$
+holds for any $v,u,w\in V$ due to property 1 of the norm.
+
+\subsection{Banach space}
+
+A complete normed vector space is called a {\em Banach space}.
+In other words, as we already saw, a normed vector space is a metric space.
+If additionally, such metric space is complete, meaning that all Cauchy sequences in it converge to vectors in it, then it is called a Banach space.
+
+\subsection{Continuous function}
+
+Consider two metric spaces $X$ and $Y$.
+A function $f:X\to Y$ is continuous at $x\in X$ if, for every convergent sequence $x_j \to x$ it holds that $f(x_j)\to f(x)$.
+
+\section{Hilbert space}
+
+\subsection{Inner product space}
+
+Given a vector space $V$ over $\CC$, an {\em hermitian inner product} is a function $V\times V\ni (v,w) \to v\cdot w \in \CC$ satisfying, for each $v,w,u\in V$ and $\alpha,\beta\in \CC$, the following properties:
+\begin{enumerate}
+\item linearity of the second argument, $v\cdot(\alpha w+\beta u) = \alpha (v\cdot w) + \beta (v\cdot u)$,
+\item conjugate symmetry, $v\cdot w = (w\cdot v)^*$, and
+\item positive definiteness, $v\cdot v\geq 0$ and $v\cdot v=0$ only if $v=0$.
+\end{enumerate}
+A vector space equipped with an (hermitian) inner product is called an inner product space.
+
+{\em Remark:} We adopt the physics convention where the inner product is linear in the second argument and antilinear in the first.
+
+\subsection{Induced norm}
+
+The mapping $V\ni v\to \sqrt{v\cdot v}$ is a norm called the {\em induced norm}.
+Hence, an inner product space is a normed space.
+
+\subsection{Cauchy-Schwartz inequality}
+
+An hermitian inner product satisfies the so called Cauchy-Schwartz inequality
+$$
+|v\cdot w| \leq |v||w|
+$$
+which holds for all $v,w\in V$.
+
+{\em Excercise:}
+Prove the Cauchy-Schwartz inequality.
+
+\subsection{Hilbert space}
+
+A Hilbert space is a complete hermitian inner product space.
+In other words, in a Hilbert space $H$, all Cauchy sequences converge to a vector in $H$, where the induced norm is used to determine convergence.
+
+%\appendix
+%
+%\section{
+%Compactness in infinite dimension
+%\label{app:A}
+%}
+%
+%% https://chatgpt.com/share/6a0c5541-7498-83e9-a94f-8ca91aa5e791
+%
+%The compactness of a subset $K$ of a metric space $X$ only makes sense if $X$ is finite-dimensional?
+%No. Compactness is a fundamental topological notion and makes perfect sense in {\em any} metric space, including infinite-dimensional ones.
+%For a subset $K \subset X$ of a metric space $(X,d)$, compactness means: 
+%\begin{quote}
+%Every open cover of $K$ admits a finite subcover.
+%\end{quote}
+%In metric spaces, this is equivalent to: 
+%\begin{quote}
+%Every sequence in $K$ has a convergent subsequence whose limit lies in $K$.
+%\end{quote}
+%This definition does not depend on dimension at all.
+%What {\em does} change drastically between finite- and infinite-dimensional spaces is {\bf which sets are compact}.
+%
+%\subsection{Finite-dimensional case}
+%
+%In $\mathbb{R}^n$, the Heine–Borel theorem says:
+%$$
+%K \subset \mathbb{R}^n
+%\text{ is compact }
+%\iff
+%K \text{ is closed and bounded.}
+%$$
+%This is a very special property of finite-dimensional normed spaces.
+%
+%\subsection{Infinite-dimensional case}
+%
+%In infinite-dimensional normed spaces, closed and bounded sets are {\em usually not compact}.
+%For example, consider the Hilbert space
+%$$
+%\ell^2
+%=
+%\left\{
+%x=(x_1,x_2,\dots):
+%\sum_{n=1}^\infty |x_n|^2 < \infty
+%\right\}
+%.
+%$$
+%Its closed unit ball
+%$$
+%B=\{x\in \ell^2:|x|\le 1\}
+%$$
+%is closed and bounded, but {\bf not compact}.
+%A standard proof uses the canonical basis vectors
+%$$
+%e_1=(1,0,0,\dots),\quad
+%e_2=(0,1,0,\dots),\quad \dots
+%$$
+%which satisfy
+%$$
+%|e_n-e_m|=\sqrt{2}
+%\quad (n\neq m).
+%$$
+%Hence no subsequence can be Cauchy, so no subsequence converges. Therefore $B$ is not compact.
+%
+%\subsection{What replaces Heine–Borel?}
+%
+%In metric spaces, compactness is closely related to {\bf total boundedness}.
+%
+%For metric spaces:
+%
+%$$
+%K \text{ compact}
+%\iff
+%K \text{ complete and totally bounded}.
+%$$
+%
+%Total boundedness is stronger than ordinary boundedness.
+%A set is totally bounded if:
+%\begin{quote}
+%For every $\varepsilon>0$, it can be covered by finitely many balls of radius $\varepsilon$.
+%\end{quote}
+%In finite dimensions, boundedness already implies total boundedness. In infinite dimensions, it generally does not.
+%
+%\subsection{Intuition}
+%
+%Infinite-dimensional balls contain ``too many independent directions.''
+%The sequence $e_n$ in $\ell^2$ keeps jumping into new orthogonal directions and never accumulates anywhere.
+%That phenomenon cannot happen inside bounded subsets of finite-dimensional spaces.
+%So compactness absolutely makes sense in infinite-dimensional spaces — it simply becomes much more restrictive.
+
+
+\end{document}
+%
+% ****** End of file apstemplate.tex ******
+
+
