@@ -196,180 +196,338 @@ Bla bla bla... resumen...
 
 % https://chatgpt.com/share/6a0cb76f-d84c-83e9-abd4-078d5e57a990
 
+\section{WHY BANACH AND HILBERT SPACES MATTER?}
 
-A set $X$ is called a {\em metric space} if it is equipped with a notion of {\em metric distance}, i.e. a function $d:X\times X\to \RR$ such that, for any three elements $x$, $y$ and $z$ in $X$, which are called {\em points}, it holds:
-\begin{enumerate}
-\item $d(x,y) \geq 0$, i.e. it is {\em non-negative}.
-\item $d(x,y) = 0$ implies $x=y$, i.e. it is {\em positive definite}.
-\item $d(x,y) = d(y,x)$, i.e. it is {\em symmetric}.
-\item $d(x,z) \leq  d(x,y) + d(y,z)$, i.e. it satisfies the {\em triangle inequality}.
-\end{enumerate}
+In Part I, metric spaces, normed vector spaces, Banach spaces, inner product spaces, and Hilbert spaces were introduced. However, the true importance of Banach and Hilbert spaces was intentionally postponed.
+\begin{itemize}
+\item Why are normed vector spaces not enough?
+\item Why are inner product spaces not enough?
+\end{itemize}
+The answer is essentially related to the convergence of infinite limiting processes.
 
-{\em Example:} The set $\RR^n$ with the euclidean distance $d(x,y) = \sqrt{\sum_{i=1}^n (x_i-y_i)^2}$ is a metric space.
+In many areas of mathematics and physics, one works with:
+\begin{itemize}
+\item infinite sequences,
+\item infinite series,
+\item approximation procedures,
+\item Fourier expansions,
+\item variational methods.
+\end{itemize}
+In such contexts, it is important that the limits produced by these processes remain inside the space itself.
+Banach spaces guarantee that limits associated with norm convergence remain within the space. Hilbert spaces additionally provide a geometric structure based on orthogonality, allowing generalized Fourier expansions and orthogonal projections.
+This part develops these ideas.
 
-{\em Remark:} There are metric spaces that are not finite-dimensional.
+\section{TOPOLOGICAL STRUCTURE OF METRIC SPACES}
 
-\subsection{Open ball}
+\subsection{Open Balls}
 
-The set
+Let $(X,d)$ be a metric space and let $x\in X$.
+The open ball centered at $x$ with radius $r>0$ is defined by
 $$
-B_r(x)
+B_r(x):={y\in X:d(x,y)<r}.
+$$
+Open balls describe the local structure induced by the metric.
+
+\subsection{Open Sets}
+
+A subset $U\subseteq X$ is called open if for every $x\in U$, there exists $r>0$ such that
+$$
+B_r(x)\subseteq U.
+$$
+Intuitively, every point of an open set can be slightly perturbed while remaining inside the set.
+
+\subsection{Closed Sets}
+
+A subset $F\subseteq X$ is called closed if its complement
+$$
+X\setminus F
+$$
+is open.
+Closed sets are important because they contain the limits of convergent sequences.
+
+\subsection{Limit Points}
+
+Let $A\subseteq X$.
+A point $x\in X$ is called a limit point of $A$ if every open ball centered at $x$ contains points of $A$ different from $x$ itself.
+That is,
+$$
+\forall r>0,\quad
+(B_r(x)\setminus{x})\cap A\neq\emptyset.
+$$
+
+\subsection{Closure}
+The closure of a subset $A\subseteq X$, denoted by $\overline{A}$, is the set obtained by adding to $A$ all of its limit points.
+Equivalently, $\overline{A}$ is the smallest closed subset containing $A$.
+
+\subsection{Dense Subsets}
+
+A subset $A\subseteq X$ is called dense in $X$ if
+$$
+\overline{A}=X.
+$$
+This means that every point of $X$ can be approximated arbitrarily well by points of $A$.
+Density is fundamental in approximation theory and Fourier analysis.
+
+\subsection{Compact Sets}
+
+A subset $K\subseteq X$ is called compact if every open cover of $K$ admits a finite subcover.
+In metric spaces, compactness is equivalent to sequential compactness.
+
+\subsection{Sequential Compactness}
+
+A subset $K\subseteq X$ is sequentially compact if every sequence in $K$ possesses a convergent subsequence whose limit belongs to $K$.
+Compactness plays a central role in existence theorems and approximation methods.
+
+\section{INFINITE SERIES AND BANACH SPACES}
+
+\subsection{Infinite Series in Normed Spaces}
+
+Let $(V,|\cdot|)$ be a normed vector space and let $(v_n)_{n\in\mathbb{N}}$ be a sequence in $V$.
+An infinite series is an expression of the form
+$$
+\sum_{n=1}^\infty v_n.
+$$
+The series is said to converge if the sequence of partial sums
+$$
+S_N:=\sum_{n=1}^N v_n
+$$
+converges in norm.
+That is, there exists $S\in V$ such that
+$$
+\lim_{N\to\infty}|S_N-S|=0.
+$$
+
+\subsection{The Cauchy Criterion for Series}
+
+A series converges if and only if the sequence of partial sums is a Cauchy sequence.
+That is,
+$$
+\forall\varepsilon>0,\quad
+\exists N\in\mathbb{N}
+\text{ such that }
+m,n\geq N
+\Rightarrow
+|S_n-S_m|<\varepsilon.
+$$
+However, a Cauchy sequence does not necessarily converge in an arbitrary normed vector space.
+This is precisely why completeness becomes important.
+
+\subsection{Why Normed Spaces Are Not Enough}
+
+In an incomplete normed vector space, a convergent approximation process may produce a limit that lies outside the space itself.
+Thus, one may construct:
+\begin{itemize}
+\item convergent sequences,
+\item convergent series,
+\item approximation procedures,
+\end{itemize}
+whose limits do not belong to the original space.
+This is mathematically inconvenient and physically undesirable.
+
+\subsection{Banach Spaces}
+
+Banach spaces solve this problem.
+Because Banach spaces are complete, every Cauchy sequence converges to an element of the space itself.
+Consequently:
+\begin{itemize}
+\item convergent infinite series remain inside the space,
+\item approximation procedures remain meaningful,
+\item limiting processes are internally consistent.
+\end{itemize}
+This is one of the main reasons Banach spaces are fundamental in analysis.
+
+\subsection{Closed Subspaces of Banach Spaces}
+
+Let $V$ be a Banach space and let $W\subseteq V$ be a closed vector subspace.
+Then $W$ is itself a Banach space under the induced norm.
+The closedness condition is essential because limits of convergent sequences in $W$ must remain inside $W$.
+
+\section{ORTHOGONALITY AND HILBERT SPACES}
+
+\subsection{Orthogonality}
+
+Let $(H,\langle\cdot,\cdot\rangle)$ be an inner product space.
+Two vectors $u,v\in H$ are said to be orthogonal if
+$$
+\langle u,v\rangle=0.
+$$
+Orthogonality generalizes the notion of perpendicularity from Euclidean geometry.
+
+\subsection{Orthonormal Sets}
+
+A subset ${e_i}_{i\in I}\subseteq H$ is called orthonormal if
+$$
+\langle e_i,e_j\rangle=
+\delta_{ij}.
+$$
+That is:
+\begin{itemize}
+\item each vector has norm one,
+\item different vectors are orthogonal.
+\end{itemize}
+
+\subsection{Fourier Coefficients}
+
+Let ${e_n}_{n=1}^\infty$ be an orthonormal set and let $v\in H$.
+The numbers
+$$
+c_n:=\langle e_n,v\rangle
+$$
+are called the Fourier coefficients of $v$ relative to the orthonormal set.
+They measure the components of $v$ along the orthogonal directions $e_n$.
+
+\subsection{Fourier Expansions}
+
+One may attempt to reconstruct $v$ through the infinite series
+$$
+\sum_{n=1}^\infty
+\langle e_n,v\rangle e_n.
+$$
+This is a generalized Fourier expansion.
+However, such an expansion only becomes fully meaningful if the series converges within the space itself.
+This is why completeness is essential.
+
+\subsection{Bessel Inequality}
+
+Let ${e_n}_{n=1}^\infty$ be an orthonormal set in a Hilbert space $H$.
+Then, for every $v\in H$,
+$$
+\sum_{n=1}^\infty
+|\langle e_n,v\rangle|^2
+\leq
+|v|^2.
+$$
+This inequality guarantees that the Fourier coefficients are square summable.
+
+\subsection{Parseval Identity}
+
+If the orthonormal set forms a complete orthonormal basis, then
+$$
+|v|^2
 =
-\{y\in X: d(x,y)<r\}
+\sum_{n=1}^\infty
+|\langle e_n,v\rangle|^2.
 $$
-is called the {\em open ball} of $X$ centered at $x$ and of radius $r>0$.
+This identity generalizes the Pythagorean theorem to infinite-dimensional spaces.
 
-\subsection{Open set}
+\subsection{Why Inner Product Spaces Are Not Enough?}
 
-A subset $U$ of $X$ is {\em open} if for every $x\in U$ there exists an open ball $B_r(x) \subset U$.
+An arbitrary inner product space may fail to contain the limits of orthogonal expansions.
+Thus, generalized Fourier series may converge to objects lying outside the space.
+Hilbert spaces solve this problem because they are complete.
+Therefore:
+\begin{itemize}
+\item orthogonal expansions converge inside the space,
+\item generalized Fourier analysis becomes internally consistent,
+\item infinite-dimensional Euclidean geometry becomes possible.
+\end{itemize}
+This is one of the main reasons Hilbert spaces are fundamental in mathematics and physics.
 
-\subsection{Complement set}
+\section{ORTHOGONAL PROJECTIONS AND BEST APPROXIMATION}
 
-Consider two subsets $Y$ and $Z$ of $X$.
-The {\em complement} $Y\backslash Z$ of $Y$ in $Z$ is the subset of $X$ given by
+\subsection{Orthogonal Complement}
+
+Let $M\subseteq H$ be a subset of a Hilbert space.
+The orthogonal complement of $M$ is defined by
 $$
-Y\backslash Z := \{y\in Y:y\notin Z\}.
+M^\perp
+:=
+{
+v\in H:
+\langle v,m\rangle=0
+\text{ for all }m\in M
+}.
 $$
-In other words, by the elements in $Y$ that are not in $Z$.
-In particular, $Y^c = X/Y$ is the subset of elements in $X$ that are not in $Y$.
 
-\subsection{Closed set}
+\subsection{Projection Theorem}
 
-A subset $F$ of $X$ is {\em closed} if its complement $X\backslash F$ is open.
-
-\subsection{
-Limit or accumulation point
-\label{sec:limit_point_metric}
-}
-
-A point $x$ is a {\em limit point} (or {\em accumulation point}) of a subset $A$ of $X$ if, for every $r>0$, it holds that
+Let $M$ be a closed subspace of a Hilbert space $H$.
+Then every vector $v\in H$ can be uniquely decomposed as
 $$
-(B_r(x)\backslash \{x\})\cap A \neq \emptyset.
+v=m+w,
 $$
-Informally, this means that there are points in $A$ that are different but arbitrarily close to $x$.
-
-{\em Example:}
-The points $0$ and $1$ are limit points of the open interval $(0,1)$.
-
-\subsection{Closure set}
-
-The {\em closure} $\overline{A}$ of a subset $A$ of $X$ is defined by
+where
+\begin{itemize}
+\item $m\in M$,
+\item $w\in M^\perp$.
+\end{itemize}
+Equivalently,
 $$
-\overline{A}
+H=M\oplus M^\perp.
+$$
+
+\subsection{Best Approximation Theorem}
+
+Let $M$ be a closed subspace of a Hilbert space $H$.
+For every $v\in H$, there exists a unique vector $m\in M$ such that
+$$
+|v-m|
 =
-A \cup \{\mbox{all limit points of $A$}\}.
+\min_{u\in M}|v-u|.
 $$
+Thus, orthogonal projections provide optimal approximations.
 
-{\em Examples:} the closed interval $[0,1]$ is the closure of itself and the subsets $(0,1)$, $[0,1)$, $(0,1]$ and $(0,1/2)\cup (1/2,1)$.
+\subsection{Importance of Completeness}
 
-\subsection{Bounded set}
+The projection theorem fundamentally depends on completeness.
+Without completeness:
+\begin{itemize}
+\item minimizing sequences may fail to converge,
+\item orthogonal projections may fail to exist,
+\item approximation procedures may break down.
+\end{itemize}
+Hilbert spaces guarantee that these geometric constructions remain meaningful.
 
-A subset $A$ of $X$ is {\em bounded} if there exists an $x\in X$ and a finite $r>0$ such that $A \subset B_r(x)$.
+\section{LINEAR OPERATORS}
 
-%\subsection{Compact set}
-%
-%When $X$ is a finite-dimensional metric space, a subset $K$ of $X$ is called {\em compact} if it is closed and bounded.
-%
-%{\color{red} 
-%{\em Remark:}
-%The notion of compactness works differently in infinite-dimensional metric spaces.
-%See appendix~\ref{app:A}.
-%}
+\subsection{Linear Operators}
 
-\subsection{Convergence}
-
-We say that a sequence $\{x_j\in X:j\in \NN\}$ {\em converges} to a value $x\in X$ if, for each $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_j,x)<\epsilon$ for every $j\geq N$.
-It can be easily shown that, when the sequence is convergent, then the value of $x$ is unique.
-
-The convergence of the sequence is abbreviated by $x_j\to x$ as $j\to \infty$.
-
-\subsection{Cauchy sequence}
-
-A sequence $\{x_j\in X:j\in \NN\}$ is a {\em Cauchy sequence} if, for every $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_i,x_j)<\epsilon$ for every $i,j\geq N$.
-
-\subsection{Complete metric space}
-
-A metric space $X$ equipped with a metric $d$ is called {\em complete} if every Cauchy sequence in it converges to an element in it.
-More formally, if $\{x_j\in X:j\in \NN\}$ is a Cauchy sequence, then there exists an $x\in X$ such that, for every $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_j,x)<\epsilon$ for every $j\geq N$.
-
-{\em Example:}
-Consider the sequence given by
+Let $V$ and $W$ be vector spaces.
+A function
 $$
-x_j = \sum_{i=0}^j \frac{1}{i!}.
+T:V\to W
 $$
-Clearly, $x_j\to e$ as $j\to \infty$, i.e. it converges to Euler's number.
-This is a Cauchy sequence in $\QQ$ but it does not converge to a value in $\QQ$ because $e$ is irrational.
-It converges to a value in $\RR$.
-Therefore, $\QQ$ is not a complete space.
-
-\section{Normed vector space}
-
-A {\em normed vector space} $V$ over a field $\FF$ is a vector space equipped with a norm, which is a mapping $V\ni v\to |v|\in \RR$ that, for any $v,w\in V$ and $\alpha\in \FF$, it satisfies:
-\begin{enumerate}
-\item triangle inequality, $|v+w|\leq |v|+|w|$,
-\item absolute homogeneity, $|\alpha v|=|\alpha||v|$, and
-\item positive definiteness, $|v|=0$ implies $v=0$.
-\end{enumerate}
-In particular, a {\em semi-norm} is a norm without property 3.
-
-\subsection{A normed vector space is a metric space}
-
-A normed vector space is a metric space because a norm defines a metric distance
+is called linear if
 $$
-d(v,w) = |v-w|.
+T(\alpha u+\beta v)
+=
+\alpha T(u)+\beta T(v)
 $$
-To see this, it is enough to check that it actually satisfies the triangle inequality, because the remaining metric properties follow directly from the norm axioms.
-Namely,
+for all $u,v\in V$ and all scalars $\alpha,\beta$.
+
+\subsection{Bounded Operators}
+
+Let $V$ and $W$ be normed vector spaces.
+A linear operator $T:V\to W$ is called bounded if there exists $C>0$ such that
 $$
-d(v,w) = |v-w| = |v-u+u-w| \leq |v-u|+|u-w| = d(v,u) + d(u,w)
+|T(v)|
+\leq
+C|v|
 $$
-holds for any $v,u,w\in V$ due to property 1 of the norm.
+for every $v\in V$.
 
-\subsection{Banach space}
+\subsection{Continuity of Linear Operators}
 
-A complete normed vector space is called a {\em Banach space}.
-In other words, as we already saw, a normed vector space is a metric space.
-If additionally, such metric space is complete, meaning that all Cauchy sequences in it converge to vectors in it, then it is called a Banach space.
+A linear operator between normed vector spaces is continuous if and only if it is bounded.
+Thus, boundedness is the natural notion of regularity for linear operators in functional analysis.
 
-\subsection{Continuous function}
+\subsection{Operator Norm}
 
-Consider two metric spaces $X$ and $Y$.
-A function $f:X\to Y$ is continuous at $x\in X$ if, for every convergent sequence $x_j \to x$ it holds that $f(x_j)\to f(x)$.
-
-\section{Hilbert space}
-
-\subsection{Inner product space}
-
-Given a vector space $V$ over $\CC$, an {\em hermitian inner product} is a function $V\times V\ni (v,w) \to v\cdot w \in \CC$ satisfying, for each $v,w,u\in V$ and $\alpha,\beta\in \CC$, the following properties:
-\begin{enumerate}
-\item linearity of the second argument, $v\cdot(\alpha w+\beta u) = \alpha (v\cdot w) + \beta (v\cdot u)$,
-\item conjugate symmetry, $v\cdot w = (w\cdot v)^*$, and
-\item positive definiteness, $v\cdot v\geq 0$ and $v\cdot v=0$ only if $v=0$.
-\end{enumerate}
-A vector space equipped with an (hermitian) inner product is called an inner product space.
-
-{\em Remark:} We adopt the physics convention where the inner product is linear in the second argument and antilinear in the first.
-
-\subsection{Induced norm}
-
-The mapping $V\ni v\to \sqrt{v\cdot v}$ is a norm called the {\em induced norm}.
-Hence, an inner product space is a normed space.
-
-\subsection{Cauchy-Schwartz inequality}
-
-An hermitian inner product satisfies the so called Cauchy-Schwartz inequality
+The operator norm of a bounded linear operator $T$ is defined by
 $$
-|v\cdot w| \leq |v||w|
+|T|
+:=
+\sup_{|v|\leq1}
+|T(v)|.
 $$
-which holds for all $v,w\in V$.
+The operator norm measures the maximal amplification produced by the operator.
 
-{\em Excercise:}
-Prove the Cauchy-Schwartz inequality.
+\subsection{Final Remarks}
 
-\subsection{Hilbert space}
-
-A Hilbert space is a complete hermitian inner product space.
-In other words, in a Hilbert space $H$, all Cauchy sequences converge to a vector in $H$, where the induced norm is used to determine convergence.
+Banach and Hilbert spaces provide the natural setting for infinite-dimensional analysis.
+Banach spaces guarantee the stability of limiting processes under norm convergence.
+Hilbert spaces additionally provide a geometric structure based on orthogonality, projections, and generalized Fourier expansions.
+These structures form the mathematical foundation of large areas of modern mathematics and theoretical physics.
 
 %\appendix
 %
