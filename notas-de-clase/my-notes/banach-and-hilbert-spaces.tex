@@ -223,15 +223,17 @@ A subset $U$ of $X$ is {\em open} if for every $x\in U$ there exists an open bal
 
 \subsection{Complement set}
 
-Consider two subsets $Y$ and $Z$ of $X$ such that $Y\subset Z$.
+Consider two subsets $Y$ and $Z$ of $X$.
 The {\em complement} $Y\backslash Z$ of $Y$ in $Z$ is the subset of $X$ given by
 $$
 Y\backslash Z := \{y\in Y:y\notin Z\}.
 $$
+In other words, by the elements in $Y$ that are not in $Z$.
+In particular, $Y^c = X/Y$ is the subset of elements in $X$ that are not in $Y$.
 
 \subsection{Closed set}
 
-A subset $F$ of $X$ is {\em closed} if its complement $F\backslash X$ is open.
+A subset $F$ of $X$ is {\em closed} if its complement $X\backslash F$ is open.
 
 \subsection{
 Limit or accumulation point
@@ -249,7 +251,7 @@ The points $0$ and $1$ are limit points of the open interval $(0,1)$.
 
 \subsection{Closure set}
 
-The {\em closure} $\overline{A}$ of a subset $A$ of $\RR^n$ is defined by
+The {\em closure} $\overline{A}$ of a subset $A$ of $X$ is defined by
 $$
 \overline{A}
 =
@@ -260,17 +262,17 @@ $$
 
 \subsection{Bounded set}
 
-A subset $A$ of $X$ is {\em bounded} if there exists a finite $r>0$ such that $A \subset B_r(0)$.
+A subset $A$ of $X$ is {\em bounded} if there exists an $x\in X$ and a finite $r>0$ such that $A \subset B_r(x)$.
 
-\subsection{Compact set}
-
-When $X$ is a finite-dimensional metric space, a subset $K$ of $X$ is called {\em compact} if it is closed and bounded.
-
-{\color{red} 
-{\em Remark:}
-The notion of compactness works differently in infinite-dimensional metric spaces.
-See appendix~\ref{app:A}.
-}
+%\subsection{Compact set}
+%
+%When $X$ is a finite-dimensional metric space, a subset $K$ of $X$ is called {\em compact} if it is closed and bounded.
+%
+%{\color{red} 
+%{\em Remark:}
+%The notion of compactness works differently in infinite-dimensional metric spaces.
+%See appendix~\ref{app:A}.
+%}
 
 \subsection{Convergence}
 
@@ -339,10 +341,12 @@ A function $f:X\to Y$ is continuous at $x\in X$ if, for every convergent sequenc
 Given a vector space $V$ over $\CC$, an {\em hermitian inner product} is a function $V\times V\ni (v,w) \to v\cdot w \in \CC$ satisfying, for each $v,w,u\in V$ and $\alpha,\beta\in \CC$, the following properties:
 \begin{enumerate}
 \item linearity of the second argument, $v\cdot(\alpha w+\beta u) = \alpha (v\cdot w) + \beta (v\cdot u)$,
-\item conjugate symmetry, $v\cdot w = (w\cdot v)^*$,
+\item conjugate symmetry, $v\cdot w = (w\cdot v)^*$, and
 \item positive definiteness, $v\cdot v\geq 0$ and $v\cdot v=0$ only if $v=0$.
 \end{enumerate}
 A vector space equipped with an (hermitian) inner product is called an inner product space.
+
+{\em Remark:} We adopt the physics convention where the inner product is linear in the second argument and antilinear in the first.
 
 \subsection{Induced norm}
 
@@ -365,94 +369,94 @@ Prove the Cauchy-Schwartz inequality.
 A Hilbert space is a complete hermitian inner product space.
 In other words, in a Hilbert space $H$, all Cauchy sequences converge to a vector in $H$, where the induced norm is used to determine convergence.
 
-\appendix
-
-\section{
-Compactness in infinite dimension
-\label{app:A}
-}
-
-% https://chatgpt.com/share/6a0c5541-7498-83e9-a94f-8ca91aa5e791
-
-The compactness of a subset $K$ of a metric space $X$ only makes sense if $X$ is finite-dimensional?
-No. Compactness is a fundamental topological notion and makes perfect sense in {\em any} metric space, including infinite-dimensional ones.
-For a subset $K \subset X$ of a metric space $(X,d)$, compactness means: 
-\begin{quote}
-Every open cover of $K$ admits a finite subcover.
-\end{quote}
-In metric spaces, this is equivalent to: 
-\begin{quote}
-Every sequence in $K$ has a convergent subsequence whose limit lies in $K$.
-\end{quote}
-This definition does not depend on dimension at all.
-What {\em does} change drastically between finite- and infinite-dimensional spaces is {\bf which sets are compact}.
-
-\subsection{Finite-dimensional case}
-
-In $\mathbb{R}^n$, the Heine–Borel theorem says:
-$$
-K \subset \mathbb{R}^n
-\text{ is compact }
-\iff
-K \text{ is closed and bounded.}
-$$
-This is a very special property of finite-dimensional normed spaces.
-
-\subsection{Infinite-dimensional case}
-
-In infinite-dimensional normed spaces, closed and bounded sets are {\em usually not compact}.
-For example, consider the Hilbert space
-$$
-\ell^2
-=
-\left\{
-x=(x_1,x_2,\dots):
-\sum_{n=1}^\infty |x_n|^2 < \infty
-\right\}
-.
-$$
-Its closed unit ball
-$$
-B=\{x\in \ell^2:|x|\le 1\}
-$$
-is closed and bounded, but {\bf not compact}.
-A standard proof uses the canonical basis vectors
-$$
-e_1=(1,0,0,\dots),\quad
-e_2=(0,1,0,\dots),\quad \dots
-$$
-which satisfy
-$$
-|e_n-e_m|=\sqrt{2}
-\quad (n\neq m).
-$$
-Hence no subsequence can be Cauchy, so no subsequence converges. Therefore $B$ is not compact.
-
-\subsection{What replaces Heine–Borel?}
-
-In metric spaces, compactness is closely related to {\bf total boundedness}.
-
-For metric spaces:
-
-$$
-K \text{ compact}
-\iff
-K \text{ complete and totally bounded}.
-$$
-
-Total boundedness is stronger than ordinary boundedness.
-A set is totally bounded if:
-\begin{quote}
-For every $\varepsilon>0$, it can be covered by finitely many balls of radius $\varepsilon$.
-\end{quote}
-In finite dimensions, boundedness already implies total boundedness. In infinite dimensions, it generally does not.
-
-\subsection{Intuition}
-
-Infinite-dimensional balls contain ``too many independent directions.''
-The sequence $e_n$ in $\ell^2$ keeps jumping into new orthogonal directions and never accumulates anywhere.
-That phenomenon cannot happen inside bounded subsets of finite-dimensional spaces.
-So compactness absolutely makes sense in infinite-dimensional spaces — it simply becomes much more restrictive.
+%\appendix
+%
+%\section{
+%Compactness in infinite dimension
+%\label{app:A}
+%}
+%
+%% https://chatgpt.com/share/6a0c5541-7498-83e9-a94f-8ca91aa5e791
+%
+%The compactness of a subset $K$ of a metric space $X$ only makes sense if $X$ is finite-dimensional?
+%No. Compactness is a fundamental topological notion and makes perfect sense in {\em any} metric space, including infinite-dimensional ones.
+%For a subset $K \subset X$ of a metric space $(X,d)$, compactness means: 
+%\begin{quote}
+%Every open cover of $K$ admits a finite subcover.
+%\end{quote}
+%In metric spaces, this is equivalent to: 
+%\begin{quote}
+%Every sequence in $K$ has a convergent subsequence whose limit lies in $K$.
+%\end{quote}
+%This definition does not depend on dimension at all.
+%What {\em does} change drastically between finite- and infinite-dimensional spaces is {\bf which sets are compact}.
+%
+%\subsection{Finite-dimensional case}
+%
+%In $\mathbb{R}^n$, the Heine–Borel theorem says:
+%$$
+%K \subset \mathbb{R}^n
+%\text{ is compact }
+%\iff
+%K \text{ is closed and bounded.}
+%$$
+%This is a very special property of finite-dimensional normed spaces.
+%
+%\subsection{Infinite-dimensional case}
+%
+%In infinite-dimensional normed spaces, closed and bounded sets are {\em usually not compact}.
+%For example, consider the Hilbert space
+%$$
+%\ell^2
+%=
+%\left\{
+%x=(x_1,x_2,\dots):
+%\sum_{n=1}^\infty |x_n|^2 < \infty
+%\right\}
+%.
+%$$
+%Its closed unit ball
+%$$
+%B=\{x\in \ell^2:|x|\le 1\}
+%$$
+%is closed and bounded, but {\bf not compact}.
+%A standard proof uses the canonical basis vectors
+%$$
+%e_1=(1,0,0,\dots),\quad
+%e_2=(0,1,0,\dots),\quad \dots
+%$$
+%which satisfy
+%$$
+%|e_n-e_m|=\sqrt{2}
+%\quad (n\neq m).
+%$$
+%Hence no subsequence can be Cauchy, so no subsequence converges. Therefore $B$ is not compact.
+%
+%\subsection{What replaces Heine–Borel?}
+%
+%In metric spaces, compactness is closely related to {\bf total boundedness}.
+%
+%For metric spaces:
+%
+%$$
+%K \text{ compact}
+%\iff
+%K \text{ complete and totally bounded}.
+%$$
+%
+%Total boundedness is stronger than ordinary boundedness.
+%A set is totally bounded if:
+%\begin{quote}
+%For every $\varepsilon>0$, it can be covered by finitely many balls of radius $\varepsilon$.
+%\end{quote}
+%In finite dimensions, boundedness already implies total boundedness. In infinite dimensions, it generally does not.
+%
+%\subsection{Intuition}
+%
+%Infinite-dimensional balls contain ``too many independent directions.''
+%The sequence $e_n$ in $\ell^2$ keeps jumping into new orthogonal directions and never accumulates anywhere.
+%That phenomenon cannot happen inside bounded subsets of finite-dimensional spaces.
+%So compactness absolutely makes sense in infinite-dimensional spaces — it simply becomes much more restrictive.
 
 
 \end{document}
