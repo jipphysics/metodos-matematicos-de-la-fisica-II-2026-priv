@@ -195,12 +195,12 @@ Bla bla bla... resumen...
 
 \section{Metric space}
 
-A set $X$ is called a {\em metric space} if it is equiped with a notion of {\em metric distance}, i.e. a function $d:X\times X\to \RR$ such that, for any three elements $x$, $y$ and $z$ in $X$, which are called {\em points}, it holds:
+A set $X$ is called a {\em metric space} if it is equipped with a notion of {\em metric distance}, i.e. a function $d:X\times X\to \RR$ such that, for any three elements $x$, $y$ and $z$ in $X$, which are called {\em points}, it holds:
 \begin{enumerate}
 \item $d(x,y) \geq 0$, i.e. it is {\em non-negative}.
 \item $d(x,y) = 0$ implies $x=y$, i.e. it is {\em positive definite}.
 \item $d(x,y) = d(y,x)$, i.e. it is {\em symmetric}.
-\item $d(x,z) \leq  d(x,y) + d(y,z)$, i.e. it satisfies the {\em triangular inequality}.
+\item $d(x,z) \leq  d(x,y) + d(y,z)$, i.e. it satisfies the {\em triangle inequality}.
 \end{enumerate}
 
 {\em Example:} The set $\RR^n$ with the euclidean distance $d(x,y) = \sqrt{\sum_{i=1}^n (x_i-y_i)^2}$ is a metric space.
@@ -215,7 +215,7 @@ B_r(x)
 =
 \{y\in X: d(x,y)<r\}
 $$
-is called the {\em open ball} of $X$ centered at $x$ and of radious $r>0$.
+is called the {\em open ball} of $X$ centered at $x$ and of radius $r>0$.
 
 \subsection{Open set}
 
@@ -253,7 +253,7 @@ The {\em closure} $\overline{A}$ of a subset $A$ of $\RR^n$ is defined by
 $$
 \overline{A}
 =
-A \cup \{\mbox{all limiting points of $A$}\}.
+A \cup \{\mbox{all limit points of $A$}\}.
 $$
 
 {\em Examples:} the closed interval $[0,1]$ is the closure of itself and the subsets $(0,1)$, $[0,1)$, $(0,1]$ and $(0,1/2)\cup (1/2,1)$.
@@ -277,7 +277,7 @@ See appendix~\ref{app:A}.
 We say that a sequence $\{x_j\in X:j\in \NN\}$ {\em converges} to a value $x\in X$ if, for each $\epsilon>0$, there exists an $N\in \NN$ such that $d(x_j,x)<\epsilon$ for every $j\geq N$.
 It can be easily shown that, when the sequence is convergent, then the value of $x$ is unique.
 
-The convergence of the sequence is abbreviately denoted by $x_j\to x$ as $j\to \infty$.
+The convergence of the sequence is abbreviated by $x_j\to x$ as $j\to \infty$.
 
 \subsection{Cauchy sequence}
 
@@ -302,7 +302,7 @@ Therefore, $\QQ$ is not a complete space.
 
 A {\em normed vector space} $V$ over a field $\FF$ is a vector space equipped with a norm, which is a mapping $V\ni v\to |v|\in \RR$ that, for any $v,w\in V$ and $\alpha\in \FF$, it satisfies:
 \begin{enumerate}
-\item triangular inequality, $|v+w|\leq |v|+|w|$,
+\item triangle inequality, $|v+w|\leq |v|+|w|$,
 \item absolute homogeneity, $|\alpha v|=|\alpha||v|$, and
 \item positive definiteness, $|v|=0$ implies $v=0$.
 \end{enumerate}
@@ -314,7 +314,7 @@ A normed vector space is a metric space because a norm defines a metric distance
 $$
 d(v,w) = |v-w|.
 $$
-To see this, it is enough to check that it actually satisfies the triangle inequality because the other properties trivially follow.
+To see this, it is enough to check that it actually satisfies the triangle inequality, because the remaining metric properties follow directly from the norm axioms.
 Namely,
 $$
 d(v,w) = |v-w| = |v-u+u-w| \leq |v-u|+|u-w| = d(v,u) + d(u,w)
@@ -332,7 +332,38 @@ If additionally, such metric space is complete, meaning that all Cauchy sequence
 Consider two metric spaces $X$ and $Y$.
 A function $f:X\to Y$ is continuous at $x\in X$ if, for every convergent sequence $x_j \to x$ it holds that $f(x_j)\to f(x)$.
 
-\section{Hilber space}
+\section{Hilbert space}
+
+\subsection{Inner product space}
+
+Given a vector space $V$ over $\CC$, an {\em hermitian inner product} is a function $V\times V\ni (v,w) \to v\cdot w \in \CC$ satisfying, for each $v,w,u\in V$ and $\alpha,\beta\in \CC$, the following properties:
+\begin{enumerate}
+\item linearity of the second argument, $v\cdot(\alpha w+\beta u) = \alpha (v\cdot w) + \beta (v\cdot u)$,
+\item conjugate symmetry, $v\cdot w = (w\cdot v)^*$,
+\item positive definiteness, $v\cdot v\geq 0$ and $v\cdot v=0$ only if $v=0$.
+\end{enumerate}
+A vector space equipped with an (hermitian) inner product is called an inner product space.
+
+\subsection{Induced norm}
+
+The mapping $V\ni v\to \sqrt{v\cdot v}$ is a norm called the {\em induced norm}.
+Hence, an inner product space is a normed space.
+
+\subsection{Cauchy-Schwartz inequality}
+
+An hermitian inner product satisfies the so called Cauchy-Schwartz inequality
+$$
+|v\cdot w| \leq |v||w|
+$$
+which holds for all $v,w\in V$.
+
+{\em Excercise:}
+Prove the Cauchy-Schwartz inequality.
+
+\subsection{Hilbert space}
+
+A Hilbert space is a complete hermitian inner product space.
+In other words, in a Hilbert space $H$, all Cauchy sequences converge to a vector in $H$, where the induced norm is used to determine convergence.
 
 \appendix
 
