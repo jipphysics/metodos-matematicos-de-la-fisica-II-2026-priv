@@ -204,9 +204,35 @@ A set $X$ is called a {\em metric space} if it is equipped with a notion of {\em
 \item $d(x,z) \leq  d(x,y) + d(y,z)$, i.e. it satisfies the {\em triangle inequality}.
 \end{enumerate}
 
-{\em Example:} The set $\RR^n$ with the euclidean distance $d(x,y) = \sqrt{\sum_{i=1}^n (x_i-y_i)^2}$ is a metric space.
+{\em Example 1:} The set $\RR^n$ with the euclidean distance $d(x,y) = \sqrt{\sum_{i=1}^n (x_i-y_i)^2}$ is a metric space.
 
-{\em Remark:} There are metric spaces that are not finite-dimensional.
+{\em Example 2:}
+For any $p\geq 1$, the set 
+$$
+L^p(\RR^n)
+=
+\bigg\{
+f\in C(\RR^n)
+:
+\int_{\RR^n}
+dx\,
+|f(x)|^p
+<
+\infty
+\bigg\}
+$$
+is a metric space with metric distance
+$$
+d(f,g)
+=
+\bigg(
+\int_{\RR^n}
+dx\,
+|f(x)-g(x)|^p
+\bigg)^{1/p}
+.
+$$
+At difference with previous example, this is a metric space that is associated to an infinite-dimensional vector space.
 
 \section{Normed vector space}
 
@@ -217,6 +243,26 @@ A {\em normed vector space} $V$ over a field $\FF$ is a vector space equipped wi
 \item positive definiteness, $|v|=0$ implies $v=0$.
 \end{enumerate}
 In particular, a {\em semi-norm} is a norm without property 3.
+
+{\em Example 1:}
+In correspondence with the first example of previous section,
+$$
+|x| = \sqrt{\sum_{i=1}^n x_i^2}
+$$
+defines a norm over $\RR^n$.
+
+{\em Example 2:}
+In correspondence with the second example of previous section,
+$$
+|f| 
+= 
+\bigg(
+\int_{\RR^n}
+dx\,
+|f(x))|^p
+\bigg)^{1/p}
+$$
+defines a norm over $L^p(\RR^n)$.
 
 \subsection{A normed vector space is a metric space}
 
