@@ -211,11 +211,13 @@ In many areas of mathematics and physics, one works with:
 \item infinite series,
 \item approximation procedures,
 \item Fourier expansions,
-\item variational methods.
+\item variational methods, etc.
 \end{itemize}
 In such contexts, it is important that the limits produced by these processes remain inside the space itself.
-Banach spaces guarantee that limits associated with norm convergence remain within the space. Hilbert spaces additionally provide a geometric structure based on orthogonality, allowing generalized Fourier expansions and orthogonal projections.
-This part develops these ideas.
+Banach spaces guarantee that limits associated with norm convergence remain within the space. 
+
+Hilbert spaces additionally provide a geometric structure based on orthogonality, allowing generalized Fourier expansions and orthogonal projections.
+This part, Part II, develops these ideas.
 
 \section{TOPOLOGICAL STRUCTURE OF METRIC SPACES}
 
@@ -268,6 +270,30 @@ $$
 This means that every point of $X$ can be approximated arbitrarily well by points of $A$.
 Density is fundamental in approximation theory and Fourier analysis.
 
+
+
+\subsection{Separable Spaces}
+
+A metric space $X$ is called separable if it contains a countable dense subset.
+That is, there exists a countable subset
+$$
+D=\{x_1,x_2,\dots\}\subseteq X
+$$
+such that
+$$
+\overline{D}=X.
+$$
+Intuitively, separability means that every element of the space can be approximated arbitrarily well using only countably many elements.
+This property is fundamental in approximation theory, Fourier analysis, and quantum mechanics.
+Examples of separable spaces include:
+\begin{enumerate}
+\item The $n$-th dimensional euclidean space $\mathbb{R}^n$.
+Basically, it is separable because $\QQ$ is countable and dense in $\RR$.
+\item The space $C[a,b]$ of continuous functions with domian $[a,b]\subset \RR$.
+See appendix~\ref{app:B}.
+\item The space $L^2[a,b]$ of square integrable functions with domain $[a,b]\subset \RR$.
+\end{enumerate}
+
 \subsection{Compact Sets}
 
 A subset $K\subseteq X$ is called compact if every open cover of $K$ admits a finite subcover.
@@ -278,11 +304,37 @@ In metric spaces, compactness is equivalent to sequential compactness.
 A subset $K\subseteq X$ is sequentially compact if every sequence in $K$ possesses a convergent subsequence whose limit belongs to $K$.
 Compactness plays a central role in existence theorems and approximation methods.
 
+\subsection{Intuition behind Compactness}
+
+To develop some intuition, let us state the {\em Heine-Borel theorem}.
+It says that, for any $K\subseteq \RR^n$,
+$$
+K \text{ is compact}
+\,\,\,
+\Longleftrightarrow
+\,\,\,
+K \text{ is closed and bounded.}
+$$
+Thus:
+\begin{itemize}
+\item bounded = cannot escape to infinity,
+\item closed = contains its limit points.
+\end{itemize}
+Together:
+\begin{itemize}
+\item sequences cannot diverge,
+\item limits cannot leave the set.
+\end{itemize}
+So compactness means:
+\begin{quotation}
+every infinite process remains controlled.
+\end{quotation}
+
 \section{INFINITE SERIES AND BANACH SPACES}
 
 \subsection{Infinite Series in Normed Spaces}
 
-Let $(V,|\cdot|)$ be a normed vector space and let $(v_n)_{n\in\mathbb{N}}$ be a sequence in $V$.
+Let $(V,|\cdot|)$ be a normed vector space and let $\{v_n:n\in\mathbb{N}\}$ be a sequence in $V$.
 An infinite series is an expression of the form
 $$
 \sum_{n=1}^\infty v_n.
@@ -355,7 +407,7 @@ Orthogonality generalizes the notion of perpendicularity from Euclidean geometry
 
 \subsection{Orthonormal Sets}
 
-A subset ${e_i}_{i\in I}\subseteq H$ is called orthonormal if
+A subset $\{e_i:i\in I\}\subseteq H$ is called orthonormal if
 $$
 \langle e_i,e_j\rangle=
 \delta_{ij}.
@@ -368,7 +420,7 @@ That is:
 
 \subsection{Fourier Coefficients}
 
-Let ${e_n}_{n=1}^\infty$ be an orthonormal set and let $v\in H$.
+Let $\{e_n\}_{n=1}^\infty$ be an orthonormal set and let $v\in H$.
 The numbers
 $$
 c_n:=\langle e_n,v\rangle
@@ -389,7 +441,7 @@ This is why completeness is essential.
 
 \subsection{Bessel Inequality}
 
-Let ${e_n}_{n=1}^\infty$ be an orthonormal set in a Hilbert space $H$.
+Let $\{e_n\}_{n=1}^\infty$  be an orthonormal set in a Hilbert space $H$.
 Then, for every $v\in H$,
 $$
 \sum_{n=1}^\infty
@@ -529,7 +581,170 @@ Banach spaces guarantee the stability of limiting processes under norm convergen
 Hilbert spaces additionally provide a geometric structure based on orthogonality, projections, and generalized Fourier expansions.
 These structures form the mathematical foundation of large areas of modern mathematics and theoretical physics.
 
-%\appendix
+\appendix
+
+\section{
+$C[a,b]$ is a Banach space
+\label{app:A}
+}
+
+Let us show that $C[a,b]$ is a Banach space under the {\em uniform norm}.
+$$
+|f|_{\infty}
+:=
+\supr{x\in [a,b]}\,\,|f(x)|.
+$$
+For this, we should show that $C[a,b]$ is complete under such norm.
+In other words, we should show that every Cauchy sequence in $C[a,b]$ converges to a function in $C[a,b]$.
+Formally, that $\{f_n:n\in N\}$ is a Cauchy sequence under the uniform norm means that, for any $\epsilon>0$, there exists an $N\in \NN$ such that
+$$
+|f_n-f_m|_{\infty}<\epsilon
+$$
+for every $n,m\geq N$.
+This is equivalent to say that
+$$
+|f_n(x)-f_m(x)|<\epsilon
+$$
+holds for every $x\in [a,b]$ and every $n,m\geq N$.
+As a consequence, for any $x\in [a,b]$, the sequence $\{f_n(x):n\in \NN\}$ is Cauchy and, therefore, it is also convergent because $\RR$ is complete.
+Let $f(x)$ denote the value to which $\{f_n(x):n\in \NN\}$ converges.
+Now, it remains to show that the function $f:[a,b]\ni x\to f(x)\in \RR$ belongs to $C[a,b]$.
+In other words, it remains to show that $f$ is continuous in $[a,b]$.
+
+
+
+\section{
+$C[a,b]$ is separable
+\label{app:B}
+}
+
+This is one of the most important examples of a separable Banach space.
+The key idea is that every continuous function can be uniformly approximated by polynomials with rational coefficients.
+Since there are only countably many such polynomials, they form a countable dense subset of $C[a,b]$.
+The proof relies on the Weierstrass approximation theorem.
+
+{\bf Theorem:}
+The space
+$
+C[a,b]
+$
+equipped with the supremum norm
+$$
+|f|_\infty
+=
+\supr{x\in[a,b]}\,\,|f(x)|
+$$
+is separable.
+
+{\bf Proof:}
+
+{\em Step 1 — A Countable Family of Polynomials.}
+Consider the set
+$
+\mathcal P_{\mathbb Q}
+$
+of all polynomials with rational coefficients:
+$$
+p(x)=a_0+a_1x+\cdots+a_nx^n,
+\qquad
+a_k\in\mathbb Q.
+$$
+We first show that this set is countable.
+For each degree $n$, the set of such polynomials is:
+$
+\mathbb Q^{n+1}.
+$
+Since:
+\begin{itemize}
+\item $\mathbb Q$ is countable,
+\item finite products of countable sets are countable,
+\end{itemize}
+it follows that:
+$
+\mathbb Q^{n+1}
+$
+is countable.
+Now:
+$$
+\mathcal P_{\mathbb Q}
+=
+\bigcup_{n=0}^\infty \mathbb Q^{n+1}.
+$$
+A countable union of countable sets is countable.
+Therefore:
+$
+\mathcal P_{\mathbb Q}
+$
+is countable.
+
+{\em Step 2 — Density of Rational Polynomials:}
+We now show that:
+$$
+\overline{\mathcal P_{\mathbb Q}}
+=
+C[a,b].
+$$
+Let
+$
+f\in C[a,b]
+$
+and let
+$
+\varepsilon>0.
+$
+By the Weierstrass approximation theorem, there exists a polynomial
+$$
+p(x)=a_0+a_1x+\cdots+a_nx^n
+$$
+with real coefficients $a_0,a_1,...,a_n$ such that:
+$$
+|f-p|_\infty<\frac{\varepsilon}{2}.
+$$
+Now approximate each real coefficient $a_k$ by a rational number $q_k$ sufficiently accurately.
+Define:
+$$
+q(x)=q_0+q_1x+\cdots+q_nx^n.
+$$
+Because polynomial evaluation depends continuously on the coefficients, the approximation can be chosen so that:
+$$
+|p-q|_\infty<\frac{\varepsilon}{2}.
+$$
+Then:
+$$
+|f-q|_\infty
+\le
+|f-p|_\infty+|p-q|_\infty
+<
+\varepsilon.
+$$
+Since $q\in\mathcal P_{\mathbb Q}$, we conclude that
+$
+\mathcal P_{\mathbb Q}
+$
+is dense in $C[a,b]$.
+
+{\em Conclusion:}
+The space $C[a,b]$ contains a countable dense subset.
+Therefore:
+$
+C[a,b]
+$
+is separable.
+
+{\em Intuition:}
+This theorem says something remarkable:
+\begin{quotation}
+every continuous function can be approximated arbitrarily well using only countably many functions.
+\end{quotation}
+Even though:
+\begin{itemize}
+\item $C[a,b]$ is infinite-dimensional,
+\item and contains uncountably many functions,
+\end{itemize}
+its topology is still controlled by a countable set of approximating functions.
+This is one of the reasons Fourier analysis and numerical approximation become possible.
+
+
 %
 %\section{
 %Compactness in infinite dimension
