@@ -596,7 +596,8 @@ $$
 $$
 For this, we should show that $C[a,b]$ is complete under such norm.
 In other words, we should show that every Cauchy sequence in $C[a,b]$ converges to a function in $C[a,b]$.
-Formally, that $\{f_n:n\in N\}$ is a Cauchy sequence under the uniform norm means that, for any $\epsilon>0$, there exists an $N\in \NN$ such that
+
+That $\{f_n:n\in N\}$ is a Cauchy sequence under the uniform norm means that, for any $\epsilon>0$, there exists an $N\in \NN$ such that
 $$
 |f_n-f_m|_{\infty}<\epsilon
 $$
@@ -608,10 +609,24 @@ $$
 holds for every $x\in [a,b]$ and every $n,m\geq N$.
 As a consequence, for any $x\in [a,b]$, the sequence $\{f_n(x):n\in \NN\}$ is Cauchy and, therefore, it is also convergent because $\RR$ is complete.
 Let $f(x)$ denote the value to which $\{f_n(x):n\in \NN\}$ converges.
-Now, it remains to show that the function $f:[a,b]\ni x\to f(x)\in \RR$ belongs to $C[a,b]$.
-In other words, it remains to show that $f$ is continuous in $[a,b]$.
+Now, it remains to show that:
+\begin{enumerate}
+\item the sequence $\{f_n(x):n\in \NN\}$ converges to $f$, and
+\item that the function $f:[a,b]\ni x\to f(x)\in \RR$ belongs to $C[a,b]$ or, in other words, that $f$ is continuous in $[a,b]$.
+\end{enumerate}
 
+The condition 1. follows easily because the fact that $|f_n(x)-f_m(x)|<\epsilon$ for each $n,m\geq N$ and $x\in [a,b]$ is equivalent to say that $|f_n-f_m|_\infty<\epsilon$ for each $n,m\geq N$.
 
+The condition 2. follows by taking $m\to \infty$, so that $f_m(x)\to f(x)$ and, therefore, we get that
+$$
+|f_n(x)-f(x)|<\epsilon
+$$
+for all $n\geq N$ and $x\in [a,b]$.
+Finally, this is equivalent to say that
+$$
+|f_n-f|_{\infty} < \epsilon
+$$
+for every $n\geq N$ and, crucially, by a fundamental theorem of calculus, this implies that $f$ is continuous because each of the $f_n$ is continuous by assumption.
 
 \section{
 $C[a,b]$ is separable
@@ -744,6 +759,353 @@ Even though:
 its topology is still controlled by a countable set of approximating functions.
 This is one of the reasons Fourier analysis and numerical approximation become possible.
 
+\section{
+$L^2[a,b]$ is complete
+\label{app:C}
+}
+
+The completeness of $L^2[a,b]$ is one of the fundamental results of functional analysis.
+However, the proof is subtler than for $C[a,b]$, because convergence in $L^2$ is not pointwise convergence and functions in $L^2$ are equivalence classes modulo sets of measure zero.
+Still, the core idea is the same:
+\begin{quotation}
+a Cauchy sequence should converge to an element still inside the space.
+\end{quotation}
+Let us prove it carefully while keeping the intuition visible.
+
+\subsection{The Space $L^2[a,b]$}
+
+Recall that:
+$$
+L^2[a,b]
+=
+\left\{
+f:[a,b]\to\mathbb R
+:
+\int_a^b |f(x)|^2\,dx<\infty
+\right\},
+$$
+where, by definition, {\bf functions differing only on sets of measure zero are identified}.
+The norm is:
+$$
+|f|_2
+=
+\left(
+\int_a^b |f(x)|^2\,dx
+\right)^{1/2}.
+$$
+
+\subsection{What Must Be Proven?}
+
+We must show:
+\begin{quotation}
+every Cauchy sequence in $L^2[a,b]$ converges in $L^2$ to another element of $L^2[a,b]$.
+\end{quotation}
+So let, $\{f_n:n\in \NN\}$ be Cauchy in the $L^2$-norm.
+That is
+$$
+\forall\varepsilon>0,\quad
+\exists N
+\text{ such that }
+m,n\ge N
+\Rightarrow
+|f_n-f_m|_2<\varepsilon.
+$$
+Equivalently:
+$$
+\int_a^b |f_n-f_m|^2\,dx
+\to 0.
+$$
+
+\subsection{Extract a Rapidly Convergent Subsequence}
+
+Since $\{f_n:n\in \NN\}$ is Cauchy, we can choose a subsequence
+$\{f_{n_k}:k\in \NN\}$
+such that:
+$$
+|f_{n_{k+1}}-f_{n_k}|_2
+<
+2^{-k}.
+$$
+This is a standard ``rapid convergence'' trick.
+Define:
+$$
+g_k
+=
+f_{n_{k+1}}-f_{n_k}.
+$$
+Then:
+$$
+|g_k|_2<2^{-k}.
+$$
+Hence:
+$$
+\sum_{k=1}^\infty |g_k|_2
+<
+\infty.
+$$
+
+\subsection{Build the Candidate Limit}
+
+Consider the series:
+$$
+\sum_{k=1}^\infty g_k.
+$$
+Formally:
+$$
+f_{n_m}
+=
+f_{n_1}
++
+\sum_{k=1}^{m-1} g_k.
+$$
+The idea is:
+\begin{itemize}
+\item if the series converges,
+\item then the subsequence converges.
+\end{itemize}
+Now define:
+$$
+G(x)
+=
+\sum_{k=1}^\infty |g_k(x)|.
+$$
+Using standard measure-theoretic arguments (essentially Minkowski/Fatou), one proves:
+$$
+G(x)<\infty
+$$
+for almost every $x$.
+Thus:
+$$
+\sum_{k=1}^{\infty} g_k(x)
+$$
+converges almost everywhere.
+Define:
+$$
+f(x)
+=
+f_{n_1}(x)
++
+\sum_{k=1}^\infty g_k(x).
+$$
+Then:
+$$
+f_{n_k}(x)\to f(x)
+$$
+almost everywhere.
+
+\subsection{Convergence in $L^2$}
+Now observe:
+$$
+f-f_{n_k}
+=
+\sum_{j=k}^\infty g_j.
+$$
+Using the triangle inequality:
+$$
+|f-f_{n_k}|_2
+\le
+\sum_{j=k}^\infty |g_j|_2.
+$$
+But:
+$$
+\sum_{j=k}^\infty 2^{-j}\to 0.
+$$
+Therefore:
+$$
+|f-f_{n_k}|_2\to 0.
+$$
+So the subsequence converges in $L^2$.
+
+\subsection{Finish the Proof}
+
+Since the original sequence $\{f_n:n\in \NN\}$ is Cauchy, and a subsequence converges to $f$, the whole sequence converges to $f$ in $L^2$.
+Finally:
+$$
+|f|_2<\infty,
+$$
+so:
+$$
+f\in L^2[a,b].
+$$
+Thus $L^2[a,b]$ is complete.
+Hence it is a Hilbert space.
+
+\subsection{The Key Difference from $C[a,b]$}
+
+For $C[a,b]$:
+\begin{itemize}
+\item convergence was uniform,
+\item limits preserved continuity.
+\end{itemize}
+For $L^2[a,b]$:
+\begin{itemize}
+\item convergence is integral-based,
+\item functions may oscillate wildly pointwise,
+\item only the average square error matters.
+\end{itemize}
+Thus $L^2$-convergence is much weaker than uniform convergence.
+
+\subsection{Geometric Intuition}
+
+The quantity:
+$$
+|f-g|_2^2
+=
+\int_a^b |f-g|^2
+$$
+measures the ``mean square distance'' between functions.
+A Cauchy sequence in $L^2$ means:
+\begin{quotation}
+The functions become arbitrarily close on average.
+\end{quotation}
+Completeness guarantees that this approximation process converges to another square-integrable function.
+This is exactly why Hilbert spaces are the natural setting for:
+\begin{itemize}
+\item Fourier series,
+\item quantum mechanics,
+\item PDEs,
+\item signal processing,
+\item variational methods.
+\end{itemize}
+
+\section{
+Separability of $L^2[a,b]$
+\label{app:D}
+}
+
+The proof is conceptually similar to the separability of $C[a,b]$, but now the approximating objects are not polynomials alone. Instead, one uses:
+\begin{enumerate}
+\item step functions,
+\item rational coefficients,
+\item rational interval endpoints.
+\end{enumerate}
+The key idea is:
+\begin{quotation}
+Every $L^2$-function can be approximated arbitrarily well by simple functions built from countably many parameters.
+\end{quotation}
+
+{\bf Theorem:}
+The Hilbert space
+$L^2[a,b]$
+is separable.
+
+{\bf Proof:}
+
+{\em Step 1 — A Countable Family of Step Functions:}
+Consider the set $\mathcal S$ of step functions of the form
+$$
+s(x)
+=
+\sum_{k=1}^n q_k\,\chi_{I_k}(x),
+$$
+where:
+\begin{itemize}
+\item $q_k\in\mathbb Q$,
+\item each $I_k$ is an interval with rational endpoints,
+\item $\chi_{I_k}$ denotes the characteristic function of $I_k$.
+\end{itemize}
+For example:
+$$
+s(x)
+=
+2\chi_{[0,1/2)}(x)
+-
+\frac{3}{5}
+\chi_{[1/2,1]}(x).
+$$
+
+{\em Step 2 — The Set $\mathcal S$ Is Countable:}
+There are only countably many:
+\begin{itemize}
+\item rational numbers,
+\item rational endpoints,
+\item finite sequences of such data.
+\end{itemize}
+Therefore, there are only countably many step functions in $\mathcal S$.
+Hence, $\mathcal S$ is countable.
+
+{\em Step 3 — Density of Step Functions:}
+We now show that $\mathcal S$ is dense in $L^2[a,b]$.
+A fundamental theorem of measure theory states:
+\begin{quotation}
+Every square-integrable function can be approximated arbitrarily well in $L^2$ by step functions.
+\end{quotation}
+Thus, for every $f\in L^2[a,b]$ and every $\varepsilon>0$, there exists a step function
+$$
+s(x)=\sum_{k=1}^n a_k\chi_{J_k}(x)
+$$
+such that
+$$
+|f-s|_2<\frac\varepsilon 2.
+$$
+Here:
+\begin{itemize}
+\item the coefficients $a_k$ are real,
+\item the interval endpoints may be irrational.
+\end{itemize}
+
+{\em Step 4 — Approximate the Coefficients and Intervals Rationally:}
+Now approximate:
+\begin{itemize}
+\item each coefficient $a_k$ by a rational number $q_k$,
+\item each interval endpoint by rational endpoints.
+\end{itemize}
+This produces a rational step function $r\in\mathcal S$.
+Because the $L^2$-norm depends continuously on:
+\begin{itemize}
+\item the coefficients,
+\item and the interval lengths,
+\end{itemize}
+the approximations can be chosen sufficiently accurately so that
+$$
+|s-r|_2<\frac\varepsilon2.
+$$
+Then, by the triangle inequality,
+$$
+|f-r|_2
+\le
+|f-s|_2+|s-r|_2
+<
+\varepsilon.
+$$
+Thus:
+$$
+\mathcal S
+$$
+is dense in $L^2[a,b]$.
+
+{\em Conclusion:}
+We have constructed a:
+\begin{itemize}
+\item countable,
+\item dense
+\end{itemize}
+subset of $L^2[a,b]$.
+Therefore, $L^2[a,b]$ is separable.
+
+{\em Intuition:}
+This theorem says:
+\begin{quotation}
+Even though $L^2[a,b]$ contains enormously complicated objects, every element can still be approximated using only countably many simple building blocks.
+\end{quotation}
+This is one of the reasons:
+\begin{itemize}
+\item Fourier series,
+\item numerical approximations,
+\item spectral decompositions,
+\item quantum mechanics,
+\end{itemize}
+become mathematically manageable.
+
+{\em Connection with Hilbert Spaces:}
+Separability is particularly important for Hilbert spaces because it allows the existence of countable orthonormal bases:
+$$
+f
+=
+\sum_{n=1}^\infty c_n e_n.
+$$
+Without separability, one would generally need uncountably many basis vectors, and generalized Fourier analysis would become much more complicated.
+This is one of the reasons most Hilbert spaces appearing in physics are separable.
 
 %
 %\section{
