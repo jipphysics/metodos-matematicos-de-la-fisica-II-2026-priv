@@ -574,6 +574,88 @@ $$
 $$
 The operator norm measures the maximal amplification produced by the operator.
 
+\subsection{Dual Spaces and the Riesz Representation Theorem}
+
+Let $V$ be a normed vector space.
+A bounded linear functional on $V$ is a bounded linear operator
+$$
+\varphi : V \to \mathbb{R}
+$$
+(or $\mathbb{C}$).
+The set of all bounded linear functionals on $V$ is called the dual space of $V$, and is denoted by $V^\ast.$
+The dual space plays a central role in functional analysis because it describes how vectors may be probed through linear measurements.
+
+\subsection{The Riesz Representation Theorem}
+
+One of the most remarkable properties of Hilbert spaces is that every bounded linear functional may be represented through the inner product.
+More precisely, let $H$ be a Hilbert space and let
+$$
+\varphi \in H^\ast.
+$$
+Then there exists a unique vector $u\in H$ such that
+$$
+\varphi(v)=u\cdot v
+$$
+for every $v\in H$.
+Moreover,
+$$
+|\varphi|
+=
+|u|.
+$$
+Thus every bounded linear functional on a Hilbert space is obtained by taking an inner product with a fixed vector.
+
+\subsection{Musical Isomorphism}
+
+The Riesz theorem defines a natural correspondence
+$$
+H
+\longrightarrow
+H^\ast,
+\qquad
+u\mapsto u^\flat,
+$$
+where
+$$
+u^\flat(v)
+:=
+u\cdot v.
+$$
+This map is called the musical isomorphism.
+Conversely, every functional $\varphi\in H^\ast$ uniquely determines a vector
+$$
+\varphi^\sharp\in H
+$$
+such that
+$$
+\varphi(v)
+=
+\varphi^\sharp\cdot v.
+$$
+Thus the inner product establishes a natural identification between vectors and linear functionals.
+Moreover, the musical isomorphism induces an inner product over $H^\ast$.
+Namely, if $\varphi$ and $\phi$ are functionals in $H^\ast$, then
+$$
+\varphi \cdot \phi 
+:= 
+\varphi^\sharp \cdot \phi^\sharp 
+$$
+defines the induced inner product over $H^\ast$.
+
+{\em Example:}
+For $H=\CC^n$,
+$$
+\varphi(v)=a^{\dagger} v = \sum_{i=1}^n a_i^\ast v_i
+$$
+for some unique vector $a\in \CC^n$.
+The Riesz theorem says that Hilbert spaces behave exactly like this, even in infinite dimensions.
+
+\subsection{Geometric Interpretation}
+
+The Riesz theorem shows that, in Hilbert spaces, linear measurements are completely determined by geometry.
+Indeed, evaluating a functional amounts to projecting onto a fixed direction through the inner product.
+This is one of the deepest reasons why Hilbert spaces possess such a rich structure compared to general Banach spaces.
+
 \subsection{Final Remarks}
 
 Banach and Hilbert spaces provide the natural setting for infinite-dimensional analysis.
