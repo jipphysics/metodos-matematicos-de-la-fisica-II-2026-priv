@@ -685,9 +685,7 @@ Ortogonalidad en Sturm-Liouville
 \vspace{0.5cm}
 
 {\bf Enunciado:}
-Pruebe que las funciones $u_m(x)$ y $u_n(x)$ que satisfacen la ecuación de Sturm-Liouville 
-$$\frac{d}{dx}\left[p(x)\frac{d}{dx}u(x)\right] + \lambda u(x) = 0$$ 
-son ortogonales.
+Pruebe que las funciones $u_m(x)$ y $u_n(x)$ que satisfacen la ecuación de Sturm-Liouville $\frac{d}{dx}\left[p(x)\frac{d}{dx}u(x)\right] + \lambda u(x) = 0$ son ortogonales.
 
 {\bf Demostración:}
 Escribimos la ecuación diferencial para dos autovalores distintos $\lambda_n$ y $\lambda_m$ con sus respectivas autofunciones $u_n$ y $u_m$:
@@ -756,7 +754,7 @@ Igualando coeficientes con la forma deseada obtenemos:
 \item $p'(x) = \rho(x) a_1(x)$
 \item $r(x) = \rho(x) a_2(x)$
 \end{enumerate}
-Derivamos (a) y lo igualamos a (b):
+Derivamos (1) y lo igualamos a (2):
 $$p' = \rho' a_0 + \rho a_0' = \rho a_1$$
 $$\rho' a_0 = \rho(a_1 - a_0') \implies \frac{\rho'}{\rho} = \frac{a_1}{a_0} - \frac{a_0'}{a_0}$$
 Integrando respecto a $x$:
@@ -1000,7 +998,9 @@ El **método de Frobenius** es una extensión del método de resolución de ecua
 
 Para entender por qué es tan importante en el **Problema 5 (la ecuación de Bessel)**, primero debemos ver por qué falla el método tradicional de series de Taylor y cómo Frobenius lo soluciona.
 
-{\bf ¿Por qué necesitamos el método de Frobenius?}
+---
+
+### ¿Por qué necesitamos el método de Frobenius?
 
 Si intentáramos resolver una ecuación diferencial usando una serie de potencias ordinaria (serie de Taylor):
 
@@ -1018,15 +1018,17 @@ $$x^2 y'' + x y' + (x^2 - \alpha^2)y = 0 \implies y'' + \frac{1}{x} y' + \frac{x
 
 vemos que en $x = 0$, los coeficientes $\frac{1}{x}$ y $\frac{x^2-\alpha^2}{x^2}$ explotan (tienden a infinito). Por lo tanto, $x=0$ es un **punto singular**.
 
-Como el ``infinito'' que se genera está controlado (si multiplicamos el primer coeficiente por $x$ y el segundo por $x^2$ dan funciones analíticas), el punto se clasifica como **singular regular**. En estos puntos, la solución real a menudo no es una función analítica pura, sino que puede contener raíces (como $\sqrt{x}$ o $x^{1.5}$) o logaritmos, lo que hace que una serie de potencias ordinaria fracase rotundamente.
+Como el "infinito" que se genera está controlado (si multiplicamos el primer coeficiente por $x$ y el segundo por $x^2$ dan funciones analíticas), el punto se clasifica como **singular regular**. En estos puntos, la solución real a menudo no es una función analítica pura, sino que puede contener raíces (como $\sqrt{x}$ o $x^{1.5}$) o logaritmos, lo que hace que una serie de potencias ordinaria fracase rotundamente.
 
-{\bf ¿Cómo funciona el Método de Frobenius?}
+---
+
+### ¿Cómo funciona el Método de Frobenius?
 
 Ferdinand Georg Frobenius propuso una genialidad: en lugar de usar una serie de potencias rígida que empiece obligatoriamente en $x^0$, propuso **"multiplicar" la serie por una potencia variable $x^r$**, donde $r$ es un número (que puede ser fraccionario, negativo o incluso complejo) que descubriremos durante el proceso.
 
 El método sigue estos pasos estructurados:
 
-{\bf 1. Proponer la serie generalizada de Frobenius}
+#### 1. Proponer la serie generalizada de Frobenius
 
 Buscamos una solución de la forma:
 
@@ -1036,7 +1038,7 @@ $$y(x) = x^r \sum_{n=0}^{\infty} a_n x^n = \sum_{n=0}^{\infty} a_n x^{n+r}$$
 
 donde imponemos que el primer término no sea cero ($a_0 \neq 0$) para que $x^r$ sea verdaderamente la potencia más baja de la solución.
 
-{\bf 2. Calcular las derivadas}
+#### 2. Calcular las derivadas
 
 Derivamos término a término manteniendo a $r$ como una constante incógnita:
 
@@ -1045,11 +1047,11 @@ $$y'(x) = \sum_{n=0}^{\infty} (n+r) a_n x^{n+r-1}$$
 
 $$y''(x) = \sum_{n=0}^{\infty} (n+r)(n+r-1) a_n x^{n+r-2}$$
 
-{\bf 3. Sustituir en la EDO y agrupar}
+#### 3. Sustituir en la EDO y agrupar
 
 Metemos estas expresiones en la ecuación diferencial. El objetivo es acomodar todos los términos para poder extraer factor común de las potencias de $x$.
 
-{\bf  4. Encontrar la Ecuación Indicial (el paso clave)}
+#### 4. Encontrar la Ecuación Indicial (el paso clave)
 
 Para que la ecuación diferencial sea igual a cero para todo $x$, el coeficiente de **la potencia más baja de $x$** (que suele ser el término con $n=0$) debe anularse de forma independiente. Como asumimos que $a_0 \neq 0$, se genera una ecuación cuadrática para $r$:
 
@@ -1057,80 +1059,19 @@ Para que la ecuación diferencial sea igual a cero para todo $x$, el coeficiente
 $$r(r-1) + p_0 r + q_0 = 0$$
 
 
-Esta ecuación se llama **ecuación indicial** (o polinomio indicial). Al resolverla, obtenemos dos raíces, $r_1$ y $r_2$, que nos dicen exactamente cómo ``arranca'' la solución (por ejemplo, en el caso de Bessel, las raíces dieron $r = \pm\alpha$).
+Esta ecuación se llama **ecuación indicial** (o polinomio indicial). Al resolverla, obtenemos dos raíces, $r_1$ y $r_2$, que nos dicen exactamente cómo "arranca" la solución (por ejemplo, en el caso de Bessel, las raíces dieron $r = \pm\alpha$).
 
-{\bf 5. Determinar la relación de recurrencia}
+#### 5. Determinar la relación de recurrencia
 
 Al igualar a cero los coeficientes de las potencias más altas de $x$ ($n \ge 1$), obtenemos una fórmula matemática que nos permite calcular un coeficiente $a_n$ a partir de los coeficientes anteriores.
 
-{\bf  6. Obtener las dos soluciones independientes}
+#### 6. Obtener las dos soluciones independientes
 
 Dependiendo de la relación entre las raíces $r_1$ y $r_2$, el método nos provee las soluciones:
-\begin{itemize}
-\item **Caso 1 (Raíces que no difieren por un entero):** Sustituyes $r_1$ y obtienes la primera solución $y_1(x)$. Sustituyes $r_2$ y obtienes la segunda solución $y_2(x)$. (Esto es lo que pasó en el ítem *5e* cuando $\alpha$ no es entero).
-\item **Caso 2 (Raíces iguales):** La primera solución se halla normalmente, y la segunda solución incluirá obligatoriamente un término logarítmico ($\ln x$).
-\item **Caso 3 (Raíces que difieren por un número entero):** La segunda solución podría requerir un término logarítmico debido a que la relación de recurrencia puede llegar a una división por cero para la segunda raíz.
-\end{itemize}
 
-\section{Problema 8), metodo de las caracter\'isticas}
-
-El **método de las características** es una de las técnicas más potentes y elegantes para resolver Ecuaciones en Derivadas Parciales (EDPs) de primer orden. Su objetivo fundamental es **transformar una EDP en un sistema de Ecuaciones Diferenciales Ordinarias (EDOs)** a lo largo de ciertas curvas especiales llamadas **curvas características**.
-
-Para un estudiante de Física, este método tiene un significado físico e intuitivo muy profundo: representa cómo la información o una "onda" se **propaga** a través del espacio y el tiempo.
-
-{\bf 1. La Intuición Geométrica y Física}
-
-Imagina que la solución que buscas, $u(x,y)$, es una superficie tridimensional flotando sobre el plano $(x,y)$. Resolver una EDP directamente en todo el plano es difícil porque las derivadas en dirección $x$ y en dirección $y$ están acopladas.
-
-El método de las características propone lo siguiente: en lugar de intentar hallar toda la superficie de golpe, busquemos líneas particulares en el plano $(x,y)$ (las *curvas características*) de tal manera que, si caminamos estrictamente sobre ellas, la EDP se simplifique drásticamente y se convierta en una EDO ordinaria que solo dependa de una variable (el ``tiempo de viaje'' o parámetro $t$ a lo largo de la curva).
-
-Físicamente, si piensas en $y$ como el tiempo ($t$) y en $x$ como el espacio, las características son las trayectorias que siguen las partículas o la información. Los datos iniciales que te dan en la frontera de la región se ``transportan'' o ``viajan'' a lo largo de estas líneas para construir la solución en cualquier otro punto del espacio.
-
-{\bf 2. El Mecanismo Matemático: El Truco de la Regla de la Cadena}
-
-Consideremos la ecuación casi-lineal general de primer orden que aparece en el Problema 8 de la guía:
-
-
-$$A(x,y,u)\frac{\partial u}{\partial x} + B(x,y,u)\frac{\partial u}{\partial y} = C(x,y,u)$$
-
-Supongamos que parametrizamos nuestras curvas en el plano mediante una variable $t$, de modo que una trayectoria es $(x(t), y(t))$. Si nos paramos sobre esa trayectoria y queremos ver cómo cambia el valor de la solución $u$ a medida que avanzamos (es decir, calculamos su derivada total respecto a $t$), aplicamos la **regla de la cadena multivariable**:
-
-
-$$\frac{du}{dt} = \frac{\partial u}{\partial x}\frac{dx}{dt} + \frac{\partial u}{\partial y}\frac{dy}{dt}$$
-
-Ahora, compara esta identidad matemática con la EDP original. Si **forzamos** a que nuestra trayectoria $(x(t), y(t))$ cumpla las siguientes condiciones:
-
-1. $\frac{dx}{dt} = A(x,y,u)$
-2. $\frac{dy}{dt} = B(x,y,u)$
-
-Entonces, al sustituir esto en la regla de la cadena, el lado derecho se convierte exactamente en el miembro izquierdo de la EDP ($A u_x + B u_y$). Por lo tanto, la EDP nos dicta directamente cuánto vale la derivada de $u$ en esa dirección:
-3. $\frac{du}{dt} = C(x,y,u)$
-
-¡El problema se redujo por completo! Pasamos de una EDP con derivadas parciales acopladas a un **sistema de tres EDOs acopladas** (llamadas ecuaciones características):
-
-$$\frac{dx}{dt} = A(x,y,u), \qquad \frac{dy}{dt} = B(x,y,u), \qquad \frac{du}{dt} = C(x,y,u)$$
-
-{\bf 3. La Forma Simétrica (Sin el parámetro $t$)}
-
-A menudo, en la práctica (como hicimos en las resoluciones del problema 8), resulta más cómodo eliminar el parámetro artificial $t$ despejando $dt$ en las tres ecuaciones e igualándolas. Esto nos da la **forma simétrica de Lagrange**:
-
-$$\frac{dx}{A(x,y,u)} = \frac{dy}{B(x,y,u)} = \frac{du}{C(x,y,u)}$$
-
-Para resolver el problema, seleccionamos pares de estas fracciones de dos en dos, las integramos como EDOs ordinarias y encontramos dos constantes de movimiento (o invariantes algebraicos):
-
-* $\phi_1(x,y,u) = C_1$ (que nos da la geometría de las curvas en el espacio).
-* $\phi_2(x,y,u) = C_2$ (que nos dice cómo evoluciona $u$ sobre ellas).
-
-La solución general de la EDP vendrá dada por una relación arbitraria entre ambas constantes: $F(C_1, C_2) = 0$, o de forma más común, **$C_2 = f(C_1)$**, donde $f$ es una función que se determina usando la condición inicial.
-
-{\bf 4. Conexión y sutilezas analizadas en el Problema 8}
-
-El método de las características expone de forma muy transparente las propiedades geométricas de las ecuaciones:
-\begin{itemize}
-\item **Propagación libre (Caso $C=0$):** En los incisos **8a)** y **8b)**, el término de la derecha es $C=0$. Esto significa que $\frac{du}{dt} = 0$, es decir, **$u$ es constante a lo largo de cada curva característica**. La solución final simplemente consiste en averiguar en qué curva estás parado, mirar hacia atrás para ver dónde intersecta esa curva a la línea de datos iniciales, y "copiar" el valor del dato inicial.
-\item **El Teorema de Existencia y Unicidad (El colapso en el inciso 8c):** El inciso **8c)** es un contraejemplo clásico muy importante en los exámenes de FAMAF. Para que un problema con valores iniciales (Problema de Cauchy) de una EDP tenga solución única, la curva donde te dan los datos iniciales **no puede ser tangente ni coincidir con una curva característica**.
-En el inciso 8c, te daban el dato sobre la recta $y=0$. Al calcular las características del problema, descubrimos que las curvas eran $x^2y = C$. Si evalúas la curva característica en $C=0$, obtienes precisamente $y=0$. Como la línea de datos iniciales coincidía con una trayectoria característica, la EDP imponía su propia ley de evolución sobre ella ($x u_x = u^2$). Como el dato inicial propuesto ($u=x^3$) no respetaba esa ley matemática interna de la ecuación, el problema se volvía incompatible y **no tenía solución**.
-\end{itemize}
+* **Caso 1 (Raíces que no difieren por un entero):** Sustituyes $r_1$ y obtienes la primera solución $y_1(x)$. Sustituyes $r_2$ y obtienes la segunda solución $y_2(x)$. (Esto es lo que pasó en el ítem *5e* cuando $\alpha$ no es entero).
+* **Caso 2 (Raíces iguales):** La primera solución se halla normalmente, y la segunda solución incluirá obligatoriamente un término logarítmico ($\ln x$).
+* **Caso 3 (Raíces que difieren por un número entero):** La segunda solución podría requerir un término logarítmico debido a que la relación de recurrencia puede llegar a una división por cero para la segunda raíz.
 
 \end{document}
 
