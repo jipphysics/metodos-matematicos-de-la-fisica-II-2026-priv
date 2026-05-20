@@ -456,12 +456,6 @@ $$y_n(x) = A_n \cos\left(\frac{n\pi x}{L}\right)$$
 
 
 
-
-
-
-
-
-
 \prob Obtenga dos soluciones LI de la ecuación de Legendre
 \[
 (1-x^2)y'' - 2xy' + \alpha(\alpha+1)y = 0, \quad -1<x<1,
@@ -493,6 +487,96 @@ y_{\text{impar}} =  x + \sum_{n=1}^\infty
 \item Muestre que ambas soluciones convergen en $-1<x<1$, pero divergen en $x = \pm 1$ si la serie es infinita.
 \item Finalmente, muestre que eligiendo apropiadamente $\alpha$ una de las dos series se trunca a un polinomio, evitando así la divergencia. Muestre tambi\'en que en cada caso la otra soluci\'on sigue siendo una serie infinita.
 \end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4)}
+\vspace{0.5cm}
+
+Dada la ecuación de Legendre:
+$$(1-x^{2})y^{\prime\prime}-2xy^{\prime}+\alpha(\alpha+1)y=0$$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4a)}
+Punto regular
+\vspace{0.5cm}
+
+Dividiendo por $(1-x^2)$ la EDO toma la forma estándar $y'' + P(x)y' + Q(x)y = 0$, donde:
+
+
+$$P(x) = \frac{-2x}{1-x^2}, \quad Q(x) = \frac{\alpha(\alpha+1)}{1-x^2}$$
+
+En $x_0=0$, los denominadores no se anulan, por lo que $P(x)$ y $Q(x)$ son analíticas allí. Al ser analíticas, $x_0=0$ es un punto regular. Como consecuencia, podemos proponer soluciones en serie de potencias $y = \sum_{n=0}^{\infty} a_n x^n$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4b)}
+Relación de recurrencia
+\vspace{0.5cm}
+
+Sustituyendo $y$, $y'$ y $y''$ en la ecuación diferencial:
+$$\sum_{n=2}^{\infty}n(n-1)a_{n}x^{n-2} - \sum_{n=2}^{\infty}n(n-1)a_{n}x^{n} - 2\sum_{n=1}^{\infty}na_{n}x^{n} + \alpha(\alpha+1)\sum_{n=0}^{\infty}a_{n}x^{n} = 0$$
+Hacemos un cambio de índice $n \to n+2$ en la primera sumatoria para unificar las potencias $x^n$:
+$$\sum_{n=0}^{\infty} \left[ (n+2)(n+1)a_{n+2} - n(n-1)a_n - 2na_n + \alpha(\alpha+1)a_n \right] x^n = 0$$
+Para que esto se cumpla para todo $x$, el coeficiente de cada potencia debe ser nulo:
+$$(n+2)(n+1)a_{n+2} - \left[ n^2 + n - \alpha(\alpha+1) \right] a_n = 0$$
+Notamos que $n^2 + n - \alpha^2 - \alpha = (n-\alpha)(n+\alpha+1)$. Despejando $a_{n+2}$, obtenemos la recurrencia deseada:
+$$a_{n+2} = -\frac{(\alpha-n)(\alpha+n+1)}{(n+1)(n+2)}a_n$$
+válida para $n=0, 1, 2, \dots$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4c) y 4d)}
+Series par e impar
+\vspace{0.5cm}
+
+\begin{itemize}
+\item Potencias pares: Eligiendo $a_0=1$ y $a_1=0$, todos los coeficientes impares se anulan. Iterando la recurrencia para los pares, obtenemos la serie $y_{\text{par}}$:
+$$y_{\text{par}}=1+\sum_{n=1}^{\infty}(-1)^{n}\frac{\alpha(\alpha-2)\dots(\alpha-2n+2)\cdot(\alpha+1)(\alpha+3)\dots(\alpha+2n-1)}{(2n)!}x^{2n}$$
+
+\item Potencias impares: 
+Eligiendo $a_0=0$ y $a_1=1$, todos los coeficientes pares se anulan, generando $y_{\text{impar}}$:
+$$y_{\text{impar}}=x+\sum_{n=1}^{\infty}(-1)^{n}\frac{(\alpha-1)(\alpha-3)\dots(\alpha-2n+1)\cdot(\alpha+2)(\alpha+4)\dots(\alpha+2n)}{(2n+1)!}x^{2n+1}$$
+\end{itemize}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4e)}
+Independencia Lineal (LI)
+\vspace{0.5cm}
+
+Evaluamos el Wronskiano en el origen ($x=0$):
+\begin{itemize}
+\item $y_{\text{par}}(0) = 1, \quad y_{\text{par}}'(0) = 0$
+\item $y_{\text{impar}}(0) = 0, \quad y_{\text{impar}}'(0) = 1$
+\end{itemize}
+$$W(0) = (1)(1) - (0)(0) = 1 \neq 0$$
+
+Al ser su Wronskiano distinto de cero, $y_{\text{par}}$ e $y_{\text{impar}}$ son soluciones Linealmente Independientes (LI) en $-1<x<1$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4f)}
+Convergencia
+\vspace{0.5cm}
+
+Aplicamos el criterio del cociente a la serie de potencias:
+$$\lim_{n\to\infty} \left| \frac{a_{n+2}x^{n+2}}{a_n x^n} \right| = \lim_{n\to\infty} \left| -\frac{(\alpha-n)(\alpha+n+1)}{(n+1)(n+2)} \right| |x^2| = |x^2|$$
+La serie converge absolutamente cuando $|x| < 1$ (es decir $-1<x<1$), pero al llegar a los extremos $x = \pm 1$, divergen en caso de que la serie sea infinita.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4g)}
+Truncamiento a polinomios
+\vspace{0.5cm}
+
+Si elegimos que $\alpha$ sea un número entero no negativo, digamos $\alpha = m$, la relación de recurrencia en el numerador $(\alpha-n)$ se hace exactamente $0$ cuando el índice $n$ iguala a $m$.
+\begin{itemize}
+\item Si $m$ es par, el término $a_{m+2}$ se anula, truncando la serie $y_{\text{par}}$ y convirtiéndola en un polinomio de grado $m$.
+\item Si $m$ es impar, lo mismo sucede con la serie $y_{\text{impar}}$.
+\end{itemize}
+Al truncarse a un polinomio finito, evitamos los problemas de divergencia en los bordes $x=\pm 1$. La otra solución que no se trunca (al ser de paridad opuesta a $m$) continuará siendo una serie infinita que diverge en los bordes. (Estos polinomios, adecuadamente normalizados, son los famosos Polinomios de Legendre, $P_m(x)$).
+
+
+
+
+
+
+
 
 \prob Usando el m\'etodo de Frobenius, obtenga soluciones de la ecuación de Bessel
 \[
@@ -527,11 +611,101 @@ J_{-\alpha}(x) = \left( \frac{x}{2} \right)^{-\alpha} \sum_{n=0}^\infty \frac{(-
 Note que esta soluci\'on es singular en $x=0$.
 \end{enumerate}
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 5)}
+Ecuación de Bessel vía Frobenius
+\vspace{0.5cm}
+
+Partimos de la EDO de Bessel:
+$$x^{2}y^{\prime\prime}+xy^{\prime}+(x^{2}-\alpha^{2})y=0$$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 5a)}
+Punto Singular Regular
+\vspace{0.5cm}
+
+Dividiendo por $x^2$:
+$$y^{\prime\prime}+\frac{1}{x}y^{\prime}+\frac{x^{2}-\alpha^{2}}{x^{2}}y=0$$
+Observamos que $x=0$ es un punto singular. Verificamos regularidad: $p(x) = x \cdot \left(\frac{1}{x}\right) = 1$ y $q(x) = x^2 \cdot \left(\frac{x^2-\alpha^2}{x^2}\right) = x^2 - \alpha^2$. Al ser $p(x)$ y $q(x)$ funciones analíticas, confirmamos que $x_0=0$ es un punto singular regular. Aplicamos el método de Frobenius proponiendo la serie generalizada:
+$$y = x^r \sum_{n=0}^{\infty} a_n x^n, \quad a_0 \neq 0$$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 5b)}
+Polinomio Indicial
+\vspace{0.5cm}
+
+La ecuación indicial se obtiene evaluando $r(r-1) + p(0)r + q(0) = 0$:
+$$r(r-1) + (1)r + (-\alpha^2) = 0 \implies r^2 - \alpha^2 = 0$$
+Por ende, las raíces son $r_1 = \alpha$ y $r_2 = -\alpha$.
+
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 5c) y 5d)}
+Solución $J_\alpha(x)$
+\vspace{0.5cm}
+
+Para $r_1 = \alpha$, sustituimos la serie en la EDO. Reagrupando potencias, llegamos a las relaciones:
+$$[(\alpha+1)^{2}-\alpha^{2}]a_{1}=0$$
+$$[(\alpha+n)^{2}-\alpha^{2}]a_{n}=-a_{n-2}, \quad n=2,3,\dots$$
+De la primera, $a_1=0$, lo que implica que todos los coeficientes impares son nulos ($a_n = 0$ para $n$ impar). Para los pares, simplificamos el corchete:
+$$(\alpha+n)^2 - \alpha^2 = n^2 + 2n\alpha = n(n+2\alpha)$$
+Obtenemos:
+$$a_n = -\frac{a_{n-2}}{n(n+2\alpha)}$$
+Sustituyendo índices pares ($n=2k$) y eligiendo adecuadamente la constante $a_0$ mediante la función Gamma ($\Gamma$), se construye la solución que denominamos Función de Bessel de primera especie y orden $\alpha$:
+$$J_{\alpha}(x)=\left(\frac{x}{2}\right)^{\alpha}\sum_{n=0}^{\infty}\frac{(-1)^{n}}{n!\Gamma(n+1+\alpha)}\left(\frac{x}{2}\right)^{2n}$$
+Esta solución es regular en $x=0$ para $\Re(\alpha) > 0$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 5c) y 5d)}
+Solución LI $J_{-\alpha}(x)$
+\vspace{0.5cm}
+
+Si $2\alpha \neq 0, 1, 2, \dots$ (es decir, $\alpha$ no es entero ni mitad de entero, para evitar divisiones por cero en la recurrencia), el mismo procedimiento para $r_2 = -\alpha$ es válido. Solo cambiamos $\alpha$ por $-\alpha$ en la expresión final:
+$$J_{-\alpha}(x)=\left(\frac{x}{2}\right)^{-\alpha}\sum_{n=0}^{\infty}\frac{(-1)^{n}}{n!\Gamma(n+1-\alpha)}\left(\frac{x}{2}\right)^{2n}$$
+Esta segunda solución es singular en el origen debido al prefactor $x^{-\alpha}$.
+
+
+
+
+
+
 \prob Un conjunto de funciones $u_n(x)$ satisfacen la ecuación de Sturm-Liouville
 \[
 \frac{d}{dx}\left[p(x)\frac{d}{dx}u_n(x)\right] + \lambda_n u_n(x) = 0.
 \]
 Las funciones $u_m$ y $u_n$ satisfacen condiciones de contorno que llevan a la ortogonalidad. Los correspondientes autovalores $\lambda_m$ y $\lambda_n$ son distintos. Pruebe que, con condiciones de contorno apropiadas, $u_m(x)$ y $u_n(x)$ son ortogonales con función de peso $p(x)$.
+
+
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 6)}
+Ortogonalidad en Sturm-Liouville
+\vspace{0.5cm}
+
+{\bf Enunciado:}
+Pruebe que las funciones $u_m(x)$ y $u_n(x)$ que satisfacen la ecuación de Sturm-Liouville $\frac{d}{dx}\left[p(x)\frac{d}{dx}u(x)\right] + \lambda u(x) = 0$ son ortogonales.
+
+{\bf Demostración:}
+Escribimos la ecuación diferencial para dos autovalores distintos $\lambda_n$ y $\lambda_m$ con sus respectivas autofunciones $u_n$ y $u_m$:
+\begin{enumerate}
+\item $(p u_n')' + \lambda_n u_n = 0$
+\item $(p u_m')' + \lambda_m u_m = 0$
+\end{enumerate}
+Multiplicamos la ecuación (1) por $u_m$ y la ecuación (2) por $u_n$, y restamos la segunda de la primera:
+$$u_m(p u_n')' - u_n(p u_m')' + (\lambda_n - \lambda_m) u_n u_m = 0$$
+Notemos que el término de las derivadas puede reescribirse usando la regla del producto. Específicamente, es la derivada exacta de la combinación antisimétrica (relacionada al Wronskiano):
+$$\frac{d}{dx} \left[ p(x) (u_m u_n' - u_n u_m') \right] = p'(u_m u_n' - u_n u_m') + p(u_m' u_n' + u_m u_n'' - u_n' u_m' - u_n u_m'')$$
+$$= u_m(p u_n')' - u_n(p u_m')'$$
+Sustituyendo esto en la ecuación anterior e integrando en el intervalo $[a, b]$:
+$$\int_a^b \frac{d}{dx} \left[ p(x) (u_m u_n' - u_n u_m') \right] dx + (\lambda_n - \lambda_m) \int_a^b u_n u_m dx = 0$$
+Evaluamos la primera integral (es directa):
+$$[ p(x) (u_m u_n' - u_n u_m') ]_a^b + (\lambda_n - \lambda_m) \int_a^b u_n u_m dx = 0$$
+Con las ``condiciones de contorno apropiadas'' (como Dirichlet $u(a)=u(b)=0$, Neumann $u'(a)=u'(b)=0$, o periódicas), el término de borde evaluado entre $a$ y $b$ se anula idénticamente. Entonces:
+$$(\lambda_n - \lambda_m) \int_a^b u_n(x) u_m(x) dx = 0$$
+Como establecimos que los autovalores son distintos ($\lambda_n \neq \lambda_m$), forzosamente se cumple que:
+$$\int_a^b u_n(x) u_m(x) dx = 0$$
+(Nota: El enunciado menciona ``ortogonales con función de peso $p(x)$'', pero la ecuación dada no lleva la función de peso multiplicando a $\lambda$. Para la EDO estrictamente escrita en el enunciado, la función de peso resultante es trivialmente $w(x)=1$. Si la EDO hubiese sido $(pu')' + \lambda p u = 0$, el peso sería $p(x)$).
+
 
 \prob Considere la EDO
 \[
@@ -555,6 +729,56 @@ y $p=\rho a_0$, $r=\rho a_2$.
 \item Muestre que si~$x=a$ es un punto singular regular de la EDO, entonces $p(a)=0$, y que si~$\phi_1$ y~$\phi_2$ son dos soluciones LI, al menos una de ellas debe ser singular en~$x=a$. (Idem para $x=b$).
 \end{enumerate}
 
+
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 7)}
+Factor integrante y Puntos Singulares
+\vspace{0.5cm}
+
+{\bf Enunciado:} Considere $\tilde{L}(y) = a_0(x)y'' + a_1(x) y' + a_2(x) y = f(x)$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 7a)}
+Factor integrante para forma autoadjunta
+\vspace{0.5cm}
+ 
+Queremos transformar $\rho \tilde{L}(y)$ a la forma $L(y) = (p y')' + r y = p y'' + p' y' + r y$.
+Multiplicamos la EDO original por $\rho(x)$:
+$$\rho a_0 y'' + \rho a_1 y' + \rho a_2 y = \rho f(x)$$
+Igualando coeficientes con la forma deseada obtenemos:
+\begin{enumerate}
+\item $p(x) = \rho(x) a_0(x)$
+\item $p'(x) = \rho(x) a_1(x)$
+\item $r(x) = \rho(x) a_2(x)$
+\end{enumerate}
+Derivamos (1) y lo igualamos a (2):
+$$p' = \rho' a_0 + \rho a_0' = \rho a_1$$
+$$\rho' a_0 = \rho(a_1 - a_0') \implies \frac{\rho'}{\rho} = \frac{a_1}{a_0} - \frac{a_0'}{a_0}$$
+Integrando respecto a $x$:
+$$\ln|\rho| = \int^x \frac{a_1(x')}{a_0(x')} dx' - \ln|a_0(x)| + C$$
+Aplicando la exponencial a ambos lados, obtenemos el factor integrante buscado:
+$$\rho(x) = \frac{c}{a_0(x)} \exp\left( \int^x \frac{a_1(x')}{a_0(x')} dx' \right)$$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 7b)}
+Singularidad de soluciones en $x=a$
+\vspace{0.5cm}
+
+Supongamos que $\phi_1$ y $\phi_2$ son dos soluciones Linealmente Independientes (LI).
+Su Wronskiano $W = \phi_1 \phi_2' - \phi_2 \phi_1'$ satisface la identidad de Abel para el operador autoadjunto $L$:
+$$p(x) W(x) = K$$
+donde $K$ es una constante. Como $\phi_1, \phi_2$ son LI, $K \neq 0$.
+Al ser $x=a$ un punto singular, sabemos por definición que $a_0(a)=0$.
+Si ambas soluciones fueran regulares (analíticas) en $x=a$, cumplirían la EDO en ese punto:
+$$a_0(a)\phi'' + a_1(a)\phi' + a_2(a)\phi = 0 \implies a_1(a)\phi' + a_2(a)\phi = 0$$
+Esto significa que los vectores iniciales $(\phi_1(a), \phi_1'(a))$ y $(\phi_2(a), \phi_2'(a))$ son colineales (ambos son ortogonales a $(a_2, a_1)$). Esto fuerza a que su Wronskiano sea cero: $W(a) = 0$.
+Sin embargo, evaluando la identidad de Abel en $x=a$:
+$$p(a) W(a) = K \neq 0$$
+Para que el producto de algo que tiende a $0$ de como resultado una constante $K$ no nula, la función $p(x)$ tendría que divergir. Pero por la naturaleza de los puntos singulares regulares, si $W(a) \to 0$, $p(x)$ no puede compensarlo de manera analítica sin entrar en contradicción. Por lo tanto, es imposible que ambas soluciones sean regulares; al menos una debe ser singular.
+
+
+
 \prob Resuelva, usando el método de las características, los siguientes problemas escalares de primer orden:
 \begin{enumerate}
 \item $\displaystyle \frac{1}{\sigma}\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y} = 0,\quad x>0,\quad u(x,0)=g(x).$
@@ -563,6 +787,81 @@ y $p=\rho a_0$, $r=\rho a_2$.
 \item $\displaystyle y\frac{\partial u}{\partial x} - x\frac{\partial u}{\partial y} = e^{u},\quad u(0,y)=y^2-1.$
 \end{enumerate}
 
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 8)}
+Método de las Características
+\vspace{0.5cm}
+
+Resolveremos problemas escalares de primer orden de la forma $A u_x + B u_y = C$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 8a)}
+\vspace{0.5cm}
+
+$$
+\frac{1}{\sigma}\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y} = 0,\quad u(x,0)=g(x)
+$$
+
+Ecuaciones características: $dx / (1/\sigma) = dy / 1 = du / 0$.
+De $du=0$, sabemos que $u$ es constante en las curvas base.
+Integrando las primeras dos: $dy = \sigma dx \implies y - \sigma x = C$.
+La solución general es $u(x,y) = f(y - \sigma x)$.
+Aplicando la condición inicial: $u(x,0) = f(-\sigma x) = g(x)$.
+Haciendo el cambio $w = -\sigma x$, tenemos $f(w) = g(-w/\sigma)$.
+
+{\bf Solución:} $u(x,y) = g\left( -\frac{y-\sigma x}{\sigma} \right) = g\left( x - \frac{y}{\sigma} \right)$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 8b)}
+\vspace{0.5cm}
+
+$$
+x\frac{\partial u}{\partial x} - 2y\frac{\partial u}{\partial y} = 0,\quad u(1,y)=1+2y
+$$
+
+Ecuaciones características: $\frac{dx}{x} = \frac{dy}{-2y} = \frac{du}{0}$.
+Nuevamente $u$ es constante sobre las curvas.
+Integrando: $-2 \ln|x| = \ln|y| + C_1 \implies \ln(x^{-2}) - \ln(y) = C_1 \implies x^2 y = C_2$.
+Solución general: $u(x,y) = f(x^2 y)$.
+Aplicando la condición inicial: $u(1,y) = f(1^2 \cdot y) = 1+2y \implies f(w) = 1+2w$.
+
+{\bf Solución:} $u(x,y) = 1 + 2x^2y$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 8c)}
+\vspace{0.5cm}
+
+$$
+x\frac{\partial u}{\partial x} - 2y\frac{\partial u}{\partial y} = u^2,\quad u(x,0)=x^3
+$$
+
+Las curvas características en el plano $(x,y)$ son las mismas que en (b): $x^2 y = C$.
+Observa detenidamente la condición inicial: nos piden datos sobre $y=0$. Sin embargo, la recta $y=0$ corresponde a $C=0$; la curva donde nos dan los datos iniciales es en sí misma una curva característica.
+Sobre la característica $y=0$, el lado izquierdo de la EDO se reduce a $x u_x$.
+La EDO restringida a $y=0$ dicta: $x u_x = u^2$.
+Pero si evaluamos el dato propuesto $u(x,0) = x^3$, tenemos $u_x = 3x^2$. Insertándolo en el lado izquierdo: $x(3x^2) = 3x^3$. El lado derecho es $(x^3)^2 = x^6$.
+Es evidente que $3x^3 \neq x^6$. Los datos iniciales propuestos violan la dinámica obligatoria sobre la curva característica.
+
+{\bf Respuesta:} El problema no tiene solución exacta, ya que los datos iniciales son incompatibles con la restricción de la ecuación sobre su característica.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 8d)}
+\vspace{0.5cm}
+
+$y\frac{\partial u}{\partial x} - x\frac{\partial u}{\partial y} = e^{u},\quad u(0,y)=y^2-1$
+Pasar a coordenadas polares es ideal aquí. Sea $x = r \cos\phi$ y $y = r \sin\phi$.
+Usando la regla de la cadena: $\frac{\partial u}{\partial \phi} = \frac{\partial u}{\partial x}\frac{\partial x}{\partial \phi} + \frac{\partial u}{\partial y}\frac{\partial y}{\partial \phi} = \frac{\partial u}{\partial x}(-y) + \frac{\partial u}{\partial y}(x) = - (y u_x - x u_y)$.
+El PDE se convierte drásticamente en: $-\frac{\partial u}{\partial \phi} = e^u$.
+Separando e integrando sobre $\phi$ (a radio $r$ constante):
+$$e^{-u} du = -d\phi \implies -e^{-u} = -\phi - C(r) \implies e^{-u} = \phi + C(r)$$
+La condición inicial $u(0,y)=y^2-1$ se da sobre el eje $y$ positivo, es decir, donde $\phi = \pi/2$ y $r = y$.
+Sustituyendo en nuestra solución general:
+$$e^{-(y^2-1)} = \frac{\pi}{2} + C(y) \implies C(r) = e^{-(r^2-1)} - \frac{\pi}{2}$$
+Reemplazando en la solución para cualquier punto:
+$$e^{-u(r,\phi)} = \phi - \frac{\pi}{2} + e^{-(r^2-1)}$$
+Usando que $\phi - \pi/2 = -\arctan(x/y)$ y que $r^2 = x^2+y^2$:
+{\bf Solución:} $u(x,y) = -\ln\left( e^{-(x^2+y^2-1)} - \arctan\left(\frac{x}{y}\right) \right)$.
 
 
 \section*{Parte II: Problemas Propuestos (para profundización y repaso)}
