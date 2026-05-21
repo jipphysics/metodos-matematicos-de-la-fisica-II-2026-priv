@@ -1446,15 +1446,19 @@ La EDP queda reemplazada por el sistema de EDOs:
 $$
 \boxed{
 \begin{cases}
-\dfrac{dx_1}{ds}=a_1(x,u),[1ex]
-\dfrac{dx_2}{ds}=a_2(x,u),\
-\vdots\
-\dfrac{dx_n}{ds}=a_n(x,u),[1ex]
+\dfrac{dx_1}{ds}=a_1(x,u), \\
+\\
+\dfrac{dx_2}{ds}=a_2(x,u), \\
+\\
+\vdots \\
+\\
+\dfrac{dx_n}{ds}=a_n(x,u), \\
+\\
 \dfrac{du}{ds}=c(x,u).
 \end{cases}
 }
 $$
-Éste es el sistema de características.
+Este es el sistema de características.
 
 \item Interpretación geométrica.
 La EDP prescribe la derivada direccional de $u$ en la dirección del campo vectorial
@@ -1465,11 +1469,14 @@ Las características son precisamente las curvas integrales de ese campo.
 Sobre esas curvas, la EDP se vuelve una EDO ordinaria.
 
 \item Problema de Cauchy.
-Usualmente se prescribe:
+Es el análogo, para EDPs, del problema de valores iniciales para EDOs.
+Más precisamente, en una EDO se busca una trayectoria solución a partir de una ecuación diferencial y un dato inicial especificado en un punto.
+En el método de las características ocurre algo análogo: en vez de especificar un punto inicial, se prescribe una curva, superficie o hipersuperficie inicial sobre la cual se conocen los valores de la solución.
+Usualmente la condición inicial se escribe:
 $$
 u|_{\Gamma}=g,
 $$
-donde $\Gamma$ es una curva (o superficie) inicial.
+donde $\Gamma$ es la curva (o superficie) inicial.
 Por ejemplo, en dos variables:
 $$
 (x,y)=(x_0(\tau),y_0(\tau)),
@@ -1478,9 +1485,12 @@ u=g(\tau).
 $$
 Entonces:
 \begin{itemize}
-\item $\tau$ etiqueta las características,
-\item $s$ parametriza el movimiento sobre ellas.
+\item $\tau$ parametriza la curva inicial y etiqueta las distintas características que emergen de ella,
+\item $s$ parametriza el movimiento a lo largo de cada característica.
 \end{itemize}
+
+{\em Remark:}
+Es importante resaltar que, en el m\'etodo de las caracter\'isticas, no toda condici\'on inicial $u_{\Gamma}=g$ es compatible con la EDP.
 
 \item Procedimiento práctico
 
