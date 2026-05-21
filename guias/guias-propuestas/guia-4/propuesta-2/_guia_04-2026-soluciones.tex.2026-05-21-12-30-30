@@ -782,6 +782,7 @@ $$p(a) W(a) = K \neq 0$$
 Para que el producto de algo que tiende a $0$ de como resultado una constante $K$ no nula, la función $p(x)$ tendría que divergir. Pero por la naturaleza de los puntos singulares regulares, si $W(a) \to 0$, $p(x)$ no puede compensarlo de manera analítica sin entrar en contradicción. Por lo tanto, es imposible que ambas soluciones sean regulares; al menos una debe ser singular.
 
 
+
 \prob Resuelva, usando el método de las características, los siguientes problemas escalares de primer orden:
 \begin{enumerate}
 \item $\displaystyle \frac{1}{\sigma}\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y} = 0,\quad x>0,\quad u(x,0)=g(x).$
@@ -790,387 +791,82 @@ Para que el producto de algo que tiende a $0$ de como resultado una constante $K
 \item $\displaystyle y\frac{\partial u}{\partial x} - x\frac{\partial u}{\partial y} = e^{u},\quad u(0,y)=y^2-1.$
 \end{enumerate}
 
-% https://chatgpt.com/share/6a0f2857-67e8-83e9-bfe8-b82928a5fd6b
+
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 8)}
 Método de las Características
 \vspace{0.5cm}
 
-El Problema 8 pide resolver varias EDPs de primer orden usando el método de las características. 
-Voy a desarrollar cada inciso paso a paso.
+Resolveremos problemas escalares de primer orden de la forma $A u_x + B u_y = C$.
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 8a)}
 \vspace{0.5cm}
 
-Resolver:
 $$
-\frac1\sigma \frac{\partial u}{\partial x}+\frac{\partial u}{\partial y}=0,
-\qquad x>0,
-\qquad u(x,0)=g(x).
+\frac{1}{\sigma}\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y} = 0,\quad u(x,0)=g(x)
 $$
 
-\begin{enumerate}
-\item Ecuaciones características.
-La ecuación tiene la forma
-$$
-a(x,y)u_x+b(x,y)u_y=0,
-$$
-con
-$$
-a=\frac1\sigma,
-\qquad
-b=1.
-$$
-Las curvas características satisfacen
-$$
-\frac{dx}{ds}=\frac1\sigma,
-\qquad
-\frac{dy}{ds}=1,
-\qquad
-\frac{du}{ds}=0.
-$$
-Como $du/ds=0$, la solución es constante sobre las características.
+Ecuaciones características: $dx / (1/\sigma) = dy / 1 = du / 0$.
+De $du=0$, sabemos que $u$ es constante en las curvas base.
+Integrando las primeras dos: $dy = \sigma dx \implies y - \sigma x = C$.
+La solución general es $u(x,y) = f(y - \sigma x)$.
+Aplicando la condición inicial: $u(x,0) = f(-\sigma x) = g(x)$.
+Haciendo el cambio $w = -\sigma x$, tenemos $f(w) = g(-w/\sigma)$.
 
-\item Hallar las características.
-Dividimos:
-$$
-\frac{dy}{dx}
-=
-\frac{1}{1/\sigma}
-=
-\sigma.
-$$
-Entonces
-$$
-y=\sigma x+C.
-$$
-Equivalentemente,
-$$
-x-\frac{y}{\sigma}=C.
-$$
-Por lo tanto, $u$ depende sólo de esa combinación:
-$$
-u(x,y)=F!\left(x-\frac{y}{\sigma}\right).
-$$
-
-\item Usar la condición inicial.
-En $y=0$,
-$$
-u(x,0)=F(x)=g(x).
-$$
-Así,
-$$
-F=g.
-$$
-Finalmente,
-$$
-\boxed{
-u(x,y)=g!\left(x-\frac{y}{\sigma}\right)
-}.
-$$
-\end{enumerate}
+{\bf Solución:} $u(x,y) = g\left( -\frac{y-\sigma x}{\sigma} \right) = g\left( x - \frac{y}{\sigma} \right)$.
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 8b)}
 \vspace{0.5cm}
 
-Resolver:
 $$
-x u_x-2y u_y=0,
-\qquad
-u(1,y)=1+2y.
+x\frac{\partial u}{\partial x} - 2y\frac{\partial u}{\partial y} = 0,\quad u(1,y)=1+2y
 $$
 
-\begin{enumerate}
-\item Características.
-Las ecuaciones características son
-$$
-\frac{dx}{ds}=x,
-\qquad
-\frac{dy}{ds}=-2y,
-\qquad
-\frac{du}{ds}=0.
-$$
-Otra vez, $u$ es constante sobre cada característica.
+Ecuaciones características: $\frac{dx}{x} = \frac{dy}{-2y} = \frac{du}{0}$.
+Nuevamente $u$ es constante sobre las curvas.
+Integrando: $-2 \ln|x| = \ln|y| + C_1 \implies \ln(x^{-2}) - \ln(y) = C_1 \implies x^2 y = C_2$.
+Solución general: $u(x,y) = f(x^2 y)$.
+Aplicando la condición inicial: $u(1,y) = f(1^2 \cdot y) = 1+2y \implies f(w) = 1+2w$.
 
-\item Rncontrar las curvas.
-Tomamos
-$$
-\frac{dy}{dx}
-=
-\frac{-2y}{x}.
-$$
-Separando variables:
-$$
-\frac{dy}{y}=-2\frac{dx}{x}.
-$$
-Integrando:
-$$
-\ln|y|=-2\ln|x|+C,
-$$
-$$
-\ln|x^2y|=C.
-$$
-Por lo tanto,
-$$
-x^2y=C.
-$$
-La solución general es
-$$
-u(x,y)=F(x^2y).
-$$
-
-\item Aplicar condición inicial.
-En $x=1$,
-$$
-u(1,y)=F(y)=1+2y.
-$$
-Entonces
-$$
-F(\eta)=1+2\eta.
-$$
-Finalmente,
-$$
-\boxed{
-u(x,y)=1+2x^2y
-}.
-$$
-\end{enumerate}
+{\bf Solución:} $u(x,y) = 1 + 2x^2y$.
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 8c)}
 \vspace{0.5cm}
 
-Resolver:
 $$
-x u_x-2y u_y=u^2,
-\qquad
-u(x,0)=x^3.
+x\frac{\partial u}{\partial x} - 2y\frac{\partial u}{\partial y} = u^2,\quad u(x,0)=x^3
 $$
 
-\begin{enumerate}
-\item Sistema característico.
-$$
-\frac{dx}{ds}=x,
-\qquad
-\frac{dy}{ds}=-2y,
-\qquad
-\frac{du}{ds}=u^2.
-$$
+Las curvas características en el plano $(x,y)$ son las mismas que en (b): $x^2 y = C$.
+Observa detenidamente la condición inicial: nos piden datos sobre $y=0$. Sin embargo, la recta $y=0$ corresponde a $C=0$; la curva donde nos dan los datos iniciales es en sí misma una curva característica.
+Sobre la característica $y=0$, el lado izquierdo de la EDO se reduce a $x u_x$.
+La EDO restringida a $y=0$ dicta: $x u_x = u^2$.
+Pero si evaluamos el dato propuesto $u(x,0) = x^3$, tenemos $u_x = 3x^2$. Insertándolo en el lado izquierdo: $x(3x^2) = 3x^3$. El lado derecho es $(x^3)^2 = x^6$.
+Es evidente que $3x^3 \neq x^6$. Los datos iniciales propuestos violan la dinámica obligatoria sobre la curva característica.
 
-\item Características en el plano $(x,y)$.
-Como antes:
-$$
-x^2y=C.
-$$
-Parametricemos las características usando el punto inicial sobre $y=0$:
-$$
-(x(0),y(0))=(\xi,0).
-$$
-Entonces
-$$
-x(s)=\xi e^s,
-\qquad
-y(s)=0.
-$$
-Observación importante: las características que parten de la línea inicial (y=0) permanecen en $y=0$, porque $dy/ds=-2y$.
-Esto indica que la curva inicial es característica. El problema de Cauchy es degenerado: los datos sólo determinan la solución sobre $y=0$, no fuera de ella.
-Sin embargo, podemos obtener una familia de soluciones compatibles.
-
-\item Resolver para $u$.
-De
-$$
-\frac{du}{ds}=u^2,
-$$
-tenemos
-$$
-\frac{du}{u^2}=ds.
-$$
-Integrando:
-$$
--\frac1u=s+C.
-$$
-Entonces
-$$
-u=-\frac1{s+C}.
-$$
-Usando $x=\xi e^s$,
-$$
-s=\ln\frac{x}{\xi}.
-$$
-La condición inicial es
-$$
-u(\xi,0)=\xi^3.
-$$
-Por lo tanto,
-$$
-\xi^3
-=
--\frac1C,
-\qquad
-C=-\frac1{\xi^3}.
-$$
-Así,
-$$
-u=
--\frac1{\ln(x/\xi)-1/\xi^3}.
-$$
-Pero como las características iniciales no abandonan $y=0$, $\xi$ no queda determinado por $(x,y)$ cuando $y\neq0$. Por lo tanto el problema no tiene solución única fuera de la línea inicial.
-Sí queda determinada la solución sobre $y=0$:
-$$
-u(x,0)=x^3.
-$$
-y existen infinitas extensiones fuera de esa línea.
-
-\item Conclusión.
-La condición inicial está dada sobre una curva característica, por lo que el problema de Cauchy es degenerado y no determina una solución única.
-La familia característica satisface:
-$$
-x^2y=\text{cte},
-$$
-y sobre $y=0$:
-$$
-\boxed{
-u(x,0)=x^3.
-}
-$$
-\end{enumerate} 
+{\bf Respuesta:} El problema no tiene solución exacta, ya que los datos iniciales son incompatibles con la restricción de la ecuación sobre su característica.
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 8d)}
 \vspace{0.5cm}
 
-Resolver:
-$$
-y u_x-x u_y=e^u,
-\qquad
-u(0,y)=y^2-1.
-$$
+$y\frac{\partial u}{\partial x} - x\frac{\partial u}{\partial y} = e^{u},\quad u(0,y)=y^2-1$
+Pasar a coordenadas polares es ideal aquí. Sea $x = r \cos\phi$ y $y = r \sin\phi$.
+Usando la regla de la cadena: $\frac{\partial u}{\partial \phi} = \frac{\partial u}{\partial x}\frac{\partial x}{\partial \phi} + \frac{\partial u}{\partial y}\frac{\partial y}{\partial \phi} = \frac{\partial u}{\partial x}(-y) + \frac{\partial u}{\partial y}(x) = - (y u_x - x u_y)$.
+El PDE se convierte drásticamente en: $-\frac{\partial u}{\partial \phi} = e^u$.
+Separando e integrando sobre $\phi$ (a radio $r$ constante):
+$$e^{-u} du = -d\phi \implies -e^{-u} = -\phi - C(r) \implies e^{-u} = \phi + C(r)$$
+La condición inicial $u(0,y)=y^2-1$ se da sobre el eje $y$ positivo, es decir, donde $\phi = \pi/2$ y $r = y$.
+Sustituyendo en nuestra solución general:
+$$e^{-(y^2-1)} = \frac{\pi}{2} + C(y) \implies C(r) = e^{-(r^2-1)} - \frac{\pi}{2}$$
+Reemplazando en la solución para cualquier punto:
+$$e^{-u(r,\phi)} = \phi - \frac{\pi}{2} + e^{-(r^2-1)}$$
+Usando que $\phi - \pi/2 = -\arctan(x/y)$ y que $r^2 = x^2+y^2$:
+{\bf Solución:} $u(x,y) = -\ln\left( e^{-(x^2+y^2-1)} - \arctan\left(\frac{x}{y}\right) \right)$.
 
-\begin{enumerate}
-\item Sistema característico
-$$
-\frac{dx}{ds}=y,
-\qquad
-\frac{dy}{ds}=-x,
-\qquad
-\frac{du}{ds}=e^u.
-$$
-
-\item Características en el plano
-Derivamos otra vez:
-$$
-\frac{d^2x}{ds^2}
-=
-\frac{dy}{ds}
-=
--x.
-$$
-Entonces
-$$
-x''+x=0.
-$$
-Las trayectorias son circunferencias:
-$$
-x^2+y^2=R^2.
-$$
-Además, usando
-$$
-x=R\sin\theta,
-\qquad
-y=R\cos\theta,
-$$
-las ecuaciones implican
-$$
-\theta=s+\text{cte}.
-$$
-
-\item Resolver para $u$
-Tenemos
-$$
-\frac{du}{ds}=e^u.
-$$
-Entonces
-$$
-e^{-u}du=ds.
-$$
-Integrando:
-$$
--e^{-u}=s+C.
-$$
-o equivalentemente,
-$$
-e^{-u}=C-s.
-$$
-
-\item Usar los datos iniciales
-La curva inicial es $x=0$. Tomamos:
-$$
-x(0)=0,
-\qquad
-y(0)=\eta.
-$$
-Entonces
-$$
-u(0)=\eta^2-1.
-$$
-Además, la solución de las características es
-$$
-x=\eta\sin s,
-\qquad
-y=\eta\cos s.
-$$
-Por lo tanto,
-$$
-\eta^2=x^2+y^2.
-$$
-y
-$$
-\tan s=\frac{x}{y}.
-$$
-Más precisamente,
-$$
-s=\arctan!\left(\frac{x}{y}\right).
-$$
-Ahora:
-$$
-e^{-u(0)}
-=
-e^{-(\eta^2-1)}
-=
-e^{1-\eta^2}.
-$$
-Entonces
-$$
-C=e^{1-\eta^2}.
-$$
-Finalmente,
-$$
-e^{-u}
-=
-e^{1-\eta^2}-s.
-$$
-Sustituyendo:
-$$
-\eta^2=x^2+y^2,
-\qquad
-s=\arctan!\left(\frac{x}{y}\right),
-$$
-obtenemos
-$$
-\boxed{
-u(x,y)
-=
--\ln!\left(
-e^{,1-(x^2+y^2)}
--
-\arctan!\frac{x}{y}
-\right)
-}.
-$$
-(Entendiendo la rama apropiada del ángulo según la región considerada.)
-\end{enumerate}
 
 \section*{Parte II: Problemas Propuestos (para profundización y repaso)}
 
@@ -1378,241 +1074,63 @@ Dependiendo de la relación entre las raíces $r_1$ y $r_2$, el método nos prov
 
 \section{Problema 8), metodo de las caracter\'isticas}
 
-El método de las características es un procedimiento para resolver EDPs de primer orden transformándolas en sistemas de EDOs. Voy a presentarlo de la manera más general y estructurada posible.
+El **método de las características** es una de las técnicas más potentes y elegantes para resolver Ecuaciones en Derivadas Parciales (EDPs) de primer orden. Su objetivo fundamental es **transformar una EDP en un sistema de Ecuaciones Diferenciales Ordinarias (EDOs)** a lo largo de ciertas curvas especiales llamadas **curvas características**.
 
-\begin{enumerate}
-\item Problema general.
-Consideremos una EDP de primer orden para una función
-$$
-u=u(x_1,\dots,x_n)
-$$
-de la forma
-$$
-F(x_1,\dots,x_n,u,u_{x_1},\dots,u_{x_n})=0.
-$$
-El caso más importante (y el más tratado en cursos iniciales) es la ecuación {\bf cuasilineal}:
-$$
-\sum_{i=1}^n a_i(x,u),\partial_i u = c(x,u).
-$$
-En dos variables:
-$$
-a(x,y,u)u_x+b(x,y,u)u_y=c(x,y,u).
-$$
+Para un estudiante de Física, este método tiene un significado físico e intuitivo muy profundo: representa cómo la información o una "onda" se **propaga** a través del espacio y el tiempo.
 
-\item Idea fundamental.
-La idea es buscar curvas en el espacio de variables independientes a lo largo de las cuales la EDP se transforme en una EDO.
-Esas curvas se llaman {\bf características}.
+{\bf 1. La Intuición Geométrica y Física}
 
-\item Derivada total sobre una curva
-Sea una curva parametrizada:
-$$
-x_i=x_i(s).
-$$
-Entonces:
-$$
-u(s)=u(x_1(s),\dots,x_n(s)).
-$$
-Por regla de la cadena:
-$$
-\frac{du}{ds}
-=
-\sum_{i=1}^n
-\frac{\partial u}{\partial x_i}
-\frac{dx_i}{ds}.
-$$
-Ahora elegimos las curvas de modo que
-$$
-\frac{dx_i}{ds}=a_i.
-$$
-Entonces:
-$$
-\frac{du}{ds}
-=
-\sum_i a_i \partial_i u.
-$$
-Pero la EDP dice que
-$$
-\sum_i a_i \partial_i u=c.
-$$
-Por lo tanto:
-$$
-\boxed{
-\frac{du}{ds}=c.
-}
-$$
+Imagina que la solución que buscas, $u(x,y)$, es una superficie tridimensional flotando sobre el plano $(x,y)$. Resolver una EDP directamente en todo el plano es difícil porque las derivadas en dirección $x$ y en dirección $y$ están acopladas.
 
-\item Sistema característico.
-La EDP queda reemplazada por el sistema de EDOs:
-$$
-\boxed{
-\begin{cases}
-\dfrac{dx_1}{ds}=a_1(x,u),[1ex]
-\dfrac{dx_2}{ds}=a_2(x,u),\
-\vdots\
-\dfrac{dx_n}{ds}=a_n(x,u),[1ex]
-\dfrac{du}{ds}=c(x,u).
-\end{cases}
-}
-$$
-Éste es el sistema de características.
+El método de las características propone lo siguiente: en lugar de intentar hallar toda la superficie de golpe, busquemos líneas particulares en el plano $(x,y)$ (las *curvas características*) de tal manera que, si caminamos estrictamente sobre ellas, la EDP se simplifique drásticamente y se convierta en una EDO ordinaria que solo dependa de una variable (el ``tiempo de viaje'' o parámetro $t$ a lo largo de la curva).
 
-\item Interpretación geométrica.
-La EDP prescribe la derivada direccional de $u$ en la dirección del campo vectorial
-$$
-\vec a=(a_1,\dots,a_n).
-$$
-Las características son precisamente las curvas integrales de ese campo.
-Sobre esas curvas, la EDP se vuelve una EDO ordinaria.
+Físicamente, si piensas en $y$ como el tiempo ($t$) y en $x$ como el espacio, las características son las trayectorias que siguen las partículas o la información. Los datos iniciales que te dan en la frontera de la región se ``transportan'' o ``viajan'' a lo largo de estas líneas para construir la solución en cualquier otro punto del espacio.
 
-\item Problema de Cauchy.
-Usualmente se prescribe:
-$$
-u|_{\Gamma}=g,
-$$
-donde $\Gamma$ es una curva (o superficie) inicial.
-Por ejemplo, en dos variables:
-$$
-(x,y)=(x_0(\tau),y_0(\tau)),
-\qquad
-u=g(\tau).
-$$
-Entonces:
+{\bf 2. El Mecanismo Matemático: El Truco de la Regla de la Cadena}
+
+Consideremos la ecuación casi-lineal general de primer orden que aparece en el Problema 8 de la guía:
+
+
+$$A(x,y,u)\frac{\partial u}{\partial x} + B(x,y,u)\frac{\partial u}{\partial y} = C(x,y,u)$$
+
+Supongamos que parametrizamos nuestras curvas en el plano mediante una variable $t$, de modo que una trayectoria es $(x(t), y(t))$. Si nos paramos sobre esa trayectoria y queremos ver cómo cambia el valor de la solución $u$ a medida que avanzamos (es decir, calculamos su derivada total respecto a $t$), aplicamos la **regla de la cadena multivariable**:
+
+
+$$\frac{du}{dt} = \frac{\partial u}{\partial x}\frac{dx}{dt} + \frac{\partial u}{\partial y}\frac{dy}{dt}$$
+
+Ahora, compara esta identidad matemática con la EDP original. Si **forzamos** a que nuestra trayectoria $(x(t), y(t))$ cumpla las siguientes condiciones:
+
+1. $\frac{dx}{dt} = A(x,y,u)$
+2. $\frac{dy}{dt} = B(x,y,u)$
+
+Entonces, al sustituir esto en la regla de la cadena, el lado derecho se convierte exactamente en el miembro izquierdo de la EDP ($A u_x + B u_y$). Por lo tanto, la EDP nos dicta directamente cuánto vale la derivada de $u$ en esa dirección:
+3. $\frac{du}{dt} = C(x,y,u)$
+
+¡El problema se redujo por completo! Pasamos de una EDP con derivadas parciales acopladas a un **sistema de tres EDOs acopladas** (llamadas ecuaciones características):
+
+$$\frac{dx}{dt} = A(x,y,u), \qquad \frac{dy}{dt} = B(x,y,u), \qquad \frac{du}{dt} = C(x,y,u)$$
+
+{\bf 3. La Forma Simétrica (Sin el parámetro $t$)}
+
+A menudo, en la práctica (como hicimos en las resoluciones del problema 8), resulta más cómodo eliminar el parámetro artificial $t$ despejando $dt$ en las tres ecuaciones e igualándolas. Esto nos da la **forma simétrica de Lagrange**:
+
+$$\frac{dx}{A(x,y,u)} = \frac{dy}{B(x,y,u)} = \frac{du}{C(x,y,u)}$$
+
+Para resolver el problema, seleccionamos pares de estas fracciones de dos en dos, las integramos como EDOs ordinarias y encontramos dos constantes de movimiento (o invariantes algebraicos):
+
+* $\phi_1(x,y,u) = C_1$ (que nos da la geometría de las curvas en el espacio).
+* $\phi_2(x,y,u) = C_2$ (que nos dice cómo evoluciona $u$ sobre ellas).
+
+La solución general de la EDP vendrá dada por una relación arbitraria entre ambas constantes: $F(C_1, C_2) = 0$, o de forma más común, **$C_2 = f(C_1)$**, donde $f$ es una función que se determina usando la condición inicial.
+
+{\bf 4. Conexión y sutilezas analizadas en el Problema 8}
+
+El método de las características expone de forma muy transparente las propiedades geométricas de las ecuaciones:
 \begin{itemize}
-\item $\tau$ etiqueta las características,
-\item $s$ parametriza el movimiento sobre ellas.
+\item **Propagación libre (Caso $C=0$):** En los incisos **8a)** y **8b)**, el término de la derecha es $C=0$. Esto significa que $\frac{du}{dt} = 0$, es decir, **$u$ es constante a lo largo de cada curva característica**. La solución final simplemente consiste en averiguar en qué curva estás parado, mirar hacia atrás para ver dónde intersecta esa curva a la línea de datos iniciales, y "copiar" el valor del dato inicial.
+\item **El Teorema de Existencia y Unicidad (El colapso en el inciso 8c):** El inciso **8c)** es un contraejemplo clásico muy importante en los exámenes de FAMAF. Para que un problema con valores iniciales (Problema de Cauchy) de una EDP tenga solución única, la curva donde te dan los datos iniciales **no puede ser tangente ni coincidir con una curva característica**.
+En el inciso 8c, te daban el dato sobre la recta $y=0$. Al calcular las características del problema, descubrimos que las curvas eran $x^2y = C$. Si evalúas la curva característica en $C=0$, obtienes precisamente $y=0$. Como la línea de datos iniciales coincidía con una trayectoria característica, la EDP imponía su propia ley de evolución sobre ella ($x u_x = u^2$). Como el dato inicial propuesto ($u=x^3$) no respetaba esa ley matemática interna de la ecuación, el problema se volvía incompatible y **no tenía solución**.
 \end{itemize}
-
-\item Procedimiento práctico
-
-{\bf  Paso 1}
-
-Escribir la EDP como
-$$
-a u_x+b u_y=c.
-$$
-
-{\bf  Paso 2}
-
-Plantear:
-$$
-\frac{dx}{ds}=a,
-\qquad
-\frac{dy}{ds}=b,
-\qquad
-\frac{du}{ds}=c.
-$$
-
-{\bf  Paso 3}
-
-Resolver las ecuaciones para $x(s),y(s)$.
-Muchas veces:
-$$
-\frac{dy}{dx}=\frac{b}{a}.
-$$
-
-{\bf Paso 4}
-
-Resolver:
-$$
-\frac{du}{ds}=c.
-$$
-
-{\bf Paso 5}
-
-Usar los datos iniciales para determinar constantes.
-
-\item Caso homogéneo.
-Si
-$$
-a u_x+b u_y=0,
-$$
-entonces
-$$
-\frac{du}{ds}=0.
-$$
-Así:
-$$
-u=\text{constante sobre las características}.
-$$
-La solución suele escribirse:
-$$
-u=F(I_1,\dots,I_k),
-$$
-donde los $I_j$ son invariantes de las características.
-
-\item Ejemplo general clásico.
-Resolver:
-$$
-a u_x+b u_y=0,
-$$
-con $a,b$ constantes.
-
-{\bf Características}
-$$
-\frac{dy}{dx}=\frac{b}{a}.
-$$
-Entonces:
-$$
-bx-ay=C.
-$$
-Como $u$ es constante sobre ellas:
-$$
-\boxed{
-u(x,y)=F(bx-ay).
-}
-$$
-
-\item Caso completamente general (Hamilton–Jacobi)
-Para una EDP no lineal general
-$$
-F(x,y,u,p,q)=0,
-\qquad
-p=u_x,\ q=u_y,
-$$
-las características satisfacen el sistema de Charpit:
-$$
-\boxed{
-\begin{aligned}
-\frac{dx}{ds}&=F_p,\
-\frac{dy}{ds}&=F_q,\
-\frac{du}{ds}&=pF_p+qF_q,\
-\frac{dp}{ds}&=-F_x-pF_u,\
-\frac{dq}{ds}&=-F_y-qF_u.
-\end{aligned}
-}
-$$
-Ésta es la forma más general del método.
-En muchos cursos de física matemática sólo se estudia el caso lineal o cuasilineal.
-
-\item Condición de no-caracteristicidad.
-La curva inicial no debe ser tangente al campo característico.
-En 2D, si la curva inicial es
-$$
-(x_0(\tau),y_0(\tau)),
-$$
-debe cumplirse:
-$$
-a,y_0'(\tau)-b,x_0'(\tau)\neq0.
-$$
-Si falla esta condición:
-\begin{itemize}
-\item puede no haber unicidad,
-\item o no existir solución.
-\end{itemize}
-Eso ocurrió en el Problema 8(c).
-
-\item Interpretación física.
-Las características representan:
-\begin{itemize}
-\item trayectorias de propagación,
-\item rayos ópticos,
-\item líneas de flujo,
-\item propagación de ondas,
-\item transporte de información.
-\end{itemize}
-En ecuaciones hiperbólicas, la información viaja precisamente sobre características.
-
-\end{enumerate}
 
 \end{document}
 
