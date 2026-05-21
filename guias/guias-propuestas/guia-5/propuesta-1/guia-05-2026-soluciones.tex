@@ -793,6 +793,153 @@ en el exterior de un disco de radio \(a\) (es decir, \(r>a\)) con condición de 
 u(a,\theta) = \ln 2 + 4\cos(3\theta).
 \]
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4)}
+\vspace{0.5cm}
+
+
+El problema 4 pide hallar la solución acotada de la ecuación de Laplace en el exterior de un disco: 
+$$
+\nabla^2 u =0,
+$$
+para $r>a$, con condición de borde
+$$
+u(a,\theta)=\ln 2 +4\cos(3\theta).
+$$
+
+\begin{enumerate}
+\item Ecuación de Laplace en coordenadas polares
+
+En dos dimensiones:
+$$
+\nabla^2 u=
+u_{rr}+\frac1r u_r+\frac1{r^2}u_{\theta\theta}=0.
+$$
+Buscamos soluciones separables:
+$$
+u(r,\theta)=R(r)\Theta(\theta).
+$$
+Sustituyendo:
+$$
+r^2\frac{R''}{R}
++r\frac{R'}{R}
++\frac{\Theta''}{\Theta}=0.
+$$
+Separando:
+$$
+\Theta''+n^2\Theta=0,
+$$
+y
+$$
+r^2R''+rR'-n^2R=0.
+$$
+
+\item Soluciones angulares y radiales
+
+La parte angular da:
+$$
+\Theta_n(\theta)=
+A_n\cos(n\theta)+B_n\sin(n\theta).
+$$
+La ecuación radial es de Euler:
+$$
+r^2R''+rR'-n^2R=0.
+$$
+Sus soluciones son
+$$
+R_n(r)=C_nr^n+D_nr^{-n},
+\qquad n\ge1.
+$$
+Para $n=0$:
+$$
+R_0(r)=C_0+D_0\ln r.
+$$
+
+\item Condición de acotación para $r\to\infty$
+
+El problema pide la solución acotada en el exterior del disco.
+Entonces debemos eliminar:
+\begin{itemize}
+\item los términos $r^n$, que divergen,
+\item y el término $\ln r$, que también diverge.
+\end{itemize}
+Por lo tanto, la solución admisible es
+$$
+u(r,\theta)=
+A_0+
+\sum_{n=1}^\infty
+r^{-n}
+\left(
+A_n\cos n\theta
++
+B_n\sin n\theta
+\right).
+$$
+
+\item Imponer la condición de borde
+
+En $r=a$:
+$$
+u(a,\theta)=
+A_0+
+\sum_{n=1}^\infty
+a^{-n}
+\left(
+A_n\cos n\theta
++
+B_n\sin n\theta
+\right).
+$$
+Debemos igualar esto a
+$$
+\ln2+4\cos(3\theta).
+$$
+Comparando modos de Fourier:
+\begin{itemize}
+\item término constante:
+$$
+A_0=\ln2,
+$$
+
+\item modo $n=3$:
+$$
+a^{-3}A_3=4,
+$$
+es decir,
+$$
+A_3=4a^3,
+$$
+
+\item todos los demás coeficientes son cero.
+\end{itemize}
+
+\item Solución final
+
+$$
+\boxed{
+u(r,\theta)=
+\ln2+
+4\left(\frac{a}{r}\right)^3\cos(3\theta)
+}
+$$
+
+\item Verificación
+
+La función:
+\begin{itemize}
+\item satisface la ecuación de Laplace para $r>a$,
+\item cumple
+$$
+u(a,\theta)=\ln2+4\cos(3\theta),
+$$
+\item y permanece acotada cuando $r\to\infty$:
+$$
+u(r,\theta)\to \ln2.
+$$
+\end{itemize}
+\end{enumerate}
+
+
 \prob Considere dos cilindros coaxiales conductores de longitud infinita, de radios \(a\) (interior) y \(b\) (exterior). El potencial se fija como \(V(r=a)=V_0\) y \(V(r=b)=-V_0\). Sabiendo que el potencial electrostático satisface la ecuación de Laplace en regiones libres de carga, calcule el potencial en:
 \begin{itemize}
 \item[a)] \(r<a\)
@@ -802,7 +949,7 @@ u(a,\theta) = \ln 2 + 4\cos(3\theta).
 \end{enumerate}
 
 \vspace{0.5cm}
-{\bf Soluci\'on }{\em 4)}
+{\bf Soluci\'on }{\em 5)}
 \vspace{0.5cm}
 
 
@@ -813,7 +960,7 @@ u(a,\theta) = \ln 2 + 4\cos(3\theta).
 en coordenadas cilíndricas \((r,\theta,z)\). Use la invariancia traslacional en \(z\) para reducir el problema a dos dimensiones y halle el potencial electrostático \(u(r,\theta)\) en el interior del cilindro.
 
 \vspace{0.5cm}
-{\bf Soluci\'on }{\em 2)}
+{\bf Soluci\'on }{\em 6)}
 \vspace{0.5cm}
 
 
@@ -823,14 +970,14 @@ T(r,\phi,L) = T_0\, r \sen\phi.
 \]
 
 \vspace{0.5cm}
-{\bf Soluci\'on }{\em 2)}
+{\bf Soluci\'on }{\em 7)}
 \vspace{0.5cm}
 
 
 \prob Un cilindro recto sólido semi-infinito de radio \(a\) mantiene su superficie curva a temperatura \(T=0\) y su base a temperatura \(T_0\). Encuentre la distribución de temperatura en el cilindro en el estado estacionario.
 
 \vspace{0.5cm}
-{\bf Soluci\'on }{\em 2)}
+{\bf Soluci\'on }{\em 8)}
 \vspace{0.5cm}
 
 
@@ -839,14 +986,14 @@ T(r,\phi,L) = T_0\, r \sen\phi.
 \textit{Ayuda: la ecuación de equilibrio es \(\sigma \nabla^2 u = \rho g\).}
 
 \vspace{0.5cm}
-{\bf Soluci\'on }{\em 2)}
+{\bf Soluci\'on }{\em 9)}
 \vspace{0.5cm}
 
 
 \prob Una esfera conductora de radio \(a\), mantenida a potencial nulo, se introduce en un campo eléctrico previamente uniforme \(\mathbf{E}=E\,\hat{z}\). Encuentre el potencial electrostático en el exterior de la esfera.
 
 \vspace{0.5cm}
-{\bf Soluci\'on }{\em 2)}
+{\bf Soluci\'on }{\em 10)}
 \vspace{0.5cm}
 
 
@@ -858,7 +1005,7 @@ T(r,\phi,L) = T_0\, r \sen\phi.
 donde \(D>0\) es la difusividad y \(\kappa>0\) la tasa de producción. Buscando soluciones estacionarias (es decir, \(n(\mathbf{r},t)=e^{\lambda t}u(\mathbf{r})\)), halle el radio crítico \(a_c\) por debajo del cual la densidad permanece acotada cuando \(t\to\infty\) y por encima del cual diverge.
 
 \vspace{0.5cm}
-{\bf Soluci\'on }{\em 2)}
+{\bf Soluci\'on }{\em 11)}
 \vspace{0.5cm}
 
 
@@ -869,7 +1016,7 @@ u_{tt} = c^2 \nabla^2 u.
 Es decir, resuelva la ecuación de Helmholtz \(\nabla^2 u + k^2 u = 0\) con \(u(a,\theta)=0\) y determine las frecuencias de resonancia.
 
 \vspace{0.5cm}
-{\bf Soluci\'on }{\em 2)}
+{\bf Soluci\'on }{\em 12)}
 \vspace{0.5cm}
 
 
