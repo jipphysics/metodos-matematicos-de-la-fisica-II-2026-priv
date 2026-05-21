@@ -1,0 +1,663 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=50\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Guía 5}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+\newcommand{\tder}[2]{\frac{d #1}{d #2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Guía N$^\txt{o}$ 5 -- 2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{Parte I: Problemas Centrales (para desarrollar en clase)}
+
+
+\prob Resuelva la ecuación de Laplace
+\[
+u_{xx}+u_{yy}=0
+\]
+en la región rectangular \(0\leq x\leq L\), \(0\leq y\leq H\), con las siguientes condiciones de contorno:
+\[
+u_x(0,y)=0,\quad u(L,y)=2y,\quad u(x,0)=0,\quad u(x,H)=0.
+\]
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1)}
+\vspace{0.5cm}
+
+El problema 1 de la guía consiste en resolver la ecuación de Laplace en un rectángulo: 
+$$
+u_{xx}+u_{yy}=0,
+$$
+en
+$$
+0\le x\le L,\qquad 0\le y\le H,
+$$
+con condiciones de contorno
+$$
+u_x(0,y)=0,\qquad u(L,y)=2y,\qquad u(x,0)=0,\qquad u(x,H)=0.
+$$
+
+\begin{enumerate}
+\item Separación de variables
+
+Buscamos soluciones de la forma
+$$
+u(x,y)=X(x)Y(y).
+$$
+Sustituyendo en la ecuación de Laplace:
+$$
+X''(x)Y(y)+X(x)Y''(y)=0.
+$$
+Dividiendo por $X(x)Y(y)$:
+$$
+\frac{X''}{X}+\frac{Y''}{Y}=0.
+$$
+Entonces ambas partes deben ser constantes:
+$$
+\frac{X''}{X}=\lambda,
+\qquad
+\frac{Y''}{Y}=-\lambda.
+$$
+Como las condiciones en $y$ son homogéneas,
+$$
+u(x,0)=u(x,H)=0,
+$$
+para todo $x\in [0,L]$, 
+obtenemos el problema
+$$
+Y''+\lambda Y=0,
+\qquad
+Y(0)=Y(H)=0.
+$$
+Este es un problema de Sturm–Liouville clásico.
+Los autovalores son
+$$
+\lambda_n=\left(\frac{n\pi}{H}\right)^2,
+\qquad n=1,2,\dots
+$$
+y los autofunciones
+$$
+Y_n(y)=\sin\left(\frac{n\pi y}{H}\right).
+$$
+
+\item Ecuación para $X(x)$
+
+Para cada $n$,
+$$
+X_n''-\left(\frac{n\pi}{H}\right)^2 X_n=0.
+$$
+La solución general es
+$$
+X_n(x)=A_n\cosh\left(\frac{n\pi x}{H}\right)
++
+B_n\sinh\left(\frac{n\pi x}{H}\right).
+$$
+La condición de Neumann en $x=0$ es
+$$
+u_x(0,y)=0.
+$$
+Entonces
+$$
+X_n'(0)=0.
+$$
+Pero
+$$
+X_n'(x)=
+\frac{n\pi}{H}
+\left[
+A_n\sinh\left(\frac{n\pi x}{H}\right)
++
+B_n\cosh\left(\frac{n\pi x}{H}\right)
+\right].
+$$
+Evaluando en $x=0$:
+$$
+X_n'(0)=\frac{n\pi}{H}B_n=0,
+$$
+luego
+$$
+B_n=0.
+$$
+Así,
+$$
+X_n(x)=A_n\cosh\left(\frac{n\pi x}{H}\right).
+$$
+
+\item Solución general
+
+La solución queda
+$$
+u(x,y)=
+\sum_{n=1}^\infty
+A_n
+\cosh\left(\frac{n\pi x}{H}\right)
+\sin\left(\frac{n\pi y}{H}\right).
+$$
+
+\item Imponer la condición en $x=L$
+
+Debemos satisfacer
+$$
+u(L,y)=2y.
+$$
+Entonces
+$$
+2y=
+\sum_{n=1}^\infty
+A_n
+\cosh\left(\frac{n\pi L}{H}\right)
+\sin\left(\frac{n\pi y}{H}\right).
+$$
+Esto es la serie de Fourier seno de $2y$ en $(0,H)$.
+Los coeficientes son
+$$
+b_n=
+\frac{2}{H}
+\int_0^H
+2y,
+\sin\left(\frac{n\pi y}{H}\right),dy.
+$$
+Calculamos:
+$$
+b_n=
+\frac{4}{H}
+\int_0^H
+y\sin\left(\frac{n\pi y}{H}\right),dy.
+$$
+Integrando por partes:
+$$
+\int y\sin(ay),dy
+=
+-\frac{y\cos(ay)}{a}
++\frac{\sin(ay)}{a^2}.
+$$
+Con
+$$
+a=\frac{n\pi}{H},
+$$
+obtenemos
+$$
+b_n
+=
+\frac{4H}{n\pi}(-1)^{n+1}.
+$$
+Por lo tanto,
+$$
+A_n
+=
+\frac{b_n}{
+\cosh\left(\frac{n\pi L}{H}\right)
+}
+=
+\frac{4H}{n\pi}
+\frac{(-1)^{n+1}}
+{\cosh\left(\frac{n\pi L}{H}\right)}.
+$$
+
+\item Solución final
+$$
+\boxed{
+u(x,y)=
+\sum_{n=1}^{\infty}
+\frac{4H}{n\pi}
+\frac{(-1)^{n+1}}
+{\cosh\left(\frac{n\pi L}{H}\right)}
+\cosh\left(\frac{n\pi x}{H}\right)
+\sin\left(\frac{n\pi y}{H}\right)
+}
+$$
+Esta solución satisface:
+\begin{itemize}
+\item la ecuación de Laplace,
+\item las condiciones homogéneas en $y=0$ y $y=H$,
+\item la condición de Neumann $u_x(0,y)=0$,
+\item y la condición no homogénea $u(L,y)=2y$.
+\end{itemize}
+
+\end{enumerate}
+
+\prob Resuelva la ecuación de Poisson
+\[
+\nabla^2 u = 1
+\]
+dentro del rectángulo \(0<x<a\), \(0<y<b\) con condición de contorno homogénea \(u=0\) en los cuatro lados.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+El problema 2 pide resolver la ecuación de Poisson en un rectángulo: 
+$$
+\nabla^2 u = 1,
+$$
+es decir,
+$$
+u_{xx}+u_{yy}=1,
+$$
+en
+$$
+0<x<a,\qquad 0<y<b,
+$$
+con condiciones de contorno homogéneas:
+$$
+u=0
+\quad \text{en los cuatro lados.}
+$$
+
+\begin{enumerate}
+\item Idea general
+
+Como el término fuente es constante (1), no podemos resolver directamente por separación de variables como en Laplace. Una estrategia estándar es expandir la solución en serie seno, aprovechando las condiciones homogéneas.
+Buscamos
+$$
+u(x,y)=
+\sum_{m=1}^\infty
+\sum_{n=1}^\infty
+A_{mn}
+\sin\left(\frac{m\pi x}{a}\right)
+\sin\left(\frac{n\pi y}{b}\right).
+$$
+Esta forma satisface automáticamente:
+$$
+u(0,y)=u(a,y)=u(x,0)=u(x,b)=0.
+$$
+
+\item Aplicar el Laplaciano
+
+Derivando:
+$$
+u_{xx}
+=
+-\sum_{m,n}
+\left(\frac{m\pi}{a}\right)^2
+A_{mn}
+\sin\left(\frac{m\pi x}{a}\right)
+\sin\left(\frac{n\pi y}{b}\right),
+$$
+y
+$$
+u_{yy}
+=
+-\sum_{m,n}
+\left(\frac{n\pi}{b}\right)^2
+A_{mn}
+\sin\left(\frac{m\pi x}{a}\right)
+\sin\left(\frac{n\pi y}{b}\right).
+$$
+Entonces
+$$
+\nabla^2 u
+=
+-\sum_{m,n}
+\left[
+\left(\frac{m\pi}{a}\right)^2
++
+\left(\frac{n\pi}{b}\right)^2
+\right]
+A_{mn}
+\sin\left(\frac{m\pi x}{a}\right)
+\sin\left(\frac{n\pi y}{b}\right).
+$$
+Debemos igualar esto a $1$.
+
+\item Expandir la función fuente
+
+Necesitamos la serie doble seno de la constante $1$:
+$$
+1=
+\sum_{m,n}
+B_{mn}
+\sin\left(\frac{m\pi x}{a}\right)
+\sin\left(\frac{n\pi y}{b}\right).
+$$
+Los coeficientes son
+$$
+B_{mn}
+=
+\frac{4}{ab}
+\int_0^a\int_0^b
+\sin\left(\frac{m\pi x}{a}\right)
+\sin\left(\frac{n\pi y}{b}\right)
+\,dx\,dy.
+$$
+Las integrales separan:
+$$
+B_{mn}
+=
+\frac{4}{ab}
+\left[
+\int_0^a
+\sin\left(\frac{m\pi x}{a}\right),dx
+\right]
+\left[
+\int_0^b
+\sin\left(\frac{n\pi y}{b}\right),dy
+\right].
+$$
+Pero
+$$
+\int_0^a
+\sin\left(\frac{m\pi x}{a}\right),dx
+=
+\frac{a}{m\pi}\left(1-(-1)^m\right).
+$$
+Esto vale:
+\begin{itemize}
+\item $0$ si $m$ es par,
+\item $\dfrac{2a}{m\pi}$ si $m$ es impar.
+\end{itemize}
+Análogamente para $n$.
+Por lo tanto:
+$$
+B_{mn}=
+\begin{cases}
+\dfrac{16}{mn\pi^2}, & m,n \text{ impares},\\
+0, & \text{caso contrario}.
+\end{cases}
+$$
+
+\item Determinar $A_{mn}$
+
+Comparando coeficientes:
+$$
+\left[
+\left(\frac{m\pi}{a}\right)^2
++
+\left(\frac{n\pi}{b}\right)^2
+\right]
+A_{mn}
+=
+B_{mn}.
+$$
+Así,
+$$
+A_{mn}
+=
+-\frac{B_{mn}}
+{
+\left(\frac{m\pi}{a}\right)^2
++
+\left(\frac{n\pi}{b}\right)^2
+}.
+$$
+Entonces, para $m,n$ impares:
+$$
+A_{mn}
+=
+-\frac{16}
+{mn\pi^2
+\left[
+\left(\frac{m\pi}{a}\right)^2
++
+\left(\frac{n\pi}{b}\right)^2
+\right]}.
+$$
+
+\item Solución final
+
+$$
+\boxed{
+u(x,y)=
+-\frac{16}{\pi^2}
+\sum_{\substack{m=1\ m\ \mathrm{impar}}}^{\infty}
+\sum_{\substack{n=1\ n\ \mathrm{impar}}}^{\infty}
+\frac{
+\sin\left(\frac{m\pi x}{a}\right)
+\sin\left(\frac{n\pi y}{b}\right)
+}{
+mn
+\left[
+\left(\frac{m\pi}{a}\right)^2
++
+\left(\frac{n\pi}{b}\right)^2
+\right]
+}
+}
+$$
+Esta solución satisface:
+\begin{itemize}
+\item $\nabla^2 u=1$,
+\item $u=0$ en todo el borde del rectángulo.
+\end{itemize}
+\end{enumerate}
+
+\prob Encuentre la solución de la ecuación de Laplace en el interior de un paralelepípedo definido por \(0<x<c\), \(0<y<c\), \(0<z<L\) tal que
+\[
+\psi=0 \quad \text{en todas sus caras excepto en } z=L \text{ donde } \psi = V_0.
+\]
+
+\prob Halle la solución acotada de la ecuación de Laplace
+\[
+\nabla^2 u = 0
+\]
+en el exterior de un disco de radio \(a\) (es decir, \(r>a\)) con condición de borde
+\[
+u(a,\theta) = \ln 2 + 4\cos(3\theta).
+\]
+
+\prob Considere dos cilindros coaxiales conductores de longitud infinita, de radios \(a\) (interior) y \(b\) (exterior). El potencial se fija como \(V(r=a)=V_0\) y \(V(r=b)=-V_0\). Sabiendo que el potencial electrostático satisface la ecuación de Laplace en regiones libres de carga, calcule el potencial en:
+\begin{itemize}
+\item[a)] \(r<a\)
+\item[b)] \(a<r<b\)
+\item[c)] \(b<r\).
+\end{itemize}
+
+\prob Un cilindro infinito de radio \(a\) se mantiene a potencial \(V\) para \(0<\theta<\pi\) y \(-V\) para \(-\pi<\theta<0\), y en su interior hay una densidad de carga eléctrica
+\[
+\rho = \rho_0\left(1-\frac{r^2}{a^2}\right)\cos\theta,
+\]
+en coordenadas cilíndricas \((r,\theta,z)\). Use la invariancia traslacional en \(z\) para reducir el problema a dos dimensiones y halle el potencial electrostático \(u(r,\theta)\) en el interior del cilindro.
+
+\prob Obtenga la temperatura \(T(r,\phi,z)\) del estado estacionario en el interior de un cilindro recto finito de longitud \(L\) y radio \(a\), si el cilindro se mantiene a temperatura \(T=0\) en las superficies \(r=a\) y \(z=0\), mientras que en \(z=L\) se mantiene a
+\[
+T(r,\phi,L) = T_0\, r \sen\phi.
+\]
+
+\prob Un cilindro recto sólido semi-infinito de radio \(a\) mantiene su superficie curva a temperatura \(T=0\) y su base a temperatura \(T_0\). Encuentre la distribución de temperatura en el cilindro en el estado estacionario.
+
+\prob Una membrana delgada de densidad superficial \(\rho\) se suspende de un aro rígido, plano, circular y horizontal de radio \(a\), quedando con una tensión \(\sigma\). Bajo la acción de un campo gravitatorio uniforme y vertical de intensidad \(g\), encuentre la forma estacionaria (desplazamiento vertical) que adquiere la membrana.
+\medskip
+\textit{Ayuda: la ecuación de equilibrio es \(\sigma \nabla^2 u = \rho g\).}
+
+\prob Una esfera conductora de radio \(a\), mantenida a potencial nulo, se introduce en un campo eléctrico previamente uniforme \(\mathbf{E}=E\,\hat{z}\). Encuentre el potencial electrostático en el exterior de la esfera.
+
+\prob Un modelo simplificado para la densidad de neutrones \(n(r,\theta,\phi,t)\) en una esfera de radio \(a\) de material fisionable viene dado por
+\[
+\partial_t n - D\nabla^2 n = \kappa n,\quad r<a,
+\qquad n(a,\theta,\phi,t)=0,
+\]
+donde \(D>0\) es la difusividad y \(\kappa>0\) la tasa de producción. Buscando soluciones estacionarias (es decir, \(n(\mathbf{r},t)=e^{\lambda t}u(\mathbf{r})\)), halle el radio crítico \(a_c\) por debajo del cual la densidad permanece acotada cuando \(t\to\infty\) y por encima del cual diverge.
+
+\prob Halle los modos normales de vibración de una membrana circular de radio \(a\), fija en su borde, que satisface la ecuación de ondas
+\[
+u_{tt} = c^2 \nabla^2 u.
+\]
+Es decir, resuelva la ecuación de Helmholtz \(\nabla^2 u + k^2 u = 0\) con \(u(a,\theta)=0\) y determine las frecuencias de resonancia.
+
+
+
+\section*{Parte II: Problemas Propuestos (para profundización y repaso)}
+
+
+\prob Resuelva la ecuación de Laplace en el interior del disco unitario \(r\le 1\) con condición de borde
+\[
+u(1,\phi) = \begin{cases}
+V_0, & 0<\phi<\pi,\\
+0, & \pi<\phi<2\pi.
+\end{cases}
+\]
+
+\prob Resuelva la ecuación de Laplace en la región \(0<x<a\), \(0<y<\infty\) con las condiciones
+\[
+\psi(0,y)=0,\quad \psi(a,y)=0,\quad \psi(x,0)=A\left(1-\frac{x}{a}\right),
+\]
+donde \(A\) es constante.
+
+\prob Obtenga la temperatura estacionaria \(T(r,\phi,z)\) en el interior de un cilindro recto finito de longitud \(L\) y radio \(a\) si las superficies \(z=0\) y \(z=L\) se mantienen a \(T=0\) y la superficie lateral \(r=a\) se mantiene a \(T=T_0\) (constante).
+
+\prob Resuelva la ecuación de Laplace \(\nabla^2 u = 0\) en el exterior de una esfera de radio \(a\) con condición de borde
+\[
+u(a,\theta) = \begin{cases}
+V_0, & 0<\theta<\pi/2,\\
+-V_0, & \pi/2<\theta<\pi.
+\end{cases}
+\]
+¿Cuál es el comportamiento asintótico para \(r\to\infty\)?
+
+\prob Una esfera conductora de radio \(a\) se divide por su ecuador; la mitad superior se mantiene a potencial \(V_0\) y la inferior a \(-V_0\). El interior contiene una densidad de carga uniforme \(\rho_0\). Halle el potencial electrostático \(V(r,\theta,\phi)\) en el interior de la cáscara.
+
+\prob Se construye una antena partiendo una esfera conductora de radio \(a\) por su ecuador y aplicando a las dos mitades voltajes alternos y opuestos \(\pm V_0 e^{i\omega t}\). Encuentre el potencial electrostático para \(r>a\) en el estado de régimen (frecuencia \(\omega\)), asumiendo la condición de ondas salientes para \(r\to\infty\). La ecuación a resolver es \((\nabla^2 + k^2)u=0\) con \(k=\omega/c\).
+
+\prob Una esfera homogénea de radio \(a\) y difusividad térmica \(\alpha\) es forzada a mantener su superficie a temperatura \(T_0 + T_1\cos(\omega t)\). Encuentre la temperatura \(T(r,\theta,\phi,t)\) dentro de la esfera en el estado de régimen. (Redúzcase a una ecuación de Helmholtz para la componente estacionaria oscilante.)
+
+\prob La superficie terrestre (modelada como un semi-espacio \(z<0\) con difusividad \(D\)) está sometida a una variación periódica de temperatura
+\[
+T(z=0,t) = T_0 + A_d\cos(\omega_d t) + A_a\cos(\omega_a t).
+\]
+Resuelva la ecuación de difusión del calor \(\partial_t T = D\nabla^2 T\) para \(z<0\) y halle la solución de régimen (estacionaria periódica). Determine la profundidad a la que la amplitud de la variación anual se reduce a menos de \(1^\circ\mathrm{C}\) si \(A_a=6.2^\circ\mathrm{C}\) y \(D=2\times10^{-6}\,\mathrm{m^2/s}\).
+
+\prob Un tubo de órgano se modela como un cilindro de radio \(a\) y longitud \(L\) (\(L\gg a\)), con su extremo inferior cerrado (condición de Neumann homogénea para la sobrepresión \(p\)) y el superior abierto (condición de Dirichlet homogénea). La ecuación es \((\nabla^2 + k^2)p=0\). Encuentre las frecuencias de los modos estacionarios y la frecuencia del modo fundamental. ¿Qué longitud debe tener el tubo para que su fundamental sea el La de 55 Hz? (Velocidad del sonido \(c=343\,\mathrm{m/s}\)).
+
+\prob Para una membrana circular de radio \(a\) fija en su borde:
+\begin{itemize}
+\item[a)] Halle los modos normales de vibración.
+\item[b)] Grafique cualitativamente las líneas nodales de los modos de frecuencias más bajas.
+\item[c)] Si se percute la membrana en el centro, ¿qué modos se excitan y cuáles no?
+\end{itemize}
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
