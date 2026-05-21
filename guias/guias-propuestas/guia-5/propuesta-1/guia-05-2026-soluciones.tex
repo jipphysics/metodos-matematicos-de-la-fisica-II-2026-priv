@@ -942,15 +942,203 @@ $$
 
 \prob Considere dos cilindros coaxiales conductores de longitud infinita, de radios \(a\) (interior) y \(b\) (exterior). El potencial se fija como \(V(r=a)=V_0\) y \(V(r=b)=-V_0\). Sabiendo que el potencial electrostático satisface la ecuación de Laplace en regiones libres de carga, calcule el potencial en:
 \begin{itemize}
-\item[a)] \(r<a\)
-\item[b)] \(a<r<b\)
-\item[c)] \(b<r\).
+\item[a)] $r<a$,
+\item[b)] $a<r<b$,
+\item[c)] $b<r$.
 \end{itemize}
 \end{enumerate}
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 5)}
 \vspace{0.5cm}
+
+El problema 5 trata sobre el potencial electrostático entre cilindros coaxiales infinitos de radios:
+\begin{itemize}
+\item $a$ (interior),
+\item $b$ (exterior).
+\end{itemize}
+El potencial satisface:
+$$
+V(r=a)=V_0,
+\qquad
+V(r=b)=-V_0.
+$$
+Debemos hallar el potencial en:
+\begin{itemize}
+\item $r<a$,
+\item $a<r<b$,
+\item $r>b$.
+\end{itemize}
+
+\begin{enumerate}
+\item Simetría del problema
+
+El sistema es:
+\begin{itemize}
+\item infinito en $z$,
+\item simétrico respecto a rotaciones alrededor del eje.
+\end{itemize}
+Entonces el potencial depende sólo de $r$:
+$$
+V=V(r).
+$$
+La ecuación de Laplace en coordenadas cilíndricas se reduce a
+$$
+\frac1r\frac{d}{dr}
+\left(
+r\frac{dV}{dr}
+\right)=0.
+$$
+Equivalentemente:
+$$
+V''+\frac1rV'=0.
+$$
+
+\item Solución general radial
+
+Integramos:
+$$
+\frac{d}{dr}(rV')=0
+\quad\Rightarrow\quad
+rV'=C.
+$$
+Entonces
+$$
+V'=\frac{C}{r}.
+$$
+Integrando nuevamente:
+$$
+V(r)=A\ln r+B.
+$$
+%$$
+%\frac{1}{r}\frac{d}{dr}\left(r\frac{dV}{dr}\right)=0
+%$$
+
+
+Ahora debemos analizar cada región.
+\begin{enumerate}
+\item Región $r<a$
+
+Dentro del cilindro interior no hay singularidad en $r=0$. Pero $\ln r$ diverge cuando $r\to0$, así que debemos eliminar ese término.
+Por lo tanto:
+$$
+V(r)=\text{cte}.
+$$
+Como el cilindro conductor interior está a potencial $V_0$,
+$$
+\boxed{
+V(r)=V_0,
+\qquad r<a.
+}
+$$
+
+\item Región $a<r<b$
+
+Aquí la solución general es
+$$
+V(r)=A\ln r+B.
+$$
+Usamos las condiciones:
+$$
+V(a)=V_0,
+\qquad
+V(b)=-V_0.
+$$
+Entonces:
+$$
+A\ln a+B=V_0,
+$$
+$$
+A\ln b+B=-V_0.
+$$
+Restando:
+$$
+A(\ln b-\ln a)=-2V_0.
+$$
+Así,
+$$
+A=
+-\frac{2V_0}{\ln(b/a)}.
+$$
+Sustituyendo:
+$$
+B
+=
+V_0
++
+\frac{2V_0\ln a}{\ln(b/a)}.
+$$
+Es más elegante escribir la solución como
+$$
+\boxed{
+V(r)=
+V_0
+-
+\frac{2V_0}{\ln(b/a)}
+\ln\left(\frac{r}{a}\right),
+\qquad
+a<r<b.
+}
+$$
+
+Verificación:
+\begin{itemize}
+\item si $r=a$:
+$$
+V(a)=V_0,
+$$
+
+\item si $r=b$:
+$$
+V(b)=V_0-2V_0=-V_0.
+$$
+\end{itemize}
+Correcto.
+
+
+\item Región $r>b$
+
+En el exterior:
+$$
+V(r)=A\ln r+B.
+$$
+\end{enumerate}
+
+Ahora debemos imponer comportamiento físico razonable en el infinito.
+
+Para que el potencial permanezca acotado cuando $r\to\infty$, debe anularse el término $\ln r$. Entonces:
+$$
+V(r)=\text{cte}.
+$$
+Como en $r=b$ el potencial vale $-V_0$,
+$$
+\boxed{
+V(r)=-V_0,
+\qquad r>b.
+}
+$$
+
+\item Solución completa
+
+$$
+\boxed{
+V(r)=
+\begin{cases}
+V_0, & r<a,\\
+V_0-\dfrac{2V_0}{\ln(b/a)}
+\ln\left(\dfrac{r}{a}\right),
+& a<r<b,\\
+-V_0, & r>b.
+\end{cases}
+}
+$$
+
+\item Comentario físico
+
+Toda la variación del potencial ocurre únicamente entre los cilindros. Dentro de cada conductor el potencial es constante, como exige el equilibrio electrostático.
+
+\end{enumerate}
+
 
 
 \prob Un cilindro infinito de radio \(a\) se mantiene a potencial \(V\) para \(0<\theta<\pi\) y \(-V\) para \(-\pi<\theta<0\), y en su interior hay una densidad de carga eléctrica
