@@ -65,6 +65,14 @@
 
 \newcommand{\tder}[2]{\frac{d #1}{d #2}}
 
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Counters definitions (old)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -550,6 +558,232 @@ Esta solución satisface:
 \psi=0 \quad \text{en todas sus caras excepto en } z=L \text{ donde } \psi = V_0.
 \]
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 3)}
+\vspace{0.5cm}
+
+
+El problema 3 pide resolver la ecuación de Laplace en un paralelepípedo: 
+$$
+\nabla^2 \psi = 0,
+$$
+en la región
+$$
+0<x<c,\qquad 0<y<c,\qquad 0<z<L,
+$$
+con condiciones de contorno
+$$
+\psi=0
+\quad \text{en todas las caras}
+$$
+excepto en
+$$
+z=L,
+\qquad
+\psi=V_0.
+$$
+
+\begin{enumerate}
+\item Separación de variables
+
+Buscamos soluciones del tipo
+$$
+\psi(x,y,z)=X(x)Y(y)Z(z).
+$$
+Sustituyendo en Laplace:
+$$
+X''YZ+XY''Z+XYZ''=0.
+$$
+Dividiendo por $XYZ$:
+$$
+\frac{X''}{X}
++
+\frac{Y''}{Y}
++
+\frac{Z''}{Z}
+=0.
+$$
+Separaremos usando constantes:
+$$
+\frac{X''}{X}=-\lambda,
+\qquad
+\frac{Y''}{Y}=-\mu,
+$$
+de modo que
+$$
+\frac{Z''}{Z}=\lambda+\mu.
+$$
+
+\item Problemas en $x$ e $y$
+
+Las condiciones de borde son
+$$
+\psi(0,y,z)=\psi(c,y,z)=0,
+$$
+y análogamente en $y$. Por lo tanto:
+$$
+X(0)=X(c)=0,
+\qquad
+Y(0)=Y(c)=0.
+$$
+Entonces:
+$$
+X''+\lambda X=0,
+\qquad
+Y''+\mu Y=0.
+$$
+Los autovalores son
+$$
+\lambda_m=\left(\frac{m\pi}{c}\right)^2,
+\qquad
+\mu_n=\left(\frac{n\pi}{c}\right)^2,
+$$
+y las autofunciones:
+$$
+X_m(x)=\sin\left(\frac{m\pi x}{c}\right),
+\qquad
+Y_n(y)=\sin\left(\frac{n\pi y}{c}\right).
+$$
+
+%$$X''+\lambda X=0,\quad X(0)=X(c)=0$$
+
+\item Ecuación para $Z(z)$
+
+La ecuación queda:
+$$
+Z''-
+\left[
+\left(\frac{m\pi}{c}\right)^2
++
+\left(\frac{n\pi}{c}\right)^2
+\right]
+Z=0.
+$$
+Definimos
+$$
+\gamma_{mn}
+=
+\frac{\pi}{c}\sqrt{m^2+n^2}.
+$$
+Entonces:
+$$
+Z''-\gamma_{mn}^2 Z=0.
+$$
+La solución general es
+$$
+Z(z)=
+A_{mn}\sinh(\gamma_{mn} z)
++
+B_{mn}\cosh(\gamma_{mn} z).
+$$
+La condición en $z=0$ es
+$$
+\psi(x,y,0)=0.
+$$
+Entonces
+$$
+Z(0)=0
+\quad\Rightarrow\quad
+B_{mn}=0.
+$$
+Así,
+$$
+Z(z)=A_{mn}\sinh(\gamma_{mn} z).
+$$
+
+\item Solución general
+
+$$
+\psi(x,y,z)=
+\sum_{m=1}^{\infty}
+\sum_{n=1}^{\infty}
+A_{mn}
+\sinh(\gamma_{mn} z)
+\sin\left(\frac{m\pi x}{c}\right)
+\sin\left(\frac{n\pi y}{c}\right).
+$$
+
+\item Imponer la condición en $z=L$
+
+Debemos tener:
+$$
+\psi(x,y,L)=V_0.
+$$
+Por lo tanto:
+$$
+V_0=
+\sum_{m,n}
+A_{mn}
+\sinh(\gamma_{mn}L)
+\sin\left(\frac{m\pi x}{c}\right)
+\sin\left(\frac{n\pi y}{c}\right).
+$$
+Necesitamos expandir la constante $V_0$ en serie doble seno:
+$$
+V_0=
+\sum_{m,n}
+B_{mn}
+\sin\left(\frac{m\pi x}{c}\right)
+\sin\left(\frac{n\pi y}{c}\right).
+$$
+Los coeficientes son
+$$
+B_{mn}
+=
+\frac{4}{c^2}
+\int_0^c\int_0^c
+V_0
+\sin\left(\frac{m\pi x}{c}\right)
+\sin\left(\frac{n\pi y}{c}\right)
+\,dx\,dy.
+$$
+Como antes, sólo sobreviven $m,n$ impares:
+$$
+B_{mn}
+=
+\begin{cases}
+\dfrac{16V_0}{mn\pi^2},
+& m,n \text{ impares}, \\
+0,
+& \text{caso contrario}.
+\end{cases}
+$$
+Entonces
+$$
+A_{mn}
+=
+\frac{B_{mn}}
+{\sinh(\gamma_{mn}L)}.
+$$
+
+\item Solución final
+
+$$
+\boxed{
+\psi(x,y,z)=
+\frac{16V_0}{\pi^2}
+\sum_{\substack{\{m,n\, \in \NN \text{ e impar}}\}}
+\frac{
+\sinh\left(
+\frac{\pi z}{c}\sqrt{m^2+n^2}
+\right)
+}{
+mn\,
+\sinh\left(
+\frac{\pi L}{c}\sqrt{m^2+n^2}
+\right)
+}
+\sin\left(\frac{m\pi x}{c}\right)
+\sin\left(\frac{n\pi y}{c}\right)
+}
+$$
+Esta solución satisface:
+\begin{itemize}
+\item $\nabla^2\psi=0$,
+\item $\psi=0$ en $x=0,c$, $y=0,c$, $z=0$,
+\item y $\psi=V_0$ en $z=L$.
+\end{itemize}
+
 \prob Halle la solución acotada de la ecuación de Laplace
 \[
 \nabla^2 u = 0
@@ -565,6 +799,12 @@ u(a,\theta) = \ln 2 + 4\cos(3\theta).
 \item[b)] \(a<r<b\)
 \item[c)] \(b<r\).
 \end{itemize}
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4)}
+\vspace{0.5cm}
+
 
 \prob Un cilindro infinito de radio \(a\) se mantiene a potencial \(V\) para \(0<\theta<\pi\) y \(-V\) para \(-\pi<\theta<0\), y en su interior hay una densidad de carga eléctrica
 \[
@@ -572,18 +812,43 @@ u(a,\theta) = \ln 2 + 4\cos(3\theta).
 \]
 en coordenadas cilíndricas \((r,\theta,z)\). Use la invariancia traslacional en \(z\) para reducir el problema a dos dimensiones y halle el potencial electrostático \(u(r,\theta)\) en el interior del cilindro.
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+
 \prob Obtenga la temperatura \(T(r,\phi,z)\) del estado estacionario en el interior de un cilindro recto finito de longitud \(L\) y radio \(a\), si el cilindro se mantiene a temperatura \(T=0\) en las superficies \(r=a\) y \(z=0\), mientras que en \(z=L\) se mantiene a
 \[
 T(r,\phi,L) = T_0\, r \sen\phi.
 \]
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+
 \prob Un cilindro recto sólido semi-infinito de radio \(a\) mantiene su superficie curva a temperatura \(T=0\) y su base a temperatura \(T_0\). Encuentre la distribución de temperatura en el cilindro en el estado estacionario.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
 
 \prob Una membrana delgada de densidad superficial \(\rho\) se suspende de un aro rígido, plano, circular y horizontal de radio \(a\), quedando con una tensión \(\sigma\). Bajo la acción de un campo gravitatorio uniforme y vertical de intensidad \(g\), encuentre la forma estacionaria (desplazamiento vertical) que adquiere la membrana.
 \medskip
 \textit{Ayuda: la ecuación de equilibrio es \(\sigma \nabla^2 u = \rho g\).}
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+
 \prob Una esfera conductora de radio \(a\), mantenida a potencial nulo, se introduce en un campo eléctrico previamente uniforme \(\mathbf{E}=E\,\hat{z}\). Encuentre el potencial electrostático en el exterior de la esfera.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
 
 \prob Un modelo simplificado para la densidad de neutrones \(n(r,\theta,\phi,t)\) en una esfera de radio \(a\) de material fisionable viene dado por
 \[
@@ -592,11 +857,20 @@ T(r,\phi,L) = T_0\, r \sen\phi.
 \]
 donde \(D>0\) es la difusividad y \(\kappa>0\) la tasa de producción. Buscando soluciones estacionarias (es decir, \(n(\mathbf{r},t)=e^{\lambda t}u(\mathbf{r})\)), halle el radio crítico \(a_c\) por debajo del cual la densidad permanece acotada cuando \(t\to\infty\) y por encima del cual diverge.
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+
 \prob Halle los modos normales de vibración de una membrana circular de radio \(a\), fija en su borde, que satisface la ecuación de ondas
 \[
 u_{tt} = c^2 \nabla^2 u.
 \]
 Es decir, resuelva la ecuación de Helmholtz \(\nabla^2 u + k^2 u = 0\) con \(u(a,\theta)=0\) y determine las frecuencias de resonancia.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
 
 
 
