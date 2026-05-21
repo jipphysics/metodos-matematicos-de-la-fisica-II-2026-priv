@@ -1491,6 +1491,27 @@ Entonces:
 
 {\em Remark:}
 Es importante resaltar que, en el m\'etodo de las caracter\'isticas, no toda condici\'on inicial $u_{\Gamma}=g$ es compatible con la EDP.
+En este sentido, notar que:
+\begin{quotation}
+La hipersuperficie inicial $\Gamma$ NO debe ser tangente a las caracter\'isticas.
+\end{quotation}
+Formalmente, esto se verifica de la siguiente manera.
+Supongamos que la hipersuperficie $\Gamma\in \mathbb{R}^n$ viene dada impl\'icitamente por la ecuaci\'on
+$$
+\Phi(x_1,...,x_n)=0.
+$$
+Luego, un vector normal a $\Gamma$ en un punto $x\in \Gamma$ viene dado por
+$$
+(\nabla \Phi)(x)
+$$
+Entonces, debemos comprobar que dicho vector NO deber ser tangencial al campo vectorial definidor por el lado derecho de la EDO obtenida de la EDP en cada punto de $x\in \Gamma$.
+M\'as precisamente, se tiene que cumplir que cumplir la {\em condici\'on de NO caracteristicidad}. 
+Es decir, se tiene que cumplir que
+$$
+(a(x)).((\nabla \Phi)(x)) \neq 0
+$$
+para todo $x\in \Gamma$.
+Si esto no ocurre, la condici\'on inicial especificada por $\Gamma$ incluye una degeneraci\'on, y por ende, NO resulta compatible con la EDP.
 
 \item Procedimiento práctico
 
