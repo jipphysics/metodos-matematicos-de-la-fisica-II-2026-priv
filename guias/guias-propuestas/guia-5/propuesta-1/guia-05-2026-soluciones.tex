@@ -1151,6 +1151,364 @@ en coordenadas cilíndricas \((r,\theta,z)\). Use la invariancia traslacional en
 {\bf Soluci\'on }{\em 6)}
 \vspace{0.5cm}
 
+El problema 6 dice: Un cilindro infinito de radio $a$ se mantiene a potencial
+$$
+V \quad \text{para } 0<\theta<\pi,
+$$
+y
+$$
+-V \quad \text{para } -\pi<\theta<0,
+$$
+y en su interior existe una densidad de carga
+$$
+\rho(r,\theta)
+=
+\rho_0
+\left(
+1-\frac{r^2}{a^2}
+\right)\cos\theta.
+$$
+Se pide hallar el potencial electrostático $u(r,\theta)$ dentro del cilindro.
+
+\begin{enumerate}
+\item Ecuación de Poisson
+
+Como el problema es invariante en $z$, trabajamos en dos dimensiones:
+$$
+\nabla^2 u
+=
+-\frac{\rho}{\varepsilon_0}.
+$$
+En coordenadas polares:
+$$
+\nabla^2 u=
+u_{rr}
++\frac1r u_r
++\frac1{r^2}u_{\theta\theta}.
+$$
+Entonces:
+$$
+\nabla^2 u
+=
+-\frac{\rho_0}{\varepsilon_0}
+\left(
+1-\frac{r^2}{a^2}
+\right)\cos\theta.
+$$
+La condición de borde es
+$$
+u(a,\theta)=
+\begin{cases}
+V, & 0<\theta<\pi,\\
+-V, & -\pi<\theta<0.
+  \end{cases}
+$$
+
+\item Estructura angular
+
+Observemos que:
+\begin{itemize}
+\item  la fuente es proporcional a $\cos\theta$,
+\item  el borde es una función impar respecto a $\theta\to-\theta$, es decir, proporcional a senos.
+\end{itemize}
+Conviene separar el problema en dos partes:
+$$
+u=u_h+u_p,
+$$
+donde:
+\begin{itemize}
+\item $u_p$ resuelve Poisson con fuente,
+\item $u_h$ resuelve Laplace y ajusta la condición de borde.
+\end{itemize}
+
+\item Solución particular
+
+Como la fuente tiene dependencia angular $\cos\theta$, probamos:
+$$
+u_p(r,\theta)=f(r)\cos\theta.
+$$
+Sustituyendo en Laplace polar:
+$$
+\nabla^2(f(r)\cos\theta)
+=
+\left(
+f''+\frac1r f'
+-\frac{1}{r^2}f
+\right)\cos\theta.
+$$
+Entonces $f$ debe satisfacer:
+$$
+f''+\frac1r f'
+-\frac{1}{r^2}f
+=
+-\frac{\rho_0}{\varepsilon_0}
+\left(
+1-\frac{r^2}{a^2}
+\right).
+$$
+%$$f''+\frac1r f'-\frac{1}{r^2}f=-\frac{\rho_0}{\varepsilon_0}\left(1-\frac{r^2}{a^2}\right)$$
+Buscamos un polinomio:
+$$
+f(r)=Ar^2+Br^4.
+$$
+Calculamos:
+$$
+f'=2Ar+4Br^3,
+$$
+$$
+f''=2A+12Br^2.
+$$
+Entonces:
+$$
+f''+\frac1r f'-\frac1{r^2}f
+=
+(2A+12Br^2)
++(2A+4Br^2)
+-(A+Br^2).
+$$
+Esto da:
+$$
+3A+15Br^2.
+$$
+Igualando coeficientes:
+$$
+3A=-\frac{\rho_0}{\varepsilon_0},
+$$
+$$
+15B=
+\frac{\rho_0}{\varepsilon_0 a^2}.
+$$
+Así:
+$$
+A=-\frac{\rho_0}{3\varepsilon_0},
+\qquad
+B=\frac{\rho_0}{15\varepsilon_0 a^2}.
+$$
+Por lo tanto,
+$$
+u_p(r,\theta)=
+\left(
+-\frac{\rho_0}{3\varepsilon_0}r^2
++
+\frac{\rho_0}{15\varepsilon_0 a^2}r^4
+\right)\cos\theta.
+$$
+
+\item Solución homogénea
+
+Ahora resolvemos
+$$
+\nabla^2 u_h=0.
+$$
+La solución regular en el origen es
+$$
+u_h(r,\theta)=
+A_0+
+\sum_{n=1}^\infty
+r^n
+\left(
+A_n\cos n\theta
++
+B_n\sin n\theta
+\right).
+$$
+
+\item Expandir la condición de borde
+
+En $r=a$:
+$$
+u_h(a,\theta)
+=
+u(a,\theta)-u_p(a,\theta).
+$$
+Pero:
+$$
+u_p(a,\theta)
+=
+\left(
+-\frac{\rho_0 a^2}{3\varepsilon_0}
++
+\frac{\rho_0 a^2}{15\varepsilon_0}
+\right)\cos\theta.
+$$
+Entonces:
+$$
+u_p(a,\theta)
+=
+-\frac{4\rho_0 a^2}{15\varepsilon_0}\cos\theta.
+$$
+La condición total es:
+$$
+u_h(a,\theta)=
+g(\theta),
+$$
+con
+$$
+g(\theta)=
+\begin{cases}
+V+\dfrac{4\rho_0 a^2}{15\varepsilon_0}\cos\theta,
+& 0<\theta<\pi,\\
+-V+\dfrac{4\rho_0 a^2}{15\varepsilon_0}\cos\theta,
+& -\pi<\theta<0.
+\end{cases}
+$$
+
+\item Serie de Fourier del borde
+
+La función escalón:
+$$
+\operatorname{sgn}(\theta)=
+\begin{cases}
+1,&0<\theta<\pi,\\
+-1,&-\pi<\theta<0,
+\end{cases}
+$$
+tiene expansión:
+$$
+\operatorname{sgn}(\theta)
+=
+\frac4\pi
+\sum_{m=0}^\infty
+\frac{\sin((2m+1)\theta)}{2m+1}.
+$$
+Entonces:
+$$
+V\operatorname{sgn}(\theta)
+=
+\frac{4V}{\pi}
+\sum_{m=0}^\infty
+\frac{\sin((2m+1)\theta)}{2m+1}.
+$$
+Además, el término proporcional a $\cos\theta$ corresponde al modo $n=1$.
+Por lo tanto,
+$$
+u_h(r,\theta)
+=
+\frac{4V}{\pi}
+\sum_{m=0}^\infty
+\frac{1}{2m+1}
+\left(\frac{r}{a}\right)^{2m+1}
+\sin((2m+1)\theta)
++
+\frac{4\rho_0 a}{15\varepsilon_0}
+\left(\frac{r}{a}\right)\cos\theta.
+$$
+
+\item Solución final
+
+Sumando $u_h+u_p$:
+$$
+\boxed{
+u(r,\theta)=
+\frac{4V}{\pi}
+\sum_{m=0}^\infty
+\frac{1}{2m+1}
+\left(\frac{r}{a}\right)^{2m+1}
+\sin((2m+1)\theta)
++
+\frac{4\rho_0}{15\varepsilon_0}
+\left(
+a r-r^2+\frac{r^4}{5a^2}
+\right)\cos\theta
+}
+$$
+válida para $0\le r<a$.
+
+\item Comentario
+
+La solución contiene:
+\begin{itemize}
+\item una parte armónica generada por el potencial impuesto en la superficie,
+\item y una parte particular debida a la densidad de carga interna.
+\end{itemize}
+
+\end{enumerate}
+
+{\em Remark:}
+
+Cuando resolvemos Poisson:
+$$
+\nabla^2 u=f,
+$$
+normalmente procedemos así:
+$$
+u=u_p+u_h,
+$$
+donde:
+\begin{itemize}
+\item $u_p$ es una solución particular de Poisson:
+$$
+\nabla^2 u_p=f,
+$$
+
+\item y $u_h$ satisface la ecuación homogénea:
+$$
+\nabla^2 u_h=0.
+$$
+\end{itemize}
+La condición de borde NO suele imponerse directamente sobre $u_p$.
+Se impone sobre la solución total $u$.
+Cómo funciona exactamente?
+Supongamos:
+$$
+\nabla^2 u=f
+$$
+con condición de Dirichlet
+$$
+u|_{\partial\Omega}=g.
+$$
+Primero elegimos cualquier solución particular $u_p$ tal que
+$$
+\nabla^2 u_p=f.
+$$
+Esa solución particular generalmente NO satisface las condiciones de borde.
+Luego escribimos
+$$
+u=u_p+u_h.
+$$
+Entonces:
+$$
+\nabla^2 u_h=0,
+$$
+porque
+$$
+\nabla^2(u-u_p)=f-f=0.
+$$
+Ahora imponemos la condición de borde sobre el potencial total:
+$$
+u|_{\partial\Omega}=g.
+$$
+Entonces:
+$$
+u_h|_{\partial\Omega}
+=
+g-u_p|_{\partial\Omega}.
+$$
+Es decir:
+$$
+\boxed{
+u_h \text{ corrige el borde que } u_p \text{ no satisface.}
+}
+$$
+
+{\bf Idea conceptual importante:}
+La ecuación de Poisson determina la ``curvatura'' local del potencial mediante la carga:
+$$
+\nabla^2 u \sim -\rho.
+$$
+Pero eso no fija completamente la solución.
+Todavía queda libertad de agregar cualquier solución armónica:
+$$
+u_h,
+\qquad
+\nabla^2 u_h=0,
+$$
+porque:
+$$
+\nabla^2(u_p+u_h)=f.
+$$
+Las condiciones de borde son las que seleccionan cuál de todas esas soluciones posibles es la física.
+
 
 \prob Obtenga la temperatura \(T(r,\phi,z)\) del estado estacionario en el interior de un cilindro recto finito de longitud \(L\) y radio \(a\), si el cilindro se mantiene a temperatura \(T=0\) en las superficies \(r=a\) y \(z=0\), mientras que en \(z=L\) se mantiene a
 \[
