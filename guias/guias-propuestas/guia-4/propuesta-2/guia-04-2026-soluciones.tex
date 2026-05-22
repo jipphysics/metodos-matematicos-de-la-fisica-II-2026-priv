@@ -147,213 +147,315 @@
 {\bf Soluci\'on }{\em 1a)}
 \vspace{0.5cm}
 
-Antes de comenzar, recordar que  por definici\'on $T'(\varphi)=T(\varphi')$.
-Luego, esto se puede usar para ver que $\Theta'=\delta$, concluyendo que $\Theta$ es una primitiva de $\delta$.
-
-Calcular la transformada de Fourier de la distribución de Heaviside
-
+Para resolverlo, adoptamos la convención de la transformada de Fourier utilizada en el curso:
 $$
-\Theta(x-a).
+\hat{f}(k) = \int_{-\infty}^{\infty} dx\, f(x)e^{-ikx}
 $$
 
-Voy a usar la convención
+\begin{enumerate}
+\item Expresar la función como una traslación
 
+La función escalón desplazada se puede escribir mediante un cambio de variables simple:
 $$
-\hat{f}(k)
-=
-\int_{-\infty}^{\infty} dx\, f(x)e^{-ikx}.
-$$
-
-La función escalón puede escribirse como una traslación:
-
-$$
-\Theta(x-a)=\Theta(u), \qquad u=x-a.
+\Theta(x-a) = \Theta(u), \qquad \text{donde } u = x - a \implies dx = du
 $$
 
-Entonces
-
+Aplicando esto a la definición de la transformada de Fourier, separamos la fase exponencial debida al desplazamiento:
 $$
-\hat{\Theta}_a(k)
-=
-\int_{-\infty}^{\infty} dx\, \Theta(x-a)e^{-ikx}
-=
-e^{-ika}
-\int_{-\infty}^{\infty} du\, \Theta(u)e^{-iku}.
+\hat{\Theta}_a(k) = \int_{-\infty}^{\infty} dx\, \Theta(x-a)e^{-ikx} = \int_{-\infty}^{\infty} du\, \Theta(u)e^{-ik(u+a)}
+$$
+$$
+\hat{\Theta}_a(k) = e^{-ika} \int_{-\infty}^{\infty} du\, \Theta(u)e^{-iku}
 $$
 
-Pero
+\item Aplicar la definición del escalón unitario** 
 
+Dado que la función Heaviside estándar $\Theta(u)$ está definida como:
 $$
-\Theta(u)=
-\begin{cases}
-0, & u<0,\\
-1, & u>0,
-\end{cases}
+\Theta(u) = \begin{cases} 0, & u < 0 \\ 1, & u > 0 \end{cases}
 $$
-
-de modo que
-
+La integral se reduce a evaluar únicamente el semiplano positivo:
 $$
-\int_{-\infty}^{\infty}du\,\Theta(u)e^{-iku}
-=
-\int_0^\infty du\,e^{-iku}.
+\int_{-\infty}^{\infty} du\, \Theta(u)e^{-iku} = \int_{0}^{\infty} du\, e^{-iku}
 $$
 
-Esta integral no converge ordinariamente, sino en el sentido de distribuciones. Regularizamos:
+\item Regularización de la integral (Sentido de Distribuciones)
 
+La integral $\int_{0}^{\infty} du\, e^{-iku}$ no converge en el sentido del cálculo ordinario debido al comportamiento oscilatorio en el infinito. Para resolverla en el contexto de la teoría de distribuciones, introducimos un factor de amortiguación exponencial mediante un parámetro de regularización $\varepsilon > 0$:
 $$
-\int_0^\infty du\, e^{-(\varepsilon+ik)u}
-=
-\frac{1}{\varepsilon+ik},
-\qquad \varepsilon>0.
+\int_{0}^{\infty} du\, e^{-(\varepsilon+ik)u} = \left[ \frac{e^{-(\varepsilon+ik)u}}{-(\varepsilon+ik)} \right]_{0}^{\infty} = 0 - \left( \frac{1}{-(\varepsilon+ik)} \right) = \frac{1}{\varepsilon+ik}
 $$
-
-Tomando $\varepsilon\to0^+$,
-
+Ahora debemos estudiar el comportamiento de esta expresión cuando tomamos el límite distributivo $\varepsilon \to 0^+$. Multiplicando y dividiendo por la unidad imaginaria $-i$, podemos reescribir la fracción de la siguiente manera:
 $$
-\frac{1}{\varepsilon+ik}
-=
--i\frac{1}{k-i\varepsilon}.
+\frac{1}{\varepsilon+ik} = \frac{1}{i(k - i\varepsilon)} = -i\frac{1}{k-i\varepsilon}
 $$
 
-Usando la identidad distributiva de Sokhotski–Plemelj,
+\item Aplicación de la Identidad de Sokhotski–Plemelj
 
+Para evaluar el límite de esta distribución cuando $\varepsilon \to 0^+$, empleamos la identidad distributiva de Sokhotski–Plemelj:
 $$
-\lim_{\varepsilon\to0^+}\frac{1}{k-i\varepsilon}
-=
-\mathrm{P.V.}\left(\frac1k\right)+i\pi\delta(k),
+\lim_{\varepsilon\to0^+}\frac{1}{k-i\varepsilon} = \mathrm{P.V.}\left(\frac{1}{k}\right) + i\pi\delta(k)
 $$
-
-obtenemos
-
+Donde $\mathrm{P.V.}$ denota el Valor Principal de Cauchy, el cual se encarga de manejar de forma simétrica la singularidad en $k=0$.
+M\'as precisamente,
 $$
-\int_0^\infty 
-du\,
-e^{-iku}
-=
-\pi\delta(k)-i\,\mathrm{P.V.}\left(\frac1k\right).
-$$
-
-Por lo tanto,
-
-$$
-\boxed{
-\hat{\Theta}_a(k)
-=
-e^{-ika}
-\left[
-\pi\delta(k)
--i\,
-\mathrm{P.V.}
-\left(
-\frac{1}{k}
-\right)
-\right]
-}.
-$$
-
-\vspace{0.5cm}
-{\bf Ayuda:} ¿Qué es el Valor Principal?
-\vspace{0.5cm}
-
-El Valor Principal (P.V.) o Valor Principal de Cauchy es un método para asignar un valor a integrales impropias que, de otro modo, serían divergentes debido a una singularidad en el intervalo de integración.
-
-\vspace{0.5cm}
-{\em Definición Matemática.}
-\vspace{0.5cm}
-
-Si tenemos una función con una singularidad en $x=c$, el valor principal se define como el límite simétrico alrededor de ese punto:
-
-$$PV \int_{a}^{b} f(x) dx = \lim_{\epsilon \to 0^+} \left( \int_{a}^{c-\epsilon} f(x) dx + \int_{c+\epsilon}^{b} f(x) dx \right)$$
-
-\vspace{0.5cm}
-{\em ¿Por qué aparece en la Transformada de Heaviside?}
-\vspace{0.5cm}
-
-Aparece porque la función $1/k$ tiene una singularidad en $k=0$. En el contexto de las distribuciones, la escritura 
-$$
-\mathrm{P.V.}
-\left(
-\frac{1}{k}
-\right)
-=
-\frac{1}{\text{PV}(k)}
+\mathrm{P.V.}\bigg(\frac{1}{k}\bigg)
 $$ 
-indica que, al integrar esta distribución con una función de prueba $\phi(k)$, debemos tomar el límite simétrico para evitar la divergencia en el origen:
-
-$$\left\langle \frac{1}{\text{PV}(k)} , \phi(k) \right\rangle = \lim_{\epsilon \to 0^+} \int_{|k|>\epsilon} \frac{\phi(k)}{k} dk$$
-
-Esto permite ``cancelar'' las áreas infinitas de signo opuesto que se encuentran a ambos lados del eje vertical en la función $1/k$.
-
-
-\vspace{0.5cm}
-{\bf Soluci\'on }{\em 1b)}
-\vspace{0.5cm}
-
-Calcular la transformada de Fourier de
-
+es la distribuci\'on $T$ que viene dada por
 $$
-\delta'(x-a).
-$$
-
-Usamos la propiedad distributiva
-
-$$
-\langle \delta'(x-a) , \varphi(x)\rangle
+\langle
+%\bigg\langle
+%\mathrm{P.V.}(1/k)
+T
+,
+\phi
+%\bigg\rangle
+\rangle
 =
--\varphi'(a).
+\lim_{\epsilon\to 0^+}
+\bigg(
+\int_{-\infty}^{-\epsilon}
+dk\,
+\frac{\phi(k)}{k}
++
+\int_{\epsilon}^{\infty}
+dk\,
+\frac{\phi(k)}{k}
+\bigg)
+$$
+para toda funci\'on de prueba $\phi$.
+%Multiplicamos 
+Luego, multiplicando
+%el resultado de este límite 
+la identidad distributiva de Sokhotski–Plemelj
+por $-i$ obtenemos:
+% que teníamos afuera:
+$$
+\int_{0}^{\infty} du\, e^{-iku} = -i \left[ \mathrm{P.V.}\left(\frac{1}{k}\right) + i\pi\delta(k) \right]
+$$
+$$
+\int_{0}^{\infty} du\, e^{-iku} = -i\,\mathrm{P.V.}\left(\frac{1}{k}\right) - i^2\pi\delta(k)
+$$
+$$
+\int_{0}^{\infty} du\, e^{-iku} = \pi\delta(k) - i\,\mathrm{P.V.}\left(\frac{1}{k}\right)
 $$
 
-Entonces
+\item Resultado Final
 
+Sustituyendo esta integral de vuelta en nuestra expresión original (la cual incluía el factor de traslación $e^{-ika}$), obtenemos la solución final:
 $$
-\hat{\delta}'_a(k)
-=
-\int_{-\infty}^{\infty} dx\,\delta'_a(x)e^{-ikx}
-=
-\int_{-\infty}^{\infty} dx\,\delta'(x-a)e^{-ikx}.
+\boxed{ \hat{\Theta}_a(k) = e^{-ika} \left[ \pi\delta(k) - i\,\mathrm{P.V.}\left(\frac{1}{k}\right) \right] }
 $$
 
-Tomamos
+\end{enumerate}
 
-$$
-\varphi(x)=e^{-ikx}.
-$$
-
-Luego
-
-$$
-\varphi'(x)=-ik\,e^{-ikx},
-$$
-
-y por definición de derivada de distribución,
-
-$$
-\int dx\, \delta'_a(x)e^{-ikx}
-=
--\varphi'(a).
-$$
-
-Así,
-
-$$
--\varphi'(a)
-=
--(-ik e^{-ika})
-ik\,e^{-ika}.
-$$
-
-Finalmente,
-
-$$
-\boxed{
-\hat{\delta}'_a(x)(k)
-=
-ik\,e^{-ika}
-}.
-$$
-
-El factor $e^{-ika}$ aparece por la traslación, y el factor $ik$ porque derivar en el espacio real corresponde a multiplicar por $ik$ en el espacio de Fourier.
+%Antes de comenzar, recordar que  por definici\'on $T'(\varphi)=T(\varphi')$.
+%Luego, esto se puede usar para ver que $\Theta'=\delta$, concluyendo que $\Theta$ es una primitiva de $\delta$.
+%
+%Calcular la transformada de Fourier de la distribución de Heaviside
+%
+%$$
+%\Theta(x-a).
+%$$
+%
+%Voy a usar la convención
+%
+%$$
+%\hat{f}(k)
+%=
+%\int_{-\infty}^{\infty} dx\, f(x)e^{-ikx}.
+%$$
+%
+%La función escalón puede escribirse como una traslación:
+%
+%$$
+%\Theta(x-a)=\Theta(u), \qquad u=x-a.
+%$$
+%
+%Entonces
+%
+%$$
+%\hat{\Theta}_a(k)
+%=
+%\int_{-\infty}^{\infty} dx\, \Theta(x-a)e^{-ikx}
+%=
+%e^{-ika}
+%\int_{-\infty}^{\infty} du\, \Theta(u)e^{-iku}.
+%$$
+%
+%Pero
+%
+%$$
+%\Theta(u)=
+%\begin{cases}
+%0, & u<0,\\
+%1, & u>0,
+%\end{cases}
+%$$
+%
+%de modo que
+%
+%$$
+%\int_{-\infty}^{\infty}du\,\Theta(u)e^{-iku}
+%=
+%\int_0^\infty du\,e^{-iku}.
+%$$
+%
+%Esta integral no converge ordinariamente, sino en el sentido de distribuciones. Regularizamos:
+%
+%$$
+%\int_0^\infty du\, e^{-(\varepsilon+ik)u}
+%=
+%\frac{1}{\varepsilon+ik},
+%\qquad \varepsilon>0.
+%$$
+%
+%Tomando $\varepsilon\to0^+$,
+%
+%$$
+%\frac{1}{\varepsilon+ik}
+%=
+%-i\frac{1}{k-i\varepsilon}.
+%$$
+%
+%Usando la identidad distributiva de Sokhotski–Plemelj,
+%
+%$$
+%\lim_{\varepsilon\to0^+}\frac{1}{k-i\varepsilon}
+%=
+%\mathrm{P.V.}\left(\frac1k\right)+i\pi\delta(k),
+%$$
+%
+%obtenemos
+%
+%$$
+%\int_0^\infty 
+%du\,
+%e^{-iku}
+%=
+%\pi\delta(k)-i\,\mathrm{P.V.}\left(\frac1k\right).
+%$$
+%
+%Por lo tanto,
+%
+%$$
+%\boxed{
+%\hat{\Theta}_a(k)
+%=
+%e^{-ika}
+%\left[
+%\pi\delta(k)
+%-i\,
+%\mathrm{P.V.}
+%\left(
+%\frac{1}{k}
+%\right)
+%\right]
+%}.
+%$$
+%
+%\vspace{0.5cm}
+%{\bf Ayuda:} ¿Qué es el Valor Principal?
+%\vspace{0.5cm}
+%
+%El Valor Principal (P.V.) o Valor Principal de Cauchy es un método para asignar un valor a integrales impropias que, de otro modo, serían divergentes debido a una singularidad en el intervalo de integración.
+%
+%\vspace{0.5cm}
+%{\em Definición Matemática.}
+%\vspace{0.5cm}
+%
+%Si tenemos una función con una singularidad en $x=c$, el valor principal se define como el límite simétrico alrededor de ese punto:
+%
+%$$PV \int_{a}^{b} f(x) dx = \lim_{\epsilon \to 0^+} \left( \int_{a}^{c-\epsilon} f(x) dx + \int_{c+\epsilon}^{b} f(x) dx \right)$$
+%
+%\vspace{0.5cm}
+%{\em ¿Por qué aparece en la Transformada de Heaviside?}
+%\vspace{0.5cm}
+%
+%Aparece porque la función $1/k$ tiene una singularidad en $k=0$. En el contexto de las distribuciones, la escritura 
+%$$
+%\mathrm{P.V.}
+%\left(
+%\frac{1}{k}
+%\right)
+%=
+%\frac{1}{\text{PV}(k)}
+%$$ 
+%indica que, al integrar esta distribución con una función de prueba $\phi(k)$, debemos tomar el límite simétrico para evitar la divergencia en el origen:
+%
+%$$\left\langle \frac{1}{\text{PV}(k)} , \phi(k) \right\rangle = \lim_{\epsilon \to 0^+} \int_{|k|>\epsilon} \frac{\phi(k)}{k} dk$$
+%
+%Esto permite ``cancelar'' las áreas infinitas de signo opuesto que se encuentran a ambos lados del eje vertical en la función $1/k$.
+%
+%
+%\vspace{0.5cm}
+%{\bf Soluci\'on }{\em 1b)}
+%\vspace{0.5cm}
+%
+%Calcular la transformada de Fourier de
+%
+%$$
+%\delta'(x-a).
+%$$
+%
+%Usamos la propiedad distributiva
+%
+%$$
+%\langle \delta'(x-a) , \varphi(x)\rangle
+%=
+%-\varphi'(a).
+%$$
+%
+%Entonces
+%
+%$$
+%\hat{\delta}'_a(k)
+%=
+%\int_{-\infty}^{\infty} dx\,\delta'_a(x)e^{-ikx}
+%=
+%\int_{-\infty}^{\infty} dx\,\delta'(x-a)e^{-ikx}.
+%$$
+%
+%Tomamos
+%
+%$$
+%\varphi(x)=e^{-ikx}.
+%$$
+%
+%Luego
+%
+%$$
+%\varphi'(x)=-ik\,e^{-ikx},
+%$$
+%
+%y por definición de derivada de distribución,
+%
+%$$
+%\int dx\, \delta'_a(x)e^{-ikx}
+%=
+%-\varphi'(a).
+%$$
+%
+%Así,
+%
+%$$
+%-\varphi'(a)
+%=
+%-(-ik e^{-ika})
+%ik\,e^{-ika}.
+%$$
+%
+%Finalmente,
+%
+%$$
+%\boxed{
+%\hat{\delta}'_a(x)(k)
+%=
+%ik\,e^{-ika}
+%}.
+%$$
+%
+%El factor $e^{-ika}$ aparece por la traslación, y el factor $ik$ porque derivar en el espacio real corresponde a multiplicar por $ik$ en el espacio de Fourier.
 
 
 \prob Encuentre por transformada de Fourier la soluci\'on general de la ecuaci\'on de movimiento
@@ -1267,6 +1369,106 @@ Si inicialmente $N_1=N$, $N_2=0$, $N_3=n$, calcule $N_3(t)$ utilizando transform
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \appendix
+
+\section{Problema 1a), ``en el sentido de las distribuciones''}
+
+Decir que algo se cumple ``en el sentido de distribuciones'' (o de manera débil) significa un cambio de paradigma fundamental: dejamos de analizar las funciones punto por punto y pasamos a analizarlas por cómo actúan dentro de una integral.
+Para entenderlo de forma concreta, veámoslo desde la intuición física, la definición matemática y cómo se aplica exactamente a la integral del problema 1a).
+
+\begin{enumerate}
+\item La intuición física: El ``aparato de medición''.
+
+En el cálculo clásico, una función $f(x)$ es una regla que te da un número exacto para cada punto $x$. Sin embargo, en la física real, es imposible medir el valor de una magnitud en un único punto geométrico exacto de tamaño cero. Cualquier detector (de luz, de presión, de carga) tiene un tamaño finito y realiza un promedio pesado en una pequeña región.
+En la teoría de distribuciones, introducimos una función de prueba (llamada $\phi(x)$), que representa matemáticamente a este ``aparato de medición''. Una función de prueba es una función ``perfecta'': es infinitamente derivable y se apaga rápidamente (vale cero) fuera de la zona de interés.
+Una distribución no se puede evaluar en un punto. Su única realidad matemática existe cuando la ``haces pasar'' por el aparato de medición a través de una integral:
+$$
+\langle f, \phi \rangle = \int_{-\infty}^{\infty} f(x) \phi(x) \, dx
+$$
+
+\item ¿Qué significa un límite ``en el sentido de distribuciones''?
+
+En el problema 1a), nos topamos con el límite:
+$$
+\lim_{\varepsilon \to 0^+} \frac{1}{\varepsilon + ik}
+$$
+Si intentas evaluar este límite de forma clásica (punto por punto) en $k=0$, te queda $\frac{1}{0}$, lo cual es una aberración matemática (da infinito). Gráficamente, a medida que $\varepsilon$ se achica, la función se vuelve un pico infinitamente alto y angosto en el origen.
+Que el límite sea en el sentido de distribuciones significa que no nos importa que la función explote individualmente en $k=0$, sino que nos importa qué pasa cuando multiplicamos esa expresión por una función de prueba $\phi(k)$ e integramos antes de tomar el límite:
+$$
+\lim_{\varepsilon \to 0^+} \int_{-\infty}^{\infty} \left( \frac{1}{\varepsilon + ik} \right) \phi(k) \, dk
+$$
+Al combinar el límite dentro con la integral, la función de prueba $\phi$ actúa como un ``amortiguador'' que doméstica las divergencias.
+
+\item El colapso del problema 1a) bajo la integral
+
+Para ver de dónde sale la Delta de Dirac y el Valor Principal, multipliquemos arriba y abajo por el conjugado complejo $(\varepsilon - ik)$:
+$$
+\frac{1}{\varepsilon + ik} = \frac{\varepsilon - ik}{\varepsilon^2 + k^2} = \frac{\varepsilon}{\varepsilon^2 + k^2} - i \frac{k}{\varepsilon^2 + k^2}
+$$
+Ahora aplicamos la prueba de la integral con nuestra función $\phi(k)$ para ver qué pasa cuando $\varepsilon \to 0^+$ en cada uno de los dos términos:
+\begin{itemize}
+\item Parte Real (Origen de la Delta):
+
+Miramos el límite de la primera parte:
+$$
+\lim_{\varepsilon \to 0^+} \int_{-\infty}^{\infty} \frac{\varepsilon}{\varepsilon^2 + k^2} \phi(k) \, dk
+$$
+La función $\frac{\varepsilon}{\varepsilon^2 + k^2}$ es una campana (Lorentziana). El área total bajo esta curva es siempre $\pi$, sin importar cuán chico sea $\varepsilon$. A medida que $\varepsilon \to 0^+$, la campana se vuelve infinitamente alta en $k=0$ y cero en cualquier otro lado. Al integrarla con $\phi(k)$, lo único que sobrevive es el valor de la función de prueba en el origen multiplicado por el área:
+$$
+\lim_{\varepsilon \to 0^+} 
+\int_{-\infty}^{\infty} 
+\left[ 
+\frac{\varepsilon}{\varepsilon^2 + k^2} \right] \phi(k) \, dk = \pi \phi(0) = \int_{-\infty}^{\infty} \pi \delta(k) \phi(k) \, dk
+=
+\pi
+\langle
+\delta,
+\phi
+\rangle.
+$$
+
+\item Parte Imaginaria (Origen del Valor Principal):
+
+Miramos la segunda parte:
+$$
+\lim_{\varepsilon \to 0^+} \int_{-\infty}^{\infty} \frac{k}{\varepsilon^2 + k^2} \phi(k) \, dk
+$$
+Esta función es impar. Si $\varepsilon=0$, nos queda $\frac{k}{k^2} = \frac{1}{k}$, la cual diverge en $k=0$. Pero gracias a que es impar, las áreas monstruosas que se van al infinito positivo (a la derecha del origen) se cancelan perfectamente con las áreas que se van al infinito negativo (a la izquierda del origen). La presencia de $\varepsilon$ sirve para ``esquivar'' simétricamente el cero. Al tomar el límite, este mecanismo de cancelación exacta es justamente la definición del Valor Principal de Cauchy ($\mathrm{P.V.}$):
+\begin{eqnarray}
+\lim_{\varepsilon \to 0^+} 
+\int_{-\infty}^{\infty} \left[ 
+\frac{k}{\varepsilon^2 + k^2} \right] \phi(k) \, dk 
+\notag
+&= &
+\mathrm{P.V.} \int_{-\infty}^{\infty} \frac{\phi(k)}{k} \, dk
+\notag
+\\
+&= &
+\bigg\langle
+\mathrm{P.V.}\bigg(\frac{1}{k}\bigg)
+,
+\phi(k)
+\bigg\rangle
+\notag
+\\
+&=&
+\lim_{\eta\to 0^+}
+\bigg(
+\int_{-\infty}^{-\eta} \frac{\phi(k)}{k} \, dk
++
+\int_{\eta}^{\infty} \frac{\phi(k)}{k} \, dk
+\bigg)
+\notag
+\end{eqnarray}
+\end{itemize}
+
+\item Resumen concreto
+
+Cuando el apunte de la cátedra dice que la igualdad se da ``en el sentido de distribuciones'', te está avisando:
+\begin{quotation}
+Ojo, no intentes reemplazar $k=0$ en la fórmula porque se rompe. Esta igualdad solo es un objeto matemático válido si imaginas que está protegida adentro de una integral junto a otra función suave.
+\end{quotation}
+
+\end{enumerate}
 
 \section{Problema 4a), Wronksiano}
 
