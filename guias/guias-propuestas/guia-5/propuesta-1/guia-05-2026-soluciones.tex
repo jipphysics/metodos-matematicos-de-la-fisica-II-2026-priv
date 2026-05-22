@@ -1519,6 +1519,265 @@ T(r,\phi,L) = T_0\, r \sen\phi.
 {\bf Soluci\'on }{\em 7)}
 \vspace{0.5cm}
 
+El problema 7 pide hallar la temperatura estacionaria dentro de un cilindro finito: 
+$$
+\nabla^2 T=0,
+$$
+en el cilindro
+$$
+0\le r<a,
+\qquad
+0\le z\le L,
+$$
+con condiciones de borde:
+$$
+T(a,\phi,z)=0,
+$$
+$$
+T(r,\phi,0)=0,
+$$
+y
+$$
+T(r,\phi,L)=T_0\, r\sin\phi.
+$$
+
+\begin{enumerate}
+\item Ecuación de Laplace en coordenadas cilíndricas
+
+Como no hay dependencia temporal y el cilindro es finito:
+$$
+\nabla^2 T
+=
+T_{rr}
++\frac1rT_r
++\frac1{r^2}T_{\phi\phi}
++T_{zz}
+=0.
+$$
+Buscamos separación de variables:
+$$
+T(r,\phi,z)=R(r)\Phi(\phi)Z(z).
+$$
+Sustituyendo:
+$$
+\frac{R''}{R}
++\frac1r\frac{R'}{R}
++\frac1{r^2}\frac{\Phi''}{\Phi}
++\frac{Z''}{Z}=0.
+$$
+Multiplicando por $r^2$:
+$$
+r^2\frac{R''}{R}
++r\frac{R'}{R}
++\frac{\Phi''}{\Phi}
++r^2\frac{Z''}{Z}=0.
+$$
+De \'esta segunda ecuaci\'on deducimos que
+$$
+\frac{\Phi''}{\Phi}=-m^2
+$$
+para alg\'un $m^2$, ya que s\'olo depende de $\phi$.
+Luego, la primera ecuaci\'on puede reescribirse como
+$$
+\frac{R''}{R}
++\frac1r\frac{R'}{R}
+-\frac{m^2}{r^2}
++\frac{Z''}{Z}=0.
+$$
+de donde obtenemos que
+$$
+\frac{R''}{R}
++\frac1r\frac{R'}{R}
+-\frac{m^2}{r^2}
+=
+\lambda^2
+$$
+ya que s\'olo depende de $r$, y que
+$$
+\frac{Z''}{Z}=-\lambda^2.
+$$
+ya que s\'olo depende de $z$.
+
+\item Separación angular
+
+Tomamos:
+$$
+\Phi''+m^2\Phi=0.
+$$
+Las soluciones periódicas son:
+$$
+\Phi_m(\phi)=
+A_m\cos(m\phi)+B_m\sin(m\phi).
+$$
+Como el borde superior es proporcional a $\sin\phi$, sólo aparecerá:
+$$
+m=1,
+\qquad
+\Phi(\phi)=\sin\phi.
+$$
+
+%\Phi''+m^2\Phi=0
+
+\item Ecuación radial
+
+La parte radial satisface:
+$$
+r^2R''+rR'+(\lambda^2 r^2-m^2)R=0.
+$$
+Ésta es la ecuación de Bessel.
+Para $m=1$ (que corresponde al \'unico valor que aparece de acuerdo a la condici\'on de borde impuesta sobre la parte angular):
+$$
+r^2R''+rR'+(\lambda^2r^2-1)R=0.
+$$
+La solución regular en $r=0$ es:
+$$
+R(r)=J_1(\lambda r),
+$$
+donde $J_1$ es la función de Bessel de primera especie.
+
+\item Condición en $r=a$
+
+Debemos tener:
+$$
+T(a,\phi,z)=0.
+$$
+Entonces:
+$$
+J_1(\lambda a)=0.
+$$
+Los valores permitidos son
+$$
+\lambda_n=\frac{\alpha_n}{a},
+$$
+donde $\alpha_n$ es el $n$-ésimo cero positivo de $J_1$, i.e.:
+$$
+J_1(\alpha_n)=0
+$$
+y
+$\alpha_n>0$.
+
+\item Ecuación en $z$
+
+La ecuación para $Z(z)$ es:
+$$
+Z''-\lambda_n^2 Z=0.
+$$
+Entonces:
+$$
+Z_n(z)=
+A_n\sinh(\lambda_n z)
++
+B_n\cosh(\lambda_n z).
+$$
+La condición:
+$$
+T(r,\phi,0)=0
+$$
+implica:
+$$
+Z_n(0)=0
+\quad\Rightarrow\quad
+B_n=0.
+$$
+Por lo tanto:
+$$
+Z_n(z)=A_n\sinh(\lambda_n z).
+$$
+
+\item Solución general
+
+$$
+T(r,\phi,z)=
+\sin\phi
+\sum_{n=1}^\infty
+A_n
+J_1(\lambda_n r)
+\sinh(\lambda_n z).
+$$
+
+\item Imponer la condición en $z=L$
+
+Debemos satisfacer:
+$$
+T(r,\phi,L)=T_0 r\sin\phi.
+$$
+Entonces:
+$$
+T_0 r
+=
+\sum_{n=1}^\infty
+A_n
+\sinh(\lambda_n L)
+J_1(\lambda_n r).
+$$
+Necesitamos expandir $r$ en serie de Bessel:
+$$
+r=
+\sum_{n=1}^\infty
+c_n J_1(\lambda_n r).
+$$
+Los coeficientes vienen de la ortogonalidad:
+$$
+c_n=
+\frac{
+\displaystyle
+\int_0^a r^2 J_1(\lambda_n r)\,dr
+}{
+\displaystyle
+\int_0^a r\,J_1^2(\lambda_n r)\,dr
+}.
+$$
+Por lo tanto,
+$$
+A_n=
+\frac{T_0\,c_n}{\sinh(\lambda_n L)}.
+$$
+
+\item Solución final
+
+La solución estacionaria es
+$$
+\boxed{
+T(r,\phi,z)=
+T_0\sin\phi
+\sum_{n=1}^\infty
+\frac{
+c_n
+}{
+\sinh(\lambda_n L)
+}
+J_1(\lambda_n r)
+\sinh(\lambda_n z)
+}
+$$
+donde
+$$
+\lambda_n=\frac{\alpha_n}{a},
+\qquad
+J_1(\alpha_n)=0,
+$$
+y
+$$
+c_n=
+\frac{
+\displaystyle
+\int_0^a r^2J_1(\lambda_n r)\,dr
+}{
+\displaystyle
+\int_0^a rJ_1^2(\lambda_n r)\,dr
+}.
+$$
+
+\item Comentario conceptual
+
+Este problema es el análogo cilíndrico de los problemas rectangulares resueltos antes:
+\begin{itemize}
+\item las funciones seno aparecen por condiciones homogéneas angulares,
+\item las funciones hiperbólicas aparecen en la dirección longitudinal,
+\item y las funciones de Bessel aparecen porque la geometría radial convierte el problema en la ecuación de Bessel.
+\end{itemize}
+
+\end{enumerate}
 
 \prob Un cilindro recto sólido semi-infinito de radio \(a\) mantiene su superficie curva a temperatura \(T=0\) y su base a temperatura \(T_0\). Encuentre la distribución de temperatura en el cilindro en el estado estacionario.
 
