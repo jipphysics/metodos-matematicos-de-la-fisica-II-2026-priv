@@ -2354,6 +2354,162 @@ donde \(D>0\) es la difusividad y \(\kappa>0\) la tasa de producción. Buscando 
 {\bf Soluci\'on }{\em 11)}
 \vspace{0.5cm}
 
+El problema 11 plantea que la densidad de neutrones $n(r,\theta,\phi,t)$ en una esfera de radio $a$ satisface
+$$
+\partial_t n-D\nabla^2 n=\kappa n,
+\qquad r<a,
+$$
+con condición de borde
+$$
+n(a,\theta,\phi,t)=0.
+$$
+Se pide hallar el radio crítico $a_c$:
+\begin{itemize}
+\item por debajo del cual la densidad permanece acotada,
+\item y por encima del cual diverge cuando $t\to\infty$.
+\end{itemize}
+
+\begin{enumerate}
+\item Separación temporal
+
+Buscamos soluciones de la forma:
+$$
+n(r,\theta,\phi,t)=e^{\lambda t}u(r,\theta,\phi).
+$$
+Sustituyendo:
+$$
+\lambda e^{\lambda t}u-D e^{\lambda t}\nabla^2 u
+=
+\kappa e^{\lambda t}u.
+$$
+Dividiendo por $e^{\lambda t}$:
+$$
+-D\nabla^2 u+\lambda u=\kappa u.
+$$
+Entonces:
+$$
+\nabla^2 u+\frac{\kappa-\lambda}{D}u=0.
+$$
+Definimos
+$$
+k^2=\frac{\kappa-\lambda}{D}.
+$$
+Obtenemos la ecuación de Helmholtz:
+$$
+\nabla^2 u+k^2u=0.
+$$
+
+\item2. Simetría esférica
+
+El modo que domina el comportamiento temporal es el modo fundamental, que es radialmente simétrico.
+Entonces:
+$$
+u=u(r).
+$$
+La ecuación radial esférica es:
+$$
+u''+\frac2r u'+k^2u=0.
+$$
+La solución regular en el origen es:
+$$
+u(r)=A\frac{\sin(kr)}{r}.
+$$
+La otra solución diverge en $r=0$.
+
+\item3. Condición de borde
+
+La condición:
+$$
+u(a)=0
+$$
+implica:
+$$
+\sin(ka)=0.
+$$
+Entonces:
+$$
+ka=n\pi.
+$$
+El modo fundamental corresponde al menor autovalor:
+$$
+k=\frac{\pi}{a}.
+$$
+
+\item Relación entre $k$ y $\lambda$
+
+Recordemos:
+$$
+k^2=\frac{\kappa-\lambda}{D}.
+$$
+Por lo tanto:
+$$
+\lambda
+=
+\kappa-Dk^2.
+$$
+Para el modo fundamental:
+$$
+\lambda
+=
+\kappa-D\frac{\pi^2}{a^2}.
+$$
+
+\item Interpretación física
+
+La solución temporal es:
+
+$$
+n(t)\sim e^{\lambda t}.
+$$
+Entonces:
+\begin{itemize}
+\item si $\lambda<0$, la densidad decae,
+\item si $\lambda>0$, crece exponencialmente,
+\item el caso crítico ocurre cuando
+\end{itemize}
+$$
+\lambda=0.
+$$
+Así:
+$$
+0=
+\kappa-D\frac{\pi^2}{a_c^2}.
+$$
+Despejando:
+$$
+a_c^2=
+\frac{D\pi^2}{\kappa}.
+$$
+
+\item Radio crítico
+
+$$
+\boxed{
+a_c=\pi\sqrt{\frac{D}{\kappa}}
+}
+$$
+
+\item Interpretación física
+
+Hay una competencia entre:
+\begin{itemize}
+\item difusión $(D)$, donde los neutrones escapan hacia el borde,
+\item y producción $(\kappa)$, donde las fisiones generan nuevos neutrones.
+\end{itemize}
+Si la esfera es demasiado pequeña:
+$$
+a<a_c,
+$$
+los neutrones se pierden más rápido de lo que se producen.
+Si:
+$$
+a>a_c,
+$$
+la producción domina y la densidad crece exponencialmente: el reactor se vuelve supercrítico.
+Este es el origen matemático del concepto de masa crítica en física nuclear.
+
+\end{enumerate}
+
 
 \prob Halle los modos normales de vibración de una membrana circular de radio \(a\), fija en su borde, que satisface la ecuación de ondas
 \[
@@ -2365,7 +2521,216 @@ Es decir, resuelva la ecuación de Helmholtz \(\nabla^2 u + k^2 u = 0\) con \(u(
 {\bf Soluci\'on }{\em 12)}
 \vspace{0.5cm}
 
+El problema 12 pide hallar los modos normales de vibración de una membrana circular fija en el borde. 
+La ecuación de ondas es
+$$
+u_{tt}=c^2\nabla^2 u,
+$$
+y debemos resolver la ecuación de Helmholtz
+$$
+\nabla^2 u+k^2u=0,
+$$
+con condición de borde
+$$
+u(a,\theta)=0.
+$$
+Además se pide determinar las frecuencias de resonancia.
 
+\begin{enumerate}
+\item Separación temporal
+
+Buscamos modos normales:
+$$
+u(r,\theta,t)=\psi(r,\theta)T(t).
+$$
+Sustituyendo:
+$$
+\psi T''=c^2T\nabla^2\psi.
+$$
+Dividiendo por $c^2\psi T$:
+$$
+\frac{T''}{c^2T}
+=
+\frac{\nabla^2\psi}{\psi}
+-k^2.
+$$
+Entonces obtenemos:
+
+\item Parte temporal
+$$
+T''+\omega^2T=0,
+$$
+donde
+$$
+\omega=ck.
+$$
+Las soluciones son:
+$$
+T(t)=A\cos(\omega t)+B\sin(\omega t).
+$$
+
+\item Ecuación espacial (la ecuación de Helmholtz)
+
+La parte espacial satisface:
+$$
+\nabla^2\psi+k^2\psi=0.
+$$
+En coordenadas polares:
+$$
+\psi_{rr}
++\frac1r\psi_r
++\frac1{r^2}\psi_{\theta\theta}
++k^2\psi=0.
+$$
+Buscamos separación:
+$$
+\psi(r,\theta)=R(r)\Theta(\theta).
+$$
+
+\item Separación angular
+
+Sustituyendo:
+$$
+\frac{r^2R''}{R}
++\frac{rR'}{R}
++k^2r^2
++
+\frac{\Theta''}{\Theta}
+=0.
+$$
+Tomamos:
+$$
+\Theta''+m^2\Theta=0.
+$$
+Las soluciones periódicas son:
+$$
+\Theta_m(\theta)=
+A_m\cos(m\theta)+B_m\sin(m\theta),
+$$
+con
+$$
+m=0,1,2,\dots
+$$
+
+\item Ecuación radial
+
+La ecuación radial queda:
+$$
+r^2R''+rR'+(k^2r^2-m^2)R=0.
+$$
+Ésta es la ecuación de Bessel de orden (m).
+
+La solución regular en el origen es:
+$$
+R(r)=J_m(kr).
+$$
+La solución $Y_m$ diverge en $r=0$, así que se descarta.
+
+\item Condición de borde
+
+La membrana está fija en:
+$$
+r=a.
+$$
+Entonces:
+$$
+R(a)=0.
+$$
+Por lo tanto:
+$$
+J_m(ka)=0.
+$$
+Sea:
+$$
+\alpha_{mn}
+$$
+el $n$-ésimo cero positivo de $J_m$.
+
+Entonces:
+$$
+k_{mn}=\frac{\alpha_{mn}}{a}.
+$$
+%J_m(ka)=0
+
+\item Modos normales
+
+Los modos espaciales son:
+$$
+\psi_{mn}(r,\theta)=
+J_m\left(\frac{\alpha_{mn}r}{a}\right)
+\left[
+A\cos(m\theta)+B\sin(m\theta)
+\right].
+$$
+Entonces la solución completa es
+$$
+u_{mn}(r,\theta,t)=
+J_m\left(\frac{\alpha_{mn}r}{a}\right)
+\left[
+A\cos(m\theta)+B\sin(m\theta)
+\right]
+\left[
+C\cos(\omega_{mn}t)+D\sin(\omega_{mn}t)
+\right].
+$$
+
+\item Frecuencias de resonancia
+
+Como:
+$$
+\omega_{mn}=ck_{mn},
+$$
+obtenemos:
+$$
+\boxed{
+\omega_{mn}
+=
+c\frac{\alpha_{mn}}{a}
+}
+$$
+y las frecuencias ordinarias son:
+$$
+\boxed{
+f_{mn}
+=
+\frac{\omega_{mn}}{2\pi}
+\frac{c}{2\pi a}\alpha_{mn}
+}
+$$
+
+\item Primeros modos
+
+Los primeros ceros de Bessel producen los modos de menor frecuencia.
+
+Por ejemplo, $m=0,n=1$:
+$$
+\alpha_{01}\approx2.4048
+$$
+es el modo fundamental.
+
+Luego aparecen:
+$$
+\alpha_{11}\approx3.8317,
+\qquad
+\alpha_{21}\approx5.1356,
+$$
+etc.
+
+\item Interpretación física
+
+Los modos están caracterizados por:
+\begin{itemize}
+\item $m$: número de nodos angulares,
+\item $n$: número de nodos radiales.
+\end{itemize}
+Las líneas nodales son:
+\begin{itemize}
+\item círculos concéntricos,
+\item y diámetros.
+\end{itemize}
+
+Exactamente las figuras de vibración observadas en membranas circulares reales (por ejemplo, tambores).
+\end{enumerate}
 
 \section*{Parte II: Problemas Propuestos (para profundización y repaso)}
 
