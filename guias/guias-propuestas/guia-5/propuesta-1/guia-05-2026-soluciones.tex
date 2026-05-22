@@ -1785,6 +1785,233 @@ Este problema es el análogo cilíndrico de los problemas rectangulares resuelto
 {\bf Soluci\'on }{\em 8)}
 \vspace{0.5cm}
 
+El problema 8 dice: 
+
+Un cilindro recto sólido semi-infinito de radio $a$ mantiene:
+\begin{itemize}
+\item su superficie lateral a temperatura 0,
+\item y su base a temperatura constante $T_0$.
+\end{itemize}
+Se pide hallar la distribución estacionaria de temperatura.
+
+\begin{enumerate}
+\item Geometría y ecuación
+
+Usamos coordenadas cilíndricas $(r,\phi,z)$.
+
+Como:
+\begin{itemize}
+\item la base tiene temperatura constante,
+\item la superficie lateral también,
+\item y el problema es simétrico respecto a rotaciones,
+\end{itemize}
+la temperatura no depende de $\phi$:
+$$
+T=T(r,z).
+$$
+La ecuación estacionaria es Laplace:
+$$
+\nabla^2 T=0.
+$$
+En coordenadas cilíndricas con simetría axial:
+$$
+T_{rr}+\frac1rT_r+T_{zz}=0.
+$$
+El dominio es:
+$$
+0\le r<a,
+\qquad
+z>0.
+$$
+Condiciones de borde:
+$$
+T(a,z)=0,
+$$
+$$
+T(r,0)=T_0,
+$$
+y además queremos:
+$$
+T(r,z)\to0
+\quad\text{cuando }z\to\infty.
+$$
+
+\item Separación de variables
+
+Buscamos:
+$$
+T(r,z)=R(r)Z(z).
+$$
+Sustituyendo:
+$$
+R''Z+\frac1rR'Z+RZ''=0.
+$$
+Dividiendo por $RZ$:
+$$
+\frac{R''}{R}
++\frac1r\frac{R'}{R}
++\frac{Z''}{Z}=0.
+$$
+Separamos:
+$$
+\frac{Z''}{Z}=\lambda^2,
+$$
+y entonces:
+$$
+R''+\frac1rR'+\lambda^2R=0.
+$$
+
+\item Ecuación radial
+
+La ecuación radial es:
+$$
+r^2R''+rR'+\lambda^2 r^2R=0.
+$$
+Ésta es la ecuación de Bessel de orden 0:
+$$
+R(r)=J_0(\lambda r).
+$$
+La otra solución $Y_0$ diverge en $r=0$, así que se descarta.
+
+\item Condición en $r=a$
+
+Debemos tener:
+$$
+R(a)=0.
+$$
+Entonces:
+$$
+J_0(\lambda a)=0.
+$$
+Sea:
+$$
+\alpha_n
+$$
+el $n$-ésimo cero positivo de $J_0$.
+Entonces:
+$$
+\lambda_n=\frac{\alpha_n}{a}.
+$$
+
+%J_0(\lambda a)=0
+
+\item Ecuación longitudinal
+
+Para $Z(z)$:
+$$
+Z''-\lambda_n^2 Z=0.
+$$
+La solución general es:
+$$
+Z_n(z)=
+A_ne^{\lambda_n z}
++
+B_ne^{-\lambda_n z}.
+$$
+Como queremos temperatura acotada y que desaparezca cuando $z\to\infty$, eliminamos el término creciente:
+$$
+Z_n(z)=B_ne^{-\lambda_n z}.
+$$
+
+\item Solución general
+
+$$
+T(r,z)=
+\sum_{n=1}^\infty
+B_n
+J_0(\lambda_n r)
+e^{-\lambda_n z}.
+$$
+
+\item Imponer la condición en la base
+
+En $z=0$:
+$$
+T(r,0)=T_0.
+$$
+Entonces:
+$$
+T_0=
+\sum_{n=1}^\infty
+B_nJ_0(\lambda_n r).
+$$
+Debemos expandir la constante en serie de Bessel:
+$$
+1=
+\sum_{n=1}^\infty
+c_nJ_0(\lambda_n r).
+$$
+Usando ortogonalidad:
+$$
+c_n=
+\frac{
+\displaystyle
+\int_0^a rJ_0(\lambda_n r)\,dr
+}{
+\displaystyle
+\int_0^a rJ_0^2(\lambda_n r)\,dr
+}.
+$$
+Existe una identidad útil:
+$$
+\int_0^a rJ_0(\lambda_n r)\,dr
+=
+\frac{a}{\lambda_n}J_1(\alpha_n),
+$$
+y además:
+$$
+\int_0^a rJ_0^2(\lambda_n r)\,dr
+=
+\frac{a^2}{2}J_1^2(\alpha_n).
+$$
+Entonces:
+$$
+c_n=
+\frac{2}{\alpha_n J_1(\alpha_n)}.
+$$
+Por lo tanto:
+$$
+B_n=
+\frac{2T_0}{\alpha_n J_1(\alpha_n)}.
+$$
+
+\item Solución final
+
+$$
+\boxed{
+T(r,z)=
+2T_0
+\sum_{n=1}^\infty
+\frac{
+J_0\left(\frac{\alpha_n r}{a}\right)
+}{
+\alpha_n J_1(\alpha_n)
+}
+e^{-\alpha_n z/a}
+}
+$$
+donde:
+\begin{itemize}
+\item $\alpha_n$ es el $n$-ésimo cero positivo de $J_0$,
+\item $J_1$ es la función de Bessel de orden 1.
+\end{itemize}
+
+\item Interpretación física
+
+Cada modo:
+$$
+e^{-\alpha_n z/a}
+$$
+decae exponencialmente al alejarse de la base.
+Los modos con $\alpha_n$ grande desaparecen rápidamente.
+Lejos de la base domina el modo fundamental:
+$$
+T(r,z)\sim
+e^{-\alpha_1 z/a}.
+$$
+Es completamente análogo a la disipación exponencial de modos de Fourier en geometrías rectangulares, pero aquí los modos radiales son funciones de Bessel.
+
+\end{enumerate}
 
 \prob Una membrana delgada de densidad superficial \(\rho\) se suspende de un aro rígido, plano, circular y horizontal de radio \(a\), quedando con una tensión \(\sigma\). Bajo la acción de un campo gravitatorio uniforme y vertical de intensidad \(g\), encuentre la forma estacionaria (desplazamiento vertical) que adquiere la membrana.
 \medskip
