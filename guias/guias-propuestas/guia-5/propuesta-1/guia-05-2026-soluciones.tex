@@ -2021,6 +2021,149 @@ Es completamente análogo a la disipación exponencial de modos de Fourier en ge
 {\bf Soluci\'on }{\em 9)}
 \vspace{0.5cm}
 
+El problema 9 considera una membrana circular delgada de radio $a$, tensión $\sigma$ y densidad superficial $\rho$, que está sometida a gravedad uniforme $g$. 
+Se pide hallar la deformación estacionaria $u(r,\theta)$.
+La ecuación dada es:
+$$
+\sigma \nabla^2 u=\rho g.
+$$
+
+\begin{enumerate}
+\item Simplificar el problema
+
+La carga gravitatoria es uniforme y la geometría es circular y completamente simétrica.
+Entonces la solución no depende de $\theta$:
+$$
+u=u(r).
+$$
+En coordenadas polares:
+$$
+\nabla^2 u=
+u''+\frac1r u'.
+$$
+La ecuación queda:
+$$
+\sigma\left(
+u''+\frac1r u'
+\right)=\rho g.
+$$
+o equivalentemente:
+$$
+u''+\frac1r u'
+=
+\frac{\rho g}{\sigma}.
+$$
+
+%u''+\frac1r u'=\frac{\rho g}{\sigma}
+
+\item Resolver la ecuación
+
+Multiplicamos por $r$:
+$$
+r u''+u'
+=
+\frac{\rho g}{\sigma}r.
+$$
+Observemos que:
+$$
+ru''+u'=\frac{d}{dr}(ru').
+$$
+Entonces:
+$$
+\frac{d}{dr}(ru')
+=
+\frac{\rho g}{\sigma}r.
+$$
+Integramos:
+$$
+ru'
+=
+\frac{\rho g}{2\sigma}r^2+C_1.
+$$
+Dividiendo por $r$:
+$$
+u'
+=
+\frac{\rho g}{2\sigma}r+\frac{C_1}{r}.
+$$
+Integramos nuevamente:
+$$
+u(r)=
+\frac{\rho g}{4\sigma}r^2
++
+C_1\ln r
++
+C_2.
+$$
+
+\item Regularidad en el centro
+
+La membrana debe permanecer finita en:
+$$
+r=0.
+$$
+Pero $\ln r$ diverge allí.
+Entonces:
+$$
+C_1=0.
+$$
+Así:
+$$
+u(r)=
+\frac{\rho g}{4\sigma}r^2+C_2.
+$$
+
+\item Condición de borde
+
+La membrana está fija al aro:
+$$
+u(a)=0.
+$$
+Entonces:
+$$
+0=
+\frac{\rho g}{4\sigma}a^2+C_2.
+$$
+Por lo tanto:
+$$
+C_2=
+-\frac{\rho g}{4\sigma}a^2.
+$$
+
+\item Solución final
+
+$$
+\boxed{
+u(r)=
+\frac{\rho g}{4\sigma}
+\left(
+r^2-a^2
+\right)
+}
+$$
+
+\item Interpretación física
+
+La membrana adopta una forma parabólica.
+En el centro:
+$$
+u(0)=
+-\frac{\rho g a^2}{4\sigma},
+$$
+que es el máximo descenso.
+La tensión $\sigma$:
+\begin{itemize}
+\item cuanto mayor es,
+\item menos se deforma la membrana.
+\end{itemize}
+Mientras que:
+\begin{itemize}
+\item mayor gravedad $g$,
+\item o mayor densidad $\rho$,
+\end{itemize}
+producen mayor hundimiento.
+
+\end{enumerate}
 
 \prob Una esfera conductora de radio \(a\), mantenida a potencial nulo, se introduce en un campo eléctrico previamente uniforme \(\mathbf{E}=E\,\hat{z}\). Encuentre el potencial electrostático en el exterior de la esfera.
 
@@ -2028,6 +2171,175 @@ Es completamente análogo a la disipación exponencial de modos de Fourier en ge
 {\bf Soluci\'on }{\em 10)}
 \vspace{0.5cm}
 
+El problema 10 plantea una esfera conductora de radio $a$, mantenida a potencial nulo, colocada en un campo eléctrico uniforme
+$$
+\mathbf E = E\,\hat z.
+$$
+Se pide hallar el potencial electrostático en el exterior de la esfera.
+
+\begin{enumerate}
+\item Potencial del campo uniforme
+
+Un campo uniforme en dirección $z$ tiene potencial:
+$$
+u_0(r,\theta)=-Ez.
+$$
+Como:
+$$
+z=r\cos\theta,
+$$
+obtenemos:
+$$
+u_0(r,\theta)=-Er\cos\theta.
+$$
+Pero esta función NO satisface la condición de borde sobre la esfera:
+$$
+u(a,\theta)=0.
+$$
+Entonces debemos corregirla agregando una solución armónica.
+
+\item Simetría del problema
+
+Hay:
+\begin{itemize}
+\item simetría axial alrededor del eje $z$,
+\item independencia en $\phi$.
+\end{itemize}
+Entonces:
+$$
+u=u(r,\theta).
+$$
+La ecuación de Laplace en coordenadas esféricas (sin dependencia azimutal) es:
+$$
+\frac1{r^2}\frac{\partial}{\partial r}
+\left(
+r^2\frac{\partial u}{\partial r}
+\right)
++
+\frac1{r^2\sin\theta}
+\frac{\partial}{\partial\theta}
+\left(
+\sin\theta\frac{\partial u}{\partial\theta}
+\right)
+=0.
+$$
+
+\item Solución general axial
+
+La solución general axial de Laplace es:
+$$
+u(r,\theta)=
+\sum_{\ell=0}^\infty
+\left(
+A_\ell r^\ell
++
+\frac{B_\ell}{r^{\ell+1}}
+\right)
+P_\ell(\cos\theta),
+$$
+donde $P_\ell$ son los polinomios de Legendre.
+
+%u(r,\theta)=\sum_{\ell=0}^\infty\left(A_\ell r^\ell+\frac{B_\ell}{r^{\ell+1}}\right)P_\ell(\cos\theta)
+
+\item Identificar el modo angular
+
+El potencial del campo uniforme es:
+$$
+-Er\cos\theta.
+$$
+Pero:
+$$
+P_1(\cos\theta)=\cos\theta.
+$$
+Así que sólo aparece el modo $\ell=1$.
+Entonces buscamos:
+$$
+u(r,\theta)=
+\left(
+-Ar+\frac{B}{r^2}
+\right)\cos\theta.
+$$
+El término $-Ar\cos\theta$ debe reproducir el campo uniforme lejos de la esfera:
+$$
+A=E.
+$$
+Así:
+$$
+u(r,\theta)=
+\left(
+-Er+\frac{B}{r^2}
+\right)\cos\theta.
+$$
+
+\item Imponer la condición de borde
+
+La esfera está conectada a tierra:
+$$
+u(a,\theta)=0.
+$$
+Entonces:
+$$
+\left(
+-Ea+\frac{B}{a^2}
+\right)\cos\theta=0.
+$$
+Por lo tanto:
+$$
+B=Ea^3.
+$$
+
+\item Solución final
+
+$$
+\boxed{
+u(r,\theta)=
+-E\left(
+r-\frac{a^3}{r^2}
+\right)\cos\theta,
+\qquad r>a.
+}
+$$
+
+\item Verificación
+
+\begin{enumerate}
+\item En el infinito, cuando $r\to\infty$:
+$$
+u(r,\theta)\sim -Er\cos\theta,
+$$
+que reproduce el campo uniforme original.
+
+\item Sobre la esfera, en $r=a$:
+$$
+u(a,\theta)=
+-E\left(a-\frac{a^3}{a^2}\right)\cos\theta
+=0.
+$$
+Correcto.
+\end{enumerate}
+
+\item Interpretación física
+
+El término:
+$$
+\frac{a^3}{r^2}\cos\theta
+$$
+es el potencial de un dipolo inducido.
+Es decir:
+\begin{itemize}
+\item el campo externo polariza la esfera conductora,
+\item redistribuyendo cargas sobre su superficie,
+\item produciendo un dipolo inducido opuesto al campo externo.
+\end{itemize}
+Lejos de la esfera:
+$$
+u \sim -Er\cos\theta+\frac{Ea^3\cos\theta}{r^2}.
+$$
+La corrección decae como:
+$$
+\frac1{r^2},
+$$
+exactamente como el potencial dipolar.
 
 \prob Un modelo simplificado para la densidad de neutrones \(n(r,\theta,\phi,t)\) en una esfera de radio \(a\) de material fisionable viene dado por
 \[
@@ -2035,6 +2347,8 @@ Es completamente análogo a la disipación exponencial de modos de Fourier en ge
 \qquad n(a,\theta,\phi,t)=0,
 \]
 donde \(D>0\) es la difusividad y \(\kappa>0\) la tasa de producción. Buscando soluciones estacionarias (es decir, \(n(\mathbf{r},t)=e^{\lambda t}u(\mathbf{r})\)), halle el radio crítico \(a_c\) por debajo del cual la densidad permanece acotada cuando \(t\to\infty\) y por encima del cual diverge.
+
+\end{enumerate}
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 11)}
