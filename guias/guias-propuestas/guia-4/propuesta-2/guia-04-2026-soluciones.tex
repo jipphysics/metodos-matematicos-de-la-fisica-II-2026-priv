@@ -866,7 +866,7 @@ $$
 Finalmente,
 $$
 \boxed{
-u(x,y)=g!\left(x-\frac{y}{\sigma}\right)
+u(x,y)=g\left(x-\frac{y}{\sigma}\right)
 }.
 $$
 \end{enumerate}
@@ -1131,7 +1131,7 @@ $$
 $$
 Más precisamente,
 $$
-s=\arctan!\left(\frac{x}{y}\right).
+s=\arctan\left(\frac{x}{y}\right).
 $$
 Ahora:
 $$
@@ -1155,17 +1155,17 @@ Sustituyendo:
 $$
 \eta^2=x^2+y^2,
 \qquad
-s=\arctan!\left(\frac{x}{y}\right),
+s=\arctan\left(\frac{x}{y}\right),
 $$
 obtenemos
 $$
 \boxed{
 u(x,y)
 =
--\ln!\left(
-e^{,1-(x^2+y^2)}
+-\ln\left(
+e^{1-(x^2+y^2)}
 -
-\arctan!\frac{x}{y}
+\arctan\frac{x}{y}
 \right)
 }.
 $$
@@ -1263,10 +1263,11 @@ Si inicialmente $N_1=N$, $N_2=0$, $N_3=n$, calcule $N_3(t)$ utilizando transform
 
 Para entender a fondo por qué evaluar el Wronskiano en un solo punto ($x=0$) nos garantiza la Independencia Lineal (LI) de las soluciones en todo el intervalo, tenemos que analizarlo desde dos perspectivas complementarias: el Álgebra Lineal y la Teoría de EDOs (Identidad de Abel).
 
-{\bf La demostración desde el Álgebra Lineal (¿Por qué contradice la dependencia?)}
+\begin{enumerate}
+\item La demostración desde el Álgebra Lineal (¿Por qué contradice la dependencia?)
 
-Recordemos la definición estricta de Dependencia Lineal. Supongamos por un momento que las dos funciones que encontramos ($y_{\text{par}}$ e $y_{\text{impar}}$) fuesen **Linealmente Dependientes (LD)** en el intervalo $(-1,1)$.
-Si fuesen LD, por definición tendrían que existir dos constantes $c_1$ y $c_2$, no ambas cero, tales que la combinación lineal sea idénticamente nula para **todo** $x$ del intervalo:
+Recordemos la definición estricta de Dependencia Lineal. Supongamos por un momento que las dos funciones que encontramos ($y_{\text{par}}$ e $y_{\text{impar}}$) fuesen Linealmente Dependientes (LD) en el intervalo $(-1,1)$.
+Si fuesen LD, por definición tendrían que existir dos constantes $c_1$ y $c_2$, no ambas cero, tales que la combinación lineal sea idénticamente nula para todo $x$ del intervalo:
 $$c_1 y_{\text{par}}(x) + c_2 y_{\text{impar}}(x) = 0 \quad \forall x \in (-1,1)$$
 Si derivamos miembro a miembro esta igualdad respecto a $x$, se debe seguir cumpliendo que:
 $$c_1 y_{\text{par}}'(x) + c_2 y_{\text{impar}}'(x) = 0 \quad \forall x \in (-1,1)$$
@@ -1283,20 +1284,22 @@ $$\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} c_1 \\ c_2 \end{p
 Llegamos a que la única solución posible es la trivial ($c_1 = 0$ y $c_2 = 0$). Esto contradice de forma directa nuestra hipótesis de que las funciones eran linealmente dependientes (ya que habíamos supuesto que al menos una constante era distinta de cero).
 Por lo tanto, las funciones son obligatoriamente Linealmente Independientes (LI).
 
-{\bf La extensión a todo el intervalo: La Identidad de Abel}
+\item La extensión a todo el intervalo: La Identidad de Abel
 
 Alguien podría argumentar legítimamente: ``Bien, demostraste que son independientes en el punto $x=0$, pero ¿qué pasa en el resto del intervalo $(-1,1)$? ¿Podrían volverse linealmente dependientes en otro punto?''
-Aquí es donde entra el teorema fuerte de las EDOs lineales homogéneas de segundo orden ($y'' + P(x)y' + Q(x)y = 0$). La **Identidad de Abel** demuestra que el Wronskiano de dos soluciones cumple la siguiente relación en cualquier punto $x$ de un intervalo donde $P(x)$ sea continua:
+Aquí es donde entra el teorema fuerte de las EDOs lineales homogéneas de segundo orden ($y'' + P(x)y' + Q(x)y = 0$). La {\bf Identidad de Abel} demuestra que el Wronskiano de dos soluciones cumple la siguiente relación en cualquier punto $x$ de un intervalo donde $P(x)$ sea continua:
 $$W(x) = W(x_0) \exp\left( -\int_{x_0}^x P(t) \, dt \right)$$
 Para la ecuación de Legendre, si normalizamos el término de la derivada segunda dividiendo por $(1-x^2)$, el coeficiente de la derivada primera es:
 $$P(x) = \frac{-2x}{1-x^2}$$
 Esta función $P(x)$ es perfectamente continua en todo el intervalo abierto $x \in (-1, 1)$.
 La propiedad matemática crucial de la función exponencial es que nunca se anula ($\exp(\text{algo}) \neq 0$). Por lo tanto, la Identidad de Abel nos dice algo sumamente poderoso:
 \begin{quotation}
-El Wronskiano de dos soluciones en un intervalo de regularidad es o bien idénticamente cero** en todo el intervalo, o bien nunca vale cero en ningún punto del intervalo.
+El Wronskiano de dos soluciones en un intervalo de regularidad es o bien idénticamente cero en todo el intervalo, o bien nunca vale cero en ningún punto del intervalo.
 \end{quotation}
 Como nosotros ya calculamos que en $x_0=0$ el Wronskiano da un número distinto de cero ($W(0) = 1 \neq 0$), la Identidad de Abel te garantiza que $W(x)$ será distinto de cero para absolutamente todos los puntos del intervalo $(-1,1)$.
-Y como el Wronskiano nunca se anula en el intervalo, las dos soluciones ($y_{\text{par}}$ e $y_{\text{impar}}$) constituyen lo que llamamos un *conjunto fundamental de soluciones*, es decir, son Linealmente Independientes en todo $(-1,1)$ y cualquier otra solución de la ecuación se puede escribir como combinación lineal de ellas.
+Y como el Wronskiano nunca se anula en el intervalo, las dos soluciones ($y_{\text{par}}$ e $y_{\text{impar}}$) constituyen lo que llamamos un conjunto fundamental de soluciones, es decir, son Linealmente Independientes en todo $(-1,1)$ y cualquier otra solución de la ecuación se puede escribir como combinación lineal de ellas.
+
+\end{enumerate}
 
 \section{Problema 5), Metodo de Frobenius}
 
