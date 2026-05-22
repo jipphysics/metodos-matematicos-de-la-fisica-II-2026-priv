@@ -1300,81 +1300,68 @@ Y como el Wronskiano nunca se anula en el intervalo, las dos soluciones ($y_{\te
 
 \section{Problema 5), Metodo de Frobenius}
 
-El **método de Frobenius** es una extensión del método de resolución de ecuaciones diferenciales mediante series de potencias. Se utiliza específicamente para encontrar soluciones de ecuaciones diferenciales ordinarias (EDOs) lineales de segundo orden en el entorno de un **punto singular regular**.
+El {\bf método de Frobenius} es una extensión del método de resolución de ecuaciones diferenciales mediante series de potencias. Se utiliza específicamente para encontrar soluciones de ecuaciones diferenciales ordinarias (EDOs) lineales de segundo orden en el entorno de un {\bf punto singular regular}.
 
-Para entender por qué es tan importante en el **Problema 5 (la ecuación de Bessel)**, primero debemos ver por qué falla el método tradicional de series de Taylor y cómo Frobenius lo soluciona.
+Para entender por qué es tan importante en el {\bf Problema 5 (la ecuación de Bessel)}, primero debemos ver por qué falla el método tradicional de series de Taylor y cómo Frobenius lo soluciona.
 
-{\bf ¿Por qué necesitamos el método de Frobenius?}
+\begin{enumerate}
+\item ¿Por qué necesitamos el método de Frobenius?
 
 Si intentáramos resolver una ecuación diferencial usando una serie de potencias ordinaria (serie de Taylor):
-
-
 $$y(x) = \sum_{n=0}^{\infty} a_n x^n = a_0 + a_1 x + a_2 x^2 + \dots$$
-
-
-este enfoque solo funcionaría si el punto alrededor del cual desarrollamos ($x_0 = 0$) fuera un **punto regular** (es decir, si las funciones de la ecuación no se vuelven infinitas allí).
-
+este enfoque solo funcionaría si el punto alrededor del cual desarrollamos ($x_0 = 0$) fuera un {\bf punto regular} (es decir, si las funciones de la ecuación no se vuelven infinitas allí).
 Sin embargo, en la ecuación de Bessel del Problema 5:
-
-
 $$x^2 y'' + x y' + (x^2 - \alpha^2)y = 0 \implies y'' + \frac{1}{x} y' + \frac{x^2 - \alpha^2}{x^2} y = 0$$
+vemos que en $x = 0$, los coeficientes $\frac{1}{x}$ y $\frac{x^2-\alpha^2}{x^2}$ explotan (tienden a infinito). Por lo tanto, $x=0$ es un {\bf punto singular}.
+Como el ``infinito'' que se genera está controlado (si multiplicamos el primer coeficiente por $x$ y el segundo por $x^2$ dan funciones analíticas), el punto se clasifica como {\bf singular regular}. En estos puntos, la solución real a menudo no es una función analítica pura, sino que puede contener raíces (como $\sqrt{x}$ o $x^{1.5}$) o logaritmos, lo que hace que una serie de potencias ordinaria fracase rotundamente.
 
+\item ¿Cómo funciona el Método de Frobenius?
 
-vemos que en $x = 0$, los coeficientes $\frac{1}{x}$ y $\frac{x^2-\alpha^2}{x^2}$ explotan (tienden a infinito). Por lo tanto, $x=0$ es un **punto singular**.
-
-Como el ``infinito'' que se genera está controlado (si multiplicamos el primer coeficiente por $x$ y el segundo por $x^2$ dan funciones analíticas), el punto se clasifica como **singular regular**. En estos puntos, la solución real a menudo no es una función analítica pura, sino que puede contener raíces (como $\sqrt{x}$ o $x^{1.5}$) o logaritmos, lo que hace que una serie de potencias ordinaria fracase rotundamente.
-
-{\bf ¿Cómo funciona el Método de Frobenius?}
-
-Ferdinand Georg Frobenius propuso una genialidad: en lugar de usar una serie de potencias rígida que empiece obligatoriamente en $x^0$, propuso **"multiplicar" la serie por una potencia variable $x^r$**, donde $r$ es un número (que puede ser fraccionario, negativo o incluso complejo) que descubriremos durante el proceso.
-
+Ferdinand Georg Frobenius propuso una genialidad: en lugar de usar una serie de potencias rígida que empiece obligatoriamente en $x^0$, propuso {\bf ``multiplicar'' la serie por una potencia variable $x^r$}, donde $r$ es un número (que puede ser fraccionario, negativo o incluso complejo) que descubriremos durante el proceso.
 El método sigue estos pasos estructurados:
 
-{\bf 1. Proponer la serie generalizada de Frobenius}
+\begin{enumerate}
+\item Proponer la serie generalizada de Frobenius
 
 Buscamos una solución de la forma:
-
-
 $$y(x) = x^r \sum_{n=0}^{\infty} a_n x^n = \sum_{n=0}^{\infty} a_n x^{n+r}$$
-
-
 donde imponemos que el primer término no sea cero ($a_0 \neq 0$) para que $x^r$ sea verdaderamente la potencia más baja de la solución.
 
-{\bf 2. Calcular las derivadas}
+\item Calcular las derivadas
 
 Derivamos término a término manteniendo a $r$ como una constante incógnita:
+$$
+y'(x) = \sum_{n=0}^{\infty} (n+r) a_n x^{n+r-1}
+$$
+$$
+y''(x) = \sum_{n=0}^{\infty} (n+r)(n+r-1) a_n x^{n+r-2}
+$$
 
-
-$$y'(x) = \sum_{n=0}^{\infty} (n+r) a_n x^{n+r-1}$$
-
-$$y''(x) = \sum_{n=0}^{\infty} (n+r)(n+r-1) a_n x^{n+r-2}$$
-
-{\bf 3. Sustituir en la EDO y agrupar}
+\item Sustituir en la EDO y agrupar
 
 Metemos estas expresiones en la ecuación diferencial. El objetivo es acomodar todos los términos para poder extraer factor común de las potencias de $x$.
 
-{\bf  4. Encontrar la Ecuación Indicial (el paso clave)}
+\item Encontrar la Ecuación Indicial (el paso clave)
 
-Para que la ecuación diferencial sea igual a cero para todo $x$, el coeficiente de **la potencia más baja de $x$** (que suele ser el término con $n=0$) debe anularse de forma independiente. Como asumimos que $a_0 \neq 0$, se genera una ecuación cuadrática para $r$:
-
-
+Para que la ecuación diferencial sea igual a cero para todo $x$, el coeficiente de {\bf la potencia más baja de $x$} (que suele ser el término con $n=0$) debe anularse de forma independiente. Como asumimos que $a_0 \neq 0$, se genera una ecuación cuadrática para $r$:
 $$r(r-1) + p_0 r + q_0 = 0$$
+Esta ecuación se llama {\bf ecuación indicial} (o polinomio indicial). Al resolverla, obtenemos dos raíces, $r_1$ y $r_2$, que nos dicen exactamente cómo ``arranca'' la solución (por ejemplo, en el caso de Bessel, las raíces dieron $r = \pm\alpha$).
 
-
-Esta ecuación se llama **ecuación indicial** (o polinomio indicial). Al resolverla, obtenemos dos raíces, $r_1$ y $r_2$, que nos dicen exactamente cómo ``arranca'' la solución (por ejemplo, en el caso de Bessel, las raíces dieron $r = \pm\alpha$).
-
-{\bf 5. Determinar la relación de recurrencia}
+\item Determinar la relación de recurrencia
 
 Al igualar a cero los coeficientes de las potencias más altas de $x$ ($n \ge 1$), obtenemos una fórmula matemática que nos permite calcular un coeficiente $a_n$ a partir de los coeficientes anteriores.
 
-{\bf  6. Obtener las dos soluciones independientes}
+\item Obtener las dos soluciones independientes
 
 Dependiendo de la relación entre las raíces $r_1$ y $r_2$, el método nos provee las soluciones:
 \begin{itemize}
-\item **Caso 1 (Raíces que no difieren por un entero):** Sustituyes $r_1$ y obtienes la primera solución $y_1(x)$. Sustituyes $r_2$ y obtienes la segunda solución $y_2(x)$. (Esto es lo que pasó en el ítem *5e* cuando $\alpha$ no es entero).
-\item **Caso 2 (Raíces iguales):** La primera solución se halla normalmente, y la segunda solución incluirá obligatoriamente un término logarítmico ($\ln x$).
-\item **Caso 3 (Raíces que difieren por un número entero):** La segunda solución podría requerir un término logarítmico debido a que la relación de recurrencia puede llegar a una división por cero para la segunda raíz.
+\item Caso 1 (Raíces que no difieren por un entero): Sustituyes $r_1$ y obtienes la primera solución $y_1(x)$. Sustituyes $r_2$ y obtienes la segunda solución $y_2(x)$. (Esto es lo que pasó en el ítem 5e) cuando $\alpha$ no es entero).
+\item Caso 2 (Raíces iguales): La primera solución se halla normalmente, y la segunda solución incluirá obligatoriamente un término logarítmico ($\ln x$).
+\item Caso 3 (Raíces que difieren por un número entero): La segunda solución podría requerir un término logarítmico debido a que la relación de recurrencia puede llegar a una división por cero para la segunda raíz.
 \end{itemize}
+
+\end{enumerate}
+\end{enumerate}
 
 \section{Problema 8), metodo de las caracter\'isticas}
 
