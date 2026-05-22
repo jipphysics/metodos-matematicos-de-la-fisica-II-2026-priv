@@ -672,9 +672,10 @@ Esta segunda solución es singular en el origen debido al prefactor $x^{-\alpha}
 
 
 \prob Un conjunto de funciones $u_n(x)$ satisfacen la ecuación de Sturm-Liouville
-\[
-\frac{d}{dx}\left[p(x)\frac{d}{dx}u_n(x)\right] + \lambda_n u_n(x) = 0.
-\]
+% CORRECCION, agregué p(x) al segundo término
+$$
+\frac{d}{dx}\left[p(x)\frac{d}{dx}u_n(x)\right] + \lambda_n p(x)u_n(x) = 0.
+$$
 Las funciones $u_m$ y $u_n$ satisfacen condiciones de contorno que llevan a la ortogonalidad. Los correspondientes autovalores $\lambda_m$ y $\lambda_n$ son distintos. Pruebe que, con condiciones de contorno apropiadas, $u_m(x)$ y $u_n(x)$ son ortogonales con función de peso $p(x)$.
 
 
@@ -686,29 +687,34 @@ Ortogonalidad en Sturm-Liouville
 
 {\bf Enunciado:}
 Pruebe que las funciones $u_m(x)$ y $u_n(x)$ que satisfacen la ecuación de Sturm-Liouville 
-$$\frac{d}{dx}\left[p(x)\frac{d}{dx}u(x)\right] + \lambda u(x) = 0$$ 
+% CORRECCION, agregué p(x) al segundo término
+$$\frac{d}{dx}\left[p(x)\frac{d}{dx}u(x)\right] + \lambda p(x)u(x) = 0$$ 
 son ortogonales.
 
 {\bf Demostración:}
 Escribimos la ecuación diferencial para dos autovalores distintos $\lambda_n$ y $\lambda_m$ con sus respectivas autofunciones $u_n$ y $u_m$:
 \begin{enumerate}
-\item $(p u_n')' + \lambda_n u_n = 0$
-\item $(p u_m')' + \lambda_m u_m = 0$
+\item $(p u_n')' + \lambda_n p u_n = 0$
+\item $(p u_m')' + \lambda_m p u_m = 0$
 \end{enumerate}
 Multiplicamos la ecuación (1) por $u_m$ y la ecuación (2) por $u_n$, y restamos la segunda de la primera:
-$$u_m(p u_n')' - u_n(p u_m')' + (\lambda_n - \lambda_m) u_n u_m = 0$$
+$$u_m(p u_n')' - u_n(p u_m')' + (\lambda_n - \lambda_m) pu_n u_m = 0$$
 Notemos que el término de las derivadas puede reescribirse usando la regla del producto. Específicamente, es la derivada exacta de la combinación antisimétrica (relacionada al Wronskiano):
 $$\frac{d}{dx} \left[ p(x) (u_m u_n' - u_n u_m') \right] = p'(u_m u_n' - u_n u_m') + p(u_m' u_n' + u_m u_n'' - u_n' u_m' - u_n u_m'')$$
 $$= u_m(p u_n')' - u_n(p u_m')'$$
 Sustituyendo esto en la ecuación anterior e integrando en el intervalo $[a, b]$:
-$$\int_a^b \frac{d}{dx} \left[ p(x) (u_m u_n' - u_n u_m') \right] dx + (\lambda_n - \lambda_m) \int_a^b u_n u_m dx = 0$$
+$$
+\int_a^b \frac{d}{dx} \left[ p(x) (u_m u_n' - u_n u_m') \right] dx + (\lambda_n - \lambda_m) \int_a^b p\, u_n\, u_m\, dx = 0
+$$
 Evaluamos la primera integral (es directa):
-$$[ p(x) (u_m u_n' - u_n u_m') ]_a^b + (\lambda_n - \lambda_m) \int_a^b u_n u_m dx = 0$$
+$$[ p (u_m u_n' - u_n u_m') ]_a^b + (\lambda_n - \lambda_m) \int_a^b p\, u_n\, u_m\, dx = 0$$
 Con las ``condiciones de contorno apropiadas'' (como Dirichlet $u(a)=u(b)=0$, Neumann $u'(a)=u'(b)=0$, o periódicas), el término de borde evaluado entre $a$ y $b$ se anula idénticamente. Entonces:
-$$(\lambda_n - \lambda_m) \int_a^b u_n(x) u_m(x) dx = 0$$
+$$
+(\lambda_n - \lambda_m) \int_a^b p(x) u_n(x) u_m(x) dx = 0
+$$
 Como establecimos que los autovalores son distintos ($\lambda_n \neq \lambda_m$), forzosamente se cumple que:
-$$\int_a^b u_n(x) u_m(x) dx = 0$$
-(Nota: El enunciado menciona ``ortogonales con función de peso $p(x)$'', pero la ecuación dada no lleva la función de peso multiplicando a $\lambda$. Para la EDO estrictamente escrita en el enunciado, la función de peso resultante es trivialmente $w(x)=1$. Si la EDO hubiese sido $(pu')' + \lambda p u = 0$, el peso sería $p(x)$).
+$$\int_a^b p(x) u_n(x) u_m(x) dx = 0$$
+%(Nota: El enunciado menciona ``ortogonales con función de peso $p(x)$'', pero la ecuación dada no lleva la función de peso multiplicando a $\lambda$. Para la EDO estrictamente escrita en el enunciado, la función de peso resultante es trivialmente $w(x)=1$. Si la EDO hubiese sido $(pu')' + \lambda p u = 0$, el peso sería $p(x)$).
 
 
 \prob Considere la EDO
@@ -719,7 +725,10 @@ con $a_0\in{\cal C}^1[a,b]$ que no se anula en~$(a,b)$, y $a_1,a_2\in{\cal C}[a,
 \begin{enumerate}
 \item Muestre que definiendo un factor integrante
 \[
-\rho(x) = \frac{c}{a_0(x)} \exp\left(\int^x \frac{a_1(x')}{a_0(x')}\,dx'\right),
+\rho(x) = \frac{c}{a_0(x)} 
+\exp\left(
+\int^x \frac{a_1(x')}{a_0(x')}\,dx'
+\right),
 \]
 donde~$c$ es una constante, y el nuevo operador $L=\rho\tilde{L}$, la EDO puede escribirse
 \[
@@ -851,7 +860,7 @@ x-\frac{y}{\sigma}=C.
 $$
 Por lo tanto, $u$ depende sólo de esa combinación:
 $$
-u(x,y)=F!\left(x-\frac{y}{\sigma}\right).
+u(x,y)=F\left(x-\frac{y}{\sigma}\right).
 $$
 
 \item Usar la condición inicial.
