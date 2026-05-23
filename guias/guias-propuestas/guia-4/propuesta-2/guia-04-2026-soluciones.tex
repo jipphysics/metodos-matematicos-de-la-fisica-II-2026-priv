@@ -604,55 +604,88 @@ En otras palabras, para determinar el valor de $c$ utilizamos la identidad distr
 $$
 \Theta(x)
 +
-\Theta(-x) = 1.
+\Theta(-x) = 1
 $$
-Luego, usando (1) nuevamente para una distribuci\'on $S(x) = T(-x)$, obtenemos que
-\begin{eqnarray}
-\int_{-\infty}^{\infty}
-dz\,
-\hat{S}(z)\,
-\varphi(z)
-%\langle \hat{S}(q),\varphi \rangle
+y su transformada de Fourier
+$$
+2c\,\delta(k)
+=
+T_0(k)
++
+c\delta(k)
++
+T_0(-k)
++
+c\delta(-k)
+=
+\hat{\Theta}(k)
++
+\hat{\Theta}(-k) = \hat{1} = 2\pi\,\delta(k)
+$$
+donde hemos utilizado que 
+$T_0(-k) = -T_0(k)$, $\delta(k)=\delta(-k)$ y que
+$S(x)=T(-x)$ si y s\'olo si $\hat{S}(k) = \hat{T}(-k)$ para cualquier distribuci\'on $T$.
+De esta manera, concluimos que $c=\pi$.
+%Aqu\'i hemos utilizado que
+%\begin{eqnarray}
+%\int_{-\infty}^{\infty}
+%dk\,
+%\hat{T}(-k)\,
+%\varphi(k)
 %&=&
-%\langle S(u),\hat{\varphi} \rangle
+%-
+%\int_{u(k=-\infty)=\infty}^{u(k=\infty)=-\infty}
+%du\,
+%\hat{T}(u)\,
+%\varphi(-u)
 %\notag
 %\\
-&=&
-\int_{-\infty}^{\infty}
-du\,
-S(u)\,
-\hat{\varphi}(u)
-\notag
-\\
-&=&
-\int_{-\infty}^{\infty}
-du\,
-T(-u)\,
-\hat{\varphi}(u)
-\notag
-\\
-&=&
+%&=&
+%\int_{-\infty}^{\infty}
+%du\,
+%\hat{T}(u)\,
+%\varphi(-u)
+%\notag
+%\end{eqnarray}
+En otras palabras, concluimos que
+$$
+\hat{\Theta}(k)
+=
+\pi \delta(k)
 -
-\int_{v(u=-\infty)=\infty}^{v(u=\infty)=-\infty}
-dv\,
-T(v)\,
-\hat{\varphi}(-v)
-\notag
-\\
-&=&
+i\,
+\mathrm{P.V.}
+\bigg(
+\frac{1}{k}\,
+\bigg)
+$$
+donde
+$$
+\mathrm{P.V.}
+\bigg(
+\frac{1}{k}\,
+\bigg)
+$$
+denota la distribuci\'on definida por el valor principal
+$$
+\bigg
+\langle
+\mathrm{P.V.}
+\bigg(
+\frac{1}{k}\,
+\bigg)
+,
+\varphi
+\bigg
+\rangle
+=
+\mathrm{P.V.}
 \int_{-\infty}^{\infty}
-dv\,
-T(v)\,
-\hat{\varphi}(-v)
-\notag
-\\
-&=&
-\int_{-\infty}^{\infty}
-dv\,
-S(-v)\,
-\hat{\varphi}(-v)
-\notag
-\end{eqnarray}
+dk\,
+\frac{1}{k}\,
+\varphi(k)
+$$
+para toda funci\'on de prueba $\varphi$.
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 1b)}
