@@ -715,7 +715,45 @@ dq\,
 \varphi(q)
 .
 $$
-Finalmente, que $S(x) = T(-x)$ si y solo si $\hat{S}(k)=\hat{T}(-k)$ requiere un poco m\'as de trabajo
+Finalmente, que $S(x) = T(-x)$ si y solo si $\hat{S}(k)=\hat{T}(-k)$ requiere un poco m\'as de trabajo.
+Para ello, sea $\phi(x):=\varphi(-x)$ y, correspondientemente, n\'otese que 
+\begin{eqnarray}
+\hat{\phi}(k) 
+&=&
+\int_{-\infty}^{\infty}
+dx\,
+e^{-ikx}\,
+\phi(x)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dx\,
+e^{-ikx}\,
+\varphi(-x)
+\notag
+\\
+&=&
+-
+\int_{u(x=-\infty)=\infty}^{u(x=\infty)=-\infty}
+du\,
+e^{iku}\,
+\varphi(u)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+du\,
+e^{-i(-k)u}\,
+\varphi(u)
+\notag
+\\
+&=&
+\hat{\varphi}(-k)
+.
+\notag
+\end{eqnarray}
+Luego,
 \begin{eqnarray}
 \int_{-\infty}^{\infty} 
 dq\,
@@ -725,12 +763,15 @@ dq\,
 \langle \hat{S},\varphi \rangle
 \notag
 \\
+&=&
 \langle S,\hat{\varphi} \rangle
+\notag
+\\
 &=&
 \int_{-\infty}^{\infty}
 du\,
 S(u)\,
-\hat{\varphi(u)}
+\hat{\varphi}(u)
 \notag
 \\
 &=&
@@ -759,8 +800,44 @@ T(v)\,
 \int_{-\infty}^{\infty}
 dv\,
 T(v)\,
-\phi(v),
-\quad \text{con $\phi(v):=\hat{\varphi}(-v)$,}
+\hat{\phi}(v)
+\notag
+\\
+&=&
+\langle T,\hat{\phi} \rangle
+\notag
+\\
+&=&
+\langle \hat{T},\phi \rangle
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dv\,
+\hat{T}(p)\,
+\phi(p)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dv\,
+\hat{T}(p)\,
+\varphi(-p)
+\notag
+\\
+&=&
+-\int_{s(p=-\infty)=\infty}^{s(p=\infty)=-\infty}
+ds\,
+\hat{T}(-s)\,
+\varphi(s)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+ds\,
+\hat{T}(-s)\,
+\varphi(s)
+.
 \notag
 \end{eqnarray}
 
