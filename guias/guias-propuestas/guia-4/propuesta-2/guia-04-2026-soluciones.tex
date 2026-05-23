@@ -220,6 +220,58 @@ $$
 \Theta' = \delta.
 $$
 
+Veamos ahora cu\'al es la transformada de Fourier de la delta de Dirac.
+Aplicando la identidad (1) obtenemos que
+\begin{eqnarray}
+\langle \hat{\delta} , \varphi \rangle
+&=&
+\langle \delta , \hat{\varphi} \rangle
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+du\, 
+\delta(u) 
+\hat{\varphi}(u)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty} 
+du\, 
+\delta(u) 
+\bigg(
+\int_{-\infty}^{\infty} 
+dv\,
+e^{-iuv}
+\varphi(v)
+\bigg)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty} 
+dv\,
+\int_{-\infty}^{\infty} 
+du\, 
+\delta(u) 
+e^{-iuv}
+\varphi(v)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty} 
+dv\,
+\varphi(v),
+\notag
+\end{eqnarray}
+lo cu\'al vale para toda funci\'on de prueba $\varphi$.
+Esto implica que
+$$
+\hat{\delta}(k)
+=
+1
+$$
+para todo valor de $k$.
+
 Luego, combinando (1) y (2), vamos a probar que
 $$
 \widehat{T'}(k) = ik\,\hat{T}(k),
@@ -299,6 +351,51 @@ De esta manera,
 lo cual vale para toda funci\'on de prueba $\varphi$, probando la identidad propuesta, salvo un cambio del nombre de la variable $k$ por $q$.
 
 Ahora estamos en condiciones de probar lo que se nos pide.
+Combinando las identidades demostradas anteriormente para el caso en que $T=\Theta$, obtenemos que
+$$
+1
+=
+\hat{\delta}(k)
+=
+\widehat{\Theta'}(k)
+=
+ik\,\hat{\Theta}(k).
+\quad (3)
+$$
+En otras palabras, encontramos que la transformada de Fourier $\hat{\Theta}$ de la funci\'on escal\'on de Heaviside $\Theta$ satisface la anterior identidad {\em en forma distribucional}.
+Esta \'ultima aclaraci\'on es importante!
+Podemos sentirnos tentados a dividir la ecuaci\'on (3) por $ik$ y obtener que $\Theta(k) = 1/(ik)$.
+Pero esto es un error, porque la expresi\'on obtenida no est\'a definida en $k=0$.
+Lo que debemos hacer es resolver la anterior ecuaci\'on (3) de forma distribucional.
+Es decir, encontrar la forma m\'as general de una distribuci\'on $\hat{\Theta}$ que satisfaga
+$$
+\langle 1 , \varphi \rangle
+=
+\langle ik\, \hat{\Theta} , \varphi \rangle
+=
+\langle \hat{\Theta} , ik\, \varphi \rangle
+$$
+para toda funci\'on de prueba $\varphi$.
+Es decir, $\hat{\Theta}(k)$ tiene que cumplir
+$$
+\int_{-\infty}^{\infty} 
+dk\, 
+\varphi(k)
+=
+\int_{-\infty}^{\infty} 
+dk\, 
+ik\,
+\hat{\Theta}(k) 
+\varphi(k)
+=
+\int_{-\infty}^{\infty} 
+dk\, 
+\hat{\Theta}(k)\,
+ik\,
+\varphi(k)
+$$
+para toda funci\'on de prueba $\varphi$.
+%Aqu\'i no debemos confundirnos y notar que $\varphi(k)$ es el valor que toma la funci\'on de prueba $\varphi$ en $k$, y no su transformada de Fourier.
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 1b)}
