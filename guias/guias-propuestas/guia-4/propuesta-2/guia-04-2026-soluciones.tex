@@ -147,7 +147,9 @@
 {\bf Soluci\'on }{\em 1a)}
 \vspace{0.5cm}
 
-Para resolverlo vamos a necesitar ciertas identidades.
+Para resolver el problema vamos a necesitar ciertas identidades.
+Las mismas s\'olo tienen sentido si el espacio de funciones de pruebas es el espacio de Schwartz, sobre el que la transformada de Fourier define un automorfismo (i.e. una transformaci\'on lineal e invertible sobre el espacio).
+
 En primer lugar, usaremos que la transformada de Fourier  $\hat{T}$ de una distribuci\'on arbitraria $T$ viene definida por la identidad
 $$
 \langle \hat{T},\varphi \rangle
@@ -686,6 +688,81 @@ dk\,
 \varphi(k)
 $$
 para toda funci\'on de prueba $\varphi$.
+
+{\em Adendum:}
+Aqu\'i demostramos las \'ultimas identidades distribucionales utilizadas.
+Que $T_0(-k)=-T_0(k)$ es trivial.
+Que $\delta(k)=\delta(-k)$ tambi\'en es trivial ya que
+$$
+\varphi(0)
+=
+\varphi(-0)
+=
+\int_{-\infty}^{\infty} 
+dk\,
+\delta(k)\,
+\varphi(-k)
+=
+-
+\int_{q(k=-\infty)=\infty}^{q(k=\infty)=-\infty} 
+dq\,
+\delta(-q)\,
+\varphi(q)
+=
+\int_{-\infty}^{\infty} 
+dq\,
+\delta(-q)\,
+\varphi(q)
+.
+$$
+Finalmente, que $S(x) = T(-x)$ si y solo si $\hat{S}(k)=\hat{T}(-k)$ requiere un poco m\'as de trabajo
+\begin{eqnarray}
+\int_{-\infty}^{\infty} 
+dq\,
+\hat{S}(q)\,
+\varphi(q)
+&=&
+\langle \hat{S},\varphi \rangle
+\notag
+\\
+\langle S,\hat{\varphi} \rangle
+&=&
+\int_{-\infty}^{\infty}
+du\,
+S(u)\,
+\hat{\varphi(u)}
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+du\,
+T(-u)\,
+\hat{\varphi}(u)
+\notag
+\\
+&=&
+-
+\int_{v(u=-\infty)=\infty}^{v(u=\infty)=-\infty}
+dv\,
+T(v)\,
+\hat{\varphi}(-v)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dv\,
+T(v)\,
+\hat{\varphi}(-v)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dv\,
+T(v)\,
+\phi(v),
+\quad \text{con $\phi(v):=\hat{\varphi}(-v)$,}
+\notag
+\end{eqnarray}
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 1b)}
