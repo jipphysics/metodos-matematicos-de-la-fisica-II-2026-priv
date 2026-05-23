@@ -151,11 +151,6 @@ Para resolverlo, adoptamos la convención de la transformada de Fourier utilizad
 $$
 \hat{f}(k) = \int_{-\infty}^{\infty} dx\, f(x)e^{-ikx}
 $$
-de manera que
-$$
-f(x) = \frac{1}{2\pi}\int_{-\infty}^{\infty} dk\, \hat{f}(k)e^{ikx}
-.
-$$
 
 \begin{enumerate}
 \item Expresar la función como una traslación
@@ -172,9 +167,8 @@ $$
 $$
 \hat{\Theta}_a(k) = e^{-ika} \int_{-\infty}^{\infty} du\, \Theta(u)e^{-iku}
 $$
-Vemos entonces que es suficiente calcular la transformaci\'on de Fourier de la funci\'on $\Theta$ centrada en $0$.
 
-\item Aplicar la definición del escalón unitario
+\item Aplicar la definición del escalón unitario** 
 
 Dado que la función Heaviside estándar $\Theta(u)$ está definida como:
 $$
