@@ -368,11 +368,11 @@ ik\,\hat{\Theta}(k).
 \quad (3)
 $$
 En otras palabras, encontramos que la transformada de Fourier $\hat{\Theta}$ de la funci\'on escal\'on de Heaviside $\Theta$ satisface la anterior identidad {\em en forma distribucional}.
-Esta \'ultima aclaraci\'on es importante!
-Podemos sentirnos tentados a dividir la ecuaci\'on (3) por $ik$ y obtener que $\Theta(k) = 1/(ik)$.
-Pero esto es un error, porque la expresi\'on obtenida no est\'a definida en $k=0$.
-Lo que debemos hacer es resolver la anterior ecuaci\'on (3) de forma distribucional.
-Es decir, encontrar la forma m\'as general de una distribuci\'on $\hat{\Theta}$ que satisfaga
+Esta \'ultima aclaraci\'on es importante, porque podemos sentirnos tentados a dividir la ecuaci\'on (3) por $ik$ y obtener que $\Theta(k) = 1/(ik)$.
+Pero esto es un error por dos razones.
+En primer lugar, porque la expresi\'on obtenida no est\'a definida en $k=0$.
+En segundo lugar, porque la ecuaci\'on no necesariamente determina de manera un\'ivoca a $\hat{\Theta}$.
+M\'as precisamente, la ecuaci\'on (3) indica que $\hat{\Theta}$ satisface
 $$
 \langle 1 , \varphi \rangle
 =
@@ -381,8 +381,7 @@ $$
 \langle \hat{\Theta} , ik\, \varphi \rangle
 $$
 para toda funci\'on de prueba $\varphi$.
-Aqu\'i nuevamente hemos hecho un abuso de notaci\'on al escribir $ik\,\hat{\Theta}$.
-M\'as precisamente, $\hat{\Theta}$ tiene que cumplir
+En otras palabras, $\hat{\Theta}$ tiene que cumplir
 $$
 \int_{-\infty}^{\infty} 
 dk\, 
@@ -402,7 +401,7 @@ ik\,
 \quad (4)
 $$
 para toda funci\'on de prueba $\varphi$.
-%Aqu\'i no debemos confundirnos y notar que $\varphi(k)$ es el valor que toma la funci\'on de prueba $\varphi$ en $k$, y no su transformada de Fourier.
+Veamos si podemos encontrar una distribuci\'on tal.
 
 {\em Proposici\'on:}
 la distribuci\'on $T_0$ dada por el Valor Principal de Cauchy
@@ -417,7 +416,7 @@ dk\,
 \phi(k)
 $$
 para toda funci\'on de prueba $\phi$, satisface la ecuaci\'on (4).
-Efectivamente, si usamos la funci\'on de prueba $\phi(k) = ik\,\varphi(k)$ obtenemos que
+Efectivamente, si usamos la funci\'on de prueba $\phi(k) = ik\,\varphi(k)$ para una $\varphi$ arbitraria, obtenemos que
 $$
 T_0(\phi)
 =
@@ -435,6 +434,8 @@ dk\,
 =
 \langle 1,\varphi \rangle.
 $$
+Esto sugiere que $T_0$ es $\hat{\Theta}$.
+Sin embargo, $T_0$ no provee la soluci\'on m\'as general, ya que $T_0 + c\delta$ tambi\'en es una soluci\'on para una constante $c$ arbitraria.
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 1b)}
