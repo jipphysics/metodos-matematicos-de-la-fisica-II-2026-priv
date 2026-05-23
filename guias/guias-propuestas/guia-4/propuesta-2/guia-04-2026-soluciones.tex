@@ -147,321 +147,227 @@
 {\bf Soluci\'on }{\em 1a)}
 \vspace{0.5cm}
 
-Para resolverlo, adoptamos la convención de la transformada de Fourier utilizada en el curso:
+Para resolverlo vamos a necesitar ciertas identidades.
+En primer lugar, usaremos que la transformada de Fourier  $\hat{T}$ de una distribuci\'on arbitraria $T$ viene definida por la identidad
 $$
-\hat{f}(k) = \int_{-\infty}^{\infty} dx\, f(x)e^{-ikx}
+\langle \hat{T},\varphi \rangle
+:=
+\langle T,\hat{\varphi} \rangle
+\quad (1)
 $$
-de manera que
+para toda funci\'on de prueba $\varphi$, donde $\hat{\varphi}$ denota la transformada de Fourier de la funci\'on de prueba $\varphi$.
+En segundo lugar, y de manera similar, usaremos que la derivada $T'$ de una distribuci\'on arbitraria $T$ viene definida por la identidad
 $$
-f(x) = \frac{1}{2\pi}\int_{-\infty}^{\infty} dk\, \hat{f}(k)e^{ikx}
-.
+\langle T',\varphi \rangle
+:=
+-
+\langle T,\varphi' \rangle
+\quad (2)
 $$
+para toda funci\'on de prueba $\varphi$, donde $\varphi'$ denota la derivada de la funci\'on de prueba $\varphi$.
 
-\begin{enumerate}
-\item Expresar la función como una traslación
-
-La función escalón desplazada se puede escribir mediante un cambio de variables simple:
-$$
-\Theta(x-a) = \Theta(u), \qquad \text{donde } u = x - a \implies dx = du
-$$
-
-Aplicando esto a la definición de la transformada de Fourier, separamos la fase exponencial debida al desplazamiento:
-$$
-\hat{\Theta}_a(k) = \int_{-\infty}^{\infty} dx\, \Theta(x-a)e^{-ikx} = \int_{-\infty}^{\infty} du\, \Theta(u)e^{-ik(u+a)}
-$$
-$$
-\hat{\Theta}_a(k) = e^{-ika} \int_{-\infty}^{\infty} du\, \Theta(u)e^{-iku}
-$$
-Vemos entonces que es suficiente calcular la transformaci\'on de Fourier de la funci\'on $\Theta$ centrada en $0$.
-
-\item Aplicar la definición del escalón unitario
-
-Dado que la función Heaviside estándar $\Theta(u)$ está definida como:
-$$
-\Theta(u) = \begin{cases} 0, & u < 0 \\ 1, & u > 0 \end{cases}
-$$
-La integral se reduce a evaluar únicamente el semiplano positivo:
-$$
-\int_{-\infty}^{\infty} du\, \Theta(u)e^{-iku} = \int_{0}^{\infty} du\, e^{-iku}
-$$
-
-\item Regularización de la integral (Sentido de Distribuciones)
-
-La integral $\int_{0}^{\infty} du\, e^{-iku}$ no converge en el sentido del cálculo ordinario debido al comportamiento oscilatorio en el infinito. Para resolverla en el contexto de la teoría de distribuciones, introducimos un factor de amortiguación exponencial mediante un parámetro de regularización $\varepsilon > 0$:
-$$
-\int_{0}^{\infty} du\, e^{-(\varepsilon+ik)u} = \left[ \frac{e^{-(\varepsilon+ik)u}}{-(\varepsilon+ik)} \right]_{0}^{\infty} = 0 - \left( \frac{1}{-(\varepsilon+ik)} \right) = \frac{1}{\varepsilon+ik}
-$$
-Ahora debemos estudiar el comportamiento de esta expresión cuando tomamos el límite distributivo $\varepsilon \to 0^+$. Multiplicando y dividiendo por la unidad imaginaria $-i$, podemos reescribir la fracción de la siguiente manera:
-$$
-\frac{1}{\varepsilon+ik} = \frac{1}{i(k - i\varepsilon)} = -i\frac{1}{k-i\varepsilon}
-$$
-
-\item Aplicación de la Identidad de Sokhotski–Plemelj
-
-Para evaluar el límite de esta distribución cuando $\varepsilon \to 0^+$, empleamos la identidad distributiva de Sokhotski–Plemelj:
-$$
-\lim_{\varepsilon\to0^+}\frac{1}{k-i\varepsilon} = \mathrm{P.V.}\left(\frac{1}{k}\right) + i\pi\delta(k)
-$$
-Donde $\mathrm{P.V.}$ denota el Valor Principal de Cauchy, el cual se encarga de manejar de forma simétrica la singularidad en $k=0$.
-M\'as precisamente,
-$$
-\mathrm{P.V.}\bigg(\frac{1}{k}\bigg)
-$$ 
-es la distribuci\'on $T$ que viene dada por
-$$
-\langle
-%\bigg\langle
-%\mathrm{P.V.}(1/k)
-T
-,
-\phi
-%\bigg\rangle
-\rangle
-=
-\lim_{\epsilon\to 0^+}
-\bigg(
-\int_{-\infty}^{-\epsilon}
-dk\,
-\frac{\phi(k)}{k}
+De la ecuaci\'on (2) obtenemos que
+\begin{eqnarray}
+\langle \Theta' , \varphi \rangle
+&=&
+-
+\langle \Theta' , \varphi \rangle
+\notag
+\\
+&=&
+-
+\int_{-\infty}^{\infty} dx\,
+\Theta(x) \varphi'(x)
+\notag
+\\
+&=&
+-
+\int_{0}^{\infty} dx\,
+\varphi'(x)
+\notag
+\\
+&=&
+-
+\left.
+\varphi(x)
+\right|_{0}^{\infty}
+\notag
+\\
+&=&
+-
+\varphi(x\to \infty)
 +
-\int_{\epsilon}^{\infty}
-dk\,
-\frac{\phi(k)}{k}
+\varphi(0)
+\notag
+\\
+&=&
+-
+0
++
+\varphi(0)
+\notag
+\\
+&=&
+\varphi(0)
+\notag
+\\
+&=&
+\langle \delta , \varphi \rangle
+\notag
+\end{eqnarray}
+para toda funci\'on de prueba $\varphi$, y donde hemos usado que $\varphi(x\to \infty)\to 0$ para las funciones de prueba, concluyendo que
+$$
+\Theta' = \delta.
+$$
+
+Luego, combinando (1) y (2), vamos a probar que
+$$
+\widehat{T'}(k) = ik\,\hat{T}(k),
+$$
+i.e. que la transformada de Fourier $\widehat{T'}$ de la derivada $T'$ de una distribuci\'on $T$ viene dada por $ik\,\hat{T}$ donde $\hat{T}$ es la transformada de Fourier de $T$.
+Para ello, primero usamos (2) y luego (1) para obtener
+$$
+\langle \widehat{T'},\varphi \rangle
+=
+\langle T',\hat{\varphi} \rangle
+=
+-
+\langle T,\hat{\varphi}' \rangle
+$$
+donde $\hat{\varphi}'$ es la derivada de la transformada de Fourier $\hat{\varphi}$ de $\varphi$.
+Ahora calculamos dicha derivada
+\begin{eqnarray}
+\hat{\varphi}'(k)
+=
+\bigg(
+\frac{d}{dk}
+\hat{\varphi}
 \bigg)
+(k)
+&=&
+\frac{d}{dk}
+\int_{-\infty}^{\infty} dx\,
+e^{-ikx}
+\varphi(x)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty} dx\,
+(-ix)
+e^{-ikx}
+\varphi(x)
+\notag
+\\
+&=&
+-
+\int_{-\infty}^{\infty} dx\,
+e^{-ikx}
+\psi(x)
+\quad \text{donde $\psi(x):=ix\,\varphi(x)$}
+\notag
+\\
+&=&
+-
+\widehat{\psi}(k),
+\notag
+\end{eqnarray}
+donde hemos introducido la transformada de Fourier $\hat{\psi}$ de la funci\'on de prueba $\psi$.
+De esta manera, 
+\begin{eqnarray}
+\langle \widehat{T'},\varphi \rangle
+&=&
+-
+\langle T,\hat{\varphi}' \rangle
+\notag
+\\
+&=&
+\langle \hat{T},\psi \rangle
+\notag
+\\
+&=&
+\int dq\, \hat{T}(q)\, \psi(q)
+\notag
+\\
+&=&
+\int dk\, \hat{T}(q)\, iq\,\varphi(q)
+\notag
+\\
+&=&
+\langle iq\,\hat{T},\varphi \rangle,
+\notag
+\end{eqnarray}
+lo cual vale para toda funci\'on de prueba $\varphi$, probando la identidad propuesta, salvo un cambio del nombre de la variable $k$ por $q$.
+
+Ahora estamos en condiciones de probar lo que se nos pide.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1b)}
+\vspace{0.5cm}
+
+Calcular la transformada de Fourier de
+
 $$
-para toda funci\'on de prueba $\phi$.
-%Multiplicamos 
-Luego, multiplicando
-%el resultado de este límite 
-la identidad distributiva de Sokhotski–Plemelj
-por $-i$ obtenemos:
-% que teníamos afuera:
-$$
-\int_{0}^{\infty} du\, e^{-iku} = -i \left[ \mathrm{P.V.}\left(\frac{1}{k}\right) + i\pi\delta(k) \right]
-$$
-$$
-\int_{0}^{\infty} du\, e^{-iku} = -i\,\mathrm{P.V.}\left(\frac{1}{k}\right) - i^2\pi\delta(k)
-$$
-$$
-\int_{0}^{\infty} du\, e^{-iku} = \pi\delta(k) - i\,\mathrm{P.V.}\left(\frac{1}{k}\right)
+\delta'(x-a).
 $$
 
-\item Resultado Final
+Usamos la propiedad distributiva
 
-Sustituyendo esta integral de vuelta en nuestra expresión original (la cual incluía el factor de traslación $e^{-ika}$), obtenemos la solución final:
 $$
-\boxed{ \hat{\Theta}_a(k) = e^{-ika} \left[ \pi\delta(k) - i\,\mathrm{P.V.}\left(\frac{1}{k}\right) \right] }
+\langle \delta'(x-a) , \varphi(x)\rangle
+=
+-\varphi'(a).
 $$
 
-\end{enumerate}
+Entonces
 
-%Antes de comenzar, recordar que  por definici\'on $T'(\varphi)=T(\varphi')$.
-%Luego, esto se puede usar para ver que $\Theta'=\delta$, concluyendo que $\Theta$ es una primitiva de $\delta$.
-%
-%Calcular la transformada de Fourier de la distribución de Heaviside
-%
-%$$
-%\Theta(x-a).
-%$$
-%
-%Voy a usar la convención
-%
-%$$
-%\hat{f}(k)
-%=
-%\int_{-\infty}^{\infty} dx\, f(x)e^{-ikx}.
-%$$
-%
-%La función escalón puede escribirse como una traslación:
-%
-%$$
-%\Theta(x-a)=\Theta(u), \qquad u=x-a.
-%$$
-%
-%Entonces
-%
-%$$
-%\hat{\Theta}_a(k)
-%=
-%\int_{-\infty}^{\infty} dx\, \Theta(x-a)e^{-ikx}
-%=
-%e^{-ika}
-%\int_{-\infty}^{\infty} du\, \Theta(u)e^{-iku}.
-%$$
-%
-%Pero
-%
-%$$
-%\Theta(u)=
-%\begin{cases}
-%0, & u<0,\\
-%1, & u>0,
-%\end{cases}
-%$$
-%
-%de modo que
-%
-%$$
-%\int_{-\infty}^{\infty}du\,\Theta(u)e^{-iku}
-%=
-%\int_0^\infty du\,e^{-iku}.
-%$$
-%
-%Esta integral no converge ordinariamente, sino en el sentido de distribuciones. Regularizamos:
-%
-%$$
-%\int_0^\infty du\, e^{-(\varepsilon+ik)u}
-%=
-%\frac{1}{\varepsilon+ik},
-%\qquad \varepsilon>0.
-%$$
-%
-%Tomando $\varepsilon\to0^+$,
-%
-%$$
-%\frac{1}{\varepsilon+ik}
-%=
-%-i\frac{1}{k-i\varepsilon}.
-%$$
-%
-%Usando la identidad distributiva de Sokhotski–Plemelj,
-%
-%$$
-%\lim_{\varepsilon\to0^+}\frac{1}{k-i\varepsilon}
-%=
-%\mathrm{P.V.}\left(\frac1k\right)+i\pi\delta(k),
-%$$
-%
-%obtenemos
-%
-%$$
-%\int_0^\infty 
-%du\,
-%e^{-iku}
-%=
-%\pi\delta(k)-i\,\mathrm{P.V.}\left(\frac1k\right).
-%$$
-%
-%Por lo tanto,
-%
-%$$
-%\boxed{
-%\hat{\Theta}_a(k)
-%=
-%e^{-ika}
-%\left[
-%\pi\delta(k)
-%-i\,
-%\mathrm{P.V.}
-%\left(
-%\frac{1}{k}
-%\right)
-%\right]
-%}.
-%$$
-%
-%\vspace{0.5cm}
-%{\bf Ayuda:} ¿Qué es el Valor Principal?
-%\vspace{0.5cm}
-%
-%El Valor Principal (P.V.) o Valor Principal de Cauchy es un método para asignar un valor a integrales impropias que, de otro modo, serían divergentes debido a una singularidad en el intervalo de integración.
-%
-%\vspace{0.5cm}
-%{\em Definición Matemática.}
-%\vspace{0.5cm}
-%
-%Si tenemos una función con una singularidad en $x=c$, el valor principal se define como el límite simétrico alrededor de ese punto:
-%
-%$$PV \int_{a}^{b} f(x) dx = \lim_{\epsilon \to 0^+} \left( \int_{a}^{c-\epsilon} f(x) dx + \int_{c+\epsilon}^{b} f(x) dx \right)$$
-%
-%\vspace{0.5cm}
-%{\em ¿Por qué aparece en la Transformada de Heaviside?}
-%\vspace{0.5cm}
-%
-%Aparece porque la función $1/k$ tiene una singularidad en $k=0$. En el contexto de las distribuciones, la escritura 
-%$$
-%\mathrm{P.V.}
-%\left(
-%\frac{1}{k}
-%\right)
-%=
-%\frac{1}{\text{PV}(k)}
-%$$ 
-%indica que, al integrar esta distribución con una función de prueba $\phi(k)$, debemos tomar el límite simétrico para evitar la divergencia en el origen:
-%
-%$$\left\langle \frac{1}{\text{PV}(k)} , \phi(k) \right\rangle = \lim_{\epsilon \to 0^+} \int_{|k|>\epsilon} \frac{\phi(k)}{k} dk$$
-%
-%Esto permite ``cancelar'' las áreas infinitas de signo opuesto que se encuentran a ambos lados del eje vertical en la función $1/k$.
-%
-%
-%\vspace{0.5cm}
-%{\bf Soluci\'on }{\em 1b)}
-%\vspace{0.5cm}
-%
-%Calcular la transformada de Fourier de
-%
-%$$
-%\delta'(x-a).
-%$$
-%
-%Usamos la propiedad distributiva
-%
-%$$
-%\langle \delta'(x-a) , \varphi(x)\rangle
-%=
-%-\varphi'(a).
-%$$
-%
-%Entonces
-%
-%$$
-%\hat{\delta}'_a(k)
-%=
-%\int_{-\infty}^{\infty} dx\,\delta'_a(x)e^{-ikx}
-%=
-%\int_{-\infty}^{\infty} dx\,\delta'(x-a)e^{-ikx}.
-%$$
-%
-%Tomamos
-%
-%$$
-%\varphi(x)=e^{-ikx}.
-%$$
-%
-%Luego
-%
-%$$
-%\varphi'(x)=-ik\,e^{-ikx},
-%$$
-%
-%y por definición de derivada de distribución,
-%
-%$$
-%\int dx\, \delta'_a(x)e^{-ikx}
-%=
-%-\varphi'(a).
-%$$
-%
-%Así,
-%
-%$$
-%-\varphi'(a)
-%=
-%-(-ik e^{-ika})
-%ik\,e^{-ika}.
-%$$
-%
-%Finalmente,
-%
-%$$
-%\boxed{
-%\hat{\delta}'_a(x)(k)
-%=
-%ik\,e^{-ika}
-%}.
-%$$
-%
-%El factor $e^{-ika}$ aparece por la traslación, y el factor $ik$ porque derivar en el espacio real corresponde a multiplicar por $ik$ en el espacio de Fourier.
+$$
+\hat{\delta}'_a(k)
+=
+\int_{-\infty}^{\infty} dx\,\delta'_a(x)e^{-ikx}
+=
+\int_{-\infty}^{\infty} dx\,\delta'(x-a)e^{-ikx}.
+$$
+
+Tomamos
+
+$$
+\varphi(x)=e^{-ikx}.
+$$
+
+Luego
+
+$$
+\varphi'(x)=-ik\,e^{-ikx},
+$$
+
+y por definición de derivada de distribución,
+
+$$
+\int dx\, \delta'_a(x)e^{-ikx}
+=
+-\varphi'(a).
+$$
+
+Así,
+
+$$
+-\varphi'(a)
+=
+-(-ik e^{-ika})
+ik\,e^{-ika}.
+$$
+
+Finalmente,
+
+$$
+\boxed{
+\hat{\delta}'_a(x)(k)
+=
+ik\,e^{-ika}
+}.
+$$
+
+El factor $e^{-ika}$ aparece por la traslación, y el factor $ik$ porque derivar en el espacio real corresponde a multiplicar por $ik$ en el espacio de Fourier.
 
 
 \prob Encuentre por transformada de Fourier la soluci\'on general de la ecuaci\'on de movimiento
