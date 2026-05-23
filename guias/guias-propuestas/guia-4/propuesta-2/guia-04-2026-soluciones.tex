@@ -272,7 +272,78 @@ $$
 $$
 para todo valor de $k$.
 
-Luego, combinando (1) y (2), vamos a probar que
+Otra identidad distribucional que necesitaremos es la transformada de Fourier de la distribuci\'on identidad $T=1$.
+Usando (1) vemos que
+\begin{eqnarray}
+\langle \hat{1},\varphi \rangle
+&=&
+\notag
+\\
+&=&
+\langle 1,\hat{\varphi} \rangle
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dq\,
+1\,
+\hat{\varphi}(q)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dq\,
+\bigg(
+\int_{-\infty}^{\infty}
+dp\,
+e^{-ipq}
+\varphi(p)
+\bigg)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dp\,
+\bigg(
+\int_{-\infty}^{\infty}
+dq\,
+e^{-ipq}
+\bigg)
+\notag
+%\\
+%&=&
+%\int_{-\infty}^{\infty}
+%dp\,
+%\varphi(p)\,
+%2\pi \delta(p)
+%\notag
+\\
+&=&
+2\pi
+\langle \delta , \varphi \rangle
+\notag
+\end{eqnarray}
+para toda distribuci\'on $\varphi$.
+%, y donde hemos utilizado que
+%$$
+%2\pi\,
+%\delta(p)
+%=
+%\int_{-\infty}^{\infty}
+%dq\,
+%e^{-ipq}.
+%$$
+Por ende, concluimos que en el sentido de distribuciones vale la identidad
+$$
+\hat{1} 
+=
+2\pi\,
+\delta.
+$$
+No hay que 
+
+
+Por otro lado, combinando (1) y (2) vamos a probar que
 $$
 \widehat{T'}(k) = ik\,\hat{T}(k),
 $$
@@ -414,28 +485,174 @@ T_0(\phi)
 dk\,
 \frac{1}{k}\,
 \phi(k)
+=
+\lim_{\epsilon\to 0^+}
+\bigg(
+\int_{-\infty}^{-\epsilon}
+dk\,
+\frac{1}{k}\,
+\phi(k)
++
+\int_{\epsilon}^{\infty}
+dk\,
+\frac{1}{k}\,
+\phi(k)
+\bigg)
 $$
 para toda funci\'on de prueba $\phi$, satisface la ecuaci\'on (4).
-Efectivamente, si usamos la funci\'on de prueba $\phi(k) = ik\,\varphi(k)$ para una $\varphi$ arbitraria, obtenemos que
-$$
+Efectivamente, si usamos la funci\'on de prueba $\phi(k) = ik\,\varphi(k)$ para otra funci\'on de prueba $\varphi$ arbitraria, obtenemos que
+\begin{eqnarray}
 T_0(\phi)
-=
+&=&
 T_0(ik\,\varphi)
-=
+\notag
+\\
+&=&
 -i\,
+\mathrm{P.V.}
 \int_{-\infty}^{\infty}
 dk\,
 \frac{1}{k}\,
 ik\,\varphi(k)
-=
+\notag
+\\
+&=&
+\lim_{\epsilon\to 0^+}
+\bigg(
+\int_{-\infty}^{-\epsilon}
+dk\,
+\varphi(k)
++
+\int_{\epsilon}^{\infty}
+dk\,
+\varphi(k)
+\bigg)
+\notag
+\\
+&=&
 \int_{-\infty}^{\infty}
 dk\,
 \varphi(k)
-=
+\notag
+\\
+&=&
 \langle 1,\varphi \rangle.
-$$
+\notag
+\end{eqnarray}
 Esto sugiere que $T_0$ es $\hat{\Theta}$.
-Sin embargo, $T_0$ no provee la soluci\'on m\'as general, ya que $T_0 + c\delta$ tambi\'en es una soluci\'on para una constante $c$ arbitraria.
+Sin embargo, $T_0$ no provee la soluci\'on m\'as general, ya que $T_0 + c\delta$ tambi\'en es una soluci\'on para una constante $c$ arbitraria y que difiere justo en $k=0$:
+\begin{eqnarray}
+\big\langle 
+ik\,
+\big(
+T_0
++
+c
+\delta
+\big)
+,
+\varphi
+\big\rangle
+&=&
+\big\langle 
+ik\,
+T_0
+,
+\varphi
+\big\rangle
++
+ic\,
+\big\langle 
+k
+\delta
+,
+\varphi
+\big\rangle
+\notag
+\\
+&=&
+\langle 
+1,
+\varphi
+\rangle
++
+0
+\notag
+\end{eqnarray}
+donde hemos usado que
+$$
+\langle 
+k
+\delta
+,
+\varphi
+\rangle
+=
+\int_{-\infty}^{\infty}
+dk\,
+k\,\delta(k)\,
+\varphi(k)
+=
+0\,\varphi(0)
+=
+0
+$$
+puesto que $\varphi$ es una funci\'on de prueba y es bien comportada en $k=0$.
+
+De todas las soluciones posibles, una s\'ola de ellas corresponde a $\hat{\Theta}$.
+En otras palabras, para determinar el valor de $c$ utilizamos la identidad distribucional
+$$
+\Theta(x)
++
+\Theta(-x) = 1.
+$$
+Luego, usando (1) nuevamente para una distribuci\'on $S(x) = T(-x)$, obtenemos que
+\begin{eqnarray}
+\int_{-\infty}^{\infty}
+dz\,
+\hat{S}(z)\,
+\varphi(z)
+%\langle \hat{S}(q),\varphi \rangle
+%&=&
+%\langle S(u),\hat{\varphi} \rangle
+%\notag
+%\\
+&=&
+\int_{-\infty}^{\infty}
+du\,
+S(u)\,
+\hat{\varphi}(u)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+du\,
+T(-u)\,
+\hat{\varphi}(u)
+\notag
+\\
+&=&
+-
+\int_{v(u=-\infty)=\infty}^{v(u=\infty)=-\infty}
+dv\,
+T(v)\,
+\hat{\varphi}(-v)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dv\,
+T(v)\,
+\hat{\varphi}(-v)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dv\,
+S(-v)\,
+\hat{\varphi}(-v)
+\notag
+\end{eqnarray}
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 1b)}
