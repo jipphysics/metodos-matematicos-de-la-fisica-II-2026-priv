@@ -345,10 +345,15 @@ De esta manera,
 \notag
 \\
 &=&
+\int dk\,\, iq\,\hat{T}(q)\, \varphi(q)
+\notag
+\\
+&=&
 \langle iq\,\hat{T},\varphi \rangle,
 \notag
 \end{eqnarray}
 lo cual vale para toda funci\'on de prueba $\varphi$, probando la identidad propuesta, salvo un cambio del nombre de la variable $k$ por $q$.
+Aqu\'i cabe aclarar que, en la \'ultima l\'inea hemos hecho un abuso de notaci\'on, ya que la expresi\'on $iq\, \hat{T}$ no tiene sentido porque no se eval\'ua a $\hat{T}$ en $q$.
 
 Ahora estamos en condiciones de probar lo que se nos pide.
 Combinando las identidades demostradas anteriormente para el caso en que $T=\Theta$, obtenemos que
@@ -376,7 +381,8 @@ $$
 \langle \hat{\Theta} , ik\, \varphi \rangle
 $$
 para toda funci\'on de prueba $\varphi$.
-Es decir, $\hat{\Theta}(k)$ tiene que cumplir
+Aqu\'i nuevamente hemos hecho un abuso de notaci\'on al escribir $ik\,\hat{\Theta}$.
+M\'as precisamente, $\hat{\Theta}$ tiene que cumplir
 $$
 \int_{-\infty}^{\infty} 
 dk\, 
@@ -393,9 +399,42 @@ dk\,
 \hat{\Theta}(k)\,
 ik\,
 \varphi(k)
+\quad (4)
 $$
 para toda funci\'on de prueba $\varphi$.
 %Aqu\'i no debemos confundirnos y notar que $\varphi(k)$ es el valor que toma la funci\'on de prueba $\varphi$ en $k$, y no su transformada de Fourier.
+
+{\em Proposici\'on:}
+la distribuci\'on $T_0$ dada por el Valor Principal de Cauchy
+$$
+T_0(\phi)
+:=
+-i\,
+\mathrm{P.V.}
+\int_{-\infty}^{\infty}
+dk\,
+\frac{1}{k}\,
+\phi(k)
+$$
+para toda funci\'on de prueba $\phi$, satisface la ecuaci\'on (4).
+Efectivamente, si usamos la funci\'on de prueba $\phi(k) = ik\,\varphi(k)$ obtenemos que
+$$
+T_0(\phi)
+=
+T_0(ik\,\varphi)
+=
+-i\,
+\int_{-\infty}^{\infty}
+dk\,
+\frac{1}{k}\,
+ik\,\varphi(k)
+=
+\int_{-\infty}^{\infty}
+dk\,
+\varphi(k)
+=
+\langle 1,\varphi \rangle.
+$$
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 1b)}
