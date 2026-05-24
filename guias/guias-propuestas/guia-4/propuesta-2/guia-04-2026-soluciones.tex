@@ -184,11 +184,11 @@ e^{-ikx}
 $$ 
 y, si $\hat{\varphi} = \four \varphi$, luego
 $$
-(\four^{-1} \hat \varphi)(k)
+(\four^{-1} \hat \varphi)(x)
 =
 \frac{1}{2\pi}
 \int_{-\infty}^{\infty}
-dx\,
+dk\,
 e^{ikx}
 \hat \varphi(k)
 $$ 
@@ -889,8 +889,8 @@ $$
 =
 \delta(x-a).
 $$
-Cualquier operador traslaci\'on conmuta con el operador derivada, i.e. $\tras_a \derv = \derv \tras_a$.
-Para ver esto, definimos $\phi_a(x):=\varphi(x+a)$, de manera que $\tras_a \varphi = \phi$, y as\'i notamos que
+Cabe notar que cualquier operador traslaci\'on conmuta con el operador derivada, i.e. $\tras_a \derv = \derv \tras_a$.
+Para ver esto, definimos $\phi_a(x):=\varphi(x+a)$, de manera que $\tras_a \varphi = \phi$, y as\'i comprobamos que
 $$
 (\derv \tras_a \varphi)(x)
 =
@@ -952,11 +952,11 @@ e^{ika}
 para toda funci\'on de prueba $\varphi$ y todo $k$.
 Conviene entonces introducir la familia de operadores de cambio de fase seg\'un
 $$
-(\phas_a \varphi)(x)
+(\phas_a \hat{\varphi})(k)
 :=
-e^{ixa} \varphi(x)
+e^{ika} \hat{\varphi}(k)
 $$
-para toda funci\'on de prueba $\varphi$ y todo $x$.
+para toda funci\'on de prueba $\varphi$ y todo $k$.
 De esta manera, concluimos que sobre el espacio de funciones de prueba vale que
 $$
 \four \tras_a
@@ -981,68 +981,73 @@ $$
 \delta'(x-a)
 $$
 para todo $x$.
-As\'i no...
-
-
-Usamos la propiedad distributiva
-
+De esta manera,
+\begin{eqnarray}
+\four \tras_a \derv \delta 
+&=&
+\phas_a \four \derv \delta 
+\notag
+\\
+&=&
+i\, \phas_a \powr \four \delta 
+\notag
+\\
+&=&
+i\, \phas_a \powr
+\notag
+\end{eqnarray}
+puesto que $\four \delta = 1$.
+De esta manera, se tiene que
 $$
-\langle \delta'(x-a) , \varphi(x)\rangle
+\langle 
+\four \tras_a \derv \delta,
+\varphi
+\rangle
 =
--\varphi'(a).
-$$
-
-Entonces
-
-$$
-\hat{\delta}'_a(k)
+i\, 
+\langle
+\phas_a 
+\powr
+,
+\varphi
+\rangle
 =
-\int_{-\infty}^{\infty} dx\,\delta'_a(x)e^{-ikx}
+i\,
+\langle
+1
+,
+\powr
+\phas_a 
+\varphi
+\rangle
 =
-\int_{-\infty}^{\infty} dx\,\delta'(x-a)e^{-ikx}.
+\int_{-\infty}^{\infty}
+dq\,
+iq\,
+e^{iqa}
+\varphi(q)
 $$
-
-Tomamos
-
+o, equivalentemente,
 $$
-\varphi(x)=e^{-ikx}.
-$$
-
-Luego
-
-$$
-\varphi'(x)=-ik\,e^{-ikx},
-$$
-
-y por definición de derivada de distribución,
-
-$$
-\int dx\, \delta'_a(x)e^{-ikx}
+(
+\powr
+\phas_a 
+\varphi
+)(q)
 =
--\varphi'(a).
+iq\,
+e^{iqa}
+\varphi(q)
+.
 $$
-
-Así,
-
+Informalmente, podr\'iamos decir que 
 $$
--\varphi'(a)
+\four
+(\delta'(x-a))(k)
 =
--(-ik e^{-ika})
-ik\,e^{-ika}.
+ik\,e^{ika}
+.
 $$
-
-Finalmente,
-
-$$
-\boxed{
-\hat{\delta}'_a(x)(k)
-=
-ik\,e^{-ika}
-}.
-$$
-
-El factor $e^{-ika}$ aparece por la traslación, y el factor $ik$ porque derivar en el espacio real corresponde a multiplicar por $ik$ en el espacio de Fourier.
-
 
 \prob Encuentre por transformada de Fourier la soluci\'on general de la ecuaci\'on de movimiento
 \[
