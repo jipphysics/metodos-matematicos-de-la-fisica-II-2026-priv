@@ -217,7 +217,7 @@ $$
 \langle \powr T,\varphi \rangle
 :=
 \langle T,\powr \varphi \rangle
-\quad (4)
+\quad (3)
 $$
 donde la correspondiente aplicaci\'on a una funci\'on de prueba $\varphi$ viene definida por
 $$
@@ -240,6 +240,7 @@ x\,
 \varphi(x)
 =
 0\,\varphi(0) = 0
+\quad (4)
 $$
 para toda funci\'on de prueba $\varphi$.
 
@@ -248,13 +249,64 @@ $$
 \langle \refl T,\varphi \rangle
 :=
 \langle T,\refl \varphi \rangle
-\quad (3)
+\quad (5)
 $$
 donde la reflexi\'on de una funci\'on de prueba $\varphi$ viene definida por
 $$
 (\refl \varphi)(x) := \varphi(-x).
 $$
 Es interesante notar que $\refl^2 = \II$.
+Tambi\'en es util notar que $\four \refl = \refl \four$.
+En efecto,
+\begin{eqnarray}
+\langle \four \refl T , \varphi \rangle
+&=&
+\langle T , \refl \four \varphi \rangle
+\notag
+\\
+&=&
+\langle T , \four \refl \varphi \rangle
+\notag
+\\
+&=&
+\langle \four \refl T , \varphi \rangle
+\notag
+\end{eqnarray}
+para toda distribuci\'on $T$ y funci\'on de pruebas $\varphi$.
+Aqu\'i, en la segunda l\'inea, hemos utilizado que
+\begin{eqnarray}
+(\refl \four \varphi)(k)
+&=&
+(\four \varphi)(-k)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dx\,
+e^{-i(-k)x}
+\varphi(x)
+\notag
+\\
+&=&
+-
+\int_{y(x=-\infty)=\infty}^{y(x=\infty)=-\infty}
+dy\,
+e^{-i(-k)(-y)}
+\varphi(-y)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dy\,
+e^{-iky}
+(\refl \varphi)(y)
+\notag
+\\
+&=&
+(\four \refl \varphi)(k)
+\notag
+\end{eqnarray}
+para todo $k$ y funci\'on de prueba $\varphi$.
 
 Ahora probaremos algunas identidades \'utiles.
 De la ecuaci\'on (2) obtenemos que
@@ -309,6 +361,7 @@ De la ecuaci\'on (2) obtenemos que
 para toda funci\'on de prueba $\varphi$, y donde hemos usado que $\varphi(x\to \infty)\to 0$ para las funciones de prueba, concluyendo que
 $$
 \derv \Theta = \delta
+\quad (6)
 $$
 en sentido distribucional.
 
@@ -361,6 +414,7 @@ $$
 (\four \delta)(k)
 =
 1
+\quad (7)
 $$
 para todo valor de $k$.
 
@@ -431,6 +485,7 @@ $$
 =
 2\pi\,
 \delta.
+\quad (8)
 $$
 
 Combinando (1), (2) y (4) vemos que
@@ -501,6 +556,7 @@ i
 para toda distribuci\'on $T$ y funci\'on de prueba $\varphi$, lo cual demuestra que
 $$
 \four\derv = i\, \powr\four
+\quad (9)
 $$
 sobre el {\bf espacio de distribuciones}.
 
@@ -514,7 +570,7 @@ $$
 (\four \derv \Theta)(k)
 =
 i\,(\powr \four \Theta)(k)
-\quad (3)
+\quad (10)
 $$
 para todo valor de $k$.
 En otras palabras, encontramos que la transformada de Fourier $\hat{\Theta}:=\four \Theta$ de la funci\'on escal\'on de Heaviside $\Theta$ satisface la anterior identidad {\em en forma distribucional} o, equivalentemente, que
@@ -528,8 +584,8 @@ $$
 =
 i \langle \powr \hat{\Theta} , \varphi \rangle
 =
-i \langle \hat{\Theta} , \powr \varphi \rangle
-.
+i \langle \hat{\Theta} , \powr \varphi \rangle.
+\quad (11)
 $$
 %para toda funci\'on de prueba $\varphi$.
 Veamos si podemos encontrar una distribuci\'on tal.
@@ -550,7 +606,7 @@ dk\,
 \hat{\Theta}(k)\,
 ik\,
 \varphi(k)
-\quad (4)
+\quad (12)
 $$
 para toda funci\'on de prueba $\varphi$.
 
@@ -580,7 +636,7 @@ dk\,
 \phi(k)
 \bigg)
 $$
-para toda funci\'on de prueba $\phi$, satisface la ecuaci\'on (4).
+para toda funci\'on de prueba $\phi$, satisface la ecuaci\'on (12).
 Efectivamente, si usamos la funci\'on de prueba definida por $\phi(k) = ik\,\varphi(k)$ para cualquier otra funci\'on de prueba $\varphi$ arbitraria, obtenemos que
 \begin{eqnarray}
 T_0(\phi)
@@ -621,10 +677,12 @@ dk\,
 \notag
 \end{eqnarray}
 Esto sugiere que $T_0$ es $\hat{\Theta}$.
-Sin embargo, $T_0$ no provee la soluci\'on m\'as general, ya que $T_0 + c\delta$ tambi\'en es una soluci\'on para una constante $c$ arbitraria y que difiere justo en $k=0$:
+Sin embargo, $T_0$ no provee la soluci\'on m\'as general, ya que $T_0 + c\delta$ tambi\'en es una soluci\'on para una constante $c$ arbitraria, debido a la ecuaci\'on (4).
+En efecto, aplicando la ecuaci\'on (11) a $T_0+c\delta$, encontramos que
 \begin{eqnarray}
+i
 \big\langle 
-ik\,
+\powr
 \big(
 T_0
 +
@@ -635,8 +693,9 @@ c
 \varphi
 \big\rangle
 &=&
+i
 \big\langle 
-ik\,
+\powr
 T_0
 ,
 \varphi
@@ -644,7 +703,7 @@ T_0
 +
 ic\,
 \big\langle 
-k
+\powr
 \delta
 ,
 \varphi
@@ -657,55 +716,88 @@ k
 \varphi
 \rangle
 +
-0
+0.
 \notag
 \end{eqnarray}
-donde hemos usado que
-$$
-\langle 
-k
-\delta
-,
-\varphi
-\rangle
-=
-\int_{-\infty}^{\infty}
-dk\,
-k\,\delta(k)\,
-\varphi(k)
-=
-0\,\varphi(0)
-=
-0
-$$
-puesto que $\varphi$ es una funci\'on de prueba y es bien comportada en $k=0$.
 
-De todas las soluciones posibles, una s\'ola de ellas corresponde a $\hat{\Theta}$.
-En otras palabras, para determinar el valor de $c$ utilizamos la identidad distribucional
+Ocurre que, de todas las soluciones posibles a la ecuaci\'on (11) que se obtienen de variar $c$, una sola de ellas corresponde a $\hat{\Theta}$.
+Para determinar el valor de $c$ utilizamos la identidad distribucional
 $$
-\Theta(x)
+\Theta
 +
-\Theta(-x) = 1
+\refl \Theta = 1
 $$
 y su transformada de Fourier
-$$
-2c\,\delta(k)
-=
-T_0(k)
+\begin{eqnarray}
+2c\,\four \delta
+&=&
+0
 +
-c\delta(k)
+c\,\four (\delta + \delta)
+\notag
+\\
+&=&
+\four
+\big(
+T_0
 +
-T_0(-k)
+\refl T_0
+\big)
 +
-c\delta(-k)
-=
-\hat{\Theta}(k)
+c\,\four (\delta + \refl \delta)
+\notag
+\\
+&=&
+\four 
+\big(
+T_0
 +
-\hat{\Theta}(-k) = \hat{1} = 2\pi\,\delta(k)
-$$
+c \delta
+\big)
++
+\four 
+\refl
+\big(
+T_0
++
+c\delta
+\big)
+\notag
+\\
+&=&
+\four 
+\big(
+T_0
++
+c \delta
+\big)
++
+\refl
+\four 
+\big(
+T_0
++
+c\delta
+\big)
+\notag
+\\
+&=&
+\hat{\Theta}
++
+\refl \hat{\Theta} 
+\notag
+\\
+&=&
+\hat{1} 
+\notag
+\\
+&=&
+2\pi\,\hat{\delta}
+\notag
+\end{eqnarray}
 donde hemos utilizado que 
-$T_0(-k) = -T_0(k)$, $\delta(k)=\delta(-k)$ y que
-$S(x)=T(-x)$ si y s\'olo si $\hat{S}(k) = \hat{T}(-k)$ para cualquier distribuci\'on $T$.
+$T_0 + \refl T_0=0$, $\refl \delta=\delta$ y que
+$\four \refl = \refl \four$.
 De esta manera, concluimos que $c=\pi$.
 %Aqu\'i hemos utilizado que
 %\begin{eqnarray}
@@ -730,195 +822,12 @@ De esta manera, concluimos que $c=\pi$.
 %\end{eqnarray}
 En otras palabras, concluimos que
 $$
-\hat{\Theta}(k)
+\hat{\Theta}
 =
-\pi \delta(k)
+\pi \delta
 -
-i\,
-\mathrm{P.V.}
-\bigg(
-\frac{1}{k}\,
-\bigg)
+i\,T_0.
 $$
-donde
-$$
-\mathrm{P.V.}
-\bigg(
-\frac{1}{k}\,
-\bigg)
-$$
-denota la distribuci\'on definida por el valor principal
-$$
-\bigg
-\langle
-\mathrm{P.V.}
-\bigg(
-\frac{1}{k}\,
-\bigg)
-,
-\varphi
-\bigg
-\rangle
-=
-\mathrm{P.V.}
-\int_{-\infty}^{\infty}
-dk\,
-\frac{1}{k}\,
-\varphi(k)
-$$
-para toda funci\'on de prueba $\varphi$.
-
-{\em Adendum:}
-Aqu\'i demostramos las \'ultimas identidades distribucionales utilizadas.
-Que $T_0(-k)=-T_0(k)$ es trivial.
-Que $\delta(k)=\delta(-k)$ tambi\'en es trivial ya que
-$$
-\varphi(0)
-=
-\varphi(-0)
-=
-\int_{-\infty}^{\infty} 
-dk\,
-\delta(k)\,
-\varphi(-k)
-=
--
-\int_{q(k=-\infty)=\infty}^{q(k=\infty)=-\infty} 
-dq\,
-\delta(-q)\,
-\varphi(q)
-=
-\int_{-\infty}^{\infty} 
-dq\,
-\delta(-q)\,
-\varphi(q)
-.
-$$
-Finalmente, que $S(x) = T(-x)$ si y solo si $\hat{S}(k)=\hat{T}(-k)$ requiere un poco m\'as de trabajo.
-Para ello, sea $\phi(x):=\varphi(-x)$ y, correspondientemente, n\'otese que 
-\begin{eqnarray}
-\hat{\phi}(k) 
-&=&
-\int_{-\infty}^{\infty}
-dx\,
-e^{-ikx}\,
-\phi(x)
-\notag
-\\
-&=&
-\int_{-\infty}^{\infty}
-dx\,
-e^{-ikx}\,
-\varphi(-x)
-\notag
-\\
-&=&
--
-\int_{u(x=-\infty)=\infty}^{u(x=\infty)=-\infty}
-du\,
-e^{iku}\,
-\varphi(u)
-\notag
-\\
-&=&
-\int_{-\infty}^{\infty}
-du\,
-e^{-i(-k)u}\,
-\varphi(u)
-\notag
-\\
-&=&
-\hat{\varphi}(-k)
-.
-\notag
-\end{eqnarray}
-Luego,
-\begin{eqnarray}
-\int_{-\infty}^{\infty} 
-dq\,
-\hat{S}(q)\,
-\varphi(q)
-&=&
-\langle \hat{S},\varphi \rangle
-\notag
-\\
-&=&
-\langle S,\hat{\varphi} \rangle
-\notag
-\\
-&=&
-\int_{-\infty}^{\infty}
-du\,
-S(u)\,
-\hat{\varphi}(u)
-\notag
-\\
-&=&
-\int_{-\infty}^{\infty}
-du\,
-T(-u)\,
-\hat{\varphi}(u)
-\notag
-\\
-&=&
--
-\int_{v(u=-\infty)=\infty}^{v(u=\infty)=-\infty}
-dv\,
-T(v)\,
-\hat{\varphi}(-v)
-\notag
-\\
-&=&
-\int_{-\infty}^{\infty}
-dv\,
-T(v)\,
-\hat{\varphi}(-v)
-\notag
-\\
-&=&
-\int_{-\infty}^{\infty}
-dv\,
-T(v)\,
-\hat{\phi}(v)
-\notag
-\\
-&=&
-\langle T,\hat{\phi} \rangle
-\notag
-\\
-&=&
-\langle \hat{T},\phi \rangle
-\notag
-\\
-&=&
-\int_{-\infty}^{\infty}
-dv\,
-\hat{T}(p)\,
-\phi(p)
-\notag
-\\
-&=&
-\int_{-\infty}^{\infty}
-dv\,
-\hat{T}(p)\,
-\varphi(-p)
-\notag
-\\
-&=&
--\int_{s(p=-\infty)=\infty}^{s(p=\infty)=-\infty}
-ds\,
-\hat{T}(-s)\,
-\varphi(s)
-\notag
-\\
-&=&
-\int_{-\infty}^{\infty}
-ds\,
-\hat{T}(-s)\,
-\varphi(s)
-.
-\notag
-\end{eqnarray}
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 1b)}
