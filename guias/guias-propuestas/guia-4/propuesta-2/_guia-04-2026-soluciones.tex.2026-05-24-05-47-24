@@ -65,20 +65,6 @@
 
 \newcommand{\tder}[2]{\frac{d #1}{d #2}}
 
-% JUAN
-\newcommand{\four}{\mathcal{F}}
-\newcommand{\refl}{\mathcal{R}}
-\newcommand{\powr}{\mathcal{P}}
-\newcommand{\derv}{\mathcal{D}}
-
-\newcommand{\II}{\mathbb{I}}
-\newcommand{\FF}{\mathbb{F}}
-\newcommand{\NN}{\mathbb{N}}
-\newcommand{\MM}{\mathbb{M}}
-\newcommand{\QQ}{\mathbb{Q}}
-\newcommand{\RR}{\mathbb{R}}
-\newcommand{\CC}{\mathbb{C}}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Counters definitions (old)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -161,94 +147,33 @@
 {\bf Soluci\'on }{\em 1a)}
 \vspace{0.5cm}
 
-Para resolver el problema vamos a necesitar definir ciertos operadores lineales y luego probar ciertas identidades.
-En particular, algunas de ellas (como la transformada de Fourier) s\'olo tienen sentido cuando el espacio de funciones de pruebas es el espacio de Schwartz, puesto que s\'olo en dicho caso la transformada de Fourier es un automorfismo (i.e. es invertible).
+Para resolver el problema vamos a necesitar ciertas identidades.
+Las mismas s\'olo tienen sentido si el espacio de funciones de pruebas es el espacio de Schwartz, sobre el que la transformada de Fourier define un automorfismo (i.e. una transformaci\'on lineal e invertible sobre el espacio).
 
-En primer lugar, diremos que la transformada de Fourier  $\four T$ de una distribuci\'on arbitraria $T$ viene definida por la identidad
+En primer lugar, usaremos que la transformada de Fourier  $\hat{T}$ de una distribuci\'on arbitraria $T$ viene definida por la identidad
 $$
-\langle \four T,\varphi \rangle
+\langle \hat{T},\varphi \rangle
 :=
-\langle T,\four \varphi \rangle
+\langle T,\hat{\varphi} \rangle
 \quad (1)
 $$
-para toda funci\'on de prueba $\varphi$, donde la transformada de Fourier de la funci\'on de prueba $\varphi$ viene dada por
+para toda funci\'on de prueba $\varphi$, donde $\hat{\varphi}$ denota la transformada de Fourier de la funci\'on de prueba $\varphi$.
+En segundo lugar, y de manera similar, usaremos que la derivada $T'$ de una distribuci\'on arbitraria $T$ viene definida por la identidad
 $$
-(\four \varphi)(k)
-=
-\int_{-\infty}^{\infty}
-dx\,
-e^{-ikx}
-\varphi(x)
-$$ 
-y, si $\hat{\varphi} = \four \varphi$, luego
-$$
-(\four^{-1} \hat \varphi)(k)
-=
-\frac{1}{2\pi}
-\int_{-\infty}^{\infty}
-dx\,
-e^{ikx}
-\hat \varphi(k)
-$$ 
-es la inversa de la transformada de Fourier, por lo que
-$$
-\four^{-1} \four = \four \four^{-1} = \II
-$$
-es la transformaci\'on identidad.
-
-En segundo lugar, y de manera similar, diremos que la derivada $\derv T$ de una distribuci\'on arbitraria $T$ viene definida por la identidad
-$$
-\langle \derv T,\varphi \rangle
+\langle T',\varphi \rangle
 :=
 -
-\langle T,\derv \varphi \rangle
+\langle T,\varphi' \rangle
 \quad (2)
 $$
-para toda funci\'on de prueba $\varphi$, donde 
-$$
-(\derv \varphi)(x)
-:=
-\frac{d \varphi}{d x}(x)
-$$
-define la derivada de la funci\'on de prueba $\varphi$.
+para toda funci\'on de prueba $\varphi$, donde $\varphi'$ denota la derivada de la funci\'on de prueba $\varphi$.
 
-En tercer lugar, diremos que la aplicaci\'on del operador multiplicaci\'on por la coordenada $\powr$ a una distribuci\'on $T$ viene definida por
-$$
-\langle \powr T,\varphi \rangle
-:=
-\langle T,\powr \varphi \rangle
-\quad (4)
-$$
-donde la correspondiente aplicaci\'on a una funci\'on de prueba $\varphi$ viene definida por
-$$
-(\powr \varphi)(x) := x\varphi(x).
-$$
-
-Es interesante notar que
-$$
-[\derv,\powr] = \derv\powr - \powr\derv = \II.
-$$
-
-En cuarto lugar, diremos que la reflexi\'on $\refl T$ de una distribuci\'on $T$ viene dada por
-$$
-\langle \refl T,\varphi \rangle
-:=
-\langle T,\refl \varphi \rangle
-\quad (3)
-$$
-donde la reflexi\'on de una funci\'on de prueba $\varphi$ viene definida por
-$$
-(\refl \varphi)(x) := \varphi(-x).
-$$
-Es interesante notar que $\refl^2 = \II$.
-
-Ahora probaremos algunas identidades \'utiles.
 De la ecuaci\'on (2) obtenemos que
 \begin{eqnarray}
-\langle \derv \Theta , \varphi \rangle
+\langle \Theta' , \varphi \rangle
 &=&
 -
-\langle \Theta , \derv \varphi \rangle
+\langle \Theta , \varphi' \rangle
 \notag
 \\
 &=&
@@ -294,16 +219,15 @@ De la ecuaci\'on (2) obtenemos que
 \end{eqnarray}
 para toda funci\'on de prueba $\varphi$, y donde hemos usado que $\varphi(x\to \infty)\to 0$ para las funciones de prueba, concluyendo que
 $$
-\derv \Theta = \delta
+\Theta' = \delta.
 $$
-en sentido distribucional.
 
 Veamos ahora cu\'al es la transformada de Fourier de la delta de Dirac.
 Aplicando la identidad (1) obtenemos que
 \begin{eqnarray}
-\langle \four \delta , \varphi \rangle
+\langle \hat{\delta} , \varphi \rangle
 &=&
-\langle \delta , \four \varphi \rangle
+\langle \delta , \hat{\varphi} \rangle
 \notag
 \\
 &=&
@@ -344,7 +268,7 @@ dv\,
 lo cu\'al vale para toda funci\'on de prueba $\varphi$.
 Esto implica que
 $$
-(\four \delta)(k)
+\hat{\delta}(k)
 =
 1
 $$
@@ -418,10 +342,33 @@ $$
 2\pi\,
 \delta.
 $$
+No hay que 
 
-Combinando (1), (2) y (4) vemos que
+
+Por otro lado, combinando (1) y (2) vamos a probar que
+$$
+\widehat{T'}(k) = ik\,\hat{T}(k),
+$$
+i.e. que la transformada de Fourier $\widehat{T'}$ de la derivada $T'$ de una distribuci\'on $T$ viene dada por $ik\,\hat{T}$ donde $\hat{T}$ es la transformada de Fourier de $T$.
+Para ello, primero usamos (2) y luego (1) para obtener
+$$
+\langle \widehat{T'},\varphi \rangle
+=
+\langle T',\hat{\varphi} \rangle
+=
+-
+\langle T,\hat{\varphi}' \rangle
+$$
+donde $\hat{\varphi}'$ es la derivada de la transformada de Fourier $\hat{\varphi}$ de $\varphi$.
+Ahora calculamos dicha derivada
 \begin{eqnarray}
-(\derv\four \varphi)(k)
+\hat{\varphi}'(k)
+=
+\bigg(
+\frac{d}{dk}
+\hat{\varphi}
+\bigg)
+(k)
 &=&
 \frac{d}{dk}
 \int_{-\infty}^{\infty} dx\,
@@ -431,64 +378,55 @@ e^{-ikx}
 \\
 &=&
 \int_{-\infty}^{\infty} dx\,
-e^{-ikx}\,
 (-ix)
+e^{-ikx}
 \varphi(x)
 \notag
 \\
 &=&
 -
-i
 \int_{-\infty}^{\infty} dx\,
-e^{-ikx}\,
-(\powr \varphi)(x)
+e^{-ikx}
+\psi(x)
+\quad \text{donde $\psi(x):=ix\,\varphi(x)$}
 \notag
 \\
 &=&
--i
-(\four\powr\varphi)(k)
-\notag
-\end{eqnarray}
-para toda funci\'on de prueba $\varphi$.
-Esto quiere decir que la identidad
-$$
-\derv\four
-=
 -
-i\,\four\powr
-$$
-vale sobre el {\bf espacio de funciones de prueba}.
-Con este resultado, vemos que
-\begin{eqnarray}
-\langle \four\derv T , \varphi \rangle
-&=&
-\langle \derv T , \four \varphi \rangle
-\notag
-\\
-&=&
--\langle T , \derv \four \varphi \rangle
-\notag
-\\
-&=&
-i
-\langle T , \four \powr \varphi \rangle
-\notag
-\\
-&=&
-i
-\langle \four T , \powr \varphi \rangle
-\notag
-\\
-&=&
-i
-\langle \powr \four T , \varphi \rangle
+\widehat{\psi}(k),
 \notag
 \end{eqnarray}
-para toda distribuci\'on $T$ y funci\'on de prueba $\varphi$, lo cual demuestra que
-$$
-\four\derv = i\, \powr\four
-$$
-sobre el {\bf espacio de distribuciones}.
+donde hemos introducido la transformada de Fourier $\hat{\psi}$ de la funci\'on de prueba $\psi$.
+De esta manera, 
+\begin{eqnarray}
+\langle \widehat{T'},\varphi \rangle
+&=&
+-
+\langle T,\hat{\varphi}' \rangle
+\notag
+\\
+&=&
+\langle \hat{T},\psi \rangle
+\notag
+\\
+&=&
+\int dq\, \hat{T}(q)\, \psi(q)
+\notag
+\\
+&=&
+\int dk\, \hat{T}(q)\, iq\,\varphi(q)
+\notag
+\\
+&=&
+\int dk\,\, iq\,\hat{T}(q)\, \varphi(q)
+\notag
+\\
+&=&
+\langle iq\,\hat{T},\varphi \rangle,
+\notag
+\end{eqnarray}
+lo cual vale para toda funci\'on de prueba $\varphi$, probando la identidad propuesta, salvo un cambio del nombre de la variable $k$ por $q$.
+Aqu\'i cabe aclarar que, en la \'ultima l\'inea hemos hecho un abuso de notaci\'on, ya que la expresi\'on $iq\, \hat{T}$ no tiene sentido porque no se eval\'ua a $\hat{T}$ en $q$.
 
 Ahora estamos en condiciones de probar lo que se nos pide.
 Combinando las identidades demostradas anteriormente para el caso en que $T=\Theta$, obtenemos que
@@ -497,13 +435,12 @@ $$
 =
 \hat{\delta}(k)
 =
-(\four \derv \Theta)(k)
+\widehat{\Theta'}(k)
 =
-i\,(\powr \four \Theta)(k)
+ik\,\hat{\Theta}(k).
 \quad (3)
 $$
-para todo valor de $k$.
-En otras palabras, encontramos que la transformada de Fourier $\hat{\Theta}:=\four \Theta$ de la funci\'on escal\'on de Heaviside $\Theta$ satisface la anterior identidad {\em en forma distribucional}.
+En otras palabras, encontramos que la transformada de Fourier $\hat{\Theta}$ de la funci\'on escal\'on de Heaviside $\Theta$ satisface la anterior identidad {\em en forma distribucional}.
 Esta \'ultima aclaraci\'on es importante, porque podemos sentirnos tentados a dividir la ecuaci\'on (3) por $ik$ y obtener que $\Theta(k) = 1/(ik)$.
 Pero esto es un error por dos razones.
 En primer lugar, porque la expresi\'on obtenida no est\'a definida en $k=0$.
