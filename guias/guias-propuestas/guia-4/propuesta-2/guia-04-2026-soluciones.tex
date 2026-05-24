@@ -70,6 +70,8 @@
 \newcommand{\refl}{\mathcal{R}}
 \newcommand{\powr}{\mathcal{P}}
 \newcommand{\derv}{\mathcal{D}}
+\newcommand{\tras}{\mathcal{S}}
+\newcommand{\phas}{\mathcal{E}}
 
 \newcommand{\II}{\mathbb{I}}
 \newcommand{\FF}{\mathbb{F}}
@@ -834,10 +836,153 @@ $$
 \vspace{0.5cm}
 
 Calcular la transformada de Fourier de
-
 $$
 \delta'(x-a).
 $$
+Para ello, definimos la familia monoparametrizada por $a\in \RR$ de operadores traslaci\'on sobre el espacio de funciones seg\'un
+$$
+(\tras_a \varphi)(x)
+:=
+\varphi(x+a)
+$$
+para toda funci\'on de prueba $\varphi$.
+Correspondientemente, definimos la familia de operadores traslaci\'on sobre el espacio de distribuciones seg\'un
+$$
+\langle \tras_a T,\varphi \rangle
+:=
+\langle T,\tras_a \varphi \rangle
+$$
+para toda distribuci\'on $T$ y toda funci\'on de prueba $\varphi$.
+{\em Ejemplo:} Como operan estos operadores sobre la distribuci\'on $\delta$?
+Investigemos
+\begin{eqnarray}
+\langle \tras_a \delta,\varphi \rangle
+&=&
+\langle \delta,\tras_a \varphi \rangle
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty} 
+dx\,
+\delta(x)
+(\tras_a \varphi)(x)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty} 
+dx\,
+\delta(x)
+\varphi(x+a)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty} 
+dy\,
+\delta(y-a)
+\varphi(y)
+\quad \text{donde $y=x+a$.}
+\notag
+\end{eqnarray}
+En otras palabras, vemos que
+$$
+(\tras_a \delta)(x)
+=
+\delta(x-a).
+$$
+Cualquier operador traslaci\'on conmuta con el operador derivada, i.e. $\tras_a \derv = \derv \tras_a$.
+Para ver esto, definimos $\phi_a(x):=\varphi(x+a)$, de manera que $\tras_a \varphi = \phi$, y as\'i notamos que
+$$
+(\derv \tras_a \varphi)(x)
+=
+(\derv \phi_a)(x)
+=
+\phi_a'(x)
+=
+\varphi'(x+a)
+=
+(\derv \varphi)(x+a)
+=
+(\tras_a \derv \varphi)(x)
+$$
+para toda funci\'on de prueba $\varphi$ y todo $x$.
+
+Como se relaciona un operador traslaci\'on con el operador transformada de Fourier?
+Veamos
+\begin{eqnarray}
+(\four \tras_a \varphi)(k)
+&=&
+(\four \phi_a)(k)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dk\,
+e^{-ikx}
+\phi_a(x)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dk\,
+e^{-ikx}
+\varphi(x+a)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dk\,
+e^{-ik(u-a)}
+\varphi(u),
+\quad \text{con $u=x+a$,}
+\notag
+\\
+&=&
+e^{ika}
+\int_{-\infty}^{\infty}
+dk\,
+e^{-iku}
+\varphi(u)
+\notag
+\\
+&=&
+e^{ika}
+(\four \varphi)(k)
+\notag
+\end{eqnarray}
+para toda funci\'on de prueba $\varphi$ y todo $k$.
+Conviene entonces introducir la familia de operadores de cambio de fase seg\'un
+$$
+(\phas_a \varphi)(x)
+:=
+e^{ixa} \varphi(x)
+$$
+para toda funci\'on de prueba $\varphi$ y todo $x$.
+De esta manera, concluimos que sobre el espacio de funciones de prueba vale que
+$$
+\four \tras_a
+=
+\phas_a \four
+.
+$$
+Luego definimos la acci\'on de los operadores cambios de fase sobre el espacio de distribuciones seg\'un
+$$
+\langle \phas_a T,\varphi \rangle
+:=
+\langle T,\phas_a \varphi \rangle
+$$
+para toda distribuci\'on $T$ y funci\'on de prueba $\varphi$.
+
+Con los anteriores ingredientes podemos resolver el problema planteado.
+A saber, calcular la transformada de Fourier de $\delta'(x-a)$.
+Partimos de notar que, en el sentido de distribuciones,
+$$
+(\tras_a \derv \delta)(x)
+=
+\delta'(x-a)
+$$
+para todo $x$.
+As\'i no...
+
 
 Usamos la propiedad distributiva
 
