@@ -2443,6 +2443,8 @@ En ecuaciones hiperbólicas, la información viaja precisamente sobre caracterí
 
 % https://chatgpt.com/share/6a140182-6a90-83e9-90b5-d620d5603e40
 
+\subsection{Reducing the PDE to a system of ODEs}
+
 Consider a first-order PDE given by
 $$
 F(x_1,\dots,x_n,u,p_1,\dots,p_n)=0,
@@ -2549,12 +2551,17 @@ $$
 x_i(s),\qquad u(s),\qquad p_i(s),
 $$
 which are determined with suitable initial conditions.
+
+\subsection{Reconstructing the solutions of the PDE from the characteristic curves}
+
 Crucially, the unknown function $x\to u(x)$ can be reconstructed from the integral curves (i.e. the solutions) of the characteristic system of ODEs.
-To do so, the initial data of the system of ODEs is usually prescribed on an $(n-1)$-dimensional hypersurface
+But not all solutions of the ODEs corresponds to solutions of the PDE.
+To find solutions of the ODE that corresponds to a solution $u$ of the PDE, the initial data of the system of ODEs must be prescribed on the $(n-1)$-dimensional hypersurface
 $$
 \Sigma\subset\mathbb{R}^n.
 $$
-If $\sigma=(\sigma_1,\dots,\sigma_{n-1})$ denotes coordinates on $\Sigma$, we may parameterize the initial surface as
+which, when extended by the extra dimension parameterized by $s$, describes the $n$-dimensional hypersurface defined by $u$.
+In this way, if $\sigma=(\sigma_1,\dots,\sigma_{n-1})$ denotes coordinates on $\Sigma$, we may parameterize the initial surface as
 $$
 x_i(0)=X_i(\sigma),
 $$
@@ -2609,6 +2616,66 @@ Thus, the method of characteristics converts the PDE problem into:
 \item determining the characteristic curves from the initial data,
 \item eliminating the auxiliary parameters $(s,\sigma)$ to recover $u$ as a function of the original variables $x$.
 \end{enumerate}
+
+The key point is that the variables
+$$
+(x_1,\dots,x_n,u,p_1,\dots,p_n)
+$$
+are not all independent. They are constrained by:
+\begin{enumerate}
+\item the PDE itself,
+$$
+F(x,u,p)=0,
+$$
+\item the fact that the $p_i$ must arise as derivatives of a single function $u$,
+$$
+p_i=\frac{\partial u}{\partial x_i}.
+$$
+\end{enumerate}
+Thus the characteristic system lives in a $(2n+1)$-dimensional space, but admissible solutions occupy a much smaller subset.
+The reason initial data are prescribed on an $(n-1)$-dimensional surface is analogous to what happens for ordinary differential equations.
+For a first-order PDE in $n$ variables, the solution $u(x)$ depends on $n$ independent variables. 
+The characteristic curves themselves are one-dimensional objects. 
+Therefore, to generate an $n$-dimensional family of points in the domain, one needs:
+\begin{itemize}
+\item one parameter $s$ along each characteristic curve,
+\item plus $n-1$ parameters labeling the different characteristics.
+\end{itemize}
+Hence the characteristics are naturally indexed by an $(n-1)$-dimensional manifold $\Sigma$.
+Schematically,
+$$
+(\sigma_1,\dots,\sigma_{n-1},s)
+\longmapsto
+x(s,\sigma),
+$$
+and this gives $n$ independent variables altogether.
+Now let us discuss how the initial values of the quantities $p_i$ are determined.
+Suppose the initial hypersurface is parameterized by
+$$
+x=X(\sigma),
+\qquad
+\sigma=(\sigma_1,\dots,\sigma_{n-1}),
+$$
+and the initial condition is
+$$
+u(X(\sigma))=U_0(\sigma).
+$$
+Because $u$ is already known on $\Sigma$, its tangential derivatives along the surface are known. Applying the chain rule,
+$$
+\frac{\partial U_0}{\partial \sigma_\alpha}
+=
+\sum_{i=1}^n
+p_i,\frac{\partial X_i}{\partial \sigma_\alpha},
+\qquad
+\alpha=1,\dots,n-1.
+$$
+These are $n-1$ linear equations for the $n$ unknowns $p_i$.
+The remaining equation comes from the PDE itself:
+$$
+F(X(\sigma),U_0(\sigma),p_1,\dots,p_n)=0.
+$$
+Together, these $n$ equations determine the $n$ quantities $p_i$ on the initial surface.
+Geometrically, the tangential derivatives determine the component of the gradient tangent to the initial surface, while the PDE determines the remaining normal component.
 
 \end{document}
 
