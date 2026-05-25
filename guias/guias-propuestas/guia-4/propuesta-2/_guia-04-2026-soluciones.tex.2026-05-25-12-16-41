@@ -2443,29 +2443,24 @@ En ecuaciones hiperbólicas, la información viaja precisamente sobre caracterí
 
 % https://chatgpt.com/share/6a140182-6a90-83e9-90b5-d620d5603e40
 
-\subsection{Method of characteristics}
+\subsection{Reducing the PDE to a system of ODEs}
 
-Consider a first-order PDE
+Consider a first-order PDE given by
 $$
 F(x_1,\dots,x_n,u,p_1,\dots,p_n)=0,
 $$
-where
-$$
-p_i=\frac{\partial u}{\partial x_i}(x),
-$$
 and
 $$
-x=(x_1,\dots,x_n)\in\RR^n,
-\qquad
-u:\RR^n\to\RR.
+p_i=\frac{\partial u}{\partial x_i}(x)
 $$
+where $x=(x_1,..,x_n)\in \RR^n$ is a vector of independent coordinates and $\RR^n\ni x \to u(x)\in \RR$ is a solution.
 
-The method of characteristics seeks curves
+The idea of the method of characteristics is to look for curves
 $$
-s\mapsto x(s)\in\RR^n
+s\mapsto x(s)\in\mathbb{R}^n
 $$
-along which the PDE reduces to a system of ordinary differential equations. 
-Assuming that $u$ is a solution, define along such curves
+along which the PDE reduces to a system of coupled ODEs.
+If $u$ is a solution, define along such a curve
 $$
 u(s):=u(x(s)),
 $$
@@ -2475,110 +2470,110 @@ p_i(s):=\frac{\partial u}{\partial x_i}(x(s)).
 $$
 Then, by the chain rule,
 $$
-\frac{du}{ds}
+\frac{du}{ds}(s)
 =
 \sum_{i=1}^n
-p_i\frac{dx_i}{ds}.
-$$
-
-The characteristic curves are chosen so that
-$$
-\frac{dx_i}{ds}
+\frac{\partial u}{\partial x_i}(x(s))
+\frac{dx_i}{ds}(s)
 =
-\frac{\partial F}{\partial p_i}(x(s),u(s),p(s)),
+\sum_{i=1}^n p_i(s)\frac{dx_i}{ds}(s).
 $$
-which implies
+The method of characteristics chooses the characteristic curves so that
 $$
-\frac{du}{ds}
+\frac{dx_i}{ds}(s)
+=
+\frac{\partial F}{\partial p_i}
+(x(s),u(s),p(s))
+.
+$$
+Substituting this into the previous equation gives
+$$
+\frac{du}{ds}(s)
 =
 \sum_{i=1}^n
-p_i
-\frac{\partial F}{\partial p_i}(x(s),u(s),p(s)).
+p_i(s)
+\frac{\partial F}{\partial p_i}
+(x(s),u(s),p(s)).
 $$
-
-Differentiating the constraint
+However, for completeness, the full characteristic system also includes evolution equations for the variables $p_i$. 
+Namely, differentiating the constraint
 $$
 F(x(s),u(s),p(s))=0
 $$
-along the curve yields
+along the curve leads to
 $$
-\frac{dp_i}{ds}
+\frac{dp_i}{ds}(s)
 =
 -
 \frac{\partial F}{\partial x_i}
+(x(s),u(s),p(s))
 -
-p_i\frac{\partial F}{\partial u}.
+p_i(s)
+\frac{\partial F}{\partial u}
+(x(s),u(s),p(s)).
 $$
-
-Thus the PDE is reduced to the characteristic system
+Thus the complete characteristic system of coupled ODEs is
 $$
-\frac{dx_i}{ds}
+\frac{dx_i}{ds}(s)
 =
-\frac{\partial F}{\partial p_i},
+\frac{\partial F}{\partial p_i}
+(x(s),u(s),p(s)),
 $$
 $$
-\frac{du}{ds}
+\frac{du}{ds}(s)
 =
 \sum_{i=1}^n
-p_i\frac{\partial F}{\partial p_i},
+p_i(s)
+\frac{\partial F}{\partial p_i}
+(x(s),u(s),p(s)),
 $$
 $$
-\frac{dp_i}{ds}
+\frac{dp_i}{ds}(s)
 =
 -
 \frac{\partial F}{\partial x_i}
+(x(s),u(s),p(s))
 -
-p_i\frac{\partial F}{\partial u}.
+p_i(s)
+\frac{\partial F}{\partial u}
+(x(s),u(s),p(s)).
 $$
+This is usually called the Charpit or {\em characteristic system of ODEs} for a general nonlinear first-order PDE.
+In summary, the method seeks curves in the extended space
+$$
+(x_1,\dots,x_n,u,p_1,\dots,p_n)
+\in
+\RR^{2n+1}
+$$
+along which the PDE reduces to an system of coupled ODEs.
+The solutions of this system are functions
+$$
+x_i(s),\qquad u(s),\qquad p_i(s),
+$$
+which are determined with suitable initial conditions.
 
-This system evolves in the extended space
-$$
-(x_1,\dots,x_n,u,p_1,\dots,p_n)\in\RR^{2n+1},
-$$
-although the variables are constrained by both the PDE
-$$
-F(x,u,p)=0
-$$
-and the relations
-$$
-p_i=\frac{\partial u}{\partial x_i}.
-$$
+\subsection{Reconstructing the solutions of the PDE from the characteristic curves}
 
-To reconstruct a solution of the PDE, one prescribes initial data on an $(n-1)$-dimensional hypersurface
+Crucially, the unknown function $x\to u(x)$ can be reconstructed from the integral curves (i.e. the solutions) of the characteristic system of ODEs.
+But not all solutions of the ODEs corresponds to solutions of the PDE.
+To find solutions of the ODE that corresponds to a solution $u$ of the PDE, the initial data of the system of ODEs must be prescribed on the $(n-1)$-dimensional hypersurface
 $$
-\Sigma\subset\RR^n.
+\Sigma\subset\mathbb{R}^n.
 $$
-The reason is that the characteristic curves are one-dimensional, so an $(n-1)$-parameter family of such curves generates an $n$-dimensional solution manifold.
-
-If $\sigma=(\sigma_1,\dots,\sigma_{n-1})$ are coordinates on $\Sigma$, the initial surface may be parameterized as
+which, when extended by the extra dimension parameterized by $s$, describes the $n$-dimensional hypersurface defined by $u$.
+In this way, if $\sigma=(\sigma_1,\dots,\sigma_{n-1})$ denotes coordinates on $\Sigma$, we may parameterize the initial surface as
 $$
 x_i(0)=X_i(\sigma),
 $$
-together with initial data
+and prescribe
 $$
 u(0)=U_0(\sigma).
 $$
-
-The initial values of
+From these data one determines compatible initial values for the quantities
 $$
-p_i(0)=\frac{\partial u}{\partial x_i}(x(0))
+p_i(0)=\frac{\partial u}{\partial x_i}(x(0)).
 $$
-are determined from the tangential derivatives of the initial data and the PDE itself. Indeed, applying the chain rule,
-$$
-\frac{\partial U_0}{\partial \sigma_\alpha}
-=
-\sum_{i=1}^n
-p_i
-\frac{\partial X_i}{\partial \sigma_\alpha},
-\qquad
-\alpha=1,\dots,n-1.
-$$
-These provide $n-1$ equations for the $n$ unknowns $p_i$, while the remaining equation is supplied by
-$$
-F(X(\sigma),U_0(\sigma),p_1,\dots,p_n)=0.
-$$
-
-Solving the characteristic system yields a family of curves
+Solving the characteristic system then produces a family of characteristic curves
 $$
 s
 \mapsto
@@ -2588,27 +2583,99 @@ u(s,\sigma),
 p(s,\sigma)
 \bigr).
 $$
-Whenever the map
+The functions
 $$
-(s,\sigma)\mapsto x(s,\sigma)
+x_i=x_i(s,\sigma)
 $$
-is locally invertible, one may solve for
+define a transformation from the parameters
+$$
+(s,\sigma_1,\dots,\sigma_{n-1})
+$$
+to the original coordinates
+$$
+(x_1,\dots,x_n).
+$$
+Whenever this transformation is locally invertible, one can solve for
 $$
 s=s(x),
 \qquad
 \sigma=\sigma(x),
 $$
-and reconstruct the solution of the PDE as
+and substitute these expressions into
 $$
-u(x)=u(s(x),\sigma(x)).
+u=u(s,\sigma).
 $$
-
-Therefore, the method of characteristics transforms the original PDE problem into:
+In this way one reconstructs a solution
+$$
+u(x)=u(s(x),\sigma(x))
+$$
+of the original PDE.
+Thus, the method of characteristics converts the PDE problem into:
 \begin{enumerate}
-\item solving the characteristic system of ODEs,
+\item solving the characteristic ODE system,
 \item determining the characteristic curves from the initial data,
-\item eliminating the auxiliary parameters $(s,\sigma)$ to recover $u(x)$.
+\item eliminating the auxiliary parameters $(s,\sigma)$ to recover $u$ as a function of the original variables $x$.
 \end{enumerate}
+
+The key point is that the variables
+$$
+(x_1,\dots,x_n,u,p_1,\dots,p_n)
+$$
+are not all independent. They are constrained by:
+\begin{enumerate}
+\item the PDE itself,
+$$
+F(x,u,p)=0,
+$$
+\item the fact that the $p_i$ must arise as derivatives of a single function $u$,
+$$
+p_i=\frac{\partial u}{\partial x_i}.
+$$
+\end{enumerate}
+Thus the characteristic system lives in a $(2n+1)$-dimensional space, but admissible solutions occupy a much smaller subset.
+The reason initial data are prescribed on an $(n-1)$-dimensional surface is analogous to what happens for ordinary differential equations.
+For a first-order PDE in $n$ variables, the solution $u(x)$ depends on $n$ independent variables. 
+The characteristic curves themselves are one-dimensional objects. 
+Therefore, to generate an $n$-dimensional family of points in the domain, one needs:
+\begin{itemize}
+\item one parameter $s$ along each characteristic curve,
+\item plus $n-1$ parameters labeling the different characteristics.
+\end{itemize}
+Hence the characteristics are naturally indexed by an $(n-1)$-dimensional manifold $\Sigma$.
+Schematically,
+$$
+(\sigma_1,\dots,\sigma_{n-1},s)
+\longmapsto
+x(s,\sigma),
+$$
+and this gives $n$ independent variables altogether.
+Now let us discuss how the initial values of the quantities $p_i$ are determined.
+Suppose the initial hypersurface is parameterized by
+$$
+x=X(\sigma),
+\qquad
+\sigma=(\sigma_1,\dots,\sigma_{n-1}),
+$$
+and the initial condition is
+$$
+u(X(\sigma))=U_0(\sigma).
+$$
+Because $u$ is already known on $\Sigma$, its tangential derivatives along the surface are known. Applying the chain rule,
+$$
+\frac{\partial U_0}{\partial \sigma_\alpha}
+=
+\sum_{i=1}^n
+p_i,\frac{\partial X_i}{\partial \sigma_\alpha},
+\qquad
+\alpha=1,\dots,n-1.
+$$
+These are $n-1$ linear equations for the $n$ unknowns $p_i$.
+The remaining equation comes from the PDE itself:
+$$
+F(X(\sigma),U_0(\sigma),p_1,\dots,p_n)=0.
+$$
+Together, these $n$ equations determine the $n$ quantities $p_i$ on the initial surface.
+Geometrically, the tangential derivatives determine the component of the gradient tangent to the initial surface, while the PDE determines the remaining normal component.
 
 \end{document}
 
