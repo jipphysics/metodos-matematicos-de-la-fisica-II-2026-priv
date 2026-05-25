@@ -1,0 +1,516 @@
+\documentclass[aps,prl,twocolumn,groupedaddress]{revtex4-2}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{caption}
+%\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+%\usepackage{amsthm}
+%\usepackage{amsfonts}
+%\usepackage{subfigure}
+%\usepackage{hhline}
+%\usepackage[miktex]{gnuplottex}
+%\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{hyperref}
+%\usepackage[percent]{overpic}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{wasysym}
+\usepackage{tikz-cd}
+%\usepackage{linearb}
+%\usepackage{wsuipa}
+\usepackage{calc}
+\usepackage{tipa}
+
+%\usepackage{stix} %\fisheye
+\usepackage{stackengine,scalerel}
+
+% so sections, subsections, etc. become numerated.
+\setcounter{secnumdepth}{3}
+
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\GG}{\mathbb{G}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\avrg}[1]{\left\langle #1 \right\rangle}
+\newcommand{\nelta}{\bar{\delta}}
+\newcommand{\bra}[1]{\left\langle #1\right|}
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\sbra}[1]{\langle #1|}
+\newcommand{\sket}[1]{| #1 \rangle}
+\newcommand{\bek}[3]{\left\langle #1 \right| #2 \left| #3 \right\rangle}
+\newcommand{\sbek}[3]{\langle #1 | #2 | #3 \rangle}
+\newcommand{\braket}[2]{\left\langle #1 \middle| #2 \right\rangle}
+\newcommand{\ketbra}[2]{\left| #1 \middle\rangle \middle\langle #2  \right|}
+\newcommand{\sbraket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\sketbra}[2]{| #1 \rangle  \langle #2 |}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\snorm}[1]{\lVert#1\rVert}
+\newcommand{\bvec}[1]{\boldsymbol{\mathsf{#1}}}
+\newcommand{\bcov}[1]{\boldsymbol{#1}}
+\newcommand{\bdua}[1]{\boldsymbol{\check{#1}}}
+%\newcommand{\bdov}[1]{\boldsymbol{\breve{#1}}}
+\newcommand{\bdov}[1]{\breve{#1}}
+%\newcommand{\bten}[1]{\boldsymbol{\mathfrak{#1}}}
+\newcommand{\bten}[1]{\boldsymbol{\mathfrak{#1}}}
+\newcommand{\forany}{\tilde{\forall}}
+\newcommand{\qed}{$\overset{\circ}{.}\;$}
+\newcommand{\bigo}{\mathcal{O}}
+\newcommand{\spn}{\mathrm{spn}\,}
+\newcommand{\krn}{\mathrm{krn}\,}
+\newcommand{\biy}{\leftrightarrow}
+\newcommand{\ugh}{\mathbin{\textlinb{\BPwheel}}}
+
+\newcommand\bigeye{\ensurestackMath{\stackinset{c}{}{c}{-.3pt}%
+  {\bullet}{\scriptstyle\bigcirc}}}
+\newcommand\eye{\scalerel*{\bigeye}{x}}
+
+% double angle-bracket
+\makeatletter
+\newsavebox{\@brx}
+\newcommand{\llangle}[1][]{\savebox{\@brx}{\(\m@th{#1\langle}\)}%
+  \mathopen{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+\newcommand{\rrangle}[1][]{\savebox{\@brx}{\(\m@th{#1\rangle}\)}%
+  \mathclose{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+\makeatother
+
+\newsavebox\CBox
+\newcommand\hcancel[2][0.5pt]{%
+  \ifmmode\sbox\CBox{$#2$}\else\sbox\CBox{#2}\fi%
+  \makebox[0pt][l]{\usebox\CBox}%  
+  \rule[0.77\ht\CBox-#1/2]{\wd\CBox}{#1}}
+\newcommand{\cb}{\hcancel{b}}
+\newcommand{\cd}{\hcancel{d}}
+\newcommand{\ct}{\hcancel{\partial}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\csupp}{\overline{\mathrm{supp}}}
+\newcommand{\supr}[2]{\underset{#1}{\text{supr}}}
+
+\begin{document}
+
+\title{
+M\'etodos Matem\'aticos de la F\'isica II\\
+Distributions, Banach, Hilbert and rigged Hilbert spaces
+}
+
+\author{Juan I. Perotti}
+\email[]{juan.perotti@unc.edu.ar}
+\affiliation{Instituto de F\'isica Enrique Gaviola (IFEG-CONICET), Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+\affiliation{Facultad de Matem\'atica, Astronom\'ia, F\'isica y Computaci\'on, Universidad Nacional de C\'ordoba, Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+
+\date{\today}
+
+\begin{abstract}
+These notes introduce central functional analytical structures of modern mathematical physics, exploring how infinite-dimensional analysis systematically moves from metric and normed vector spaces to complete Banach and Hilbert spaces, distribution theory, and rigged Hilbert spaces to preserve stability under limiting processes.
+\end{abstract}
+
+\maketitle
+\onecolumngrid
+
+\section*{Introduction}
+
+These notes introduce some of the central structures of modern functional analysis and mathematical physics. The presentation is organized around a guiding idea:
+\begin{quote}
+infinite-dimensional analysis requires spaces that remain stable under limiting processes.
+\end{quote}
+This idea naturally leads from:
+\begin{itemize}
+\item metric spaces,
+\item normed vector spaces,
+\item Banach spaces,
+\item inner product spaces,
+\item Hilbert spaces,
+\item distributions,
+\item and finally rigged Hilbert spaces.
+\end{itemize}
+The goal is not merely to define these structures independently, but to understand how they fit together conceptually.
+
+Banach spaces provide stability under norm convergence. Hilbert spaces additionally provide geometry through orthogonality. Distribution theory enlarges the notion of function so that differentiation, Fourier analysis, and generalized eigenvectors become possible. Rigged Hilbert spaces unify these viewpoints into a single framework.
+
+\section{Metric Spaces}
+
+A metric space is a set $X$ equipped with a distance function 
+\[
+d: X \times X \rightarrow \mathbb{R} 
+\]
+such that for all $x, y, z \in X$:
+\begin{enumerate}
+\item $d(x,y) \ge 0$,
+\item $d(x,y) = 0 \quad \iff \quad x = y$,
+\item $d(x,y) = d(y,x)$,
+\item $d(x,z) \le d(x,y) + d(y,z)$.
+\end{enumerate}
+
+The metric provides a notion of:
+\begin{itemize}
+\item convergence,
+\item continuity,
+\item neighborhood,
+\item approximation.
+\end{itemize}
+
+\subsection{Open Balls}
+Given $x \in X$ and $r > 0$, define 
+\[
+B_r(x) = \{y \in X : d(x,y) < r\}.
+\]
+
+\subsection{Convergence}
+A sequence $x_n \in X$ converges to $x \in X$ if:
+\[
+\forall \epsilon > 0, \exists N \in \mathbb{N} \text{ such that } n \ge N \Rightarrow d(x_n, x) < \epsilon.
+\]
+
+\subsection{Cauchy Sequences}
+A sequence $(x_n)$ is Cauchy if:
+\[
+\forall \epsilon > 0, \exists N \in \mathbb{N} \text{ such that } m,n \ge N \Rightarrow d(x_n, x_m) < \epsilon.
+\]
+Convergent sequences are always Cauchy. The converse is not always true.
+
+\subsection{Complete Metric Spaces}
+A metric space is complete if every Cauchy sequence converges to a point in the space itself. Completeness is essential because it guarantees that approximation procedures remain internally consistent.
+
+
+
+\section{Normed Vector Spaces and Banach Spaces}
+
+A normed vector space is a vector space $V$ equipped with a norm 
+$$
+|\cdot| : V \rightarrow \mathbb{R}
+$$
+such that:
+\begin{enumerate}
+\item $|v+w| \le |v| + |w|$,
+\item $|\alpha v| = |\alpha| |v|$,
+\item $|v| = 0 \quad \iff \quad v = 0$.
+\end{enumerate}
+
+The norm induces a metric:
+\[
+d(v,w) = |v-w|.
+\]
+Thus every normed vector space is automatically a metric space.
+
+\subsection{Banach Spaces}
+A Banach space is a complete normed vector space. This means that every norm-convergent approximation process remains inside the space. Banach spaces are fundamental because many analytical constructions involve:
+\begin{itemize}
+\item infinite series,
+\item iterative approximations,
+\item limits of functions,
+\item operator limits.
+\end{itemize}
+Without completeness, such processes may converge to objects lying outside the original space.
+
+\subsection{Example: The Space $C[a,b]$}
+The space of continuous functions $C[a,b]$ with norm 
+\[
+|f|_\infty = \sup_{x \in [a,b]} |f(x)|
+\]
+is a Banach space. Uniformly convergent sequences of continuous functions remain continuous.
+
+\subsection{Example: The Spaces $L^p$}
+For $1 \le p < \infty$, define 
+\[
+L^p(\Omega) = \left\{f : \Omega \rightarrow \mathbb{C} : \int_\Omega |f(x)|^p dx < \infty\right\}.
+\]
+The norm is 
+\[
+|f|_p = \left( \int_\Omega |f(x)|^p dx \right)^{1/p}.
+\]
+These spaces are Banach spaces.
+
+
+
+\section{Inner Product Spaces and Hilbert Spaces}
+
+An inner product space is a vector space $H$ equipped with an inner product 
+\[
+\langle\cdot,\cdot\rangle : H \times H \rightarrow \mathbb{C} 
+\]
+satisfying:
+\begin{enumerate}
+\item linearity in one argument,
+\item conjugate symmetry,
+\item positive definiteness.
+\end{enumerate}
+The induced norm is 
+\[
+|v| = \sqrt{\langle v,v\rangle}.
+\]
+
+\subsection{Hilbert Spaces}
+A Hilbert space is a complete inner product space. Hilbert spaces generalize Euclidean geometry to infinite dimensions. Their key additional structure is orthogonality.
+
+\subsection{Orthogonality}
+Two vectors are orthogonal if 
+\[
+\langle u,v\rangle = 0.
+\]
+
+\subsection{Orthonormal Systems}
+A family $\{e_n\}$ is orthonormal if 
+\[
+\langle e_n, e_m\rangle = \delta_{nm}.
+\]
+
+\subsection{Fourier Expansions}
+Given an orthonormal basis $\{e_n\}$, vectors admit expansions 
+\[
+v = \sum_{n=1}^\infty \langle e_n, v\rangle e_n.
+\]
+The coefficients 
+\[
+\langle e_n, v\rangle 
+\]
+are the Fourier coefficients. Completeness guarantees convergence of these expansions inside the Hilbert space.
+
+\subsection{Parseval Identity}
+If $\{e_n\}$ is complete,
+\[
+|v|^2 = \sum_{n=1}^\infty |\langle e_n, v\rangle|^2.
+\]
+This generalizes the Pythagorean theorem.
+
+
+
+\section{Dual Spaces and the Riesz Representation Theorem}
+
+Let $V$ be a normed vector space. A bounded linear functional is a bounded linear map 
+\[
+\varphi : V \rightarrow \mathbb{C}.
+\]
+The space of bounded linear functionals is called the dual space and is denoted by $V^*$.
+
+\subsection{The Riesz Representation Theorem}
+One of the most remarkable properties of Hilbert spaces is:
+\begin{quote}
+Every bounded linear functional on a Hilbert space is obtained through the inner product with a unique vector.
+\end{quote}
+More precisely, if $H$ is a Hilbert space and $\varphi \in H^*$, then there exists a unique $u \in H$ such that 
+\[
+\varphi(v) = \langle u,v\rangle 
+\]
+for all $v \in H$. Thus:
+\[
+H \cong H^*.
+\]
+This is sometimes called the musical isomorphism. Hilbert spaces therefore identify vectors and continuous covectors.
+
+
+
+\section{The Limits of Hilbert Spaces}
+
+Although Hilbert spaces are extremely rich, they are still insufficient for many problems in analysis and physics. For example:
+\begin{itemize}
+\item the Dirac delta is not an $L^2$-function,
+\item plane waves $e^{ikx}$ are not square integrable,
+\item generalized eigenvectors of differential operators often lie outside the Hilbert space.
+\end{itemize}
+Thus Hilbert spaces alone are not large enough to contain all physically and analytically relevant objects. This motivates the introduction of distributions.
+
+\section{Test Functions and Distributions}
+
+\subsection{Compactly Supported Smooth Functions}
+Define $C_c^\infty(\mathbb{R}^n)$ as the space of smooth compactly supported functions. These are called test functions.
+
+\subsection{Schwartz Space}
+The Schwartz space $\mathcal{S}(\mathbb{R}^n)$ consists of smooth functions such that every derivative decays faster than every polynomial grows. Explicitly,
+\[
+\sup_{x \in \mathbb{R}^n} |x^\alpha \partial^\beta \phi(x)| < \infty 
+\]
+for all multiindices $\alpha, \beta$. Schwartz functions are ideal for Fourier analysis.
+
+\section{Topologies on Spaces of Test Functions}
+
+The spaces $C_c^\infty(\mathbb{R}^n)$ and $\mathcal{S}(\mathbb{R}^n)$ carry topologies much stronger than ordinary norm topologies. Convergence controls simultaneously:
+\begin{itemize}
+\item the functions,
+\item all derivatives,
+\item support behavior,
+\item decay behavior.
+\end{itemize}
+
+For Schwartz functions, convergence means:
+\[
+\sup_x |x^\alpha \partial^\beta (\phi_n - \phi)| \rightarrow 0 
+\]
+for every $\alpha, \beta$. These strong topologies are precisely what make distributions meaningful.
+
+\section{Distributions}
+
+A distribution is a continuous linear functional on a test-function space. For example,
+\[
+T : \mathcal{S}(\mathbb{R}^n) \rightarrow \mathbb{C}.
+\]
+Continuity is defined relative to the topology of the test-function space.
+
+\subsection{Regular Distributions}
+Every sufficiently integrable function defines a distribution:
+\[
+T_f(\phi) = \int f(x)\phi(x)dx.
+\]
+Thus ordinary functions are embedded into distribution theory.
+
+\subsection{The Dirac Delta}
+The Dirac delta is defined by 
+\[
+\delta(\phi) = \phi(0).
+\]
+This is a distribution. However, there exists no function $f \in L^2(\mathbb{R}^n)$ such that 
+\[
+\delta(\phi) = \int f(x)\phi(x)dx 
+\]
+for every test function. Thus:
+\[
+\delta \notin L^2.
+\]
+The delta is therefore a generalized vector rather than an ordinary Hilbert-space vector.
+
+\section{Why Distributions Are Needed}
+
+Distribution theory enlarges the notion of function so that:
+\begin{itemize}
+\item singular objects become meaningful,
+\item differentiation becomes universal,
+\item Fourier transforms become more flexible,
+\item generalized eigenvectors can be described rigorously.
+\end{itemize}
+For example:
+\begin{itemize}
+\item derivatives of discontinuous functions,
+\item Green functions,
+\item plane waves,
+\item delta functions,
+\item solutions of PDEs,
+\end{itemize}
+all fit naturally into the distributional framework.
+
+
+
+\section{Rigged Hilbert Spaces}
+
+We now arrive at one of the central conceptual structures connecting Hilbert spaces and distributions. A rigged Hilbert space (or Gelfand triple) is a triple 
+\[
+\Phi \subset H \subset \Phi'.
+\]
+Here:
+\begin{itemize}
+\item $\Phi$ is a space of very regular test vectors,
+\item $H$ is a Hilbert space,
+\item $\Phi'$ is the dual space of generalized vectors (distributions).
+\end{itemize}
+
+\subsection{Standard Example}
+The canonical example is 
+\[
+\mathcal{S}(\mathbb{R}^n) \subset L^2(\mathbb{R}^n) \subset \mathcal{S}'(\mathbb{R}^n).
+\]
+Here:
+\begin{itemize}
+\item Schwartz functions are ordinary Hilbert vectors,
+\item but tempered distributions are generalized vectors.
+\end{itemize}
+
+\subsection{Why This Matters}
+The Riesz theorem identifies 
+\[
+H \cong H^*.
+\]
+However, distributions belong not to $H^*$, but to the much larger space $\Phi'$. Thus rigged Hilbert spaces explain why objects like:
+\begin{itemize}
+\item Dirac deltas,
+\item plane waves,
+\item generalized eigenvectors,
+\end{itemize}
+lie outside the Hilbert space while still acting meaningfully on sufficiently regular vectors.
+
+
+
+\section{Plane Waves and Generalized Eigenvectors}
+
+Consider the plane wave 
+\[
+e^{ikx}.
+\]
+Since 
+\[
+|e^{ikx}| = 1,
+\]
+we have 
+\[
+\int_{\mathbb{R}} |e^{ikx}|^2 dx = \infty.
+\]
+Thus:
+\[
+e^{ikx} \notin L^2(\mathbb{R}).
+\]
+However, it defines a tempered distribution:
+\[
+\phi \mapsto \int_{\mathbb{R}} e^{ikx}\phi(x)dx.
+\]
+Thus:
+\[
+e^{ikx} \in \mathcal{S}'(\mathbb{R}).
+\]
+This explains why generalized eigenvectors of differential operators naturally belong to the distributional side of the rigged Hilbert space.
+
+
+
+\section{The Conceptual Role of Rigged Hilbert Spaces}
+
+Rigged Hilbert spaces unify:
+\begin{itemize}
+\item Hilbert-space geometry,
+\item generalized Fourier analysis,
+\item distribution theory,
+\item spectral theory,
+\item quantum mechanics.
+\end{itemize}
+
+Conceptually:
+\begin{itemize}
+\item $\Phi$ contains very regular vectors,
+\item $H$ contains ordinary finite-energy vectors,
+\item $\Phi'$ contains generalized vectors.
+\end{itemize}
+
+This framework explains rigorously many symbolic constructions used in physics, such as:
+\[
+I = \int |x\rangle\langle x|dx,
+\]
+and
+\[
+\delta(x-y) = \sum_n e_n(x)\overline{e_n(y)}.
+\]
+These expressions are generally meaningful only in the distributional sense. Rigged Hilbert spaces therefore provide the natural meeting point between:
+\begin{itemize}
+\item geometry,
+\item analysis,
+\item distributions,
+\item and generalized spectral decompositions.
+\end{itemize}
+
+
+
+\section*{Final Remarks}
+
+Banach spaces guarantee the stability of limiting processes. Hilbert spaces add orthogonality and geometric structure. Distribution theory enlarges the notion of function. Rigged Hilbert spaces organize all these ideas into a single coherent framework. This hierarchy of spaces lies at the mathematical foundation of:
+\begin{itemize}
+\item Fourier analysis,
+\item PDEs,
+\item spectral theory,
+\item quantum mechanics,
+\item signal processing,
+\item and modern mathematical physics.
+\end{itemize}
+
+\end{document}
