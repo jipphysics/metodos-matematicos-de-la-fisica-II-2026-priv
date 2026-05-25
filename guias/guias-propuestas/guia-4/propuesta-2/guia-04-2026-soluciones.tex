@@ -2439,6 +2439,177 @@ En ecuaciones hiperbólicas, la información viaja precisamente sobre caracterí
 
 \end{enumerate}
 
+\section{Problema 8), m\'etodo de las caracter\'isticas II}
+
+% https://chatgpt.com/share/6a140182-6a90-83e9-90b5-d620d5603e40
+
+Consider a first-order PDE given by
+$$
+F(x_1,\dots,x_n,u,p_1,\dots,p_n)=0,
+$$
+and
+$$
+p_i=\frac{\partial u}{\partial x_i}(x)
+$$
+where $x=(x_1,..,x_n)\in \RR^n$ is a vector of independent coordinates and $\RR^n\ni x \to u(x)\in \RR$ is a solution.
+
+The idea of the method of characteristics is to look for curves
+$$
+s\mapsto x(s)\in\mathbb{R}^n
+$$
+along which the PDE reduces to a system of coupled ODEs.
+If $u$ is a solution, define along such a curve
+$$
+u(s):=u(x(s)),
+$$
+and
+$$
+p_i(s):=\frac{\partial u}{\partial x_i}(x(s)).
+$$
+Then, by the chain rule,
+$$
+\frac{du}{ds}(s)
+=
+\sum_{i=1}^n
+\frac{\partial u}{\partial x_i}(x(s))
+\frac{dx_i}{ds}(s)
+=
+\sum_{i=1}^n p_i(s)\frac{dx_i}{ds}(s).
+$$
+The method of characteristics chooses the characteristic curves so that
+$$
+\frac{dx_i}{ds}(s)
+=
+\frac{\partial F}{\partial p_i}
+(x(s),u(s),p(s))
+.
+$$
+Substituting this into the previous equation gives
+$$
+\frac{du}{ds}(s)
+=
+\sum_{i=1}^n
+p_i(s)
+\frac{\partial F}{\partial p_i}
+(x(s),u(s),p(s)).
+$$
+However, for completeness, the full characteristic system also includes evolution equations for the variables $p_i$. 
+Namely, differentiating the constraint
+$$
+F(x(s),u(s),p(s))=0
+$$
+along the curve leads to
+$$
+\frac{dp_i}{ds}(s)
+=
+-
+\frac{\partial F}{\partial x_i}
+(x(s),u(s),p(s))
+-
+p_i(s)
+\frac{\partial F}{\partial u}
+(x(s),u(s),p(s)).
+$$
+Thus the complete characteristic system of coupled ODEs is
+$$
+\frac{dx_i}{ds}(s)
+=
+\frac{\partial F}{\partial p_i}
+(x(s),u(s),p(s)),
+$$
+$$
+\frac{du}{ds}(s)
+=
+\sum_{i=1}^n
+p_i(s)
+\frac{\partial F}{\partial p_i}
+(x(s),u(s),p(s)),
+$$
+$$
+\frac{dp_i}{ds}(s)
+=
+-
+\frac{\partial F}{\partial x_i}
+(x(s),u(s),p(s))
+-
+p_i(s)
+\frac{\partial F}{\partial u}
+(x(s),u(s),p(s)).
+$$
+This is usually called the Charpit or {\em characteristic system of ODEs} for a general nonlinear first-order PDE.
+In summary, the method seeks curves in the extended space
+$$
+(x_1,\dots,x_n,u,p_1,\dots,p_n)
+\in
+\RR^{2n+1}
+$$
+along which the PDE reduces to an system of coupled ODEs.
+The solutions of this system are functions
+$$
+x_i(s),\qquad u(s),\qquad p_i(s),
+$$
+which are determined with suitable initial conditions.
+Crucially, the unknown function $x\to u(x)$ can be reconstructed from the integral curves (i.e. the solutions) of the characteristic system of ODEs.
+To do so, the initial data of the system of ODEs is usually prescribed on an $(n-1)$-dimensional hypersurface
+$$
+\Sigma\subset\mathbb{R}^n.
+$$
+If $\sigma=(\sigma_1,\dots,\sigma_{n-1})$ denotes coordinates on $\Sigma$, we may parameterize the initial surface as
+$$
+x_i(0)=X_i(\sigma),
+$$
+and prescribe
+$$
+u(0)=U_0(\sigma).
+$$
+From these data one determines compatible initial values for the quantities
+$$
+p_i(0)=\frac{\partial u}{\partial x_i}(x(0)).
+$$
+Solving the characteristic system then produces a family of characteristic curves
+$$
+s
+\mapsto
+\bigl(
+x(s,\sigma),
+u(s,\sigma),
+p(s,\sigma)
+\bigr).
+$$
+The functions
+$$
+x_i=x_i(s,\sigma)
+$$
+define a transformation from the parameters
+$$
+(s,\sigma_1,\dots,\sigma_{n-1})
+$$
+to the original coordinates
+$$
+(x_1,\dots,x_n).
+$$
+Whenever this transformation is locally invertible, one can solve for
+$$
+s=s(x),
+\qquad
+\sigma=\sigma(x),
+$$
+and substitute these expressions into
+$$
+u=u(s,\sigma).
+$$
+In this way one reconstructs a solution
+$$
+u(x)=u(s(x),\sigma(x))
+$$
+of the original PDE.
+Thus, the method of characteristics converts the PDE problem into:
+\begin{enumerate}
+\item solving the characteristic ODE system,
+\item determining the characteristic curves from the initial data,
+\item eliminating the auxiliary parameters $(s,\sigma)$ to recover $u$ as a function of the original variables $x$.
+\end{enumerate}
+
 \end{document}
 
 
