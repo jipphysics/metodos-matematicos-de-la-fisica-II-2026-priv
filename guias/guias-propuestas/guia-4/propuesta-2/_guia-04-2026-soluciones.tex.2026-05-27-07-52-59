@@ -2515,14 +2515,12 @@ $$
 \frac{dx_i}{ds}
 =
 \frac{\partial F}{\partial p_i},
-\quad (1)
 $$
 $$
 \frac{du}{ds}
 =
 \sum_{i=1}^n
 p_i\frac{\partial F}{\partial p_i},
-\quad (2)
 $$
 $$
 \frac{dp_i}{ds}
@@ -2531,7 +2529,6 @@ $$
 \frac{\partial F}{\partial x_i}
 -
 p_i\frac{\partial F}{\partial u}.
-\quad (3)
 $$
 
 This system evolves in the extended space
@@ -2562,28 +2559,6 @@ $$
 u(0)=U_0(\sigma).
 $$
 
-However, the initial hypersurface must be non-characteristic. 
-This means that the characteristic direction (see Eq.~(1))
-$$
-\left(
-\frac{\partial F}{\partial p_1},
-\dots,
-\frac{\partial F}{\partial p_n}
-\right)
-\quad (4)
-$$
-must not be tangent to $\Sigma$. Equivalently, if
-$$
-\frac{\partial X}{\partial \sigma_1},
-\dots,
-\frac{\partial X}{\partial \sigma_{n-1}}
-$$
-span the tangent space of $\Sigma$, the vector of Eq.~(4) must be linearly independent from them. 
-Geometrically, this guarantees that the characteristic curves intersect the initial hypersurface transversally rather than lying inside it. 
-Otherwise the evolution problem becomes degenerate and the local reconstruction of the solution may fail.
-More specifically, if the vector of Eq.~(4) is tangent to $\Sigma$, then the characteristic curves starting on $\Sigma$ remain inside $\Sigma$, at least initially. 
-In that case, the characteristic flow does not propagate the data away from the initial surface, so the PDE cannot determine a unique extension of the solution outside $\Sigma$.
-
 The initial values of
 $$
 p_i(0)=\frac{\partial u}{\partial x_i}(x(0))
@@ -2602,8 +2577,6 @@ These provide $n-1$ equations for the $n$ unknowns $p_i$, while the remaining eq
 $$
 F(X(\sigma),U_0(\sigma),p_1,\dots,p_n)=0.
 $$
-
-Under the non-characteristic condition, these equations determine the quantities $p_i$ locally and uniquely on the initial surface.
 
 Solving the characteristic system yields a family of curves
 $$
