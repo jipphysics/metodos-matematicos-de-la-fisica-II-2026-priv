@@ -1049,6 +1049,55 @@ ik\,e^{ika}
 .
 $$
 
+{\em Extra!}
+En este contexto, un resultado interesante y muy importante es el siguiente.
+Para toda funci\'on de prueba $\varphi$ vale que
+\begin{eqnarray}
+\langle \derv \phas_a , \varphi \rangle
+&=&
+-
+\langle \phas_a , \derv \varphi \rangle
+\notag
+\\
+&=&
+-
+\int_{-\infty}^{\infty}
+dx\,
+e^{iax}
+\varphi'(x)
+\notag
+\\
+&=&
+-
+\left.
+e^{iax}
+\varphi(x)
+\right|_{-\infty}^{\infty}
++
+ia
+\int_{-\infty}^{\infty}
+dx\,
+e^{iax}
+\varphi(x),
+\notag
+\quad \text{sale de integrar por partes,}
+\\
+&=&
+ia
+\int_{-\infty}^{\infty}
+dx\,
+e^{iax}
+\varphi(x),
+\notag
+\\
+&=&
+ia
+\langle \phas_a , \varphi \rangle
+.
+\notag
+\end{eqnarray}
+Esto quiere decir que, cuando el operador $\derv$ act\'ua sobre distribuciones, tiene a la distribuci\'on $\phas_a$ como autovector a autovalor $ia$.
+
 \prob Encuentre por transformada de Fourier la soluci\'on general de la ecuaci\'on de movimiento
 \[
 \ddot{x} + \omega_0^2 x = 0, \qquad -\infty < t < \infty
