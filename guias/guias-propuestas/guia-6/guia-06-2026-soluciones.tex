@@ -687,6 +687,298 @@ utilizando la fórmula de Kirchhoff (medias esféricas). Interprete el resultado
 {\bf Soluci\'on }{\em 3)}
 \vspace{0.5cm}
 
+Debemos resolver el problema de Cauchy para la ecuación de ondas en $\mathbb{R}^3$:
+$$
+u_{tt}-c^2\nabla^2u=0,
+$$
+con condiciones iniciales
+$$
+u(\vec x,0)=
+\begin{cases}
+1,& |\vec x|\le1,\\
+0,& |\vec x|>1,
+\end{cases}
+$$
+$$
+u_t(\vec x,0)=0.
+$$
+El problema pide usar la fórmula de Kirchhoff (medias esféricas) e interpretar físicamente el resultado. 
+
+{\bf 1. Fórmula de Kirchhoff}
+
+Para la ecuación de ondas en $\mathbb R^3$, la solución con datos iniciales
+$$
+u(\vec x,0)=f(\vec x),
+\qquad
+u_t(\vec x,0)=g(\vec x),
+$$
+viene dada por
+$$
+u(\vec x,t)
+=
+\frac{\partial}{\partial t}
+\left[
+\frac1{4\pi c^2 t}
+\int_{|\vec y-\vec x|=ct}
+f(\vec y),dS_y
+\right]
++
+\frac1{4\pi c^2 t}
+\int_{|\vec y-\vec x|=ct}
+g(\vec y),dS_y.
+$$
+Como aquí
+$$
+g(\vec x)=0,
+$$
+queda
+$$
+u(\vec x,t)
+=
+\frac{\partial}{\partial t}
+\left[
+\frac1{4\pi c^2 t}
+\int_{|\vec y-\vec x|=ct}
+f(\vec y),dS_y
+\right].
+$$
+
+{\bf 2. Interpretación geométrica}
+
+La función inicial vale:
+\begin{itemize}
+\item $1$ dentro de la esfera unitaria,
+\item $0$ fuera.
+\end{itemize}
+Entonces la integral sobre la esfera
+$$
+|\vec y-\vec x|=ct
+$$
+simplemente cuenta el área de la parte de esa esfera que queda dentro de la esfera inicial de radio 1.
+
+{\bf 3. Simetría radial}
+
+El problema es radial, así que definimos
+$$
+r=|\vec x|.
+$$
+La solución depende sólo de $r$ y $t$:
+$$
+u(\vec x,t)=u(r,t).
+$$
+La esfera de integración tiene:
+\begin{itemize}
+\item centro en el punto de observación $\vec x$,
+\item radio $ct$.
+\end{itemize}
+Debemos estudiar cuándo intersecta la esfera inicial $ |\vec y|\le1$.
+
+{\bf 4. Regiones posibles}
+
+{\bf Caso 1: no hay intersección}
+
+Si
+$$
+r-ct>1
+$$
+o equivalentemente
+$$
+ct<r-1,
+$$
+la esfera de radio $ct$ centrada en $\vec x$ queda completamente fuera de la esfera inicial.
+Entonces
+$$
+u(r,t)=0.
+$$
+
+{\bf Caso 2: la esfera queda completamente dentro}
+
+Si
+$$
+r+ct<1,
+$$
+la esfera de integración queda completamente dentro de la región donde $f=1$.
+Entonces
+$$
+\int f,dS =4\pi(ct)^2.
+$$
+Por lo tanto,
+$$
+u(r,t)
+=
+\frac{\partial}{\partial t}
+\left[
+\frac{4\pi c^2 t^2}{4\pi c^2 t}
+\right]
+=
+- \frac{\partial}{\partial t}(t)
+1.
+$$
+Así,
+$$
+u(r,t)=1.
+$$
+
+{\bf Caso 3: intersección parcial}
+
+Cuando
+$$
+|r-1|<ct<r+1,
+$$
+la esfera corta parcialmente la esfera inicial.
+La intersección es un casquete esférico.
+
+{\bf 5. Área del casquete}
+
+La esfera de integración tiene radio
+$$
+a=ct.
+$$
+El plano de intersección entre ambas esferas está a distancia
+$$
+x=\frac{r^2+a^2-1}{2r}
+$$
+del centro de la esfera inicial.
+La altura del casquete sobre la esfera de radio $a$ es
+$$
+h=a-(r-x).
+$$
+Tras simplificar:
+$$
+h
+=
+\frac{1-(r-a)^2}{2r}.
+$$
+El área del casquete es
+$$
+A=2\pi ah.
+$$
+Entonces
+$$
+A
+=
+2\pi(ct)
+\frac{1-(r-ct)^2}{2r}.
+$$
+o sea
+$$
+A
+=
+\frac{\pi ct}{r}
+\left[
+1-(r-ct)^2
+\right].
+$$
+
+{\bf 6. Solución}
+
+Sustituimos en Kirchhoff:
+$$
+u(r,t)
+=
+\frac{\partial}{\partial t}
+\left[
+\frac1{4\pi c^2 t}
+A
+\right].
+$$
+Entonces
+$$
+u(r,t)
+=
+\frac{\partial}{\partial t}
+\left[
+\frac1{4\pi c^2 t}
+\frac{\pi ct}{r}
+(1-(r-ct)^2)
+\right].
+$$
+Simplificando:
+$$
+u(r,t)
+=
+\frac1{4cr}
+\frac{\partial}{\partial t}
+\left[
+1-(r-ct)^2
+\right].
+$$
+Derivando:
+$$
+\frac{d}{dt}
+[1-(r-ct)^2]
+=
+2c(r-ct).
+$$
+Así,
+$$
+u(r,t)
+=
+\frac{r-ct}{2r}.
+$$
+
+{\bf 7. Resultado completo}
+
+Finalmente,
+$$
+\boxed{
+u(r,t)=
+\begin{cases}
+1,
+&
+r+ct<1,\\
+\dfrac{r-ct}{2r},
+&
+|r-1|<ct<r+1,\\
+0,
+&
+ct>r+1.
+\end{cases}
+}
+$$
+
+{\bf 8. Interpretación física}
+
+La perturbación inicial ocupa una esfera de radio 1.
+Con el tiempo:
+\begin{itemize}
+\item el frente de onda se propaga hacia afuera con velocidad $c$,
+\item la región perturbada se convierte en una cáscara esférica en expansión.
+\end{itemize}
+
+{\bf Qué mide un observador a distancia $r$}
+
+Fijemos un punto a distancia $r$ del origen.
+La señal llega cuando
+$$
+ct=r-1.
+$$
+y desaparece cuando
+$$
+ct=r+1.
+$$
+Por lo tanto el observador detecta un pulso de duración
+$$
+\Delta t=\frac2c.
+$$
+Durante ese intervalo:
+$$
+u(r,t)=\frac{r-ct}{2r},
+$$
+que decrece linealmente con el tiempo.
+
+{\bf 9. Interpretación final}
+
+La perturbación inicial ``explota'' formando una onda esférica que viaja radialmente.
+Cada observador:
+\begin{itemize}
+\item no detecta nada antes de la llegada del frente,
+\item luego mide un pulso temporal finito,
+\item finalmente vuelve a medir cero.
+\end{itemize}
+Esto refleja el principio de Huygens en 3D: la perturbación se propaga exactamente sobre el frente de onda, sin cola posterior.
+
+
 
 \prob Una cuerda de longitud $\ell$ tiene uno de sus extremos libre de deslizar a lo largo de un riel vertical, y el otro deslizando sin fricci\'on a lo largo de otro riel, pero unido a un punto fijo de \'este por un resorte de longitud natural nula, de modo que su apartamiento de la horizontal responde a la ecuaci\'on de ondas $u_{tt}-c^2 u_{xx}=0$, con CC
 \[
