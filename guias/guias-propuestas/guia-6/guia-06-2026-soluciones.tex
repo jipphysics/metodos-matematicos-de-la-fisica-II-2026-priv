@@ -1,0 +1,725 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=50\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Guía 5}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+\newcommand{\tder}[2]{\frac{d #1}{d #2}}
+
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Guía N$^\txt{o}$ 6 -- 2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% https://chatgpt.com/share/6a18a395-41bc-83e9-bc0c-af63e5fcd96c
+
+\section*{Parte I: Problemas Centrales (para desarrollar en clase)}
+
+
+\prob Defina la energía del problema
+$$
+\frac{\partial^2 u}{\partial t^2}
+-
+c^2
+\frac{\partial^2 u}{\partial x^2}
+=0,
+\qquad
+0\le x\le L,
+\quad t\ge0,
+$$
+con condiciones de contorno
+$$
+u(0,t)=u(L,t)=0,
+$$
+y condiciones iniciales
+$$
+u(x,0)=f(x),
+\qquad
+u_t(x,0)=g(x).
+$$
+Muestre que esta energ\'ia es constante en el tiempo.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1)}
+\vspace{0.5cm}
+
+\begin{enumerate}
+\item Definición de la energía
+
+La energía total de la cuerda se define como
+$$
+E(t)
+=
+\frac12
+\int_0^L
+\left[
+u_t^2(x,t)
++
+c^2 u_x^2(x,t)
+\right]
+dx.
+$$
+Interpretación física:
+\begin{itemize}
+\item $u_t^2$: energía cinética.
+\item $c^2 u_x^2$: energía potencial elástica.
+\end{itemize}
+
+\item Demostrar que la energía se conserva
+Queremos probar que
+$$
+\frac{dE}{dt}=0.
+$$
+Derivamos:
+$$
+\frac{dE}{dt}
+=
+\frac12
+\frac{d}{dt}
+\int_0^L
+\left(
+u_t^2+c^2u_x^2
+\right)dx.
+$$
+Intercambiando derivada e integral:
+$$
+\frac{dE}{dt}
+=
+\int_0^L
+\left(
+u_tu_{tt}
++
+c^2u_xu_{xt}
+\right)dx.
+$$
+Ahora usamos la ecuación de ondas:
+$$
+u_{tt}=c^2u_{xx}.
+$$
+Entonces
+$$
+\frac{dE}{dt}
+=
+c^2
+\int_0^L
+\left(
+u_tu_{xx}
++
+u_xu_{xt}
+\right)dx.
+$$
+Integramos por partes el primer término:
+$$
+\int_0^L u_tu_{xx}\,dx
+=
+\left[
+u_tu_x
+\right]_0^L
+-
+\int_0^L u_{xt}u_x\,dx.
+$$
+Sustituyendo:
+$$
+\frac{dE}{dt}
+=
+c^2
+\left[
+u_tu_x
+\right]_0^L
+-
+c^2
+\int_0^L u_{xt}u_x\,dx
++
+c^2
+\int_0^L u_xu_{xt}\,dx.
+$$
+Los integrales se cancelan:
+$$
+\frac{dE}{dt}
+=
+c^2
+\left[
+u_tu_x
+\right]_0^L.
+$$
+Ahora usamos las condiciones de contorno:
+$$
+u(0,t)=u(L,t)=0.
+$$
+Derivando respecto del tiempo:
+$$
+u_t(0,t)=u_t(L,t)=0.
+$$
+Por lo tanto,
+$$
+\left[
+u_tu_x
+\right]_0^L
+=
+u_t(L,t)u_x(L,t)
+- 
+u_t(0,t)u_x(0,t)
+=
+0.
+$$
+Finalmente,
+$$
+\boxed{
+\frac{dE}{dt}=0
+}
+$$
+y entonces
+$$
+\boxed{
+E(t)=\text{cte.}
+}
+$$
+La energía total de la cuerda se conserva en el tiempo.
+\end{enumerate}
+
+
+
+\prob Consideremos la ecuación de ondas amortiguada:
+$$
+u_{tt}-c^2u_{xx}+\gamma u_t=0,
+\qquad
+0<\gamma<\frac{2\pi c}{L},
+$$
+con condiciones de contorno
+$$
+u(0,t)=u(L,t)=0,
+$$
+y condiciones iniciales
+$$
+u(x,0)=f(x),
+\qquad
+u_t(x,0)=g(x).
+$$
+Debemos:
+\begin{enumerate}
+\item Resolver el problema.
+\item Mostrar que la solución decae en el tiempo.
+\item Mostrar que la energía también decae y determinar la ley temporal.
+\end{enumerate}
+
+{\bf 1. Separación de variables}
+
+Buscamos soluciones de la forma
+$$
+u(x,t)=X(x)T(t).
+$$
+Sustituyendo:
+$$
+XT''-c^2X''T+\gamma XT'=0.
+$$
+Dividimos por $XT$:
+$$
+\frac{T''+\gamma T'}{T}
+=
+c^2\frac{X''}{X}.
+$$
+Ambos lados deben ser iguales a una constante $-\lambda$:
+$$
+c^2X''+\lambda X=0,
+$$
+$$
+T''+\gamma T'+\lambda T=0.
+$$
+
+{\bf 2. Problema espacial}
+
+Las condiciones de contorno son
+$$
+X(0)=X(L)=0.
+$$
+Entonces el problema espectral es
+$$
+X''+\frac{\lambda}{c^2}X=0.
+$$
+Los autovalores y autofunciones son
+$$
+\lambda_n=c^2\left(\frac{n\pi}{L}\right)^2,
+\qquad
+X_n(x)=\sin\left(\frac{n\pi x}{L}\right),
+\qquad
+n=1,2,\dots
+$$
+
+{\bf 3. Ecuación temporal}
+
+Para cada modo:
+$$
+T_n''+\gamma T_n'
++
+\omega_n^2T_n=0,
+$$
+donde
+$$
+\omega_n=\frac{n\pi c}{L}.
+$$
+Buscamos soluciones de la forma
+$$
+T_n(t)=e^{rt}
+$$
+donde, por simplicidad, ignoramos moment\'aneamente el $r$ dependa de $n$.
+Entonces
+$$
+T_n'(t)=re^{rt},
+\qquad
+T_n''(t)=r^2e^{rt}.
+$$
+Sustituyendo en la ecuación diferencial:
+$$
+r^2e^{rt}
++
+\gamma re^{rt}
++
+\omega_n^2e^{rt}
+=0.
+$$
+Factorizamos $e^{rt}\neq 0$:
+$$
+e^{rt}
+\left(
+r^2+\gamma r+\omega_n^2
+\right)=0.
+$$
+Por lo tanto, la ecuación que debe satisfacer $r$, la ecuaci\'on caracter\'istica, es
+$$
+r^2+\gamma r+\omega_n^2=0.
+$$
+Sus raíces son
+$$
+r_{\pm}
+=
+-\frac{\gamma}{2}
+\pm
+\sqrt{
+\frac{\gamma^2}{4}-\omega_n^2
+}.
+$$
+La condición
+$$
+0<\gamma<\frac{2\pi c}{L}
+$$
+implica
+$$
+\gamma<2\omega_1\le 2\omega_n,
+$$
+de modo que todas las raíces son complejas conjugadas:
+$$
+r_\pm
+=
+-\frac{\gamma}{2}
+\pm
+i\Omega_n,
+$$
+con
+$$
+\Omega_n
+=
+\sqrt{
+\omega_n^2-\frac{\gamma^2}{4}
+}.
+$$
+Así,
+$$
+e^{r_\pm t}
+=
+e^{-\gamma t/2}
+\left[
+\cos(\Omega_n t)
+\pm i\sin(\Omega_n t)
+\right].
+$$
+Por ende, la solución general compleja sería
+$$
+T(t)
+=
+C_1e^{r_+ t}
++
+C_2e^{r_- t}.
+$$
+Pero la ecuación diferencial tiene coeficientes reales, así que queremos soluciones reales.
+Tomando combinaciones lineales apropiadas de $e^{r_+ t}$ y $e^{r_- t}$, obtenemos:
+$$
+T_n(t)
+=
+e^{-\gamma t/2}
+\left(
+A_n\cos(\Omega_nt)
++
+B_n\sin(\Omega_nt)
+\right).
+$$
+
+{\bf 4. Solución general}
+
+La solución es
+$$
+u(x,t)
+=
+\sum_{n=1}^\infty
+e^{-\gamma t/2}
+\left(
+A_n\cos(\Omega_nt)
++
+B_n\sin(\Omega_nt)
+\right)
+\sin\left(\frac{n\pi x}{L}\right).
+$$
+Los coeficientes se obtienen de las condiciones iniciales.
+
+{\bf Coeficientes usando $u(x,0)=f(x)$}
+
+En $t=0$:
+$$
+f(x)
+=
+\sum_{n=1}^\infty
+A_n
+\sin\left(\frac{n\pi x}{L}\right).
+$$
+Luego
+$$
+A_n
+=
+\frac{2}{L}
+\int_0^L
+f(x)
+\sin\left(\frac{n\pi x}{L}\right)
+dx.
+$$
+
+{\bf Coeficientes usando $u_t(x,0)=g(x)$}
+
+Derivando:
+$$
+u_t=
+\sum_{n=1}^\infty
+e^{-\gamma t/2}
+\left[
+-\frac{\gamma}{2}(A_n\cos\Omega_nt+B_n\sin\Omega_nt)
+\right.
+$$
+$$
+\left.
+\qquad
++\Omega_n(-A_n\sin\Omega_nt+B_n\cos\Omega_nt)
+\right]
+\sin\left(\frac{n\pi x}{L}\right).
+$$
+En $t=0$:
+$$
+g(x)
+=
+\sum_{n=1}^\infty
+\left(
+-\frac{\gamma}{2}A_n+\Omega_nB_n
+\right)
+\sin\left(\frac{n\pi x}{L}\right).
+$$
+Definiendo
+$$
+g_n
+=
+\frac{2}{L}
+\int_0^L
+g(x)
+\sin\left(\frac{n\pi x}{L}\right)
+dx,
+$$
+obtenemos
+$$
+B_n
+=
+\frac{g_n+\frac{\gamma}{2}A_n}{\Omega_n}.
+$$
+
+{\bf 5. Decaimiento temporal de la solución}
+
+Cada modo contiene el factor
+$$
+e^{-\gamma t/2}.
+$$
+Por lo tanto,
+$$
+\boxed{
+u(x,t)\sim e^{-\gamma t/2}
+}
+$$
+para tiempos grandes.
+La amplitud de las oscilaciones decae exponencialmente.
+
+{\bf 6. Energía}
+
+La energía es
+$$
+E(t)
+=
+\frac12
+\int_0^L
+\left(
+u_t^2+c^2u_x^2
+\right)dx.
+$$
+Derivamos:
+$$
+\frac{dE}{dt}
+=
+\int_0^L
+(u_tu_{tt}+c^2u_xu_{xt})dx.
+$$
+Usamos la ecuación:
+$$
+u_{tt}=c^2u_{xx}-\gamma u_t.
+$$
+Entonces
+$$
+\frac{dE}{dt}
+=
+\int_0^L
+\left(
+c^2u_tu_{xx}
+-\gamma u_t^2
++c^2u_xu_{xt}
+\right)dx.
+$$
+Integramos por partes el término con $u_{xx}$:
+$$
+\int_0^L u_tu_{xx}dx
+=
+[u_tu_x]_0^L
+-
+\int_0^L u_{xt}u_xdx.
+$$
+El término de borde se anula porque
+$$
+u(0,t)=u(L,t)=0
+\Rightarrow
+u_t(0,t)=u_t(L,t)=0.
+$$
+Así,
+$$
+\frac{dE}{dt}
+=
+-\gamma
+\int_0^L
+u_t^2dx.
+$$
+Por lo tanto,
+$$
+\boxed{
+\frac{dE}{dt}\le0
+}
+$$
+y la energía decrece monótonamente.
+
+{\bf 7. Ley temporal de decaimiento de la energía}
+
+Como
+$$
+u\sim e^{-\gamma t/2},
+$$
+entonces tanto $u_t$ como $u_x$ también decaen como
+$$
+e^{-\gamma t/2}.
+$$
+La energía es cuadrática en estos términos, así que
+$$
+E(t)\sim e^{-\gamma t}.
+$$
+En consecuencia,
+$$
+\boxed{
+E(t)\propto e^{-\gamma t}
+}
+$$
+para tiempos grandes.
+
+{\bf Resultado final}
+
+La solución es
+$$
+\boxed{
+u(x,t)
+=
+\sum_{n=1}^\infty
+e^{-\gamma t/2}
+\left(
+A_n\cos(\Omega_nt)
++
+B_n\sin(\Omega_nt)
+\right)
+\sin\left(\frac{n\pi x}{L}\right)
+}
+$$
+con
+$$
+\Omega_n
+=
+\sqrt{
+\left(\frac{n\pi c}{L}\right)^2
+-\frac{\gamma^2}{4}
+},
+$$
+y:
+\begin{itemize}
+\item la amplitud decae como
+$$
+\boxed{
+u\sim e^{-\gamma t/2}
+}
+$$
+\item la energía decae como
+$$
+\boxed{
+E(t)\sim e^{-\gamma t}
+}
+$$
+(es decir, decaimiento exponencial).
+\end{itemize}
+
+\section*{Parte II: Problemas Propuestos (para profundización y repaso)}
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
