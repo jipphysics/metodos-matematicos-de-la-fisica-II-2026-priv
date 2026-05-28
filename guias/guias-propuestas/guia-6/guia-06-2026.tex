@@ -1,0 +1,245 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=50\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Guía 6}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+\newcommand{\tder}[2]{\frac{d #1}{d #2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Guía N$^\txt{o}$ 6 -- 2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{Parte I: Problemas Centrales (para desarrollar en clase)}
+
+\prob Defina la energía para el problema
+\[
+\frac{\partial^2 u}{\partial t^2} - c^2 \frac{\partial^2 u}{\partial x^2} = 0, \quad 0 \le x \le L,\; t \ge 0,
+\]
+con condiciones iniciales \(u(x,0)=f(x)\), \(\frac{\partial u}{\partial t}(x,0)=g(x)\) y condiciones de contorno \(u(0,t)=u(L,t)=0\). Muestre que esta energía es constante en el tiempo.
+
+\prob Considere el problema para la cuerda de guitarra con un término de disipación,
+\[
+\frac{\partial^2 u}{\partial t^2} - c^2 \frac{\partial^2 u}{\partial x^2} + \gamma \frac{\partial u}{\partial t} = 0, \quad 0<\gamma<\frac{2\pi c}{L},
+\]
+con CC \(u(0,t)=u(L,t)=0\) y CI \(u(x,0)=f(x)\), \(\frac{\partial u}{\partial t}(x,0)=g(x)\). Resuelva el problema y muestre que la solución y su energía decaen en el tiempo. ¿Con qué ley temporal?
+
+\prob Calcule la solución para el problema de Cauchy en todo el espacio \(\vec{x}\in\mathbb{R}^3\), \(t\ge0\)
+\[
+\frac{\partial^2 u}{\partial t^2} - c^2 \nabla^2 u = 0,\quad u(\vec{x},0)=\begin{cases} 1, & \norm{\vec{x}}\le 1,\\ 0, & \norm{\vec{x}}>1, \end{cases} \quad \frac{\partial u}{\partial t}(\vec{x},0)=0,
+\]
+utilizando la fórmula de Kirchhoff (medias esféricas). Interprete el resultado describiendo qué onda mediría un observador a una distancia \(r\) del origen en función del tiempo.
+
+\prob Una cuerda de longitud $\ell$ tiene uno de sus extremos libre de deslizar a lo largo de un riel vertical, y el otro deslizando sin fricci\'on a lo largo de otro riel, pero unido a un punto fijo de \'este por un resorte de longitud natural nula, de modo que su apartamiento de la horizontal responde a la ecuaci\'on de ondas $u_{tt}-c^2 u_{xx}=0$, con CC
+\[
+u_x(0,t)=0, \qquad u_x(\ell,t)+\eta u(\ell,t)=0.
+\]
+Si la cuerda se halla inicialmente horizontal y se le imprime un impulso inicial en el punto $x_0$ ($0<x_0<\ell$), halle su desplazamiento $u(x,t)$ para todo tiempo posterior.
+
+%\prob Resuelva la ecuación de ondas homogénea en la franja \((x,t)\in[0,1]\times[0,\infty)\) con condiciones iniciales homogéneas \(u(x,0)=0\), \(\frac{\partial u}{\partial t}(x,0)=0\) y condiciones de contorno
+%\begin{align*}
+%\frac{\partial u}{\partial t}(0,t)+c\frac{\partial u}{\partial x}(0,t)&=h_0(t)=\begin{cases} 1, & 0<t\le1,\\ 0, & 1<t, \end{cases}\\
+%\frac{\partial u}{\partial x}(1,t)&=0 \quad\text{(condición de reflexión)}.
+%\end{align*}
+
+\prob Resuelva la ecuación de ondas para una membrana circular de radio \(R\) con el borde fijo, sabiendo que \(u(r,\theta,0)=0\) y \(\frac{\partial u}{\partial t}(r,\theta,0)=r\,\text{sen}(3\theta)\).
+
+\prob Considere la ecuación de ondas \(\frac{\partial^2 u}{\partial t^2}=c^2\nabla^2 u\) en el interior de una esfera de radio \(a\) con simetría radial, es decir \(u=u(r,t)\). 
+\begin{enumerate}
+\item Discuta una transformación de la forma \(u=r^{\alpha}\psi\) para reducir esta ecuación a la ecuación de onda usual unidimensional.
+\item Resuelva la ecuación anterior que satisface las condiciones \(u(a,t)=0\), \(u(r,0)=\beta\) y \(\frac{\partial u}{\partial t}(r,0)=0\), donde \(\beta\) es una constante.
+\end{enumerate}
+
+\prob Una barra delgada homogénea semiinfinita, que se extiende desde \(x=0\) en adelante, tiene su superficie lateral aislada térmicamente y su extremo en contacto térmico perfecto con un calefactor cuya temperatura varía en el tiempo como \(T_0\cos(\omega_0 t)\). Usando transformada de Fourier en \(t\), halle la temperatura \(u(x,t)\) de la barra en el estado de régimen, asumiendo que es finita en todas partes.
+
+\prob Una cuerda semiinfinita tiene inicialmente desplazamiento y velocidad nulos. Desde \(t=0\) en adelante, su extremo es forzado a moverse según \(A\,\text{sen}(\omega_0 t)\,e^{-t/\tau}\). Halle el desplazamiento \(u(x,t)\) de la cuerda para todo \(x>0\) y \(t>0\). ¿Qué tuvo que asumir acerca de \(u\) para \(x\to\infty\)? ¿Qué ocurre para \(t\to\infty\)?
+
+\prob Considere una barra homogénea infinita aislada lateralmente, con una distribución inicial de temperatura \(-T_0\) para \(x<0\) y \(T_0\) para \(x>0\). Halle la temperatura \(u(x,t)\) de la barra para todo \(x\) y \(t>0\). Ayuda: recuerde la transformada de Fourier de la función escalón de Heaviside.
+
+\prob El plano \(z=0\) se mantiene a potencial nulo, excepto por la franja \(-a<x<a\) que se mantiene a potencial \(V_0\). Halle el potencial electrostático \(u(x,y,z)\) en todo el espacio. Ayuda: tome transformada de Fourier en \(x\) y use la simetr\'{\i}a de traslaci\'on en $y$.
+
+\prob Un medio infinito tridimensional de difusividad térmica \(\kappa\) se halla inicialmente a temperatura homogénea \(T_0\). En el instante \(t=0\) se activa una fuente puntual de calor \(q\,\delta(\vec{r})\) en el origen, y permanece activada. Halle la temperatura para todo \(\vec{r}\) y \(t\).
+
+\prob Un helicóptero en vuelo estacionario a una altura \(H\) sobre el origen de coordenadas (suelo en \(z=0\)) emite sonido en una frecuencia \(\omega\). La sobrepresión atmosférica satisface la ecuación de ondas con una fuente puntual en \((0,0,H)\) y condición de contorno homogénea de Neumann en el plano \(z=0\). Encuentre \(u(x,y,z,t)\) para \(z>0\). Para una distancia horizontal \(d\) dada, halle la altura \(h_0(\omega)\) a la cual se encuentra el primer mínimo de intensidad debido a la interferencia destructiva entre los frentes de onda directo y reflejado. Muestre que para pequeñas alturas las frecuencias graves se refuerzan y las agudas se amortiguan. Ayuda: la solución fundamental para la ecuación de ondas en 3D es \(G(\vec{r},t;\vec{r}',t') = \frac{1}{2\pi c r}\Theta(t-t')\delta(r-r' - c(t-t'))\).
+
+
+\section*{Parte II: Problemas Propuestos (para profundización y repaso)}
+
+
+\prob Verifique que
+\[
+u_p(x,t) = \frac{1}{2c}\int_0^t \int_{x-c(t-\tau)}^{x+c(t-\tau)} \psi(s,\tau)\,ds\,d\tau
+\]
+satisface el problema \(\frac{\partial^2 u}{\partial t^2} - c^2\frac{\partial^2 u}{\partial x^2} = \psi(x,t)\) con datos iniciales nulos.
+
+\prob Pruebe que si los datos iniciales \(f(x)\) y \(g(x)\) tienen soporte compacto (o decaen junto con sus derivadas primeras suficientemente rápido a cero cuando \(|x|\to\infty\)), la solución de la ecuación de ondas homogénea en toda la recta conserva la energía \(E(t)=\frac{1}{2}\int_{-\infty}^{\infty}\left(u_t^2+c^2u_x^2\right)dx\).
+
+\prob Resuelva la ecuación de onda para una membrana en forma de cuña con CC de borde fijo a lo largo de las rectas \(\theta=0\) y \(\theta=\alpha\), que se encuentra inicialmente en reposo y con la forma \(f(r,\theta,0)=r\,\text{sen}(6\theta)\).
+
+\prob Cierta cuerda de largo \(L\) cuya densidad es variable tiene sus extremos fijos y sus desplazamientos satisfacen
+\[
+u_{tt} = c^2(1+\varepsilon x)^2 u_{xx}, \quad 0<x<L.
+\]
+Resuelva la ecuación mediante separación de variables y encuentre las frecuencias propias.
+
+\prob Encuentre las funciones de Green y resuelva las siguientes ecuaciones:
+\begin{enumerate}
+\item \(y''+\frac{1}{4}y = \text{sen}(2x),\quad y(0)=y(\pi)=0.\)
+\item \(x^2y''+2xy'-2y=x^2,\quad y(0)=0,\; y(1)=0.\)
+\item \(y''+\alpha y' = e^{-\beta x}\) para \(x>0\), \(\alpha,\beta>0,\quad y(0)=y'(0)=0.\)
+\item \(y''+\frac{1}{4}y = x,\quad y(0)=\alpha,\; y(\pi)=\beta.\)
+\end{enumerate}
+
+\prob Muestre que para \(\vec{r},\pvec{r}\in\mathbb{R}^3\) la solución fundamental de la ecuación de Helmholtz \((\nabla^2+k^2)G=\delta(\vec{r}-\pvec{r})\) es
+\[
+G(\vec{r},\pvec{r}) = -\frac{k}{4\pi}\,y_0(k\norm{\vec{r}-\pvec{r}}) = -\frac{\cos(k\norm{\vec{r}-\pvec{r}})}{4\pi\norm{\vec{r}-\pvec{r}}}.
+\]
+
+\prob Muestre que la solución del problema
+\[
+\nabla^2 G(\vec{r},\vec{r}') = \delta(\vec{r}-\vec{r}'),\quad 0<r,a,\; 0<\theta,\theta'<\pi,\; 0\le\phi,\phi'<2\pi,
+\]
+con \(G=0\) en \(r=a\) puede escribirse como
+\[
+G(r,\theta,\phi;r',\theta',\phi') = -\sum_{n=0}^{\infty}\sum_{m=-n}^{n}\sum_{\ell=1}^{\infty}\frac{j_n(\kappa_{n\ell}\,r/a)\,j_n(\kappa_{n\ell}\,r'/a)\,Y_{nm}(\theta,\phi)\,Y_{nm}^*(\theta',\phi')}{\kappa_{n\ell}^2\,\frac{a}{2}\,j_{n+1}^2(\kappa_{n\ell})},
+\]
+donde \(\kappa_{n\ell}\) son los ceros de \(j_n\).
+
+\prob El plano \(z=0\) se mantiene a potencial nulo, excepto por una franja \(-a<x<a\) que se mantiene a potencial \(V_0\). Halle el potencial electrostático \(u(x,y,z)\) en todo el espacio usando como función de Green la solución fundamental de la ecuación de Laplace e integrando sobre la frontera \(z=0\). Compare con el resultado del Problema 10 de la Parte I.
+
+\prob Resuelva la ecuación de ondas en una cuerda finita de longitud \(L\) con extremos libres (condiciones de Neumann homogéneas) y condiciones iniciales \(u(x,0)=f(x)\), \(u_t(x,0)=g(x)\). Determine los modos normales y las frecuencias propias.
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
