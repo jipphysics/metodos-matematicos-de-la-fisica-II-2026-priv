@@ -1096,7 +1096,50 @@ ia
 .
 \notag
 \end{eqnarray}
-Esto quiere decir que, cuando el operador $\derv$ act\'ua sobre distribuciones, tiene a la distribuci\'on $\phas_a$ como autovector a autovalor $ia$.
+Por otro lado, sea $E_a := \phas_a 1$, i.e. la aplicaci\'on del operador $\phas_a$ sobre la distribuci\'on 1.
+Luego, al anterior resultado lo podemos escribir como
+\begin{eqnarray}
+\langle \derv E_a, \varphi \rangle
+&=&
+\langle \derv \phas_a 1, \varphi \rangle
+\notag
+\\
+&=&
+\langle \derv \phas_a , \varphi \rangle
+\notag
+\\
+&=&
+ia
+\langle \phas_a , \varphi \rangle
+\notag
+\\
+&=&
+ia
+\langle \phas_a 1, \varphi \rangle
+\notag
+\\
+&=&
+ia
+\langle E_a, \varphi \rangle
+\notag
+\end{eqnarray}
+Esto quiere decir que, cuando el operador $\derv$ act\'ua sobre distribuciones, tiene a la distribuci\'on $E_a$ como autovector a autovalor $ia$.
+Notar adem\'as que la funci\'on definida por $\tilde{\varphi}(k):=\langle E_{-k},\varphi \rangle$ para cada $k$, es la transformada de Fourier de $\varphi$, ya que
+$$
+\tilde{\varphi}(k)
+=
+\langle E_{-k},\varphi \rangle
+=
+\int_{-\infty}^{\infty}
+dx\,
+e^{-ikx} \varphi(x)
+=
+(\four \varphi)(k)
+.
+$$
+Notar como $e^{iax}$ puede ser parte de distintos objetos matem\'aticos, la transformaci\'on $\phas_a$, la distribuci\'on $E_a$ y la transformada de Fourier.
+Esto suele ser el origen de muchas confusiones.
+Siempre es importante tener en claro cu\'al es el objeto matem\'atico con el que estamos trabajando.
 
 \prob Encuentre por transformada de Fourier la soluci\'on general de la ecuaci\'on de movimiento
 \[
