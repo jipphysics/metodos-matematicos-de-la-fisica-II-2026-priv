@@ -995,6 +995,350 @@ Si la cuerda se halla inicialmente horizontal y se le imprime un impulso inicial
 {\bf Soluci\'on }{\em 4)}
 \vspace{0.5cm}
 
+Una cuerda de longitud $\ell$ satisface la ecuación de ondas
+$$
+u_{tt}-c^2u_{xx}=0,
+\qquad
+0<x<\ell,
+$$
+con condiciones de contorno
+$$
+u_x(0,t)=0,
+$$
+$$
+u_x(\ell,t)+\eta u(\ell,t)=0.
+$$
+Inicialmente la cuerda está horizontal:
+$$
+u(x,0)=0,
+$$
+y recibe un impulso inicial puntual en $x_0$:
+$$
+u_t(x,0)=\delta(x-x_0),
+\qquad
+0<x_0<\ell.
+$$
+Debemos hallar $u(x,t)$.
+
+{\bf 1. Separación de variables}
+
+Buscamos soluciones de la forma
+$$
+u(x,t)=X(x)T(t).
+$$
+Sustituyendo:
+$$
+XT''-c^2X''T=0.
+$$
+Dividiendo por $XT$:
+$$
+\frac{T''}{T}
+=
+c^2\frac{X''}{X}
+=
+-\lambda.
+$$
+Entonces:
+\begin{itemize}
+\item {\bf Parte espacial}
+$$
+X''+k^2X=0,
+\qquad
+k^2=\frac{\lambda}{c^2}.
+$$
+\item {\bf Parte temporal}
+$$
+T''+\omega^2T=0,
+\qquad
+\omega=ck.
+$$
+\end{itemize}
+
+{\bf 2. Resolver el problema espacial}
+
+La ecuación espacial es
+$$
+X''+k^2X=0.
+\quad (1)
+$$
+La solución general:
+$$
+X(x)=A\cos(kx)+B\sin(kx).
+$$
+
+{\bf Condición en $x=0$}
+
+$$
+X'(0)=0.
+$$
+Derivando:
+$$
+X'(x)=-Ak\sin(kx)+Bk\cos(kx).
+$$
+Entonces:
+$$
+X'(0)=Bk=0.
+$$
+Luego:
+$$
+B=0.
+$$
+Así,
+$$
+X(x)=A\cos(kx).
+$$
+
+{\bf Condición en $x=\ell$}
+
+$$
+X'(\ell)+\eta X(\ell)=0.
+$$
+Como
+$$
+X'(x)=-Ak\sin(kx),
+$$
+tenemos
+$$
+-k\sin(k\ell)+\eta\cos(k\ell)=0.
+$$
+Equivalentemente:
+$$
+\boxed{
+k\tan(k\ell)=\eta.
+}
+$$
+
+Ésta es la ecuación trascendente para los autovalores $k_n$.
+
+{\bf 3. Modos normales}
+
+Para cada raíz $k_n$:
+$$
+X_n(x)=\cos(k_nx),
+$$
+$$
+\omega_n=ck_n.
+$$
+La solución temporal es
+$$
+T_n(t)=
+A_n\cos(\omega_nt)
++
+B_n\sin(\omega_nt).
+$$
+Entonces:
+$$
+u(x,t)
+=
+\sum_{n=1}^\infty
+\left[
+A_n\cos(\omega_nt)
++
+B_n\sin(\omega_nt)
+\right]
+\cos(k_nx).
+$$
+
+{\bf 4. Imponer las condiciones iniciales}
+
+{\bf  Desplazamiento inicial}
+$$
+u(x,0)=0.
+$$
+Entonces
+$$
+\sum_n A_n\cos(k_nx)=0.
+$$
+Por ortogonalidad:
+$$
+A_n=0.
+$$
+
+{\bf Velocidad inicial}
+
+Ahora:
+$$
+u_t(x,t)
+=
+\sum_n
+B_n\omega_n\cos(\omega_nt)\cos(k_nx).
+$$
+Por lo que en $t=0$ se pide:
+$$
+\delta(x-x_0)
+=
+\sum_n
+B_n\omega_n
+\cos(k_nx).
+%\quad (2)
+$$
+
+{\bf 5. Expansión de la delta}
+
+Debemos expandir la delta en la base de autofunciones:
+$$
+\delta(x-x_0)
+=
+\sum_n
+C_n\cos(k_nx).
+%\quad (2)
+$$
+Los coeficientes son
+$$
+C_n
+=
+\frac{
+\cos(k_nx_0)
+}{
+N_n
+},
+$$
+donde
+$$
+N_n
+=
+\int_0^\ell
+\cos^2(k_nx),dx.
+$$
+Entonces
+$$
+B_n\omega_n
+=
+\frac{
+\cos(k_nx_0)
+}{
+N_n
+}.
+$$
+Como
+$$
+\omega_n=ck_n,
+$$
+obtenemos
+$$
+B_n
+=
+\frac{
+\cos(k_nx_0)
+}{
+ck_nN_n
+}.
+$$
+
+La Ec.~(2) puede pedirse porque la Ec.~(1) define un problema de Sturm-Liouville, lo cual garantiza la existencia de una base ortonormal completa de $L^2(0,\ell)$ (formada de autovectores $\phi_n(x)=\cos(k_nx)$ del correspondiente operador $\frac{d^2}{dx^2}+k^2$), que satisfacen la relaci\'on de clausura
+$$
+\delta(x-y)
+=
+\sum_n
+\frac{\phi_n(x)\phi_n(y)}{N_n}
+$$
+donde
+$$
+N_n
+=
+\int_0^{\ell} 
+dx\,
+\phi_n^2(x).
+$$
+
+{\bf 6. Solución final}
+
+Finalmente,
+$$
+\boxed{
+u(x,t)
+=
+\sum_{n=1}^\infty
+\frac{
+\cos(k_nx_0)\cos(k_nx)
+}{
+ck_nN_n
+}
+\sin(ck_nt)
+}
+$$
+donde:
+$$
+\boxed{
+k_n\tan(k_n\ell)=\eta
+}
+$$
+y
+$$
+\boxed{
+N_n
+=
+\int_0^\ell
+\cos^2(k_nx)\,dx.
+}
+$$
+
+{\bf 7. Cálculo explícito de $N_n$}
+
+Usando
+$$
+\cos^2\theta
+=
+\frac12(1+\cos2\theta),
+$$
+tenemos
+$$
+N_n
+=
+\frac{\ell}{2}
++
+\frac{\sin(2k_n\ell)}{4k_n}.
+$$
+Así,
+$$
+\boxed{
+N_n
+=
+\frac{\ell}{2}
++
+\frac{\sin(2k_n\ell)}{4k_n}.
+}
+$$
+
+{\bf 8. Interpretación física}
+
+El impulso inicial puntual excita todos los modos normales de la cuerda.
+Cada modo:
+\begin{itemize}
+\item oscila con frecuencia
+$$
+\omega_n=ck_n,
+$$
+\item y amplitud determinada por
+$$
+\cos(k_nx_0),
+$$
+que mide cuánto ``acopla'' el impulso con ese modo.
+\end{itemize}
+
+{\bf 9. Comentario sobre las condiciones de borde}
+
+Las condiciones:
+$$
+u_x(0,t)=0,
+$$
+$$
+u_x(\ell,t)+\eta u(\ell,t)=0
+$$
+interpolan entre:
+\begin{itemize}
+\item extremo libre:
+$$
+\eta=0,
+$$
+\item extremo fijo:
+$$
+\eta\to\infty.
+$$
+\end{itemize}
+Por eso el espectro $k_n$ depende de $\eta$.
+
+
 %\prob Resuelva la ecuación de ondas homogénea en la franja \((x,t)\in[0,1]\times[0,\infty)\) con condiciones iniciales homogéneas \(u(x,0)=0\), \(\frac{\partial u}{\partial t}(x,0)=0\) y condiciones de contorno
 %\begin{align*}
 %\frac{\partial u}{\partial t}(0,t)+c\frac{\partial u}{\partial x}(0,t)&=h_0(t)=\begin{cases} 1, & 0<t\le1,\\ 0, & 1<t, \end{cases}\\
