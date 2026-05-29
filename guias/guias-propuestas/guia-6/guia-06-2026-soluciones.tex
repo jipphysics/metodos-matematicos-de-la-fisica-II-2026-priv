@@ -725,8 +725,9 @@ f(\vec y)\,dS_y
 +
 \frac1{4\pi c^2 t}
 \int_{|\vec y-\vec x|=ct}
-g(\vec y)\,dS_y.
+g(\vec y)\,dS_y,
 $$
+donde las integrales son sobre superficies esf\'ericas de radio $ct$ centradas en $\vec x$.
 Como aquí
 $$
 g(\vec x)=0,
@@ -750,11 +751,11 @@ La función inicial vale:
 \item $1$ dentro de la esfera unitaria,
 \item $0$ fuera.
 \end{itemize}
-Entonces la integral sobre la esfera
+Entonces la integral sobre la superficie esf\'erica
 $$
 |\vec y-\vec x|=ct
 $$
-simplemente cuenta el área de la parte de esa esfera que queda dentro de la esfera inicial de radio 1.
+simplemente cuenta el área de la parte que queda dentro de la bola inicial de radio 1.
 
 {\bf 3. Simetría radial}
 
@@ -777,28 +778,21 @@ Debemos estudiar cuándo intersecta la esfera inicial $ |\vec y|\le1$.
 
 {\bf Caso 1: no hay intersección}
 
-Si
-$$
-r-ct>1
-$$
-o equivalentemente
-$$
-ct<r-1,
-$$
-la esfera de radio $ct$ centrada en $\vec x$ queda completamente fuera de la esfera inicial.
-Entonces
+Los centros de las esferas están a una distancia $r$.
+Las esferas no se superponen si la suma de sus radios es menor que la distancia entre ellas, i.e. si $1+ct<r$.
+En cuyo caso,
 $$
 u(r,t)=0.
 $$
 
-{\bf Caso 2: la esfera queda completamente dentro}
+{\bf Caso 2: la esfera de radio $ct$ queda completamente dentro de la esfera de radio 1}
 
+La esfera de radio $ct$ queda completamente dentro de la esfera de radio 1 si
 Si
 $$
-r+ct<1,
+r+ct<1.
 $$
-la esfera de integración queda completamente dentro de la región donde $f=1$.
-Entonces
+En cuyo caso,
 $$
 \int f\,dS =4\pi(ct)^2.
 $$
@@ -819,14 +813,25 @@ $$
 u(r,t)=1.
 $$
 
-{\bf Caso 3: intersección parcial}
+{\bf Caso 3: la esfera de radio $1$ queda completamente dentro de la esfera de radio $ct$}
 
-Cuando
+La esfera de radio 1 queda completamente dentro de la esfera de radio $ct$ cuando $r+1<ct$, lo cual ocurre a tiempos suficientemente grandes.
+Sin embargo, cuando esto ocurre la integral de Kirchoff da 0, porque es una integral sobre la superficie de radio $ct$, que en este caso no interseca la regi\'on donde $f\neq 0$.
+
+{\bf Caso 4: intersección parcial}
+
+Hay intersecci\'on parcial cuando no se cumple ninguna de las condiciones anteriores.
+Es decir, cuando se cumple simultaneamente que
+\begin{itemize}
+\item $1+ct>r$ o, equivalentemente, $ct>r-1$,
+\item $r+ct>1$ o, equivalentemente, $ct>1-r$, y
+\item $r+1<ct$.
+\end{itemize}
+En otras palabras, cuando se cumple que
 $$
 |r-1|<ct<r+1,
 $$
-la esfera corta parcialmente la esfera inicial.
-La intersección es un casquete esférico.
+la esfera corta parcialmente la esfera inicial, y la intersección es un casquete esférico.
 
 {\bf 5. Área del casquete}
 
