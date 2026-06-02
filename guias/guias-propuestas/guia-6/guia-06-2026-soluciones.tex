@@ -7,7 +7,7 @@
 \usepackage{graphicx}
 \usepackage{upgreek}
 \usepackage{fancyhdr}
-
+\usepackage{hyperref} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Page layout by CBB 2023.03.13
@@ -1350,6 +1350,324 @@ Por eso el espectro $k_n$ depende de $\eta$.
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 5)}
 \vspace{0.5cm}
+
+Debemos resolver la ecuación de ondas para una membrana circular de radio $R$:
+$$
+u_{tt}=c^2\nabla^2u,
+\qquad 0\le r<R,
+$$
+con borde fijo
+$$
+u(R,\theta,t)=0,
+$$
+y condiciones iniciales
+$$
+u(r,\theta,0)=0,
+$$
+$$
+u_t(r,\theta,0)=r\sin(3\theta).
+$$
+
+{\bf 1. Laplaciano en coordenadas polares}
+
+En el plano,
+$$
+\nabla^2u=
+u_{rr}
++\frac1r u_r
++\frac1{r^2}u_{\theta\theta}.
+$$
+La ecuación queda
+$$
+u_{tt}
+=
+c^2
+\left(
+u_{rr}
++\frac1r u_r
++\frac1{r^2}u_{\theta\theta}
+\right).
+$$
+
+{\bf 2. Separación de variables}
+
+Buscamos
+$$
+u(r,\theta,t)
+=
+R(r)\Theta(\theta)T(t).
+$$
+Sustituyendo:
+$$
+\frac{T''}{c^2T}
+=
+\frac{R''}{R}
++\frac1r\frac{R'}R
++\frac1{r^2}\frac{\Theta''}{\Theta}.
+$$
+Separamos primero la parte angular:
+$$
+\Theta''+m^2\Theta=0.
+$$
+Las soluciones periódicas son
+$$
+\cos(m\theta),
+\qquad
+\sin(m\theta),
+$$
+con
+$$
+m=0,1,2,\ldots
+$$
+
+{\bf 3. Ecuación radial}
+
+La ecuación radial queda
+$$
+r^2R''
++rR'
++
+(\lambda r^2-m^2)R=0.
+$$
+Es la ecuación de Bessel.
+Las soluciones regulares en $r=0$ son
+$$
+R(r)=J_m(\sqrt{\lambda}\,r).
+$$
+Las funciones $Y_m$ se descartan porque divergen en el origen.
+
+{\bf 4. Condición de borde}
+
+La membrana tiene borde fijo:
+$$
+u(R,\theta,t)=0.
+$$
+Por lo tanto
+$$
+J_m(\sqrt{\lambda}\,R)=0.
+$$
+Si denotamos por
+$$
+j_{m,n}
+$$
+al $n$-ésimo cero positivo de $J_m$,
+$$
+J_m(j_{m,n})=0,
+$$
+entonces
+$$
+\sqrt{\lambda_{m,n}}
+=
+\frac{j_{m,n}}R.
+$$
+
+{\bf 5. Parte temporal}
+
+La ecuación temporal es
+$$
+T''+\omega_{m,n}^2T=0,
+$$
+con
+$$
+\omega_{m,n}
+=
+c\,\frac{j_{m,n}}R.
+$$
+Entonces
+$$
+T(t)
+=
+A_{m,n}\cos(\omega_{m,n}t)
++
+B_{m,n}\sin(\omega_{m,n}t).
+$$
+
+{\bf 6. Solución general}
+
+La solución completa es
+$$
+u(r,\theta,t)
+=
+\sum_{m=0}^{\infty}
+\sum_{n=1}^{\infty}
+\Big[
+A_{m,n}\cos(\omega_{m,n}t)
++
+B_{m,n}\sin(\omega_{m,n}t)
+\Big]
+J_m\left(
+\frac{j_{m,n}}R\,r
+\right)
+\Phi_m(\theta),
+$$
+donde
+$$
+\Phi_m(\theta)=\cos(m\theta)
+\quad\text{o}\quad
+\sin(m\theta).
+$$
+
+{\bf 7. Uso de las condiciones iniciales}
+
+La velocidad inicial es
+$$
+u_t(r,\theta,0)=r\sin(3\theta).
+$$
+Observemos que sólo aparece el armónico angular
+$$
+m=3.
+$$
+Por ortogonalidad angular, ningún otro valor de $m$ participa.
+Por tanto,
+$$
+u(r,\theta,t)
+=
+\sin(3\theta)
+\sum_{n=1}^{\infty}
+B_n
+\sin(\omega_nt)
+J_3\left(
+\frac{j_{3,n}}R r
+\right),
+$$
+donde
+$$
+\omega_n
+=
+c\frac{j_{3,n}}R.
+$$
+Además,
+$$
+u(r,\theta,0)=0
+$$
+implica que todos los coeficientes de coseno temporal son nulos.
+
+{\bf 8. Determinación de los coeficientes}
+
+Derivando:
+$$
+u_t(r,\theta,0)
+=
+\sin(3\theta)
+\sum_{n=1}^{\infty}
+B_n\omega_n
+J_3\left(
+\frac{j_{3,n}}R r
+\right).
+$$
+Debe cumplirse
+$$
+r\sin(3\theta)
+=
+\sin(3\theta)
+\sum_{n=1}^{\infty}
+B_n\omega_n
+J_3\left(
+\frac{j_{3,n}}R r
+\right).
+$$
+Luego
+$$
+r=
+\sum_{n=1}^{\infty}
+B_n\omega_n
+J_3\left(
+\frac{j_{3,n}}R r
+\right).
+$$
+Es decir, debemos expandir $r$ en serie de Fourier–Bessel.
+
+{\bf 9. Coeficientes de Fourier–Bessel}
+
+Usando la ortogonalidad (ver~\url{https://en.wikipedia.org/wiki/Fourier%E2%80%93Bessel_series})
+$$
+\int_0^R
+r\,
+J_{\alpha}\left(\frac{j_{\alpha,n}}Rr\right)
+J_{\alpha}\left(\frac{j_{\alpha,m}}Rr\right)
+dr
+=
+\frac{R^2}{2}
+\delta_{n,m}
+J_{\alpha}^2(j_{\alpha,n}),
+$$
+obtenemos
+$$
+B_n\omega_n
+=
+\frac{
+2
+\displaystyle
+\int_0^R
+r^2
+J_3\left(\frac{j_{3,n}}Rr\right)
+dr
+}
+{
+R^2J_4^2(j_{3,n})
+}.
+$$
+Por lo tanto
+$$
+\boxed{
+B_n
+=
+\frac{
+2
+\displaystyle
+\int_0^R
+r^2
+J_3\left(\frac{j_{3,n}}Rr\right)
+dr
+}
+{
+R^2\omega_n
+J_4^2(j_{3,n})
+}.
+}
+$$
+
+{\bf 10. Solución final}
+
+La solución puede escribirse como
+$$
+\boxed{
+u(r,\theta,t)
+=
+\sin(3\theta)
+\sum_{n=1}^{\infty}
+B_n
+\sin\left(
+c\frac{j_{3,n}}R\,t
+\right)
+J_3\left(
+\frac{j_{3,n}}R\,r
+\right)
+}
+$$
+donde
+$$
+\boxed{
+B_n
+=
+\frac{
+2
+\displaystyle
+\int_0^R
+r^2
+J_3\left(\frac{j_{3,n}}Rr\right)
+dr
+}
+{
+%R^2
+%\left(c\,j_{3,n}/R\right)
+c\,R\,j_{3,n}
+J_4^2(j_{3,n})
+}.
+}
+$$
+Ésta es la expansión modal exacta de la membrana circular excitada con velocidad inicial $r\sin(3\theta)$.
+
 
 
 
