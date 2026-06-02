@@ -1681,6 +1681,306 @@ $$
 {\bf Soluci\'on }{\em 6)}
 \vspace{0.5cm}
 
+Consideremos la ecuación de ondas en el interior de una esfera de radio $a$, suponiendo simetría radial:
+$$
+u_{tt}=c^2\nabla^2u,
+\qquad
+0<r<a,
+$$
+con
+$$
+u=u(r,t).
+$$
+Las condiciones son
+$$
+u(a,t)=0,
+$$
+$$
+u(r,0)=\beta,
+$$
+$$
+u_t(r,0)=0.
+$$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 6a)}
+\vspace{0.5cm}
+
+{\bf Reducir la ecuación a una ecuación de ondas unidimensional}
+
+Para una función radial,
+$$
+\nabla^2u
+=
+u_{rr}
++
+\frac{2}{r}u_r.
+$$
+Por tanto
+$$
+u_{tt}
+=
+c^2
+\left(
+u_{rr}
++\frac2r u_r
+\right).
+$$
+Buscamos una transformación
+$$
+u=r^\alpha\psi.
+$$
+Debemos encontrar $\alpha$.
+
+{\bf Cálculo}
+
+Sea
+$$
+u=r^\alpha\psi.
+$$
+Entonces
+$$
+u_r
+=
+\alpha r^{\alpha-1}\psi
++
+r^\alpha\psi_r,
+$$
+$$
+u_{rr}
+=
+\alpha(\alpha-1)r^{\alpha-2}\psi
++
+2\alpha r^{\alpha-1}\psi_r
++
+r^\alpha\psi_{rr}.
+$$
+Por tanto
+$$
+u_{rr}+\frac2r u_r
+=
+r^\alpha\psi_{rr}
++
+2(\alpha+1)r^{\alpha-1}\psi_r
++
+\alpha(\alpha+1)r^{\alpha-2}\psi.
+$$
+Queremos eliminar el término con $\psi_r$.
+Entonces:
+$$
+\alpha+1=0.
+$$
+Así,
+$$
+\boxed{\alpha=-1}.
+$$
+
+{\bf Transformación correcta}
+
+Definimos
+$$
+\boxed{
+u(r,t)=\frac{\psi(r,t)}{r}.
+}
+$$
+Como $\alpha=-1$, también desaparece el término proporcional a $\psi$, y queda
+$$
+u_{rr}+\frac2r u_r
+=
+\frac1r\psi_{rr}.
+$$
+Además
+$$
+u_{tt}
+=
+\frac1r\psi_{tt}.
+$$
+Sustituyendo:
+$$
+\frac1r\psi_{tt}
+=
+c^2\frac1r\psi_{rr}.
+$$
+Multiplicando por $r$:
+$$
+\boxed{
+\psi_{tt}
+=
+c^2\psi_{rr}.
+}
+$$
+Hemos reducido el problema radial 3D a la ecuación de ondas unidimensional.
+
+{\bf Condiciones para $\psi$}
+
+La condición de borde
+$$
+u(a,t)=0
+$$
+implica
+$$
+\boxed{\psi(a,t)=0.}
+$$
+Además, para que $u$ sea finita en el origen,
+$$
+u=\frac{\psi}{r}
+$$
+debe permanecer acotada cuando $r\to 0$.
+Esto exige
+$$
+\boxed{\psi(0,t)=0.}
+$$
+Así obtenemos un problema unidimensional en
+$$
+0<r<a
+$$
+con extremos fijos.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 6b)}
+\vspace{0.5cm}
+
+{\bf Condiciones iniciales para $\psi$}
+
+Como
+$$
+u(r,0)=\beta,
+$$
+tenemos
+$$
+\psi(r,0)=r\beta.
+$$
+Y como
+$$
+u_t(r,0)=0,
+$$
+resulta
+$$
+\psi_t(r,0)=0.
+$$
+El problema para $\psi$ es
+$$
+\psi_{tt}=c^2\psi_{rr},
+$$
+$$
+\psi(0,t)=0,
+\qquad
+\psi(a,t)=0,
+$$
+$$
+\psi(r,0)=\beta r,
+\qquad
+\psi_t(r,0)=0.
+$$
+
+{\bf Expansión en senos}
+
+Las autofunciones son
+$$
+\sin\left(\frac{n\pi r}{a}\right),
+\qquad n=1,2,\dots
+$$
+y las frecuencias
+$$
+\omega_n
+=
+\frac{n\pi c}{a}.
+$$
+Entonces
+$$
+\psi(r,t)
+=
+\sum_{n=1}^{\infty}
+A_n
+\cos(\omega_n t)
+\sin\left(\frac{n\pi r}{a}\right).
+$$
+(No hay senos temporales porque $\psi_t(r,0)=0$.)
+
+{\bf Coeficientes}
+
+Expandimos
+$$
+\beta r
+=
+\sum_{n=1}^{\infty}
+A_n
+\sin\left(\frac{n\pi r}{a}\right).
+$$
+Por ortogonalidad,
+$$
+A_n
+=
+\frac{2}{a}
+\int_0^a
+\beta r
+\sin\left(\frac{n\pi r}{a}\right)
+dr.
+$$
+Integramos por partes:
+$$
+\int_0^a
+r\sin\left(\frac{n\pi r}{a}\right)dr
+=
+-\frac{a^2}{n\pi}(-1)^n.
+$$
+Luego
+$$
+A_n
+=
+\frac{2\beta a}{n\pi}
+(-1)^{n+1}.
+$$
+
+{\bf Solución para $\psi$}
+
+$$
+\boxed{
+\psi(r,t)
+=
+\frac{2\beta a}{\pi}
+\sum_{n=1}^{\infty}
+\frac{(-1)^{n+1}}{n}
+\cos\left(\frac{n\pi c}{a}t\right)
+\sin\left(\frac{n\pi r}{a}\right).
+}
+$$
+
+{\bf Solución para $u$}
+
+Recordando que
+$$
+u=\frac{\psi}{r},
+$$
+obtenemos
+$$
+\boxed{
+u(r,t)
+=
+\frac{2\beta a}{\pi r}
+\sum_{n=1}^{\infty}
+\frac{(-1)^{n+1}}{n}
+\cos\left(\frac{n\pi c}{a}t\right)
+\sin\left(\frac{n\pi r}{a}\right).
+}
+$$
+Esta serie satisface:
+$$
+u(a,t)=0,
+$$
+$$
+u(r,0)=\beta,
+$$
+$$
+u_t(r,0)=0,
+$$
+y es regular en el origen porque $\psi(0,t)=0$.
+
+{\bf Observación}
+
+Existe una forma cerrada muy instructiva. 
+Como el dato inicial para $\psi$ es una función lineal $\beta r$, la solución puede interpretarse como la reflexión sucesiva de una onda radial entre $r=0$ y $r=a$. 
+La expansión en senos obtenida arriba es la forma modal estándar, que suele ser la esperada en este tipo de ejercicios.
 
 
 \prob Una barra delgada homogénea semiinfinita, que se extiende desde \(x=0\) en adelante, tiene su superficie lateral aislada térmicamente y su extremo en contacto térmico perfecto con un calefactor cuya temperatura varía en el tiempo como \(T_0\cos(\omega_0 t)\). Usando transformada de Fourier en \(t\), halle la temperatura \(u(x,t)\) de la barra en el estado de régimen, asumiendo que es finita en todas partes.
