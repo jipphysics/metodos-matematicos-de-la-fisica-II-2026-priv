@@ -1983,11 +1983,203 @@ Como el dato inicial para $\psi$ es una función lineal $\beta r$, la solución 
 La expansión en senos obtenida arriba es la forma modal estándar, que suele ser la esperada en este tipo de ejercicios.
 
 
-\prob Una barra delgada homogénea semiinfinita, que se extiende desde \(x=0\) en adelante, tiene su superficie lateral aislada térmicamente y su extremo en contacto térmico perfecto con un calefactor cuya temperatura varía en el tiempo como \(T_0\cos(\omega_0 t)\). Usando transformada de Fourier en \(t\), halle la temperatura \(u(x,t)\) de la barra en el estado de régimen, asumiendo que es finita en todas partes.
+\prob Una barra delgada homogénea semi-infinita, que se extiende desde \(x=0\) en adelante, tiene su superficie lateral aislada térmicamente y su extremo en contacto térmico perfecto con un calefactor cuya temperatura varía en el tiempo como \(T_0\cos(\omega_0 t)\). Usando transformada de Fourier en \(t\), halle la temperatura \(u(x,t)\) de la barra en el estado de régimen, asumiendo que es finita en todas partes.
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 7)}
 \vspace{0.5cm}
+
+Una barra semi-infinita $x\ge 0$ satisface la ecuación de difusión
+$$
+u_t=\kappa u_{xx},
+$$
+con:
+\begin{itemize}
+\item superficie lateral aislada,
+\item temperatura finita cuando $x\to\infty$,
+\item extremo $x=0$ en contacto con un calefactor que impone
+\end{itemize}
+$$
+u(0,t)=T_0\cos(\omega_0 t).
+$$
+Se pide hallar la solución en régimen permanente usando transformada de Fourier en $t$. 
+
+{\bf 1. Régimen permanente}
+
+Como la excitación es sinusoidal, buscamos una solución armónica de la forma
+$$
+u(x,t)=\Re{U(x)e^{i\omega_0 t}}.
+$$
+La condición de borde exige
+$$
+U(0)=T_0.
+$$
+Sustituyendo en la ecuación de difusión:
+$$
+i\omega_0 U
+=
+\kappa U''.
+$$
+Obtenemos la EDO
+$$
+U''-\frac{i\omega_0}{\kappa}U=0.
+$$
+
+{\bf 2. Resolver la ecuación espacial}
+
+Definimos
+$$
+q^2=\frac{i\omega_0}{\kappa}.
+$$
+Las soluciones son
+$$
+U(x)=Ae^{qx}+Be^{-qx}.
+$$
+Debemos escoger la rama de $q$ con parte real positiva para que la solución permanezca finita cuando $x\to\infty$.
+Como
+$$
+i=e^{i\pi/2},
+$$
+tenemos
+$$
+\sqrt{i}
+=
+e^{i\pi/4}
+=
+\frac{1+i}{\sqrt2}.
+$$
+Luego
+$$
+q
+=
+\sqrt{\frac{\omega_0}{\kappa}}
+\frac{1+i}{\sqrt2}.
+$$
+Es decir,
+$$
+q
+=
+(1+i)
+\sqrt{\frac{\omega_0}{2\kappa}}.
+$$
+Como $\Re(q)>0$, la condición de finitud elimina el término creciente:
+$$
+A=0.
+$$
+Entonces
+$$
+U(x)
+=
+B e^{-qx}.
+$$
+Usando $U(0)=T_0$,
+$$
+B=T_0.
+$$
+Por lo tanto
+$$
+U(x)
+=
+T_0
+e^{-(1+i)\sqrt{\frac{\omega_0}{2\kappa}}\,x}.
+$$
+
+{\bf 3. Volver a la solución real}
+
+La solución es
+$$
+u(x,t)
+=
+\Re
+\left\{
+T_0
+e^{-(1+i)\sqrt{\frac{\omega_0}{2\kappa}}\,x}
+e^{i\omega_0 t}
+\right\}.
+$$
+Agrupando exponentes:
+$$
+u(x,t)
+=
+\Re
+\left\{
+T_0
+e^{-\mu x}
+e^{i(\omega_0 t-\mu x)}
+\right\},
+$$
+donde
+$$
+\mu
+=
+\sqrt{\frac{\omega_0}{2\kappa}}.
+$$
+Qued\'andonos con la parte real:
+$$
+\boxed{
+u(x,t)
+=
+T_0
+e^{-\mu x}
+\cos(\omega_0 t-\mu x),
+}
+$$
+con
+$$
+\boxed{
+\mu=
+\sqrt{\frac{\omega_0}{2\kappa}}.
+}
+$$
+
+{\bf 4. Interpretación física}
+
+La temperatura oscila con la misma frecuencia que el calefactor:
+$$
+\omega_0.
+$$
+Sin embargo se observa {\em atenuación espacial}, ya que la amplitud decrece exponencialmente con la distancia al origen de la fuente:
+$$
+A(x)=T_0e^{-\mu x}.
+$$
+La longitud característica de penetración es
+$$
+\boxed{
+\delta
+=
+\frac1\mu
+=
+\sqrt{\frac{2\kappa}{\omega_0}}.
+}
+$$
+Tambi\'en se observa {\em desfase}, porque a medida que nos alejamos del extremo caliente aparece un retraso de fase
+$$
+\phi(x)=\mu x.
+$$
+La temperatura en puntos alejados responde con retardo respecto de la fuente.
+
+{\bf Resultado final}
+
+La temperatura de la barra en régimen permanente es
+$$
+\boxed{
+u(x,t)
+=
+T_0
+\exp\left(
+-\sqrt{\frac{\omega_0}{2\kappa}}\,x
+\right)
+\cos\left[
+\omega_0 t
+-
+\sqrt{\frac{\omega_0}{2\kappa}}\,x
+\right].
+}
+$$
+Esta es la llamada onda térmica difusiva.
+Oscila en el tiempo, pero su amplitud se amortigua exponencialmente con la distancia al calefactor.
+
+
 
 
 \prob Una cuerda semiinfinita tiene inicialmente desplazamiento y velocidad nulos. Desde \(t=0\) en adelante, su extremo es forzado a moverse según \(A\,\text{sen}(\omega_0 t)\,e^{-t/\tau}\). Halle el desplazamiento \(u(x,t)\) de la cuerda para todo \(x>0\) y \(t>0\). ¿Qué tuvo que asumir acerca de \(u\) para \(x\to\infty\)? ¿Qué ocurre para \(t\to\infty\)?
