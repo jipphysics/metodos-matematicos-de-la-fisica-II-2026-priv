@@ -1,0 +1,323 @@
+%% ****** Start of file apstemplate.tex ****** %
+%%
+%%
+%%   This file is part of the APS files in the REVTeX 4.2 distribution.
+%%   Version 4.2a of REVTeX, January, 2015
+%%
+%%
+%%   Copyright (c) 2015 The American Physical Society.
+%%
+%%   See the REVTeX 4 README file for restrictions and more information.
+%%
+%
+% This is a template for producing manuscripts for use with REVTEX 4.2
+% Copy this file to another name and then work on that file.
+% That way, you always have this original template file to use.
+%
+% Group addresses by affiliation; use superscriptaddress for long
+% author lists, or if there are many overlapping affiliations.
+% For Phys. Rev. appearance, change preprint to twocolumn.
+% Choose pra, prb, prc, prd, pre, prl, prstab, prstper, or rmp for journal
+%  Add 'draft' option to mark overfull boxes with black boxes
+%  Add 'showkeys' option to make keywords appear
+%\documentclass[aps,prl,preprint,groupedaddress]{revtex4-2}
+\documentclass[aps,prl,twocolumn,groupedaddress]{revtex4-2}
+%\documentclass[aps,prl,preprint,superscriptaddress]{revtex4-2}
+%\documentclass[aps,prl,reprint,groupedaddress]{revtex4-2}
+
+% You should use BibTeX and apsrev.bst for references
+% Choosing a journal automatically selects the correct APS
+% BibTeX style file (bst file), so only uncomment the line
+% below if necessary.
+%\bibliographystyle{apsrev4-2}
+
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{caption}
+%\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+%\usepackage{amsthm}
+%\usepackage{amsfonts}
+%\usepackage{subfigure}
+%\usepackage{hhline}
+%\usepackage[miktex]{gnuplottex}
+%\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{hyperref}
+%\usepackage[percent]{overpic}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{wasysym}
+\usepackage{tikz-cd}
+%\usepackage{linearb}
+%\usepackage{wsuipa}
+\usepackage{calc}
+\usepackage{tipa}
+
+%\usepackage{stix} %\fisheye
+\usepackage{stackengine,scalerel}
+
+% so sections, subsections, etc. become numerated.
+\setcounter{secnumdepth}{3}
+
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\GG}{\mathbb{G}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\avrg}[1]{\left\langle #1 \right\rangle}
+\newcommand{\nelta}{\bar{\delta}}
+\newcommand{\bra}[1]{\left\langle #1\right|}
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\sbra}[1]{\langle #1|}
+\newcommand{\sket}[1]{| #1 \rangle}
+\newcommand{\bek}[3]{\left\langle #1 \right| #2 \left| #3 \right\rangle}
+\newcommand{\sbek}[3]{\langle #1 | #2 | #3 \rangle}
+\newcommand{\braket}[2]{\left\langle #1 \middle| #2 \right\rangle}
+\newcommand{\ketbra}[2]{\left| #1 \middle\rangle \middle\langle #2  \right|}
+\newcommand{\sbraket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\sketbra}[2]{| #1 \rangle  \langle #2 |}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\snorm}[1]{\lVert#1\rVert}
+\newcommand{\bvec}[1]{\boldsymbol{\mathsf{#1}}}
+\newcommand{\bcov}[1]{\boldsymbol{#1}}
+\newcommand{\bdua}[1]{\boldsymbol{\check{#1}}}
+%\newcommand{\bdov}[1]{\boldsymbol{\breve{#1}}}
+\newcommand{\bdov}[1]{\breve{#1}}
+%\newcommand{\bten}[1]{\boldsymbol{\mathfrak{#1}}}
+\newcommand{\bten}[1]{\boldsymbol{\mathfrak{#1}}}
+\newcommand{\forany}{\tilde{\forall}}
+\newcommand{\qed}{$\overset{\circ}{.}\;$}
+\newcommand{\bigo}{\mathcal{O}}
+\newcommand{\spn}{\mathrm{spn}\,}
+\newcommand{\krn}{\mathrm{krn}\,}
+\newcommand{\biy}{\leftrightarrow}
+\newcommand{\ugh}{\mathbin{\textlinb{\BPwheel}}}
+
+\newcommand\bigeye{\ensurestackMath{\stackinset{c}{}{c}{-.3pt}%
+  {\bullet}{\scriptstyle\bigcirc}}}
+\newcommand\eye{\scalerel*{\bigeye}{x}}
+%\newcommand*{\fisheye}{%
+%    \mathbin{%
+%        \ooalign{$\circledcirc$\cr\hidewidth$\bullet$\hidewidth}%
+%    }%
+%}
+
+% double angle-bracket
+% https://tex.stackexchange.com/questions/79657/how-to-get-double-angle-bracket-without-using-mnsymbol-package
+\makeatletter
+\newsavebox{\@brx}
+\newcommand{\llangle}[1][]{\savebox{\@brx}{\(\m@th{#1\langle}\)}%
+  \mathopen{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+\newcommand{\rrangle}[1][]{\savebox{\@brx}{\(\m@th{#1\rangle}\)}%
+  \mathclose{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+\makeatother
+
+% https://tex.stackexchange.com/questions/297362/bar-through-letter-in-mathmode
+%\usepackage{calc}
+\newsavebox\CBox
+\newcommand\hcancel[2][0.5pt]{%
+  \ifmmode\sbox\CBox{$#2$}\else\sbox\CBox{#2}\fi%
+  \makebox[0pt][l]{\usebox\CBox}%  
+  \rule[0.77\ht\CBox-#1/2]{\wd\CBox}{#1}}
+\newcommand{\cb}{\hcancel{b}}
+\newcommand{\cd}{\hcancel{d}}
+\newcommand{\ct}{\hcancel{\partial}}
+%\newcommand{\supp}{\mathsf{supp}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\csupp}{\overline{\mathrm{supp}}}
+\newcommand{\supr}[2]{\underset{#1}{\text{supr}}}
+
+\begin{document}
+
+% Use the \preprint command to place your local institutional report
+% number in the upper righthand corner of the title page in preprint mode.
+% Multiple \preprint commands are allowed.
+% Use the 'preprintnumbers' class option to override journal defaults
+% to display numbers if necessary
+%\preprint{}
+
+%Title of paper
+\title{
+M\'etodos Matem\'aticos de la F\'isica II\\
+Partial Differential Equations
+}
+
+% repeat the \author .. \affiliation  etc. as needed
+% \email, \thanks, \homepage, \altaffiliation all apply to the current
+% author. Explanatory text should go in the []'s, actual e-mail
+% address or url should go in the {}'s for \email and \homepage.
+% Please use the appropriate macro foreach each type of information
+
+% \affiliation command applies to all authors since the last
+% \affiliation command. The \affiliation command should follow the
+% other information
+% \affiliation can be followed by \email, \homepage, \thanks as well.
+\author{Juan I. Perotti}
+\email[]{juan.perotti@unc.edu.ar}
+%\homepage[]{Your web page}
+%\thanks{}
+%\altaffiliation{}
+%\affiliation{}
+\affiliation{Instituto de F\'isica Enrique Gaviola (IFEG-CONICET), Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+\affiliation{Facultad de Matem\'atica, Astronom\'ia, F\'isica y Computaci\'on, Universidad Nacional de C\'ordoba, Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+
+% \author{Colaborador}
+% \affiliation{Instituto de F\'isica Enrique Gaviola (IFEG-CONICET), Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+% \affiliation{Facultad de Matem\'atica, Astronom\'ia, F\'isica y Computaci\'on, Universidad Nacional de C\'ordoba, Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+% \email[E-mail: ]{xxx.yyy@unc.edu.ar }
+
+%Collaboration name if desired (requires use of superscriptaddress
+%option in \documentclass). \noaffiliation is required (may also be
+%used with the \author command).
+%\collaboration can be followed by \email, \homepage, \thanks as well.
+%\collaboration{Claudio J. Tessone}
+%\noaffiliation
+
+\date{\today}
+
+%\begin{abstract}
+%Bla bla bla... resumen...
+%\end{abstract}
+
+% insert suggested keywords - APS authors don't need to do this
+%\keywords{}
+
+%\maketitle must follow title, authors, abstract, and keywords
+\maketitle
+\onecolumngrid
+
+\section{Classification}
+
+Consider Partial Differential Equations (PDEs) defined by
+$$
+a^{ij}(x,u(x),(\partial u)(x))
+(
+\partial_i
+\partial_j
+u)
+(x)
++
+f(x,u(x),(\partial u)(x))
+$$
+for all $x=(x^1,...,x^n)\in D\subset \RR^n$ with solutions $u:D\ni x \to u(x)\in \RR$.
+Here  $(\partial u)(x) = ((\partial_1 u)(x),...,(\partial_n u)(x))\in \RR^n$.
+Also, $f:D\times \RR\times \RR^n \ni (x,u(x),(\partial u)(x)) \to f(x,u(x),(\partial u)(x))\in \RR$.
+
+For each $x\in D$ and solution $u$, the matrix of coefficients
+$$
+a^{ij}(x,u(x),(\partial u)(x))
+\in \RR
+$$
+is assumed to be symmetric.
+We will say that the PDE is:
+\begin{itemize}
+\item {\em elliptic} at $(x,u(x),(\partial u)(x))$ if the eigenvalues of the mentioned matrix are non-zero and of the same sign,
+
+\item {\em hyperbolic} at $(x,u(x),(\partial u)(x))$ if the eigenvalues of the mentioned matrix are non-zero but of different signs, and
+
+\item {\em parabolic} at $(x,u(x),(\partial u)(x))$ if at least one of the eigenvalues of the mentioned matrix is zero and the non-zero ones have the same sign.
+\end{itemize}
+
+%\appendix
+%
+%\section{
+%Compactness in infinite dimension
+%\label{app:A}
+%}
+%
+%% https://chatgpt.com/share/6a0c5541-7498-83e9-a94f-8ca91aa5e791
+%
+%The compactness of a subset $K$ of a metric space $X$ only makes sense if $X$ is finite-dimensional?
+%No. Compactness is a fundamental topological notion and makes perfect sense in {\em any} metric space, including infinite-dimensional ones.
+%For a subset $K \subset X$ of a metric space $(X,d)$, compactness means: 
+%\begin{quote}
+%Every open cover of $K$ admits a finite subcover.
+%\end{quote}
+%In metric spaces, this is equivalent to: 
+%\begin{quote}
+%Every sequence in $K$ has a convergent subsequence whose limit lies in $K$.
+%\end{quote}
+%This definition does not depend on dimension at all.
+%What {\em does} change drastically between finite- and infinite-dimensional spaces is {\bf which sets are compact}.
+%
+%\subsection{Finite-dimensional case}
+%
+%In $\mathbb{R}^n$, the Heine–Borel theorem says:
+%$$
+%K \subset \mathbb{R}^n
+%\text{ is compact }
+%\iff
+%K \text{ is closed and bounded.}
+%$$
+%This is a very special property of finite-dimensional normed spaces.
+%
+%\subsection{Infinite-dimensional case}
+%
+%In infinite-dimensional normed spaces, closed and bounded sets are {\em usually not compact}.
+%For example, consider the Hilbert space
+%$$
+%\ell^2
+%=
+%\left\{
+%x=(x_1,x_2,\dots):
+%\sum_{n=1}^\infty |x_n|^2 < \infty
+%\right\}
+%.
+%$$
+%Its closed unit ball
+%$$
+%B=\{x\in \ell^2:|x|\le 1\}
+%$$
+%is closed and bounded, but {\bf not compact}.
+%A standard proof uses the canonical basis vectors
+%$$
+%e_1=(1,0,0,\dots),\quad
+%e_2=(0,1,0,\dots),\quad \dots
+%$$
+%which satisfy
+%$$
+%|e_n-e_m|=\sqrt{2}
+%\quad (n\neq m).
+%$$
+%Hence no subsequence can be Cauchy, so no subsequence converges. Therefore $B$ is not compact.
+%
+%\subsection{What replaces Heine–Borel?}
+%
+%In metric spaces, compactness is closely related to {\bf total boundedness}.
+%
+%For metric spaces:
+%
+%$$
+%K \text{ compact}
+%\iff
+%K \text{ complete and totally bounded}.
+%$$
+%
+%Total boundedness is stronger than ordinary boundedness.
+%A set is totally bounded if:
+%\begin{quote}
+%For every $\varepsilon>0$, it can be covered by finitely many balls of radius $\varepsilon$.
+%\end{quote}
+%In finite dimensions, boundedness already implies total boundedness. In infinite dimensions, it generally does not.
+%
+%\subsection{Intuition}
+%
+%Infinite-dimensional balls contain ``too many independent directions.''
+%The sequence $e_n$ in $\ell^2$ keeps jumping into new orthogonal directions and never accumulates anywhere.
+%That phenomenon cannot happen inside bounded subsets of finite-dimensional spaces.
+%So compactness absolutely makes sense in infinite-dimensional spaces — it simply becomes much more restrictive.
+
+
+\end{document}
+%
+% ****** End of file apstemplate.tex ******
+
+
