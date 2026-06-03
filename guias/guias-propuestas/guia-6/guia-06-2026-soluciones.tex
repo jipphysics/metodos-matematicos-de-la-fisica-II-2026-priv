@@ -2188,6 +2188,251 @@ Oscila en el tiempo, pero su amplitud se amortigua exponencialmente con la dista
 {\bf Soluci\'on }{\em 8)}
 \vspace{0.5cm}
 
+Una cuerda semiinfinita $x>0$ satisface la ecuación de ondas
+$$
+u_{tt}=c^2u_{xx},
+\qquad x>0,; t>0,
+$$
+con condiciones iniciales
+$$
+u(x,0)=0,
+\qquad
+u_t(x,0)=0,
+$$
+y condición de borde
+$$
+u(0,t)=A\sin(\omega_0 t)e^{-t/\tau},
+\qquad t>0.
+$$
+Debemos hallar $u(x,t)$, discutir qué condición se impone en $x\to\infty$, y analizar el límite $t\to\infty$. 
+
+{\bf 1. Idea física}
+
+La cuerda está inicialmente en reposo.
+A partir de $t=0$, el extremo $x=0$ comienza a oscilar.
+Como la cuerda es semiinfinita, esperamos una onda que se propaga hacia la derecha sin reflexiones.
+La solución general de d'Alembert es
+$$
+u(x,t)=F(x-ct)+G(x+ct).
+$$
+\begin{itemize}
+\item $F(x-ct)$: onda que viaja hacia la derecha.
+\item $G(x+ct)$: onda que viaja hacia la izquierda.
+\end{itemize}
+Como no existe ninguna fuente en $+\infty$, debemos tomar
+$$
+G\equiv0.
+$$
+
+{\bf 2. Condición de radiación}
+
+La hipótesis física es:
+$$
+\boxed{
+\text{no llegan ondas desde }x=\infty.
+}
+$$
+Por tanto
+$$
+u(x,t)=F(x-ct).
+$$
+Esta es la condición que debemos asumir para $x\to\infty$.
+
+{\bf 3. Imponer el movimiento del extremo}
+
+En $x=0$:
+$$
+u(0,t)=F(-ct).
+$$
+Debe valer
+$$
+F(-ct)
+=
+A\sin(\omega_0 t)e^{-\frac{t}{\tau}}.
+$$
+Definimos
+$$
+s=-ct.
+$$
+Entonces
+$$
+t=-\frac{s}{c},
+$$
+y
+$$
+F(s)
+=
+-A
+\sin\left(\frac{\omega_0}{c}s\right)
+e^{\frac{s}{c\tau}},
+\qquad s\le0.
+$$
+
+{\bf 4. Causalidad}
+
+La cuerda estaba en reposo antes de $t=0$.
+Por tanto el movimiento del borde sólo puede afectar puntos para los cuales
+$$
+t>\frac{x}{c}.
+$$
+Antes de que llegue la perturbación:
+$$
+u(x,t)=0.
+$$
+
+{\bf 5. Construcción de la solución}
+
+La solución es
+$$
+u(x,t)
+=
+F(x-ct).
+$$
+Si
+$$
+x-ct>0,
+$$
+equivalentemente
+$$
+t<\frac{x}{c},
+$$
+el argumento de $F$ corresponde a tiempos anteriores a la excitación.
+Luego
+$$
+u(x,t)=0.
+$$
+Si
+$$
+t>\frac{x}{c},
+$$
+sustituimos $s=x-ct$:
+$$
+u(x,t)
+=
+-A
+\sin\left(
+\frac{\omega_0}{c}(x-ct)
+\right)
+e^{\frac{x-ct}{c\tau}}.
+$$
+Usando
+$$
+\sin(-(a-b))=-\sin(a-b),
+$$
+obtenemos una forma más agradable:
+$$
+\boxed{
+u(x,t)
+=
+A
+e^{-\frac{1}{\tau}\big(t-\frac{x}{c}\big)}
+\sin\bigg[\omega_0\bigg(t-\frac{x}{c}\bigg)\bigg].
+}
+$$
+
+{\bf 6. Resultado completo}
+
+$$
+\boxed{
+u(x,t)=
+\begin{cases}
+0,
+&
+t<\dfrac{x}{c},
+\\
+A
+e^{-\frac{1}{\tau}\big(t-\frac{x}{c}\big)}
+\sin\Bigl[\omega_0\left(t-\dfrac{x}{c}\right)\Bigr],
+&
+t>\dfrac{x}{c}.
+\end{cases}
+}
+$$
+o, usando Heaviside,
+$$
+\boxed{
+u(x,t)
+=
+A\,
+\Theta\left(t-\frac{x}{c}\right)
+e^{-\frac{1}{\tau}\big(t-\frac{x}{c}\big)}
+\sin\Bigl[\omega_0\left(t-\frac{x}{c}\right)\Bigr].
+}
+$$
+
+{\bf 7. Verificación}
+
+En $x=0$:
+$$
+u(0,t)
+=
+A e^{-\frac{t}{\tau}}\sin(\omega_0 t),
+$$
+que coincide con la condición de borde.
+Además,
+$$
+u(x,0)=0,
+\qquad
+u_t(x,0)=0,
+$$
+para todo $x>0$.
+
+{\bf 8. ¿Qué hubo que asumir para $x\to\infty$?}
+
+Se asumió que no hay ondas incidentes desde el infinito:
+$$
+\boxed{
+u(x,t)=F(x-ct),
+\qquad
+G(x+ct)=0.
+}
+$$
+Es la condición de radiación saliente.
+Físicamente: toda la energía introducida por el actuador viaja hacia la derecha y nunca regresa.
+
+{\bf 9. Límite $t\to\infty$}
+
+Para $x$ fijo,
+$$
+u(x,t)
+=
+A
+e^{-\frac{1}{\tau}\big(t-\frac{x}{c}\big)}
+\sin\Bigl[\omega_0\left(t-\frac{x}{c}\right)\Bigr].
+$$
+Como
+$$
+e^{-\frac{1}{\tau}\big(t-\frac{x}{c}\big)}\to 0,
+\qquad
+t\to\infty,
+$$
+resulta
+$$
+\boxed{
+u(x,t)\to0.
+}
+$$
+La perturbación enviada desde el extremo es un tren de ondas amortiguado que termina desapareciendo.
+
+{\bf Interpretación física}
+
+El extremo de la cuerda emite un paquete de ondas
+$$
+\sin(\omega_0 t)e^{-\frac{t}{\tau}}.
+$$
+Ese paquete viaja rígidamente hacia la derecha con velocidad $c$:
+$$
+t \longrightarrow t-\frac{x}{c}.
+$$
+Cada punto de la cuerda reproduce exactamente la misma señal que emitió el extremo, pero retrasada un tiempo
+$$
+\frac{x}{c}.
+$$
+No hay atenuación espacial (la ecuación de ondas es no disipativa); el único decaimiento es el temporal heredado de la excitación del borde.
+
+
+
+
 
 \prob Considere una barra homogénea infinita aislada lateralmente, con una distribución inicial de temperatura \(-T_0\) para \(x<0\) y \(T_0\) para \(x>0\). Halle la temperatura \(u(x,t)\) de la barra para todo \(x\) y \(t>0\). Ayuda: recuerde la transformada de Fourier de la función escalón de Heaviside.
 
