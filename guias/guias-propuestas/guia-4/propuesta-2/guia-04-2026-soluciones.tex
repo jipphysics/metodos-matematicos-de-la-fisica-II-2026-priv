@@ -614,9 +614,9 @@ para toda funci\'on de prueba $\varphi$.
 
 
 {\em Proposici\'on:}
-la distribuci\'on $T_0$ dada por el Valor Principal de Cauchy
+la distribuci\'on $S$ dada por el Valor Principal de Cauchy
 $$
-T_0(\phi)
+S(\phi)
 :=
 -i\,
 \mathrm{P.V.}
@@ -641,9 +641,9 @@ $$
 para toda funci\'on de prueba $\phi$, satisface la ecuaci\'on (12).
 Efectivamente, si usamos la funci\'on de prueba definida por $\phi(k) = ik\,\varphi(k)$ para cualquier otra funci\'on de prueba $\varphi$ arbitraria, obtenemos que
 \begin{eqnarray}
-T_0(\phi)
+S(\phi)
 %&=&
-%T_0(ik\,\varphi)
+%S(ik\,\varphi)
 %\notag
 %\\
 &=&
@@ -678,15 +678,15 @@ dk\,
 \langle 1,\varphi \rangle.
 \notag
 \end{eqnarray}
-Esto sugiere que $T_0$ es $\hat{\Theta}$.
-Sin embargo, $T_0$ no provee la soluci\'on m\'as general, ya que $T_0 + c\delta$ tambi\'en es una soluci\'on para una constante $c$ arbitraria, debido a la ecuaci\'on (4).
-En efecto, aplicando la ecuaci\'on (11) a $T_0+c\delta$, encontramos que
+Esto sugiere que $S$ es $\hat{\Theta}$.
+Sin embargo, $S$ no provee la soluci\'on m\'as general, ya que $S + c\delta$ tambi\'en es una soluci\'on para una constante $c$ arbitraria, debido a la ecuaci\'on (4).
+En efecto, aplicando la ecuaci\'on (11) a $S+c\delta$, encontramos que
 \begin{eqnarray}
 i
 \big\langle 
 \powr
 \big(
-T_0
+S
 +
 c
 \delta
@@ -698,7 +698,7 @@ c
 i
 \big\langle 
 \powr
-T_0
+S
 ,
 \varphi
 \big\rangle
@@ -741,9 +741,9 @@ c\,\four (\delta + \delta)
 &=&
 \four
 \big(
-T_0
+S
 +
-\refl T_0
+\refl S
 \big)
 +
 c\,\four (\delta + \refl \delta)
@@ -752,7 +752,7 @@ c\,\four (\delta + \refl \delta)
 &=&
 \four 
 \big(
-T_0
+S
 +
 c \delta
 \big)
@@ -760,7 +760,7 @@ c \delta
 \four 
 \refl
 \big(
-T_0
+S
 +
 c\delta
 \big)
@@ -769,7 +769,7 @@ c\delta
 &=&
 \four 
 \big(
-T_0
+S
 +
 c \delta
 \big)
@@ -777,7 +777,7 @@ c \delta
 \refl
 \four 
 \big(
-T_0
+S
 +
 c\delta
 \big)
@@ -798,37 +798,16 @@ c\delta
 \notag
 \end{eqnarray}
 donde hemos utilizado que 
-$T_0 + \refl T_0=0$, $\refl \delta=\delta$ y que
+$S + \refl S=0$, $\refl \delta=\delta$ y que
 $\four \refl = \refl \four$.
 De esta manera, concluimos que $c=\pi$.
-%Aqu\'i hemos utilizado que
-%\begin{eqnarray}
-%\int_{-\infty}^{\infty}
-%dk\,
-%\hat{T}(-k)\,
-%\varphi(k)
-%&=&
-%-
-%\int_{u(k=-\infty)=\infty}^{u(k=\infty)=-\infty}
-%du\,
-%\hat{T}(u)\,
-%\varphi(-u)
-%\notag
-%\\
-%&=&
-%\int_{-\infty}^{\infty}
-%du\,
-%\hat{T}(u)\,
-%\varphi(-u)
-%\notag
-%\end{eqnarray}
 En otras palabras, concluimos que
 $$
 \hat{\Theta}
 =
 \pi \delta
--
-i\,T_0.
++
+S.
 $$
 
 \vspace{0.5cm}

@@ -2459,14 +2459,14 @@ La ayuda sugiere usar la transformada de Fourier de la función escalón de Heav
 {\bf 1. Escribir el dato inicial con Heaviside}
 
 Podemos escribir
-%$$
-%u(x,0)
-%=
-%T_0
-%\,
-%[2\Theta(x)-1].
-%$$
-%Equivalentemente,
+$$
+u(x,0)
+=
+T_0
+\,
+[2\Theta(x)-1].
+$$
+Equivalentemente,
 $$
 u(x,0)
 =
@@ -2499,61 +2499,37 @@ $$
 
 {\bf 3. Transformada del dato inicial}
 
-%Usamos
-%$$
-%u(x,0)=T_0(2\Theta(x)-1).
-%$$
-%La transformada de Fourier de $\Theta(x)$ es
-%$$
-%\widehat{\Theta}(k)
-%=
-%\pi\delta(k)+\frac{1}{ik}
-%$$
-%(en el sentido distribucional).
-La transformada de Fourier $\widehat{\mathrm{sgn}}=\mathcal{F}\,\mathrm{sgn}$ de $\mathrm{sgn}$ es tal que
+Usamos
 $$
-\langle \mathcal{F}\,\mathrm{sgn},\varphi \rangle
-=
-P.V.
-\int_{-\infty}^{\infty}
-dk\,
-\frac{1}{k}
-\varphi(k)
-=
-\lim_{\epsilon\to 0^+}
-\bigg(
-\int_{-\infty}^{-\epsilon}
-dk\,
-\frac{1}{ik}
-\varphi(k)
-+
-\int_{\epsilon}^{\infty}
-dk\,
-\frac{1}{ik}
-\varphi(k)
-\bigg)
+u(x,0)=T_0(2\Theta(x)-1).
 $$
-para toda distribuci\'on de prueba $\varphi$.
+La transformada de Fourier de $H(x)$ es
+$$
+\widehat{\Theta}(k)
+=
+\pi\delta(k)+\frac{1}{ik}
+$$
+(en el sentido de distribuciones).
 Por tanto
-%$$
-%\hat u(k,0)
-%=
-%2T_0
-%\left(
-%\pi\delta(k)+\frac1{ik}
-%\right)
-%-
-%2\pi T_0\delta(k).
-%$$
-%Los términos con $\delta$ se cancelan:
-%$$
-%\boxed{
-%\hat u(k,0)
-%=
-%\frac{2T_0}{ik}.
-%}
-%$$
-%Luego
+$$
+\hat u(k,0)
+=
+2T_0
+\left(
+\pi\delta(k)+\frac1{ik}
+\right)
+-
+2\pi T_0\delta(k).
+$$
+Los términos con $\delta$ se cancelan:
+$$
+\boxed{
+\hat u(k,0)
+=
+\frac{2T_0}{ik}.
+}
+$$
+Luego
 $$
 \boxed{
 \hat u(k,t)
@@ -2562,7 +2538,6 @@ $$
 e^{-\kappa k^2 t}.
 }
 $$
-en el sentido distribucional.
 
 {\bf 4. Transformada inversa}
 
@@ -2632,7 +2607,7 @@ Hacemos
 $$
 z=\frac{s}{2\sqrt{\kappa t}},
 \qquad
-ds=2\sqrt{\kappa t}\,dz.
+ds=2\sqrt{\kappa t},dz.
 $$
 Entonces
 $$
@@ -3025,488 +3000,12 @@ Las líneas equipotenciales se curvan cerca de los bordes $x=\pm a$, donde el ca
 {\bf Soluci\'on }{\em 11)}
 \vspace{0.5cm}
 
-Un medio infinito tridimensional de difusividad térmica $\kappa$ se encuentra inicialmente a temperatura uniforme $T_0$. En $t=0$ se enciende una fuente puntual de calor de intensidad constante $q\delta(\vec r)$ en el origen y permanece encendida. Hallar $u(\vec r,t)$. 
-
-{\bf 1. Ecuación del problema}
-
-La temperatura satisface
-$$
-u_t=\kappa\nabla^2u+q\delta(\vec r),
-\qquad t>0,
-$$
-con condición inicial
-$$
-u(\vec r,0)=T_0.
-$$
-Es conveniente separar la temperatura inicial uniforme:
-$$
-u(\vec r,t)=T_0+v(\vec r,t).
-$$
-Entonces
-$$
-v_t=\kappa\nabla^2v+q\delta(\vec r),
-$$
-$$
-v(\vec r,0)=0.
-$$
-
-{\bf 2. Solución mediante la función de Green del calor}
-
-La solución fundamental en $\mathbb R^3$ es
-$$
-G(\vec r,t)
-=
-\frac{1}{(4\pi\kappa t)^{3/2}}
-\exp\left(
--\frac{r^2}{4\kappa t}
-\right),
-\qquad t>0,
-$$
-donde
-$$
-r=|\vec r|.
-$$
-Como la fuente está encendida permanentemente desde $t=0$,
-$$
-v(\vec r,t)
-=
-q\int_0^t
-G(\vec r,t-\tau)\,d\tau.
-$$
-Cambiando variable
-$$
-s=t-\tau,
-$$
-queda
-$$
-\boxed{
-v(r,t)
-=
-q
-\int_0^t
-\frac{e^{-r^2/(4\kappa s)}}{(4\pi\kappa s)^{3/2}}
-\,ds.
-}
-$$
-
-{\bf 3. Evaluar la integral}
-
-Definimos
-$$
-a=\frac{r^2}{4\kappa}.
-$$
-La integral es
-$$
-I(t)
-=
-\int_0^t
-s^{-3/2}e^{-a/s}\,ds.
-$$
-Tomamos
-$$
-y=\sqrt{\frac{a}{s}},
-\qquad
-s=\frac{a}{y^2},
-$$
-$$
-ds=-2a,y^{-3}dy.
-$$
-Entonces
-$$
-I(t)
-=
-\frac{2}{\sqrt a}
-\int_{\sqrt{a/t}}^\infty
-e^{-y^2}\,dy.
-$$
-Reconocemos la función error complementaria
-$$
-\operatorname{erfc}(z)
-=
-\frac{2}{\sqrt\pi}
-\int_z^\infty e^{-y^2},dy.
-$$
-Por tanto
-$$
-I(t)
-=
-\frac{\sqrt\pi}{\sqrt a}
-\operatorname{erfc}\left(\sqrt{\frac{a}{t}}\right).
-$$
-
-{\bf 4. Sustitución}
-
-Como
-$$
-a=\frac{r^2}{4\kappa},
-$$
-tenemos
-$$
-\sqrt a=\frac{r}{2\sqrt\kappa}.
-$$
-Además
-$$
-(4\pi\kappa)^{3/2}
-=
-8\pi^{3/2}\kappa^{3/2}.
-$$
-Luego
-$$
-v(r,t)
-=
-\frac{q}{4\pi\kappa r}
-\operatorname{erfc}
-\left(
-\frac{r}{2\sqrt{\kappa t}}
-\right).
-$$
-
-{\bf 5. Solución final}
-
-Finalmente,
-$$
-\boxed{
-u(r,t)
-=
-T_0
-+
-\frac{q}{4\pi\kappa r}
-\operatorname{erfc}
-\left(
-\frac{r}{2\sqrt{\kappa t}}
-\right).
-}
-$$
-donde
-$$
-r=|\vec r|.
-$$
-
-{\bf 6. Verificaciones}
-
-\begin{itemize}
-\item Condición inicial. 
-Si $t\to0^+$,
-$$
-\frac{r}{2\sqrt{\kappa t}}
-\to\infty.
-$$
-Y
-$$
-\operatorname{erfc}(\infty)=0.
-$$
-Por tanto
-$$
-u(r,0^+)=T_0,
-$$
-como corresponde.
-
-\item Régimen estacionario.
-Si $t\to\infty$,
-$$
-\frac{r}{2\sqrt{\kappa t}}
-\to0,
-$$
-y
-$$
-\operatorname{erfc}(0)=1.
-$$
-Entonces
-$$
-\boxed{
-u(r,\infty)
-=
-T_0
-+
-\frac{q}{4\pi\kappa r}.
-}
-$$
-\end{itemize}
-
-{\bf 7. Interpretación física}
-
-La fuente puntual inyecta calor continuamente en el origen.
-Al principio el calor sólo afecta una región cercana al origen.
-La longitud característica de difusión crece como
-$$
-\sqrt{\kappa t}.
-$$
-A tiempos largos se alcanza el perfil estacionario
-$$
-u(r)-T_0
-=
-\frac{q}{4\pi\kappa r},
-$$
-que es exactamente la solución de
-$$
-\kappa\nabla^2u+q\delta(\vec r)=0.
-$$
-Es interesante notar que aparece la misma dependencia $1/r$ que en el potencial electrostático de una carga puntual.
-
-
-
 
 \prob Un helicóptero en vuelo estacionario a una altura \(H\) sobre el origen de coordenadas (suelo en \(z=0\)) emite sonido en una frecuencia \(\omega\). La sobrepresión atmosférica satisface la ecuación de ondas con una fuente puntual en \((0,0,H)\) y condición de contorno homogénea de Neumann en el plano \(z=0\). Encuentre \(u(x,y,z,t)\) para \(z>0\). Para una distancia horizontal \(d\) dada, halle la altura \(h_0(\omega)\) a la cual se encuentra el primer mínimo de intensidad debido a la interferencia destructiva entre los frentes de onda directo y reflejado. Muestre que para pequeñas alturas las frecuencias graves se refuerzan y las agudas se amortiguan. Ayuda: la solución fundamental para la ecuación de ondas en 3D es \(G(\vec{r},t;\vec{r}',t') = \frac{1}{2\pi c r}\Theta(t-t')\delta(r-r' - c(t-t'))\).
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 12)}
 \vspace{0.5cm}
-
-Un helicóptero está en reposo en
-$$
-\mathbf r_0=(0,0,H),
-$$
-y emite una señal acústica monocromática de frecuencia angular $\omega$.
-La sobrepresión satisface la ecuación de ondas con una fuente puntual y condición de Neumann homogénea en el suelo $z=0$:
-$$
-\frac{\partial u}{\partial z}(x,y,0,t)=0.
-$$
-Se pide hallar $u(x,y,z,t)$ para $z>0$, encontrar la altura del primer mínimo de intensidad para una distancia horizontal fija $d$, y discutir el comportamiento para alturas pequeñas. 
-
-{\bf 1. Método de las imágenes}
-
-La condición
-$$
-\partial_z u=0
-$$
-corresponde a una frontera acústicamente rígida.
-Para una condición de Neumann, la imagen tiene el mismo signo que la fuente real.
-Por lo tanto reemplazamos el problema en el semiespacio $z>0$ por dos fuentes puntuales en el espacio libre:
-\begin{itemize}
-\item fuente real en $(0,0,H)$,
-\item fuente imagen en $(0,0,-H)$.
-\end{itemize}
-
-{\bf 2. Solución armónica de una fuente puntual}
-
-Para una fuente monocromática de frecuencia $\omega$,
-$$
-k=\frac{\omega}{c}.
-$$
-La solución radiada por una fuente puntual en una posici\'on $\mathbf r_s$ es
-$$
-u(\mathbf r,t)
-=
-\Re\left[
-A\,\frac{e^{i(kR-\omega t)}}{R}
-\right]
-$$
-donde $R=|\mathbf r - \mathbf r_s|$.
-Por superposición,
-$$
-u(\mathbf r,t)
-=
-\Re\left[
-A e^{-i\omega t}
-\left(
-\frac{e^{ikR_1}}{R_1}
-+
-\frac{e^{ikR_2}}{R_2}
-\right)
-\right],
-$$
-donde
-$$
-R_1
-=
-\sqrt{x^2+y^2+(z-H)^2},
-$$
-$$
-R_2
-=
-\sqrt{x^2+y^2+(z+H)^2}.
-$$
-Así,
-$$
-\boxed{
-u(\mathbf r,t)
-=
-\Re\left[
-A e^{-i\omega t}
-\left(
-\frac{e^{ikR_1}}{R_1}
-+
-\frac{e^{ikR_2}}{R_2}
-\right)
-\right].
-}
-$$
-Esta solución satisface automáticamente la condición de Neumann.
-
-{\bf 3. Intensidad observada}
-
-La intensidad media es proporcional al cuadrado del módulo de la amplitud compleja:
-$$
-I
-\propto
-\left|
-\frac{e^{ikr_1}}{r_1}
-+
-\frac{e^{ikr_2}}{r_2}
-\right|^2.
-$$
-Para puntos suficientemente alejados del helicóptero,
-$$
-R_1\simeq R_2\simeq R,
-$$
-donde $R=|\mathbf r|$, y entonces
-$$
-I
-\propto
-R^{-2}
-\left|
-e^{ikR_1}+e^{ikR_2}
-\right|^2.
-$$
-Usando
-$$
-e^{ia}+e^{ib}
-=
-2e^{i(a+b)/2}
-\cos\left(\frac{a-b}{2}\right),
-$$
-obtenemos
-$$
-\boxed{
-I
-\propto
-4R^{-2}\,\cos^2\left(
-\frac{k\Delta R}{2}
-\right),
-}
-$$
-donde
-$$
-\Delta R=R_2-R_1.
-$$
-
-{\bf 4. Geometría}
-
-Consideremos un observador situado a distancia horizontal fija
-$$
-d=\sqrt{x^2+y^2}.
-$$
-Sea $z=h$ su altura.
-Entonces
-$$
-r_1=\sqrt{d^2+(h-H)^2},
-$$
-$$
-r_2=\sqrt{d^2+(h+H)^2}.
-$$
-La diferencia de caminos es
-$$
-\boxed{
-\Delta R
-=
-\sqrt{d^2+(h+H)^2}
--
-\sqrt{d^2+(h-H)^2}.
-}
-$$
-
-{\bf 5. Primer mínimo de intensidad}
-
-Los mínimos ocurren cuando
-$$
-\cos\left(\frac{k\Delta R}{2}\right)=0.
-$$
-Luego
-$$
-\frac{k\Delta R}{2}
-=
-\frac{\pi}{2},
-\frac{3\pi}{2},
-\ldots
-$$
-El primer mínimo corresponde a
-$$
-\Delta R=\frac{\lambda}{2},
-$$
-donde
-$$
-\lambda=\frac{2\pi c}{\omega}.
-$$
-Por tanto $h_0$ satisface
-$$
-\boxed{
-\sqrt{d^2+(h_0+H)^2}
--
-\sqrt{d^2+(h_0-H)^2}
-=
-\frac{\lambda}{2}.
-}
-$$
-Ésta es la ecuación exacta para la altura del primer mínimo.
-
-{\bf 6. Aproximación para alturas pequeñas}
-
-Supongamos
-$$
-h\ll d,
-\qquad
-H\ll d.
-$$
-Desarrollando:
-$$
-\sqrt{d^2+a^2}
-=
-d+\frac{a^2}{2d}+O(d^{-3}).
-$$
-Entonces
-$$
-\Delta R
-\simeq
-\frac{(h+H)^2-(h-H)^2}{2d}
-=
-\frac{2hH}{d}.
-$$
-La condición del primer mínimo
-$$
-\Delta R=\frac{\lambda}{2}
-$$
-da
-$$
-\frac{2h_0H}{d}
-=
-\frac{\lambda}{2}.
-$$
-Finalmente
-$$
-\boxed{
-h_0(\omega)
-=
-\frac{\lambda d}{4H}
-=
-\frac{\pi c\, d}{2H\,\omega}.
-}
-$$
-
-{\bf 7. Interpretación física}
-Como
-$$
-h_0(\omega)\propto\frac1\omega,
-$$
-tenemos:
-\begin{itemize}
-\item frecuencias bajas ($\omega$ pequeño) $\Rightarrow$ el primer mínimo aparece a alturas grandes;
-\item frecuencias altas ($\omega$ grande) $\Rightarrow$ el primer mínimo aparece mucho más cerca del suelo.
-\end{itemize}
-Por lo tanto, para observadores cercanos al suelo:
-$$
-\boxed{
-\text{las frecuencias graves se refuerzan}
-}
-$$
-porque todavía no alcanzaron su primer mínimo de interferencia, mientras que
-$$
-\boxed{
-\text{las frecuencias agudas se atenúan}
-}
-$$
-al encontrarse ya en regiones de interferencia destructiva.
-Éste es exactamente el comportamiento pedido en el enunciado. 
-
 
 
 
