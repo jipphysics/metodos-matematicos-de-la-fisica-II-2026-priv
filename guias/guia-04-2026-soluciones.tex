@@ -1,0 +1,2713 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=50\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Guía 4}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+\newcommand{\tder}[2]{\frac{d #1}{d #2}}
+
+% JUAN
+\newcommand{\four}{\mathcal{F}}
+\newcommand{\refl}{\mathcal{R}}
+\newcommand{\powr}{\mathcal{P}}
+\newcommand{\derv}{\mathcal{D}}
+\newcommand{\tras}{\mathcal{S}}
+\newcommand{\phas}{\mathcal{E}}
+
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Guía N$^\txt{o}$ 4 -- 2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% https://gemini.google.com/app/dc1053c6ee2d3484?hl=es_419
+
+
+\section*{Parte I: Problemas Centrales (para desarrollar en clase)}
+
+
+\prob Calcule las transformadas de Fourier de las siguientes distribuciones:
+\begin{enumerate}
+\item La distribución de Heaviside (escalón): $\Theta(x-a)$.
+\item La derivada de la delta de Dirac: $\delta'(x-a)$.
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1a)}
+\vspace{0.5cm}
+
+Para resolver el problema vamos a necesitar definir ciertos operadores lineales y luego probar ciertas identidades.
+En particular, algunas de ellas (como la transformada de Fourier) s\'olo tienen sentido cuando el espacio de funciones de pruebas es el espacio de Schwartz, puesto que s\'olo en dicho caso la transformada de Fourier es un automorfismo (i.e. es invertible).
+
+En primer lugar, diremos que la transformada de Fourier  $\four T$ de una distribuci\'on arbitraria $T$ viene definida por la identidad
+$$
+\langle \four T,\varphi \rangle
+:=
+\langle T,\four \varphi \rangle
+\quad (1)
+$$
+para toda funci\'on de prueba $\varphi$, donde la transformada de Fourier de la funci\'on de prueba $\varphi$ viene dada por
+$$
+(\four \varphi)(k)
+=
+\int_{-\infty}^{\infty}
+dx\,
+e^{-ikx}
+\varphi(x)
+$$ 
+y, si $\hat{\varphi} = \four \varphi$, luego
+$$
+(\four^{-1} \hat \varphi)(x)
+=
+\frac{1}{2\pi}
+\int_{-\infty}^{\infty}
+dk\,
+e^{ikx}
+\hat \varphi(k)
+$$ 
+es la inversa de la transformada de Fourier, por lo que
+$$
+\four^{-1} \four = \four \four^{-1} = \II
+$$
+es la transformaci\'on identidad.
+
+En segundo lugar, y de manera similar, diremos que la derivada $\derv T$ de una distribuci\'on arbitraria $T$ viene definida por la identidad
+$$
+\langle \derv T,\varphi \rangle
+:=
+-
+\langle T,\derv \varphi \rangle
+\quad (2)
+$$
+para toda funci\'on de prueba $\varphi$, donde 
+$$
+(\derv \varphi)(x)
+:=
+\frac{d \varphi}{d x}(x)
+$$
+define la derivada de la funci\'on de prueba $\varphi$.
+
+En tercer lugar, diremos que la aplicaci\'on del operador multiplicaci\'on por la coordenada $\powr$ a una distribuci\'on $T$ viene definida por
+$$
+\langle \powr T,\varphi \rangle
+:=
+\langle T,\powr \varphi \rangle
+\quad (3)
+$$
+donde la correspondiente aplicaci\'on a una funci\'on de prueba $\varphi$ viene definida por
+$$
+(\powr \varphi)(x) := x\varphi(x).
+$$
+Es interesante notar que
+$$
+[\derv,\powr] = \derv\powr - \powr\derv = \II.
+$$
+Tambi\'en es \'util notar que $\powr\delta = 0$ puesto que
+$$
+\langle \powr \delta, \varphi \rangle
+=
+\langle \delta, \powr \varphi \rangle
+=
+\int_{-\infty}^{\infty}
+dx\,
+\delta(x)\,
+x\,
+\varphi(x)
+=
+0\,\varphi(0) = 0
+\quad (4)
+$$
+para toda funci\'on de prueba $\varphi$.
+
+En cuarto lugar, diremos que la reflexi\'on $\refl T$ de una distribuci\'on $T$ viene dada por
+$$
+\langle \refl T,\varphi \rangle
+:=
+\langle T,\refl \varphi \rangle
+\quad (5)
+$$
+donde la reflexi\'on de una funci\'on de prueba $\varphi$ viene definida por
+$$
+(\refl \varphi)(x) := \varphi(-x).
+$$
+Es interesante notar que $\refl^2 = \II$.
+Tambi\'en es util notar que $\four \refl = \refl \four$.
+En efecto,
+\begin{eqnarray}
+\langle \four \refl T , \varphi \rangle
+&=&
+\langle T , \refl \four \varphi \rangle
+\notag
+\\
+&=&
+\langle T , \four \refl \varphi \rangle
+\notag
+\\
+&=&
+\langle \four \refl T , \varphi \rangle
+\notag
+\end{eqnarray}
+para toda distribuci\'on $T$ y funci\'on de pruebas $\varphi$.
+Aqu\'i, en la segunda l\'inea, hemos utilizado que
+\begin{eqnarray}
+(\refl \four \varphi)(k)
+&=&
+(\four \varphi)(-k)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dx\,
+e^{-i(-k)x}
+\varphi(x)
+\notag
+\\
+&=&
+-
+\int_{y(x=-\infty)=\infty}^{y(x=\infty)=-\infty}
+dy\,
+e^{-i(-k)(-y)}
+\varphi(-y)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dy\,
+e^{-iky}
+(\refl \varphi)(y)
+\notag
+\\
+&=&
+(\four \refl \varphi)(k)
+\notag
+\end{eqnarray}
+para todo $k$ y funci\'on de prueba $\varphi$.
+
+Ahora probaremos algunas identidades \'utiles.
+De la ecuaci\'on (2) obtenemos que
+\begin{eqnarray}
+\langle \derv \Theta , \varphi \rangle
+&=&
+-
+\langle \Theta , \derv \varphi \rangle
+\notag
+\\
+&=&
+-
+\int_{-\infty}^{\infty} dx\,
+\Theta(x) \varphi'(x)
+\notag
+\\
+&=&
+-
+\int_{0}^{\infty} dx\,
+\varphi'(x)
+\notag
+\\
+&=&
+-
+\left.
+\varphi(x)
+\right|_{0}^{\infty}
+\notag
+\\
+&=&
+-
+\varphi(x\to \infty)
++
+\varphi(0)
+\notag
+\\
+&=&
+-
+0
++
+\varphi(0)
+\notag
+\\
+&=&
+\varphi(0)
+\notag
+\\
+&=&
+\langle \delta , \varphi \rangle
+\notag
+\end{eqnarray}
+para toda funci\'on de prueba $\varphi$, y donde hemos usado que $\varphi(x\to \infty)\to 0$ para las funciones de prueba, concluyendo que
+$$
+\derv \Theta = \delta
+\quad (6)
+$$
+en sentido distribucional.
+
+Veamos ahora cu\'al es la transformada de Fourier de la delta de Dirac.
+Aplicando la identidad (1) obtenemos que
+\begin{eqnarray}
+\langle \four \delta , \varphi \rangle
+&=&
+\langle \delta , \four \varphi \rangle
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+du\, 
+\delta(u) 
+\hat{\varphi}(u)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty} 
+du\, 
+\delta(u) 
+\bigg(
+\int_{-\infty}^{\infty} 
+dv\,
+e^{-iuv}
+\varphi(v)
+\bigg)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty} 
+dv\,
+\int_{-\infty}^{\infty} 
+du\, 
+\delta(u) 
+e^{-iuv}
+\varphi(v)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty} 
+dv\,
+\varphi(v),
+\notag
+\end{eqnarray}
+lo cu\'al vale para toda funci\'on de prueba $\varphi$.
+Esto implica que
+$$
+(\four \delta)(k)
+=
+1
+\quad (7)
+$$
+para todo valor de $k$.
+
+Otra identidad distribucional que necesitaremos es la transformada de Fourier de la distribuci\'on identidad $T=1$.
+Usando (1) vemos que
+\begin{eqnarray}
+\langle \hat{1},\varphi \rangle
+&=&
+\notag
+\\
+&=&
+\langle 1,\hat{\varphi} \rangle
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dq\,
+1\,
+\hat{\varphi}(q)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dq\,
+\bigg(
+\int_{-\infty}^{\infty}
+dp\,
+e^{-ipq}
+\varphi(p)
+\bigg)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dp\,
+\bigg(
+\int_{-\infty}^{\infty}
+dq\,
+e^{-ipq}
+\bigg)
+\notag
+%\\
+%&=&
+%\int_{-\infty}^{\infty}
+%dp\,
+%\varphi(p)\,
+%2\pi \delta(p)
+%\notag
+\\
+&=&
+2\pi
+\langle \delta , \varphi \rangle
+\notag
+\end{eqnarray}
+para toda distribuci\'on $\varphi$.
+%, y donde hemos utilizado que
+%$$
+%2\pi\,
+%\delta(p)
+%=
+%\int_{-\infty}^{\infty}
+%dq\,
+%e^{-ipq}.
+%$$
+Por ende, concluimos que en el sentido de distribuciones vale la identidad
+$$
+\hat{1} 
+=
+2\pi\,
+\delta.
+\quad (8)
+$$
+
+Combinando (1), (2) y (4) vemos que
+\begin{eqnarray}
+(\derv\four \varphi)(k)
+&=&
+\frac{d}{dk}
+\int_{-\infty}^{\infty} dx\,
+e^{-ikx}
+\varphi(x)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty} dx\,
+e^{-ikx}\,
+(-ix)
+\varphi(x)
+\notag
+\\
+&=&
+-
+i
+\int_{-\infty}^{\infty} dx\,
+e^{-ikx}\,
+(\powr \varphi)(x)
+\notag
+\\
+&=&
+-i
+(\four\powr\varphi)(k)
+\notag
+\end{eqnarray}
+para toda funci\'on de prueba $\varphi$.
+Esto quiere decir que la identidad
+$$
+\derv\four
+=
+-
+i\,\four\powr
+$$
+vale sobre el {\bf espacio de funciones de prueba}.
+Con este resultado, vemos que
+\begin{eqnarray}
+\langle \four\derv T , \varphi \rangle
+&=&
+\langle \derv T , \four \varphi \rangle
+\notag
+\\
+&=&
+-\langle T , \derv \four \varphi \rangle
+\notag
+\\
+&=&
+i
+\langle T , \four \powr \varphi \rangle
+\notag
+\\
+&=&
+i
+\langle \four T , \powr \varphi \rangle
+\notag
+\\
+&=&
+i
+\langle \powr \four T , \varphi \rangle
+\notag
+\end{eqnarray}
+para toda distribuci\'on $T$ y funci\'on de prueba $\varphi$, lo cual demuestra que
+$$
+\four\derv = i\, \powr\four
+\quad (9)
+$$
+sobre el {\bf espacio de distribuciones}.
+
+Ahora estamos en condiciones de probar lo que se nos pide.
+Combinando las identidades demostradas anteriormente para el caso en que $T=\Theta$, obtenemos que
+$$
+1
+=
+\hat{\delta}(k)
+=
+(\four \derv \Theta)(k)
+=
+i\,(\powr \four \Theta)(k)
+\quad (10)
+$$
+para todo valor de $k$.
+En otras palabras, encontramos que la transformada de Fourier $\hat{\Theta}:=\four \Theta$ de la funci\'on escal\'on de Heaviside $\Theta$ satisface la anterior identidad {\em en forma distribucional} o, equivalentemente, que
+%Esta \'ultima aclaraci\'on es importante, porque podemos sentirnos tentados a dividir la ecuaci\'on (3) por $ik$ y obtener que $\Theta(k) = 1/(ik)$.
+%Pero esto es un error por dos razones.
+%En primer lugar, porque la expresi\'on obtenida no est\'a definida en $k=0$.
+%En segundo lugar, porque la ecuaci\'on no necesariamente determina de manera un\'ivoca a $\hat{\Theta}$.
+%M\'as precisamente, la ecuaci\'on (3) indica que $\hat{\Theta}$ satisface
+$$
+\langle 1 , \varphi \rangle
+=
+i \langle \powr \hat{\Theta} , \varphi \rangle
+=
+i \langle \hat{\Theta} , \powr \varphi \rangle.
+\quad (11)
+$$
+%para toda funci\'on de prueba $\varphi$.
+Veamos si podemos encontrar una distribuci\'on tal.
+Para ello, escribimos la anterior ecuaci\'on utilizando las definiciones espec\'ificas de las distribuciones involucradas
+$$
+\int_{-\infty}^{\infty} 
+dk\, 
+\varphi(k)
+%=
+%\int_{-\infty}^{\infty} 
+%dk\, 
+%ik\,
+%\hat{\Theta}(k) 
+%\varphi(k)
+=
+\int_{-\infty}^{\infty} 
+dk\, 
+\hat{\Theta}(k)\,
+ik\,
+\varphi(k)
+\quad (12)
+$$
+para toda funci\'on de prueba $\varphi$.
+
+
+{\em Proposici\'on:}
+la distribuci\'on $S$ dada por el Valor Principal de Cauchy
+$$
+S(\phi)
+:=
+-i\,
+\mathrm{P.V.}
+\int_{-\infty}^{\infty}
+dk\,
+\frac{1}{k}\,
+\phi(k)
+=
+\lim_{\epsilon\to 0^+}
+\bigg(
+\int_{-\infty}^{-\epsilon}
+dk\,
+\frac{1}{k}\,
+\phi(k)
++
+\int_{\epsilon}^{\infty}
+dk\,
+\frac{1}{k}\,
+\phi(k)
+\bigg)
+$$
+para toda funci\'on de prueba $\phi$, satisface la ecuaci\'on (12).
+Efectivamente, si usamos la funci\'on de prueba definida por $\phi(k) = ik\,\varphi(k)$ para cualquier otra funci\'on de prueba $\varphi$ arbitraria, obtenemos que
+\begin{eqnarray}
+S(\phi)
+%&=&
+%S(ik\,\varphi)
+%\notag
+%\\
+&=&
+-i\,
+\mathrm{P.V.}
+\int_{-\infty}^{\infty}
+dk\,
+\frac{1}{k}\,
+ik\,\varphi(k)
+\notag
+\\
+&=&
+\lim_{\epsilon\to 0^+}
+\bigg(
+\int_{-\infty}^{-\epsilon}
+dk\,
+\varphi(k)
++
+\int_{\epsilon}^{\infty}
+dk\,
+\varphi(k)
+\bigg)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dk\,
+\varphi(k)
+\notag
+\\
+&=&
+\langle 1,\varphi \rangle.
+\notag
+\end{eqnarray}
+Esto sugiere que $S$ es $\hat{\Theta}$.
+Sin embargo, $S$ no provee la soluci\'on m\'as general, ya que $S + c\delta$ tambi\'en es una soluci\'on para una constante $c$ arbitraria, debido a la ecuaci\'on (4).
+En efecto, aplicando la ecuaci\'on (11) a $S+c\delta$, encontramos que
+\begin{eqnarray}
+i
+\big\langle 
+\powr
+\big(
+S
++
+c
+\delta
+\big)
+,
+\varphi
+\big\rangle
+&=&
+i
+\big\langle 
+\powr
+S
+,
+\varphi
+\big\rangle
++
+ic\,
+\big\langle 
+\powr
+\delta
+,
+\varphi
+\big\rangle
+\notag
+\\
+&=&
+\langle 
+1,
+\varphi
+\rangle
++
+0.
+\notag
+\end{eqnarray}
+
+Ocurre que, de todas las soluciones posibles a la ecuaci\'on (11) que se obtienen de variar $c$, una sola de ellas corresponde a $\hat{\Theta}$.
+Para determinar el valor de $c$ utilizamos la identidad distribucional
+$$
+\Theta
++
+\refl \Theta = 1
+$$
+y su transformada de Fourier
+\begin{eqnarray}
+2c\,\four \delta
+&=&
+0
++
+c\,\four (\delta + \delta)
+\notag
+\\
+&=&
+\four
+\big(
+S
++
+\refl S
+\big)
++
+c\,\four (\delta + \refl \delta)
+\notag
+\\
+&=&
+\four 
+\big(
+S
++
+c \delta
+\big)
++
+\four 
+\refl
+\big(
+S
++
+c\delta
+\big)
+\notag
+\\
+&=&
+\four 
+\big(
+S
++
+c \delta
+\big)
++
+\refl
+\four 
+\big(
+S
++
+c\delta
+\big)
+\notag
+\\
+&=&
+\hat{\Theta}
++
+\refl \hat{\Theta} 
+\notag
+\\
+&=&
+\hat{1} 
+\notag
+\\
+&=&
+2\pi\,\hat{\delta}
+\notag
+\end{eqnarray}
+donde hemos utilizado que 
+$S + \refl S=0$, $\refl \delta=\delta$ y que
+$\four \refl = \refl \four$.
+De esta manera, concluimos que $c=\pi$.
+En otras palabras, concluimos que
+$$
+\hat{\Theta}
+=
+\pi \delta
++
+S.
+$$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1b)}
+\vspace{0.5cm}
+
+Calcular la transformada de Fourier de
+$$
+\delta'(x-a).
+$$
+Para ello, definimos la familia monoparametrizada por $a\in \RR$ de operadores traslaci\'on sobre el espacio de funciones seg\'un
+$$
+(\tras_a \varphi)(x)
+:=
+\varphi(x+a)
+$$
+para toda funci\'on de prueba $\varphi$.
+Correspondientemente, definimos la familia de operadores traslaci\'on sobre el espacio de distribuciones seg\'un
+$$
+\langle \tras_a T,\varphi \rangle
+:=
+\langle T,\tras_a \varphi \rangle
+$$
+para toda distribuci\'on $T$ y toda funci\'on de prueba $\varphi$.
+{\em Ejemplo:} Como operan estos operadores sobre la distribuci\'on $\delta$?
+Investigemos
+\begin{eqnarray}
+\langle \tras_a \delta,\varphi \rangle
+&=&
+\langle \delta,\tras_a \varphi \rangle
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty} 
+dx\,
+\delta(x)
+(\tras_a \varphi)(x)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty} 
+dx\,
+\delta(x)
+\varphi(x+a)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty} 
+dy\,
+\delta(y-a)
+\varphi(y)
+\quad \text{donde $y=x+a$.}
+\notag
+\end{eqnarray}
+En otras palabras, vemos que
+$$
+(\tras_a \delta)(x)
+=
+\delta(x-a).
+$$
+Cabe notar que cualquier operador traslaci\'on conmuta con el operador derivada, i.e. $\tras_a \derv = \derv \tras_a$.
+Para ver esto, definimos $\phi_a(x):=\varphi(x+a)$, de manera que $\tras_a \varphi = \phi$, y as\'i comprobamos que
+$$
+(\derv \tras_a \varphi)(x)
+=
+(\derv \phi_a)(x)
+=
+\phi_a'(x)
+=
+\varphi'(x+a)
+=
+(\derv \varphi)(x+a)
+=
+(\tras_a \derv \varphi)(x)
+$$
+para toda funci\'on de prueba $\varphi$ y todo $x$.
+
+Como se relaciona un operador traslaci\'on con el operador transformada de Fourier?
+Veamos
+\begin{eqnarray}
+(\four \tras_a \varphi)(k)
+&=&
+(\four \phi_a)(k)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dk\,
+e^{-ikx}
+\phi_a(x)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dk\,
+e^{-ikx}
+\varphi(x+a)
+\notag
+\\
+&=&
+\int_{-\infty}^{\infty}
+dk\,
+e^{-ik(u-a)}
+\varphi(u),
+\quad \text{con $u=x+a$,}
+\notag
+\\
+&=&
+e^{ika}
+\int_{-\infty}^{\infty}
+dk\,
+e^{-iku}
+\varphi(u)
+\notag
+\\
+&=&
+e^{ika}
+(\four \varphi)(k)
+\notag
+\end{eqnarray}
+para toda funci\'on de prueba $\varphi$ y todo $k$.
+Conviene entonces introducir la familia de operadores de cambio de fase seg\'un
+$$
+(\phas_a \hat{\varphi})(k)
+:=
+e^{ika} \hat{\varphi}(k)
+$$
+para toda funci\'on de prueba $\varphi$ y todo $k$.
+De esta manera, concluimos que sobre el espacio de funciones de prueba vale que
+$$
+\four \tras_a
+=
+\phas_a \four
+.
+$$
+Luego definimos la acci\'on de los operadores cambios de fase sobre el espacio de distribuciones seg\'un
+$$
+\langle \phas_a T,\varphi \rangle
+:=
+\langle T,\phas_a \varphi \rangle
+$$
+para toda distribuci\'on $T$ y funci\'on de prueba $\varphi$.
+
+Con los anteriores ingredientes podemos resolver el problema planteado.
+A saber, calcular la transformada de Fourier de $\delta'(x-a)$.
+Partimos de notar que, en el sentido de distribuciones,
+$$
+(\tras_a \derv \delta)(x)
+=
+\delta'(x-a)
+$$
+para todo $x$.
+De esta manera,
+\begin{eqnarray}
+\four \tras_a \derv \delta 
+&=&
+\phas_a \four \derv \delta 
+\notag
+\\
+&=&
+i\, \phas_a \powr \four \delta 
+\notag
+\\
+&=&
+i\, \phas_a \powr
+\notag
+\end{eqnarray}
+puesto que $\four \delta = 1$.
+De esta manera, se tiene que
+$$
+\langle 
+\four \tras_a \derv \delta,
+\varphi
+\rangle
+=
+i\, 
+\langle
+\phas_a 
+\powr
+,
+\varphi
+\rangle
+=
+i\,
+\langle
+1
+,
+\powr
+\phas_a 
+\varphi
+\rangle
+=
+\int_{-\infty}^{\infty}
+dq\,
+iq\,
+e^{iqa}
+\varphi(q)
+$$
+o, equivalentemente,
+$$
+(
+\powr
+\phas_a 
+\varphi
+)(q)
+=
+iq\,
+e^{iqa}
+\varphi(q)
+.
+$$
+Informalmente, podr\'iamos decir que 
+$$
+\four
+(\delta'(x-a))(k)
+=
+ik\,e^{ika}
+.
+$$
+
+{\em Extra!}
+En este contexto, un resultado interesante y muy importante es el siguiente.
+Para toda funci\'on de prueba $\varphi$ vale que
+\begin{eqnarray}
+\langle \derv \phas_a , \varphi \rangle
+&=&
+-
+\langle \phas_a , \derv \varphi \rangle
+\notag
+\\
+&=&
+-
+\int_{-\infty}^{\infty}
+dx\,
+e^{iax}
+\varphi'(x)
+\notag
+\\
+&=&
+-
+\left.
+e^{iax}
+\varphi(x)
+\right|_{-\infty}^{\infty}
++
+ia
+\int_{-\infty}^{\infty}
+dx\,
+e^{iax}
+\varphi(x),
+\notag
+\quad \text{sale de integrar por partes,}
+\\
+&=&
+ia
+\int_{-\infty}^{\infty}
+dx\,
+e^{iax}
+\varphi(x),
+\notag
+\\
+&=&
+ia
+\langle \phas_a , \varphi \rangle
+.
+\notag
+\end{eqnarray}
+Por otro lado, sea $E_a := \phas_a 1$, i.e. la aplicaci\'on del operador $\phas_a$ sobre la distribuci\'on 1.
+Luego, al anterior resultado lo podemos escribir como
+\begin{eqnarray}
+\langle \derv E_a, \varphi \rangle
+&=&
+\langle \derv \phas_a 1, \varphi \rangle
+\notag
+\\
+&=&
+\langle \derv \phas_a , \varphi \rangle
+\notag
+\\
+&=&
+ia
+\langle \phas_a , \varphi \rangle
+\notag
+\\
+&=&
+ia
+\langle \phas_a 1, \varphi \rangle
+\notag
+\\
+&=&
+ia
+\langle E_a, \varphi \rangle
+\notag
+\end{eqnarray}
+Esto quiere decir que, cuando el operador $\derv$ act\'ua sobre distribuciones, tiene a la distribuci\'on $E_a$ como autovector a autovalor $ia$.
+Notar adem\'as que la funci\'on definida por $\tilde{\varphi}(k):=\langle E_{-k},\varphi \rangle$ para cada $k$, es la transformada de Fourier de $\varphi$, ya que
+$$
+\tilde{\varphi}(k)
+=
+\langle E_{-k},\varphi \rangle
+=
+\int_{-\infty}^{\infty}
+dx\,
+e^{-ikx} \varphi(x)
+=
+(\four \varphi)(k)
+.
+$$
+Notar como $e^{iax}$ puede ser parte de distintos objetos matem\'aticos, la transformaci\'on $\phas_a$, la distribuci\'on $E_a$ y la transformada de Fourier.
+Esto suele ser el origen de muchas confusiones.
+Siempre es importante tener en claro cu\'al es el objeto matem\'atico con el que estamos trabajando.
+
+\prob Encuentre por transformada de Fourier la soluci\'on general de la ecuaci\'on de movimiento
+\[
+\ddot{x} + \omega_0^2 x = 0, \qquad -\infty < t < \infty
+\]
+para un oscilador arm\'onico de frecuencia natural~$\omega_0$ sin forzamiento ni disipaci\'on.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+Queremos encontrar la solución general para la ecuación de movimiento de un oscilador armónico sin forzamiento ni disipación, dada por:
+$$\ddot{x}+\omega_{0}^{2}x=0$$
+Aplicamos la Transformada de Fourier a ambos lados de la ecuación diferencial. Denotamos la transformada de $x(t)$ como $\hat{x}(\omega) = \mathcal{F}\{x(t)\}$.
+Sabiendo que derivar en el espacio temporal corresponde a multiplicar por $i\omega$ en el espacio de frecuencias, tenemos que $\mathcal{F}\{\ddot{x}(t)\} = -\omega^2 \hat{x}(\omega)$.
+Sustituyendo esto en la ecuación:
+$$(-\omega^2 + \omega_0^2)\hat{x}(\omega) = 0$$
+Para que esta ecuación se cumpla sin que $\hat{x}(\omega)$ sea trivialmente nula en todas partes, la distribución $\hat{x}(\omega)$ debe estar concentrada únicamente en los puntos donde el factor $(-\omega^2 + \omega_0^2)$ se anula. Esto ocurre en las raíces:
+$$\omega = \pm \omega_0$$
+Por lo tanto, la solución más general en el espacio de Fourier es una combinación lineal de deltas de Dirac centradas en estas frecuencias:
+$$\hat{x}(\omega) = c_1 \delta(\omega - \omega_0) + c_2 \delta(\omega + \omega_0)$$
+donde $c_1$ y $c_2$ son constantes arbitrarias.
+Finalmente, antitransformamos para volver al espacio real:
+$$x(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \left[ c_1 \delta(\omega - \omega_0) + c_2 \delta(\omega + \omega_0) \right] e^{i\omega t} d\omega$$
+Evaluando la integral con la propiedad fundamental de la delta de Dirac:
+$$x(t) = \frac{c_1}{2\pi} e^{i\omega_0 t} + \frac{c_2}{2\pi} e^{-i\omega_0 t}$$
+Definiendo nuevas constantes $A = c_1 / (2\pi)$ y $B = c_2 / (2\pi)$, obtenemos la solución general clásica:
+$$x(t) = A e^{i\omega_0 t} + B e^{-i\omega_0 t}.$$
+
+\prob Considere el siguiente problema de Neumann en el intervalo $[0, L]$:
+\[
+y'' = \lambda y,\qquad y'(0)=y'(L)=0.
+\]
+\begin{enumerate}
+\item Sin usar la forma explícita de los autovalores y autofunciones, muestre vía el producto escalar
+\[
+\langle f, g\rangle := L^{-1}\int_0^L f(x)g(x)\,dx
+\]
+que los autovalores son negativos y que las autofunciones a distintos autovalores son ortogonales respecto del producto escalar.
+\item Determine los autovalores y autofunciones.
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 3)}
+\vspace{0.5cm}
+
+Considere el problema en el intervalo $[0, L]$ dado por:
+$$y^{\prime\prime}=\lambda y$$
+$$y^{\prime}(0)=y^{\prime}(L)=0$$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 3a)}
+Demostración del signo de autovalores y ortogonalidad.
+\vspace{0.5cm}
+
+Se nos define el siguiente producto escalar:
+$$\langle f,g\rangle:=L^{-1}\int_{0}^{L}f(x)g(x)dx$$
+\begin{enumerate}
+\item Los autovalores son negativos (o cero):
+Sea $y$ una autofunción correspondiente al autovalor $\lambda$. Calculamos:
+$$\lambda \langle y, y \rangle = \langle y'', y \rangle = \frac{1}{L} \int_0^L y'' y dx$$
+Integrando por partes el lado derecho:
+$$\int_0^L y'' y dx = \left[ y' y \right]_0^L - \int_0^L (y')^2 dx$$
+Debido a las condiciones de contorno $y'(0)=y'(L)=0$, el primer término se anula:
+$$\lambda \int_0^L y^2 dx = - \int_0^L (y')^2 dx$$
+Dado que el integrando de ambas integrales es siempre no negativo (cuadrados reales), se deduce obligatoriamente que $\lambda \le 0$.
+
+\item Ortogonalidad de las autofunciones:
+Sean $y_1$ y $y_2$ dos autofunciones asociadas a autovalores distintos $\lambda_1 \neq \lambda_2$.
+Evaluamos el producto escalar:
+$$\lambda_1 \langle y_1, y_2 \rangle = \frac{1}{L} \int_0^L y_1'' y_2 dx$$
+Aplicando integración por partes y usando las condiciones de contorno (que anulan el término de borde):
+$$\lambda_1 \langle y_1, y_2 \rangle = -\frac{1}{L} \int_0^L y_1' y_2' dx$$
+Por simetría del lado derecho, si hacemos el mismo procedimiento para $\lambda_2$ obtenemos:
+$$\lambda_2 \langle y_1, y_2 \rangle = -\frac{1}{L} \int_0^L y_2' y_1' dx$$
+Restando ambas expresiones:
+$$(\lambda_1 - \lambda_2)\langle y_1, y_2 \rangle = 0$$
+Como $\lambda_1 \neq \lambda_2$, necesariamente las autofunciones son ortogonales, es decir $\langle y_1, y_2 \rangle = 0$.
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 3b)}
+Autovalores y autofunciones explícitas.
+\vspace{0.5cm}
+
+Ya sabemos que $\lambda \le 0$. Definamos convenientemente $\lambda = -k^2$ (con $k \ge 0$). La ecuación se reescribe como:
+$$y'' + k^2 y = 0$$
+La solución general es:
+$$y(x) = C_1 \cos(kx) + C_2 \sin(kx)$$
+$$y'(x) = -C_1 k \sin(kx) + C_2 k \cos(kx)$$
+Aplicamos las condiciones de contorno:
+\begin{itemize}
+\item $y'(0) = C_2 k = 0$. Suponiendo $k \neq 0$, esto implica $C_2 = 0$.
+\item $y'(L) = -C_1 k \sin(kL) = 0$. Para evitar la solución trivial ($C_1 = 0$), requerimos que $\sin(kL) = 0$.
+\end{itemize}
+Esto nos da la condición de cuantización:
+$$kL = n\pi \implies k_n = \frac{n\pi}{L}, \quad n=0, 1, 2, \dots$$
+Por lo tanto, los autovalores y autofunciones son:
+$$\lambda_n = -\left(\frac{n\pi}{L}\right)^2$$
+$$y_n(x) = A_n \cos\left(\frac{n\pi x}{L}\right)$$
+
+
+
+\prob Obtenga dos soluciones LI de la ecuación de Legendre
+\[
+(1-x^2)y'' - 2xy' + \alpha(\alpha+1)y = 0, \quad -1<x<1,
+\]
+donde $\alpha(\alpha+1)\in\sca{R}$ es el autovalor.
+\begin{enumerate}
+\item Muestre que $x_0=0$ es un punto regular de la ecuaci\'on, y que por lo tanto pueden escribirse soluciones en forma de serie de potencias
+\[
+y = \sum_{n=0}^{\infty} a_n x^{n}.
+\]
+\item Muestre que la relaci\'on de recurrencia para los coeficientes de la serie se escribe
+\[
+a_{n+2} = -\frac{(\alpha-n)(\alpha+n+1)}{(n+1)(n+2)}a_n, \quad n=2,3,4,\ldots\,,
+\]
+donde~$a_0$ y~$a_1$ pueden elegirse libremente.
+\item Eligiendo $a_0=1$ y  $a_1=0$, obtenga la serie de potencias pares en $x$
+\[
+y_{\text{par}} = 1 + \sum_{n=1}^\infty
+    (-1)^n\,\frac{\alpha(\alpha-2)\dots(\alpha-2n+2)\cdot 
+                  (\alpha+1)(\alpha+3)\dots(\alpha+2n-1)}{(2n)!} x^{2n}.
+\]
+\item Eligiendo $a_0=0$ y  $a_1=1$, obtenga la serie de potencias impares en $x$
+\[
+y_{\text{impar}} =  x + \sum_{n=1}^\infty
+    (-1)^n\,\frac{(\alpha-1)(\alpha-3)\dots(\alpha-2n+1)\cdot
+                  (\alpha+2)(\alpha+4)\dots(\alpha+2n)}{(2n+1)!} x^{2n+1}.
+\]
+\item Muestre que ambas soluciones, $y_{\text{par}}$ y $y_{\text{impar}}$, son LI en $-1<x<1$.
+\item Muestre que ambas soluciones convergen en $-1<x<1$, pero divergen en $x = \pm 1$ si la serie es infinita.
+\item Finalmente, muestre que eligiendo apropiadamente $\alpha$ una de las dos series se trunca a un polinomio, evitando así la divergencia. Muestre tambi\'en que en cada caso la otra soluci\'on sigue siendo una serie infinita.
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4)}
+\vspace{0.5cm}
+
+Dada la ecuación de Legendre:
+$$(1-x^{2})y^{\prime\prime}-2xy^{\prime}+\alpha(\alpha+1)y=0$$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4a)}
+Punto regular
+\vspace{0.5cm}
+
+Dividiendo por $(1-x^2)$ la EDO toma la forma estándar $y'' + P(x)y' + Q(x)y = 0$, donde:
+
+
+$$P(x) = \frac{-2x}{1-x^2}, \quad Q(x) = \frac{\alpha(\alpha+1)}{1-x^2}$$
+
+En $x_0=0$, los denominadores no se anulan, por lo que $P(x)$ y $Q(x)$ son analíticas allí. Al ser analíticas, $x_0=0$ es un punto regular. Como consecuencia, podemos proponer soluciones en serie de potencias $y = \sum_{n=0}^{\infty} a_n x^n$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4b)}
+Relación de recurrencia
+\vspace{0.5cm}
+
+Sustituyendo $y$, $y'$ y $y''$ en la ecuación diferencial:
+$$\sum_{n=2}^{\infty}n(n-1)a_{n}x^{n-2} - \sum_{n=2}^{\infty}n(n-1)a_{n}x^{n} - 2\sum_{n=1}^{\infty}na_{n}x^{n} + \alpha(\alpha+1)\sum_{n=0}^{\infty}a_{n}x^{n} = 0$$
+Hacemos un cambio de índice $n \to n+2$ en la primera sumatoria para unificar las potencias $x^n$:
+$$\sum_{n=0}^{\infty} \left[ (n+2)(n+1)a_{n+2} - n(n-1)a_n - 2na_n + \alpha(\alpha+1)a_n \right] x^n = 0$$
+Para que esto se cumpla para todo $x$, el coeficiente de cada potencia debe ser nulo:
+$$(n+2)(n+1)a_{n+2} - \left[ n^2 + n - \alpha(\alpha+1) \right] a_n = 0$$
+Notamos que $n^2 + n - \alpha^2 - \alpha = (n-\alpha)(n+\alpha+1)$. Despejando $a_{n+2}$, obtenemos la recurrencia deseada:
+$$a_{n+2} = -\frac{(\alpha-n)(\alpha+n+1)}{(n+1)(n+2)}a_n$$
+válida para $n=0, 1, 2, \dots$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4c) y 4d)}
+Series par e impar
+\vspace{0.5cm}
+
+\begin{itemize}
+\item Potencias pares: Eligiendo $a_0=1$ y $a_1=0$, todos los coeficientes impares se anulan. Iterando la recurrencia para los pares, obtenemos la serie $y_{\text{par}}$:
+$$y_{\text{par}}=1+\sum_{n=1}^{\infty}(-1)^{n}\frac{\alpha(\alpha-2)\dots(\alpha-2n+2)\cdot(\alpha+1)(\alpha+3)\dots(\alpha+2n-1)}{(2n)!}x^{2n}$$
+
+\item Potencias impares: 
+Eligiendo $a_0=0$ y $a_1=1$, todos los coeficientes pares se anulan, generando $y_{\text{impar}}$:
+$$y_{\text{impar}}=x+\sum_{n=1}^{\infty}(-1)^{n}\frac{(\alpha-1)(\alpha-3)\dots(\alpha-2n+1)\cdot(\alpha+2)(\alpha+4)\dots(\alpha+2n)}{(2n+1)!}x^{2n+1}$$
+\end{itemize}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4e)}
+Independencia Lineal (LI)
+\vspace{0.5cm}
+
+Evaluamos el Wronskiano en el origen ($x=0$):
+\begin{itemize}
+\item $y_{\text{par}}(0) = 1, \quad y_{\text{par}}'(0) = 0$
+\item $y_{\text{impar}}(0) = 0, \quad y_{\text{impar}}'(0) = 1$
+\end{itemize}
+$$W(0) = (1)(1) - (0)(0) = 1 \neq 0$$
+
+Al ser su Wronskiano distinto de cero, $y_{\text{par}}$ e $y_{\text{impar}}$ son soluciones Linealmente Independientes (LI) en $-1<x<1$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4f)}
+Convergencia
+\vspace{0.5cm}
+
+Aplicamos el criterio del cociente a la serie de potencias:
+$$\lim_{n\to\infty} \left| \frac{a_{n+2}x^{n+2}}{a_n x^n} \right| = \lim_{n\to\infty} \left| -\frac{(\alpha-n)(\alpha+n+1)}{(n+1)(n+2)} \right| |x^2| = |x^2|$$
+La serie converge absolutamente cuando $|x| < 1$ (es decir $-1<x<1$), pero al llegar a los extremos $x = \pm 1$, divergen en caso de que la serie sea infinita.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4g)}
+Truncamiento a polinomios
+\vspace{0.5cm}
+
+Si elegimos que $\alpha$ sea un número entero no negativo, digamos $\alpha = m$, la relación de recurrencia en el numerador $(\alpha-n)$ se hace exactamente $0$ cuando el índice $n$ iguala a $m$.
+\begin{itemize}
+\item Si $m$ es par, el término $a_{m+2}$ se anula, truncando la serie $y_{\text{par}}$ y convirtiéndola en un polinomio de grado $m$.
+\item Si $m$ es impar, lo mismo sucede con la serie $y_{\text{impar}}$.
+\end{itemize}
+Al truncarse a un polinomio finito, evitamos los problemas de divergencia en los bordes $x=\pm 1$. La otra solución que no se trunca (al ser de paridad opuesta a $m$) continuará siendo una serie infinita que diverge en los bordes. (Estos polinomios, adecuadamente normalizados, son los famosos Polinomios de Legendre, $P_m(x)$).
+
+
+
+
+
+
+
+
+\prob Usando el m\'etodo de Frobenius, obtenga soluciones de la ecuación de Bessel
+\[
+x^2 y'' + x y' + (x^2-\alpha^2) y = 0, \quad \real{\alpha}>0, \quad -\infty<x<\infty.
+\]
+\begin{enumerate}
+\item Muestre que $x_0=0$ es un punto singular regular de la ecuaci\'on, y que por lo tanto pueden escribirse soluciones en forma de serie de potencias generalizada
+\[
+y = \abs{x}^\alpha \sum_{n=0}^\infty a_n x^n, \quad a_0 \neq 0.
+\]
+\item Muestre que las ra\'{\i}ces del polinomio indicial son $r_1=\alpha$ y $r_2=-\alpha$.
+\item Para la soluci\'on correspondiente a~$r_1$, muestre que la relaci\'on de recurrencia para los coeficientes de la serie generalizada se escribe
+\begin{align*}
+\bigl[ (\alpha+1)^2 - \alpha^2 \bigr] a_1 &= 0,\\
+\bigl[ (\alpha+n)^2 - \alpha^2 \bigr] a_n &= -a_{n-2},
+\quad n = 2,3,\ldots\,,
+\end{align*}
+y que por lo tanto $a_n=0$ para~$n$ impar y
+\[
+a_n = -\frac{a_{n-2}}{n(n+2\alpha)}
+\]
+para~$n$ par.
+\item Muestre que la soluci\'on correspondiente a~$r_1$ puede escribirse
+\[
+J_\alpha(x) = \left( \frac{x}{2} \right)^\alpha \sum_{n=0}^\infty \frac{(-1)^n}{n!\,\Gamma(n+1+\alpha)}  \left( \frac{x}{2} \right)^{2n}, \quad 0<x<\infty,
+\]
+que se conoce como la \emph{funci\'on de Bessel de primera especie y orden}~$\alpha$. Note que esta soluci\'on es regular en $x=0$.
+\item Muestre que si $2\alpha\neq0,1,2,\ldots$, una segunda soluci\'on, correspondiente a~$r_2$ y LI de~$J_\alpha$, puede escribirse
+\[
+J_{-\alpha}(x) = \left( \frac{x}{2} \right)^{-\alpha} \sum_{n=0}^\infty \frac{(-1)^n}{n!\,\Gamma(n+1-\alpha)}  \left( \frac{x}{2} \right)^{2n}, \quad 0<x<\infty.
+\]
+Note que esta soluci\'on es singular en $x=0$.
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 5)}
+Ecuación de Bessel vía Frobenius
+\vspace{0.5cm}
+
+Partimos de la EDO de Bessel:
+$$x^{2}y^{\prime\prime}+xy^{\prime}+(x^{2}-\alpha^{2})y=0$$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 5a)}
+Punto Singular Regular
+\vspace{0.5cm}
+
+Dividiendo por $x^2$:
+$$y^{\prime\prime}+\frac{1}{x}y^{\prime}+\frac{x^{2}-\alpha^{2}}{x^{2}}y=0$$
+Observamos que $x=0$ es un punto singular. Verificamos regularidad: $p(x) = x \cdot \left(\frac{1}{x}\right) = 1$ y $q(x) = x^2 \cdot \left(\frac{x^2-\alpha^2}{x^2}\right) = x^2 - \alpha^2$. Al ser $p(x)$ y $q(x)$ funciones analíticas, confirmamos que $x_0=0$ es un punto singular regular. Aplicamos el método de Frobenius proponiendo la serie generalizada:
+$$y = x^r \sum_{n=0}^{\infty} a_n x^n, \quad a_0 \neq 0$$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 5b)}
+Polinomio Indicial
+\vspace{0.5cm}
+
+La ecuación indicial se obtiene evaluando $r(r-1) + p(0)r + q(0) = 0$:
+$$r(r-1) + (1)r + (-\alpha^2) = 0 \implies r^2 - \alpha^2 = 0$$
+Por ende, las raíces son $r_1 = \alpha$ y $r_2 = -\alpha$.
+
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 5c) y 5d)}
+Solución $J_\alpha(x)$
+\vspace{0.5cm}
+
+Para $r_1 = \alpha$, sustituimos la serie en la EDO. Reagrupando potencias, llegamos a las relaciones:
+$$[(\alpha+1)^{2}-\alpha^{2}]a_{1}=0$$
+$$[(\alpha+n)^{2}-\alpha^{2}]a_{n}=-a_{n-2}, \quad n=2,3,\dots$$
+De la primera, $a_1=0$, lo que implica que todos los coeficientes impares son nulos ($a_n = 0$ para $n$ impar). Para los pares, simplificamos el corchete:
+$$(\alpha+n)^2 - \alpha^2 = n^2 + 2n\alpha = n(n+2\alpha)$$
+Obtenemos:
+$$a_n = -\frac{a_{n-2}}{n(n+2\alpha)}$$
+Sustituyendo índices pares ($n=2k$) y eligiendo adecuadamente la constante $a_0$ mediante la función Gamma ($\Gamma$), se construye la solución que denominamos Función de Bessel de primera especie y orden $\alpha$:
+$$J_{\alpha}(x)=\left(\frac{x}{2}\right)^{\alpha}\sum_{n=0}^{\infty}\frac{(-1)^{n}}{n!\Gamma(n+1+\alpha)}\left(\frac{x}{2}\right)^{2n}$$
+Esta solución es regular en $x=0$ para $\Re(\alpha) > 0$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 5c) y 5d)}
+Solución LI $J_{-\alpha}(x)$
+\vspace{0.5cm}
+
+Si $2\alpha \neq 0, 1, 2, \dots$ (es decir, $\alpha$ no es entero ni mitad de entero, para evitar divisiones por cero en la recurrencia), el mismo procedimiento para $r_2 = -\alpha$ es válido. Solo cambiamos $\alpha$ por $-\alpha$ en la expresión final:
+$$J_{-\alpha}(x)=\left(\frac{x}{2}\right)^{-\alpha}\sum_{n=0}^{\infty}\frac{(-1)^{n}}{n!\Gamma(n+1-\alpha)}\left(\frac{x}{2}\right)^{2n}$$
+Esta segunda solución es singular en el origen debido al prefactor $x^{-\alpha}$.
+
+
+
+
+
+
+\prob Un conjunto de funciones $u_n(x)$ satisfacen la ecuación de Sturm-Liouville
+% CORRECCION, agregué p(x) al segundo término
+$$
+\frac{d}{dx}\left[p(x)\frac{d}{dx}u_n(x)\right] + \lambda_n p(x)u_n(x) = 0.
+$$
+Las funciones $u_m$ y $u_n$ satisfacen condiciones de contorno que llevan a la ortogonalidad. Los correspondientes autovalores $\lambda_m$ y $\lambda_n$ son distintos. Pruebe que, con condiciones de contorno apropiadas, $u_m(x)$ y $u_n(x)$ son ortogonales con función de peso $p(x)$.
+
+
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 6)}
+Ortogonalidad en Sturm-Liouville
+\vspace{0.5cm}
+
+{\bf Enunciado:}
+Pruebe que las funciones $u_m(x)$ y $u_n(x)$ que satisfacen la ecuación de Sturm-Liouville 
+% CORRECCION, agregué p(x) al segundo término
+$$\frac{d}{dx}\left[p(x)\frac{d}{dx}u(x)\right] + \lambda p(x)u(x) = 0$$ 
+son ortogonales.
+
+{\bf Demostración:}
+Escribimos la ecuación diferencial para dos autovalores distintos $\lambda_n$ y $\lambda_m$ con sus respectivas autofunciones $u_n$ y $u_m$:
+\begin{enumerate}
+\item $(p u_n')' + \lambda_n p u_n = 0$
+\item $(p u_m')' + \lambda_m p u_m = 0$
+\end{enumerate}
+Multiplicamos la ecuación (1) por $u_m$ y la ecuación (2) por $u_n$, y restamos la segunda de la primera:
+$$u_m(p u_n')' - u_n(p u_m')' + (\lambda_n - \lambda_m) pu_n u_m = 0$$
+Notemos que el término de las derivadas puede reescribirse usando la regla del producto. Específicamente, es la derivada exacta de la combinación antisimétrica (relacionada al Wronskiano):
+$$\frac{d}{dx} \left[ p(x) (u_m u_n' - u_n u_m') \right] = p'(u_m u_n' - u_n u_m') + p(u_m' u_n' + u_m u_n'' - u_n' u_m' - u_n u_m'')$$
+$$= u_m(p u_n')' - u_n(p u_m')'$$
+Sustituyendo esto en la ecuación anterior e integrando en el intervalo $[a, b]$:
+$$
+\int_a^b \frac{d}{dx} \left[ p(x) (u_m u_n' - u_n u_m') \right] dx + (\lambda_n - \lambda_m) \int_a^b p\, u_n\, u_m\, dx = 0
+$$
+Evaluamos la primera integral (es directa):
+$$[ p (u_m u_n' - u_n u_m') ]_a^b + (\lambda_n - \lambda_m) \int_a^b p\, u_n\, u_m\, dx = 0$$
+Con las ``condiciones de contorno apropiadas'' (como Dirichlet $u(a)=u(b)=0$, Neumann $u'(a)=u'(b)=0$, o periódicas), el término de borde evaluado entre $a$ y $b$ se anula idénticamente. Entonces:
+$$
+(\lambda_n - \lambda_m) \int_a^b p(x) u_n(x) u_m(x) dx = 0
+$$
+Como establecimos que los autovalores son distintos ($\lambda_n \neq \lambda_m$), forzosamente se cumple que:
+$$\int_a^b p(x) u_n(x) u_m(x) dx = 0$$
+%(Nota: El enunciado menciona ``ortogonales con función de peso $p(x)$'', pero la ecuación dada no lleva la función de peso multiplicando a $\lambda$. Para la EDO estrictamente escrita en el enunciado, la función de peso resultante es trivialmente $w(x)=1$. Si la EDO hubiese sido $(pu')' + \lambda p u = 0$, el peso sería $p(x)$).
+
+
+\prob Considere la EDO
+\[
+\tilde{L}(y) = a_0(x)y'' + a_1(x) y' + a_2(x) y = f(x), \quad x\in (a,b),
+\]
+con $a_0\in{\cal C}^1[a,b]$ que no se anula en~$(a,b)$, y $a_1,a_2\in{\cal C}[a,b]$.
+\begin{enumerate}
+\item Muestre que definiendo un factor integrante
+\[
+\rho(x) = \frac{c}{a_0(x)} 
+\exp\left(
+\int^x \frac{a_1(x')}{a_0(x')}\,dx'
+\right),
+\]
+donde~$c$ es una constante, y el nuevo operador $L=\rho\tilde{L}$, la EDO puede escribirse
+\[
+Ly = \rho f(x), \quad x\in (a,b),
+\]
+con
+\[
+L = \tder{}{x}\left( p(x)\tder{}{x} \right) + r(x)
+\]
+y $p=\rho a_0$, $r=\rho a_2$.
+\item Muestre que si~$x=a$ es un punto singular regular de la EDO, entonces $p(a)=0$, y que si~$\phi_1$ y~$\phi_2$ son dos soluciones LI, al menos una de ellas debe ser singular en~$x=a$. (Idem para $x=b$).
+\end{enumerate}
+
+
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 7)}
+Factor integrante y Puntos Singulares
+\vspace{0.5cm}
+
+{\bf Enunciado:} Considere $\tilde{L}(y) = a_0(x)y'' + a_1(x) y' + a_2(x) y = f(x)$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 7a)}
+Factor integrante para forma autoadjunta
+\vspace{0.5cm}
+ 
+Queremos transformar $\rho \tilde{L}(y)$ a la forma $L(y) = (p y')' + r y = p y'' + p' y' + r y$.
+Multiplicamos la EDO original por $\rho(x)$:
+$$\rho a_0 y'' + \rho a_1 y' + \rho a_2 y = \rho f(x)$$
+Igualando coeficientes con la forma deseada obtenemos:
+\begin{enumerate}
+\item $p(x) = \rho(x) a_0(x)$
+\item $p'(x) = \rho(x) a_1(x)$
+\item $r(x) = \rho(x) a_2(x)$
+\end{enumerate}
+Derivamos (a) y lo igualamos a (b):
+$$p' = \rho' a_0 + \rho a_0' = \rho a_1$$
+$$\rho' a_0 = \rho(a_1 - a_0') \implies \frac{\rho'}{\rho} = \frac{a_1}{a_0} - \frac{a_0'}{a_0}$$
+Integrando respecto a $x$:
+$$\ln|\rho| = \int^x \frac{a_1(x')}{a_0(x')} dx' - \ln|a_0(x)| + C$$
+Aplicando la exponencial a ambos lados, obtenemos el factor integrante buscado:
+$$\rho(x) = \frac{c}{a_0(x)} \exp\left( \int^x \frac{a_1(x')}{a_0(x')} dx' \right)$$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 7b)}
+Singularidad de soluciones en $x=a$
+\vspace{0.5cm}
+
+Supongamos que $\phi_1$ y $\phi_2$ son dos soluciones Linealmente Independientes (LI).
+Su Wronskiano $W = \phi_1 \phi_2' - \phi_2 \phi_1'$ satisface la identidad de Abel para el operador autoadjunto $L$:
+$$p(x) W(x) = K$$
+donde $K$ es una constante. Como $\phi_1, \phi_2$ son LI, $K \neq 0$.
+Al ser $x=a$ un punto singular, sabemos por definición que $a_0(a)=0$.
+Si ambas soluciones fueran regulares (analíticas) en $x=a$, cumplirían la EDO en ese punto:
+$$a_0(a)\phi'' + a_1(a)\phi' + a_2(a)\phi = 0 \implies a_1(a)\phi' + a_2(a)\phi = 0$$
+Esto significa que los vectores iniciales $(\phi_1(a), \phi_1'(a))$ y $(\phi_2(a), \phi_2'(a))$ son colineales (ambos son ortogonales a $(a_2, a_1)$). Esto fuerza a que su Wronskiano sea cero: $W(a) = 0$.
+Sin embargo, evaluando la identidad de Abel en $x=a$:
+$$p(a) W(a) = K \neq 0$$
+Para que el producto de algo que tiende a $0$ de como resultado una constante $K$ no nula, la función $p(x)$ tendría que divergir. Pero por la naturaleza de los puntos singulares regulares, si $W(a) \to 0$, $p(x)$ no puede compensarlo de manera analítica sin entrar en contradicción. Por lo tanto, es imposible que ambas soluciones sean regulares; al menos una debe ser singular.
+
+
+\prob Resuelva, usando el método de las características, los siguientes problemas escalares de primer orden:
+\begin{enumerate}
+\item $\displaystyle \frac{1}{\sigma}\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y} = 0,\quad x>0,\quad u(x,0)=g(x).$
+\item $\displaystyle x\frac{\partial u}{\partial x} - 2y\frac{\partial u}{\partial y} = 0,\quad u(1,y)=1+2y.$
+\item $\displaystyle x\frac{\partial u}{\partial x} - 2y\frac{\partial u}{\partial y} = u^2,\quad u(x,0)=x^3.$
+\item $\displaystyle y\frac{\partial u}{\partial x} - x\frac{\partial u}{\partial y} = e^{u},\quad u(0,y)=y^2-1.$
+\end{enumerate}
+
+% https://chatgpt.com/share/6a0f2857-67e8-83e9-bfe8-b82928a5fd6b
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 8)}
+Método de las Características
+\vspace{0.5cm}
+
+El Problema 8 pide resolver varias EDPs de primer orden usando el método de las características. 
+Voy a desarrollar cada inciso paso a paso.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 8a)}
+\vspace{0.5cm}
+
+Resolver:
+$$
+\frac1\sigma \frac{\partial u}{\partial x}+\frac{\partial u}{\partial y}=0,
+\qquad x>0,
+\qquad u(x,0)=g(x).
+$$
+
+\begin{enumerate}
+\item Ecuaciones características.
+La ecuación tiene la forma
+$$
+a(x,y)u_x+b(x,y)u_y=0,
+$$
+con
+$$
+a=\frac1\sigma,
+\qquad
+b=1.
+$$
+Las curvas características satisfacen
+$$
+\frac{dx}{ds}=\frac1\sigma,
+\qquad
+\frac{dy}{ds}=1,
+\qquad
+\frac{du}{ds}=0.
+$$
+Como $du/ds=0$, la solución es constante sobre las características.
+
+\item Hallar las características.
+Dividimos:
+$$
+\frac{dy}{dx}
+=
+\frac{1}{1/\sigma}
+=
+\sigma.
+$$
+Entonces
+$$
+y=\sigma x+C.
+$$
+Equivalentemente,
+$$
+x-\frac{y}{\sigma}=C.
+$$
+Por lo tanto, $u$ depende sólo de esa combinación:
+$$
+u(x,y)=F\left(x-\frac{y}{\sigma}\right).
+$$
+
+\item Usar la condición inicial.
+En $y=0$,
+$$
+u(x,0)=F(x)=g(x).
+$$
+Así,
+$$
+F=g.
+$$
+Finalmente,
+$$
+\boxed{
+u(x,y)=g\left(x-\frac{y}{\sigma}\right)
+}.
+$$
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 8b)}
+\vspace{0.5cm}
+
+Resolver:
+$$
+x u_x-2y u_y=0,
+\qquad
+u(1,y)=1+2y.
+$$
+
+\begin{enumerate}
+\item Características.
+Las ecuaciones características son
+$$
+\frac{dx}{ds}=x,
+\qquad
+\frac{dy}{ds}=-2y,
+\qquad
+\frac{du}{ds}=0.
+$$
+Otra vez, $u$ es constante sobre cada característica.
+
+\item Rncontrar las curvas.
+Tomamos
+$$
+\frac{dy}{dx}
+=
+\frac{-2y}{x}.
+$$
+Separando variables:
+$$
+\frac{dy}{y}=-2\frac{dx}{x}.
+$$
+Integrando:
+$$
+\ln|y|=-2\ln|x|+C,
+$$
+$$
+\ln|x^2y|=C.
+$$
+Por lo tanto,
+$$
+x^2y=C.
+$$
+La solución general es
+$$
+u(x,y)=F(x^2y).
+$$
+
+\item Aplicar condición inicial.
+En $x=1$,
+$$
+u(1,y)=F(y)=1+2y.
+$$
+Entonces
+$$
+F(\eta)=1+2\eta.
+$$
+Finalmente,
+$$
+\boxed{
+u(x,y)=1+2x^2y
+}.
+$$
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 8c)}
+\vspace{0.5cm}
+
+Resolver:
+$$
+x u_x-2y u_y=u^2,
+\qquad
+u(x,0)=x^3.
+$$
+
+\begin{enumerate}
+\item Sistema característico.
+$$
+\frac{dx}{ds}=x,
+\qquad
+\frac{dy}{ds}=-2y,
+\qquad
+\frac{du}{ds}=u^2.
+$$
+
+\item Características en el plano $(x,y)$.
+Como antes:
+$$
+x^2y=C.
+$$
+Parametricemos las características usando el punto inicial sobre $y=0$:
+$$
+(x(0),y(0))=(\xi,0).
+$$
+Entonces
+$$
+x(s)=\xi e^s,
+\qquad
+y(s)=0.
+$$
+Observación importante: las características que parten de la línea inicial (y=0) permanecen en $y=0$, porque $dy/ds=-2y$.
+Esto indica que la curva inicial es característica. El problema de Cauchy es degenerado: los datos sólo determinan la solución sobre $y=0$, no fuera de ella.
+Sin embargo, podemos obtener una familia de soluciones compatibles.
+
+\item Resolver para $u$.
+De
+$$
+\frac{du}{ds}=u^2,
+$$
+tenemos
+$$
+\frac{du}{u^2}=ds.
+$$
+Integrando:
+$$
+-\frac1u=s+C.
+$$
+Entonces
+$$
+u=-\frac1{s+C}.
+$$
+Usando $x=\xi e^s$,
+$$
+s=\ln\frac{x}{\xi}.
+$$
+La condición inicial es
+$$
+u(\xi,0)=\xi^3.
+$$
+Por lo tanto,
+$$
+\xi^3
+=
+-\frac1C,
+\qquad
+C=-\frac1{\xi^3}.
+$$
+Así,
+$$
+u=
+-\frac1{\ln(x/\xi)-1/\xi^3}.
+$$
+Pero como las características iniciales no abandonan $y=0$, $\xi$ no queda determinado por $(x,y)$ cuando $y\neq0$. Por lo tanto el problema no tiene solución única fuera de la línea inicial.
+Sí queda determinada la solución sobre $y=0$:
+$$
+u(x,0)=x^3.
+$$
+y existen infinitas extensiones fuera de esa línea.
+
+\item Conclusión.
+La condición inicial está dada sobre una curva característica, por lo que el problema de Cauchy es degenerado y no determina una solución única.
+La familia característica satisface:
+$$
+x^2y=\text{cte},
+$$
+y sobre $y=0$:
+$$
+\boxed{
+u(x,0)=x^3.
+}
+$$
+\end{enumerate} 
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 8d)}
+\vspace{0.5cm}
+
+Resolver:
+$$
+y u_x-x u_y=e^u,
+\qquad
+u(0,y)=y^2-1.
+$$
+
+\begin{enumerate}
+\item Sistema característico
+$$
+\frac{dx}{ds}=y,
+\qquad
+\frac{dy}{ds}=-x,
+\qquad
+\frac{du}{ds}=e^u.
+$$
+
+\item Características en el plano
+Derivamos otra vez:
+$$
+\frac{d^2x}{ds^2}
+=
+\frac{dy}{ds}
+=
+-x.
+$$
+Entonces
+$$
+x''+x=0.
+$$
+Las trayectorias son circunferencias:
+$$
+x^2+y^2=R^2.
+$$
+Además, usando
+$$
+x=R\sin\theta,
+\qquad
+y=R\cos\theta,
+$$
+las ecuaciones implican
+$$
+\theta=s+\text{cte}.
+$$
+
+\item Resolver para $u$
+Tenemos
+$$
+\frac{du}{ds}=e^u.
+$$
+Entonces
+$$
+e^{-u}du=ds.
+$$
+Integrando:
+$$
+-e^{-u}=s+C.
+$$
+o equivalentemente,
+$$
+e^{-u}=C-s.
+$$
+
+\item Usar los datos iniciales
+La curva inicial es $x=0$. Tomamos:
+$$
+x(0)=0,
+\qquad
+y(0)=\eta.
+$$
+Entonces
+$$
+u(0)=\eta^2-1.
+$$
+Además, la solución de las características es
+$$
+x=\eta\sin s,
+\qquad
+y=\eta\cos s.
+$$
+Por lo tanto,
+$$
+\eta^2=x^2+y^2.
+$$
+y
+$$
+\tan s=\frac{x}{y}.
+$$
+Más precisamente,
+$$
+s=\arctan\left(\frac{x}{y}\right).
+$$
+Ahora:
+$$
+e^{-u(0)}
+=
+e^{-(\eta^2-1)}
+=
+e^{1-\eta^2}.
+$$
+Entonces
+$$
+C=e^{1-\eta^2}.
+$$
+Finalmente,
+$$
+e^{-u}
+=
+e^{1-\eta^2}-s.
+$$
+Sustituyendo:
+$$
+\eta^2=x^2+y^2,
+\qquad
+s=\arctan\left(\frac{x}{y}\right),
+$$
+obtenemos
+$$
+\boxed{
+u(x,y)
+=
+-\ln\left(
+e^{1-(x^2+y^2)}
+-
+\arctan\frac{x}{y}
+\right)
+}.
+$$
+(Entendiendo la rama apropiada del ángulo según la región considerada.)
+\end{enumerate}
+
+\section*{Parte II: Problemas Propuestos (para profundización y repaso)}
+
+
+\prob Obtenga dos soluciones LI de la ecuación de Hermite
+\[
+y'' - 2xy' + 2\alpha y = 0, \quad -\infty<x<\infty,
+\]
+donde $\alpha\in\sca{R}$ es el autovalor, repitiendo los pasos del Problema~4. En particular:
+\begin{enumerate}
+\item Muestre que ambas soluciones en forma de serie (una par y la otra impar) son convergentes para $-\infty<x<\infty$, y que el cociente de coeficientes sucesivos se comporta, para índices grandes, como el cociente de los coeficientes del desarrollo en serie de la función $\exp(-x^2)$.
+\item Muestre que eligiendo apropiadamente el parámetro $\alpha$, la solución en serie de potencias pares o impares puede ser truncada a polinomios finitos. Estos son conocidos como \emph{polinomios de Hermite}.
+\end{enumerate}
+
+\prob Continuando con el Problema 5, muestre que si en la ecuaci\'on de Bessel tenemos $\alpha=0$, una segunda soluci\'on LI de~$J_0$ puede escribirse
+\[
+K_0(x) = -\sum_{m=1}^\infty \frac{(-1)^m}{((2m)!!)^2}
+           \left( 1+\frac{1}{2}+\dots+\frac{1}{m} \right)
+           \left( \frac{x}{2} \right)^{2m}
+        + \ln(x)J_0(x),
+\]
+que se conoce como \emph{funci\'on de Bessel de segunda especie y orden~0}.
+
+\prob Considere un sistema lineal invariante en el tiempo. Su función de transferencia $G(\omega)$ satisface que cuando la entrada es
+\[
+f(t)=\begin{cases}
+0, & t<0,\\
+e^{-\lambda t}, & t>0,
+\end{cases}
+\]
+(donde $\lambda$ es una constante fija), la salida resultante es
+\[
+F(t)=\begin{cases}
+0, & t<0,\\
+(1-e^{-\alpha t})e^{-\lambda t}, & t>0,
+\end{cases}
+\]
+donde $\alpha$ es otra constante fija.
+\begin{enumerate}
+\item Calcule $G(\omega)$.
+\item Calcule la respuesta del sistema a la entrada $f(t)=A\delta(t)$.
+\end{enumerate}
+
+\prob Muestre que la solución de la EDO
+\[
+-\frac{d^2u}{dx^2}+k_0^2 u = h(x),\qquad -\infty<x<\infty,
+\]
+está dada por
+\[
+u(x)=\frac{1}{2k_0}\int_{-\infty}^{\infty} e^{-k_0|x-x'|}h(x')\,dx'.
+\]
+Discuta qué está asumiendo sobre las condiciones de contorno satisfechas por $u$ y $h$ en $x=\pm\infty$.
+
+\prob Calcule la transformada de Fourier de la función de onda para un electrón $2p$ en el átomo de hidrógeno,
+\[
+\phi(\vec{x}) = \frac{1}{\sqrt{32\pi a_0^5}}\,z\,\exp\left(-\frac{r}{2a_0}\right),
+\]
+donde $a_0$ es el radio de Bohr, $z$ es la coordenada cartesiana y $r=\|\vec{x}\|$.
+
+\prob Utilizando la representación integral
+\[
+J_0(x)=\frac{1}{\pi}\int_0^{\pi}\cos(x\sin\theta)\,d\theta,
+\]
+calcule la transformada de Laplace de $J_0(x)$.
+
+\prob ¿De qué función es
+\[
+\frac{1}{(s^2+1)(s-1)}
+\]
+la transformada de Laplace?
+
+\prob Tres núcleos radiactivos decaen sucesivamente en serie, de forma tal que los números $N(t)$ de cada tipo obedecen las ecuaciones
+\[
+\frac{dN_1}{dt}=-\lambda_1 N_1,\quad \frac{dN_2}{dt}=\lambda_1 N_1-\lambda_2 N_2,\quad \frac{dN_3}{dt}=\lambda_2 N_2-\lambda_3 N_3.
+\]
+Si inicialmente $N_1=N$, $N_2=0$, $N_3=n$, calcule $N_3(t)$ utilizando transformadas de Laplace.
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\section{Problema 1a), ``en el sentido de las distribuciones''}
+
+Decir que algo se cumple ``en el sentido de distribuciones'' (o de manera débil) significa un cambio de paradigma fundamental: dejamos de analizar las funciones punto por punto y pasamos a analizarlas por cómo actúan dentro de una integral.
+Para entenderlo de forma concreta, veámoslo desde la intuición física, la definición matemática y cómo se aplica exactamente a la integral del problema 1a).
+
+\begin{enumerate}
+\item La intuición física: El ``aparato de medición''.
+
+En el cálculo clásico, una función $f(x)$ es una regla que te da un número exacto para cada punto $x$. Sin embargo, en la física real, es imposible medir el valor de una magnitud en un único punto geométrico exacto de tamaño cero. Cualquier detector (de luz, de presión, de carga) tiene un tamaño finito y realiza un promedio pesado en una pequeña región.
+En la teoría de distribuciones, introducimos una función de prueba (llamada $\phi(x)$), que representa matemáticamente a este ``aparato de medición''. Una función de prueba es una función ``perfecta'': es infinitamente derivable y se apaga rápidamente (vale cero) fuera de la zona de interés.
+Una distribución no se puede evaluar en un punto. Su única realidad matemática existe cuando la ``haces pasar'' por el aparato de medición a través de una integral:
+$$
+\langle f, \phi \rangle = \int_{-\infty}^{\infty} f(x) \phi(x) \, dx
+$$
+
+\item ¿Qué significa un límite ``en el sentido de distribuciones''?
+
+En el problema 1a), nos topamos con el límite:
+$$
+\lim_{\varepsilon \to 0^+} \frac{1}{\varepsilon + ik}
+$$
+Si intentas evaluar este límite de forma clásica (punto por punto) en $k=0$, te queda $\frac{1}{0}$, lo cual es una aberración matemática (da infinito). Gráficamente, a medida que $\varepsilon$ se achica, la función se vuelve un pico infinitamente alto y angosto en el origen.
+Que el límite sea en el sentido de distribuciones significa que no nos importa que la función explote individualmente en $k=0$, sino que nos importa qué pasa cuando multiplicamos esa expresión por una función de prueba $\phi(k)$ e integramos antes de tomar el límite:
+$$
+\lim_{\varepsilon \to 0^+} \int_{-\infty}^{\infty} \left( \frac{1}{\varepsilon + ik} \right) \phi(k) \, dk
+$$
+Al combinar el límite dentro con la integral, la función de prueba $\phi$ actúa como un ``amortiguador'' que doméstica las divergencias.
+
+\item El colapso del problema 1a) bajo la integral
+
+Para ver de dónde sale la Delta de Dirac y el Valor Principal, multipliquemos arriba y abajo por el conjugado complejo $(\varepsilon - ik)$:
+$$
+\frac{1}{\varepsilon + ik} = \frac{\varepsilon - ik}{\varepsilon^2 + k^2} = \frac{\varepsilon}{\varepsilon^2 + k^2} - i \frac{k}{\varepsilon^2 + k^2}
+$$
+Ahora aplicamos la prueba de la integral con nuestra función $\phi(k)$ para ver qué pasa cuando $\varepsilon \to 0^+$ en cada uno de los dos términos:
+\begin{itemize}
+\item Parte Real (Origen de la Delta):
+
+Miramos el límite de la primera parte:
+$$
+\lim_{\varepsilon \to 0^+} \int_{-\infty}^{\infty} \frac{\varepsilon}{\varepsilon^2 + k^2} \phi(k) \, dk
+$$
+La función $\frac{\varepsilon}{\varepsilon^2 + k^2}$ es una campana (Lorentziana). El área total bajo esta curva es siempre $\pi$, sin importar cuán chico sea $\varepsilon$. A medida que $\varepsilon \to 0^+$, la campana se vuelve infinitamente alta en $k=0$ y cero en cualquier otro lado. Al integrarla con $\phi(k)$, lo único que sobrevive es el valor de la función de prueba en el origen multiplicado por el área:
+$$
+\lim_{\varepsilon \to 0^+} 
+\int_{-\infty}^{\infty} 
+\left[ 
+\frac{\varepsilon}{\varepsilon^2 + k^2} \right] \phi(k) \, dk = \pi \phi(0) = \int_{-\infty}^{\infty} \pi \delta(k) \phi(k) \, dk
+=
+\pi
+\langle
+\delta,
+\phi
+\rangle.
+$$
+
+\item Parte Imaginaria (Origen del Valor Principal):
+
+Miramos la segunda parte:
+$$
+\lim_{\varepsilon \to 0^+} \int_{-\infty}^{\infty} \frac{k}{\varepsilon^2 + k^2} \phi(k) \, dk
+$$
+Esta función es impar. Si $\varepsilon=0$, nos queda $\frac{k}{k^2} = \frac{1}{k}$, la cual diverge en $k=0$. Pero gracias a que es impar, las áreas monstruosas que se van al infinito positivo (a la derecha del origen) se cancelan perfectamente con las áreas que se van al infinito negativo (a la izquierda del origen). La presencia de $\varepsilon$ sirve para ``esquivar'' simétricamente el cero. Al tomar el límite, este mecanismo de cancelación exacta es justamente la definición del Valor Principal de Cauchy ($\mathrm{P.V.}$):
+\begin{eqnarray}
+\lim_{\varepsilon \to 0^+} 
+\int_{-\infty}^{\infty} \left[ 
+\frac{k}{\varepsilon^2 + k^2} \right] \phi(k) \, dk 
+\notag
+&= &
+\mathrm{P.V.} \int_{-\infty}^{\infty} \frac{\phi(k)}{k} \, dk
+\notag
+\\
+&= &
+\bigg\langle
+\mathrm{P.V.}\bigg(\frac{1}{k}\bigg)
+,
+\phi(k)
+\bigg\rangle
+\notag
+\\
+&=&
+\lim_{\eta\to 0^+}
+\bigg(
+\int_{-\infty}^{-\eta} \frac{\phi(k)}{k} \, dk
++
+\int_{\eta}^{\infty} \frac{\phi(k)}{k} \, dk
+\bigg)
+\notag
+\end{eqnarray}
+\end{itemize}
+
+\item Resumen concreto
+
+Cuando el apunte de la cátedra dice que la igualdad se da ``en el sentido de distribuciones'', te está avisando:
+\begin{quotation}
+Ojo, no intentes reemplazar $k=0$ en la fórmula porque se rompe. Esta igualdad solo es un objeto matemático válido si imaginas que está protegida adentro de una integral junto a otra función suave.
+\end{quotation}
+
+\end{enumerate}
+
+\section{Problema 4a), Wronksiano}
+
+Para entender a fondo por qué evaluar el Wronskiano en un solo punto ($x=0$) nos garantiza la Independencia Lineal (LI) de las soluciones en todo el intervalo, tenemos que analizarlo desde dos perspectivas complementarias: el Álgebra Lineal y la Teoría de EDOs (Identidad de Abel).
+
+\begin{enumerate}
+\item La demostración desde el Álgebra Lineal (¿Por qué contradice la dependencia?)
+
+Recordemos la definición estricta de Dependencia Lineal. Supongamos por un momento que las dos funciones que encontramos ($y_{\text{par}}$ e $y_{\text{impar}}$) fuesen Linealmente Dependientes (LD) en el intervalo $(-1,1)$.
+Si fuesen LD, por definición tendrían que existir dos constantes $c_1$ y $c_2$, no ambas cero, tales que la combinación lineal sea idénticamente nula para todo $x$ del intervalo:
+$$c_1 y_{\text{par}}(x) + c_2 y_{\text{impar}}(x) = 0 \quad \forall x \in (-1,1)$$
+Si derivamos miembro a miembro esta igualdad respecto a $x$, se debe seguir cumpliendo que:
+$$c_1 y_{\text{par}}'(x) + c_2 y_{\text{impar}}'(x) = 0 \quad \forall x \in (-1,1)$$
+Como estas dos ecuaciones se tienen que cumplir para cualquier $x$ del intervalo, tienen la obligación matemática de cumplirse en el punto particular $x = 0$. Si evaluamos en $x = 0$, obtenemos un sistema de ecuaciones lineales algebraico para las incógnitas $c_1$ y $c_2$:
+$$\begin{pmatrix} y_{\text{par}}(0) & y_{\text{impar}}(0) \\ y_{\text{par}}'(0) & y_{\text{impar}}'(0) \end{pmatrix} \begin{pmatrix} c_1 \\ c_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}$$
+El determinante de la matriz de este sistema es, justamente, el Wronskiano evaluado en cero ($W(0)$).
+Al armar las series en el problema 4, usamos por conveniencia las condiciones iniciales en el origen de desarrollo ($x=0$):
+\begin{itemize}
+\item Para la serie par ($y_{\text{par}}$) elegimos $a_0=1$ y $a_1=0$, lo que implica que $y_{\text{par}}(0) = 1$ e $y_{\text{par}}'(0) = 0$.
+\item Para la serie impar ($y_{\text{impar}}$) elegimos $a_0=0$ y $a_1=1$, lo que implica que $y_{\text{impar}}(0) = 0$ e $y_{\text{impar}}'(0) = 1$.
+\end{itemize}
+Sustituyendo estos valores en nuestro sistema matricial:
+$$\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} c_1 \\ c_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies \begin{cases} c_1 = 0 \\ c_2 = 0 \end{cases}$$
+Llegamos a que la única solución posible es la trivial ($c_1 = 0$ y $c_2 = 0$). Esto contradice de forma directa nuestra hipótesis de que las funciones eran linealmente dependientes (ya que habíamos supuesto que al menos una constante era distinta de cero).
+Por lo tanto, las funciones son obligatoriamente Linealmente Independientes (LI).
+
+\item La extensión a todo el intervalo: La Identidad de Abel
+
+Alguien podría argumentar legítimamente: ``Bien, demostraste que son independientes en el punto $x=0$, pero ¿qué pasa en el resto del intervalo $(-1,1)$? ¿Podrían volverse linealmente dependientes en otro punto?''
+Aquí es donde entra el teorema fuerte de las EDOs lineales homogéneas de segundo orden ($y'' + P(x)y' + Q(x)y = 0$). La {\bf Identidad de Abel} demuestra que el Wronskiano de dos soluciones cumple la siguiente relación en cualquier punto $x$ de un intervalo donde $P(x)$ sea continua:
+$$W(x) = W(x_0) \exp\left( -\int_{x_0}^x P(t) \, dt \right)$$
+Para la ecuación de Legendre, si normalizamos el término de la derivada segunda dividiendo por $(1-x^2)$, el coeficiente de la derivada primera es:
+$$P(x) = \frac{-2x}{1-x^2}$$
+Esta función $P(x)$ es perfectamente continua en todo el intervalo abierto $x \in (-1, 1)$.
+La propiedad matemática crucial de la función exponencial es que nunca se anula ($\exp(\text{algo}) \neq 0$). Por lo tanto, la Identidad de Abel nos dice algo sumamente poderoso:
+\begin{quotation}
+El Wronskiano de dos soluciones en un intervalo de regularidad es o bien idénticamente cero en todo el intervalo, o bien nunca vale cero en ningún punto del intervalo.
+\end{quotation}
+Como nosotros ya calculamos que en $x_0=0$ el Wronskiano da un número distinto de cero ($W(0) = 1 \neq 0$), la Identidad de Abel te garantiza que $W(x)$ será distinto de cero para absolutamente todos los puntos del intervalo $(-1,1)$.
+Y como el Wronskiano nunca se anula en el intervalo, las dos soluciones ($y_{\text{par}}$ e $y_{\text{impar}}$) constituyen lo que llamamos un conjunto fundamental de soluciones, es decir, son Linealmente Independientes en todo $(-1,1)$ y cualquier otra solución de la ecuación se puede escribir como combinación lineal de ellas.
+
+\end{enumerate}
+
+\section{Problema 5), Metodo de Frobenius}
+
+El {\bf método de Frobenius} es una extensión del método de resolución de ecuaciones diferenciales mediante series de potencias. Se utiliza específicamente para encontrar soluciones de ecuaciones diferenciales ordinarias (EDOs) lineales de segundo orden en el entorno de un {\bf punto singular regular}.
+
+Para entender por qué es tan importante en el {\bf Problema 5 (la ecuación de Bessel)}, primero debemos ver por qué falla el método tradicional de series de Taylor y cómo Frobenius lo soluciona.
+
+\begin{enumerate}
+\item ¿Por qué necesitamos el método de Frobenius?
+
+Si intentáramos resolver una ecuación diferencial usando una serie de potencias ordinaria (serie de Taylor):
+$$y(x) = \sum_{n=0}^{\infty} a_n x^n = a_0 + a_1 x + a_2 x^2 + \dots$$
+este enfoque solo funcionaría si el punto alrededor del cual desarrollamos ($x_0 = 0$) fuera un {\bf punto regular} (es decir, si las funciones de la ecuación no se vuelven infinitas allí).
+Sin embargo, en la ecuación de Bessel del Problema 5:
+$$x^2 y'' + x y' + (x^2 - \alpha^2)y = 0 \implies y'' + \frac{1}{x} y' + \frac{x^2 - \alpha^2}{x^2} y = 0$$
+vemos que en $x = 0$, los coeficientes $\frac{1}{x}$ y $\frac{x^2-\alpha^2}{x^2}$ explotan (tienden a infinito). Por lo tanto, $x=0$ es un {\bf punto singular}.
+Como el ``infinito'' que se genera está controlado (si multiplicamos el primer coeficiente por $x$ y el segundo por $x^2$ dan funciones analíticas), el punto se clasifica como {\bf singular regular}. En estos puntos, la solución real a menudo no es una función analítica pura, sino que puede contener raíces (como $\sqrt{x}$ o $x^{1.5}$) o logaritmos, lo que hace que una serie de potencias ordinaria fracase rotundamente.
+
+\item ¿Cómo funciona el Método de Frobenius?
+
+Ferdinand Georg Frobenius propuso una genialidad: en lugar de usar una serie de potencias rígida que empiece obligatoriamente en $x^0$, propuso {\bf ``multiplicar'' la serie por una potencia variable $x^r$}, donde $r$ es un número (que puede ser fraccionario, negativo o incluso complejo) que descubriremos durante el proceso.
+El método sigue estos pasos estructurados:
+
+\begin{enumerate}
+\item Proponer la serie generalizada de Frobenius
+
+Buscamos una solución de la forma:
+$$y(x) = x^r \sum_{n=0}^{\infty} a_n x^n = \sum_{n=0}^{\infty} a_n x^{n+r}$$
+donde imponemos que el primer término no sea cero ($a_0 \neq 0$) para que $x^r$ sea verdaderamente la potencia más baja de la solución.
+
+\item Calcular las derivadas
+
+Derivamos término a término manteniendo a $r$ como una constante incógnita:
+$$
+y'(x) = \sum_{n=0}^{\infty} (n+r) a_n x^{n+r-1}
+$$
+$$
+y''(x) = \sum_{n=0}^{\infty} (n+r)(n+r-1) a_n x^{n+r-2}
+$$
+
+\item Sustituir en la EDO y agrupar
+
+Metemos estas expresiones en la ecuación diferencial. El objetivo es acomodar todos los términos para poder extraer factor común de las potencias de $x$.
+
+\item Encontrar la Ecuación Indicial (el paso clave)
+
+Para que la ecuación diferencial sea igual a cero para todo $x$, el coeficiente de {\bf la potencia más baja de $x$} (que suele ser el término con $n=0$) debe anularse de forma independiente. Como asumimos que $a_0 \neq 0$, se genera una ecuación cuadrática para $r$:
+$$r(r-1) + p_0 r + q_0 = 0$$
+Esta ecuación se llama {\bf ecuación indicial} (o polinomio indicial). Al resolverla, obtenemos dos raíces, $r_1$ y $r_2$, que nos dicen exactamente cómo ``arranca'' la solución (por ejemplo, en el caso de Bessel, las raíces dieron $r = \pm\alpha$).
+
+\item Determinar la relación de recurrencia
+
+Al igualar a cero los coeficientes de las potencias más altas de $x$ ($n \ge 1$), obtenemos una fórmula matemática que nos permite calcular un coeficiente $a_n$ a partir de los coeficientes anteriores.
+
+\item Obtener las dos soluciones independientes
+
+Dependiendo de la relación entre las raíces $r_1$ y $r_2$, el método nos provee las soluciones:
+\begin{itemize}
+\item Caso 1 (Raíces que no difieren por un entero): Sustituyes $r_1$ y obtienes la primera solución $y_1(x)$. Sustituyes $r_2$ y obtienes la segunda solución $y_2(x)$. (Esto es lo que pasó en el ítem 5e) cuando $\alpha$ no es entero).
+\item Caso 2 (Raíces iguales): La primera solución se halla normalmente, y la segunda solución incluirá obligatoriamente un término logarítmico ($\ln x$).
+\item Caso 3 (Raíces que difieren por un número entero): La segunda solución podría requerir un término logarítmico debido a que la relación de recurrencia puede llegar a una división por cero para la segunda raíz.
+\end{itemize}
+
+\end{enumerate}
+\end{enumerate}
+
+\section{Problema 8), metodo de las caracter\'isticas}
+
+% https://chatgpt.com/share/6a10c3b9-f82c-83e9-95d3-1d80d8eb8901
+
+El método de las características es un procedimiento para resolver EDPs de primer orden transformándolas en sistemas de EDOs. Voy a presentarlo de la manera más general y estructurada posible.
+
+\begin{enumerate}
+\item Problema general.
+Consideremos una EDP de primer orden para una función
+$$
+u=u(x_1,\dots,x_n)
+$$
+de la forma
+$$
+F(x_1,\dots,x_n,u,u_{x_1},\dots,u_{x_n})=0.
+$$
+El caso más importante (y el más tratado en cursos iniciales) es la ecuación {\bf cuasilineal}:
+$$
+\sum_{i=1}^n a_i(x,u),\partial_i u = c(x,u).
+$$
+En dos variables:
+$$
+a(x,y,u)u_x+b(x,y,u)u_y=c(x,y,u).
+$$
+
+\item Idea fundamental.
+La idea es buscar curvas en el espacio de variables independientes a lo largo de las cuales la EDP se transforme en una EDO.
+Esas curvas se llaman {\bf características}.
+
+\item Derivada total sobre una curva
+Sea una curva parametrizada:
+$$
+x_i=x_i(s).
+$$
+Entonces:
+$$
+u(s)=u(x_1(s),\dots,x_n(s)).
+$$
+Por regla de la cadena:
+$$
+\frac{du}{ds}
+=
+\sum_{i=1}^n
+\frac{\partial u}{\partial x_i}
+\frac{dx_i}{ds}.
+$$
+Ahora elegimos las curvas de modo que
+$$
+\frac{dx_i}{ds}=a_i.
+$$
+Entonces:
+$$
+\frac{du}{ds}
+=
+\sum_i a_i \partial_i u.
+$$
+Pero la EDP dice que
+$$
+\sum_i a_i \partial_i u=c.
+$$
+Por lo tanto:
+$$
+\boxed{
+\frac{du}{ds}=c.
+}
+$$
+
+\item Sistema característico.
+La EDP queda reemplazada por el sistema de EDOs:
+$$
+\boxed{
+\begin{cases}
+\dfrac{dx_1}{ds}=a_1(x,u), \\
+\\
+\dfrac{dx_2}{ds}=a_2(x,u), \\
+\\
+\vdots \\
+\\
+\dfrac{dx_n}{ds}=a_n(x,u), \\
+\\
+\dfrac{du}{ds}=c(x,u).
+\end{cases}
+}
+$$
+Este es el sistema de características.
+
+\item Interpretación geométrica.
+La EDP prescribe la derivada direccional de $u$ en la dirección del campo vectorial
+$$
+\vec a=(a_1,\dots,a_n).
+$$
+Las características son precisamente las curvas integrales de ese campo.
+Sobre esas curvas, la EDP se vuelve una EDO ordinaria.
+
+\item Problema de Cauchy.
+Es el análogo, para EDPs, del problema de valores iniciales para EDOs.
+Más precisamente, en una EDO se busca una trayectoria solución a partir de una ecuación diferencial y un dato inicial especificado en un punto.
+En el método de las características ocurre algo análogo: en vez de especificar un punto inicial, se prescribe una curva, superficie o hipersuperficie inicial sobre la cual se conocen los valores de la solución.
+Usualmente la condición inicial se escribe:
+$$
+u|_{\Gamma}=g,
+$$
+donde $\Gamma$ es la curva (o superficie) inicial.
+Por ejemplo, en dos variables:
+$$
+(x,y)=(x_0(\tau),y_0(\tau)),
+\qquad
+u=g(\tau).
+$$
+Entonces:
+\begin{itemize}
+\item $\tau$ parametriza la curva inicial y etiqueta las distintas características que emergen de ella,
+\item $s$ parametriza el movimiento a lo largo de cada característica.
+\end{itemize}
+
+{\em Remark:}
+Es importante resaltar que, en el m\'etodo de las caracter\'isticas, no toda condici\'on inicial $u_{\Gamma}=g$ es compatible con la EDP.
+En este sentido, notar que:
+\begin{quotation}
+La hipersuperficie inicial $\Gamma$ NO debe ser tangente a las caracter\'isticas.
+\end{quotation}
+Formalmente, esto se verifica de la siguiente manera.
+Supongamos que la hipersuperficie $\Gamma\in \mathbb{R}^n$ viene dada impl\'icitamente por la ecuaci\'on
+$$
+\Phi(x_1,...,x_n)=0.
+$$
+Luego, un vector normal a $\Gamma$ en un punto $x\in \Gamma$ viene dado por
+$$
+(\nabla \Phi)(x)
+$$
+Entonces, debemos comprobar que dicho vector NO deber ser tangencial al campo vectorial definidor por el lado derecho de la EDO obtenida de la EDP en cada punto de $x\in \Gamma$.
+M\'as precisamente, se tiene que cumplir que cumplir la {\em condici\'on de NO caracteristicidad}. 
+Es decir, se tiene que cumplir que
+$$
+(a(x)).((\nabla \Phi)(x)) \neq 0
+$$
+para todo $x\in \Gamma$.
+Si esto no ocurre, la condici\'on inicial especificada por $\Gamma$ incluye una degeneraci\'on, y por ende, NO resulta compatible con la EDP.
+
+\item Procedimiento práctico:
+
+{\bf  Paso 1}
+
+Escribir la EDP como
+$$
+a u_x+b u_y=c.
+$$
+
+{\bf  Paso 2}
+
+Plantear:
+$$
+\frac{dx}{ds}=a,
+\qquad
+\frac{dy}{ds}=b,
+\qquad
+\frac{du}{ds}=c.
+$$
+
+{\bf  Paso 3}
+
+Resolver las ecuaciones para $x(s),y(s)$.
+Muchas veces:
+$$
+\frac{dy}{dx}=\frac{b}{a}.
+$$
+
+{\bf Paso 4}
+
+Resolver:
+$$
+\frac{du}{ds}=c.
+$$
+
+{\bf Paso 5}
+
+Usar los datos iniciales para determinar constantes.
+
+\item Caso homogéneo.
+Si
+$$
+a u_x+b u_y=0,
+$$
+entonces
+$$
+\frac{du}{ds}=0.
+$$
+Así:
+$$
+u=\text{constante sobre las características}.
+$$
+La solución suele escribirse:
+$$
+u=F(I_1,\dots,I_k),
+$$
+donde los $I_j$ son invariantes de las características.
+
+\item Ejemplo general clásico.
+Resolver:
+$$
+a u_x+b u_y=0,
+$$
+con $a,b$ constantes.
+
+{\bf Características}
+$$
+\frac{dy}{dx}=\frac{b}{a}.
+$$
+Entonces:
+$$
+bx-ay=C.
+$$
+Como $u$ es constante sobre ellas:
+$$
+\boxed{
+u(x,y)=F(bx-ay).
+}
+$$
+
+\item Caso completamente general (Hamilton–Jacobi)
+Para una EDP no lineal general
+$$
+F(x,y,u,p,q)=0,
+\qquad
+p=u_x,\ q=u_y,
+$$
+las características satisfacen el sistema de Charpit:
+$$
+\boxed{
+\begin{aligned}
+\frac{dx}{ds}&=F_p,\
+\frac{dy}{ds}&=F_q,\
+\frac{du}{ds}&=pF_p+qF_q,\
+\frac{dp}{ds}&=-F_x-pF_u,\
+\frac{dq}{ds}&=-F_y-qF_u.
+\end{aligned}
+}
+$$
+Ésta es la forma más general del método.
+En muchos cursos de física matemática sólo se estudia el caso lineal o cuasilineal.
+
+\item Condición de no-caracteristicidad.
+La curva inicial no debe ser tangente al campo característico.
+En 2D, si la curva inicial es
+$$
+(x_0(\tau),y_0(\tau)),
+$$
+debe cumplirse:
+$$
+a\,y_0'(\tau)-b\,x_0'(\tau)\neq0.
+$$
+Si falla esta condición:
+\begin{itemize}
+\item puede no haber unicidad,
+\item o no existir solución.
+\end{itemize}
+Eso ocurrió en el Problema 8(c).
+
+\item Interpretación física.
+Las características representan:
+\begin{itemize}
+\item trayectorias de propagación,
+\item rayos ópticos,
+\item líneas de flujo,
+\item propagación de ondas,
+\item transporte de información.
+\end{itemize}
+En ecuaciones hiperbólicas, la información viaja precisamente sobre características.
+
+\end{enumerate}
+
+\section{Problema 8), m\'etodo de las caracter\'isticas II}
+
+% https://chatgpt.com/share/6a140182-6a90-83e9-90b5-d620d5603e40
+
+\subsection{Method of characteristics}
+
+Consider a first-order PDE
+$$
+F(x_1,\dots,x_n,u,p_1,\dots,p_n)=0,
+$$
+where
+$$
+p_i=\frac{\partial u}{\partial x_i}(x),
+$$
+and
+$$
+x=(x_1,\dots,x_n)\in\RR^n,
+\qquad
+u:\RR^n\to\RR.
+$$
+
+The method of characteristics seeks curves
+$$
+s\mapsto x(s)\in\RR^n
+$$
+along which the PDE reduces to a system of ordinary differential equations. 
+Assuming that $u$ is a solution, define along such curves
+$$
+u(s):=u(x(s)),
+$$
+and
+$$
+p_i(s):=\frac{\partial u}{\partial x_i}(x(s)).
+$$
+Then, by the chain rule,
+$$
+\frac{du}{ds}
+=
+\sum_{i=1}^n
+p_i\frac{dx_i}{ds}.
+$$
+
+The characteristic curves are chosen so that
+$$
+\frac{dx_i}{ds}
+=
+\frac{\partial F}{\partial p_i}(x(s),u(s),p(s)),
+$$
+which implies
+$$
+\frac{du}{ds}
+=
+\sum_{i=1}^n
+p_i
+\frac{\partial F}{\partial p_i}(x(s),u(s),p(s)).
+$$
+
+Differentiating the constraint
+$$
+F(x(s),u(s),p(s))=0
+$$
+along the curve yields
+$$
+\frac{dp_i}{ds}
+=
+-
+\frac{\partial F}{\partial x_i}
+-
+p_i\frac{\partial F}{\partial u}.
+$$
+
+Thus the PDE is reduced to the characteristic system
+$$
+\frac{dx_i}{ds}
+=
+\frac{\partial F}{\partial p_i},
+\quad (1)
+$$
+$$
+\frac{du}{ds}
+=
+\sum_{i=1}^n
+p_i\frac{\partial F}{\partial p_i},
+\quad (2)
+$$
+$$
+\frac{dp_i}{ds}
+=
+-
+\frac{\partial F}{\partial x_i}
+-
+p_i\frac{\partial F}{\partial u}.
+\quad (3)
+$$
+
+This system evolves in the extended space
+$$
+(x_1,\dots,x_n,u,p_1,\dots,p_n)\in\RR^{2n+1},
+$$
+although the variables are constrained by both the PDE
+$$
+F(x,u,p)=0
+$$
+and the relations
+$$
+p_i=\frac{\partial u}{\partial x_i}.
+$$
+
+To reconstruct a solution of the PDE, one prescribes initial data on an $(n-1)$-dimensional hypersurface
+$$
+\Sigma\subset\RR^n.
+$$
+The reason is that the characteristic curves are one-dimensional, so an $(n-1)$-parameter family of such curves generates an $n$-dimensional solution manifold.
+
+If $\sigma=(\sigma_1,\dots,\sigma_{n-1})$ are coordinates on $\Sigma$, the initial surface may be parameterized as
+$$
+x_i(0)=X_i(\sigma),
+$$
+together with initial data
+$$
+u(0)=U_0(\sigma).
+$$
+
+However, the initial hypersurface must be non-characteristic. 
+This means that the characteristic direction (see Eq.~(1))
+$$
+\left(
+\frac{\partial F}{\partial p_1},
+\dots,
+\frac{\partial F}{\partial p_n}
+\right)
+\quad (4)
+$$
+must not be tangent to $\Sigma$. Equivalently, if
+$$
+\frac{\partial X}{\partial \sigma_1},
+\dots,
+\frac{\partial X}{\partial \sigma_{n-1}}
+$$
+span the tangent space of $\Sigma$, the vector of Eq.~(4) must be linearly independent from them. 
+Geometrically, this guarantees that the characteristic curves intersect the initial hypersurface transversally rather than lying inside it. 
+Otherwise the evolution problem becomes degenerate and the local reconstruction of the solution may fail.
+More specifically, if the vector of Eq.~(4) is tangent to $\Sigma$, then the characteristic curves starting on $\Sigma$ remain inside $\Sigma$, at least initially. 
+In that case, the characteristic flow does not propagate the data away from the initial surface, so the PDE cannot determine a unique extension of the solution outside $\Sigma$.
+
+The initial values of
+$$
+p_i(0)=\frac{\partial u}{\partial x_i}(x(0))
+$$
+are determined from the tangential derivatives of the initial data and the PDE itself. Indeed, applying the chain rule,
+$$
+\frac{\partial U_0}{\partial \sigma_\alpha}
+=
+\sum_{i=1}^n
+p_i
+\frac{\partial X_i}{\partial \sigma_\alpha},
+\qquad
+\alpha=1,\dots,n-1.
+$$
+These provide $n-1$ equations for the $n$ unknowns $p_i$, while the remaining equation is supplied by
+$$
+F(X(\sigma),U_0(\sigma),p_1,\dots,p_n)=0.
+$$
+
+Under the non-characteristic condition, these equations determine the quantities $p_i$ locally and uniquely on the initial surface.
+
+Solving the characteristic system yields a family of curves
+$$
+s
+\mapsto
+\bigl(
+x(s,\sigma),
+u(s,\sigma),
+p(s,\sigma)
+\bigr).
+$$
+Whenever the map
+$$
+(s,\sigma)\mapsto x(s,\sigma)
+$$
+is locally invertible, one may solve for
+$$
+s=s(x),
+\qquad
+\sigma=\sigma(x),
+$$
+and reconstruct the solution of the PDE as
+$$
+u(x)=u(s(x),\sigma(x)).
+$$
+
+Therefore, the method of characteristics transforms the original PDE problem into:
+\begin{enumerate}
+\item solving the characteristic system of ODEs,
+\item determining the characteristic curves from the initial data,
+\item eliminating the auxiliary parameters $(s,\sigma)$ to recover $u(x)$.
+\end{enumerate}
+
+\end{document}
+
+
