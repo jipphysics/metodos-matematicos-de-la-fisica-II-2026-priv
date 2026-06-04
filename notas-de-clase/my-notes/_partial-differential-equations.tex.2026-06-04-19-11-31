@@ -290,22 +290,15 @@ In other words, the function $h$ should be compatible with one of the  possible 
 
 \section{Divergence form}
 
-Supose there are functions $B^i:D\times \RR \times \RR^n\ni (x,v,p) \to B^i(x,v,p)\in \RR$ such that
-\begin{equation}
-\label{eq:X5}
-a^{ij}
-=
-\frac{\partial B^i}{\partial p_j}.
-\end{equation}
+Consider functions $B^i:D\times \RR \times \RR^n\ni (x,v,p) \to B^i(x,v,p)\in \RR$.
 Then, for some given solution $u$ of Eq.~\ref{eq:X1}, define
 $$
 A^i(x) := B^i(x,u(x),(\partial u)(x)).
 $$
-as a function of $x\in D$.
 Hence,
-\begin{eqnarray}
+$$
 (\partial_i A^i)(x)
-&=&
+=
 \frac{\partial B^i}{\partial x^i}(x,u(x),(\partial u)(x))
 +
 \frac{\partial B^i}{\partial v}(x,u(x),(\partial u)(x))
@@ -315,22 +308,29 @@ Hence,
 \frac{\partial B^i}{\partial p_j}(x,u(x),(\partial u)(x))\,
 \,
 (\partial_i \partial_j u)(x)
-\notag
-\\
-&=&
-\frac{\partial B^i}{\partial x^i}(x,u(x),(\partial u)(x))
-+
+$$
+Now, we propose the identification
+\begin{equation}
+\label{eq:X5}
+a^{ij}(x,u(x),(\partial u)(x))
+\,
+(\partial_i \partial_j u)(x)
+=
+\frac{\partial B^i}{\partial p_j}(x,u(x),(\partial u)(x))
+\,
+(\partial_i \partial_j u)(x)
+\end{equation}
+and include the term
+$$
 \frac{\partial B^i}{\partial v}(x,u(x),(\partial u)(x))
 \,
 (\partial_i u)(x)
-+
-a^{ij}(x,u(x),(\partial u)(x))
-\,
-\,
-(\partial_i \partial_j u)(x)
-\notag
-\end{eqnarray}
-so we can rewrite Eq.~\ref{eq:X1} as
+$$
+as part of
+$$
+f(x,u(x),(\partial u)(x))
+$$
+to rewrite Eq.~\ref{eq:X1} as
 $$
 (\partial_i A^i)(x)
 +
@@ -338,19 +338,6 @@ f(x,u(x),(\partial u)(x))
 =
 0
 $$
-if include the terms
-$$
-\frac{\partial B^i}{\partial x^i}(x,u(x),(\partial u)(x))
-+
-\frac{\partial B^i}{\partial v}(x,u(x),(\partial u)(x))
-\,
-(\partial_i u)(x)
-$$
-as part of
-$$
-f(x,u(x),(\partial u)(x)),
-$$
-i.e. as part of a redefintion of $f$.
 
 \section{Weak formulation}
 
