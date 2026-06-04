@@ -194,9 +194,11 @@ Partial Differential Equations
 \maketitle
 \onecolumngrid
 
+% https://chatgpt.com/share/6a21decf-f3e8-83e9-bd6c-97000a10761c
+
 \section{Classification}
 
-Consider Partial Differential Equations (PDEs) defined by
+A semi-linear Partial Differential Equations (PDEs) is of the form
 \begin{equation}
 \label{eq:X1}
 a^{ij}(x,u(x),(\nabla u)(x))
@@ -210,8 +212,8 @@ f(x,u(x),(\nabla u)(x))
 =
 0
 \end{equation}
-for all $x=(x^1,...,x^n)\in D\subset \RR^n$ with solutions $u:D\ni x \to u(x)\in \RR$.
-Here  $(\nabla u)(x)\in \RR^n$.
+where $x=(x^1,...,x^n)\in D$ and $u:D\ni x \to u(x)\in \RR$ is a solution.
+Here $D$ is an $n$-dimensional manifold and $(\nabla u)(x)\in \RR^n$ is the tangent space of $D$ at $x$.
 Also, $f:D\times \RR\times \RR^n \ni (x,u(x),(\nabla u)(x)) \to f(x,u(x),(\nabla u)(x))\in \RR$.
 
 For each $x\in D$ and solution $u$, the matrix of coefficients
@@ -249,12 +251,13 @@ The boundary condition is of type:
       $\Gamma_D\cap\Gamma_N=\varnothing$,
       and the condition is Dirichlet on $\Gamma_D$
       and Neumann on $\Gamma_N$,
-\item {\em Robin} otherwise.
+\item {\em Robin} if $a$ and $b$ are non-zero.
 \end{itemize}
 Also, the boundary condition is homogeneous if $g=0$, and non-homogeneous otherwise.
 
-The Neumann boundary condition may not completely determine the solution and, at the same time, the boundary function $g$ cannot be completely arbitrary.
-This is because the Neumann condition 
+For some PDEs, pure Neumann boundary conditions do not determine the solution uniquely. 
+If $u$ is a solution, then $u+C$ is also a solution for any constant $C$.
+  This is because the Neumann condition 
 $$
 \frac{\partial u}{\partial \hat{n}}(x)
 =
@@ -275,9 +278,58 @@ $$
 for some function $v:D\to \RR$ that is determined by a solution $u$.
 In other words, the function $h$ should be compatible with one of the  possible solutions.
 
-\section{Weak formulation}
+\section{Divergence form}
 
-\subsection{Standard form}
+Consider functions $B^i:D\times \RR \times \RR^n\ni (x,v,p) \to B^i(x,v,p)\in \RR$.
+Then, for some given solution $u$ of Eq.~\ref{eq:X1}, define
+$$
+A^i(x) := B^i(x,u(x),(\partial u)(x)).
+$$
+Hence,
+$$
+(\partial_i A^i)(x)
+=
+\frac{\partial B^i}{\partial x^i}(x,u(x),(\partial u)(x))
++
+\frac{\partial B^i}{\partial v}(x,u(x),(\partial u)(x))
+\,
+(\partial_i u)(x)
++
+\frac{\partial B^i}{\partial p_j}(x,u(x),(\partial u)(x))\,
+\,
+(\partial_i \partial_j u)(x)
+$$
+Now, we propose the identification
+\begin{equation}
+\label{eq:X5}
+a^{ij}(x,u(x),(\partial u)(x))
+\,
+(\partial_i \partial_j u)(x)
+=
+\frac{\partial B^i}{\partial p_j}(x,u(x),(\partial u)(x))
+\,
+(\partial_i \partial_j u)(x)
+\end{equation}
+and include the term
+$$
+\frac{\partial B^i}{\partial v}(x,u(x),(\partial u)(x))
+\,
+(\partial_i u)(x)
+$$
+as part of
+$$
+f(x,u(x),(\partial u)(x))
+$$
+to rewrite Eq.~\ref{eq:X1} as
+$$
+(\partial_i A^i)(x)
++
+f(x,u(x),(\partial u)(x))
+=
+0
+$$
+
+\section{Weak formulation}
 
 Because of Eq.~\ref{eq:X1}, equation
 \begin{equation}
@@ -285,14 +337,11 @@ Because of Eq.~\ref{eq:X1}, equation
 \int_D
 \bigg(
 a^{ij}(x,u(x),(\nabla u)(x))
-(
-\nabla_i
-\nabla_j
-u)
-(x)
+\,
+(\nabla_i \nabla_j u)(x)
 +
 f(x,u(x),(\nabla u)(x))
-\bigg)
+\bigg)\,
 \varphi(x)\,
 dV(x)
 =
@@ -323,65 +372,17 @@ Hence, we can rewrite Eq.~\ref{eq:X3} as
 \int_D 
 (\partial_j u)\,
 \partial_i(A^{ij} \varphi)\,
-dV(x)
+dV
 +
 \int_D
 f\,
 \varphi\,
-dV(x)
+dV
 =
 0
 .
 \end{equation}
 We say that function $u$ satisfying Eq.~\ref{eq:X4} solves the PDE of Eq.~\ref{eq:X1} in a weak or distributional sense.
-
-\subsection{Divergence form}
-
-Consider functions $B^i:D\times \RR \times \RR^n\ni (x,v,p) \to B^i(x,v,p)\in \RR$.
-Then, for some given solution $u$ of Eq.~\ref{eq:X1}, define
-$$
-A^i(x) := B^i(x,u(x),(\partial u)(x)).
-$$
-Hence,
-$$
-(\partial_i A^i)(x)
-=
-\frac{\partial B^i}{\partial x^i}(x,u(x),(\partial u)(x))
-+
-\frac{\partial B^i}{\partial v}(x,u(x),(\partial u)(x))
-\,
-(\partial_i u)(x)
-+
-\frac{\partial B^i}{\partial p_j}(x,u(x),(\partial u)(x))\,
-\,
-(\partial_i \partial_j u)(x)
-$$
-Now, we propose the identification
-$$
-a^{ij}(x,u(x),(\partial u)(x))
-\,
-(\partial_i \partial_j u)(x)
-=
-\frac{\partial B^i}{\partial p_j}(x,u(x),(\partial u)(x))
-\,
-(\partial_i \partial_j u)(x)
-$$
-and include the term
-$$
-\frac{\partial B^i}{\partial x^i}(x,(\partial u)(x))
-$$
-as part of
-$$
-f(x,u(x),(\partial u)(x))
-$$
-to rewrite Eq.~\ref{eq:X1} as
-$$
-(\partial_i A^i)(x)
-+
-f(x,u(x),(\partial u)(x))
-=
-0
-$$
 
 %\appendix
 %
