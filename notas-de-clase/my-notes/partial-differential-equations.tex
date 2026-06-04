@@ -197,7 +197,8 @@ Partial Differential Equations
 \section{Classification}
 
 Consider Partial Differential Equations (PDEs) defined by
-$$
+\begin{equation}
+\label{eq:X1}
 a^{ij}(x,u(x),(\partial u)(x))
 (
 \partial_i
@@ -206,7 +207,9 @@ u)
 (x)
 +
 f(x,u(x),(\partial u)(x))
-$$
+=
+0
+\end{equation}
 for all $x=(x^1,...,x^n)\in D\subset \RR^n$ with solutions $u:D\ni x \to u(x)\in \RR$.
 Here  $(\partial u)(x) = ((\partial_1 u)(x),...,(\partial_n u)(x))\in \RR^n$.
 Also, $f:D\times \RR\times \RR^n \ni (x,u(x),(\partial u)(x)) \to f(x,u(x),(\partial u)(x))\in \RR$.
@@ -230,15 +233,16 @@ We will say that the PDE is:
 
 To obtain a unique solution of a PDE, one typically supplements the equation with appropriate boundary and/or initial conditions.
 The most common boundary conditions for second-order PDEs are summarized by
-$$
-a(x)u(x) + b(x)\frac{\partial u}{\partial n}(x)
+\begin{equation}
+\label{eq:X2}
+a(x)u(x) + b(x)\frac{\partial u}{\partial \hat{n}}(x)
 =
 g(x)
-$$
+\end{equation}
 for $x\in \partial D$.
 Here, 
 $$
-\frac{\partial u}{\partial n}(x)
+\frac{\partial u}{\partial \hat{n}}(x)
 =
 \hat{n}(x)\cdot (\nabla u)(x)
 $$
@@ -254,6 +258,129 @@ The boundary condition is of type:
 \item {\em Robin} otherwise.
 \end{itemize}
 Also, the boundary condition is homogeneous if $g=0$, and non-homogeneous otherwise.
+
+The Neumann boundary condition may not completely determine the solution and, at the same time, the boundary function $g$ cannot be completely arbitrary.
+This is because the Neumann condition 
+$$
+\frac{\partial u}{\partial \hat{n}}(x)
+=
+\frac{g(x)}{b(x)}
+=:
+h(x)
+$$
+is defined modulo an aditive constant and because, due to Gauss theorem,
+$$
+\int_{\partial D} h(x)\,dS(x)
+=
+\int_{\partial D} (\hat{n}\cdot (\nabla u))(x)\,dS(x)
+=
+\int_{D} (\Delta u)(x)\,dS(x)
+=
+\int_{D} v(x)\,dV(x)
+$$
+for some function $v:D\to \RR$ that is determined by a solution $u$.
+In other words, the function $h$ should be compatible with one of the  possible solutions.
+
+\section{Weak formulation}
+
+\subsection{Standard form}
+
+Because of Eq.~\ref{eq:X1}, equation
+\begin{equation}
+\label{eq:X3}
+\int_D
+\bigg(
+a^{ij}(x,u(x),(\partial u)(x))
+(
+\partial_i
+\partial_j
+u)
+(x)
++
+f(x,u(x),(\partial u)(x))
+\bigg)
+\varphi(x)\,
+dV(x)
+=
+0
+\end{equation}
+holds for every test function $\varphi\in C_c^{\infty}(D)$.
+For a given $u$, let
+$$
+A^{ij}(x)
+:=
+a^{ij}(x,u(x),(\partial u)(x))
+.
+$$
+Then, after integrating by parts
+$$
+\int_D A^{ij}\,\, \partial_i \partial_j u\,\, \varphi \,\, dV(x)
+=
+-
+\int_D \partial_j u\,\, \partial_i(A^{ij} \varphi)\,\, dV(x)
++
+\int_{\partial D} A^{ij}\,\,\partial_j u\,\, n_i\,\, \varphi \,\, dV(x).
+$$
+Here the last term vanishes because $\varphi$ has compact support on $D$.
+Hence, we can rewrite Eq.~\ref{eq:X3} as
+\begin{equation}
+\label{eq:X4}
+-
+\int_D 
+(\partial_j u)\,
+\partial_i(A^{ij} \varphi)\,
+dV(x)
++
+\int_D
+f\,
+\varphi\,
+dV(x)
+=
+0
+.
+\end{equation}
+We say that function $u$ satisfying Eq.~\ref{eq:X4} solves the PDE of Eq.~\ref{eq:X1} in a weak or distributional sense.
+
+\subsection{Divergence form}
+
+Consider functions $B^i:D\times \RR^n\ni (x,p) \to B^i(x,p)\in \RR$.
+Then, for some given solution $u$ of Eq.~\ref{eq:X1}, define
+$$
+A^i(x) := B^i(x,(\partial u)(x)).
+$$
+Hence,
+$$
+(\partial_i A^i)(x)
+=
+\frac{\partial B^i}{\partial x^i}(x,(\partial u)(x))
++
+\frac{\partial B^i}{\partial p_j}(x,(\partial u)(x))\,
+(\partial_i \partial_j u)(x)
+$$
+Now, we can propose the identification
+$$
+a^{ij}(x,u(x),(\partial u)(x))
+(\partial_i \partial_j u)(x)
+=
+\frac{\partial B^i}{\partial p_j}(x,(\partial u)(x))\,
+(\partial_i \partial_j u)(x)
+$$
+and include the term
+$$
+\frac{\partial B^i}{\partial x^i}(x,(\partial u)(x))
+$$
+as part of
+$$
+f(x,u(x),(\partial u)(x))
+$$
+to rewrite Eq.~\ref{eq:X1} as
+$$
+(\partial_i A^i)(x)
++
+f(x,u(x),(\partial u)(x))
+=
+0
+$$
 
 %\appendix
 %
