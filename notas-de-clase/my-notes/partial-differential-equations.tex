@@ -199,34 +199,34 @@ Partial Differential Equations
 Consider Partial Differential Equations (PDEs) defined by
 \begin{equation}
 \label{eq:X1}
-a^{ij}(x,u(x),(\partial u)(x))
+a^{ij}(x,u(x),(\nabla u)(x))
 (
-\partial_i
-\partial_j
+\nabla_i
+\nabla_j
 u)
 (x)
 +
-f(x,u(x),(\partial u)(x))
+f(x,u(x),(\nabla u)(x))
 =
 0
 \end{equation}
 for all $x=(x^1,...,x^n)\in D\subset \RR^n$ with solutions $u:D\ni x \to u(x)\in \RR$.
-Here  $(\partial u)(x) = ((\partial_1 u)(x),...,(\partial_n u)(x))\in \RR^n$.
-Also, $f:D\times \RR\times \RR^n \ni (x,u(x),(\partial u)(x)) \to f(x,u(x),(\partial u)(x))\in \RR$.
+Here  $(\nabla u)(x)\in \RR^n$.
+Also, $f:D\times \RR\times \RR^n \ni (x,u(x),(\nabla u)(x)) \to f(x,u(x),(\nabla u)(x))\in \RR$.
 
 For each $x\in D$ and solution $u$, the matrix of coefficients
 $$
-a^{ij}(x,u(x),(\partial u)(x))
+a^{ij}(x,u(x),(\nabla u)(x))
 \in \RR
 $$
 is assumed to be symmetric.
 We will say that the PDE is:
 \begin{itemize}
-\item {\em elliptic} at $(x,u(x),(\partial u)(x))$ if the eigenvalues of the mentioned matrix are non-zero and of the same sign,
+\item {\em elliptic} at $(x,u(x),(\nabla u)(x))$ if the eigenvalues of the mentioned matrix are non-zero and of the same sign,
 
-\item {\em hyperbolic} at $(x,u(x),(\partial u)(x))$ if the eigenvalues of the mentioned matrix are non-zero but of different signs, and
+\item {\em hyperbolic} at $(x,u(x),(\nabla u)(x))$ if the eigenvalues of the mentioned matrix are non-zero but of different signs, and
 
-\item {\em parabolic} at $(x,u(x),(\partial u)(x))$ if at least one of the eigenvalues of the mentioned matrix is zero and the non-zero ones have the same sign.
+\item {\em parabolic} at $(x,u(x),(\nabla u)(x))$ if at least one of the eigenvalues of the mentioned matrix is zero and the non-zero ones have the same sign.
 \end{itemize}
 
 \section{Boundary Conditions}
@@ -235,18 +235,12 @@ To obtain a unique solution of a PDE, one typically supplements the equation wit
 The most common boundary conditions for second-order PDEs are summarized by
 \begin{equation}
 \label{eq:X2}
-a(x)u(x) + b(x)\frac{\partial u}{\partial \hat{n}}(x)
+a(x)u(x) + b(x)(\hat{n}\cdot (\nabla u))(x)
 =
 g(x)
 \end{equation}
 for $x\in \partial D$.
-Here, 
-$$
-\frac{\partial u}{\partial \hat{n}}(x)
-=
-\hat{n}(x)\cdot (\nabla u)(x)
-$$
-where $\hat{n}$ is the unit outward normal vector to boundary $\partial D$ of $D$ at $x$.
+where $\hat{n}(x)$ is the unit outward normal vector to boundary $\partial D$ of $D$ at $x$.
 The boundary condition is of type:
 \begin{itemize}
 \item {\em Dirichlet} if $a\neq 0$ and $b=0$,
@@ -290,14 +284,14 @@ Because of Eq.~\ref{eq:X1}, equation
 \label{eq:X3}
 \int_D
 \bigg(
-a^{ij}(x,u(x),(\partial u)(x))
+a^{ij}(x,u(x),(\nabla u)(x))
 (
-\partial_i
-\partial_j
+\nabla_i
+\nabla_j
 u)
 (x)
 +
-f(x,u(x),(\partial u)(x))
+f(x,u(x),(\nabla u)(x))
 \bigg)
 \varphi(x)\,
 dV(x)
@@ -309,7 +303,7 @@ For a given $u$, let
 $$
 A^{ij}(x)
 :=
-a^{ij}(x,u(x),(\partial u)(x))
+a^{ij}(x,u(x),(\nabla u)(x))
 .
 $$
 Then, after integrating by parts
