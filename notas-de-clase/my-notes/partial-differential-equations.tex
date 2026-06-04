@@ -299,7 +299,7 @@ dV(x)
 0
 \end{equation}
 holds for every test function $\varphi\in C_c^{\infty}(D)$.
-For a given $u$, let
+For a given solution $u$, let
 $$
 A^{ij}(x)
 :=
@@ -308,12 +308,12 @@ a^{ij}(x,u(x),(\nabla u)(x))
 $$
 Then, after integrating by parts
 $$
-\int_D A^{ij}\,\, \partial_i \partial_j u\,\, \varphi \,\, dV(x)
+\int_D A^{ij}\,\, \partial_i \partial_j u\,\, \varphi \,\, dV
 =
 -
-\int_D \partial_j u\,\, \partial_i(A^{ij} \varphi)\,\, dV(x)
+\int_D \partial_j u\,\, \partial_i(A^{ij} \varphi)\,\, dV
 +
-\int_{\partial D} A^{ij}\,\,\partial_j u\,\, n_i\,\, \varphi \,\, dV(x).
+\int_{\partial D} A^{ij}\,\,\partial_j u\,\, n_i\,\, \varphi \,\, dS.
 $$
 Here the last term vanishes because $\varphi$ has compact support on $D$.
 Hence, we can rewrite Eq.~\ref{eq:X3} as
@@ -337,26 +337,33 @@ We say that function $u$ satisfying Eq.~\ref{eq:X4} solves the PDE of Eq.~\ref{e
 
 \subsection{Divergence form}
 
-Consider functions $B^i:D\times \RR^n\ni (x,p) \to B^i(x,p)\in \RR$.
+Consider functions $B^i:D\times \RR \times \RR^n\ni (x,v,p) \to B^i(x,v,p)\in \RR$.
 Then, for some given solution $u$ of Eq.~\ref{eq:X1}, define
 $$
-A^i(x) := B^i(x,(\partial u)(x)).
+A^i(x) := B^i(x,u(x),(\partial u)(x)).
 $$
 Hence,
 $$
 (\partial_i A^i)(x)
 =
-\frac{\partial B^i}{\partial x^i}(x,(\partial u)(x))
+\frac{\partial B^i}{\partial x^i}(x,u(x),(\partial u)(x))
 +
-\frac{\partial B^i}{\partial p_j}(x,(\partial u)(x))\,
+\frac{\partial B^i}{\partial v}(x,u(x),(\partial u)(x))
+\,
+(\partial_i u)(x)
++
+\frac{\partial B^i}{\partial p_j}(x,u(x),(\partial u)(x))\,
+\,
 (\partial_i \partial_j u)(x)
 $$
-Now, we can propose the identification
+Now, we propose the identification
 $$
 a^{ij}(x,u(x),(\partial u)(x))
+\,
 (\partial_i \partial_j u)(x)
 =
-\frac{\partial B^i}{\partial p_j}(x,(\partial u)(x))\,
+\frac{\partial B^i}{\partial p_j}(x,u(x),(\partial u)(x))
+\,
 (\partial_i \partial_j u)(x)
 $$
 and include the term
