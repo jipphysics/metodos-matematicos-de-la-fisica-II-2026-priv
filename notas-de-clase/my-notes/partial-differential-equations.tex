@@ -226,6 +226,35 @@ We will say that the PDE is:
 \item {\em parabolic} at $(x,u(x),(\partial u)(x))$ if at least one of the eigenvalues of the mentioned matrix is zero and the non-zero ones have the same sign.
 \end{itemize}
 
+\section{Boundary Conditions}
+
+To obtain a unique solution of a PDE, one typically supplements the equation with appropriate boundary and/or initial conditions.
+The most common boundary conditions for second-order PDEs are summarized by
+$$
+a(x)u(x) + b(x)\frac{\partial u}{\partial n}(x)
+=
+g(x)
+$$
+for $x\in \partial D$.
+Here, 
+$$
+\frac{\partial u}{\partial n}(x)
+=
+\hat{n}(x)\cdot (\nabla u)(x)
+$$
+where $\hat{n}$ is the unit outward normal vector to boundary $\partial D$ of $D$ at $x$.
+The boundary condition is of type:
+\begin{itemize}
+\item {\em Dirichlet} if $a\neq 0$ and $b=0$,
+\item {\em Neumann} if $a=0$ and $b\neq 0$,
+\item {\em mixed} if $\partial D=\Gamma_D\cup\Gamma_N$ with
+      $\Gamma_D\cap\Gamma_N=\varnothing$,
+      and the condition is Dirichlet on $\Gamma_D$
+      and Neumann on $\Gamma_N$,
+\item {\em Robin} otherwise.
+\end{itemize}
+Also, the boundary condition is homogeneous if $g=0$, and non-homogeneous otherwise.
+
 %\appendix
 %
 %\section{
