@@ -288,6 +288,96 @@ $$
 for some function $v:D\to \RR$ that is determined by a solution $u$.
 In other words, the function $h$ should be compatible with one of the  possible solutions.
 
+\section{Weak formulation}
+
+Because of Eq.~\ref{eq:X1}, equation
+\begin{equation}
+\label{eq:X3}
+\int_D
+\bigg(
+a^{ij}(x,u(x),(\nabla u)(x))
+\,
+(\nabla_i \nabla_j u)(x)
++
+f(x,u(x),(\nabla u)(x))
+\bigg)\,
+\varphi(x)\,
+dV(x)
+=
+0
+\end{equation}
+holds for every test function $\varphi\in C_c^{\infty}(D)$ if $u$ is a solution.
+Conversely, any $u$ satisfying Eq.~\ref{eq:X4} defines a distributional (or weak) solution of the PDE in the interior of $D$. 
+Since the test functions belong to $C_c^{\infty}(D)$, the boundary is not involved and no boundary condition is encoded. 
+Any Dirichlet, Neumann, or Robin condition must be imposed separately.
+The existence of distributional solutions, enlarge the space of possible solutions.
+For instance, solutions can have distributional like boundary conditions.
+
+
+The weak formulation can be written in a more standard and convenient form.
+To this end, consider a given solution $u$ and let
+$$
+A^{ij}(x)
+:=
+a^{ij}(x,u(x),(\nabla u)(x))
+.
+$$
+Then, after integrating by parts using as factors $A^{ij}\varphi$ and $\nabla_j u$, we obtain
+$$
+\int_D A^{ij}\,\, \nabla_i \nabla_j u\,\, \varphi \,\, dV
+=
+-
+\int_D \nabla_j u\,\, \nabla_i(A^{ij} \varphi)\,\, dV
++
+\int_{\partial D} A^{ij}\,\,\nabla_j u\,\, n_i\,\, \varphi \,\, dS.
+$$
+Here the last term vanishes because $\varphi$ has compact support on $D$~\footnote{Remember that $\varphi\in C_c^{\infty}$ means that the support of $\varphi$ (which is a closed set by definition, the closed set $\mathrm{sup}(\varphi)=\overline{\{x:\varphi(x)\neq 0\}}$) is fully contained in $D$ which is an open set by assumption.}.
+Hence, Eq.~\ref{eq:X3} reduces to
+%\begin{equation}
+%\label{eq:X4}
+$$
+-
+\int_D 
+(\nabla_j u)\,
+\nabla_i(A^{ij} \varphi)\,
+dV
++
+\int_D
+f\,
+\varphi\,
+dV
+=
+0
+.
+$$
+%\end{equation}
+Now we apply the Leibniz rule on $\nabla_i(A^{ij} \varphi)$ to obtain
+$$
+-
+\int_{D}
+A^{ij}\,
+(\nabla_j u)\,
+(\nabla_i \varphi)\,
+dV
++
+\int_D
+\bigg(
+f
+-
+(\nabla_j u)\,
+(\nabla_i A^{ij})
+\bigg)
+\,
+\varphi\,
+dV
+=
+0
+.
+$$
+
+
+We say that function $u$ satisfying Eq.~\ref{eq:X4} solves the PDE of Eq.~\ref{eq:X1} in a weak or distributional sense.
+
 \section{Divergence form}
 
 Supose there are functions $B^i:D\times \RR \times \RR^n\ni (x,v,p) \to B^i(x,v,p)\in \RR$ such that
@@ -329,83 +419,43 @@ a^{ij}(x,u(x),(\partial u)(x))
 \,
 (\partial_i \partial_j u)(x)
 \notag
-\end{eqnarray}
-so we can rewrite Eq.~\ref{eq:X1} as
-$$
+\\
+a^{ij}(x,u(x),(\partial u)(x))
+\,
+\,
+(\partial_i \partial_j u)(x)
+&=&
 (\partial_i A^i)(x)
-+
-f(x,u(x),(\partial u)(x))
-=
-0
-$$
-if include the terms
-$$
+-
 \frac{\partial B^i}{\partial x^i}(x,u(x),(\partial u)(x))
-+
+-
 \frac{\partial B^i}{\partial v}(x,u(x),(\partial u)(x))
 \,
 (\partial_i u)(x)
-$$
-as part of
-$$
-f(x,u(x),(\partial u)(x)),
-$$
-i.e. as part of a redefintion of $f$.
-
-\section{Weak formulation}
-
-Because of Eq.~\ref{eq:X1}, equation
+\notag
+\end{eqnarray}
+so we can rewrite Eq.~\ref{eq:X1} as
 \begin{equation}
-\label{eq:X3}
-\int_D
-\bigg(
-a^{ij}(x,u(x),(\nabla u)(x))
-\,
-(\nabla_i \nabla_j u)(x)
+\label{eq:X6}
+(\partial_i A^i)(x)
 +
-f(x,u(x),(\nabla u)(x))
-\bigg)\,
-\varphi(x)\,
-dV(x)
+\tilde{f}(x,u(x),(\partial u)(x))
 =
 0
 \end{equation}
-holds for every test function $\varphi\in C_c^{\infty}(D)$.
-For a given solution $u$, let
+with
 $$
-A^{ij}(x)
+\tilde{f}(x,u(x),(\partial u)(x))
 :=
-a^{ij}(x,u(x),(\nabla u)(x))
+f(x,u(x),(\partial u)(x))
+-
+\frac{\partial B^i}{\partial x^i}(x,u(x),(\partial u)(x))
+-
+\frac{\partial B^i}{\partial v}(x,u(x),(\partial u)(x))
+\,
+(\partial_i u)(x)
 .
 $$
-Then, after integrating by parts
-$$
-\int_D A^{ij}\,\, \partial_i \partial_j u\,\, \varphi \,\, dV
-=
--
-\int_D \partial_j u\,\, \partial_i(A^{ij} \varphi)\,\, dV
-+
-\int_{\partial D} A^{ij}\,\,\partial_j u\,\, n_i\,\, \varphi \,\, dS.
-$$
-Here the last term vanishes because $\varphi$ has compact support on $D$.
-Hence, we can rewrite Eq.~\ref{eq:X3} as
-\begin{equation}
-\label{eq:X4}
--
-\int_D 
-(\partial_j u)\,
-\partial_i(A^{ij} \varphi)\,
-dV
-+
-\int_D
-f\,
-\varphi\,
-dV
-=
-0
-.
-\end{equation}
-We say that function $u$ satisfying Eq.~\ref{eq:X4} solves the PDE of Eq.~\ref{eq:X1} in a weak or distributional sense.
 
 %\appendix
 %
