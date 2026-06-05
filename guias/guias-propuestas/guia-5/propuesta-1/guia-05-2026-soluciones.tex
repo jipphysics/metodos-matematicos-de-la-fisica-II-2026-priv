@@ -1196,13 +1196,20 @@ $$
 \right)\cos\theta.
 $$
 La condición de borde es
-$$
-u(a,\theta)=
+\begin{eqnarray}
+u(a,\theta)
+&=&
 \begin{cases}
 V, & 0<\theta<\pi,\\
 -V, & -\pi<\theta<0.
-  \end{cases}
-$$
+\end{cases}
+\notag
+\\
+&=&
+V 
+\operatorname{sgn}(\theta)
+\notag
+\end{eqnarray}
 
 \item Estructura angular
 
@@ -1296,15 +1303,171 @@ $$
 
 \item Solución homogénea
 
-Ahora resolvemos
+Ahora resolvemos la Ecuación de Laplace
 $$
-\nabla^2 u_h=0.
+\nabla^2 u_h=0
 $$
-La solución regular en el origen es
+en coordenadas polares, la cu\'al queda
+$$
+\frac{\partial^2 u}{\partial r^2}
++\frac1r\frac{\partial u}{\partial r}
++\frac1{r^2}\frac{\partial^2 u}{\partial \theta^2}
+=0.
+$$
+Buscamos soluciones de la forma
+$$
+u(r,\theta)=R(r)\Theta(\theta).
+$$
+Sustituyendo:
+$$
+R''\Theta+\frac1rR'\Theta+\frac1{r^2}R\Theta''=0.
+$$
+Dividiendo por $R\Theta$,
+$$
+\frac{R''}{R}
++\frac1r\frac{R'}{R}
++\frac1{r^2}\frac{\Theta''}{\Theta}
+=0.
+$$
+Multiplicando por $r^2$,
+$$
+r^2\frac{R''}{R}
++r\frac{R'}{R}
++\frac{\Theta''}{\Theta}
+=0.
+$$
+El primer término depende sólo de $r$ y el segundo sólo de $\theta$, así que ambos deben ser constantes.
+Tomamos
+$$
+\frac{\Theta''}{\Theta}=-\lambda.
+$$
+Entonces obtenemos dos EDOs:
+$$
+\Theta''+\lambda\Theta=0,
+$$
+$$
+r^2R''+rR'-\lambda R=0.
+$$
+Resolver la ecuación angular.
+Como $\theta$ es un ángulo, debemos exigir periodicidad:
+$$
+\Theta(\theta+2\pi)=\Theta(\theta).
+$$
+La ecuación angular tiene soluciones
+$$
+\Theta(\theta)
+=
+C\cos(\sqrt{\lambda},\theta)
++
+D\sin(\sqrt{\lambda},\theta).
+$$
+La periodicidad exige
+$$
+\sqrt{\lambda}=n,
+\qquad
+n=0,1,2,\ldots
+$$
+de modo que
+$$
+\lambda=n^2.
+$$
+Por eso aparecen precisamente
+$$
+\cos(n\theta),\qquad \sin(n\theta).
+$$
+Resolver la ecuación radial.
+Ahora queda
+$$
+r^2R''+rR'-n^2R=0.
+$$
+Esta es una ecuación de Euler-Cauchy.
+Probamos una solución tipo potencia
+$$
+R(r)=r^m.
+$$
+Entonces
+$$
+R'=mr^{m-1},
+\qquad
+R''=m(m-1)r^{m-2}.
+$$
+Sustituyendo:
+$$
+m(m-1)r^m
++
+mr^m
+-
+n^2r^m
+=0.
+$$
+Por lo tanto
+$$
+m^2-n^2=0.
+$$
+Las raíces son
+$$
+m=\pm n.
+$$
+Así,
+$$
+R(r)=C\,r^n+D\,r^{-n}.
+$$
+Regularidad en el origen.
+Si el dominio contiene al origen (por ejemplo un disco), las soluciones
+$$
+r^{-n}
+$$
+divergen cuando $r\to0$.
+Para obtener una solución física y regular se descartan.
+Por eso queda únicamente
+$$
+R(r)=C\,r^n.
+$$
+Combinar todos los modos.
+Para cada $n\ge 1$ tenemos
+$$
+u_n(r,\theta)
+=
+r^n
+\left(
+A_n\cos n\theta
++
+B_n\sin n\theta
+\right).
+$$
+Como la ecuación de Laplace es lineal, podemos sumar todos los modos:
+$$
+u(r,\theta)
+=
+\sum_{n=1}^{\infty}
+r^n
+\left(
+A_n\cos n\theta
++
+B_n\sin n\theta
+\right).
+$$
+¿De dónde sale el término $A_0$?
+Cuando $n=0$, la ecuación angular da
+$$
+\Theta''=0.
+$$
+La periodicidad elimina el término lineal en $\theta$, dejando sólo una constante.
+La ecuación radial queda
+$$
+r^2R''+rR'=0,
+$$
+cuyas soluciones son
+$$
+R=C+D\ln r.
+$$
+La regularidad en $r=0$ elimina $\ln r$, quedando sólo una constante.
+Ese modo es precisamente $A_0$.
+Por tanto, la solución homogénea general regular en el disco es
 $$
 u_h(r,\theta)=
 A_0+
-\sum_{n=1}^\infty
+\sum_{n=1}^{\infty}
 r^n
 \left(
 A_n\cos n\theta
@@ -1344,26 +1507,16 @@ g(\theta),
 $$
 con
 $$
-g(\theta)=
-\begin{cases}
-V+\dfrac{4\rho_0 a^2}{15\varepsilon_0}\cos\theta,
-& 0<\theta<\pi,\\
--V+\dfrac{4\rho_0 a^2}{15\varepsilon_0}\cos\theta,
-& -\pi<\theta<0.
-\end{cases}
+g(\theta)
+=
+V\operatorname{sgn}(\theta)
++
+\dfrac{4\rho_0 a^2}{15\varepsilon_0}\cos\theta
 $$
 
 \item Serie de Fourier del borde
 
-La función escalón:
-$$
-\operatorname{sgn}(\theta)=
-\begin{cases}
-1,&0<\theta<\pi,\\
--1,&-\pi<\theta<0,
-\end{cases}
-$$
-tiene expansión:
+La función escalón tiene expansión:
 $$
 \operatorname{sgn}(\theta)
 =
@@ -1371,16 +1524,7 @@ $$
 \sum_{m=0}^\infty
 \frac{\sin((2m+1)\theta)}{2m+1}.
 $$
-Entonces:
-$$
-V\operatorname{sgn}(\theta)
-=
-\frac{4V}{\pi}
-\sum_{m=0}^\infty
-\frac{\sin((2m+1)\theta)}{2m+1}.
-$$
-Además, el término proporcional a $\cos\theta$ corresponde al modo $n=1$.
-Por lo tanto,
+Entonces, teniendo en cuenta que el término proporcional a $\cos\theta$ corresponde al modo $n=1$, se tiene que
 $$
 u_h(r,\theta)
 =
@@ -1390,16 +1534,20 @@ u_h(r,\theta)
 \left(\frac{r}{a}\right)^{2m+1}
 \sin((2m+1)\theta)
 +
-\frac{4\rho_0 a}{15\varepsilon_0}
+\frac{4\rho_0 a^2}{15\varepsilon_0}
 \left(\frac{r}{a}\right)\cos\theta.
 $$
 
 \item Solución final
-
-Sumando $u_h+u_p$:
-$$
-\boxed{
-u(r,\theta)=
+\begin{eqnarray}
+u(r,\theta)
+&=&
+u_h(r,\theta)
++
+u_p(r,\theta)
+\notag
+\\
+&=&
 \frac{4V}{\pi}
 \sum_{m=0}^\infty
 \frac{1}{2m+1}
@@ -1410,8 +1558,8 @@ u(r,\theta)=
 \left(
 a r-r^2+\frac{r^4}{5a^2}
 \right)\cos\theta
-}
-$$
+\notag
+\end{eqnarray}
 válida para $0\le r<a$.
 
 \item Comentario
