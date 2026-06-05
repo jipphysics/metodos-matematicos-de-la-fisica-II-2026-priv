@@ -288,7 +288,9 @@ $$
 for some function $v:D\to \RR$ that is determined by a solution $u$.
 In other words, the function $h$ should be compatible with one of the  possible solutions.
 
-\section{Weak formulation}
+\section{(Unusual) weak formulation}
+
+% https://chatgpt.com/share/6a22a9be-6d98-83e9-a081-7bfe6b025c72
 
 Because of Eq.~\ref{eq:X1}, equation
 \begin{equation}
@@ -307,155 +309,215 @@ dV(x)
 0
 \end{equation}
 holds for every test function $\varphi\in C_c^{\infty}(D)$ if $u$ is a solution.
-Conversely, any $u$ satisfying Eq.~\ref{eq:X4} defines a distributional (or weak) solution of the PDE in the interior of $D$. 
+Conversely, any $u$ satisfying Eq.~\ref{eq:X3} defines a distributional (or weak) solution of the PDE in the interior of $D$. 
 Since the test functions belong to $C_c^{\infty}(D)$, the boundary is not involved and no boundary condition is encoded. 
 Any Dirichlet, Neumann, or Robin condition must be imposed separately.
 The existence of distributional solutions, enlarge the space of possible solutions.
 For instance, solutions can have distributional like boundary conditions.
 
+\section{Divergence form}
 
-The weak formulation can be written in a more standard and convenient form.
-To this end, consider a given solution $u$ and let
+% https://chatgpt.com/share/6a22a9be-6d98-83e9-a081-7bfe6b025c72
+
+The weak formulation can be rewritten in a more convenient way, if Eq.~\ref{eq:X1} is rewriten in the so called divergence form.
+To do this, consider an arbitrary solution $u$ of Eq.~\ref{eq:X1}, and let us define the functions $A^{ij}:D\ni x\to A^{ij}(x)\RR$ by
 $$
 A^{ij}(x)
 :=
-a^{ij}(x,u(x),(\nabla u)(x))
+a^{ij}(x,u(x),(\nabla u)(x)),
+$$
+so we can write
+$$
+a^{ij}(x,u(x),(\nabla u)(x))\,
+(\nabla_i \nabla_j u)
+(x)
+%=
+%A^{ij}(x)
+%(
+%\nabla_i
+%\nabla_j
+%u)
+%(x)
+=
+(A^{ij}
+\nabla_i
+\nabla_j
+u)
+(x)
 .
 $$
-Then, after integrating by parts using as factors $A^{ij}\varphi$ and $\nabla_j u$, we obtain
+Next, consider the identity obtained by Leibniz rule
 $$
-\int_D A^{ij}\,\, \nabla_i \nabla_j u\,\, \varphi \,\, dV
+\nabla_i
+\big(
+A^{ij}
+\nabla_j
+u
+\big)
 =
--
-\int_D \nabla_j u\,\, \nabla_i(A^{ij} \varphi)\,\, dV
+\big(
+\nabla_i
+A^{ij}
+\big)
+\nabla_j
+u
 +
-\int_{\partial D} A^{ij}\,\,\nabla_j u\,\, n_i\,\, \varphi \,\, dS.
+A^{ij}
+\nabla_i
+\nabla_j
+u
 $$
-Here the last term vanishes because $\varphi$ has compact support on $D$~\footnote{Remember that $\varphi\in C_c^{\infty}$ means that the support of $\varphi$ (which is a closed set by definition, the closed set $\mathrm{sup}(\varphi)=\overline{\{x:\varphi(x)\neq 0\}}$) is fully contained in $D$ which is an open set by assumption.}.
-Hence, Eq.~\ref{eq:X3} reduces to
-%\begin{equation}
-%\label{eq:X4}
+which can be rearranged into
 $$
--
-\int_D 
-(\nabla_j u)\,
-\nabla_i(A^{ij} \varphi)\,
-dV
-+
-\int_D
-f\,
-\varphi\,
-dV
+A^{ij}
+\nabla_i
+\nabla_j
+u
 =
-0
+\nabla_i
+\big(
+A^{ij}
+\nabla_j
+u
+\big)
+-
+\big(
+\nabla_i
+A^{ij}
+\big)
+\nabla_j
+u
 .
 $$
-%\end{equation}
-Now we apply the Leibniz rule on $\nabla_i(A^{ij} \varphi)$ to obtain
-$$
--
-\int_{D}
-A^{ij}\,
-(\nabla_j u)\,
-(\nabla_i \varphi)\,
-dV
-+
-\int_D
-\bigg(
-f
--
-(\nabla_j u)\,
-(\nabla_i A^{ij})
-\bigg)
-\,
-\varphi\,
-dV
-=
-0
-.
-$$
-
-
-We say that function $u$ satisfying Eq.~\ref{eq:X4} solves the PDE of Eq.~\ref{eq:X1} in a weak or distributional sense.
-
-\section{Divergence form}
-
-Supose there are functions $B^i:D\times \RR \times \RR^n\ni (x,v,p) \to B^i(x,v,p)\in \RR$ such that
-\begin{equation}
-\label{eq:X5}
-a^{ij}
-=
-\frac{\partial B^i}{\partial p_j}.
-\end{equation}
-Then, for some given solution $u$ of Eq.~\ref{eq:X1}, define
-$$
-A^i(x) := B^i(x,u(x),(\partial u)(x)).
-$$
-as a function of $x\in D$.
-Hence,
+In this way, after defining the function $F:D\ni x\to F(x)=f(x,u(x),(\nabla u)(x))\in \RR$, Eq.~\ref{eq:X1} can be rewritten as
 \begin{eqnarray}
-(\partial_i A^i)(x)
+\label{eq:X7}
+0
 &=&
-\frac{\partial B^i}{\partial x^i}(x,u(x),(\partial u)(x))
+A^{ij}
+\nabla_i
+\nabla_j
+u
 +
-\frac{\partial B^i}{\partial v}(x,u(x),(\partial u)(x))
-\,
-(\partial_i u)(x)
-+
-\frac{\partial B^i}{\partial p_j}(x,u(x),(\partial u)(x))\,
-\,
-(\partial_i \partial_j u)(x)
+F
 \notag
 \\
 &=&
-\frac{\partial B^i}{\partial x^i}(x,u(x),(\partial u)(x))
+\nabla_i
+\big(
+A^{ij}
+\nabla_j
+u
+\big)
 +
-\frac{\partial B^i}{\partial v}(x,u(x),(\partial u)(x))
-\,
-(\partial_i u)(x)
-+
-a^{ij}(x,u(x),(\partial u)(x))
-\,
-\,
-(\partial_i \partial_j u)(x)
+F
+-
+\big(
+\nabla_i
+A^{ij}
+\big)
+\nabla_j
+u
 \notag
 \\
-a^{ij}(x,u(x),(\partial u)(x))
-\,
-\,
-(\partial_i \partial_j u)(x)
+-
+\nabla_i
+\big(
+A^{ij}
+\nabla_j
+u
+\big)
++
+\tilde{F}
 &=&
-(\partial_i A^i)(x)
--
-\frac{\partial B^i}{\partial x^i}(x,u(x),(\partial u)(x))
--
-\frac{\partial B^i}{\partial v}(x,u(x),(\partial u)(x))
-\,
-(\partial_i u)(x)
-\notag
+0
+%\notag
 \end{eqnarray}
-so we can rewrite Eq.~\ref{eq:X1} as
+where
 \begin{equation}
-\label{eq:X6}
-(\partial_i A^i)(x)
+\label{eq:X8}
+\tilde{F}
+=
+\big(
+\nabla_i
+A^{ij}
+\big)
+\nabla_j
+u
+-
+F
+.
+\end{equation}
+Equation~\ref{eq:X7} is called the divergence form of Eq.~\ref{eq:X1}.
+
+Sometimes the so called divergence free condition
+$$
+\nabla_i A^{ij} = 0
+$$
+holds, implying ...
+{\color{red}[TODO]}
+
+\section{Weak formulation revisited}
+
+% https://chatgpt.com/share/6a22c3f4-6860-83e9-a018-452f279a772a
+
+Now we revisit the weak formulation but using the divergence form of the PDE.
+Namely, we multiply Eq.~\ref{eq:X7} by a test function $\varphi$ and integrate it to obtain
+$$
+-
+\int_D
+\nabla_i
+\big(
+A^{ij}
+\nabla_j
+u
+\big)\,
+\varphi\,
+dV
 +
-\tilde{f}(x,u(x),(\partial u)(x))
+\int_D
+\tilde{F}\,
+\varphi\,
+dV
 =
 0
-\end{equation}
-with
-$$
-\tilde{f}(x,u(x),(\partial u)(x))
-:=
-f(x,u(x),(\partial u)(x))
--
-\frac{\partial B^i}{\partial x^i}(x,u(x),(\partial u)(x))
--
-\frac{\partial B^i}{\partial v}(x,u(x),(\partial u)(x))
-\,
-(\partial_i u)(x)
 .
 $$
+Hence, by applying the divergence theorem, this equation can be rewriten as
+$$
+\int_D
+A^{ij}\,
+(\nabla_i \varphi)
+(\nabla_j u)
+\,
+dV
+-
+\int_{\partial D}
+\varphi\,
+\big(
+A^{ij}
+\nabla_j
+u
+\big)\,
+\hat{n}_i\,
+dS
++
+\int_D
+\tilde{F}\,
+\varphi\,
+dV
+=
+0
+.
+$$
+{\color{red}[INCORRECT... se ChatGPT]}
+Notice what happened:
+\begin{itemize}
+\item the second derivatives of $u$ disappeared,
+\item only first derivatives of $u$ remain, and
+\item boundary terms appeared.
+\end{itemize}
+This is convenient because the weak formulation can then be defined for functions $u$ that have only weak first derivatives rather than the original Eq.~\ref{eq:X1} that requires $u$ to have well defined second derivatives in the strong sense.
 
 %\appendix
 %
