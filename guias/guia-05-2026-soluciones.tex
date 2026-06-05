@@ -1,0 +1,2943 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=50\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Guía 5}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+\newcommand{\tder}[2]{\frac{d #1}{d #2}}
+
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Guía N$^\txt{o}$ 5 -- 2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{Parte I: Problemas Centrales (para desarrollar en clase)}
+
+
+\prob Resuelva la ecuación de Laplace
+\[
+u_{xx}+u_{yy}=0
+\]
+en la región rectangular \(0\leq x\leq L\), \(0\leq y\leq H\), con las siguientes condiciones de contorno:
+\[
+u_x(0,y)=0,\quad u(L,y)=2y,\quad u(x,0)=0,\quad u(x,H)=0.
+\]
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1)}
+\vspace{0.5cm}
+
+El problema 1 de la guía consiste en resolver la ecuación de Laplace en un rectángulo: 
+$$
+u_{xx}+u_{yy}=0,
+$$
+en
+$$
+0\le x\le L,\qquad 0\le y\le H,
+$$
+con condiciones de contorno
+$$
+u_x(0,y)=0,\qquad u(L,y)=2y,\qquad u(x,0)=0,\qquad u(x,H)=0.
+$$
+
+\begin{enumerate}
+\item Separación de variables
+
+Buscamos soluciones de la forma
+$$
+u(x,y)=X(x)Y(y).
+$$
+Sustituyendo en la ecuación de Laplace:
+$$
+X''(x)Y(y)+X(x)Y''(y)=0.
+$$
+Dividiendo por $X(x)Y(y)$:
+$$
+\frac{X''}{X}+\frac{Y''}{Y}=0.
+$$
+Entonces ambas partes deben ser constantes:
+$$
+\frac{X''}{X}=\lambda,
+\qquad
+\frac{Y''}{Y}=-\lambda.
+$$
+Como las condiciones en $y$ son homogéneas,
+$$
+u(x,0)=u(x,H)=0,
+$$
+para todo $x\in [0,L]$, 
+obtenemos el problema
+$$
+Y''+\lambda Y=0,
+\qquad
+Y(0)=Y(H)=0.
+$$
+Este es un problema de Sturm–Liouville clásico.
+Los autovalores son
+$$
+\lambda_n=\left(\frac{n\pi}{H}\right)^2,
+\qquad n=1,2,\dots
+$$
+y los autofunciones
+$$
+Y_n(y)=\sin\left(\frac{n\pi y}{H}\right).
+$$
+
+\item Ecuación para $X(x)$
+
+Para cada $n$,
+$$
+X_n''-\left(\frac{n\pi}{H}\right)^2 X_n=0.
+$$
+La solución general es
+$$
+X_n(x)=A_n\cosh\left(\frac{n\pi x}{H}\right)
++
+B_n\sinh\left(\frac{n\pi x}{H}\right).
+$$
+La condición de Neumann en $x=0$ es
+$$
+u_x(0,y)=0.
+$$
+Entonces
+$$
+X_n'(0)=0.
+$$
+Pero
+$$
+X_n'(x)=
+\frac{n\pi}{H}
+\left[
+A_n\sinh\left(\frac{n\pi x}{H}\right)
++
+B_n\cosh\left(\frac{n\pi x}{H}\right)
+\right].
+$$
+Evaluando en $x=0$:
+$$
+X_n'(0)=\frac{n\pi}{H}B_n=0,
+$$
+luego
+$$
+B_n=0.
+$$
+Así,
+$$
+X_n(x)=A_n\cosh\left(\frac{n\pi x}{H}\right).
+$$
+
+\item Solución general
+
+La solución queda
+$$
+u(x,y)=
+\sum_{n=1}^\infty
+A_n
+\cosh\left(\frac{n\pi x}{H}\right)
+\sin\left(\frac{n\pi y}{H}\right).
+$$
+
+\item Imponer la condición en $x=L$
+
+Debemos satisfacer
+$$
+u(L,y)=2y.
+$$
+Entonces
+$$
+2y=
+\sum_{n=1}^\infty
+A_n
+\cosh\left(\frac{n\pi L}{H}\right)
+\sin\left(\frac{n\pi y}{H}\right).
+$$
+Esto es la serie de Fourier seno de $2y$ en $(0,H)$.
+Los coeficientes son
+$$
+b_n=
+\frac{2}{H}
+\int_0^H
+2y,
+\sin\left(\frac{n\pi y}{H}\right),dy.
+$$
+Calculamos:
+$$
+b_n=
+\frac{4}{H}
+\int_0^H
+y\sin\left(\frac{n\pi y}{H}\right),dy.
+$$
+Integrando por partes:
+$$
+\int y\sin(ay),dy
+=
+-\frac{y\cos(ay)}{a}
++\frac{\sin(ay)}{a^2}.
+$$
+Con
+$$
+a=\frac{n\pi}{H},
+$$
+obtenemos
+$$
+b_n
+=
+\frac{4H}{n\pi}(-1)^{n+1}.
+$$
+Por lo tanto,
+$$
+A_n
+=
+\frac{b_n}{
+\cosh\left(\frac{n\pi L}{H}\right)
+}
+=
+\frac{4H}{n\pi}
+\frac{(-1)^{n+1}}
+{\cosh\left(\frac{n\pi L}{H}\right)}.
+$$
+
+\item Solución final
+$$
+\boxed{
+u(x,y)=
+\sum_{n=1}^{\infty}
+\frac{4H}{n\pi}
+\frac{(-1)^{n+1}}
+{\cosh\left(\frac{n\pi L}{H}\right)}
+\cosh\left(\frac{n\pi x}{H}\right)
+\sin\left(\frac{n\pi y}{H}\right)
+}
+$$
+Esta solución satisface:
+\begin{itemize}
+\item la ecuación de Laplace,
+\item las condiciones homogéneas en $y=0$ y $y=H$,
+\item la condición de Neumann $u_x(0,y)=0$,
+\item y la condición no homogénea $u(L,y)=2y$.
+\end{itemize}
+
+\end{enumerate}
+
+\prob Resuelva la ecuación de Poisson
+\[
+\nabla^2 u = 1
+\]
+dentro del rectángulo \(0<x<a\), \(0<y<b\) con condición de contorno homogénea \(u=0\) en los cuatro lados.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+El problema 2 pide resolver la ecuación de Poisson en un rectángulo: 
+$$
+\nabla^2 u = 1,
+$$
+es decir,
+$$
+u_{xx}+u_{yy}=1,
+$$
+en
+$$
+0<x<a,\qquad 0<y<b,
+$$
+con condiciones de contorno homogéneas:
+$$
+u=0
+\quad \text{en los cuatro lados.}
+$$
+
+\begin{enumerate}
+\item Idea general
+
+Como el término fuente es constante (1), no podemos resolver directamente por separación de variables como en Laplace. Una estrategia estándar es expandir la solución en serie seno, aprovechando las condiciones homogéneas.
+Buscamos
+$$
+u(x,y)=
+\sum_{m=1}^\infty
+\sum_{n=1}^\infty
+A_{mn}
+\sin\left(\frac{m\pi x}{a}\right)
+\sin\left(\frac{n\pi y}{b}\right).
+$$
+Esta forma satisface automáticamente:
+$$
+u(0,y)=u(a,y)=u(x,0)=u(x,b)=0.
+$$
+
+\item Aplicar el Laplaciano
+
+Derivando:
+$$
+u_{xx}
+=
+-\sum_{m,n}
+\left(\frac{m\pi}{a}\right)^2
+A_{mn}
+\sin\left(\frac{m\pi x}{a}\right)
+\sin\left(\frac{n\pi y}{b}\right),
+$$
+y
+$$
+u_{yy}
+=
+-\sum_{m,n}
+\left(\frac{n\pi}{b}\right)^2
+A_{mn}
+\sin\left(\frac{m\pi x}{a}\right)
+\sin\left(\frac{n\pi y}{b}\right).
+$$
+Entonces
+$$
+\nabla^2 u
+=
+-\sum_{m,n}
+\left[
+\left(\frac{m\pi}{a}\right)^2
++
+\left(\frac{n\pi}{b}\right)^2
+\right]
+A_{mn}
+\sin\left(\frac{m\pi x}{a}\right)
+\sin\left(\frac{n\pi y}{b}\right).
+$$
+Debemos igualar esto a $1$.
+
+\item Expandir la función fuente
+
+Necesitamos la serie doble seno de la constante $1$:
+$$
+1=
+\sum_{m,n}
+B_{mn}
+\sin\left(\frac{m\pi x}{a}\right)
+\sin\left(\frac{n\pi y}{b}\right).
+$$
+Los coeficientes son
+$$
+B_{mn}
+=
+\frac{4}{ab}
+\int_0^a\int_0^b
+\sin\left(\frac{m\pi x}{a}\right)
+\sin\left(\frac{n\pi y}{b}\right)
+\,dx\,dy.
+$$
+Las integrales separan:
+$$
+B_{mn}
+=
+\frac{4}{ab}
+\left[
+\int_0^a
+\sin\left(\frac{m\pi x}{a}\right),dx
+\right]
+\left[
+\int_0^b
+\sin\left(\frac{n\pi y}{b}\right),dy
+\right].
+$$
+Pero
+$$
+\int_0^a
+\sin\left(\frac{m\pi x}{a}\right),dx
+=
+\frac{a}{m\pi}\left(1-(-1)^m\right).
+$$
+Esto vale:
+\begin{itemize}
+\item $0$ si $m$ es par,
+\item $\dfrac{2a}{m\pi}$ si $m$ es impar.
+\end{itemize}
+Análogamente para $n$.
+Por lo tanto:
+$$
+B_{mn}=
+\begin{cases}
+\dfrac{16}{mn\pi^2}, & m,n \text{ impares},\\
+0, & \text{caso contrario}.
+\end{cases}
+$$
+
+\item Determinar $A_{mn}$
+
+Comparando coeficientes:
+$$
+\left[
+\left(\frac{m\pi}{a}\right)^2
++
+\left(\frac{n\pi}{b}\right)^2
+\right]
+A_{mn}
+=
+B_{mn}.
+$$
+Así,
+$$
+A_{mn}
+=
+-\frac{B_{mn}}
+{
+\left(\frac{m\pi}{a}\right)^2
++
+\left(\frac{n\pi}{b}\right)^2
+}.
+$$
+Entonces, para $m,n$ impares:
+$$
+A_{mn}
+=
+-\frac{16}
+{mn\pi^2
+\left[
+\left(\frac{m\pi}{a}\right)^2
++
+\left(\frac{n\pi}{b}\right)^2
+\right]}.
+$$
+
+\item Solución final
+
+$$
+\boxed{
+u(x,y)=
+-\frac{16}{\pi^2}
+\sum_{\substack{m=1\ m\ \mathrm{impar}}}^{\infty}
+\sum_{\substack{n=1\ n\ \mathrm{impar}}}^{\infty}
+\frac{
+\sin\left(\frac{m\pi x}{a}\right)
+\sin\left(\frac{n\pi y}{b}\right)
+}{
+mn
+\left[
+\left(\frac{m\pi}{a}\right)^2
++
+\left(\frac{n\pi}{b}\right)^2
+\right]
+}
+}
+$$
+Esta solución satisface:
+\begin{itemize}
+\item $\nabla^2 u=1$,
+\item $u=0$ en todo el borde del rectángulo.
+\end{itemize}
+\end{enumerate}
+
+\prob Encuentre la solución de la ecuación de Laplace en el interior de un paralelepípedo definido por \(0<x<c\), \(0<y<c\), \(0<z<L\) tal que
+\[
+\psi=0 \quad \text{en todas sus caras excepto en } z=L \text{ donde } \psi = V_0.
+\]
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 3)}
+\vspace{0.5cm}
+
+
+El problema 3 pide resolver la ecuación de Laplace en un paralelepípedo: 
+$$
+\nabla^2 \psi = 0,
+$$
+en la región
+$$
+0<x<c,\qquad 0<y<c,\qquad 0<z<L,
+$$
+con condiciones de contorno
+$$
+\psi=0
+\quad \text{en todas las caras}
+$$
+excepto en
+$$
+z=L,
+\qquad
+\psi=V_0.
+$$
+
+\begin{enumerate}
+\item Separación de variables
+
+Buscamos soluciones del tipo
+$$
+\psi(x,y,z)=X(x)Y(y)Z(z).
+$$
+Sustituyendo en Laplace:
+$$
+X''YZ+XY''Z+XYZ''=0.
+$$
+Dividiendo por $XYZ$:
+$$
+\frac{X''}{X}
++
+\frac{Y''}{Y}
++
+\frac{Z''}{Z}
+=0.
+$$
+Separaremos usando constantes:
+$$
+\frac{X''}{X}=-\lambda,
+\qquad
+\frac{Y''}{Y}=-\mu,
+$$
+de modo que
+$$
+\frac{Z''}{Z}=\lambda+\mu.
+$$
+
+\item Problemas en $x$ e $y$
+
+Las condiciones de borde son
+$$
+\psi(0,y,z)=\psi(c,y,z)=0,
+$$
+y análogamente en $y$. Por lo tanto:
+$$
+X(0)=X(c)=0,
+\qquad
+Y(0)=Y(c)=0.
+$$
+Entonces:
+$$
+X''+\lambda X=0,
+\qquad
+Y''+\mu Y=0.
+$$
+Los autovalores son
+$$
+\lambda_m=\left(\frac{m\pi}{c}\right)^2,
+\qquad
+\mu_n=\left(\frac{n\pi}{c}\right)^2,
+$$
+y las autofunciones:
+$$
+X_m(x)=\sin\left(\frac{m\pi x}{c}\right),
+\qquad
+Y_n(y)=\sin\left(\frac{n\pi y}{c}\right).
+$$
+
+%$$X''+\lambda X=0,\quad X(0)=X(c)=0$$
+
+\item Ecuación para $Z(z)$
+
+La ecuación queda:
+$$
+Z''-
+\left[
+\left(\frac{m\pi}{c}\right)^2
++
+\left(\frac{n\pi}{c}\right)^2
+\right]
+Z=0.
+$$
+Definimos
+$$
+\gamma_{mn}
+=
+\frac{\pi}{c}\sqrt{m^2+n^2}.
+$$
+Entonces:
+$$
+Z''-\gamma_{mn}^2 Z=0.
+$$
+La solución general es
+$$
+Z(z)=
+A_{mn}\sinh(\gamma_{mn} z)
++
+B_{mn}\cosh(\gamma_{mn} z).
+$$
+La condición en $z=0$ es
+$$
+\psi(x,y,0)=0.
+$$
+Entonces
+$$
+Z(0)=0
+\quad\Rightarrow\quad
+B_{mn}=0.
+$$
+Así,
+$$
+Z(z)=A_{mn}\sinh(\gamma_{mn} z).
+$$
+
+\item Solución general
+
+$$
+\psi(x,y,z)=
+\sum_{m=1}^{\infty}
+\sum_{n=1}^{\infty}
+A_{mn}
+\sinh(\gamma_{mn} z)
+\sin\left(\frac{m\pi x}{c}\right)
+\sin\left(\frac{n\pi y}{c}\right).
+$$
+
+\item Imponer la condición en $z=L$
+
+Debemos tener:
+$$
+\psi(x,y,L)=V_0.
+$$
+Por lo tanto:
+$$
+V_0=
+\sum_{m,n}
+A_{mn}
+\sinh(\gamma_{mn}L)
+\sin\left(\frac{m\pi x}{c}\right)
+\sin\left(\frac{n\pi y}{c}\right).
+$$
+Necesitamos expandir la constante $V_0$ en serie doble seno:
+$$
+V_0=
+\sum_{m,n}
+B_{mn}
+\sin\left(\frac{m\pi x}{c}\right)
+\sin\left(\frac{n\pi y}{c}\right).
+$$
+Los coeficientes son
+$$
+B_{mn}
+=
+\frac{4}{c^2}
+\int_0^c\int_0^c
+V_0
+\sin\left(\frac{m\pi x}{c}\right)
+\sin\left(\frac{n\pi y}{c}\right)
+\,dx\,dy.
+$$
+Como antes, sólo sobreviven $m,n$ impares:
+$$
+B_{mn}
+=
+\begin{cases}
+\dfrac{16V_0}{mn\pi^2},
+& m,n \text{ impares}, \\
+0,
+& \text{caso contrario}.
+\end{cases}
+$$
+Entonces
+$$
+A_{mn}
+=
+\frac{B_{mn}}
+{\sinh(\gamma_{mn}L)}.
+$$
+
+\item Solución final
+
+$$
+\boxed{
+\psi(x,y,z)=
+\frac{16V_0}{\pi^2}
+\sum_{\substack{\{m,n\, \in \NN \text{ e impar}}\}}
+\frac{
+\sinh\left(
+\frac{\pi z}{c}\sqrt{m^2+n^2}
+\right)
+}{
+mn\,
+\sinh\left(
+\frac{\pi L}{c}\sqrt{m^2+n^2}
+\right)
+}
+\sin\left(\frac{m\pi x}{c}\right)
+\sin\left(\frac{n\pi y}{c}\right)
+}
+$$
+Esta solución satisface:
+\begin{itemize}
+\item $\nabla^2\psi=0$,
+\item $\psi=0$ en $x=0,c$, $y=0,c$, $z=0$,
+\item y $\psi=V_0$ en $z=L$.
+\end{itemize}
+
+\prob Halle la solución acotada de la ecuación de Laplace
+\[
+\nabla^2 u = 0
+\]
+en el exterior de un disco de radio \(a\) (es decir, \(r>a\)) con condición de borde
+\[
+u(a,\theta) = \ln 2 + 4\cos(3\theta).
+\]
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4)}
+\vspace{0.5cm}
+
+
+El problema 4 pide hallar la solución acotada de la ecuación de Laplace en el exterior de un disco: 
+$$
+\nabla^2 u =0,
+$$
+para $r>a$, con condición de borde
+$$
+u(a,\theta)=\ln 2 +4\cos(3\theta).
+$$
+
+\begin{enumerate}
+\item Ecuación de Laplace en coordenadas polares
+
+En dos dimensiones:
+$$
+\nabla^2 u=
+u_{rr}+\frac1r u_r+\frac1{r^2}u_{\theta\theta}=0.
+$$
+Buscamos soluciones separables:
+$$
+u(r,\theta)=R(r)\Theta(\theta).
+$$
+Sustituyendo:
+$$
+r^2\frac{R''}{R}
++r\frac{R'}{R}
++\frac{\Theta''}{\Theta}=0.
+$$
+Separando:
+$$
+\Theta''+n^2\Theta=0,
+$$
+y
+$$
+r^2R''+rR'-n^2R=0.
+$$
+
+\item Soluciones angulares y radiales
+
+La parte angular da:
+$$
+\Theta_n(\theta)=
+A_n\cos(n\theta)+B_n\sin(n\theta).
+$$
+La ecuación radial es de Euler:
+$$
+r^2R''+rR'-n^2R=0.
+$$
+Sus soluciones son
+$$
+R_n(r)=C_nr^n+D_nr^{-n},
+\qquad n\ge1.
+$$
+Para $n=0$:
+$$
+R_0(r)=C_0+D_0\ln r.
+$$
+
+\item Condición de acotación para $r\to\infty$
+
+El problema pide la solución acotada en el exterior del disco.
+Entonces debemos eliminar:
+\begin{itemize}
+\item los términos $r^n$, que divergen,
+\item y el término $\ln r$, que también diverge.
+\end{itemize}
+Por lo tanto, la solución admisible es
+$$
+u(r,\theta)=
+A_0+
+\sum_{n=1}^\infty
+r^{-n}
+\left(
+A_n\cos n\theta
++
+B_n\sin n\theta
+\right).
+$$
+
+\item Imponer la condición de borde
+
+En $r=a$:
+$$
+u(a,\theta)=
+A_0+
+\sum_{n=1}^\infty
+a^{-n}
+\left(
+A_n\cos n\theta
++
+B_n\sin n\theta
+\right).
+$$
+Debemos igualar esto a
+$$
+\ln2+4\cos(3\theta).
+$$
+Comparando modos de Fourier:
+\begin{itemize}
+\item término constante:
+$$
+A_0=\ln2,
+$$
+
+\item modo $n=3$:
+$$
+a^{-3}A_3=4,
+$$
+es decir,
+$$
+A_3=4a^3,
+$$
+
+\item todos los demás coeficientes son cero.
+\end{itemize}
+
+\item Solución final
+
+$$
+\boxed{
+u(r,\theta)=
+\ln2+
+4\left(\frac{a}{r}\right)^3\cos(3\theta)
+}
+$$
+
+\item Verificación
+
+La función:
+\begin{itemize}
+\item satisface la ecuación de Laplace para $r>a$,
+\item cumple
+$$
+u(a,\theta)=\ln2+4\cos(3\theta),
+$$
+\item y permanece acotada cuando $r\to\infty$:
+$$
+u(r,\theta)\to \ln2.
+$$
+\end{itemize}
+\end{enumerate}
+
+
+\prob Considere dos cilindros coaxiales conductores de longitud infinita, de radios \(a\) (interior) y \(b\) (exterior). El potencial se fija como \(V(r=a)=V_0\) y \(V(r=b)=-V_0\). Sabiendo que el potencial electrostático satisface la ecuación de Laplace en regiones libres de carga, calcule el potencial en:
+\begin{itemize}
+\item[a)] $r<a$,
+\item[b)] $a<r<b$,
+\item[c)] $b<r$.
+\end{itemize}
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 5)}
+\vspace{0.5cm}
+
+El problema 5 trata sobre el potencial electrostático entre cilindros coaxiales infinitos de radios:
+\begin{itemize}
+\item $a$ (interior),
+\item $b$ (exterior).
+\end{itemize}
+El potencial satisface:
+$$
+V(r=a)=V_0,
+\qquad
+V(r=b)=-V_0.
+$$
+Debemos hallar el potencial en:
+\begin{itemize}
+\item $r<a$,
+\item $a<r<b$,
+\item $r>b$.
+\end{itemize}
+
+\begin{enumerate}
+\item Simetría del problema
+
+El sistema es:
+\begin{itemize}
+\item infinito en $z$,
+\item simétrico respecto a rotaciones alrededor del eje.
+\end{itemize}
+Entonces el potencial depende sólo de $r$:
+$$
+V=V(r).
+$$
+La ecuación de Laplace en coordenadas cilíndricas se reduce a
+$$
+\frac1r\frac{d}{dr}
+\left(
+r\frac{dV}{dr}
+\right)=0.
+$$
+Equivalentemente:
+$$
+V''+\frac1rV'=0.
+$$
+
+\item Solución general radial
+
+Integramos:
+$$
+\frac{d}{dr}(rV')=0
+\quad\Rightarrow\quad
+rV'=C.
+$$
+Entonces
+$$
+V'=\frac{C}{r}.
+$$
+Integrando nuevamente:
+$$
+V(r)=A\ln r+B.
+$$
+%$$
+%\frac{1}{r}\frac{d}{dr}\left(r\frac{dV}{dr}\right)=0
+%$$
+
+
+Ahora debemos analizar cada región.
+\begin{enumerate}
+\item Región $r<a$
+
+Dentro del cilindro interior no hay singularidad en $r=0$. Pero $\ln r$ diverge cuando $r\to0$, así que debemos eliminar ese término.
+Por lo tanto:
+$$
+V(r)=\text{cte}.
+$$
+Como el cilindro conductor interior está a potencial $V_0$,
+$$
+\boxed{
+V(r)=V_0,
+\qquad r<a.
+}
+$$
+
+\item Región $a<r<b$
+
+Aquí la solución general es
+$$
+V(r)=A\ln r+B.
+$$
+Usamos las condiciones:
+$$
+V(a)=V_0,
+\qquad
+V(b)=-V_0.
+$$
+Entonces:
+$$
+A\ln a+B=V_0,
+$$
+$$
+A\ln b+B=-V_0.
+$$
+Restando:
+$$
+A(\ln b-\ln a)=-2V_0.
+$$
+Así,
+$$
+A=
+-\frac{2V_0}{\ln(b/a)}.
+$$
+Sustituyendo:
+$$
+B
+=
+V_0
++
+\frac{2V_0\ln a}{\ln(b/a)}.
+$$
+Es más elegante escribir la solución como
+$$
+\boxed{
+V(r)=
+V_0
+-
+\frac{2V_0}{\ln(b/a)}
+\ln\left(\frac{r}{a}\right),
+\qquad
+a<r<b.
+}
+$$
+
+Verificación:
+\begin{itemize}
+\item si $r=a$:
+$$
+V(a)=V_0,
+$$
+
+\item si $r=b$:
+$$
+V(b)=V_0-2V_0=-V_0.
+$$
+\end{itemize}
+Correcto.
+
+
+\item Región $r>b$
+
+En el exterior:
+$$
+V(r)=A\ln r+B.
+$$
+\end{enumerate}
+
+Ahora debemos imponer comportamiento físico razonable en el infinito.
+
+Para que el potencial permanezca acotado cuando $r\to\infty$, debe anularse el término $\ln r$. Entonces:
+$$
+V(r)=\text{cte}.
+$$
+Como en $r=b$ el potencial vale $-V_0$,
+$$
+\boxed{
+V(r)=-V_0,
+\qquad r>b.
+}
+$$
+
+\item Solución completa
+
+$$
+\boxed{
+V(r)=
+\begin{cases}
+V_0, & r<a,\\
+V_0-\dfrac{2V_0}{\ln(b/a)}
+\ln\left(\dfrac{r}{a}\right),
+& a<r<b,\\
+-V_0, & r>b.
+\end{cases}
+}
+$$
+
+\item Comentario físico
+
+Toda la variación del potencial ocurre únicamente entre los cilindros. Dentro de cada conductor el potencial es constante, como exige el equilibrio electrostático.
+
+\end{enumerate}
+
+
+
+\prob Un cilindro infinito de radio \(a\) se mantiene a potencial \(V\) para \(0<\theta<\pi\) y \(-V\) para \(-\pi<\theta<0\), y en su interior hay una densidad de carga eléctrica
+\[
+\rho = \rho_0\left(1-\frac{r^2}{a^2}\right)\cos\theta,
+\]
+en coordenadas cilíndricas \((r,\theta,z)\). Use la invariancia traslacional en \(z\) para reducir el problema a dos dimensiones y halle el potencial electrostático \(u(r,\theta)\) en el interior del cilindro.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 6)}
+\vspace{0.5cm}
+
+El problema 6 dice: Un cilindro infinito de radio $a$ se mantiene a potencial
+$$
+V \quad \text{para } 0<\theta<\pi,
+$$
+y
+$$
+-V \quad \text{para } -\pi<\theta<0,
+$$
+y en su interior existe una densidad de carga
+$$
+\rho(r,\theta)
+=
+\rho_0
+\left(
+1-\frac{r^2}{a^2}
+\right)\cos\theta.
+$$
+Se pide hallar el potencial electrostático $u(r,\theta)$ dentro del cilindro.
+
+\begin{enumerate}
+\item Ecuación de Poisson
+
+Como el problema es invariante en $z$, trabajamos en dos dimensiones:
+$$
+\nabla^2 u
+=
+-\frac{\rho}{\varepsilon_0}.
+$$
+En coordenadas polares:
+$$
+\nabla^2 u=
+u_{rr}
++\frac1r u_r
++\frac1{r^2}u_{\theta\theta}.
+$$
+Entonces:
+$$
+\nabla^2 u
+=
+-\frac{\rho_0}{\varepsilon_0}
+\left(
+1-\frac{r^2}{a^2}
+\right)\cos\theta.
+$$
+La condición de borde es
+\begin{eqnarray}
+u(a,\theta)
+&=&
+\begin{cases}
+V, & 0<\theta<\pi,\\
+-V, & -\pi<\theta<0.
+\end{cases}
+\notag
+\\
+&=&
+V 
+\operatorname{sgn}(\theta)
+\notag
+\end{eqnarray}
+
+\item Estructura angular
+
+Observemos que:
+\begin{itemize}
+\item  la fuente es proporcional a $\cos\theta$,
+\item  el borde es una función impar respecto a $\theta\to-\theta$, es decir, proporcional a senos.
+\end{itemize}
+Conviene separar el problema en dos partes:
+$$
+u=u_h+u_p,
+$$
+donde:
+\begin{itemize}
+\item $u_p$ resuelve Poisson con fuente,
+\item $u_h$ resuelve Laplace y ajusta la condición de borde.
+\end{itemize}
+
+\item Solución particular
+
+Como la fuente tiene dependencia angular $\cos\theta$, probamos:
+$$
+u_p(r,\theta)=f(r)\cos\theta.
+$$
+Sustituyendo en Laplace polar:
+$$
+\nabla^2(f(r)\cos\theta)
+=
+\left(
+f''+\frac1r f'
+-\frac{1}{r^2}f
+\right)\cos\theta.
+$$
+Entonces $f$ debe satisfacer:
+$$
+f''+\frac1r f'
+-\frac{1}{r^2}f
+=
+-\frac{\rho_0}{\varepsilon_0}
+\left(
+1-\frac{r^2}{a^2}
+\right).
+$$
+%$$f''+\frac1r f'-\frac{1}{r^2}f=-\frac{\rho_0}{\varepsilon_0}\left(1-\frac{r^2}{a^2}\right)$$
+Buscamos un polinomio:
+$$
+f(r)=Ar^2+Br^4.
+$$
+Calculamos:
+$$
+f'=2Ar+4Br^3,
+$$
+$$
+f''=2A+12Br^2.
+$$
+Entonces:
+$$
+f''+\frac1r f'-\frac1{r^2}f
+=
+(2A+12Br^2)
++(2A+4Br^2)
+-(A+Br^2).
+$$
+Esto da:
+$$
+3A+15Br^2.
+$$
+Igualando coeficientes:
+$$
+3A=-\frac{\rho_0}{\varepsilon_0},
+$$
+$$
+15B=
+\frac{\rho_0}{\varepsilon_0 a^2}.
+$$
+Así:
+$$
+A=-\frac{\rho_0}{3\varepsilon_0},
+\qquad
+B=\frac{\rho_0}{15\varepsilon_0 a^2}.
+$$
+Por lo tanto,
+$$
+u_p(r,\theta)=
+\left(
+-\frac{\rho_0}{3\varepsilon_0}r^2
++
+\frac{\rho_0}{15\varepsilon_0 a^2}r^4
+\right)\cos\theta.
+$$
+
+\item Solución homogénea
+
+Ahora resolvemos la Ecuación de Laplace
+$$
+\nabla^2 u_h=0
+$$
+en coordenadas polares, la cu\'al queda
+$$
+\frac{\partial^2 u}{\partial r^2}
++\frac1r\frac{\partial u}{\partial r}
++\frac1{r^2}\frac{\partial^2 u}{\partial \theta^2}
+=0.
+$$
+Buscamos soluciones de la forma
+$$
+u(r,\theta)=R(r)\Theta(\theta).
+$$
+Sustituyendo:
+$$
+R''\Theta+\frac1rR'\Theta+\frac1{r^2}R\Theta''=0.
+$$
+Dividiendo por $R\Theta$,
+$$
+\frac{R''}{R}
++\frac1r\frac{R'}{R}
++\frac1{r^2}\frac{\Theta''}{\Theta}
+=0.
+$$
+Multiplicando por $r^2$,
+$$
+r^2\frac{R''}{R}
++r\frac{R'}{R}
++\frac{\Theta''}{\Theta}
+=0.
+$$
+El primer término depende sólo de $r$ y el segundo sólo de $\theta$, así que ambos deben ser constantes.
+Tomamos
+$$
+\frac{\Theta''}{\Theta}=-\lambda.
+$$
+Entonces obtenemos dos EDOs:
+$$
+\Theta''+\lambda\Theta=0,
+$$
+$$
+r^2R''+rR'-\lambda R=0.
+$$
+Resolver la ecuación angular.
+Como $\theta$ es un ángulo, debemos exigir periodicidad:
+$$
+\Theta(\theta+2\pi)=\Theta(\theta).
+$$
+La ecuación angular tiene soluciones
+$$
+\Theta(\theta)
+=
+C\cos(\sqrt{\lambda},\theta)
++
+D\sin(\sqrt{\lambda},\theta).
+$$
+La periodicidad exige
+$$
+\sqrt{\lambda}=n,
+\qquad
+n=0,1,2,\ldots
+$$
+de modo que
+$$
+\lambda=n^2.
+$$
+Por eso aparecen precisamente
+$$
+\cos(n\theta),\qquad \sin(n\theta).
+$$
+Resolver la ecuación radial.
+Ahora queda
+$$
+r^2R''+rR'-n^2R=0.
+$$
+Esta es una ecuación de Euler-Cauchy.
+Probamos una solución tipo potencia
+$$
+R(r)=r^m.
+$$
+Entonces
+$$
+R'=mr^{m-1},
+\qquad
+R''=m(m-1)r^{m-2}.
+$$
+Sustituyendo:
+$$
+m(m-1)r^m
++
+mr^m
+-
+n^2r^m
+=0.
+$$
+Por lo tanto
+$$
+m^2-n^2=0.
+$$
+Las raíces son
+$$
+m=\pm n.
+$$
+Así,
+$$
+R(r)=C\,r^n+D\,r^{-n}.
+$$
+Regularidad en el origen.
+Si el dominio contiene al origen (por ejemplo un disco), las soluciones
+$$
+r^{-n}
+$$
+divergen cuando $r\to0$.
+Para obtener una solución física y regular se descartan.
+Por eso queda únicamente
+$$
+R(r)=C\,r^n.
+$$
+Combinar todos los modos.
+Para cada $n\ge 1$ tenemos
+$$
+u_n(r,\theta)
+=
+r^n
+\left(
+A_n\cos n\theta
++
+B_n\sin n\theta
+\right).
+$$
+Como la ecuación de Laplace es lineal, podemos sumar todos los modos:
+$$
+u(r,\theta)
+=
+\sum_{n=1}^{\infty}
+r^n
+\left(
+A_n\cos n\theta
++
+B_n\sin n\theta
+\right).
+$$
+¿De dónde sale el término $A_0$?
+Cuando $n=0$, la ecuación angular da
+$$
+\Theta''=0.
+$$
+La periodicidad elimina el término lineal en $\theta$, dejando sólo una constante.
+La ecuación radial queda
+$$
+r^2R''+rR'=0,
+$$
+cuyas soluciones son
+$$
+R=C+D\ln r.
+$$
+La regularidad en $r=0$ elimina $\ln r$, quedando sólo una constante.
+Ese modo es precisamente $A_0$.
+Por tanto, la solución homogénea general regular en el disco es
+$$
+u_h(r,\theta)=
+A_0+
+\sum_{n=1}^{\infty}
+r^n
+\left(
+A_n\cos n\theta
++
+B_n\sin n\theta
+\right).
+$$
+
+\item Expandir la condición de borde
+
+En $r=a$:
+$$
+u_h(a,\theta)
+=
+u(a,\theta)-u_p(a,\theta).
+$$
+Pero:
+$$
+u_p(a,\theta)
+=
+\left(
+-\frac{\rho_0 a^2}{3\varepsilon_0}
++
+\frac{\rho_0 a^2}{15\varepsilon_0}
+\right)\cos\theta.
+$$
+Entonces:
+$$
+u_p(a,\theta)
+=
+-\frac{4\rho_0 a^2}{15\varepsilon_0}\cos\theta.
+$$
+La condición total es:
+$$
+u_h(a,\theta)=
+g(\theta),
+$$
+con
+$$
+g(\theta)
+=
+V\operatorname{sgn}(\theta)
++
+\dfrac{4\rho_0 a^2}{15\varepsilon_0}\cos\theta
+$$
+
+\item Serie de Fourier del borde
+
+La función escalón tiene expansión:
+$$
+\operatorname{sgn}(\theta)
+=
+\frac4\pi
+\sum_{m=0}^\infty
+\frac{\sin((2m+1)\theta)}{2m+1}.
+$$
+Entonces, teniendo en cuenta que el término proporcional a $\cos\theta$ corresponde al modo $n=1$, se tiene que
+$$
+u_h(r,\theta)
+=
+\frac{4V}{\pi}
+\sum_{m=0}^\infty
+\frac{1}{2m+1}
+\left(\frac{r}{a}\right)^{2m+1}
+\sin((2m+1)\theta)
++
+\frac{4\rho_0 a^2}{15\varepsilon_0}
+\left(\frac{r}{a}\right)\cos\theta.
+$$
+
+\item Solución final
+\begin{eqnarray}
+u(r,\theta)
+&=&
+u_h(r,\theta)
++
+u_p(r,\theta)
+\notag
+\\
+&=&
+\frac{4V}{\pi}
+\sum_{m=0}^\infty
+\frac{1}{2m+1}
+\left(\frac{r}{a}\right)^{2m+1}
+\sin((2m+1)\theta)
++
+\frac{4\rho_0}{15\varepsilon_0}
+\left(
+a r-r^2+\frac{r^4}{5a^2}
+\right)\cos\theta
+\notag
+\end{eqnarray}
+válida para $0\le r<a$.
+
+\item Comentario
+
+La solución contiene:
+\begin{itemize}
+\item una parte armónica generada por el potencial impuesto en la superficie,
+\item y una parte particular debida a la densidad de carga interna.
+\end{itemize}
+
+\end{enumerate}
+
+{\em Remark:}
+
+Cuando resolvemos Poisson:
+$$
+\nabla^2 u=f,
+$$
+normalmente procedemos así:
+$$
+u=u_p+u_h,
+$$
+donde:
+\begin{itemize}
+\item $u_p$ es una solución particular de Poisson:
+$$
+\nabla^2 u_p=f,
+$$
+
+\item y $u_h$ satisface la ecuación homogénea:
+$$
+\nabla^2 u_h=0.
+$$
+\end{itemize}
+La condición de borde NO suele imponerse directamente sobre $u_p$.
+Se impone sobre la solución total $u$.
+Cómo funciona exactamente?
+Supongamos:
+$$
+\nabla^2 u=f
+$$
+con condición de Dirichlet
+$$
+u|_{\partial\Omega}=g.
+$$
+Primero elegimos cualquier solución particular $u_p$ tal que
+$$
+\nabla^2 u_p=f.
+$$
+Esa solución particular generalmente NO satisface las condiciones de borde.
+Luego escribimos
+$$
+u=u_p+u_h.
+$$
+Entonces:
+$$
+\nabla^2 u_h=0,
+$$
+porque
+$$
+\nabla^2(u-u_p)=f-f=0.
+$$
+Ahora imponemos la condición de borde sobre el potencial total:
+$$
+u|_{\partial\Omega}=g.
+$$
+Entonces:
+$$
+u_h|_{\partial\Omega}
+=
+g-u_p|_{\partial\Omega}.
+$$
+Es decir:
+$$
+\boxed{
+u_h \text{ corrige el borde que } u_p \text{ no satisface.}
+}
+$$
+
+{\bf Idea conceptual importante:}
+La ecuación de Poisson determina la ``curvatura'' local del potencial mediante la carga:
+$$
+\nabla^2 u \sim -\rho.
+$$
+Pero eso no fija completamente la solución.
+Todavía queda libertad de agregar cualquier solución armónica:
+$$
+u_h,
+\qquad
+\nabla^2 u_h=0,
+$$
+porque:
+$$
+\nabla^2(u_p+u_h)=f.
+$$
+Las condiciones de borde son las que seleccionan cuál de todas esas soluciones posibles es la física.
+
+
+\prob Obtenga la temperatura \(T(r,\phi,z)\) del estado estacionario en el interior de un cilindro recto finito de longitud \(L\) y radio \(a\), si el cilindro se mantiene a temperatura \(T=0\) en las superficies \(r=a\) y \(z=0\), mientras que en \(z=L\) se mantiene a
+\[
+T(r,\phi,L) = T_0\, r \sen\phi.
+\]
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 7)}
+\vspace{0.5cm}
+
+El problema 7 pide hallar la temperatura estacionaria dentro de un cilindro finito: 
+$$
+\nabla^2 T=0,
+$$
+en el cilindro
+$$
+0\le r<a,
+\qquad
+0\le z\le L,
+$$
+con condiciones de borde:
+$$
+T(a,\phi,z)=0,
+$$
+$$
+T(r,\phi,0)=0,
+$$
+y
+$$
+T(r,\phi,L)=T_0\, r\sin\phi.
+$$
+
+\begin{enumerate}
+\item Ecuación de Laplace en coordenadas cilíndricas
+
+Como no hay dependencia temporal y el cilindro es finito:
+$$
+\nabla^2 T
+=
+T_{rr}
++\frac1rT_r
++\frac1{r^2}T_{\phi\phi}
++T_{zz}
+=0.
+$$
+Buscamos separación de variables:
+$$
+T(r,\phi,z)=R(r)\Phi(\phi)Z(z).
+$$
+Sustituyendo:
+$$
+\frac{R''}{R}
++\frac1r\frac{R'}{R}
++\frac1{r^2}\frac{\Phi''}{\Phi}
++\frac{Z''}{Z}=0.
+$$
+Multiplicando por $r^2$:
+$$
+r^2\frac{R''}{R}
++r\frac{R'}{R}
++\frac{\Phi''}{\Phi}
++r^2\frac{Z''}{Z}=0.
+$$
+De \'esta segunda ecuaci\'on deducimos que
+$$
+\frac{\Phi''}{\Phi}=-m^2
+$$
+para alg\'un $m^2$, ya que s\'olo depende de $\phi$.
+Luego, la primera ecuaci\'on puede reescribirse como
+$$
+\frac{R''}{R}
++\frac1r\frac{R'}{R}
+-\frac{m^2}{r^2}
++\frac{Z''}{Z}=0.
+$$
+de donde obtenemos que
+$$
+\frac{R''}{R}
++\frac1r\frac{R'}{R}
+-\frac{m^2}{r^2}
+=
+\lambda^2
+$$
+ya que s\'olo depende de $r$, y que
+$$
+\frac{Z''}{Z}=-\lambda^2.
+$$
+ya que s\'olo depende de $z$.
+
+\item Separación angular
+
+Tomamos:
+$$
+\Phi''+m^2\Phi=0.
+$$
+Las soluciones periódicas son:
+$$
+\Phi_m(\phi)=
+A_m\cos(m\phi)+B_m\sin(m\phi).
+$$
+Como el borde superior es proporcional a $\sin\phi$, sólo aparecerá:
+$$
+m=1,
+\qquad
+\Phi(\phi)=\sin\phi.
+$$
+
+%\Phi''+m^2\Phi=0
+
+\item Ecuación radial
+
+La parte radial satisface:
+$$
+r^2R''+rR'+(\lambda^2 r^2-m^2)R=0.
+$$
+Ésta es la ecuación de Bessel.
+Para $m=1$ (que corresponde al \'unico valor que aparece de acuerdo a la condici\'on de borde impuesta sobre la parte angular):
+$$
+r^2R''+rR'+(\lambda^2r^2-1)R=0.
+$$
+La solución regular en $r=0$ es:
+$$
+R(r)=J_1(\lambda r),
+$$
+donde $J_1$ es la función de Bessel de primera especie.
+
+\item Condición en $r=a$
+
+Debemos tener:
+$$
+T(a,\phi,z)=0.
+$$
+Entonces:
+$$
+J_1(\lambda a)=0.
+$$
+Los valores permitidos son
+$$
+\lambda_n=\frac{\alpha_n}{a},
+$$
+donde $\alpha_n$ es el $n$-ésimo cero positivo de $J_1$, i.e.:
+$$
+J_1(\alpha_n)=0
+$$
+y
+$\alpha_n>0$.
+
+\item Ecuación en $z$
+
+La ecuación para $Z(z)$ es:
+$$
+Z''-\lambda_n^2 Z=0.
+$$
+Entonces:
+$$
+Z_n(z)=
+A_n\sinh(\lambda_n z)
++
+B_n\cosh(\lambda_n z).
+$$
+La condición:
+$$
+T(r,\phi,0)=0
+$$
+implica:
+$$
+Z_n(0)=0
+\quad\Rightarrow\quad
+B_n=0.
+$$
+Por lo tanto:
+$$
+Z_n(z)=A_n\sinh(\lambda_n z).
+$$
+
+\item Solución general
+
+$$
+T(r,\phi,z)=
+\sin\phi
+\sum_{n=1}^\infty
+A_n
+J_1(\lambda_n r)
+\sinh(\lambda_n z).
+$$
+
+\item Imponer la condición en $z=L$
+
+Debemos satisfacer:
+$$
+T(r,\phi,L)=T_0 r\sin\phi.
+$$
+Entonces:
+$$
+T_0 r
+=
+\sum_{n=1}^\infty
+A_n
+\sinh(\lambda_n L)
+J_1(\lambda_n r).
+$$
+Necesitamos expandir $r$ en serie de Bessel:
+$$
+r=
+\sum_{n=1}^\infty
+c_n J_1(\lambda_n r).
+$$
+Los coeficientes vienen de la ortogonalidad:
+$$
+c_n=
+\frac{
+\displaystyle
+\int_0^a r^2 J_1(\lambda_n r)\,dr
+}{
+\displaystyle
+\int_0^a r\,J_1^2(\lambda_n r)\,dr
+}.
+$$
+Por lo tanto,
+$$
+A_n=
+\frac{T_0\,c_n}{\sinh(\lambda_n L)}.
+$$
+
+\item Solución final
+
+La solución estacionaria es
+$$
+\boxed{
+T(r,\phi,z)=
+T_0\sin\phi
+\sum_{n=1}^\infty
+\frac{
+c_n
+}{
+\sinh(\lambda_n L)
+}
+J_1(\lambda_n r)
+\sinh(\lambda_n z)
+}
+$$
+donde
+$$
+\lambda_n=\frac{\alpha_n}{a},
+\qquad
+J_1(\alpha_n)=0,
+$$
+y
+$$
+c_n=
+\frac{
+\displaystyle
+\int_0^a r^2J_1(\lambda_n r)\,dr
+}{
+\displaystyle
+\int_0^a rJ_1^2(\lambda_n r)\,dr
+}.
+$$
+
+\item Comentario conceptual
+
+Este problema es el análogo cilíndrico de los problemas rectangulares resueltos antes:
+\begin{itemize}
+\item las funciones seno aparecen por condiciones homogéneas angulares,
+\item las funciones hiperbólicas aparecen en la dirección longitudinal,
+\item y las funciones de Bessel aparecen porque la geometría radial convierte el problema en la ecuación de Bessel.
+\end{itemize}
+
+\end{enumerate}
+
+\prob Un cilindro recto sólido semi-infinito de radio \(a\) mantiene su superficie curva a temperatura \(T=0\) y su base a temperatura \(T_0\). Encuentre la distribución de temperatura en el cilindro en el estado estacionario.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 8)}
+\vspace{0.5cm}
+
+El problema 8 dice: 
+
+Un cilindro recto sólido semi-infinito de radio $a$ mantiene:
+\begin{itemize}
+\item su superficie lateral a temperatura 0,
+\item y su base a temperatura constante $T_0$.
+\end{itemize}
+Se pide hallar la distribución estacionaria de temperatura.
+
+\begin{enumerate}
+\item Geometría y ecuación
+
+Usamos coordenadas cilíndricas $(r,\phi,z)$.
+
+Como:
+\begin{itemize}
+\item la base tiene temperatura constante,
+\item la superficie lateral también,
+\item y el problema es simétrico respecto a rotaciones,
+\end{itemize}
+la temperatura no depende de $\phi$:
+$$
+T=T(r,z).
+$$
+La ecuación estacionaria es Laplace:
+$$
+\nabla^2 T=0.
+$$
+En coordenadas cilíndricas con simetría axial:
+$$
+T_{rr}+\frac1rT_r+T_{zz}=0.
+$$
+El dominio es:
+$$
+0\le r<a,
+\qquad
+z>0.
+$$
+Condiciones de borde:
+$$
+T(a,z)=0,
+$$
+$$
+T(r,0)=T_0,
+$$
+y además queremos:
+$$
+T(r,z)\to0
+\quad\text{cuando }z\to\infty.
+$$
+
+\item Separación de variables
+
+Buscamos:
+$$
+T(r,z)=R(r)Z(z).
+$$
+Sustituyendo:
+$$
+R''Z+\frac1rR'Z+RZ''=0.
+$$
+Dividiendo por $RZ$:
+$$
+\frac{R''}{R}
++\frac1r\frac{R'}{R}
++\frac{Z''}{Z}=0.
+$$
+Separamos:
+$$
+\frac{Z''}{Z}=\lambda^2,
+$$
+y entonces:
+$$
+R''+\frac1rR'+\lambda^2R=0.
+$$
+
+\item Ecuación radial
+
+La ecuación radial es:
+$$
+r^2R''+rR'+\lambda^2 r^2R=0.
+$$
+Ésta es la ecuación de Bessel de orden 0:
+$$
+R(r)=J_0(\lambda r).
+$$
+La otra solución $Y_0$ diverge en $r=0$, así que se descarta.
+
+\item Condición en $r=a$
+
+Debemos tener:
+$$
+R(a)=0.
+$$
+Entonces:
+$$
+J_0(\lambda a)=0.
+$$
+Sea:
+$$
+\alpha_n
+$$
+el $n$-ésimo cero positivo de $J_0$.
+Entonces:
+$$
+\lambda_n=\frac{\alpha_n}{a}.
+$$
+
+%J_0(\lambda a)=0
+
+\item Ecuación longitudinal
+
+Para $Z(z)$:
+$$
+Z''-\lambda_n^2 Z=0.
+$$
+La solución general es:
+$$
+Z_n(z)=
+A_ne^{\lambda_n z}
++
+B_ne^{-\lambda_n z}.
+$$
+Como queremos temperatura acotada y que desaparezca cuando $z\to\infty$, eliminamos el término creciente:
+$$
+Z_n(z)=B_ne^{-\lambda_n z}.
+$$
+
+\item Solución general
+
+$$
+T(r,z)=
+\sum_{n=1}^\infty
+B_n
+J_0(\lambda_n r)
+e^{-\lambda_n z}.
+$$
+
+\item Imponer la condición en la base
+
+En $z=0$:
+$$
+T(r,0)=T_0.
+$$
+Entonces:
+$$
+T_0=
+\sum_{n=1}^\infty
+B_nJ_0(\lambda_n r).
+$$
+Debemos expandir la constante en serie de Bessel:
+$$
+1=
+\sum_{n=1}^\infty
+c_nJ_0(\lambda_n r).
+$$
+Usando ortogonalidad:
+$$
+c_n=
+\frac{
+\displaystyle
+\int_0^a rJ_0(\lambda_n r)\,dr
+}{
+\displaystyle
+\int_0^a rJ_0^2(\lambda_n r)\,dr
+}.
+$$
+Existe una identidad útil:
+$$
+\int_0^a rJ_0(\lambda_n r)\,dr
+=
+\frac{a}{\lambda_n}J_1(\alpha_n),
+$$
+y además:
+$$
+\int_0^a rJ_0^2(\lambda_n r)\,dr
+=
+\frac{a^2}{2}J_1^2(\alpha_n).
+$$
+Entonces:
+$$
+c_n=
+\frac{2}{\alpha_n J_1(\alpha_n)}.
+$$
+Por lo tanto:
+$$
+B_n=
+\frac{2T_0}{\alpha_n J_1(\alpha_n)}.
+$$
+
+\item Solución final
+
+$$
+\boxed{
+T(r,z)=
+2T_0
+\sum_{n=1}^\infty
+\frac{
+J_0\left(\frac{\alpha_n r}{a}\right)
+}{
+\alpha_n J_1(\alpha_n)
+}
+e^{-\alpha_n z/a}
+}
+$$
+donde:
+\begin{itemize}
+\item $\alpha_n$ es el $n$-ésimo cero positivo de $J_0$,
+\item $J_1$ es la función de Bessel de orden 1.
+\end{itemize}
+
+\item Interpretación física
+
+Cada modo:
+$$
+e^{-\alpha_n z/a}
+$$
+decae exponencialmente al alejarse de la base.
+Los modos con $\alpha_n$ grande desaparecen rápidamente.
+Lejos de la base domina el modo fundamental:
+$$
+T(r,z)\sim
+e^{-\alpha_1 z/a}.
+$$
+Es completamente análogo a la disipación exponencial de modos de Fourier en geometrías rectangulares, pero aquí los modos radiales son funciones de Bessel.
+
+\end{enumerate}
+
+\prob Una membrana delgada de densidad superficial \(\rho\) se suspende de un aro rígido, plano, circular y horizontal de radio \(a\), quedando con una tensión \(\sigma\). Bajo la acción de un campo gravitatorio uniforme y vertical de intensidad \(g\), encuentre la forma estacionaria (desplazamiento vertical) que adquiere la membrana.
+\medskip
+\textit{Ayuda: la ecuación de equilibrio es \(\sigma \nabla^2 u = \rho g\).}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 9)}
+\vspace{0.5cm}
+
+El problema 9 considera una membrana circular delgada de radio $a$, tensión $\sigma$ y densidad superficial $\rho$, que está sometida a gravedad uniforme $g$. 
+Se pide hallar la deformación estacionaria $u(r,\theta)$.
+La ecuación dada es:
+$$
+\sigma \nabla^2 u=\rho g.
+$$
+
+\begin{enumerate}
+\item Simplificar el problema
+
+La carga gravitatoria es uniforme y la geometría es circular y completamente simétrica.
+Entonces la solución no depende de $\theta$:
+$$
+u=u(r).
+$$
+En coordenadas polares:
+$$
+\nabla^2 u=
+u''+\frac1r u'.
+$$
+La ecuación queda:
+$$
+\sigma\left(
+u''+\frac1r u'
+\right)=\rho g.
+$$
+o equivalentemente:
+$$
+u''+\frac1r u'
+=
+\frac{\rho g}{\sigma}.
+$$
+
+%u''+\frac1r u'=\frac{\rho g}{\sigma}
+
+\item Resolver la ecuación
+
+Multiplicamos por $r$:
+$$
+r u''+u'
+=
+\frac{\rho g}{\sigma}r.
+$$
+Observemos que:
+$$
+ru''+u'=\frac{d}{dr}(ru').
+$$
+Entonces:
+$$
+\frac{d}{dr}(ru')
+=
+\frac{\rho g}{\sigma}r.
+$$
+Integramos:
+$$
+ru'
+=
+\frac{\rho g}{2\sigma}r^2+C_1.
+$$
+Dividiendo por $r$:
+$$
+u'
+=
+\frac{\rho g}{2\sigma}r+\frac{C_1}{r}.
+$$
+Integramos nuevamente:
+$$
+u(r)=
+\frac{\rho g}{4\sigma}r^2
++
+C_1\ln r
++
+C_2.
+$$
+
+\item Regularidad en el centro
+
+La membrana debe permanecer finita en:
+$$
+r=0.
+$$
+Pero $\ln r$ diverge allí.
+Entonces:
+$$
+C_1=0.
+$$
+Así:
+$$
+u(r)=
+\frac{\rho g}{4\sigma}r^2+C_2.
+$$
+
+\item Condición de borde
+
+La membrana está fija al aro:
+$$
+u(a)=0.
+$$
+Entonces:
+$$
+0=
+\frac{\rho g}{4\sigma}a^2+C_2.
+$$
+Por lo tanto:
+$$
+C_2=
+-\frac{\rho g}{4\sigma}a^2.
+$$
+
+\item Solución final
+
+$$
+\boxed{
+u(r)=
+\frac{\rho g}{4\sigma}
+\left(
+r^2-a^2
+\right)
+}
+$$
+
+\item Interpretación física
+
+La membrana adopta una forma parabólica.
+En el centro:
+$$
+u(0)=
+-\frac{\rho g a^2}{4\sigma},
+$$
+que es el máximo descenso.
+La tensión $\sigma$:
+\begin{itemize}
+\item cuanto mayor es,
+\item menos se deforma la membrana.
+\end{itemize}
+Mientras que:
+\begin{itemize}
+\item mayor gravedad $g$,
+\item o mayor densidad $\rho$,
+\end{itemize}
+producen mayor hundimiento.
+
+\end{enumerate}
+
+\prob Una esfera conductora de radio \(a\), mantenida a potencial nulo, se introduce en un campo eléctrico previamente uniforme \(\mathbf{E}=E\,\hat{z}\). Encuentre el potencial electrostático en el exterior de la esfera.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 10)}
+\vspace{0.5cm}
+
+El problema 10 plantea una esfera conductora de radio $a$, mantenida a potencial nulo, colocada en un campo eléctrico uniforme
+$$
+\mathbf E = E\,\hat z.
+$$
+Se pide hallar el potencial electrostático en el exterior de la esfera.
+
+\begin{enumerate}
+\item Potencial del campo uniforme
+
+Un campo uniforme en dirección $z$ tiene potencial:
+$$
+u_0(r,\theta)=-Ez.
+$$
+Como:
+$$
+z=r\cos\theta,
+$$
+obtenemos:
+$$
+u_0(r,\theta)=-Er\cos\theta.
+$$
+Pero esta función NO satisface la condición de borde sobre la esfera:
+$$
+u(a,\theta)=0.
+$$
+Entonces debemos corregirla agregando una solución armónica.
+
+\item Simetría del problema
+
+Hay:
+\begin{itemize}
+\item simetría axial alrededor del eje $z$,
+\item independencia en $\phi$.
+\end{itemize}
+Entonces:
+$$
+u=u(r,\theta).
+$$
+La ecuación de Laplace en coordenadas esféricas (sin dependencia azimutal) es:
+$$
+\frac1{r^2}\frac{\partial}{\partial r}
+\left(
+r^2\frac{\partial u}{\partial r}
+\right)
++
+\frac1{r^2\sin\theta}
+\frac{\partial}{\partial\theta}
+\left(
+\sin\theta\frac{\partial u}{\partial\theta}
+\right)
+=0.
+$$
+
+\item Solución general axial
+
+La solución general axial de Laplace es:
+$$
+u(r,\theta)=
+\sum_{\ell=0}^\infty
+\left(
+A_\ell r^\ell
++
+\frac{B_\ell}{r^{\ell+1}}
+\right)
+P_\ell(\cos\theta),
+$$
+donde $P_\ell$ son los polinomios de Legendre.
+
+%u(r,\theta)=\sum_{\ell=0}^\infty\left(A_\ell r^\ell+\frac{B_\ell}{r^{\ell+1}}\right)P_\ell(\cos\theta)
+
+\item Identificar el modo angular
+
+El potencial del campo uniforme es:
+$$
+-Er\cos\theta.
+$$
+Pero:
+$$
+P_1(\cos\theta)=\cos\theta.
+$$
+Así que sólo aparece el modo $\ell=1$.
+Entonces buscamos:
+$$
+u(r,\theta)=
+\left(
+-Ar+\frac{B}{r^2}
+\right)\cos\theta.
+$$
+El término $-Ar\cos\theta$ debe reproducir el campo uniforme lejos de la esfera:
+$$
+A=E.
+$$
+Así:
+$$
+u(r,\theta)=
+\left(
+-Er+\frac{B}{r^2}
+\right)\cos\theta.
+$$
+
+\item Imponer la condición de borde
+
+La esfera está conectada a tierra:
+$$
+u(a,\theta)=0.
+$$
+Entonces:
+$$
+\left(
+-Ea+\frac{B}{a^2}
+\right)\cos\theta=0.
+$$
+Por lo tanto:
+$$
+B=Ea^3.
+$$
+
+\item Solución final
+
+$$
+\boxed{
+u(r,\theta)=
+-E\left(
+r-\frac{a^3}{r^2}
+\right)\cos\theta,
+\qquad r>a.
+}
+$$
+
+\item Verificación
+
+\begin{enumerate}
+\item En el infinito, cuando $r\to\infty$:
+$$
+u(r,\theta)\sim -Er\cos\theta,
+$$
+que reproduce el campo uniforme original.
+
+\item Sobre la esfera, en $r=a$:
+$$
+u(a,\theta)=
+-E\left(a-\frac{a^3}{a^2}\right)\cos\theta
+=0.
+$$
+Correcto.
+\end{enumerate}
+
+\item Interpretación física
+
+El término:
+$$
+\frac{a^3}{r^2}\cos\theta
+$$
+es el potencial de un dipolo inducido.
+Es decir:
+\begin{itemize}
+\item el campo externo polariza la esfera conductora,
+\item redistribuyendo cargas sobre su superficie,
+\item produciendo un dipolo inducido opuesto al campo externo.
+\end{itemize}
+Lejos de la esfera:
+$$
+u \sim -Er\cos\theta+\frac{Ea^3\cos\theta}{r^2}.
+$$
+La corrección decae como:
+$$
+\frac1{r^2},
+$$
+exactamente como el potencial dipolar.
+
+\prob Un modelo simplificado para la densidad de neutrones \(n(r,\theta,\phi,t)\) en una esfera de radio \(a\) de material fisionable viene dado por
+\[
+\partial_t n - D\nabla^2 n = \kappa n,\quad r<a,
+\qquad n(a,\theta,\phi,t)=0,
+\]
+donde \(D>0\) es la difusividad y \(\kappa>0\) la tasa de producción. Buscando soluciones estacionarias (es decir, \(n(\mathbf{r},t)=e^{\lambda t}u(\mathbf{r})\)), halle el radio crítico \(a_c\) por debajo del cual la densidad permanece acotada cuando \(t\to\infty\) y por encima del cual diverge.
+
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 11)}
+\vspace{0.5cm}
+
+El problema 11 plantea que la densidad de neutrones $n(r,\theta,\phi,t)$ en una esfera de radio $a$ satisface
+$$
+\partial_t n-D\nabla^2 n=\kappa n,
+\qquad r<a,
+$$
+con condición de borde
+$$
+n(a,\theta,\phi,t)=0.
+$$
+Se pide hallar el radio crítico $a_c$:
+\begin{itemize}
+\item por debajo del cual la densidad permanece acotada,
+\item y por encima del cual diverge cuando $t\to\infty$.
+\end{itemize}
+
+\begin{enumerate}
+\item Separación temporal
+
+Buscamos soluciones de la forma:
+$$
+n(r,\theta,\phi,t)=e^{\lambda t}u(r,\theta,\phi).
+$$
+Sustituyendo:
+$$
+\lambda e^{\lambda t}u-D e^{\lambda t}\nabla^2 u
+=
+\kappa e^{\lambda t}u.
+$$
+Dividiendo por $e^{\lambda t}$:
+$$
+-D\nabla^2 u+\lambda u=\kappa u.
+$$
+Entonces:
+$$
+\nabla^2 u+\frac{\kappa-\lambda}{D}u=0.
+$$
+Definimos
+$$
+k^2=\frac{\kappa-\lambda}{D}.
+$$
+Obtenemos la ecuación de Helmholtz:
+$$
+\nabla^2 u+k^2u=0.
+$$
+
+\item2. Simetría esférica
+
+El modo que domina el comportamiento temporal es el modo fundamental, que es radialmente simétrico.
+Entonces:
+$$
+u=u(r).
+$$
+La ecuación radial esférica es:
+$$
+u''+\frac2r u'+k^2u=0.
+$$
+La solución regular en el origen es:
+$$
+u(r)=A\frac{\sin(kr)}{r}.
+$$
+La otra solución diverge en $r=0$.
+
+\item3. Condición de borde
+
+La condición:
+$$
+u(a)=0
+$$
+implica:
+$$
+\sin(ka)=0.
+$$
+Entonces:
+$$
+ka=n\pi.
+$$
+El modo fundamental corresponde al menor autovalor:
+$$
+k=\frac{\pi}{a}.
+$$
+
+\item Relación entre $k$ y $\lambda$
+
+Recordemos:
+$$
+k^2=\frac{\kappa-\lambda}{D}.
+$$
+Por lo tanto:
+$$
+\lambda
+=
+\kappa-Dk^2.
+$$
+Para el modo fundamental:
+$$
+\lambda
+=
+\kappa-D\frac{\pi^2}{a^2}.
+$$
+
+\item Interpretación física
+
+La solución temporal es:
+
+$$
+n(t)\sim e^{\lambda t}.
+$$
+Entonces:
+\begin{itemize}
+\item si $\lambda<0$, la densidad decae,
+\item si $\lambda>0$, crece exponencialmente,
+\item el caso crítico ocurre cuando
+\end{itemize}
+$$
+\lambda=0.
+$$
+Así:
+$$
+0=
+\kappa-D\frac{\pi^2}{a_c^2}.
+$$
+Despejando:
+$$
+a_c^2=
+\frac{D\pi^2}{\kappa}.
+$$
+
+\item Radio crítico
+
+$$
+\boxed{
+a_c=\pi\sqrt{\frac{D}{\kappa}}
+}
+$$
+
+\item Interpretación física
+
+Hay una competencia entre:
+\begin{itemize}
+\item difusión $(D)$, donde los neutrones escapan hacia el borde,
+\item y producción $(\kappa)$, donde las fisiones generan nuevos neutrones.
+\end{itemize}
+Si la esfera es demasiado pequeña:
+$$
+a<a_c,
+$$
+los neutrones se pierden más rápido de lo que se producen.
+Si:
+$$
+a>a_c,
+$$
+la producción domina y la densidad crece exponencialmente: el reactor se vuelve supercrítico.
+Este es el origen matemático del concepto de masa crítica en física nuclear.
+
+\end{enumerate}
+
+
+\prob Halle los modos normales de vibración de una membrana circular de radio \(a\), fija en su borde, que satisface la ecuación de ondas
+\[
+u_{tt} = c^2 \nabla^2 u.
+\]
+Es decir, resuelva la ecuación de Helmholtz \(\nabla^2 u + k^2 u = 0\) con \(u(a,\theta)=0\) y determine las frecuencias de resonancia.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 12)}
+\vspace{0.5cm}
+
+El problema 12 pide hallar los modos normales de vibración de una membrana circular fija en el borde. 
+La ecuación de ondas es
+$$
+u_{tt}=c^2\nabla^2 u,
+$$
+y debemos resolver la ecuación de Helmholtz
+$$
+\nabla^2 u+k^2u=0,
+$$
+con condición de borde
+$$
+u(a,\theta)=0.
+$$
+Además se pide determinar las frecuencias de resonancia.
+
+\begin{enumerate}
+\item Separación temporal
+
+Buscamos modos normales:
+$$
+u(r,\theta,t)=\psi(r,\theta)T(t).
+$$
+Sustituyendo:
+$$
+\psi T''=c^2T\nabla^2\psi.
+$$
+Dividiendo por $c^2\psi T$:
+$$
+\frac{T''}{c^2T}
+=
+\frac{\nabla^2\psi}{\psi}
+-k^2.
+$$
+Entonces obtenemos:
+
+\item Parte temporal
+$$
+T''+\omega^2T=0,
+$$
+donde
+$$
+\omega=ck.
+$$
+Las soluciones son:
+$$
+T(t)=A\cos(\omega t)+B\sin(\omega t).
+$$
+
+\item Ecuación espacial (la ecuación de Helmholtz)
+
+La parte espacial satisface:
+$$
+\nabla^2\psi+k^2\psi=0.
+$$
+En coordenadas polares:
+$$
+\psi_{rr}
++\frac1r\psi_r
++\frac1{r^2}\psi_{\theta\theta}
++k^2\psi=0.
+$$
+Buscamos separación:
+$$
+\psi(r,\theta)=R(r)\Theta(\theta).
+$$
+
+\item Separación angular
+
+Sustituyendo:
+$$
+\frac{r^2R''}{R}
++\frac{rR'}{R}
++k^2r^2
++
+\frac{\Theta''}{\Theta}
+=0.
+$$
+Tomamos:
+$$
+\Theta''+m^2\Theta=0.
+$$
+Las soluciones periódicas son:
+$$
+\Theta_m(\theta)=
+A_m\cos(m\theta)+B_m\sin(m\theta),
+$$
+con
+$$
+m=0,1,2,\dots
+$$
+
+\item Ecuación radial
+
+La ecuación radial queda:
+$$
+r^2R''+rR'+(k^2r^2-m^2)R=0.
+$$
+Ésta es la ecuación de Bessel de orden (m).
+
+La solución regular en el origen es:
+$$
+R(r)=J_m(kr).
+$$
+La solución $Y_m$ diverge en $r=0$, así que se descarta.
+
+\item Condición de borde
+
+La membrana está fija en:
+$$
+r=a.
+$$
+Entonces:
+$$
+R(a)=0.
+$$
+Por lo tanto:
+$$
+J_m(ka)=0.
+$$
+Sea:
+$$
+\alpha_{mn}
+$$
+el $n$-ésimo cero positivo de $J_m$.
+
+Entonces:
+$$
+k_{mn}=\frac{\alpha_{mn}}{a}.
+$$
+%J_m(ka)=0
+
+\item Modos normales
+
+Los modos espaciales son:
+$$
+\psi_{mn}(r,\theta)=
+J_m\left(\frac{\alpha_{mn}r}{a}\right)
+\left[
+A\cos(m\theta)+B\sin(m\theta)
+\right].
+$$
+Entonces la solución completa es
+$$
+u_{mn}(r,\theta,t)=
+J_m\left(\frac{\alpha_{mn}r}{a}\right)
+\left[
+A\cos(m\theta)+B\sin(m\theta)
+\right]
+\left[
+C\cos(\omega_{mn}t)+D\sin(\omega_{mn}t)
+\right].
+$$
+
+\item Frecuencias de resonancia
+
+Como:
+$$
+\omega_{mn}=ck_{mn},
+$$
+obtenemos:
+$$
+\boxed{
+\omega_{mn}
+=
+c\frac{\alpha_{mn}}{a}
+}
+$$
+y las frecuencias ordinarias son:
+$$
+\boxed{
+f_{mn}
+=
+\frac{\omega_{mn}}{2\pi}
+\frac{c}{2\pi a}\alpha_{mn}
+}
+$$
+
+\item Primeros modos
+
+Los primeros ceros de Bessel producen los modos de menor frecuencia.
+
+Por ejemplo, $m=0,n=1$:
+$$
+\alpha_{01}\approx2.4048
+$$
+es el modo fundamental.
+
+Luego aparecen:
+$$
+\alpha_{11}\approx3.8317,
+\qquad
+\alpha_{21}\approx5.1356,
+$$
+etc.
+
+\item Interpretación física
+
+Los modos están caracterizados por:
+\begin{itemize}
+\item $m$: número de nodos angulares,
+\item $n$: número de nodos radiales.
+\end{itemize}
+Las líneas nodales son:
+\begin{itemize}
+\item círculos concéntricos,
+\item y diámetros.
+\end{itemize}
+
+Exactamente las figuras de vibración observadas en membranas circulares reales (por ejemplo, tambores).
+\end{enumerate}
+
+\section*{Parte II: Problemas Propuestos (para profundización y repaso)}
+
+
+\prob Resuelva la ecuación de Laplace en el interior del disco unitario \(r\le 1\) con condición de borde
+\[
+u(1,\phi) = \begin{cases}
+V_0, & 0<\phi<\pi,\\
+0, & \pi<\phi<2\pi.
+\end{cases}
+\]
+
+\prob Resuelva la ecuación de Laplace en la región \(0<x<a\), \(0<y<\infty\) con las condiciones
+\[
+\psi(0,y)=0,\quad \psi(a,y)=0,\quad \psi(x,0)=A\left(1-\frac{x}{a}\right),
+\]
+donde \(A\) es constante.
+
+\prob Obtenga la temperatura estacionaria \(T(r,\phi,z)\) en el interior de un cilindro recto finito de longitud \(L\) y radio \(a\) si las superficies \(z=0\) y \(z=L\) se mantienen a \(T=0\) y la superficie lateral \(r=a\) se mantiene a \(T=T_0\) (constante).
+
+\prob Resuelva la ecuación de Laplace \(\nabla^2 u = 0\) en el exterior de una esfera de radio \(a\) con condición de borde
+\[
+u(a,\theta) = \begin{cases}
+V_0, & 0<\theta<\pi/2,\\
+-V_0, & \pi/2<\theta<\pi.
+\end{cases}
+\]
+¿Cuál es el comportamiento asintótico para \(r\to\infty\)?
+
+\prob Una esfera conductora de radio \(a\) se divide por su ecuador; la mitad superior se mantiene a potencial \(V_0\) y la inferior a \(-V_0\). El interior contiene una densidad de carga uniforme \(\rho_0\). Halle el potencial electrostático \(V(r,\theta,\phi)\) en el interior de la cáscara.
+
+\prob Se construye una antena partiendo una esfera conductora de radio \(a\) por su ecuador y aplicando a las dos mitades voltajes alternos y opuestos \(\pm V_0 e^{i\omega t}\). Encuentre el potencial electrostático para \(r>a\) en el estado de régimen (frecuencia \(\omega\)), asumiendo la condición de ondas salientes para \(r\to\infty\). La ecuación a resolver es \((\nabla^2 + k^2)u=0\) con \(k=\omega/c\).
+
+\prob Una esfera homogénea de radio \(a\) y difusividad térmica \(\alpha\) es forzada a mantener su superficie a temperatura \(T_0 + T_1\cos(\omega t)\). Encuentre la temperatura \(T(r,\theta,\phi,t)\) dentro de la esfera en el estado de régimen. (Redúzcase a una ecuación de Helmholtz para la componente estacionaria oscilante.)
+
+\prob La superficie terrestre (modelada como un semi-espacio \(z<0\) con difusividad \(D\)) está sometida a una variación periódica de temperatura
+\[
+T(z=0,t) = T_0 + A_d\cos(\omega_d t) + A_a\cos(\omega_a t).
+\]
+Resuelva la ecuación de difusión del calor \(\partial_t T = D\nabla^2 T\) para \(z<0\) y halle la solución de régimen (estacionaria periódica). Determine la profundidad a la que la amplitud de la variación anual se reduce a menos de \(1^\circ\mathrm{C}\) si \(A_a=6.2^\circ\mathrm{C}\) y \(D=2\times10^{-6}\,\mathrm{m^2/s}\).
+
+\prob Un tubo de órgano se modela como un cilindro de radio \(a\) y longitud \(L\) (\(L\gg a\)), con su extremo inferior cerrado (condición de Neumann homogénea para la sobrepresión \(p\)) y el superior abierto (condición de Dirichlet homogénea). La ecuación es \((\nabla^2 + k^2)p=0\). Encuentre las frecuencias de los modos estacionarios y la frecuencia del modo fundamental. ¿Qué longitud debe tener el tubo para que su fundamental sea el La de 55 Hz? (Velocidad del sonido \(c=343\,\mathrm{m/s}\)).
+
+\prob Para una membrana circular de radio \(a\) fija en su borde:
+\begin{itemize}
+\item[a)] Halle los modos normales de vibración.
+\item[b)] Grafique cualitativamente las líneas nodales de los modos de frecuencias más bajas.
+\item[c)] Si se percute la membrana en el centro, ¿qué modos se excitan y cuáles no?
+\end{itemize}
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
