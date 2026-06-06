@@ -203,11 +203,50 @@ $$
 F:
 D\times \RR\times \RR^n \times \RR^{n^2} \times ... \times \RR^{n^k}
 \ni
-(x,p_1,p_2,...,p_k)
+(x,v,p_1,p_2,...,p_k)
 \to
-F(x,p_1,p_2,...,p_k) \in \RR
+F(x,v,p_1,p_2,...,p_k) \in \RR
 $$
 where $p_r \in \RR^{n^r}=\RR\times \RR\times ... \times \RR$ for $r=1,...,k$.
+The equation
+$$
+F(x,v,p_1,p_2,...,p_k) = 0
+$$
+together with the equations
+$$
+v = u(x),
+$$
+$$
+(p_1)_i = (\nabla_i u)(x),
+$$
+$$
+(p_2)_{i_1i_2} = (\nabla_{i_1}\nabla_{i_2} u)(x),
+$$
+$$
+\vdots
+$$
+$$
+(p_k)_{i_1...i_k} = (\nabla_{i_1}...\nabla_{i_k} u)(x),
+$$
+for an arbitrary $x\in D$ and indices $i_1,...,i_k\in \{1,...,n\}$, defines a Partial Differential Equation of order $k$ for some solution function $u:D\ni x\to u(x)\in \RR$.
+Here, $\nabla_i$ is the $i$-th component of the covariant derivative operator over $D$.
+Notice, for each $x\in D$, $p_r$ defines a covariant tensor of order $r$.
+
+A weak or distributional formulation of the PDE can be stated.
+Namely, a given function $u:D\to \RR$ solves the PDE in the weak or distributional sense if the corresponding function $G:D\to \RR$ given by
+$$
+G_u(x):=F(x,u(x),(\nabla u)(x),...,(\nabla ... \nabla u)(x))
+$$
+for each $x\in D$, satisfies the distributional equation
+$$
+0
+=
+\langle G,\varphi \rangle 
+:= 
+\int_D dV\, G(x)\, \varphi(x)
+$$
+for every test function $\varphi$ in an appropriate test space $\Phi$.
+Here, notice that the mapping $\Phi\ni \varphi\to \langle G, \varphi\rangle\in \RR$ defines a distribution in the corresponding space $\Phi'$.
 
 \section{Classification}
 
