@@ -200,16 +200,103 @@ Partial Differential Equations
 
 \section{General form}
 
-Consider an $n$-dimensional manifold $D$ (the domain) and a function
+Consider an $n$-dimensional manifold $D$ (the domain).
+Consider a function
 $$
 F:
 D\times \RR\times \RR^n \times \RR^{n^2} \times ... \times \RR^{n^k}
 \ni
-(x,p_1,p_2,...,p_k)
+(x,v,p_1,p_2,...,p_k)
 \to
-F(x,p_1,p_2,...,p_k) \in \RR
+F(x,v,p_1,p_2,...,p_k) \in \RR
 $$
-where $p_r \in \RR^{n^r}=\RR\times \RR\times ... \times \RR$ for $r=1,...,k$.
+and
+$$
+p_r 
+\in 
+\RR^{n^r}
+=
+\overbrace{\RR\times \RR\times ... \times \RR}^{\text{$n^r$ times}}
+$$ 
+for $r=1,...,k$.
+The equation
+$$
+F(x,v,p_1,p_2,...,p_k) = 0
+$$
+together with the equations
+$$
+v = u(x),
+$$
+$$
+(p_1)_i = (\nabla_i u)(x),
+$$
+$$
+(p_2)_{i_1i_2} = (\nabla_{i_1}\nabla_{i_2} u)(x),
+$$
+$$
+\vdots
+$$
+$$
+(p_k)_{i_1...i_k} = (\nabla_{i_1}...\nabla_{i_k} u)(x),
+$$
+for an arbitrary $x\in D$ and indices $i_1,...,i_k\in \{1,...,n\}$, define a Partial Differential Equation of order $k$ for some solution function $u:D\ni x\to u(x)\in \RR$.
+Here, $\nabla_i$ is the $i$-th component of the covariant derivative operator over $D$.
+Notice, for each $x\in D$, $p_r$ defines a covariant tensor of order $r$.
+
+A PDE usually has many solutions.
+To select a particular solution, boundary conditions are usually imposed using a function
+$$
+G:
+\partial D\times \RR\times \RR^n \times \RR^{n^2} \times ... \times \RR^{n^{k-1}}
+\ni
+(x,v,p_1,p_2,...,p_{k-1})
+\to
+G(x,v,p_1,p_2,...,p_{k-1}) \in \RR
+$$
+and a corresponding equation
+$$
+G(x,v,p_1,p_2,...,p_{k-1}) = 0.
+$$
+Notice, the boundary condition defines a PDE on its own, but of order $(k-1)$ and on the boundary $\partial D$ of $D$.
+
+\section{Weak or distributional formulation}
+
+A weak or distributional formulation of the PDE can be stated.
+Namely, a given function $u:D\to \RR$ solves the PDE in the weak or distributional sense if the corresponding function $F_u:D\to \RR$ given by~\footnote{Here, $(\nabla^r u)$ denotes the covariant tensor of rank $r$ obtained from the $r$-th 
+order partial derivatives of $u$, i.e. it has components $(\nabla_{i_1} ... \nabla_{i_r} u)$.}
+$$
+F_u(x):=F(x,u(x),(\nabla u)(x),...,(\nabla^k u)(x))
+$$
+for each $x\in D$, satisfies the distributional equation
+$$
+0
+=
+\langle F_u,\varphi \rangle 
+:= 
+\int_D dV\, F_u(x)\, \varphi(x)
+$$
+for every test function $\varphi$ in an appropriate test space $\Phi(\partial D)$.
+Here, notice that the mapping $\Phi(D)\ni \varphi\to \langle F_u, \varphi\rangle\in \RR$ defines a distribution in the corresponding space of distributions $\Phi'(D)$.
+
+Boundary conditions can also be imposed in a distributional sense, via a corresponding function
+$G_u:D\to \RR$ given by
+$$
+G_u(x):=G(x,u(x),(\nabla u)(x),...,(\nabla^{k-1} u)(x))
+$$
+for each $x\in \partial D$,
+and a corresponding distributional equation
+$$
+0
+=
+\langle G_u,\varphi \rangle 
+:= 
+\int_{\partial D} dS\, G_u(x)\, \varphi(x)
+$$
+for every test function $\varphi$ in an appropriate test space $\Phi(\partial D)$.
+As before, the mapping $\Phi(\partial D)\ni \varphi\to \langle G_u, \varphi\rangle\in \RR$ defines a distribution in the corresponding space of distributions $\Phi'(\partial D)$.
+
+The weak formulation enables $u$ to be more than a smooth function.
+For instance, in some cases, a distribution in $u\in \Phi'(D)$ can also be a solution.
 
 \section{Classification}
 
