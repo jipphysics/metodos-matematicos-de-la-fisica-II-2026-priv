@@ -465,7 +465,128 @@ Esta segunda derivación muestra explícitamente por qué el enunciado dice {\bf
 {\bf Soluci\'on }{\em 2)}
 \vspace{0.5cm}
 
+Resolver mediante características:
+$$
+2x\frac{\partial u}{\partial x}-3y\frac{\partial u}{\partial y}=0,
+\qquad
+u(1,y)=1+3y^2.
+$$
 
+{\bf 1. Ecuaciones características}
+
+La ecuación tiene la forma
+$$
+a(x,y)u_x+b(x,y)u_y=0
+$$
+con
+$$
+a(x,y)=2x,\qquad b(x,y)=-3y.
+$$
+Las curvas características satisfacen
+$$
+\frac{dx}{ds}=2x,
+\qquad
+\frac{dy}{ds}=-3y,
+\qquad
+\frac{du}{ds}=0.
+$$
+La última ecuación indica que $u$ permanece constante a lo largo de cada característica.
+
+{\bf 2. Encontrar las características}
+
+Dividimos las dos primeras ecuaciones:
+$$
+\frac{dy}{dx}
+=
+\frac{-3y}{2x}.
+$$
+Separando variables,
+$$
+\frac{dy}{y}
+=
+-\frac32\frac{dx}{x}.
+$$
+Integrando,
+$$
+\ln|y|
+=
+-\frac32\ln|x|+C.
+$$
+Por lo tanto
+$$
+y=Cx^{-3/2},
+$$
+o equivalentemente,
+$$
+yx^{3/2}=C.
+$$
+Así, la cantidad
+$$
+\boxed{I(x,y)=yx^{3/2}}
+$$
+es un invariante característico.
+
+{\bf 3. Solución general}
+
+Como $u$ es constante sobre cada característica,
+$$
+u(x,y)=F(yx^{3/2}),
+$$
+donde $F$ es una función arbitraria.
+
+{\bf 4. Imponer la condición inicial}
+
+La condición se da sobre la recta $x=1$:
+$$
+u(1,y)=1+3y^2.
+$$
+Sustituyendo en la solución general,
+$$
+F(y)=1+3y^2.
+$$
+Luego
+$$
+F(\eta)=1+3\eta^2.
+$$
+Por consiguiente,
+$$
+u(x,y)
+=
+1+3,(yx^{3/2})^2.
+$$
+Finalmente,
+$$
+\boxed{
+u(x,y)=1+3x^3y^2.
+}
+$$
+
+{\bf Verificación}
+
+$$
+u_x=9x^2y^2,
+\qquad
+u_y=6x^3y.
+$$
+Entonces
+$$
+2xu_x-3yu_y
+=
+2x(9x^2y^2)-3y(6x^3y)
+=
+18x^3y^2-18x^3y^2
+=
+0.
+$$
+Además,
+$$
+u(1,y)=1+3y^2.
+$$
+Por lo tanto la solución satisface tanto la EDP como la condición inicial.
+$$
+\boxed{u(x,y)=1+3x^3y^2}
+$$
+es la solución del Problema 2.
 
 
 
