@@ -155,13 +155,300 @@ Se permite el uso de tablas de transformadas y de funciones especiales
 {\bf Soluci\'on }{\em 1.a)}
 \vspace{0.5cm}
 
+Demostrar que
+$$
+\sin(ax)\,\delta'(x)=-a\,\delta(x),
+\qquad a\in\mathbb R.
+$$
+{\bf Idea.}
+Dos distribuciones son iguales si actúan igual sobre toda función de prueba $\varphi\in C_c^\infty(\mathbb R)$.
+Debemos entonces calcular
+$$
+\langle \sin(ax)\delta'(x),\varphi(x)\rangle .
+$$
+Recordemos que el producto de una distribución por una función suave se define mediante
+$$
+\langle fT,\varphi\rangle
+=
+\langle T,f\varphi\rangle .
+$$
+Por lo tanto,
+$$
+\langle \sin(ax)\delta',\varphi\rangle
+=
+\langle \delta',\sin(ax)\varphi\rangle .
+$$
+Ahora usamos la definición de derivada distribucional:
+$$
+\langle \delta',\psi\rangle
+=
+-\langle \delta,\psi'\rangle
+=
+-\psi'(0).
+$$
+Tomando
+$$
+\psi(x)=\sin(ax)\varphi(x),
+$$
+obtenemos
+$$
+\langle \sin(ax)\delta',\varphi\rangle
+=
+-\left.
+\frac{d}{dx}
+\bigl[\sin(ax)\varphi(x)\bigr]
+\right|_{x=0}.
+$$
+Derivando,
+$$
+\frac{d}{dx}
+\bigl[\sin(ax)\varphi(x)\bigr]
+=
+a\cos(ax)\varphi(x)
++
+\sin(ax)\varphi'(x).
+$$
+Evaluando en $x=0$,
+$$
+a\cos(0)\varphi(0)
++
+\sin(0)\varphi'(0)
+=
+a\varphi(0).
+$$
+Así,
+$$
+\langle \sin(ax)\delta',\varphi\rangle
+=
+-a\varphi(0).
+$$
+Pero
+$$
+\langle -a\delta,\varphi\rangle
+=
+-a\varphi(0).
+$$
+Como ambas distribuciones tienen la misma acción sobre toda función de prueba,
+$$
+\boxed{\sin(ax)\,\delta'(x)=-a\,\delta(x)}.
+$$
+
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 1.b)}
 \vspace{0.5cm}
 
+Demostrar que
+$$
+(\phi\psi)'=\phi'\psi+\phi\psi'
+$$
+en sentido distribucional.
+
+{\bf Demostración.}
+Sean $\phi$ y $\psi$ funciones suficientemente regulares.
+Por definición de derivada distribucional,
+$$
+\langle (\phi\psi)',\varphi\rangle
+=
+-\langle \phi\psi,\varphi'\rangle
+=
+-\int_{-\infty}^{\infty}
+\phi\psi,\varphi',dx.
+$$
+Ahora consideramos la derivada del producto
+$$
+(\phi\psi\varphi)'
+=
+\phi'\psi\varphi
++
+\phi\psi'\varphi
++
+\phi\psi\varphi'.
+$$
+Integrando sobre toda la recta,
+$$
+\int_{-\infty}^{\infty}
+(\phi\psi\varphi)'dx
+=
+0,
+$$
+porque $\varphi$ tiene soporte compacto.
+Luego,
+$$
+\int \phi\psi\varphi' dx
+=
+-\int
+(\phi'\psi+\phi\psi')\varphi,dx.
+$$
+Sustituyendo en la expresión inicial,
+$$
+\langle (\phi\psi)',\varphi\rangle
+=
+\int
+(\phi'\psi+\phi\psi')\varphi,dx.
+$$
+Es decir,
+$$
+\langle (\phi\psi)',\varphi\rangle
+=
+\langle
+\phi'\psi+\phi\psi',
+\varphi
+\rangle .
+$$
+Como esto vale para toda función de prueba,
+$$
+\boxed{
+(\phi\psi)'=\phi'\psi+\phi\psi'
+}
+$$
+en el sentido de distribuciones.
+
+
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 1.c)}
 \vspace{0.5cm}
+
+Debemos demostrar que
+$$
+\frac{d^2}{dx^2}\Bigl(H(x)\sin(ax)\Bigr)
+=
+a\,\delta(x)-a^2H(x)\sin(ax).
+$$
+La idea es derivar dos veces usando la regla del producto distribucional demostrada en el inciso (b) y la identidad obtenida en el inciso (a).
+
+{\bf Paso 1: primera derivada.}
+Aplicamos
+$$
+(\phi\psi)'=\phi'\psi+\phi\psi'
+$$
+con
+$$
+\phi=H(x),
+\qquad
+\psi=\sin(ax).
+$$
+Recordando que
+$$
+H'(x)=\delta(x),
+$$
+obtenemos
+$$
+\frac{d}{dx}\Bigl(H(x)\sin(ax)\Bigr)
+=
+\delta(x)\sin(ax)
++
+H(x)a\cos(ax).
+$$
+Ahora usamos la propiedad
+$$
+f(x)\delta(x)=f(0)\delta(x).
+$$
+Como
+$$
+\sin(0)=0,
+$$
+resulta
+$$
+\delta(x)\sin(ax)=0.
+$$
+Por lo tanto,
+$$
+\boxed{
+\frac{d}{dx}\Bigl(H(x)\sin(ax)\Bigr)
+=
+a\,H(x)\cos(ax)
+}.
+$$
+
+{\bf Paso 2: segunda derivada.}
+Derivamos nuevamente:
+$$
+\frac{d^2}{dx^2}\Bigl(H(x)\sin(ax)\Bigr)
+=
+a\,\frac{d}{dx}\Bigl(H(x)\cos(ax)\Bigr).
+$$
+Aplicando otra vez la regla del producto,
+$$
+\frac{d}{dx}\Bigl(H(x)\cos(ax)\Bigr)
+=
+\delta(x)\cos(ax)
++
+H(x)\frac{d}{dx}\cos(ax).
+$$
+Como
+$$
+\cos(0)=1,
+$$
+tenemos
+$$
+\delta(x)\cos(ax)=\delta(x).
+$$
+Además,
+$$
+\frac{d}{dx}\cos(ax)
+=
+-a\sin(ax).
+$$
+Luego
+$$
+\frac{d}{dx}\Bigl(H(x)\cos(ax)\Bigr)
+=
+\delta(x)
+-aH(x)\sin(ax).
+$$
+Multiplicando por $a$,
+$$
+\frac{d^2}{dx^2}\Bigl(H(x)\sin(ax)\Bigr)
+=
+a\delta(x)
+-a^2H(x)\sin(ax).
+$$
+Finalmente,
+$$
+\boxed{
+\frac{d^2}{dx^2}\Bigl(H(x)\sin(ax)\Bigr)
+=
+a\,\delta(x)
+-
+a^2H(x)\sin(ax)
+}.
+$$
+
+{\bf Observación.}
+El inciso (a) también permite resolver el problema de una forma alternativa. Si no simplificamos la primera derivada,
+$$
+\frac{d}{dx}(H\sin ax)
+=
+\delta\,\sin(ax)+aH\cos(ax),
+$$
+y derivamos otra vez,
+$$
+\frac{d^2}{dx^2}(H\sin ax)
+=
+\delta'\sin(ax)
++
+a\delta\cos(ax)
++
+a\delta\cos(ax)
+-
+a^2H\sin(ax).
+$$
+Usando el resultado del inciso (a),
+$$
+\sin(ax)\delta'(x)
+=
+-a\delta(x),
+$$
+obtenemos
+$$
+-a\delta(x)+2a\delta(x)-a^2H\sin(ax),
+$$
+y algunos términos singulares se cancelan, quedando nuevamente
+$$
+a\delta(x)-a^2H(x)\sin(ax).
+$$
+Esta segunda derivación muestra explícitamente por qué el enunciado dice {\bf ``utilizando los incisos anteriores''}. El inciso (a) fue pensado precisamente para tratar el término $\delta'(x)\sin(ax)$.
+
 
 
 
