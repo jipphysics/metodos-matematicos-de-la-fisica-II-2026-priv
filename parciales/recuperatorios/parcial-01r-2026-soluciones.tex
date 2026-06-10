@@ -1,0 +1,172 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=51\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Recuperatorio del Primer Parcial}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+	\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Recuperatorio Parcial 1 -- 19/06/2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+\vspace{-0.7\baselineskip}
+\begin{center}
+\bf
+Escriba su nombre en cada página y numere todas las páginas\\
+Resuelva cada problema en hojas separadas
+\end{center}
+\vspace{-1.0\baselineskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\prob Construya la base dual $\{\mathbf{e}'^{\,1}, \mathbf{e}'^{\,2}\}$ de $\mathbf{e}'_1 = \mathbf{e}_1 + \mathbf{e}_2$, $\mathbf{e}'_2 = \mathbf{e}_1 - \mathbf{e}_2$ usando la condición $\mathbf{e}'^{\,i}(\mathbf{e}'_j) = \delta^i_j$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1)}
+\vspace{0.5cm}
+
+
+
+
+\prob El potencial vector de un dipolo magnético $\mathbf{m} = m\,\hat{\mathbf{z}}$ ubicado en el origen es
+\[
+\mathbf{A} = \frac{\mu_0 m}{4\pi}\,\frac{1}{r^3}\,\hat{\boldsymbol{\phi}}
+\]
+en coordenadas esféricas. Calcule $\mathbf{B} = \nabla \times \mathbf{A}$ y $\nabla \cdot \mathbf{B}$ en coordenadas esféricas.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
