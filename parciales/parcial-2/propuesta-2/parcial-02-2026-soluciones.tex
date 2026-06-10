@@ -600,6 +600,295 @@ donde $\varepsilon$ es una constante pequeña. Resuelva la ecuación mediante se
 {\bf Soluci\'on }{\em 3)}
 \vspace{0.5cm}
 
+Una cuerda de longitud $L$, con extremos fijos, satisface
+$$
+u_{tt}=c^2(1+\varepsilon x)^2u_{xx},
+\qquad 0<x<L,
+$$
+donde $\varepsilon$ es una constante pequeña.
+Se pide resolver mediante separación de variables y hallar las frecuencias propias.
+
+{\bf 1. Separación de variables}
+
+Buscamos soluciones de la forma
+$$
+u(x,t)=X(x)T(t).
+$$
+Sustituyendo en la ecuación:
+$$
+X T''
+=
+c^2(1+\varepsilon x)^2 X'' T.
+$$
+Dividiendo por $XT$,
+$$
+\frac{T''}{T}
+=
+c^2(1+\varepsilon x)^2\frac{X''}{X}.
+$$
+Ambos lados deben ser iguales a una constante. Elegimos
+$$
+-\omega^2.
+$$
+Entonces
+$$
+T''+\omega^2T=0,
+$$
+y
+$$
+c^2(1+\varepsilon x)^2X''+\omega^2X=0.
+$$
+Definimos
+$$
+\lambda=\frac{\omega}{c},
+$$
+obteniendo
+$$
+(1+\varepsilon x)^2X''+\lambda^2X=0.
+$$
+
+{\bf 2. Transformación de la ecuación espacial}
+
+Introducimos
+$$
+z=1+\varepsilon x.
+$$
+Entonces
+$$
+\frac{d}{dx}
+=
+\varepsilon\frac{d}{dz},
+\qquad
+\frac{d^2}{dx^2}
+=
+\varepsilon^2\frac{d^2}{dz^2}.
+$$
+La ecuación espacial queda
+$$
+z^2\varepsilon^2X_{zz}+\lambda^2X=0,
+$$
+o
+$$
+z^2X_{zz}
++\frac{\lambda^2}{\varepsilon^2}X=0.
+$$
+Esta es una ecuación de Euler-Cauchy.
+Buscamos soluciones de la forma
+$$
+X=z^m.
+$$
+Sustituyendo,
+$$
+m(m-1)+\frac{\lambda^2}{\varepsilon^2}=0.
+$$
+Por lo tanto
+$$
+m=
+\frac12
+\pm
+\frac12
+\sqrt{1-4\frac{\lambda^2}{\varepsilon^2}}.
+$$
+Para los modos oscilatorios de interés,
+$$
+\lambda>\frac{\varepsilon}{2},
+$$
+y las raíces son complejas.
+Definimos
+$$
+\mu=
+\sqrt{\frac{\lambda^2}{\varepsilon^2}-\frac14}.
+$$
+Entonces
+$$
+m=\frac12\pm i\mu.
+$$
+La solución espacial es
+$$
+X(z)
+=
+z^{1/2}
+\Big[
+A\cos(\mu\ln z)
++
+B\sin(\mu\ln z)
+\Big].
+$$
+Volviendo a $x$,
+$$
+X(x)
+=
+(1+\varepsilon x)^{1/2}
+\Big[
+A\cos\big(\mu\ln(1+\varepsilon x)\big)
++
+B\sin\big(\mu\ln(1+\varepsilon x)\big)
+\Big].
+$$
+
+{\bf 3. Condiciones de borde}
+
+Los extremos son fijos:
+$$
+u(0,t)=u(L,t)=0.
+$$
+Por separación,
+$$
+X(0)=X(L)=0.
+$$
+
+{\bf Condición en $x=0$}
+
+Como
+$$
+1+\varepsilon(0)=1,
+\qquad
+\ln1=0,
+$$
+tenemos
+$$
+X(0)=A.
+$$
+Luego
+$$
+A=0.
+$$
+La solución espacial queda
+$$
+X(x)
+=
+B(1+\varepsilon x)^{1/2}
+\sin\big(\mu\ln(1+\varepsilon x)\big).
+$$
+
+{\bf Condición en $x=L$}
+
+$$
+X(L)=0.
+$$
+Por tanto
+$$
+\sin\Big(
+\mu\ln(1+\varepsilon L)
+\Big)=0.
+$$
+Así,
+$$
+\mu\ln(1+\varepsilon L)=n\pi,
+\qquad n=1,2,\dots
+$$
+y
+$$
+\boxed{
+\mu_n=
+\frac{n\pi}
+{\ln(1+\varepsilon L)}
+}.
+$$
+
+{\bf 4. Frecuencias propias}
+
+Recordando que
+$$
+\mu^2
+=
+\frac{\lambda^2}{\varepsilon^2}
+-\frac14,
+$$
+obtenemos
+$$
+\lambda_n^2
+=
+\varepsilon^2
+\left(
+\mu_n^2+\frac14
+\right).
+$$
+Luego
+$$
+\omega_n
+=
+c\lambda_n
+=
+c\varepsilon
+\sqrt{
+\frac{n^2\pi^2}
+{\ln^2(1+\varepsilon L)}
++\frac14
+}.
+$$
+Por lo tanto las frecuencias propias son
+$$
+\boxed{
+\omega_n
+=
+c\varepsilon
+\sqrt{
+\frac{n^2\pi^2}
+{\ln^2(1+\varepsilon L)}
++\frac14
+},
+\qquad n=1,2,\ldots
+}
+$$
+
+{\bf 5. Modos normales}
+
+Los autofunciones espaciales son
+$$
+\boxed{
+X_n(x)
+=
+(1+\varepsilon x)^{1/2}
+\sin\left(
+\frac{n\pi}
+{\ln(1+\varepsilon L)}
+\ln(1+\varepsilon x)
+\right).
+}
+$$
+La parte temporal es
+$$
+T_n(t)
+=
+C_n\cos(\omega_n t)
++
+D_n\sin(\omega_n t).
+$$
+Por lo tanto la solución general puede escribirse como
+$$
+\boxed{
+u(x,t)
+=
+\sum_{n=1}^{\infty}
+(1+\varepsilon x)^{1/2}
+\sin\left(
+\frac{n\pi\,\ln(1+\varepsilon x)}
+{\ln(1+\varepsilon L)}
+\right)
+\Big[
+A_n\cos(\omega_n t)
++
+B_n\sin(\omega_n t)
+\Big].
+}
+$$
+
+{\bf Chequeo del límite $\varepsilon\to0$}
+
+Usando
+$$
+\ln(1+\varepsilon L)
+=
+\varepsilon L+O(\varepsilon^2),
+$$
+se obtiene
+$$
+\omega_n
+\longrightarrow
+\frac{n\pi c}{L},
+$$
+que son exactamente las frecuencias de una cuerda homogénea. Esto sirve como una excelente verificación del resultado.
 
 
 
@@ -610,6 +899,227 @@ donde $\varepsilon$ es una constante pequeña. Resuelva la ecuación mediante se
 {\bf Soluci\'on }{\em 4)}
 \vspace{0.5cm}
 
+Un medio infinito tridimensional con difusividad térmica $\kappa$ se encuentra inicialmente a temperatura uniforme $T_0$. En $t=0$ se enciende una fuente puntual de calor
+$$
+q,\delta(\mathbf r)
+$$
+en el origen y permanece encendida para $t>0$.
+Se pide hallar $u(\mathbf r,t)$.
+
+{\bf 1. Ecuación de difusión}
+
+La ecuación es
+$$
+\frac{\partial u}{\partial t}
+=
+\kappa \nabla^2 u
++
+q,\delta(\mathbf r),H(t),
+$$
+con condición inicial
+$$
+u(\mathbf r,0)=T_0.
+$$
+Conviene separar la temperatura uniforme inicial:
+$$
+u(\mathbf r,t)=T_0+v(\mathbf r,t).
+$$
+Entonces $v$ satisface
+$$
+v_t=\kappa\nabla^2v+q,\delta(\mathbf r)H(t),
+\qquad
+v(\mathbf r,0)=0.
+$$
+
+{\bf 2. Función de Green del calor}
+
+La función de Green fundamental en $\mathbb R^3$ es
+$$
+G(\mathbf r,t)
+=
+\frac{1}{(4\pi\kappa t)^{3/2}}
+\exp!\left(
+-\frac{r^2}{4\kappa t}
+\right),
+\qquad
+r=|\mathbf r|.
+$$
+Satisface
+$$
+G_t-\kappa\nabla^2G
+=
+\delta(\mathbf r)\delta(t).
+$$
+
+{\bf 3. Principio de Duhamel}
+
+Como la fuente está encendida continuamente desde (t=0),
+$$
+v(\mathbf r,t)
+=
+q\int_0^t
+G(\mathbf r,t-\tau),d\tau.
+$$
+Cambiando variable
+$$
+s=t-\tau,
+$$
+queda
+$$
+v(r,t)
+=
+q\int_0^t
+\frac{1}{(4\pi\kappa s)^{3/2}}
+\exp!\left(
+-\frac{r^2}{4\kappa s}
+\right)
+ds.
+$$
+Debemos calcular
+$$
+I=
+\int_0^t
+s^{-3/2}
+e^{-a/s},ds,
+\qquad
+a=\frac{r^2}{4\kappa}.
+$$
+
+{\bf 4. Evaluación de la integral}
+
+Hacemos
+$$
+z=\frac{a}{s},
+\qquad
+s=\frac{a}{z},
+\qquad
+ds=-\frac{a}{z^2}dz.
+$$
+Entonces
+$$
+I
+=
+a^{-1/2}
+\int_{a/t}^{\infty}
+z^{-1/2}e^{-z}\,dz.
+$$
+La integral es una gamma incompleta:
+$$
+\Gamma\left(\frac12,x\right)
+=
+\sqrt{\pi},\operatorname{erfc}(\sqrt x).
+$$
+Por lo tanto
+$$
+I
+=
+\frac{\sqrt{\pi}}{\sqrt a}
+\operatorname{erfc}
+\left(
+\sqrt{\frac{a}{t}}
+\right).
+$$
+Como
+$$
+\sqrt a
+=
+\frac{r}{2\sqrt{\kappa}},
+$$
+obtenemos
+$$
+I
+=
+\frac{2\sqrt{\pi\kappa}}{r}
+\operatorname{erfc}
+\left(
+\frac{r}{2\sqrt{\kappa t}}
+\right).
+$$
+Sustituyendo en $v$,
+$$
+v(r,t)
+=
+\frac{q}{(4\pi\kappa)^{3/2}}
+,
+\frac{2\sqrt{\pi\kappa}}{r}
+,
+\operatorname{erfc}
+\left(
+\frac{r}{2\sqrt{\kappa t}}
+\right).
+$$
+Simplificando,
+$$
+v(r,t)
+=
+\frac{q}{4\pi\kappa r}
+\operatorname{erfc}
+\left(
+\frac{r}{2\sqrt{\kappa t}}
+\right).
+$$
+
+{\bf 5. Solución final}
+
+Finalmente,
+$$
+\boxed{
+u(r,t)
+=
+T_0
++
+\frac{q}{4\pi\kappa r}
+\operatorname{erfc}
+!\left(
+\frac{r}{2\sqrt{\kappa t}}
+\right)
+}
+$$
+donde $\operatorname{erfc}$ es la función error complementaria.
+
+{\bf 6. Verificaciones}
+
+{\bf Condición inicial.}
+
+Para $r>0$,
+$$
+\frac{r}{2\sqrt{\kappa t}}
+\to\infty
+\qquad (t\to0^+),
+$$
+y
+$$
+\operatorname{erfc}(\infty)=0.
+$$
+Luego
+$$
+u(r,0)=T_0.
+$$
+
+{\bf Régimen estacionario}
+
+Cuando $t\to\infty$,
+$$
+\operatorname{erfc}(0)=1.
+$$
+Por lo tanto
+$$
+u(r,t)\longrightarrow
+T_0+\frac{q}{4\pi\kappa r}.
+$$
+Esta es exactamente la solución estacionaria de
+$$
+\kappa\nabla^2u+q\delta(\mathbf r)=0,
+$$
+lo cual confirma el resultado.
+$$
+\boxed{
+u(r,t)=
+T_0+\frac{q}{4\pi\kappa r},
+\operatorname{erfc}!\left(\frac{r}{2\sqrt{\kappa t}}\right)
+}
+$$
+es la solución completa del Problema 4.
 
 
 
