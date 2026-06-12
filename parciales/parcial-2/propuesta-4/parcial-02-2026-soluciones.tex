@@ -1,0 +1,997 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=51\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Segundo Parcial}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Parcial N$^\circ$ 2 -- 12/06/2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+\vspace{-0.7\baselineskip}
+\begin{center}
+\bf
+Escriba su nombre en cada página y numere todas las páginas\\
+Resuelva cada problema en hojas separadas\\
+Se permite el uso de tablas de transformadas y de funciones especiales
+\end{center}
+%\vspace{-1.0\baselineskip}
+%
+\hrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\prob Sea $\delta(x)$ la delta de Dirac y $H(x)$ la función escalón de Heaviside.
+% Recordando la definici\'on de derivada de una distribuci\'on:
+Recordando la
+definición de derivada de una distribución, y notando que si $\phi(x)$ es una función de prueba entonces $\sin(ax)\phi(x)$ también lo es:
+\begin{enumerate}
+\item Muestre que $\operatorname{sen}(ax)\,\delta'(x) = -a\,\delta(x)$, con $a \in \mathbb{R}$.
+\item Muestre que
+\[
+\frac{d^2}{dx^2}\bigl[H(x)\,\operatorname{sen}(ax)\bigr] = a\,\delta(x) - H(x)\,a^2\,\operatorname{sen}(ax).
+\]
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1.a)}
+\vspace{0.5cm}
+
+Demostrar que
+$$
+\sin(ax)\,\delta'(x)=-a\,\delta(x),
+\qquad a\in\mathbb R.
+$$
+{\bf Idea.}
+Dos distribuciones son iguales si actúan igual sobre toda función de prueba $\varphi\in C_c^\infty(\mathbb R)$.
+Debemos entonces calcular
+$$
+\langle \sin(ax)\delta'(x),\varphi(x)\rangle .
+$$
+Recordemos que el producto de una distribución por una función suave se define mediante
+$$
+\langle fT,\varphi\rangle
+=
+\langle T,f\varphi\rangle .
+$$
+Por lo tanto,
+$$
+\langle \sin(ax)\delta',\varphi\rangle
+=
+\langle \delta',\sin(ax)\varphi\rangle .
+$$
+Ahora usamos la definición de derivada distribucional:
+$$
+\langle \delta',\psi\rangle
+=
+-\langle \delta,\psi'\rangle
+=
+-\psi'(0).
+$$
+Tomando
+$$
+\psi(x)=\sin(ax)\varphi(x),
+$$
+obtenemos
+$$
+\langle \sin(ax)\delta',\varphi\rangle
+=
+-\left.
+\frac{d}{dx}
+\bigl[\sin(ax)\varphi(x)\bigr]
+\right|_{x=0}.
+$$
+Derivando,
+$$
+\frac{d}{dx}
+\bigl[\sin(ax)\varphi(x)\bigr]
+=
+a\cos(ax)\varphi(x)
++
+\sin(ax)\varphi'(x).
+$$
+Evaluando en $x=0$,
+$$
+a\cos(0)\varphi(0)
++
+\sin(0)\varphi'(0)
+=
+a\varphi(0).
+$$
+Así,
+$$
+\langle \sin(ax)\delta',\varphi\rangle
+=
+-a\varphi(0).
+$$
+Pero
+$$
+\langle -a\delta,\varphi\rangle
+=
+-a\varphi(0).
+$$
+Como ambas distribuciones tienen la misma acción sobre toda función de prueba,
+$$
+\boxed{\sin(ax)\,\delta'(x)=-a\,\delta(x)}.
+$$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1.b)}
+\vspace{0.5cm}
+
+Debemos demostrar que
+$$
+\frac{d^2}{dx^2}\Bigl(H(x)\sin(ax)\Bigr)
+=
+a\,\delta(x)-a^2H(x)\sin(ax).
+$$
+La idea es derivar dos veces usando la regla del producto distribucional demostrada en el inciso (b) y la identidad obtenida en el inciso (a).
+
+{\bf Paso 1: primera derivada.}
+Aplicamos
+$$
+(\phi\psi)'=\phi'\psi+\phi\psi'
+$$
+con
+$$
+\phi=H(x),
+\qquad
+\psi=\sin(ax).
+$$
+Recordando que
+$$
+H'(x)=\delta(x),
+$$
+obtenemos
+$$
+\frac{d}{dx}\Bigl(H(x)\sin(ax)\Bigr)
+=
+\delta(x)\sin(ax)
++
+H(x)a\cos(ax).
+$$
+Ahora usamos la propiedad
+$$
+f(x)\delta(x)=f(0)\delta(x).
+$$
+Como
+$$
+\sin(0)=0,
+$$
+resulta
+$$
+\delta(x)\sin(ax)=0.
+$$
+Por lo tanto,
+$$
+\boxed{
+\frac{d}{dx}\Bigl(H(x)\sin(ax)\Bigr)
+=
+a\,H(x)\cos(ax)
+}.
+$$
+
+{\bf Paso 2: segunda derivada.}
+Derivamos nuevamente:
+$$
+\frac{d^2}{dx^2}\Bigl(H(x)\sin(ax)\Bigr)
+=
+a\,\frac{d}{dx}\Bigl(H(x)\cos(ax)\Bigr).
+$$
+Aplicando otra vez la regla del producto,
+$$
+\frac{d}{dx}\Bigl(H(x)\cos(ax)\Bigr)
+=
+\delta(x)\cos(ax)
++
+H(x)\frac{d}{dx}\cos(ax).
+$$
+Como
+$$
+\cos(0)=1,
+$$
+tenemos
+$$
+\delta(x)\cos(ax)=\delta(x).
+$$
+Además,
+$$
+\frac{d}{dx}\cos(ax)
+=
+-a\sin(ax).
+$$
+Luego
+$$
+\frac{d}{dx}\Bigl(H(x)\cos(ax)\Bigr)
+=
+\delta(x)
+-aH(x)\sin(ax).
+$$
+Multiplicando por $a$,
+$$
+\frac{d^2}{dx^2}\Bigl(H(x)\sin(ax)\Bigr)
+=
+a\delta(x)
+-a^2H(x)\sin(ax).
+$$
+Finalmente,
+$$
+\boxed{
+\frac{d^2}{dx^2}\Bigl(H(x)\sin(ax)\Bigr)
+=
+a\,\delta(x)
+-
+a^2H(x)\sin(ax)
+}.
+$$
+
+
+
+
+
+
+
+
+
+
+\prob Resuelva, usando el método de las características, el problema escalar de primer orden
+\[
+2x\frac{\partial u}{\partial x} - 3y\frac{\partial u}{\partial y} = 0,\qquad u(1,y)=1+3y^2.
+\]
+%\begin{enumerate}
+%\item[a)] $\displaystyle \frac{1}{\kappa}\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y} = 0,\quad x>0,\qquad u(x,0)=e^{-x^2}$, donde $\kappa>0$ es constante.
+%\item[b)] $\displaystyle 2x\frac{\partial u}{\partial x} - 3y\frac{\partial u}{\partial y} = 0,\qquad u(1,y)=1+3y^2$.
+%\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+Resolver mediante características:
+$$
+2x\frac{\partial u}{\partial x}-3y\frac{\partial u}{\partial y}=0,
+\qquad
+u(1,y)=1+3y^2.
+$$
+
+{\bf 1. Ecuaciones características}
+
+La ecuación tiene la forma
+$$
+a(x,y)u_x+b(x,y)u_y=0
+$$
+con
+$$
+a(x,y)=2x,\qquad b(x,y)=-3y.
+$$
+Las curvas características satisfacen
+$$
+\frac{dx}{ds}=2x,
+\qquad
+\frac{dy}{ds}=-3y,
+\qquad
+\frac{du}{ds}=0.
+$$
+La última ecuación indica que $u$ permanece constante a lo largo de cada característica.
+
+{\bf 2. Encontrar las características}
+
+Dividimos las dos primeras ecuaciones:
+$$
+\frac{dy}{dx}
+=
+\frac{-3y}{2x}.
+$$
+Separando variables,
+$$
+\frac{dy}{y}
+=
+-\frac32\frac{dx}{x}.
+$$
+Integrando,
+$$
+\ln|y|
+=
+-\frac32\ln|x|+C.
+$$
+Por lo tanto
+$$
+y=Cx^{-3/2},
+$$
+o equivalentemente,
+$$
+yx^{3/2}=C.
+$$
+Así, la cantidad
+$$
+\boxed{I(x,y)=yx^{3/2}}
+$$
+es un invariante característico.
+
+{\bf 3. Solución general}
+
+Como $u$ es constante sobre cada característica,
+$$
+u(x,y)=F(yx^{3/2}),
+$$
+donde $F$ es una función arbitraria.
+
+{\bf 4. Imponer la condición inicial}
+
+La condición se da sobre la recta $x=1$:
+$$
+u(1,y)=1+3y^2.
+$$
+Sustituyendo en la solución general,
+$$
+F(y)=1+3y^2.
+$$
+Luego
+$$
+F(\eta)=1+3\eta^2.
+$$
+Por consiguiente,
+$$
+u(x,y)
+=
+1+3,(yx^{3/2})^2.
+$$
+Finalmente,
+$$
+\boxed{
+u(x,y)=1+3x^3y^2.
+}
+$$
+
+{\bf Verificación}
+
+$$
+u_x=9x^2y^2,
+\qquad
+u_y=6x^3y.
+$$
+Entonces
+$$
+2xu_x-3yu_y
+=
+2x(9x^2y^2)-3y(6x^3y)
+=
+18x^3y^2-18x^3y^2
+=
+0.
+$$
+Además,
+$$
+u(1,y)=1+3y^2.
+$$
+Por lo tanto la solución satisface tanto la EDP como la condición inicial.
+$$
+\boxed{u(x,y)=1+3x^3y^2}
+$$
+es la solución del Problema 2.
+
+
+
+
+
+
+
+
+\prob Cierta cuerda de largo $L$ cuya densidad es variable tiene sus extremos fijos y sus desplazamientos satisfacen
+\[
+u_{tt} = c^2(1+\varepsilon x)^2 u_{xx}, \qquad 0<x<L,
+\]
+donde $\varepsilon$ es una constante {\bf pequeña}. Resuelva la ecuación mediante separación de variables y encuentre las frecuencias propias. \underline{Ayuda:} el cambio de variable independiente $z=1+\epsilon x$ puede resultar útil.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 3)}
+\vspace{0.5cm}
+
+Una cuerda de longitud $L$, con extremos fijos, satisface
+$$
+u_{tt}=c^2(1+\varepsilon x)^2u_{xx},
+\qquad 0<x<L,
+$$
+donde $\varepsilon$ es una constante pequeña.
+Se pide resolver mediante separación de variables y hallar las frecuencias propias.
+
+{\bf 1. Separación de variables}
+
+Buscamos soluciones de la forma
+$$
+u(x,t)=X(x)T(t).
+$$
+Sustituyendo en la ecuación:
+$$
+X T''
+=
+c^2(1+\varepsilon x)^2 X'' T.
+$$
+Dividiendo por $XT$,
+$$
+\frac{T''}{T}
+=
+c^2(1+\varepsilon x)^2\frac{X''}{X}.
+$$
+Ambos lados deben ser iguales a una constante. Elegimos
+$$
+-\omega^2.
+$$
+Entonces
+$$
+T''+\omega^2T=0,
+$$
+y
+$$
+c^2(1+\varepsilon x)^2X''+\omega^2X=0.
+$$
+Definimos
+$$
+\lambda=\frac{\omega}{c},
+$$
+obteniendo
+$$
+(1+\varepsilon x)^2X''+\lambda^2X=0.
+$$
+
+{\bf 2. Transformación de la ecuación espacial}
+
+Introducimos
+$$
+z=1+\varepsilon x.
+$$
+Entonces
+$$
+\frac{d}{dx}
+=
+\varepsilon\frac{d}{dz},
+\qquad
+\frac{d^2}{dx^2}
+=
+\varepsilon^2\frac{d^2}{dz^2}.
+$$
+La ecuación espacial queda
+$$
+z^2\varepsilon^2X_{zz}+\lambda^2X=0,
+$$
+o
+$$
+z^2X_{zz}
++\frac{\lambda^2}{\varepsilon^2}X=0.
+$$
+Esta es una ecuación de Euler-Cauchy.
+Buscamos soluciones de la forma
+$$
+X=z^m.
+$$
+Sustituyendo,
+$$
+m(m-1)+\frac{\lambda^2}{\varepsilon^2}=0.
+$$
+Por lo tanto
+$$
+m=
+\frac12
+\pm
+\frac12
+\sqrt{1-4\frac{\lambda^2}{\varepsilon^2}}.
+$$
+Para los modos oscilatorios de interés,
+$$
+\lambda>\frac{\varepsilon}{2},
+$$
+y las raíces son complejas.
+Definimos
+$$
+\mu=
+\sqrt{\frac{\lambda^2}{\varepsilon^2}-\frac14}.
+$$
+Entonces
+$$
+m=\frac12\pm i\mu.
+$$
+La solución espacial es
+$$
+X(z)
+=
+z^{1/2}
+\Big[
+A\cos(\mu\ln z)
++
+B\sin(\mu\ln z)
+\Big].
+$$
+Volviendo a $x$,
+$$
+X(x)
+=
+(1+\varepsilon x)^{1/2}
+\Big[
+A\cos\big(\mu\ln(1+\varepsilon x)\big)
++
+B\sin\big(\mu\ln(1+\varepsilon x)\big)
+\Big].
+$$
+
+{\bf 3. Condiciones de borde}
+
+Los extremos son fijos:
+$$
+u(0,t)=u(L,t)=0.
+$$
+Por separación,
+$$
+X(0)=X(L)=0.
+$$
+
+{\bf Condición en $x=0$}
+
+Como
+$$
+1+\varepsilon(0)=1,
+\qquad
+\ln1=0,
+$$
+tenemos
+$$
+X(0)=A.
+$$
+Luego
+$$
+A=0.
+$$
+La solución espacial queda
+$$
+X(x)
+=
+B(1+\varepsilon x)^{1/2}
+\sin\big(\mu\ln(1+\varepsilon x)\big).
+$$
+
+{\bf Condición en $x=L$}
+
+$$
+X(L)=0.
+$$
+Por tanto
+$$
+\sin\Big(
+\mu\ln(1+\varepsilon L)
+\Big)=0.
+$$
+Así,
+$$
+\mu\ln(1+\varepsilon L)=n\pi,
+\qquad n=1,2,\dots
+$$
+y
+$$
+\boxed{
+\mu_n=
+\frac{n\pi}
+{\ln(1+\varepsilon L)}
+}.
+$$
+
+{\bf 4. Frecuencias propias}
+
+Recordando que
+$$
+\mu^2
+=
+\frac{\lambda^2}{\varepsilon^2}
+-\frac14,
+$$
+obtenemos
+$$
+\lambda_n^2
+=
+\varepsilon^2
+\left(
+\mu_n^2+\frac14
+\right).
+$$
+Luego
+$$
+\omega_n
+=
+c\lambda_n
+=
+c\varepsilon
+\sqrt{
+\frac{n^2\pi^2}
+{\ln^2(1+\varepsilon L)}
++\frac14
+}.
+$$
+Por lo tanto las frecuencias propias son
+$$
+\boxed{
+\omega_n
+=
+c\varepsilon
+\sqrt{
+\frac{n^2\pi^2}
+{\ln^2(1+\varepsilon L)}
++\frac14
+},
+\qquad n=1,2,\ldots
+}
+$$
+
+{\bf 5. Modos normales}
+
+Los autofunciones espaciales son
+$$
+\boxed{
+X_n(x)
+=
+(1+\varepsilon x)^{1/2}
+\sin\left(
+\frac{n\pi}
+{\ln(1+\varepsilon L)}
+\ln(1+\varepsilon x)
+\right).
+}
+$$
+La parte temporal es
+$$
+T_n(t)
+=
+C_n\cos(\omega_n t)
++
+D_n\sin(\omega_n t).
+$$
+Por lo tanto la solución general puede escribirse como
+$$
+\boxed{
+u(x,t)
+=
+\sum_{n=1}^{\infty}
+(1+\varepsilon x)^{1/2}
+\sin\left(
+\frac{n\pi\,\ln(1+\varepsilon x)}
+{\ln(1+\varepsilon L)}
+\right)
+\Big[
+A_n\cos(\omega_n t)
++
+B_n\sin(\omega_n t)
+\Big].
+}
+$$
+
+{\bf Chequeo del límite $\varepsilon\to0$}
+
+Usando
+$$
+\ln(1+\varepsilon L)
+=
+\varepsilon L+O(\varepsilon^2),
+$$
+se obtiene
+$$
+\omega_n
+\longrightarrow
+\frac{n\pi c}{L},
+$$
+que son exactamente las frecuencias de una cuerda homogénea. Esto sirve como una excelente verificación del resultado.
+
+
+
+
+
+
+
+
+
+%\prob Una barra delgada de longitud $L$, aislada lateralmente, tiene sus extremos en contacto térmico perfecto con sendos reservorios a temperatura nula. En el punto $x_0$ ($0<x_0<L$) existe una fuente puntual de calor de magnitud $q$ constante. Halle la temperatura de la barra en el estado estacionario.
+
+\prob Una barra delgada de longitud $L$, de difusividad térmica $\kappa$ y aislada lateralmente, tiene sus extremos en contacto térmico perfecto con sendos reservorios a temperatura nula. Inicialmente su
+temperatura es $T_0 \sin(\pi x/L)$. 
+Halle la temperatura en el interior de la barra para todo $x\in (0,L)$ y
+$t > 0$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4)}
+\vspace{0.5cm}
+
+Este es un problema clásico de la ecuación del calor con condiciones de Dirichlet homogéneas.
+
+{\bf 1. Planteo del problema}
+
+La temperatura $u(x,t)$ satisface
+$$
+\frac{\partial u}{\partial t}
+=
+\kappa \frac{\partial^2 u}{\partial x^2},
+\qquad 0<x<L,\quad t>0,
+$$
+con condiciones de borde
+$$
+u(0,t)=0,
+\qquad
+u(L,t)=0,
+$$
+y condición inicial
+$$
+u(x,0)=T_0\sin!\left(\frac{\pi x}{L}\right).
+$$
+
+{\bf 2. Separación de variables}
+
+Buscamos soluciones de la forma
+$$
+u(x,t)=X(x)T(t).
+$$
+Sustituyendo en la ecuación:
+$$
+XT'
+=
+\kappa X''T.
+$$
+Dividiendo por $XT$,
+$$
+\frac{T'}{\kappa T}
+=
+\frac{X''}{X}
+=
+-\lambda.
+$$
+Obtenemos dos ecuaciones:
+$$
+X''+\lambda X=0,
+$$
+$$
+T'+\kappa\lambda T=0.
+$$
+
+{\bf 3. Problema de autovalores espacial}
+
+Las condiciones de borde son
+$$
+X(0)=0,
+\qquad
+X(L)=0.
+$$
+La solución no trivial existe únicamente para
+$$
+\lambda_n=\left(\frac{n\pi}{L}\right)^2,
+\qquad n=1,2,\ldots
+$$
+y los autofunciones son
+$$
+X_n(x)
+=
+\sin\left(\frac{n\pi x}{L}\right).
+$$
+
+{\bf 4. Parte temporal}
+
+Para cada $n$,
+$$
+T_n(t)
+=
+e^{-\kappa \lambda_n t}
+=
+\exp\left[
+-\kappa
+\left(\frac{n\pi}{L}\right)^2
+t
+\right].
+$$
+
+{\bf 5. Solución general}
+
+La solución general es
+$$
+u(x,t)
+=
+\sum_{n=1}^{\infty}
+A_n
+\sin\left(\frac{n\pi x}{L}\right)
+e^{-\kappa (n\pi/L)^2 t}.
+$$
+{\bf 6. Imponer la condición inicial}
+
+La condición inicial es
+$$
+u(x,0)
+=
+T_0
+\sin\left(\frac{\pi x}{L}\right).
+$$
+Observamos que ya coincide exactamente con el primer modo propio.
+Por lo tanto
+$$
+A_1=T_0,
+\qquad
+A_n=0 \quad (n\ge2).
+$$
+
+{\bf 7. Solución final}
+
+$$
+\boxed{
+u(x,t)
+=
+T_0
+\sin\left(\frac{\pi x}{L}\right)
+\exp\left(
+-\frac{\kappa\pi^2}{L^2},t
+\right).
+}
+$$
+
+{\bf Verificación}
+
+\begin{itemize}
+\item En $x=0$ y $x=L$:
+$$
+u(0,t)=u(L,t)=0.
+$$
+\item En $t=0$:
+$$
+u(x,0)
+=
+T_0\sin\left(\frac{\pi x}{L}\right).
+$$
+\item Además,
+$$
+u_t
+=
+-\frac{\kappa\pi^2}{L^2}u,
+$$
+$$
+u_{xx}
+=
+-\frac{\pi^2}{L^2}u,
+$$
+\end{itemize}
+de modo que
+$$
+u_t=\kappa u_{xx}.
+$$
+Por consiguiente,
+$$
+\boxed{
+u(x,t)=
+T_0,\sin\left(\frac{\pi x}{L}\right)
+e^{-\kappa\pi^2 t/L^2}
+}
+$$
+es la temperatura en la barra para todo $0<x<L$ y $t>0$.
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
