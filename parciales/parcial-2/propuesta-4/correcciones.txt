@@ -1,0 +1,43 @@
+********************************************************************************
+2026-06-13
+
+Me toca corregir el problema 4.
+
+********************************************************************************
+
+Acá pongo las notas parciales del problema:
+
+https://docs.google.com/spreadsheets/d/1AAcUjYhCXyqlEh56iu7veYkOTY5_6g5opFxoe1RRzro/edit?usp=sharing
+
+Para este problema, dado que la condición inicial coincide exactamente con un modo propio, yo corregiría principalmente el planteo del método de separación de variables y el reconocimiento del modo. Una rúbrica posible (total = **1.0 punto**) sería:
+
+| Ítem                                                                                                                                               |  Puntaje |
+| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------: |
+|1. Escribe correctamente la ecuación del calor (u_t=\kappa u_{xx}) y las condiciones de borde (u(0,t)=u(L,t)=0).                                    | **0.10** |
+|2. Propone separación de variables (u(x,t)=X(x)T(t)).                                                                                               | **0.10** |
+|3. Obtiene correctamente las ecuaciones separadas (X''+\lambda X=0) y (T'+\kappa\lambda T=0).                                                       | **0.15** |
+|4. Resuelve el problema de autovalores con condiciones de Dirichlet y encuentra (X_n(x)=\sin(n\pi x/L)).                                            | **0.15** |
+|5. Obtiene correctamente los autovalores (\lambda_n=(n\pi/L)^2).                                                                                    | **0.10** |
+|6. Encuentra la dependencia temporal (T_n(t)=e^{-\kappa(n\pi/L)^2t}).                                                                               | **0.10** |
+|7. Escribe la solución general como serie de Fourier.                                                                                               | **0.10** |
+|8. Reconoce que la condición inicial (T_0\sin(\pi x/L)) corresponde únicamente al modo (n=1) (o calcula correctamente los coeficientes de Fourier). | **0.10** |
+|9. Obtiene la solución final correcta (\displaystyle u(x,t)=T_0\sin\left(\frac{\pi x}{L}\right)e^{-\kappa\pi^2 t/L^2}).                             | **0.10** |
+
+Total:
+
+[
+\boxed{1.00}
+]
+
+---
+
+### Penalizaciones típicas
+
+* Si el alumno llega a la solución correcta por inspección, sin desarrollar separación de variables, le daría entre **0.4 y 0.6 puntos** dependiendo de la justificación.
+* Si obtiene correctamente los modos espaciales pero se equivoca en el signo del exponente temporal, descontaría al menos **0.2–0.3 puntos**, porque la disipación es un aspecto central de la ecuación del calor.
+* Si usa cosenos en lugar de senos y no satisface las condiciones de borde, perdería los puntos asociados al problema de autovalores y a la solución final (≈ **0.35–0.40 puntos**).
+* Si desarrolla toda la teoría correctamente pero olvida aplicar la condición inicial y deja la serie general, le daría aproximadamente **0.8 puntos**.
+
+Como docente de MMF II, probablemente te convenga ponderar más el planteo y la separación de variables que la simple escritura de la solución final, porque el ejercicio está diseñado justamente para evaluar el método. Una alternativa razonable sería asignar **0.7 puntos al método** y **0.3 puntos a la aplicación de las condiciones**.
+
+********************************************************************************
