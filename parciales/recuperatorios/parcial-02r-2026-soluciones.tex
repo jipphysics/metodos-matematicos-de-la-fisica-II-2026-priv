@@ -341,17 +341,38 @@ $$
 +\frac1{r^2}
 \frac{\partial^2}{\partial\theta^2}.
 $$
-Sustituyendo y separando,
+Sustituyendo y separando, obtenemos
 $$
-\Theta''+\mu^2\Theta=0.
+\Theta''+\nu^2\Theta=0,
 $$
-Las condiciones de borde angulares son
 $$
-\Theta(0)=0,
-\qquad
+T''+c^2k^2T=0,
+$$
+y
+$$
+r^2R''+rR'+(r^2k^2-\nu^2)R=0.
+$$
+
+{\bf 2. Soluciones angulares}
+
+Las soluciones angulares son de la forma
+$$
+\Theta(\theta)
+=
+A\cos(\nu\theta)
++
+B\sin(\nu\theta).
+$$
+
+{\bf 2. Condiciones de borde angulares}
+
+La condici\'on de borde angular en $\theta=0$ implica que, o bien $\nu=0$, en cuyo caso $\Theta(\theta)=A=\mathrm{constante}$ para todo $\theta$, o bien $\nu\neq 0$ y $A=0$.
+
+En el caso en que $\nu\neq 0$, la otra condici\'on 
+$$
 \Theta(\alpha)=0.
 $$
-De aquí
+implica soluciones que son combinaciones lineales de las autofunciones
 $$
 \Theta_n(\theta)
 =
@@ -359,8 +380,9 @@ $$
 $$
 con
 $$
-\mu_n=\frac{n\pi}{\alpha}.
+\nu_n=\frac{n\pi}{\alpha}.
 $$
+para $n\in \mathbb{N}$.
 
 {\bf 2. Reconocer el modo inicial}
 
@@ -374,16 +396,15 @@ $$
 $$
 vemos que corresponde exactamente a un único modo angular si
 $$
-\frac{n\pi}{\alpha}=6.
+\nu_n = \frac{n\pi}{\alpha}=6.
 $$
-Por tanto
-$$
-\mu=6.
-$$
+Esto restringe los posibles valores de $\alpha$.
 
 {\bf 3. Parte radial}
 
-La ecuación radial asociada a $\mu=6$ es
+{\color{red}[TODO...]}
+
+La ecuación radial asociada a $\nu=6$ es
 $$
 r^2R''+rR'-36R=0.
 $$
