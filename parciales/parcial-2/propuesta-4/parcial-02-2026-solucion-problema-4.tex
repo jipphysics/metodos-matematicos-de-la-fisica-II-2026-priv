@@ -1,0 +1,619 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=51\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Segundo Parcial}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+%%% Juan
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Parcial N$^\circ$ 2 -- 12/06/2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+\vspace{-0.7\baselineskip}
+\begin{center}
+\bf
+Escriba su nombre en cada página y numere todas las páginas\\
+Resuelva cada problema en hojas separadas\\
+Se permite el uso de tablas de transformadas y de funciones especiales
+\end{center}
+%\vspace{-1.0\baselineskip}
+%
+\hrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\vspace{0.5cm}
+{\bf Problema 4:} Una barra delgada de longitud $L$, de difusividad térmica $\kappa$ y aislada lateralmente, tiene sus extremos en contacto térmico perfecto con sendos reservorios a temperatura nula. Inicialmente su
+temperatura es $T_0 \sin(\pi x/L)$. 
+Halle la temperatura en el interior de la barra para todo $x\in (0,L)$ y
+$t > 0$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4)}
+\vspace{0.5cm}
+
+Este es un problema clásico de la ecuación del calor con condiciones de Dirichlet homogéneas.
+
+{\bf 1. Planteo del problema}
+
+La temperatura $u(x,t)$ satisface
+$$
+\frac{\partial u}{\partial t}
+=
+\kappa \frac{\partial^2 u}{\partial x^2},
+\qquad 0<x<L,\quad t>0,
+$$
+con condiciones de borde
+$$
+u(0,t)=0,
+\qquad
+u(L,t)=0,
+$$
+y condición inicial
+$$
+u(x,0)=T_0\sin\left(\frac{\pi x}{L}\right).
+$$
+
+{\bf 2. Separación de variables}
+
+Buscamos soluciones de la forma
+$$
+u(x,t)=X(x)T(t).
+$$
+Sustituyendo en la ecuación:
+$$
+XT'
+=
+\kappa X''T.
+$$
+Dividiendo por $XT$,
+$$
+\frac{T'}{\kappa T}
+=
+\frac{X''}{X}
+=
+-\lambda.
+$$
+Obtenemos dos ecuaciones:
+$$
+X''+\lambda X=0,
+$$
+$$
+T'+\kappa\lambda T=0.
+$$
+
+{\bf 3. Problema de autovalores espacial}
+
+Las soluciones de la ecuaci\'on espacial dependen del signo de $\lambda$.
+Si $\lambda=0$, luego las soluci\'ones son de la forma
+$$
+X(x) = A+Bx.
+$$
+Si $\lambda<0$, luego la soluciones son de la forma
+$$
+X(x)
+=
+Ae^{\sqrt{-\lambda}x}
++
+Be^{-\sqrt{-\lambda}x}
+.
+$$
+Si $\lambda>0$, las soluciones son de la forma
+$$
+X(x)
+=
+A\cos(\sqrt{\lambda}x)
++
+B\sin(\sqrt{\lambda}x).
+$$
+
+M\'as generalmente, para el caso $\lambda\neq 0$, conviene asumir que $\lambda\in \CC$ y escribir
+$$
+X(x)
+=
+A
+e^{i\sqrt{\lambda}x}
++
+B
+e^{-i\sqrt{\lambda}x}
+$$
+ya que
+$$
+X'(x)
+=
+i\sqrt{\lambda}
+A
+e^{i\sqrt{\lambda}x}
+-
+i\sqrt{\lambda}
+B
+e^{-i\sqrt{\lambda}x}
+$$
+y luego
+$$
+X'(x)
+=
+-
+\lambda
+A
+e^{i\sqrt{\lambda}x}
+-
+\lambda
+B
+e^{-i\sqrt{\lambda}x}
+=
+-
+\lambda
+X(x)
+.
+$$
+De esta manera, si $\lambda=-\mu^2<0$ para alg\'un $\mu>0$, se tiene que
+$$
+X(x)
+=
+A
+e^{i\sqrt{-\mu^2}x}
++
+B
+e^{-i\sqrt{-\mu^2}x}
+=
+A
+e^{-\mu x}
++
+B
+e^{\mu x}
+.
+$$
+Por otro lado, si $\lambda=\mu^2$, se tiene que
+\begin{eqnarray}
+X(x)
+&=&
+A
+e^{i\sqrt{\mu^2}x}
++
+B
+e^{-i\sqrt{\mu^2}x}
+\notag
+\\
+&=&
+A
+\cos(\mu x)
++
+iA
+\sin(\mu x)
++
+B
+\cos(\mu x)
+-
+iB
+\sin(\mu x)
+\notag
+\\
+&=&
+(A+B)
+\cos(\mu x)
++
+i(A-B)
+\sin(\mu x)
+\notag
+,
+\end{eqnarray}
+recuperandose el caso oscilatorio pero con constantes $A'=A+B$ y $B'=A-B$.
+
+{\bf 4. Condiciones de borde}
+
+El caso $\lambda=0$, la condici\'on de borde $X(0)=0$ implica que $A=0$.
+Luego, la condici\'on de borde 
+$X(L)=0$ implica que $B=0$.
+Por ende, en el caso $\lambda=0$ se obtiene la soluci\'on trivial $X=0$.
+
+En el caso $\lambda<0$, la condici\'on de borde $X(0)=0$ implica que $A+B=0$ o, equivalentemente, que $B=-A$.
+Luego, la condici\'on de borde $X(L)=0$ implica que
+$$
+0 = 
+A
+\bigg(
+e^{\sqrt{-\lambda}L}
+-
+e^{-\sqrt{-\lambda}L}
+\bigg)
+$$
+lo cual, para $L>0$, s\'olo puede ser cierto si $A=0$.
+Nuevamente obtenemos la condici\'on trivial.
+
+Para el caso $\lambda>0$, la condici\'on de borde $X(0)=0$ implica que $A=0$.
+Luego, la otra condici\'on de borde $X(L)=0$ implica que
+$$
+\sqrt{\lambda}L 
+=
+n\pi
+$$
+para $n\in \NN$.
+En otras palabras, se obtiene un espectro discreto de autovalores
+$$
+\lambda_n=\left(\frac{n\pi}{L}\right)^2
+$$
+y autofunciones
+$$
+X_n(x)
+=
+\sin(\sqrt{\lambda_n}\,x)
+=
+\sin\left(\frac{n\pi x}{L}\right).
+$$
+Crucialmente, de Fourier, recordamos que el conjunto de \'estas funciones es ortogonal, ya que
+$$
+\int_0^{\pi}
+dx\,
+\sin(n\,x)
+\sin(m\,x)
+=
+\frac{\pi}{2}\,
+\delta_{nm}
+$$
+para todo $n,m\in \NN$.
+
+{\bf 5. Parte temporal}
+
+Para cada $n\in \NN$, la ecuaci\'on temporal tiene una soluci\'on proporcional a
+$$
+T_n(t)
+=
+e^{-\kappa \lambda_n t}
+=
+\exp\left[
+-\kappa
+\left(\frac{n\pi}{L}\right)^2
+t
+\right].
+$$
+
+{\bf 6. Solución general}
+
+Combinando resultados, la solución general es de la forma
+$$
+u(x,t)
+=
+\sum_{n=1}^{\infty}
+A_n\,
+X_n(x)\,
+T_n(t)
+=
+\sum_{n=1}^{\infty}
+A_n
+\sin\left(\frac{n\pi x}{L}\right)
+e^{-\kappa (n\pi/L)^2 t}
+$$
+para constantes arbitrarias $A_n\in \RR$ que serán determinadas por la condici\'on inicial.
+
+{\bf 6. Imponer la condición inicial}
+
+La condición inicial es
+$$
+u(x,0)
+=
+T_0
+\sin\left(\frac{\pi x}{L}\right).
+$$
+Observamos que ya coincide exactamente con el primer modo $n=1$.
+Por lo tanto, debido a la ortogonalidad de las $X_n$, se tiene que
+$$
+A_1=T_0,
+\qquad
+A_n=0 \quad (n\ge2).
+$$
+M\'as precisamente
+\begin{eqnarray}
+\bigg\langle
+u(x,0)
+,
+\sin
+\bigg(
+\frac{m \pi x}{L}
+\bigg)
+\bigg\rangle
+&=&
+\sum_{n=1}^{\infty}
+A_n
+\bigg\langle
+\sin
+\bigg(
+\frac{n \pi x}{L}
+\bigg)
+,
+\sin
+\bigg(
+\frac{m \pi x}{L}
+\bigg)
+\bigg\rangle
+\notag
+\\
+T_0
+\bigg\langle
+\sin
+\bigg(
+\frac{\pi x}{L}
+\bigg)
+,
+\sin
+\bigg(
+\frac{m \pi x}{L}
+\bigg)
+\bigg\rangle
+&=&
+\sum_{n=1}^{\infty}
+A_n
+\bigg\langle
+\sin
+\bigg(
+\frac{n \pi x}{L}
+\bigg)
+,
+\sin
+\bigg(
+\frac{m \pi x}{L}
+\bigg)
+\bigg\rangle
+\notag
+.
+\end{eqnarray}
+Por otro lado, usando el cambio de variables $y=\pi x/L$, obtenemos que $dy = dx\,\pi/L$, que $y(0)=0$ y que $y(L)=\pi$.
+Por ende
+\begin{eqnarray}
+\bigg\langle
+\sin
+\bigg(
+\frac{n \pi x}{L}
+\bigg)
+,
+\sin
+\bigg(
+\frac{m \pi x}{L}
+\bigg)
+\bigg\rangle
+&=&
+\int_0^L
+dx\,
+\sin
+\bigg(
+\frac{n \pi x}{L}
+\bigg)
+\sin
+\bigg(
+\frac{m \pi x}{L}
+\bigg)
+\notag
+\\
+&=&
+\frac{L}{\pi}
+\int_0^{\pi}
+dy\,
+\sin(n\, y)
+\sin(m\, y)
+\notag
+\\
+&=&
+\frac{L}{\pi}
+\frac{\pi}{2}\,
+\delta_{nm}
+\notag
+\\
+&=&
+\frac{L}{2}\,
+\delta_{nm}.
+\notag
+\end{eqnarray}
+Finalmente, combinando este resultado con el anterior, obtenemos que
+\begin{eqnarray}
+T_0\,
+\frac{L}{2}\,
+\delta_{1,m}
+&=&
+\sum_{n=1}^{\infty}
+A_n\,
+\frac{L}{2}\,
+\delta_{n,m}
+\notag
+\\
+T_0\,
+\delta_{1,m}
+&=&
+A_m,
+\notag
+\end{eqnarray}
+confirmando lo que mencionamos anteriormente.
+
+{\bf 7. Solución final}
+
+$$
+\boxed{
+u(x,t)
+=
+T_0
+\sin\left(\frac{\pi x}{L}\right)
+\exp\left(
+-\frac{\kappa\pi^2}{L^2}\,t
+\right).
+}
+$$
+
+{\bf Verificación}
+
+\begin{itemize}
+\item En $x=0$ y $x=L$:
+$$
+u(0,t)=u(L,t)=0.
+$$
+\item En $t=0$:
+$$
+u(x,0)
+=
+T_0\sin\left(\frac{\pi x}{L}\right).
+$$
+\item Además,
+$$
+u_t
+=
+-\frac{\kappa\pi^2}{L^2}u,
+$$
+$$
+u_{xx}
+=
+-\frac{\pi^2}{L^2}u,
+$$
+\end{itemize}
+de modo que
+$$
+u_t=\kappa u_{xx}.
+$$
+Por consiguiente,
+$$
+\boxed{
+u(x,t)=
+T_0,\sin\left(\frac{\pi x}{L}\right)
+e^{-\kappa\pi^2 t/L^2}
+}
+$$
+es la temperatura en la barra para todo $0<x<L$ y $t>0$.
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
