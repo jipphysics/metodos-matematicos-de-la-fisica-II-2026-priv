@@ -2728,7 +2728,7 @@ of such curves
 $$
 \Sigma\ni \sigma\to \gamma_{\sigma}
 $$ 
-if $\Sigma$ is a suitably chosen hypersurface or $(n-1)$-dimensional manifold of initial conditions
+if $\Sigma$ is a suitably chosen set of initial conditions
 $$
 \gamma_{\sigma}(s=0)
 =
@@ -2749,13 +2749,76 @@ $$
 \Gamma
 =\{\gamma_{\sigma}(s):s\in \RR,\sigma\in \Sigma\}.
 $$
-Here, $\Sigma$ is an hypersurface or manifold of dimension $(n-1)$ orthogonal to the flow defined by the system of ODEs.
-In other words, $\Sigma$ cuts $\Gamma$, i.e. it is a submanifold of $\Gamma$, but it should not cut it in the direction of the flow.
+Notice that $\Sigma$ is an $(n-1)$-dimensional submanifold of $\Gamma$ orthogonal to the flow defined by the system of ODEs.
+In other words, $\Sigma$ cuts $\Gamma$, but not along the direction of the flow defined by the system of ODEs.
 Now, to obtain each curve $\gamma_{\sigma}$, besides an initial condition for $\tilde x$ and $\tilde u$, we also need an initial for $\tilde p$.
 Afortunatelly, the constraints defining the PDE provides an initial condition for $\tilde p$ from an initial condition for $\tilde x$ and $\tilde u$.
 Namely,
+\begin{equation}
+\label{eq:ZZ5}
+F(\tilde X(\sigma),\tilde U(\sigma),\tilde p(0))=0
+\end{equation}
+provides one equation to find the initial condition $\tilde p(0)$, and, using that $\tilde u(s=0)=u(\tilde X(\sigma))$, we can write  that
+\begin{eqnarray}
+\label{eq:ZZ6}
+\frac{\partial \tilde U}{\partial \sigma_j}
+&=&
+\sum_{i=1}^n
+\frac{\partial u}{\partial x_i}(\tilde X(\sigma))
+\,
+\frac{\partial \tilde X_i}{\partial \sigma_j}(\sigma)
+\notag
+\\
+&=&
+\sum_{i=1}^n
+\tilde p_i(s=0)
+\,
+\frac{\partial \tilde X_i}{\partial \sigma_j}(\sigma)
+,
+\notag
+\end{eqnarray}
+which provide another $n-1$ equations to determine the initial condition $\tilde p(s=0)=\tilde P(\sigma)$.
+Finally, notice that
+$$
+\Sigma\times \RR \ni (\sigma,s) \leftrightarrow \tilde x_{\sigma}(s)\in \RR^n
+$$
+is a bijection, where $x_{\sigma}:\RR\ni s\to x_{\sigma}(s)\in \RR^n$ is the characteristic curve obtained from the initial condition $x_{\sigma}(s=0)=\tilde X(\sigma)$.
+With the inverse of this map
+$$
+\RR^n \ni x\to \sigma(x) \in \Sigma
+\quad
+\RR^n \ni x\to s(x) \in \RR,
+$$
+we can obtain the solution $u$ as follows:
+\begin{equation}
+\label{eq:ZZ7}
+u(x)
+=
+\tilde{u}(\tilde x_{\sigma(x)}(s(x)))
+.
+\end{equation}
 
-
+In summary:
+\begin{enumerate}
+\item
+Initially, we are provided with:
+\begin{enumerate}
+\item the function $F$,
+\item the submanifold $\Sigma$,
+\item the function $\tilde X$, and
+\item the function $\tilde U$.
+\end{enumerate}
+\item 
+Next, we write down and find the solutions of the system of ODEs defined by Eqs.~\ref{eq:ZZ1},~\ref{eq:ZZ2}~and~\ref{eq:ZZ4}.
+\item Next, for each choice of $\sigma\in \Sigma$, we find the initial condition $\tilde P(\sigma)$ by solving the Eqs.~\ref{eq:ZZ5}~and~\ref{eq:ZZ6}.
+\item Finally, with each initial condition 
+$$
+(\tilde x(0),\tilde u(0),\tilde p(0))
+=
+(\tilde X(\sigma),\tilde U(\sigma),\tilde P(\sigma))
+$$ 
+for each $\sigma$, we obtain the corresponding characterstic curve $x_{\sigma}$, from where we can obtain the solution $u$ via Eq.~\ref{eq:ZZ7}.
+\end{enumerate}
 
 {\color{red}[HERE]}
 although the variables are constrained by both the PDE
