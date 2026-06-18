@@ -356,7 +356,7 @@ $$
 $$
 y los correspondientes modos espaciales son
 $$
-X_n(x)=\sin!\left(\frac{n\pi x}{\ell}\right).
+X_n(x)=\sin\left(\frac{n\pi x}{\ell}\right).
 $$
 
 {\bf 2. Ecuación temporal}
@@ -366,13 +366,44 @@ $$
 T_n''+2\gamma T_n'
 +c^2\left(\frac{n\pi}{\ell}\right)^2T_n=0.
 $$
-La ecuación característica es
+Buscamos soluciones exponenciales
 $$
+T(t)=e^{rt},
+$$
+donde $r$ es una constante a determinar.
+Entonces
+$$
+T'(t)=re^{rt},
+\qquad
+T''(t)=r^2e^{rt}.
+$$
+Sustituyendo en la ecuación diferencial,
+$$
+r^2e^{rt}
++
+2\gamma re^{rt}
++
+c^2\left(\frac{n\pi}{\ell}\right)^2e^{rt}
+=0.
+$$
+Factorizando $e^{rt}$,
+$$
+e^{rt}
+\left[
 r^2+2\gamma r
-+c^2\left(\frac{n\pi}{\ell}\right)^2=0,
++c^2\left(\frac{n\pi}{\ell}\right)^2
+\right]
+=0.
 $$
-cuyas raíces son
+Como $e^{rt}\neq 0$ para todo $t$ finito, necesariamente debe cumplirse
 $$
+\boxed{
+r^2+2\gamma r
++c^2\left(\frac{n\pi}{\ell}\right)^2=0.
+}
+$$
+Esta es la {\em ecuación característica} (o ecuación auxiliar) asociada a la ecuación diferencial para $T$.
+Resolviéndola mediante la fórmula cuadrática, encontramos las raíces $$
 r=-\gamma
 \pm
 \sqrt{
