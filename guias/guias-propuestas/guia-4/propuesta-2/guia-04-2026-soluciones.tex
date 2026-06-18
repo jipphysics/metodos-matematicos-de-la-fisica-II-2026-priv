@@ -2516,99 +2516,248 @@ En ecuaciones hiperbólicas, la información viaja precisamente sobre caracterí
 
 \subsection{Method of characteristics}
 
-Consider a first-order PDE
+The equations
 $$
-F(x_1,\dots,x_n,u,p_1,\dots,p_n)=0,
+F(x_1,\dots,x_n,v,p_1,\dots,p_n)=0,
 $$
-where
 $$
-p_i=\frac{\partial u}{\partial x_i}(x),
+v=u(x)
 $$
 and
+$$
+p_i=\frac{\partial u}{\partial x_i}(x),
+\quad
+i=1,...,n,
+$$
+for
 $$
 x=(x_1,\dots,x_n)\in\RR^n,
 \qquad
-u:\RR^n\to\RR.
+u:\RR^n\ni x\to u(x)\in \RR,
+\quad
+\text{and}
+\quad
+p=(p_1,\ldots,p_n)\in \RR^n,
 $$
+define a first-order Partial Differential Equation (PDE) for the function $u$.
 
-The method of characteristics seeks curves
+To solve the PDE, the method of characteristics seek to find curves
 $$
-s\mapsto x(s)\in\RR^n
+\tilde x:s\mapsto \tilde x(s)\in\RR^n,
 $$
-along which the PDE reduces to a system of ordinary differential equations. 
-Assuming that $u$ is a solution, define along such curves
+called {\em characteristic curves}, along which the PDE reduces to a system of Ordinary Differential Equations (ODEs).
+To see how this works, assume that $u$ is a solution, and define along a characeristic curve $\tilde x$ the functions
 $$
-u(s):=u(x(s)),
+\tilde u:\RR\ni s\to \tilde u(s):=u(\tilde x(s)),
 $$
 and
 $$
-p_i(s):=\frac{\partial u}{\partial x_i}(x(s)).
+\tilde p_i:\RR\ni s\to \tilde p_i(s):=\frac{\partial u}{\partial x_i}(\tilde x(s)),
+\quad
+i=1,...,n.
 $$
 Then, by the chain rule,
+\begin{eqnarray}
+\label{eq:ZZ1}
+\frac{d\tilde u}{ds}
+&=&
+\sum_{i=1}^n
+\frac{\partial u}{\partial x_i}(\tilde{x}(s))
+\frac{d \tilde{x}_i}{ds}(s)
+%\notag
+\\
+&=&
+\sum_{i=1}^n
+\tilde p_i(s)\,\frac{dx_i}{ds}(s)
+.
+\notag
+\end{eqnarray}
+Now, and crucially, the characteristic curves are chosen such that
+\begin{equation}
+\label{eq:ZZ2}
+\frac{d\tilde x_i}{ds}(s)
+=
+\frac{\partial F}{\partial p_i}(\tilde x(s),\tilde u(s),\tilde p(s)),
+\quad
+i=1,...,n,
+\end{equation}
+for all $s\in \RR$.
+This defines a system of ODEs for the $\tilde{x}_i$.
+Moreover, by direct substitution of Eq.~\ref{eq:ZZ1} into Eq.~\ref{eq:ZZ2}, we obtain that
 $$
-\frac{du}{ds}
+\frac{d\tilde u}{ds}(s)
 =
 \sum_{i=1}^n
-p_i\frac{dx_i}{ds}.
+\tilde p_i(s)\,
+\frac{\partial F}{\partial p_i}(\tilde x(s),\tilde u(s),\tilde p(s)),
+\quad 
+s\in \RR,
 $$
-
-The characteristic curves are chosen so that
+which is an ODE for $\tilde{u}$.
+Now, we need to obtain a system of ODEs for the $\tilde{p}_i$.
+For this, we differentiate the constraint
 $$
-\frac{dx_i}{ds}
-=
-\frac{\partial F}{\partial p_i}(x(s),u(s),p(s)),
+\tilde F(s)
+:=
+F(\tilde x(s),\tilde u(s),\tilde p(s))=0
 $$
-which implies
-$$
-\frac{du}{ds}
-=
+along the characteristic curve, yielding
+\begin{eqnarray}
+\label{eq:ZZ3}
+0
+&=&
+\frac{d\tilde F}{ds}(s)
+%\notag
+\\
+&=&
 \sum_{i=1}^n
-p_i
-\frac{\partial F}{\partial p_i}(x(s),u(s),p(s)).
+\frac{\partial F}{\partial x_i}
+(\tilde x(s),\tilde u(s),\tilde p(s))
+\,
+\frac{d \tilde x_i}{ds}(s)
++
+\frac{\partial F}{\partial v}
+(\tilde x(s),\tilde u(s),\tilde p(s))
+\,
+\frac{d \tilde u}{ds}(s)
++
+\sum_{i=1}^n
+\frac{\partial F}{\partial p_i}
+(\tilde x(s),\tilde u(s),\tilde p(s))
+\,
+\frac{d \tilde p_i}{ds}(s)
+\notag
+\\
+&=&
+\sum_{i=1}^n
+\bigg(
+\frac{\partial F}{\partial x_i}
+(\tilde x(s),\tilde u(s),\tilde p(s))
+\,
+\frac{d \tilde x_i}{ds}(s)
++
+\frac{\partial F}{\partial v}
+(\tilde x(s),\tilde u(s),\tilde p(s))
+\,
+\tilde p_i(s)
+\,
+\frac{\partial F}{\partial p_i}
+(\tilde x(s),\tilde u(s),\tilde p(s))
+\notag
+\\
+&&
+\quad
+\quad
++
+\frac{\partial F}{\partial p_i}
+(\tilde x(s),\tilde u(s),\tilde p(s))
+\,
+\frac{d \tilde p_i}{ds}(s)
+\bigg)
+\notag
+\\
+&=&
+\sum_{i=1}^n
+\frac{d \tilde x_i}{ds}(s)
+\bigg(
+\frac{\partial F}{\partial x_i}
+(\tilde x(s),\tilde u(s),\tilde p(s))
++
+\tilde p_i(s)\,
+\frac{\partial F}{\partial v}
+(\tilde x(s),\tilde u(s),\tilde p(s))
++
+\frac{\partial F}{\partial p_i}
+(\tilde x(s),\tilde u(s),\tilde p(s))
+\bigg)
+.
+\notag
+\end{eqnarray}
+Now, assuming that the curves are always ``on the move'', meaning that the derivatives
 $$
-
-Differentiating the constraint
+\frac{d\tilde x_i}{ds}
 $$
-F(x(s),u(s),p(s))=0
-$$
-along the curve yields
-$$
-\frac{dp_i}{ds}
+never vanish  as $s$ changes, at least generally, then Eq.~\ref{eq:ZZ3} implies that
+\begin{equation}
+\label{eq:ZZ4}
+\frac{d\tilde p_i}{ds}(s)
 =
 -
 \frac{\partial F}{\partial x_i}
+(\tilde x(s),\tilde u(s),\tilde p(s))
 -
-p_i\frac{\partial F}{\partial u}.
-$$
+\tilde p_i(s)
+\frac{\partial F}{\partial v}
+(\tilde x(s),\tilde u(s),\tilde p(s)),
+\quad 
+s\in \RR.
+\end{equation}
+This is a system of ODEs for the $\tilde{p}_i$.
 
-Thus the PDE is reduced to the characteristic system
+Together, the system of ODEs of Eqs.~\ref{eq:ZZ1},~\ref{eq:ZZ2}~and~\ref{eq:ZZ4} determine the evolution of a curve
 $$
-\frac{dx_i}{ds}
+\RR\ni s
+\to
+(\tilde x_1(s),\dots,\tilde x_n(s),\tilde u(s),\tilde p_1(s),\dots,\tilde p_n(s))\in\RR^{2n+1}.
+$$
+Therefore, at least in principle, a particular curve requires the specification of an $(2n+1)$-dimensional initial condition given by
+$$
+(\tilde x_1(0),\dots,\tilde x_n(0))
 =
-\frac{\partial F}{\partial p_i},
-\quad (1)
+\tilde X
+\in \RR^n
 $$
 $$
-\frac{du}{ds}
+\tilde u(0) = \tilde U
+$$
+and
+$$
+(\tilde p_1(0),\dots,\tilde p_n(0))
 =
-\sum_{i=1}^n
-p_i\frac{\partial F}{\partial p_i},
-\quad (2)
+\tilde P
+\in \RR^n.
 $$
-$$
-\frac{dp_i}{ds}
-=
--
-\frac{\partial F}{\partial x_i}
--
-p_i\frac{\partial F}{\partial u}.
-\quad (3)
-$$
+However, as we are going to show, $\tilde P$ cannot be chosen independently of the other initial conditions.
 
-This system evolves in the extended space
+
+A particular solution $u$ of the PDE defines an hyper-surface or manifold $\Gamma$ of dimension $n$ within $\RR^n$.
+The curve $\gamma : \RR\ni s\to (\tilde x(s),\tilde u(s))\in \Gamma$ defined a corresponding characteristic curve $\tilde x$ lives in $\Gamma$.
+Different initial conditions for $\tilde x$ and $\tilde u$ define different curves $\gamma$ in $\Gamma$.
+In fact, $\Gamma$ can be generated by a monoparameterized family
+of such curves 
 $$
-(x_1,\dots,x_n,u,p_1,\dots,p_n)\in\RR^{2n+1},
+\Sigma\ni \sigma\to \gamma_{\sigma}
+$$ 
+if $\Sigma$ is a suitably chosen hypersurface or $(n-1)$-dimensional manifold of initial conditions
 $$
+\gamma_{\sigma}(s=0)
+=
+(\tilde X(\sigma),\tilde U(\sigma)),
+$$
+where 
+$$
+\tilde X:\Sigma \ni \sigma \to \tilde X(\sigma)\in \RR^n
+$$
+and
+$$
+\tilde U:\Sigma \ni \sigma \to \tilde U(\sigma)\in \RR.
+$$
+are corresponding suitably chosen functions.
+In other words, the functions $\tilde X$ and $\tilde U$ define a particular hypersurface $\Gamma$ and, therefore, a particular solution $u$.
+More precisely, if $\Sigma$ is appropriately chosen, then
+$$
+\Gamma
+=\{\gamma_{\sigma}(s):s\in \RR,\sigma\in \Sigma\}.
+$$
+Here, $\Sigma$ is an hypersurface or manifold of dimension $(n-1)$ orthogonal to the flow defined by the system of ODEs.
+In other words, $\Sigma$ cuts $\Gamma$, i.e. it is a submanifold of $\Gamma$, but it should not cut it in the direction of the flow.
+Now, to obtain each curve $\gamma_{\sigma}$, besides an initial condition for $\tilde x$ and $\tilde u$, we also need an initial for $\tilde p$.
+Afortunatelly, the constraints defining the PDE provides an initial condition for $\tilde p$ from an initial condition for $\tilde x$ and $\tilde u$.
+Namely,
+
+
+
+{\color{red}[HERE]}
 although the variables are constrained by both the PDE
 $$
 F(x,u,p)=0
