@@ -1,0 +1,483 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=51\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Recuperatorio del Primer Parcial}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+	\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Recuperatorio Parcial 1 -- 19/06/2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+\vspace{-0.7\baselineskip}
+\begin{center}
+\bf
+Escriba su nombre en cada página y numere todas las páginas\\
+Resuelva cada problema en hojas separadas
+\end{center}
+\vspace{-1.0\baselineskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\prob Construya la base dual $\{\mathbf{e}'^{\,1}, \mathbf{e}'^{\,2}\}$ de $\mathbf{e}'_1 = \mathbf{e}_1 + \mathbf{e}_2$, $\mathbf{e}'_2 = \mathbf{e}_1 - \mathbf{e}_2$ usando la condición $\mathbf{e}'^{\,i}(\mathbf{e}'_j) = \delta^i_j$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1)}
+\vspace{0.5cm}
+
+Construir la base dual ${\mathbf e'^{1},\mathbf e'^{2}}$ asociada a
+$$
+\mathbf e'_1=\mathbf e_1+\mathbf e_2,
+\qquad
+\mathbf e'_2=\mathbf e_1-\mathbf e_2,
+$$
+usando
+$$
+\mathbf e'^{i}(\mathbf e'_j)=\delta^i_j.
+$$
+
+{\bf Paso 1: Expresar la base dual buscada}
+
+Sea ${\mathbf e^1,\mathbf e^2}$ la base dual de la base original ${\mathbf e_1,\mathbf e_2}$, es decir
+$$
+\mathbf e^i(\mathbf e_j)=\delta^i_j.
+$$
+Buscamos
+$$
+\mathbf e'^{1}=a,\mathbf e^1+b,\mathbf e^2,
+$$
+$$
+\mathbf e'^{2}=c,\mathbf e^1+d,\mathbf e^2.
+$$
+
+{\bf Paso 2: Imponer las condiciones duales}
+
+Para $\mathbf e'^{,1}$:
+$$
+\mathbf e'^{1}(\mathbf e'_1)=1,
+\qquad
+\mathbf e'^{1}(\mathbf e'_2)=0.
+$$
+Como
+$$
+\mathbf e'_1=\mathbf e_1+\mathbf e_2,
+$$
+tenemos
+$$
+a+b=1.
+$$
+Y como
+$$
+\mathbf e'_2=\mathbf e_1-\mathbf e_2,
+$$
+resulta
+$$
+a-b=0.
+$$
+Resolviendo,
+$$
+a=b=\frac12.
+$$
+Por tanto
+$$
+\boxed{
+\mathbf e'^{1}
+=
+\frac12(\mathbf e^1+\mathbf e^2).
+}
+$$
+
+Para $\mathbf e'^{,2}$:
+$$
+\mathbf e'^{2}(\mathbf e'_1)=0,
+\qquad
+\mathbf e'^{2}(\mathbf e'_2)=1.
+$$
+Esto produce
+$$
+c+d=0,
+$$
+$$
+c-d=1.
+$$
+Resolviendo,
+$$
+c=\frac12,
+\qquad
+d=-\frac12.
+$$
+Luego
+$$
+\boxed{
+\mathbf e'^{2}
+=
+\frac12(\mathbf e^1-\mathbf e^2).
+}
+$$
+
+{\bf Resultado}
+
+$$
+\boxed{
+\mathbf e'^{1}
+=
+\frac12(\mathbf e^1+\mathbf e^2),
+\qquad
+\mathbf e'^{2}
+=
+\frac12(\mathbf e^1-\mathbf e^2).
+}
+$$
+
+
+\prob El potencial vector de un dipolo magnético $\mathbf{m} = m\,\hat{\mathbf{z}}$ ubicado en el origen es
+\[
+\mathbf{A} = \frac{\mu_0 m}{4\pi}\,\frac{1}{r^3}\,\hat{\boldsymbol{\phi}}
+\]
+en coordenadas esféricas. Calcule $\mathbf{B} = \nabla \times \mathbf{A}$ y $\nabla \cdot \mathbf{B}$ en coordenadas esféricas.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+Se da el potencial vectorial
+$$
+\mathbf A
+=
+\frac{\mu_0 m}{4\pi}\,
+\frac{1}{r^3}\,
+\hat{\boldsymbol\phi}.
+$$
+Definamos
+$$
+K=\frac{\mu_0 m}{4\pi}.
+$$
+Entonces
+$$
+A_r=0,
+\qquad
+A_\theta=0,
+\qquad
+A_\phi=\frac{K}{r^3}.
+$$
+
+{\bf Paso 1: Calcular $\mathbf B=\nabla\times\mathbf A$}
+
+En coordenadas esféricas,
+$$
+(\nabla\times\mathbf A)_r
+=
+\frac{1}{r\sin\theta}
+\left[
+\frac{\partial}{\partial\theta}
+(\sin\theta,A_\phi)
+-
+\frac{\partial A_\theta}{\partial\phi}
+\right].
+$$
+Como $A_\theta=0$,
+$$
+B_r
+=
+\frac{1}{r\sin\theta}
+\frac{\partial}{\partial\theta}
+\left(
+\sin\theta\frac{K}{r^3}
+\right).
+$$
+$$
+\frac{K}{r^4}
+\frac{\cos\theta}{\sin\theta}.
+$$
+Por tanto
+$$
+\boxed{
+B_r
+=
+\frac{K}{r^4}\cot\theta.
+}
+$$
+
+La componente $\theta$ es
+$$
+(\nabla\times\mathbf A)_\theta
+=
+\frac1r
+\left[
+\frac1{\sin\theta}
+\frac{\partial A_r}{\partial\phi}
+-
+\frac{\partial}{\partial r}(rA_\phi)
+\right].
+$$
+Como $A_r=0$,
+$$
+B_\theta
+=
+-\frac1r
+\frac{\partial}{\partial r}
+\left(
+\frac{K}{r^2}
+\right).
+$$
+$$
+-\frac1r
+\left(
+-\frac{2K}{r^3}
+\right).
+$$
+$$
+\boxed{
+B_\theta
+=
+\frac{2K}{r^4}.
+}
+$$
+
+La componente $\phi$ es
+$$
+(\nabla\times\mathbf A)_\phi
+=
+\frac1r
+\left[
+\frac{\partial}{\partial r}(rA_\theta)
+-
+\frac{\partial A_r}{\partial\theta}
+\right]
+=0.
+$$
+$$
+\boxed{B_\phi=0.}
+$$
+
+{\bf Campo magnético}
+
+$$
+\boxed{
+\mathbf B
+=
+\frac{\mu_0 m}{4\pi r^4}
+\left(
+\cot\theta\,\hat{\mathbf r}
++
+2\,\hat{\boldsymbol\theta}
+\right).
+}
+$$
+
+{\bf Paso 2: Calcular $\nabla\cdot\mathbf B$}
+
+La divergencia en coordenadas esféricas es
+$$
+\nabla\cdot\mathbf B
+=
+\frac1{r^2}
+\frac{\partial}{\partial r}
+(r^2B_r)
++
+\frac1{r\sin\theta}
+\frac{\partial}{\partial\theta}
+(\sin\theta,B_\theta)
++
+\frac1{r\sin\theta}
+\frac{\partial B_\phi}{\partial\phi}.
+$$
+El último término es cero.
+
+Primer término:
+$$
+r^2B_r
+=
+\frac{K}{r^2}\cot\theta,
+$$
+$$
+\frac1{r^2}
+\frac{\partial}{\partial r}
+(r^2B_r)
+=
+-\frac{2K}{r^5}\cot\theta.
+$$
+
+Segundo término:
+$$
+\sin\theta,B_\theta
+=
+\frac{2K}{r^4}\sin\theta,
+$$
+$$
+\frac1{r\sin\theta}
+\frac{\partial}{\partial\theta}
+(\sin\theta B_\theta)
+=
+\frac{2K}{r^5}\cot\theta.
+$$
+
+Sumando,
+$$
+\nabla\cdot\mathbf B
+=
+-\frac{2K}{r^5}\cot\theta
++
+\frac{2K}{r^5}\cot\theta
+=
+0.
+$$
+Por lo tanto,
+$$
+\boxed{
+\nabla\cdot\mathbf B=0
+\qquad (r\neq0).
+}
+$$
+
+{\bf Observación}
+
+El potencial dado en el enunciado {\em no es el potencial vectorial habitual de un dipolo magnético} (que tiene $A_\phi\propto \sin\theta/r^2)$. 
+Por eso el campo obtenido tiene una dependencia angular extraña y una singularidad sobre el eje $z$.
+Sin embargo, usando estrictamente el potencial proporcionado,
+$$
+\boxed{
+\mathbf B
+=
+\frac{\mu_0 m}{4\pi r^4}
+\left(
+\cot\theta\,\hat{\mathbf r}
++
+2\,\hat{\boldsymbol\theta}
+\right),
+\qquad
+\nabla\cdot\mathbf B=0
+\quad (r\neq0).
+}
+$$
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+

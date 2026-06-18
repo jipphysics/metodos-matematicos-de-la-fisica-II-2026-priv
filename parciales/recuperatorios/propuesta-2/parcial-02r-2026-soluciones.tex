@@ -1,0 +1,501 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=51\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Recuperatorio del 2$^\circ$ Parcial}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Recuperatorio Parcial 2 -- 19/06/2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+\vspace{-0.7\baselineskip}
+\begin{center}
+\bf
+Escriba su nombre en cada página y numere todas las páginas\\
+Resuelva cada problema en hojas separadas
+\end{center}
+\vspace{-1.0\baselineskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\prob Resuelva la ecuación de Laplace $\nabla^2 u = 0$ en el interior del disco unitario $r \leq 1$ con condición de borde
+\[
+u(1, \phi) = 
+\begin{cases}
+V_0, & 0 < \phi < \pi, \\
+0, & \pi < \phi < 2\pi.
+\end{cases}
+\]
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1)}
+\vspace{0.5cm}
+
+Ecuación de Laplace en el disco unitario.
+Resolver
+$$
+\nabla^2u=0,
+\qquad 0\le r<1,
+$$
+con
+$$
+u(1,\phi)=
+\begin{cases}
+V_0,&0<\phi<\pi,\\
+0,&\pi<\phi<2\pi.
+\end{cases}
+$$
+
+{\bf 1. Solución general en coordenadas polares}
+
+La ecuación de Laplace es
+$$
+\frac{\partial^2u}{\partial r^2}
++\frac1r\frac{\partial u}{\partial r}
++\frac1{r^2}\frac{\partial^2u}{\partial\phi^2}=0.
+$$
+Buscamos $u(r,\phi)=R(r)\Phi(\phi)$.
+La separación produce
+$$
+\Phi''+n^2\Phi=0,
+$$
+$$
+r^2R''+rR'-n^2R=0.
+$$
+Las soluciones regulares en $r=0$ son
+$$
+R_n(r)=r^n.
+$$
+Por tanto,
+$$
+u(r,\phi)
+=
+A_0
++\sum_{n=1}^{\infty}
+r^n
+\left(
+A_n\cos n\phi
++
+B_n\sin n\phi
+\right).
+$$
+
+{\bf 2. Serie de Fourier de la condición de borde}
+
+En $r=1$,
+$$
+u(1,\phi)=f(\phi).
+$$
+Calculamos los coeficientes de Fourier.
+
+Término constante:
+$$
+A_0
+=
+\frac1{2\pi}
+\int_0^{2\pi}f(\phi)d\phi
+=
+\frac1{2\pi}(V_0\pi)
+=
+\frac{V_0}{2}.
+$$
+Coeficientes coseno:
+$$
+A_n
+=
+\frac1\pi
+\int_0^{2\pi}
+f(\phi)\cos(n\phi)d\phi.
+$$
+Como $f=V_0$ en $(0,\pi)$,
+$$
+A_n
+=
+\frac{V_0}{\pi}
+\int_0^\pi \cos(n\phi)d\phi
+=
+\frac{V_0}{\pi}
+\frac{\sin(n\pi)}{n}
+=
+0.
+$$
+Luego
+$$
+\boxed{A_n=0.}
+$$
+Coeficientes seno:
+$$
+B_n
+=
+\frac{V_0}{\pi}
+\int_0^\pi
+\sin(n\phi)\,d\phi.
+$$
+$$
+\frac{V_0}{\pi}
+\frac{1-\cos(n\pi)}{n}.
+$$
+Como
+$$
+1-\cos(n\pi)
+=
+1-(-1)^n,
+$$
+obtenemos
+$$
+B_n=
+\begin{cases}
+\dfrac{2V_0}{n\pi},&n\ \text{impar},\\
+0,&n\ \text{par}.
+\end{cases}
+$$
+
+{\bf 3. Solución final}
+
+La solución armónica dentro del disco es
+$$
+\boxed{
+u(r,\phi)
+=
+\frac{V_0}{2}
++
+\frac{2V_0}{\pi}
+\sum_{m=0}^{\infty}
+\frac{r^{2m+1}}{2m+1}
+\sin\big((2m+1)\phi\big).
+}
+$$
+
+{\bf Observación}
+
+Puede verificarse que en el borde $r=1$ esta serie reproduce exactamente la expansión de Fourier de una función escalón angular.
+
+
+
+\prob Resuelva la ecuación de onda para una membrana en forma de cuña con condiciones de contorno de borde fijo a lo largo de las rectas $\theta = 0$ y $\theta = \alpha$, que se encuentra inicialmente en reposo y con la forma
+\[
+f(r,\theta,0) = r\,\operatorname{sen}(6\theta).
+\]
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+{\bf Membrana en forma de cuña.}
+Resolver la ecuación de onda
+$$
+f_{tt}=c^2\nabla^2f,
+$$
+en una cuña
+$$
+0<\theta<\alpha,
+$$
+con bordes fijos
+$$
+f(r,0,t)=0,
+\qquad
+f(r,\alpha,t)=0,
+$$
+e inicialmente
+$$
+f(r,\theta,0)
+=
+r\sin(6\theta),
+$$
+$$
+f_t(r,\theta,0)=0.
+$$
+
+{\bf 1. Separación de variables}
+
+Buscamos
+$$
+f(r,\theta,t)=R(r)\Theta(\theta)T(t).
+$$
+En polares,
+$$
+\nabla^2
+=
+\frac{\partial^2}{\partial r^2}
++\frac1r\frac{\partial}{\partial r}
++\frac1{r^2}
+\frac{\partial^2}{\partial\theta^2}.
+$$
+Sustituyendo y separando, obtenemos
+$$
+\Theta''+\nu^2\Theta=0,
+$$
+$$
+T''+c^2k^2T=0,
+$$
+y
+$$
+r^2R''+rR'+(r^2k^2-\nu^2)R=0.
+$$
+
+{\bf 2. Soluciones angulares}
+
+Las soluciones angulares son de la forma
+$$
+\Theta(\theta)
+=
+A\cos(\nu\theta)
++
+B\sin(\nu\theta).
+$$
+
+{\bf 2. Condiciones de borde angulares}
+
+La condici\'on de borde angular en $\theta=0$ implica que, o bien $\nu=0$, en cuyo caso $\Theta(\theta)=A=\mathrm{constante}$ para todo $\theta$, o bien $\nu\neq 0$ y $A=0$.
+
+En el caso en que $\nu\neq 0$, la otra condici\'on 
+$$
+\Theta(\alpha)=0.
+$$
+implica soluciones que son combinaciones lineales de las autofunciones
+$$
+\Theta_n(\theta)
+=
+\sin\left(\frac{n\pi}{\alpha}\theta\right),
+$$
+con
+$$
+\nu_n=\frac{n\pi}{\alpha}.
+$$
+para $n\in \mathbb{N}$.
+
+{\bf 2. Reconocer el modo inicial}
+
+La forma inicial es
+$$
+r\sin(6\theta).
+$$
+Comparando con
+$$
+\sin\left(\frac{n\pi}{\alpha}\theta\right),
+$$
+vemos que corresponde exactamente a un único modo angular si
+$$
+\nu_n = \frac{n\pi}{\alpha}=6.
+$$
+Esto restringe los posibles valores de $\alpha$.
+
+{\bf 3. Parte radial}
+
+{\color{red}[TODO...]}
+
+La ecuación radial asociada a $\nu=6$ es
+$$
+r^2R''+rR'-36R=0.
+$$
+Buscando $R=r^s$,
+$$
+s(s-1)+s-36=0,
+$$
+$$
+s^2-36=0.
+$$
+$$
+s=\pm6.
+$$
+La solución regular en el origen es
+$$
+R(r)=r^6.
+$$
+
+{\bf ¡Pero aquí aparece una sutileza!}
+
+La condición inicial es
+$$
+r\sin(6\theta),
+$$
+y observamos que
+$$
+\nabla^2(r\sin\theta)=0,
+$$
+más generalmente
+$$
+\nabla^2(r^n\sin n\theta)=0.
+$$
+Por tanto
+$$
+r\sin(6\theta)
+$$
+{\em no es un modo propio de la ecuación de onda} a menos que exista además una condición radial que cuantice los modos.
+Como el enunciado sólo fija los bordes $\theta=0$ y $\theta=\alpha$, el dominio radial parece infinito o libre.
+En ese caso la función inicial
+$$
+f(r,\theta,0)=r\sin(6\theta)
+$$
+es armónica:
+$$
+\nabla^2(r\sin(6\theta))=0.
+$$
+Luego satisface
+$$
+f_{tt}=0.
+$$
+Con velocidad inicial nula,
+$$
+f_t(r,\theta,0)=0,
+$$
+la solución permanece constante.
+
+{\bf 4. Solución}
+
+La solución es simplemente
+$$
+\boxed{
+f(r,\theta,t)
+=
+r\sin(6\theta).
+}
+$$
+porque
+$$
+\nabla^2(r\sin(6\theta))=0,
+\qquad
+f_t(r,\theta,0)=0.
+$$
+Entonces
+$$
+f_{tt}=0=c^2\nabla^2f.
+$$
+
+{\bf Comentario importante}
+
+Hay una inconsistencia probable en el enunciado: para una membrana normalmente se especifica también un borde radial ($r=a$), lo que conduce a funciones de Bessel y frecuencias discretas. 
+Con el enunciado tal como está escrito, la solución anterior es la más natural, ya que la forma inicial es una función armónica estacionaria.
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
