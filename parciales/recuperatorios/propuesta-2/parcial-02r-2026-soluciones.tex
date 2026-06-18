@@ -292,200 +292,228 @@ Puede verificarse que en el borde $r=1$ esta serie reproduce exactamente la expa
 
 
 
-\prob Resuelva la ecuación de onda para una membrana en forma de cuña con condiciones de contorno de borde fijo a lo largo de las rectas $\theta = 0$ y $\theta = \alpha$, que se encuentra inicialmente en reposo y con la forma
-\[
-f(r,\theta,0) = r\,\operatorname{sen}(6\theta).
-\]
+\prob Una cuerda de largo $\ell$ y densidad uniforme se tensa fijando sus extremos a dos soportes
+inamovibles; la cuerda se halla inmersa en un medio que provee una fuerza disipativa $-2\gamma u_t$, de modo que su desplazamiento transversal $u(x,t)$ respecto de la posición de equilibrio est á bien modelado por la ecuación
+$$
+u_{tt} + 2\gamma u_t - c2u_{xx} = 0
+$$
+con y una constante positiva y
+$u(0,t) = u(l,t) = 0\, \forall t$. 
+Determine los modos espaciales de oscilación y diga cuáles oscilarán amortiguadamente (es decir, con dependencia temporal de la forma
+$$
+e^{-\eta t}
+(a\cos (\omega t)+b\sin(\omega t))
+$$
+y con qué frecuencias, y cuáles estarán sobreamortiguados (con dependencia temporal de la forma $ae^{-\eta_1 t}+be^{-\eta_2 t}$). ¿Qué condición debe cumplirse para que {\em no haya} modos sobreamortiguados?
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 2)}
 \vspace{0.5cm}
 
-{\bf Membrana en forma de cuña.}
-Resolver la ecuación de onda
+Buscamos soluciones separables de la forma
 $$
-f_{tt}=c^2\nabla^2f,
+u(x,t)=X(x)T(t).
 $$
-en una cuña
+Sustituyendo en
 $$
-0<\theta<\alpha,
+u_{tt}+2\gamma u_t-c^2u_{xx}=0
 $$
-con bordes fijos
+obtenemos
 $$
-f(r,0,t)=0,
+XT''+2\gamma XT'-c^2X''T=0.
+$$
+Dividiendo por $XT$,
+$$
+\frac{T''}{T}+2\gamma\frac{T'}{T}
+=
+c^2\frac{X''}{X}.
+$$
+Como el miembro izquierdo depende sólo de $t$ y el derecho sólo de $x$, ambos deben ser iguales a una constante. Es conveniente escribir
+$$
+\frac{X''}{X}=-\lambda,
+$$
+de modo que
+$$
+X''+\lambda X=0,
+$$
+con las condiciones de borde
+$$
+X(0)=X(\ell)=0.
+$$
+
+{\bf 1. Modos espaciales}
+
+El problema de autovalores
+$$
+X''+\lambda X=0,
 \qquad
-f(r,\alpha,t)=0,
+X(0)=X(\ell)=0
 $$
-e inicialmente
+tiene soluciones no triviales únicamente para
 $$
-f(r,\theta,0)
+\lambda_n=\left(\frac{n\pi}{\ell}\right)^2,
+\qquad n=1,2,3,\ldots
+$$
+y los correspondientes modos espaciales son
+$$
+X_n(x)=\sin!\left(\frac{n\pi x}{\ell}\right).
+$$
+
+{\bf 2. Ecuación temporal}
+
+Para cada $n$,
+$$
+T_n''+2\gamma T_n'
++c^2\left(\frac{n\pi}{\ell}\right)^2T_n=0.
+$$
+La ecuación característica es
+$$
+r^2+2\gamma r
++c^2\left(\frac{n\pi}{\ell}\right)^2=0,
+$$
+cuyas raíces son
+$$
+r=-\gamma
+\pm
+\sqrt{
+\gamma^2
+-c^2\left(\frac{n\pi}{\ell}\right)^2
+}.
+$$
+La naturaleza del modo depende del signo del discriminante.
+
+{\bf 3. Modos oscilatorios amortiguados}
+
+Si
+$$
+\gamma^2
+<
+c^2\left(\frac{n\pi}{\ell}\right)^2,
+$$
+las raíces son complejas:
+$$
+r=-\gamma\pm i\omega_n,
+$$
+donde
+$$
+\omega_n
 =
-r\sin(6\theta),
-$$
-$$
-f_t(r,\theta,0)=0.
-$$
-
-{\bf 1. Separación de variables}
-
-Buscamos
-$$
-f(r,\theta,t)=R(r)\Theta(\theta)T(t).
-$$
-En polares,
-$$
-\nabla^2
-=
-\frac{\partial^2}{\partial r^2}
-+\frac1r\frac{\partial}{\partial r}
-+\frac1{r^2}
-\frac{\partial^2}{\partial\theta^2}.
-$$
-Sustituyendo y separando, obtenemos
-$$
-\Theta''+\nu^2\Theta=0,
-$$
-$$
-T''+c^2k^2T=0,
-$$
-y
-$$
-r^2R''+rR'+(r^2k^2-\nu^2)R=0.
-$$
-
-{\bf 2. Soluciones angulares}
-
-Las soluciones angulares son de la forma
-$$
-\Theta(\theta)
-=
-A\cos(\nu\theta)
-+
-B\sin(\nu\theta).
-$$
-
-{\bf 2. Condiciones de borde angulares}
-
-La condici\'on de borde angular en $\theta=0$ implica que, o bien $\nu=0$, en cuyo caso $\Theta(\theta)=A=\mathrm{constante}$ para todo $\theta$, o bien $\nu\neq 0$ y $A=0$.
-
-En el caso en que $\nu\neq 0$, la otra condici\'on 
-$$
-\Theta(\alpha)=0.
-$$
-implica soluciones que son combinaciones lineales de las autofunciones
-$$
-\Theta_n(\theta)
-=
-\sin\left(\frac{n\pi}{\alpha}\theta\right),
-$$
-con
-$$
-\nu_n=\frac{n\pi}{\alpha}.
-$$
-para $n\in \mathbb{N}$.
-
-{\bf 2. Reconocer el modo inicial}
-
-La forma inicial es
-$$
-r\sin(6\theta).
-$$
-Comparando con
-$$
-\sin\left(\frac{n\pi}{\alpha}\theta\right),
-$$
-vemos que corresponde exactamente a un único modo angular si
-$$
-\nu_n = \frac{n\pi}{\alpha}=6.
-$$
-Esto restringe los posibles valores de $\alpha$.
-
-{\bf 3. Parte radial}
-
-{\color{red}[TODO...]}
-
-La ecuación radial asociada a $\nu=6$ es
-$$
-r^2R''+rR'-36R=0.
-$$
-Buscando $R=r^s$,
-$$
-s(s-1)+s-36=0,
-$$
-$$
-s^2-36=0.
-$$
-$$
-s=\pm6.
-$$
-La solución regular en el origen es
-$$
-R(r)=r^6.
-$$
-
-{\bf ¡Pero aquí aparece una sutileza!}
-
-La condición inicial es
-$$
-r\sin(6\theta),
-$$
-y observamos que
-$$
-\nabla^2(r\sin\theta)=0,
-$$
-más generalmente
-$$
-\nabla^2(r^n\sin n\theta)=0.
-$$
-Por tanto
-$$
-r\sin(6\theta)
-$$
-{\em no es un modo propio de la ecuación de onda} a menos que exista además una condición radial que cuantice los modos.
-Como el enunciado sólo fija los bordes $\theta=0$ y $\theta=\alpha$, el dominio radial parece infinito o libre.
-En ese caso la función inicial
-$$
-f(r,\theta,0)=r\sin(6\theta)
-$$
-es armónica:
-$$
-\nabla^2(r\sin(6\theta))=0.
-$$
-Luego satisface
-$$
-f_{tt}=0.
-$$
-Con velocidad inicial nula,
-$$
-f_t(r,\theta,0)=0,
-$$
-la solución permanece constante.
-
-{\bf 4. Solución}
-
-La solución es simplemente
-$$
-\boxed{
-f(r,\theta,t)
-=
-r\sin(6\theta).
-}
-$$
-porque
-$$
-\nabla^2(r\sin(6\theta))=0,
-\qquad
-f_t(r,\theta,0)=0.
+\sqrt{
+c^2\left(\frac{n\pi}{\ell}\right)^2
+-\gamma^2
+}.
 $$
 Entonces
 $$
-f_{tt}=0=c^2\nabla^2f.
+T_n(t)
+=
+e^{-\gamma t}
+\Bigl(
+A_n\cos(\omega_n t)
++
+B_n\sin(\omega_n t)
+\Bigr).
+$$
+Por lo tanto, el modo espacial
+$$
+\sin\left(\frac{n\pi x}{\ell}\right)
+$$
+oscila amortiguadamente con frecuencia angular
+$$
+\boxed{
+\omega_n
+=
+\sqrt{
+c^2\left(\frac{n\pi}{\ell}\right)^2
+-\gamma^2
+}.
+}
 $$
 
-{\bf Comentario importante}
+{\bf 4. Modos sobreamortiguados}
 
-Hay una inconsistencia probable en el enunciado: para una membrana normalmente se especifica también un borde radial ($r=a$), lo que conduce a funciones de Bessel y frecuencias discretas. 
-Con el enunciado tal como está escrito, la solución anterior es la más natural, ya que la forma inicial es una función armónica estacionaria.
+Si
+$$
+\gamma^2
+>
+c^2\left(\frac{n\pi}{\ell}\right)^2,
+$$
+las raíces son reales:
+$$
+r_{n,\pm}
+=
+-\gamma
+\pm
+\sqrt{
+\gamma^2
+-c^2\left(\frac{n\pi}{\ell}\right)^2
+}.
+$$
+Entonces
+$$
+T_n(t)
+=
+A_n e^{r_{n,+}t}
++
+B_n e^{r_{n,-}t},
+$$
+o equivalentemente
+$$
+T_n(t)
+=
+A_n e^{-\eta_1 t}
++
+B_n e^{-\eta_2 t},
+$$
+con
+$$
+\eta_{1,2}
+=
+\gamma
+\mp
+\sqrt{
+\gamma^2
+-c^2\left(\frac{n\pi}{\ell}\right)^2
+}.
+$$
+Estos modos están sobreamortiguados.
+
+{\bf 5. Caso crítico}
+
+Si
+$$
+\gamma^2
+=
+c^2\left(\frac{n\pi}{\ell}\right)^2,
+$$
+el modo es críticamente amortiguado:
+$$
+T_n(t)
+=
+(A_n+B_n t)e^{-\gamma t}.
+$$
+
+{\bf 6. Condición para que no haya modos sobreamortiguados}
+
+Queremos que para todo $n\ge 1$,
+$$
+\gamma^2
+<
+c^2\left(\frac{n\pi}{\ell}\right)^2.
+$$
+El lado derecho es mínimo para $n=1$, por lo que basta exigir
+$$
+\gamma^2
+<
+c^2\left(\frac{\pi}{\ell}\right)^2.
+$$
+Es decir,
+$$
+\boxed{
+\gamma < \frac{\pi c}{\ell}.
+}
+$$
+Bajo esta condición todos los modos son subamortiguados (oscilatorios amortiguados) y no existe ningún modo sobreamortiguado.
 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
