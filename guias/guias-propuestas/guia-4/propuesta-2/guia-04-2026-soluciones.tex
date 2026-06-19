@@ -2874,7 +2874,159 @@ $$
 =
 \sigma^2 - 1.
 $$
+To solve the ODEs
+$$
+\frac{d\tilde x}{ds}
+=
+\tilde y
+\quad
+\text{and}
+\quad
+\frac{d\tilde y}{ds}
+=
+-
+\tilde x
+$$
+we take second derivatives to obtain
+$$
+\frac{d^2 \tilde x}{ds^2}
+=
+-
+\tilde x
+\quad
+\text{and}
+\quad
+\frac{d^2 \tilde y}{ds^2}
+=
+-
+\tilde y
+$$
+which imply solutions of the form
+$$
+\tilde x(s)
+=
+R\sin(s+\theta)
+\quad
+\text{and}
+\quad
+\tilde y(s)
+=
+R\cos(s+\theta)
+$$
+for some constants of integration $R$ and $\theta$, which should satisfy
+$$
+R\sin(\theta)
+=
+\tilde x_{\sigma}(s=0)
+=
+\tilde X(\sigma)
+=
+0
+$$
+and
+$$
+R\cos(\theta)
+=
+\tilde y_{\sigma}(s=0)
+=
+\tilde Y(\sigma)
+=
+\sigma.
+$$
+Therefore,
+$$
+R=\sigma
+\quad
+\text{and}
+\quad
+\theta=0.
+$$
 
+Also, we should solve the ODE
+$$
+\frac{d\tilde u}{ds}
+=
+e^{\tilde u}.
+$$
+To find its solutions, we write
+\begin{eqnarray}
+d\tilde u\, e^{-\tilde u}
+&=&
+ds
+\notag
+\\
+\int d\tilde u\,e^{-\tilde u}
+&=&
+s + S
+\notag
+\\
+e^{-\tilde u(s)}
+&=&
+-s + S
+\notag
+\\
+\tilde u(s)
+&=&
+-\ln(S-s)
+\notag
+\end{eqnarray}
+for some integration constant $S$, which is determined by
+$$
+-\ln S
+=
+\tilde u_{\sigma}(s=0)
+=
+\tilde U(\sigma)
+=
+\sigma^2-1
+$$
+or, equivalently,
+$$
+S = e^{1-\sigma^2}.
+$$
+Henceforth,
+$$
+\tilde u_{\sigma}(s)
+=
+-\ln
+\bigg(
+e^{1-\sigma^2}
+-
+s
+\bigg)
+$$
+
+To invert the mapping $(s,\sigma)\to (\tilde x_{\sigma}(s),\tilde y_{\sigma}(s))$, we notice that
+$$
+s 
+= 
+\arctan
+\bigg(
+\frac{\tilde x_{\sigma}(s)}{\tilde y_{\sigma}(s)}
+\bigg)
+$$
+and
+$$
+\sigma^2
+=
+\tilde x_{\sigma}^2(s)
++
+\tilde y_{\sigma}^2(s).
+$$
+In this way, the solution is found to be
+$$
+u(x,y)
+=
+\tilde u_{\sigma(x,y)}(s(x,y))
+=
+-\ln
+\bigg[
+e^{1-x^2-y^2}
+-
+\arctan\bigg(\frac{x}{y}\bigg)
+\bigg]
+.
+$$
 
 \end{document}
 
