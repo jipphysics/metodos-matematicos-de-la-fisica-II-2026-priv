@@ -2669,7 +2669,9 @@ $$
 where $C>0$ is just a constant.
 Also, $\mathcal X = (0,\infty)\times \RR$,
 $$
-\tilde X(\sigma) = (\sigma,0) \in (0,\infty)\times \{0\} = \Sigma
+(\tilde X(\sigma) , \tilde Y(\sigma))
+= 
+(\sigma,0) \in (0,\infty)\times \{0\} = \Sigma
 \quad
 \text{and}
 \quad
@@ -2698,22 +2700,28 @@ $$
 $$
 where $X$ and $Y$ are integration constants.
 These integration constant generally depend on $\sigma$ and should be such that
-$$
-(\tilde{x}_{\sigma}(s=0),\tilde{y}_{\sigma}(s=0)) = \tilde X(\sigma) = (\sigma,0).
+$$ 
+( \tilde X(\sigma),\tilde Y(\sigma) )
+=
+(\tilde{x}_{\sigma}(s=0),\tilde{y}_{\sigma}(s=0)) 
+= 
+(X,Y)
 $$
 Therefore,
 $$
-X(\sigma) = \sigma
+\tilde x_{\sigma}(s)
+=
+\frac{1}{C}s + \sigma
 \quad
 \text{and}
 \quad
-Y(\sigma) = 0.
+\tilde y_{\sigma}(s) = s.
 $$
-Combinig all these results to eliminate $s$, we find that the characteristic curves satisfy
+Then, to invert the relation $(s,\sigma)\to (\tilde x_{\sigma}(s),\tilde y_{\sigma}(s))$, we notice that
 $$
-\sigma = \tilde x_{\sigma} - \frac{1}{C}\tilde y_{\sigma}.
+\sigma = \tilde x_{\sigma}(s) - \frac{1}{C}\tilde y_{\sigma}(s).
 $$
-Therefore, the solution is
+for all $s$, and therefore, the solution is
 $$
 u(x,y)
 =
@@ -2727,6 +2735,106 @@ $$
 $$
 \displaystyle x\frac{\partial u}{\partial x} - 2y\frac{\partial u}{\partial y} = 0,\quad u(1,y)=1+2y.
 $$
+
+In this case, 
+$$
+A_x = x,
+\quad
+A_y = -2y
+\quad
+\text{and}
+\quad
+B = 0.
+$$
+Also $\mathcal X = \RR^2$,
+$$
+(\tilde X(\sigma),\tilde Y(\sigma))
+=
+(1,\sigma)
+\in 
+\{1\}\times \RR
+=
+\Sigma
+$$
+and
+$$
+\tilde U(\sigma)
+=
+1+2\sigma.
+$$
+Hence, the ODEs are
+$$
+\frac{d\tilde x}{ds}
+=
+x
+\quad
+\text{and}
+\quad
+\frac{d\tilde y}{ds}
+=
+-2y
+$$
+and have solutions
+$$
+\tilde x(s)
+=
+X e^{s}
+\quad
+\text{and}
+\quad
+\tilde y(s)
+=
+Y e^{-2s}
+$$
+where $X$ and $Y$ are integration constants, which are determined by
+$$
+\tilde x_{\sigma}(s=0)
+=
+X
+=
+\tilde X(\sigma) = 1
+\quad
+\text{and}
+\quad
+\tilde y_{\sigma}(s=0)
+=
+Y
+=
+\tilde Y(\sigma) = \sigma
+$$
+and, therefore,
+$$
+\tilde x_{\sigma}(s)
+=
+e^s
+$$
+and
+$$
+\tilde y_{\sigma}(s)
+=
+\sigma e^{-2s}
+.
+$$
+To invert the relation $(s,\sigma) \to  (\tilde x_{\sigma}(s),\tilde y_{\sigma}(s))\in \RR^2$, we notice that
+$$
+\tilde x^2_{\sigma}(s)
+\tilde y_{\sigma}(s)
+=
+\sigma e^{2s} e^{-2s}
+=
+\sigma.
+$$
+Hence, the general solution is
+$$
+u(x,y)
+=
+\tilde U(\sigma(x,y))
+=
+1 + 2x^2y.
+$$
+
+
+
 
 \subsubsection{Problem 8c)}
 
