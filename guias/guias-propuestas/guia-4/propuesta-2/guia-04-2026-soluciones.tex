@@ -2249,22 +2249,22 @@ Dependiendo de la relación entre las raíces $r_1$ y $r_2$, el método nos prov
 
 The equations
 $$
-F(x_1,\dots,x_n,v,p_1,\dots,p_n)=0,
+F(x^1,\dots,x^n,v,p_1,\dots,p_n)=0,
 $$
 $$
 v=u(x)
 $$
 and
 $$
-p_i=\frac{\partial u}{\partial x_i}(x),
+p_i=\frac{\partial u}{\partial x^i}(x),
 \quad
 i=1,...,n,
 $$
 for
 $$
-x=(x_1,\dots,x_n)\in\mathcal X,
+x=(x^1,\dots,x^n)\in\mathcal X,
 \qquad
-u:\RR^n\ni x\to u(x)\in \RR,
+u:\mathcal X\ni x\to u(x)\in \RR,
 \quad
 \text{and}
 \quad
@@ -2284,7 +2284,7 @@ $$
 $$
 and
 $$
-\tilde p_i:\RR\ni s\to \tilde p_i(s):=\frac{\partial u}{\partial x_i}(\tilde x(s)),
+\tilde p_i:\RR\ni s\to \tilde p_i(s):=\frac{\partial u}{\partial x^i}(\tilde x(s)),
 \quad
 i=1,...,n.
 $$
@@ -2294,23 +2294,23 @@ Then, by the chain rule,
 \frac{d\tilde u}{ds}(s)
 &=&
 \sum_{i=1}^n
-\frac{\partial u}{\partial x_i}(\tilde{x}(s))
+\frac{\partial u}{\partial x^i}(\tilde{x}(s))
 \,
-\frac{d \tilde{x}_i}{ds}(s)
+\frac{d \tilde x^i}{ds}(s)
 %\notag
 \\
 &=&
 \sum_{i=1}^n
 \tilde p_i(s)
 \,
-\frac{d\tilde x_i}{ds}(s)
+\frac{d\tilde x^i}{ds}(s)
 .
 \notag
 \end{eqnarray}
 Now, and crucially, the characteristic curves are chosen such that
 \begin{equation}
 \label{eq:ZZ2}
-\frac{d\tilde x_i}{ds}(s)
+\frac{d\tilde x^i}{ds}(s)
 =
 \frac{\partial F}{\partial p_i}(\tilde x(s),\tilde u(s),\tilde p(s)),
 \quad
@@ -2347,10 +2347,10 @@ along the characteristic curve, yielding
 \\
 &=&
 \sum_{i=1}^n
-\frac{\partial F}{\partial x_i}
+\frac{\partial F}{\partial x^i}
 (\tilde x(s),\tilde u(s),\tilde p(s))
 \,
-\frac{d \tilde x_i}{ds}(s)
+\frac{d \tilde x^i}{ds}(s)
 +
 \frac{\partial F}{\partial v}
 (\tilde x(s),\tilde u(s),\tilde p(s))
@@ -2367,10 +2367,10 @@ along the characteristic curve, yielding
 &=&
 \sum_{i=1}^n
 \bigg(
-\frac{\partial F}{\partial x_i}
+\frac{\partial F}{\partial x^i}
 (\tilde x(s),\tilde u(s),\tilde p(s))
 \,
-\frac{d \tilde x_i}{ds}(s)
+\frac{d \tilde x^i}{ds}(s)
 +
 \frac{\partial F}{\partial v}
 (\tilde x(s),\tilde u(s),\tilde p(s))
@@ -2394,9 +2394,9 @@ along the characteristic curve, yielding
 \\
 &=&
 \sum_{i=1}^n
-\frac{d \tilde x_i}{ds}(s)
+\frac{d \tilde x^i}{ds}(s)
 \bigg(
-\frac{\partial F}{\partial x_i}
+\frac{\partial F}{\partial x^i}
 (\tilde x(s),\tilde u(s),\tilde p(s))
 +
 \tilde p_i(s)\,
@@ -2411,7 +2411,7 @@ along the characteristic curve, yielding
 \end{eqnarray}
 Now, assuming that the curves are always ``on the move'', meaning that the derivatives
 $$
-\frac{d\tilde x_i}{ds}(s)
+\frac{d\tilde x^i}{ds}(s)
 $$
 never vanish  as $s$ changes, at least generally, then Eq.~\ref{eq:ZZ3} implies that
 \begin{equation}
@@ -2419,7 +2419,7 @@ never vanish  as $s$ changes, at least generally, then Eq.~\ref{eq:ZZ3} implies 
 \frac{d\tilde p_i}{ds}(s)
 =
 -
-\frac{\partial F}{\partial x_i}
+\frac{\partial F}{\partial x^i}
 (\tilde x(s),\tilde u(s),\tilde p(s))
 -
 \tilde p_i(s)
@@ -2434,7 +2434,7 @@ Together, the system of ODEs of Eqs.~\ref{eq:ZZ2},~\ref{eq:ZZ1a}~and~\ref{eq:ZZ4
 $$
 \RR\ni s
 \to
-(\tilde x_1(s),\dots,\tilde x_n(s),\tilde u(s),\tilde p_1(s),\dots,\tilde p_n(s))\in
+(\tilde x^1(s),\dots,\tilde x^n(s),\tilde u(s),\tilde p_1(s),\dots,\tilde p_n(s))\in
 \mathcal X\times \RR^{n+1}.
 %\RR^{2n+1}.
 $$
@@ -2498,19 +2498,19 @@ F(\tilde X(\sigma),\tilde U(\sigma),\tilde p(0))=0
 provides one equation to find the initial condition $\tilde p(0)=\tilde P(\sigma)$, and, using that $\tilde u(s=0)=u(\tilde X(\sigma))$, we can write  that
 \begin{eqnarray}
 \label{eq:ZZ6}
-\frac{\partial \tilde U}{\partial \sigma_j}
+\frac{\partial \tilde U}{\partial \sigma^j}
 &=&
 \sum_{i=1}^n
-\frac{\partial u}{\partial x_i}(\tilde X(\sigma))
+\frac{\partial u}{\partial x^i}(\tilde X(\sigma))
 \,
-\frac{\partial \tilde X_i}{\partial \sigma_j}(\sigma)
+\frac{\partial \tilde X^i}{\partial \sigma^j}(\sigma)
 \notag
 \\
 &=&
 \sum_{i=1}^n
 \tilde p_i(s=0)
 \,
-\frac{\partial \tilde X_i}{\partial \sigma_j}(\sigma)
+\frac{\partial \tilde X^i}{\partial \sigma^j}(\sigma)
 ,
 \notag
 \end{eqnarray}
@@ -2557,26 +2557,26 @@ $$
 for each $\sigma$, we obtain the corresponding characterstic curve $x_{\sigma}$, from where we can obtain the solution $u$ via Eq.~\ref{eq:ZZ7}.
 \end{enumerate}
 
-\subsection{Semi-linear $F$}
+\subsection{quasi-linear $F$}
 
-A common simpler case is given by a function $F$ of {\em semi-linear form}, which is defined by
+A common simpler case is given by a function $F$ of {\em quasi-linear form}, which is defined by
 $$
 F(x,v,p)
 =
 \sum_{i=1}^n
-p_i\,A_i(x,v)
+p_i\,A^i(x,v)
 -
 B(x,v)
 $$
-for some function $B:\mathcal X\times \RR\ni (x,v) \to A_i(x,v)\in \RR$ and $A_i:\mathcal X\times \RR\ni (x,v) \to A_i(x,v)\in \RR$ for $i=1,...,n$.
+for some function $B:\mathcal X\times \RR\ni (x,v) \to A^i(x,v)\in \RR$ and $A_i:\mathcal X\times \RR\ni (x,v) \to A^i(x,v)\in \RR$ for $i=1,...,n$.
 The crucial point here is that the dependence of $F$ on the $p_i$ is just linear.
 Under this circumnstances, the formalism simplifies significantly.
 Namely, the ODEs of Eq.~\ref{eq:ZZ2} are reduced to
 \begin{equation}
 \label{eq:YY1}
-\frac{d\tilde x_i}{ds}(s)
+\frac{d\tilde x^i}{ds}(s)
 =
-A_i(\tilde x(s),\tilde u(s)),
+A^i(\tilde x(s),\tilde u(s)),
 \quad
 i=1,...,n,
 \end{equation}
@@ -2592,7 +2592,7 @@ and the ODE of Eq.~\ref{eq:ZZ1a} is reduced to
 =
 B(\tilde x(s),\tilde u(s)),
 \end{equation}
-because $\frac{\partial F}{\partial p_i}(x,v,p)=A_i(x,v)$, so
+because $\frac{\partial F}{\partial p_i}(x,v,p)=A^i(x,v)$, so
 $$
 \sum_{i=1}^n
 \tilde{p}_i(s)
@@ -2602,18 +2602,22 @@ $$
 \sum_{i=1}^n
 \tilde{p}_i(s)
 \,
-A_i(\tilde x(s),\tilde u(s)),
+A^i(\tilde x(s),\tilde u(s)),
 $$
 and $F=0$ implies that
 $$
 \sum_{i=1}^n
 \tilde{p}_i(s)
 \,
-A_i(\tilde x(s),\tilde u(s))
+A^i(\tilde x(s),\tilde u(s))
 =
 B(\tilde x(s),\tilde u(s)).
 $$
 In other words, $p$ disappears from the system of ODEs.
+
+\subsubsection{Alternative approach}
+
+The quasi-linear case can be addressed in an alternative manner.
 
 \subsubsection{Case $B=0$}
 
@@ -2628,9 +2632,9 @@ $$
 $$
 and the system of ODEs of Eq.~\ref{eq:YY1} is reduced to
 $$
-\frac{d\tilde x_i}{ds}(s)
+\frac{d\tilde x^i}{ds}(s)
 =
-A_i(\tilde x(s),\tilde U(\sigma)),
+A^i(\tilde x(s),\tilde U(\sigma)),
 \quad
 i=1,...,n.
 $$
@@ -2737,9 +2741,9 @@ $$
 
 In this case, 
 $$
-A_x = x,
+A^x = x,
 \quad
-A_y = -2y
+A^y = -2y
 \quad
 \text{and}
 \quad
@@ -2846,11 +2850,11 @@ $$
 
 In this case,
 $$
-A_x
+A^x
 =
 y,
 \quad
-A_y
+A^y
 =
 -x,
 \quad
