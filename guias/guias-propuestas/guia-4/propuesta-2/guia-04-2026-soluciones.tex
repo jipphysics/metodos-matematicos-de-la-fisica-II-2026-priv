@@ -2243,278 +2243,9 @@ Dependiendo de la relación entre las raíces $r_1$ y $r_2$, el método nos prov
 
 % https://chatgpt.com/share/6a10c3b9-f82c-83e9-95d3-1d80d8eb8901
 
-El método de las características es un procedimiento para resolver EDPs de primer orden transformándolas en sistemas de EDOs. Voy a presentarlo de la manera más general y estructurada posible.
-
-\begin{enumerate}
-\item Problema general.
-Consideremos una EDP de primer orden para una función
-$$
-u=u(x_1,\dots,x_n)
-$$
-de la forma
-$$
-F(x_1,\dots,x_n,u,u_{x_1},\dots,u_{x_n})=0.
-$$
-El caso más importante (y el más tratado en cursos iniciales) es la ecuación {\bf cuasilineal}:
-$$
-\sum_{i=1}^n a_i(x,u),\partial_i u = c(x,u).
-$$
-En dos variables:
-$$
-a(x,y,u)u_x+b(x,y,u)u_y=c(x,y,u).
-$$
-
-\item Idea fundamental.
-La idea es buscar curvas en el espacio de variables independientes a lo largo de las cuales la EDP se transforme en una EDO.
-Esas curvas se llaman {\bf características}.
-
-\item Derivada total sobre una curva
-Sea una curva parametrizada:
-$$
-x_i=x_i(s).
-$$
-Entonces:
-$$
-u(s)=u(x_1(s),\dots,x_n(s)).
-$$
-Por regla de la cadena:
-$$
-\frac{du}{ds}
-=
-\sum_{i=1}^n
-\frac{\partial u}{\partial x_i}
-\frac{dx_i}{ds}.
-$$
-Ahora elegimos las curvas de modo que
-$$
-\frac{dx_i}{ds}=a_i.
-$$
-Entonces:
-$$
-\frac{du}{ds}
-=
-\sum_i a_i \partial_i u.
-$$
-Pero la EDP dice que
-$$
-\sum_i a_i \partial_i u=c.
-$$
-Por lo tanto:
-$$
-\boxed{
-\frac{du}{ds}=c.
-}
-$$
-
-\item Sistema característico.
-La EDP queda reemplazada por el sistema de EDOs:
-$$
-\boxed{
-\begin{cases}
-\dfrac{dx_1}{ds}=a_1(x,u), \\
-\\
-\dfrac{dx_2}{ds}=a_2(x,u), \\
-\\
-\vdots \\
-\\
-\dfrac{dx_n}{ds}=a_n(x,u), \\
-\\
-\dfrac{du}{ds}=c(x,u).
-\end{cases}
-}
-$$
-Este es el sistema de características.
-
-\item Interpretación geométrica.
-La EDP prescribe la derivada direccional de $u$ en la dirección del campo vectorial
-$$
-\vec a=(a_1,\dots,a_n).
-$$
-Las características son precisamente las curvas integrales de ese campo.
-Sobre esas curvas, la EDP se vuelve una EDO ordinaria.
-
-\item Problema de Cauchy.
-Es el análogo, para EDPs, del problema de valores iniciales para EDOs.
-Más precisamente, en una EDO se busca una trayectoria solución a partir de una ecuación diferencial y un dato inicial especificado en un punto.
-En el método de las características ocurre algo análogo: en vez de especificar un punto inicial, se prescribe una curva, superficie o hipersuperficie inicial sobre la cual se conocen los valores de la solución.
-Usualmente la condición inicial se escribe:
-$$
-u|_{\Gamma}=g,
-$$
-donde $\Gamma$ es la curva (o superficie) inicial.
-Por ejemplo, en dos variables:
-$$
-(x,y)=(x_0(\tau),y_0(\tau)),
-\qquad
-u=g(\tau).
-$$
-Entonces:
-\begin{itemize}
-\item $\tau$ parametriza la curva inicial y etiqueta las distintas características que emergen de ella,
-\item $s$ parametriza el movimiento a lo largo de cada característica.
-\end{itemize}
-
-{\em Remark:}
-Es importante resaltar que, en el m\'etodo de las caracter\'isticas, no toda condici\'on inicial $u_{\Gamma}=g$ es compatible con la EDP.
-En este sentido, notar que:
-\begin{quotation}
-La hipersuperficie inicial $\Gamma$ NO debe ser tangente a las caracter\'isticas.
-\end{quotation}
-Formalmente, esto se verifica de la siguiente manera.
-Supongamos que la hipersuperficie $\Gamma\in \mathbb{R}^n$ viene dada impl\'icitamente por la ecuaci\'on
-$$
-\Phi(x_1,...,x_n)=0.
-$$
-Luego, un vector normal a $\Gamma$ en un punto $x\in \Gamma$ viene dado por
-$$
-(\nabla \Phi)(x)
-$$
-Entonces, debemos comprobar que dicho vector NO deber ser tangencial al campo vectorial definidor por el lado derecho de la EDO obtenida de la EDP en cada punto de $x\in \Gamma$.
-M\'as precisamente, se tiene que cumplir que cumplir la {\em condici\'on de NO caracteristicidad}. 
-Es decir, se tiene que cumplir que
-$$
-(a(x)).((\nabla \Phi)(x)) \neq 0
-$$
-para todo $x\in \Gamma$.
-Si esto no ocurre, la condici\'on inicial especificada por $\Gamma$ incluye una degeneraci\'on, y por ende, NO resulta compatible con la EDP.
-
-\item Procedimiento práctico:
-
-{\bf  Paso 1}
-
-Escribir la EDP como
-$$
-a u_x+b u_y=c.
-$$
-
-{\bf  Paso 2}
-
-Plantear:
-$$
-\frac{dx}{ds}=a,
-\qquad
-\frac{dy}{ds}=b,
-\qquad
-\frac{du}{ds}=c.
-$$
-
-{\bf  Paso 3}
-
-Resolver las ecuaciones para $x(s),y(s)$.
-Muchas veces:
-$$
-\frac{dy}{dx}=\frac{b}{a}.
-$$
-
-{\bf Paso 4}
-
-Resolver:
-$$
-\frac{du}{ds}=c.
-$$
-
-{\bf Paso 5}
-
-Usar los datos iniciales para determinar constantes.
-
-\item Caso homogéneo.
-Si
-$$
-a u_x+b u_y=0,
-$$
-entonces
-$$
-\frac{du}{ds}=0.
-$$
-Así:
-$$
-u=\text{constante sobre las características}.
-$$
-La solución suele escribirse:
-$$
-u=F(I_1,\dots,I_k),
-$$
-donde los $I_j$ son invariantes de las características.
-
-\item Ejemplo general clásico.
-Resolver:
-$$
-a u_x+b u_y=0,
-$$
-con $a,b$ constantes.
-
-{\bf Características}
-$$
-\frac{dy}{dx}=\frac{b}{a}.
-$$
-Entonces:
-$$
-bx-ay=C.
-$$
-Como $u$ es constante sobre ellas:
-$$
-\boxed{
-u(x,y)=F(bx-ay).
-}
-$$
-
-\item Caso completamente general (Hamilton–Jacobi)
-Para una EDP no lineal general
-$$
-F(x,y,u,p,q)=0,
-\qquad
-p=u_x,\ q=u_y,
-$$
-las características satisfacen el sistema de Charpit:
-$$
-\boxed{
-\begin{aligned}
-\frac{dx}{ds}&=F_p,\
-\frac{dy}{ds}&=F_q,\
-\frac{du}{ds}&=pF_p+qF_q,\
-\frac{dp}{ds}&=-F_x-pF_u,\
-\frac{dq}{ds}&=-F_y-qF_u.
-\end{aligned}
-}
-$$
-Ésta es la forma más general del método.
-En muchos cursos de física matemática sólo se estudia el caso lineal o cuasilineal.
-
-\item Condición de no-caracteristicidad.
-La curva inicial no debe ser tangente al campo característico.
-En 2D, si la curva inicial es
-$$
-(x_0(\tau),y_0(\tau)),
-$$
-debe cumplirse:
-$$
-a\,y_0'(\tau)-b\,x_0'(\tau)\neq0.
-$$
-Si falla esta condición:
-\begin{itemize}
-\item puede no haber unicidad,
-\item o no existir solución.
-\end{itemize}
-Eso ocurrió en el Problema 8(c).
-
-\item Interpretación física.
-Las características representan:
-\begin{itemize}
-\item trayectorias de propagación,
-\item rayos ópticos,
-\item líneas de flujo,
-\item propagación de ondas,
-\item transporte de información.
-\end{itemize}
-En ecuaciones hiperbólicas, la información viaja precisamente sobre características.
-
-\end{enumerate}
-
-\section{Problema 8), m\'etodo de las caracter\'isticas II}
-
 % https://chatgpt.com/share/6a140182-6a90-83e9-90b5-d620d5603e40
 
-\subsection{Method of characteristics}
+%\subsection{Method of characteristics}
 
 The equations
 $$
@@ -2824,7 +2555,7 @@ $$
 for each $\sigma$, we obtain the corresponding characterstic curve $x_{\sigma}$, from where we can obtain the solution $u$ via Eq.~\ref{eq:ZZ7}.
 \end{enumerate}
 
-\subsubsection{Semi-linear $F$}
+\subsection{Semi-linear $F$}
 
 A common simpler case is given by a function $F$ of {\em semi-linear form}, which is defined by
 $$
@@ -2882,9 +2613,7 @@ B(\tilde x(s),\tilde u(s)).
 $$
 In other words, $p$ disappears from the system of ODEs.
 
-\vspace{0.5cm}
-{\bf Case $B=0$:}
-\vspace{0.5cm}
+\subsubsection{Case $B=0$}
 
 When $B=0$, $\tilde u(s)=\tilde U(\sigma)$ over the characteristic curve determined by the initial condition $\tilde x(s=0)=\tilde X(\sigma)$.
 This is because when the initial condition is
@@ -2914,6 +2643,66 @@ $$
 we obtain the general solution as
 $$
 u(x) = \tilde U(\sigma(x)).
+$$
+
+\subsection{Examples}
+
+\subsubsection{Problem 8a)}
+
+$$
+\displaystyle \frac{1}{\sigma}\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y} = 0,\quad x>0,\quad u(x,0)=g(x).
+$$
+
+In this case, $F$ is semi-linear with:
+$$
+A_x = \frac{1}{\sigma} = \text{const.,}
+\quad
+A_y = 1 = \text{const.}
+\quad
+\text{and}
+\quad
+B = 0.
+$$
+Hence, the ODEs are
+$$
+\frac{d\tilde x}{ds}
+=
+\frac{1}{\sigma}
+\quad
+\text{and}
+\quad
+\frac{d\tilde y}{ds}
+=
+1.
+$$
+These ODEs can be merged to eliminate $s$ and obtain
+$$
+\frac{d\tilde y}{d\tilde x}
+=
+\sigma
+$$
+with solution
+$$
+\tilde y = \sigma \tilde x + C
+$$
+for some constant $C$.
+
+\subsubsection{Problem 8b)}
+
+$$
+\displaystyle x\frac{\partial u}{\partial x} - 2y\frac{\partial u}{\partial y} = 0,\quad u(1,y)=1+2y.
+$$
+
+\subsubsection{Problem 8c)}
+
+$$
+\displaystyle x\frac{\partial u}{\partial x} - 2y\frac{\partial u}{\partial y} = u^2,\quad u(x,0)=x^3.
+$$
+
+\subsubsection{Problem 8d)}
+
+$$
+\displaystyle y\frac{\partial u}{\partial x} - x\frac{\partial u}{\partial y} = e^{u},\quad u(0,y)=y^2-1.
 $$
 
 
