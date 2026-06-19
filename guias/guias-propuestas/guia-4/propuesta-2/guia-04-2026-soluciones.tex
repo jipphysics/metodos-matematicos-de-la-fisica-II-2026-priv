@@ -2262,7 +2262,7 @@ i=1,...,n,
 $$
 for
 $$
-x=(x_1,\dots,x_n)\in\RR^n,
+x=(x_1,\dots,x_n)\in\mathcal X,
 \qquad
 u:\RR^n\ni x\to u(x)\in \RR,
 \quad
@@ -2271,10 +2271,11 @@ u:\RR^n\ni x\to u(x)\in \RR,
 p=(p_1,\ldots,p_n)\in \RR^n,
 $$
 define a first-order Partial Differential Equation (PDE) for the function $u$.
+Here, $\mathcal X$ is an $n$-dimensional manifold.
 
 To solve the PDE, the method of characteristics seek to find curves
 $$
-\tilde x:s\mapsto \tilde x(s)\in\RR^n,
+\tilde x:s\mapsto \tilde x(s)\in\mathcal X,
 $$
 called {\em characteristic curves}, along which the PDE reduces to a system of Ordinary Differential Equations (ODEs).
 To see how this works, assume that $u$ is a solution, and define along a characeristic curve $\tilde x$ the functions
@@ -2433,14 +2434,16 @@ Together, the system of ODEs of Eqs.~\ref{eq:ZZ2},~\ref{eq:ZZ1a}~and~\ref{eq:ZZ4
 $$
 \RR\ni s
 \to
-(\tilde x_1(s),\dots,\tilde x_n(s),\tilde u(s),\tilde p_1(s),\dots,\tilde p_n(s))\in\RR^{2n+1}.
+(\tilde x_1(s),\dots,\tilde x_n(s),\tilde u(s),\tilde p_1(s),\dots,\tilde p_n(s))\in
+\mathcal X\times \RR^{n+1}.
+%\RR^{2n+1}.
 $$
 Therefore, at least in principle, a particular curve requires the specification of an $(2n+1)$-dimensional initial condition given by
 $$
 (\tilde x_1(0),\dots,\tilde x_n(0))
 =
 \tilde X
-\in \RR^n
+\in \mathcal X,
 $$
 $$
 \tilde u(0) = \tilde U
@@ -2471,7 +2474,7 @@ $$
 $$
 where 
 $$
-\tilde X:\Sigma \ni \sigma \to \tilde X(\sigma)\in \RR^n
+\tilde X:\Sigma \ni \sigma \to \tilde X(\sigma)\in \mathcal X
 $$
 and
 $$
@@ -2484,7 +2487,7 @@ $$
 \Gamma
 =\{\gamma_{\sigma}(s):s\in \RR,\sigma\in \Sigma\}.
 $$
-Notice that $\Sigma$ is an $(n-1)$-dimensional submanifold of $\RR^n$ orthogonal to the flow defined by the system of ODEs.
+Notice that $\Sigma$ is an $(n-1)$-dimensional submanifold of $\mathcal X\times \RR$ orthogonal to the flow defined by the system of ODEs.
 In other words, $\Sigma$ cuts $\RR^n$, but not along the direction of the flow defined by the system of ODEs for $\tilde x$.
 Now, to obtain each curve $\gamma_{\sigma}$, besides the initial conditions $\tilde X$ and $\tilde U$ for $\tilde x$ and $\tilde u$, respectively, we also need the initial condition $\tilde P$ for $\tilde p$.
 Fortunatelly, the constraints defining the PDE provide such initial condition $\tilde P$.
@@ -2515,14 +2518,14 @@ provides one equation to find the initial condition $\tilde p(0)=\tilde P(\sigma
 which provide another $n-1$ equations to determine the initial condition $\tilde p(s=0)=\tilde P(\sigma)$.
 Finally, notice that
 $$
-\Sigma\times \RR \ni (\sigma,s) \leftrightarrow \tilde x_{\sigma}(s)\in \RR^n
+\Sigma\times \RR \ni (\sigma,s) \leftrightarrow \tilde x_{\sigma}(s)\in \mathcal X
 $$
-is a bijection, where $x_{\sigma}:\RR\ni s\to x_{\sigma}(s)\in \RR^n$ denotes the characteristic curve obtained from the initial condition $x_{\sigma}(s=0)=\tilde X(\sigma)$.
+is a bijection, where $x_{\sigma}:\RR\ni s\to x_{\sigma}(s)\in \mathcal X$ denotes the characteristic curve obtained from the initial condition $x_{\sigma}(s=0)=\tilde X(\sigma)$.
 With the inverse of this map
 $$
-\RR^n \ni x\to \sigma(x) \in \Sigma
+\mathcal X \ni x\to \sigma(x) \in \Sigma
 \quad
-\RR^n \ni x\to s(x) \in \RR,
+\mathcal X \ni x\to s(x) \in \RR,
 $$
 we can obtain the solution $u$ from the identity
 \begin{equation}
@@ -2566,7 +2569,7 @@ p_i\,A_i(x,v)
 -
 B(x,v)
 $$
-for some function $B:\RR^n\times \RR\ni (x,v) \to A_i(x,v)\in \RR$ and $A_i:\RR^n\times \RR\ni (x,v) \to A_i(x,v)\in \RR$ for $i=1,...,n$.
+for some function $B:\mathcal X\times \RR\ni (x,v) \to A_i(x,v)\in \RR$ and $A_i:\mathcal X\times \RR\ni (x,v) \to A_i(x,v)\in \RR$ for $i=1,...,n$.
 The crucial point here is that the dependence of $F$ on the $p_i$ is just linear.
 Under this circumnstances, the formalism simplifies significantly.
 Namely, the ODEs of Eq.~\ref{eq:ZZ2} are reduced to
@@ -2622,7 +2625,7 @@ $$
 $$
 the ODE of Eq.~\ref{eq:YY2} is reduced to
 $$
-\frac{d \tilde u}{ds}(s) = 0
+\frac{d \tilde u}{ds}(s) = 0,
 $$
 and the system of ODEs of Eq.~\ref{eq:YY1} is reduced to
 $$
@@ -2650,42 +2653,74 @@ $$
 \subsubsection{Problem 8a)}
 
 $$
-\displaystyle \frac{1}{\sigma}\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y} = 0,\quad x>0,\quad u(x,0)=g(x).
+\displaystyle \frac{1}{C}\frac{\partial u}{\partial x} + \frac{\partial u}{\partial y} = 0,\quad x>0,\quad u(x,0)=g(x).
 $$
 
 In this case, $F$ is semi-linear with:
 $$
-A_x = \frac{1}{\sigma} = \text{const.,}
+A_x = \frac{1}{C} = \text{const.,}
 \quad
 A_y = 1 = \text{const.}
 \quad
 \text{and}
 \quad
-B = 0.
+B = 0
 $$
+where $C>0$ is just a constant.
+Also, $\mathcal X = (0,\infty)\times \RR$,
+$$
+\tilde X(\sigma) = (\sigma,0) \in (0,\infty)\times \{0\} = \Sigma
+\quad
+\text{and}
+\quad
+\tilde U(\sigma) = g(\sigma)
+$$
+for $\sigma\in (0,\infty)$.
 Hence, the ODEs are
 $$
 \frac{d\tilde x}{ds}
 =
-\frac{1}{\sigma}
+\frac{1}{C}
 \quad
 \text{and}
 \quad
 \frac{d\tilde y}{ds}
 =
-1.
+1,
 $$
-These ODEs can be merged to eliminate $s$ and obtain
+and have solutions
 $$
-\frac{d\tilde y}{d\tilde x}
+\tilde x = \frac{1}{C} s + X
+\quad
+\text{and}
+\quad
+\tilde y = s + Y,
+$$
+where $X$ and $Y$ are integration constants.
+These integration constant generally depend on $\sigma$ and should be such that
+$$
+(\tilde{x}_{\sigma}(s=0),\tilde{y}_{\sigma}(s=0)) = \tilde X(\sigma) = (\sigma,0).
+$$
+Therefore,
+$$
+X(\sigma) = \sigma
+\quad
+\text{and}
+\quad
+Y(\sigma) = 0.
+$$
+Combinig all these results to eliminate $s$, we find that the characteristic curves satisfy
+$$
+\sigma = \tilde x_{\sigma} - \frac{1}{C}\tilde y_{\sigma}.
+$$
+Therefore, the solution is
+$$
+u(x,y)
 =
-\sigma
+\tilde U(\sigma(x,y))
+=
+g(x-y/C).
 $$
-with solution
-$$
-\tilde y = \sigma \tilde x + C
-$$
-for some constant $C$.
 
 \subsubsection{Problem 8b)}
 
