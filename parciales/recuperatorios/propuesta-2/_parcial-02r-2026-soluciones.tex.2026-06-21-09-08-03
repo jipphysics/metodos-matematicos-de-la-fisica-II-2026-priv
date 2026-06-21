@@ -1,0 +1,560 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=51\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Recuperatorio del 2$^\circ$ Parcial}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Recuperatorio Parcial 2 -- 19/06/2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+\vspace{-0.7\baselineskip}
+\begin{center}
+\bf
+Escriba su nombre en cada página y numere todas las páginas\\
+Resuelva cada problema en hojas separadas
+\end{center}
+\vspace{-1.0\baselineskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\prob Resuelva la ecuación de Laplace $\nabla^2 u = 0$ en el interior del disco unitario $r \leq 1$ con condición de borde
+\[
+u(1, \phi) = 
+\begin{cases}
+V_0, & 0 < \phi < \pi, \\
+0, & \pi < \phi < 2\pi.
+\end{cases}
+\]
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1)}
+\vspace{0.5cm}
+
+Ecuación de Laplace en el disco unitario.
+Resolver
+$$
+\nabla^2u=0,
+\qquad 0\le r<1,
+$$
+con
+$$
+u(1,\phi)=
+\begin{cases}
+V_0,&0<\phi<\pi,\\
+0,&\pi<\phi<2\pi.
+\end{cases}
+$$
+
+{\bf 1. Solución general en coordenadas polares}
+
+La ecuación de Laplace es
+$$
+\frac{\partial^2u}{\partial r^2}
++\frac1r\frac{\partial u}{\partial r}
++\frac1{r^2}\frac{\partial^2u}{\partial\phi^2}=0.
+$$
+Buscamos $u(r,\phi)=R(r)\Phi(\phi)$.
+La separación produce
+$$
+\Phi''+n^2\Phi=0,
+$$
+$$
+r^2R''+rR'-n^2R=0.
+$$
+Las soluciones regulares en $r=0$ son
+$$
+R_n(r)=r^n.
+$$
+Por tanto,
+$$
+u(r,\phi)
+=
+A_0
++\sum_{n=1}^{\infty}
+r^n
+\left(
+A_n\cos n\phi
++
+B_n\sin n\phi
+\right).
+$$
+
+{\bf 2. Serie de Fourier de la condición de borde}
+
+En $r=1$,
+$$
+u(1,\phi)=f(\phi).
+$$
+Calculamos los coeficientes de Fourier.
+
+Término constante:
+$$
+A_0
+=
+\frac1{2\pi}
+\int_0^{2\pi}f(\phi)d\phi
+=
+\frac1{2\pi}(V_0\pi)
+=
+\frac{V_0}{2}.
+$$
+Coeficientes coseno:
+$$
+A_n
+=
+\frac1\pi
+\int_0^{2\pi}
+f(\phi)\cos(n\phi)d\phi.
+$$
+Como $f=V_0$ en $(0,\pi)$,
+$$
+A_n
+=
+\frac{V_0}{\pi}
+\int_0^\pi \cos(n\phi)d\phi
+=
+\frac{V_0}{\pi}
+\frac{\sin(n\pi)}{n}
+=
+0.
+$$
+Luego
+$$
+\boxed{A_n=0.}
+$$
+Coeficientes seno:
+$$
+B_n
+=
+\frac{V_0}{\pi}
+\int_0^\pi
+\sin(n\phi)\,d\phi.
+$$
+$$
+\frac{V_0}{\pi}
+\frac{1-\cos(n\pi)}{n}.
+$$
+Como
+$$
+1-\cos(n\pi)
+=
+1-(-1)^n,
+$$
+obtenemos
+$$
+B_n=
+\begin{cases}
+\dfrac{2V_0}{n\pi},&n\ \text{impar},\\
+0,&n\ \text{par}.
+\end{cases}
+$$
+
+{\bf 3. Solución final}
+
+La solución armónica dentro del disco es
+$$
+\boxed{
+u(r,\phi)
+=
+\frac{V_0}{2}
++
+\frac{2V_0}{\pi}
+\sum_{m=0}^{\infty}
+\frac{r^{2m+1}}{2m+1}
+\sin\big((2m+1)\phi\big).
+}
+$$
+
+{\bf Observación}
+
+Puede verificarse que en el borde $r=1$ esta serie reproduce exactamente la expansión de Fourier de una función escalón angular.
+
+
+
+\prob Una cuerda de largo $\ell$ y densidad uniforme se tensa fijando sus extremos a dos soportes
+inamovibles; la cuerda se halla inmersa en un medio que provee una fuerza disipativa $-2\gamma u_t$, de modo que su desplazamiento transversal $u(x,t)$ respecto de la posición de equilibrio est á bien modelado por la ecuación
+$$
+u_{tt} + 2\gamma u_t - c2u_{xx} = 0
+$$
+con y una constante positiva y
+$u(0,t) = u(l,t) = 0\, \forall t$. 
+Determine los modos espaciales de oscilación y diga cuáles oscilarán amortiguadamente (es decir, con dependencia temporal de la forma
+$$
+e^{-\eta t}
+(a\cos (\omega t)+b\sin(\omega t))
+$$
+y con qué frecuencias, y cuáles estarán sobreamortiguados (con dependencia temporal de la forma $ae^{-\eta_1 t}+be^{-\eta_2 t}$). ¿Qué condición debe cumplirse para que {\em no haya} modos sobreamortiguados?
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+Buscamos soluciones separables de la forma
+$$
+u(x,t)=X(x)T(t).
+$$
+Sustituyendo en
+$$
+u_{tt}+2\gamma u_t-c^2u_{xx}=0
+$$
+obtenemos
+$$
+XT''+2\gamma XT'-c^2X''T=0.
+$$
+Dividiendo por $XT$,
+$$
+\frac{T''}{T}+2\gamma\frac{T'}{T}
+=
+c^2\frac{X''}{X}.
+$$
+Como el miembro izquierdo depende sólo de $t$ y el derecho sólo de $x$, ambos deben ser iguales a una constante. Es conveniente escribir
+$$
+\frac{X''}{X}=-\lambda,
+$$
+de modo que
+$$
+X''+\lambda X=0,
+$$
+con las condiciones de borde
+$$
+X(0)=X(\ell)=0.
+$$
+
+{\bf 1. Modos espaciales}
+
+El problema de autovalores
+$$
+X''+\lambda X=0,
+\qquad
+X(0)=X(\ell)=0
+$$
+tiene soluciones no triviales únicamente para
+$$
+\lambda_n=\left(\frac{n\pi}{\ell}\right)^2,
+\qquad n=1,2,3,\ldots
+$$
+y los correspondientes modos espaciales son
+$$
+X_n(x)=\sin\left(\frac{n\pi x}{\ell}\right).
+$$
+
+{\bf 2. Ecuación temporal}
+
+Para cada $n$,
+$$
+T_n''+2\gamma T_n'
++c^2\left(\frac{n\pi}{\ell}\right)^2T_n=0.
+$$
+Buscamos soluciones exponenciales
+$$
+T(t)=e^{rt},
+$$
+donde $r$ es una constante a determinar.
+Entonces
+$$
+T'(t)=re^{rt},
+\qquad
+T''(t)=r^2e^{rt}.
+$$
+Sustituyendo en la ecuación diferencial,
+$$
+r^2e^{rt}
++
+2\gamma re^{rt}
++
+c^2\left(\frac{n\pi}{\ell}\right)^2e^{rt}
+=0.
+$$
+Factorizando $e^{rt}$,
+$$
+e^{rt}
+\left[
+r^2+2\gamma r
++c^2\left(\frac{n\pi}{\ell}\right)^2
+\right]
+=0.
+$$
+Como $e^{rt}\neq 0$ para todo $t$ finito, necesariamente debe cumplirse
+$$
+\boxed{
+r^2+2\gamma r
++c^2\left(\frac{n\pi}{\ell}\right)^2=0.
+}
+$$
+Esta es la {\em ecuación característica} (o ecuación auxiliar) asociada a la ecuación diferencial para $T$.
+Resolviéndola mediante la fórmula cuadrática, encontramos las raíces $$
+r=-\gamma
+\pm
+\sqrt{
+\gamma^2
+-c^2\left(\frac{n\pi}{\ell}\right)^2
+}.
+$$
+La naturaleza del modo depende del signo del discriminante.
+
+{\bf 3. Modos oscilatorios amortiguados}
+
+Si
+$$
+\gamma^2
+<
+c^2\left(\frac{n\pi}{\ell}\right)^2,
+$$
+las raíces son complejas:
+$$
+r=-\gamma\pm i\omega_n,
+$$
+donde
+$$
+\omega_n
+=
+\sqrt{
+c^2\left(\frac{n\pi}{\ell}\right)^2
+-\gamma^2
+}.
+$$
+Entonces
+$$
+T_n(t)
+=
+e^{-\gamma t}
+\Bigl(
+A_n\cos(\omega_n t)
++
+B_n\sin(\omega_n t)
+\Bigr).
+$$
+Por lo tanto, el modo espacial
+$$
+\sin\left(\frac{n\pi x}{\ell}\right)
+$$
+oscila amortiguadamente con frecuencia angular
+$$
+\boxed{
+\omega_n
+=
+\sqrt{
+c^2\left(\frac{n\pi}{\ell}\right)^2
+-\gamma^2
+}.
+}
+$$
+
+{\bf 4. Modos sobreamortiguados}
+
+Si
+$$
+\gamma^2
+>
+c^2\left(\frac{n\pi}{\ell}\right)^2,
+$$
+las raíces son reales:
+$$
+r_{n,\pm}
+=
+-\gamma
+\pm
+\sqrt{
+\gamma^2
+-c^2\left(\frac{n\pi}{\ell}\right)^2
+}.
+$$
+Entonces
+$$
+T_n(t)
+=
+A_n e^{r_{n,+}t}
++
+B_n e^{r_{n,-}t},
+$$
+o equivalentemente
+$$
+T_n(t)
+=
+A_n e^{-\eta_1 t}
++
+B_n e^{-\eta_2 t},
+$$
+con
+$$
+\eta_{1,2}
+=
+\gamma
+\mp
+\sqrt{
+\gamma^2
+-c^2\left(\frac{n\pi}{\ell}\right)^2
+}.
+$$
+Estos modos están sobreamortiguados.
+
+{\bf 5. Caso crítico}
+
+Si
+$$
+\gamma^2
+=
+c^2\left(\frac{n\pi}{\ell}\right)^2,
+$$
+el modo es críticamente amortiguado:
+$$
+T_n(t)
+=
+(A_n+B_n t)e^{-\gamma t}.
+$$
+
+{\bf 6. Condición para que no haya modos sobreamortiguados}
+
+Queremos que para todo $n\ge 1$,
+$$
+\gamma^2
+<
+c^2\left(\frac{n\pi}{\ell}\right)^2.
+$$
+El lado derecho es mínimo para $n=1$, por lo que basta exigir
+$$
+\gamma^2
+<
+c^2\left(\frac{\pi}{\ell}\right)^2.
+$$
+Es decir,
+$$
+\boxed{
+\gamma < \frac{\pi c}{\ell}.
+}
+$$
+Bajo esta condición todos los modos son subamortiguados (oscilatorios amortiguados) y no existe ningún modo sobreamortiguado.
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
