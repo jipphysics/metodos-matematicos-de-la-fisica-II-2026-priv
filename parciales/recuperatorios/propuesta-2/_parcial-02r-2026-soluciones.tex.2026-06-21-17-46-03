@@ -175,7 +175,7 @@ V_0,&0<\phi<\pi,\\
 \end{cases}
 $$
 
-{\bf 1. Separaci\'on de variables en coordenadas polares}
+{\bf 1. Solución general en coordenadas polares}
 
 La ecuación de Laplace en coordenadas polares es
 $$
@@ -205,189 +205,148 @@ $$
 $$
 La separación produce
 $$
-\Phi''+\lambda\Phi=0,
+\Phi''-\lambda\Phi=0,
 $$
 $$
-r^2R''+rR'-\lambda R=0
+r^2R''+rR'+\lambda R=0
 $$
 para alguna constante de separaci\'on $\lambda$.
 
 {\bf 2. Soluciones angulares}
 
-Las soluciones angulares tienen que ser peri\'odicas, i.e. tienen que satisfacer
+Abordamos primero la ecuaci\'on para $\Phi$.
+La soluci\'on general es de la forma
+$$
+\Phi(\phi)
+=
+A e^{\mu \phi}
++
+B e^{-\mu \phi}
+$$
+donde $\mu=\sqrt{\lambda}\in \CC$ es, por el momento, una constante arbitraria.
+Efectivamente, calculando las derivadas
+$$
+\Phi'(\phi) = \mu A e^{\mu \phi} - \mu B e^{-\mu \phi}
+$$
+y
+$$
+\Phi''(\phi) = \mu^2 A e^{\mu \phi} + \mu^2 B e^{-\mu \phi} = \mu^2 \Phi(\phi) = \lambda \Phi(\phi),
+$$
+verificamos que es soluci\'on.
+
+La soluci\'on general tiene que ser peri\'odica, i.e. tiene que satisfacer
 $$
 \Phi(\phi + 2\pi) = \Phi(\phi)
 $$
 para todo $\phi \in \RR$.
-
-Para $\lambda=0$, la soluci\'on es de la forma
-$$
-\Phi(\phi) = A + B\phi
-$$
-donde $A$ y $B$ son constantes de integración.
-La periodicidad de $\Phi$ implica que $B=0$, resultando en la soluci\'on trivial $\Phi=A=\text{constante}$.
-
-Para $\lambda=\mu^2>0$, las soluciones son de la forma
-$$
-\Phi(\phi) = A\cos(\mu \phi) + B\sin(\mu \phi)
-$$
-ya que
-$$
-\Phi'(\phi) = -\mu A\sin(\mu \phi) + \mu B\cos(\mu \phi)
-$$
-y por ende
+Esto s\'olo puede ocurrir si
 \begin{eqnarray}
-\Phi''(\phi) 
-&=& 
--\mu^2 A\cos(\mu \phi) -\mu^2 B\sin(\mu \phi) 
+e^{\mu \phi}
+&=&
+e^{\mu (\phi+2\pi)}
 \notag
 \\
+e^{\mu \phi}
 &=&
--\mu^2 \Phi(\phi)
+e^{\mu \phi}
+e^{2\pi \mu}
 \notag
 \\
-\Phi''(\phi) 
-+
-\mu^2 
-\Phi(\phi)
+1
 &=&
-0
-\notag
-\\
-\Phi''(\phi) 
-+
-\lambda
-\Phi(\phi)
-&=&
-0
+e^{2\pi \mu}
 \notag
 \end{eqnarray}
-para todo $\phi\in \RR$.
-Estas soluciones satisfacen la periodicidad requerida si
+lo cu\'al es cierto si y s\'olo si
 $$
-\cos(2\pi\mu + \mu \phi)
-=
-\cos(\mu \phi)
+2\pi\mu = 2\pi in
 $$
-%o, equivalentemente, si
-%$$
-%\sin(2\pi\mu + \mu \phi)
-%=
-%\sin(\mu \phi)
-%$$
-para todo $\phi$.
-En particular, para $\phi=0$, esto implica que
+para $n\in \ZZ$.
+Luego, los autovalores son
 $$
-\cos(2\pi\mu)
-=
-\cos(0) = 1
+\lambda_n = \mu^2 = (in)^2 = -n^2
 $$
-o, equivalentemente, que
+y las correspondientes autofunciones son
 $$
-2\pi \mu = 2\pi n
+\Phi_n(\phi) = e^{in\phi}
 $$
-para todo $n\in \ZZ$, de modo que la constante de separaci\'on adquiere los valores
-$$
-\lambda_n = n^2
-$$
-para todo $n\in \ZZ$.
-Sin embargo, notar que el caso $n=0$ coincide con la soluci\'on constante que ya obtuvimos para el caso $\lambda=0$.
-Por otro lado, los casos $n<0$ resultan linealmente dependendientes de los casos con $n>0$.
+para $n\in \ZZ$.
 
-Para $\lambda=-\mu^2<0$, las soluciones son de la forma
+{\bf 2. Soluciones radiales}
+
+La parte radial corresponda a una ecuaci\'on diferencial equidimensional de {\em Euler-Cauchy}. 
+Por ende, buscamos soluciones de la forma
 $$
-\Phi(\phi)
-=
-Ae^{\mu\phi}
-+
-Be^{-\mu\phi}
+R(r) = r^{\alpha}
 $$
-ya que
+que llevan a
 $$
-\Phi'(\phi)
-=
-\mu A e^{\mu\phi}
--
-\mu B e^{-\mu \phi},
-$$
-y por ende
-\begin{eqnarray}
-\Phi''(\phi)
-&=&
-\mu^2 A e^{\mu \phi}
-+
-\mu^2 B e^{-\mu \phi}
-\notag
-\\
-&=&
-\mu^2 \Phi(\phi)
-\notag
-\\
-\Phi''(\phi)
--
-\mu^2 \Phi(\phi)
-&=&
 0
-\notag
-\\
-\Phi''(\phi)
-+
-\lambda \Phi(\phi)
-&=&
-0.
-\notag
-\end{eqnarray}
-Sin embargo, estas soluciones tienen que descartarse ya que no pueden satisfacer las condiciones de periodicidad requeridas.
-
-Teniendo en cuenta todo lo anterior, vemos que el conjunto de autofunciones linealmente independientes que satisfacen las condiciones de periodicidad requeridas se obtiene para $n=0,1,2,...$~.
-M\'as precisamente, estas son
-$$
-\cos(n\phi) \quad \text{y} \quad \sin(n\phi).
-$$
-para todo $n=0,1,2,...$~, incluyendo el caso particular $n=0$ que resulta en la autofunci\'on trivial $\cos (0) = 1 = \text{constante}$.
-
-{\bf 3. Soluciones radiales}
-
-La parte radial corresponda a la ecuaci\'on diferencial equidimensional de {\em Euler-Cauchy}. 
-Para $\lambda_0=0$, sus soluciones son de la forma
-$$
-R(r) = A+B\ln r
-$$
-ya que
-$$
-r^2 R'' + rR' + 0 R
 =
--r^2\frac{1}{r^2} + r \frac{1}{r}
-=
-0.
-$$
-Sin embargo, $\ln r$ diverge en $r=0$ por lo que tiene vemos necesario pedir que $B=0$, ya que las soluciones buscadas tienen que ser regulares en dicho punto.
-
-Para $\lambda_n=n^2$, las soluciones son de la forma
-$$
-R(r) = A r^{\alpha}
-$$
-puesto que
-$$
 r^2\alpha (\alpha-1)r^{\alpha-2}
 +
 r\alpha r^{\alpha-1}
--
-\lambda_n r^{\alpha}
++
+\lambda r^{\alpha}
 =
-(\alpha (\alpha-1)+\alpha-n^2)r^{\alpha}
-=
+(\alpha (\alpha-1)+\alpha+\lambda)r^{\alpha}
+$$
+para todo valor de $r\geq 0$.
+Esto lleva a
+$$
+\alpha^2 - \alpha + \alpha + \lambda = 0
+$$
+o, equivalentemente
+$$
+\alpha_n^2 = -\lambda_n = n^2,
+$$
+que tiene soluciones
+$$
+\alpha_n = n
+$$
+para $n\in \ZZ$~.
+Tambi\'en hay que considerar que el caso $n=0$, que corresponde a $\lambda_n=0$, admite una una soluci\'on de la forma
+$$
+R(r) = \ln r
+$$
+ya que
+$$
 0
+=
+r^2 R'' + rR' + 0 R
+=
+-r^2\frac{1}{r^2} + r \frac{1}{r}
 $$
-puede satisfacerse para todo $r\geq 0$ y $n=1,2,...$ si
+se satisface.
+Por ende, las autofunciones son
 $$
-\alpha_n = \pm n.
+\ln r
+\quad
+\text{y}
+\quad
+ r^n, n\in \ZZ.
 $$
-Sin embargo, las soluciones con $\alpha_n=-n<0$ tienen que descartarse porque divergen en $r=0$.
+donde $1$ y $\ln r$ corresponden al autovalor $\lambda_0=0$ y, $e^{in}$ y $e^{-in}$ corresponden al autovalor $\lambda_n=-n^2$.
 
-{\bf 4. Soluci\'on general}
+{\bf 2. Soluci\'on general}
 
-Combinando los resultados anteriores, determinamos que la soluci\'on general que satisface las condiciones de periodicidad requeridas es de la forma
+La soluci\'on general es de la forma
+$$
+u(r,\phi)
+=
+A_0
+\ln r
++
+\sum_{n\in \ZZ}
+B_n 
+r^n
+e^{in\phi}
+$$
+para constantes arbitrarias $A_0,B_n\in \CC$.
+
+
+
+ o, equivalentemente
 $$
 u(r,\phi)
 =
@@ -395,99 +354,103 @@ A_0
 +
 \sum_{n\in \NN}
 r^n
-\big(
+\bigg(
 A_n
 \cos n\phi
 +
 B_n
 \sin n\phi
-\big)
+\bigg)
 $$
-para constantes arbitrarias $A_0, A_n$ y $B_n$ en $\RR$.
 
-{\bf 5. Serie de Fourier de la condición de borde}
 
-La condición de borde debe expandirse en serie de Fourier y los coeficientes de dicha expansión determinan los coeficientes $A_0$, $A_n$ y $B_n$ de la solución interior.
-M\'as precisamente,
+
+
+
+
+
+
+
+Las soluciones regulares en $r=0$ son
 $$
-u(1,\phi)
+R_n(r)=r^n.
+$$
+Por tanto,
+$$
+u(r,\phi)
 =
 A_0
++\sum_{n=1}^{\infty}
+r^n
+\left(
+A_n\cos n\phi
 +
-\sum_{n=1}^{\infty}
-\big(
-A_n
-\cos n\phi
-+
-B_n
-\sin n\phi
-\big)
-.
+B_n\sin n\phi
+\right).
 $$
-Luego, el término constante resulta ser:
+
+{\bf 2. Serie de Fourier de la condición de borde}
+
+En $r=1$,
+$$
+u(1,\phi)=f(\phi).
+$$
+Calculamos los coeficientes de Fourier.
+
+Término constante:
 $$
 A_0
 =
 \frac1{2\pi}
-\int_0^{2\pi}u(1,\phi)\,d\phi
+\int_0^{2\pi}f(\phi)d\phi
 =
 \frac1{2\pi}(V_0\pi)
 =
-\frac{V_0}{2},
+\frac{V_0}{2}.
 $$
-los coeficientes de los cosenos resultan ser:
-\begin{eqnarray}
+Coeficientes coseno:
+$$
 A_n
-&=&
+=
 \frac1\pi
 \int_0^{2\pi}
-u(1,\phi)\,\cos(n\phi)\,d\phi
-\notag
-\\
-&=&
+f(\phi)\cos(n\phi)d\phi.
+$$
+Como $f=V_0$ en $(0,\pi)$,
+$$
+A_n
+=
 \frac{V_0}{\pi}
-\int_0^\pi \cos(n\phi)\,d\phi
-\notag
-\\
-&=&
+\int_0^\pi \cos(n\phi)d\phi
+=
 \frac{V_0}{\pi}
 \frac{\sin(n\pi)}{n}
-\notag
-\\
-&=&
-0
-.
-\notag
-\end{eqnarray}
-y los coeficientes de los senos:
-\begin{eqnarray}
+=
+0.
+$$
+Luego
+$$
+\boxed{A_n=0.}
+$$
+Coeficientes seno:
+$$
 B_n
-&=&
+=
 \frac{V_0}{\pi}
 \int_0^\pi
-\sin(n\phi)\,d\phi
-\notag
-\\
-&=&
+\sin(n\phi)\,d\phi.
+$$
+$$
 \frac{V_0}{\pi}
-\frac{1-\cos(n\pi)}{n}
-\notag
-\\
-&=&
-\frac{V_0}{\pi n}
-\big(
+\frac{1-\cos(n\pi)}{n}.
+$$
+Como
+$$
 1-\cos(n\pi)
-\big)
-\notag
-\\
-&=&
-\frac{V_0}{\pi n}
-\big(
-1-(-1)^n
-\big)
-\notag
-\end{eqnarray}
-o, equivalentemente:
+=
+1-(-1)^n,
+$$
+obtenemos
 $$
 B_n=
 \begin{cases}
@@ -496,7 +459,7 @@ B_n=
 \end{cases}
 $$
 
-{\bf 6. Solución final}
+{\bf 3. Solución final}
 
 La solución armónica dentro del disco es
 $$
