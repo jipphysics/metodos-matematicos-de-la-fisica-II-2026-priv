@@ -2248,9 +2248,10 @@ Dependiendo de la relación entre las raíces $r_1$ y $r_2$, el método nos prov
 %\subsection{Method of characteristics}
 
 The equations
-$$
+\begin{equation}
+\label{eq:UU1}
 F(x^1,\dots,x^n,v,p_1,\dots,p_n)=0,
-$$
+\end{equation}
 $$
 v=u(x)
 $$
@@ -2330,91 +2331,61 @@ Moreover, by direct substitution of Eq.~\ref{eq:ZZ1} into Eq.~\ref{eq:ZZ2}, we o
 s\in \RR,
 \end{equation}
 which is an ODE for $\tilde{u}$.
-Now, we need to obtain a system of ODEs for the $\tilde{p}_i$.
-For this, we differentiate the constraint
-$$
-\tilde F(s)
-:=
-F(\tilde x(s),\tilde u(s),\tilde p(s))=0
-$$
-along the characteristic curve, yielding
 % https://chatgpt.com/share/6a391d38-3a14-83e9-bfcc-09330c4b8313
+Now, we need to obtain a system of ODEs for the $\tilde{p}_i$.
+For this, we first differentiante $\tilde p_i$ to obtain
+\begin{equation}
+\label{eq:UU3}
+\frac{d\tilde p_i}{ds}(s)
+=
+\sum_{j=1}^n
+\frac{\partial^2 u}{\partial x^j \partial x^i}(\tilde x(s))
+\frac{d \tilde x^j}{ds}(s)
+=
+\sum_{j=1}^n
+\frac{\partial^2 u}{\partial x^j \partial x^i}(\tilde x(s))
+\frac{\partial F}{\partial p_i}(\tilde x(s),\tilde u(s),\tilde p(s))
+\end{equation}
+where we have used Eq.~\ref{eq:ZZ2}.
+Next, we differentiate the function
+$$
+G:\mathcal X\ni x\to G(x) := F(x,u(x),\partial u(x)) \in \RR
+$$
+where
+$$
+\partial u(x)
+=
+\bigg(\frac{\partial u}{\partial x^1}(x),...,\frac{\partial u}{\partial x^n}(x)\bigg),
+$$
+to find
 \begin{eqnarray}
-\label{eq:ZZ3}
-0
+\frac{\partial G}{\partial x^i}(x)
 &=&
-\frac{d\tilde F}{ds}(s)
-%\notag
-\\
-&=&
-\sum_{i=1}^n
-\frac{\partial F}{\partial x^i}
-(\tilde x(s),\tilde u(s),\tilde p(s))
-\,
-\frac{d \tilde x^i}{ds}(s)
+\frac{\partial F}{\partial x^i}(x,u(x),\partial u(x))
 +
-\frac{\partial F}{\partial v}
-(\tilde x(s),\tilde u(s),\tilde p(s))
-\,
-\frac{d \tilde u}{ds}(s)
+\frac{\partial F}{\partial v}(x,u(x),\partial u(x))
+\frac{\partial u}{\partial x^i}(x)
 +
-\sum_{i=1}^n
-\frac{\partial F}{\partial p_i}
-(\tilde x(s),\tilde u(s),\tilde p(s))
-\,
-\frac{d \tilde p_i}{ds}(s)
-\notag
-\\
-&=&
-\sum_{i=1}^n
-\bigg(
-\frac{\partial F}{\partial x^i}
-(\tilde x(s),\tilde u(s),\tilde p(s))
-\,
-\frac{d \tilde x^i}{ds}(s)
-+
-\frac{\partial F}{\partial v}
-(\tilde x(s),\tilde u(s),\tilde p(s))
-\,
-\tilde p_i(s)
-\,
-\frac{\partial F}{\partial p_i}
-(\tilde x(s),\tilde u(s),\tilde p(s))
-\notag
-\\
-&&
-\quad
-\quad
-+
-\frac{\partial F}{\partial p_i}
-(\tilde x(s),\tilde u(s),\tilde p(s))
-\,
-\frac{d \tilde p_i}{ds}(s)
-\bigg)
-\notag
-\\
-&=&
-\sum_{i=1}^n
-\frac{d \tilde x^i}{ds}(s)
-\bigg(
-\frac{\partial F}{\partial x^i}
-(\tilde x(s),\tilde u(s),\tilde p(s))
-+
-\tilde p_i(s)\,
-\frac{\partial F}{\partial v}
-(\tilde x(s),\tilde u(s),\tilde p(s))
-+
-\frac{\partial F}{\partial p_i}
-(\tilde x(s),\tilde u(s),\tilde p(s))
-\bigg)
-.
+\sum_{j=1}^n
+\frac{\partial F}{\partial p_j}(x,u(x),\partial u(x))
+\frac{\partial^2 u}{\partial x^i\partial x^j}(x)
 \notag
 \end{eqnarray}
-Now, assuming that the curves are always ``on the move'', meaning that the derivatives
-$$
-\frac{d\tilde x^i}{ds}(s)
-$$
-never vanish  as $s$ changes, at least generally, then Eq.~\ref{eq:ZZ3} implies that
+Now, using Eq.~\ref{eq:UU1}, previous equation implies that
+\begin{eqnarray}
+%\label{eq:UU2}
+\sum_{j=1}^n
+\frac{\partial F}{\partial p_j}(x,u(x),\partial u(x))
+\frac{\partial^2 u}{\partial x^i\partial x^j}(x)
+&=&
+-
+\frac{\partial F}{\partial x^i}(x,u(x),\partial u(x))
+-
+\frac{\partial F}{\partial v}(x,u(x),\partial u(x))
+\frac{\partial u}{\partial x^i}(x)
+\notag
+\end{eqnarray}
+and, therefore, Eq.~\ref{eq:UU3} can be writen as
 \begin{equation}
 \label{eq:ZZ4}
 \frac{d\tilde p_i}{ds}(s)
