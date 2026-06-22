@@ -3519,15 +3519,521 @@ u_p(x,t) = \frac{1}{2c}\int_0^t \int_{x-c(t-\tau)}^{x+c(t-\tau)} \psi(s,\tau)\,d
 \]
 satisface el problema \(\frac{\partial^2 u}{\partial t^2} - c^2\frac{\partial^2 u}{\partial x^2} = \psi(x,t)\) con datos iniciales nulos.
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 13)}
+\vspace{0.5cm}
+% https://chatgpt.com/share/6a39bfe9-6ff4-83e9-b128-395b023864a2
+
+Este problema pide verificar que
+$$
+u_p(x,t)=\frac{1}{2c}\int_0^t
+\int_{x-c(t-\tau)}^{x+c(t-\tau)}
+\psi(s,\tau),ds,d\tau
+$$
+satisface
+$$
+u_{tt}-c^2u_{xx}=\psi(x,t)
+$$
+con condiciones iniciales nulas
+$$
+u(x,0)=0,\qquad u_t(x,0)=0.
+$$
+Esta fórmula es la versión de Duhamel para la ecuación de ondas en una dimensión.
+
+{\bf 1. Verificación de las condiciones iniciales}
+
+Condición para $u(x,0)$.
+Si $t=0$,
+$$
+u_p(x,0)
+=
+\frac1{2c}
+\int_0^0
+\left(
+\int_{x-c(0-\tau)}^{x+c(0-\tau)}
+\psi(s,\tau),ds
+\right)
+d\tau
+=0.
+$$
+Por lo tanto,
+$$
+u_p(x,0)=0.
+$$
+
+Condición para $u_t(x,0)$.
+Para un valor de $x$ fijo y arbitrario, definamos
+$$
+F(t,\tau)
+=
+\int_{x-c(t-\tau)}^{x+c(t-\tau)}
+\psi(s,\tau)\,ds .
+$$
+Entonces
+$$
+u_p(x,t)
+=
+\frac1{2c}
+\int_0^t F(t,\tau),d\tau.
+$$
+Aplicando la regla de Leibniz,
+$$
+u_t=
+\frac1{2c}
+\left[
+F(t,t)
++
+\int_0^t
+\frac{\partial F}{\partial t}(t,\tau)\,d\tau
+\right].
+$$
+Pero
+$$
+F(t,t)
+=
+\int_x^x \psi(s,t)\,ds
+=
+0.
+$$
+Luego
+$$
+u_t=
+\frac1{2c}
+\int_0^t
+\frac{\partial F}{\partial t}(t,\tau)\,d\tau.
+$$
+Ahora,
+$$
+F(t,\tau)
+=
+\int_{a(t)}^{b(t)}
+\psi(s,\tau)\,ds,
+$$
+con
+$$
+a(t)=x-c(t-\tau),
+\qquad
+b(t)=x+c(t-\tau)
+$$
+para el mismo $x$ fijo y arbitrario.
+La regla de Leibniz da
+$$
+\frac{\partial F}{\partial t}
+=
+\psi(b,\tau)b'(t)
+-
+\psi(a,\tau)a'(t).
+$$
+Como
+$$
+b'(t)=c,
+\qquad
+a'(t)=-c,
+$$
+obtenemos
+$$
+\frac{\partial F}{\partial t}
+=
+c\Big[
+\psi(x+c(t-\tau),\tau)
++
+\psi(x-c(t-\tau),\tau)
+\Big].
+$$
+Por consiguiente
+$$
+u_t
+=
+\frac12
+\int_0^t
+\Big[
+\psi(x+c(t-\tau),\tau)
++
+\psi(x-c(t-\tau),\tau)
+\Big]d\tau .
+$$
+Al evaluar en $t=0$,
+$$
+u_t(x,0)=0.
+$$
+
+{\bf 2. Cálculo de $u_{tt}$}
+
+Derivando la expresión anterior,
+$$
+u_t
+=
+\frac12
+\int_0^t
+\Big[
+\psi(x+c(t-\tau),\tau)
++
+\psi(x-c(t-\tau),\tau)
+\Big]d\tau .
+$$
+Aplicando nuevamente Leibniz,
+$$
+u_{tt}
+=
+\frac12
+\Big[
+2\psi(x,t)
+\Big]
++
+\frac12
+\int_0^t
+\frac{\partial}{\partial t}
+\Big(
+\psi(x+c(t-\tau),\tau)
++
+\psi(x-c(t-\tau),\tau)
+\Big)
+d\tau .
+$$
+El término de borde produce
+$$
+\psi(x,t).
+$$
+Además,
+$$
+\frac{\partial}{\partial t}
+\psi(x+c(t-\tau),\tau)
+=
+c\,\psi_x(x+c(t-\tau),\tau),
+$$
+$$
+\frac{\partial}{\partial t}
+\psi(x-c(t-\tau),\tau)
+=
+-c\,\psi_x(x-c(t-\tau),\tau).
+$$
+Por lo tanto
+$$
+u_{tt}
+=
+\psi(x,t)
++
+\frac{c}{2}
+\int_0^t
+\Big[
+\psi_x(x+c(t-\tau),\tau)
+-
+\psi_x(x-c(t-\tau),\tau)
+\Big]
+d\tau .
+$$
+
+{\bf 3. Cálculo de $u_{xx}$}
+
+Partimos de
+$$
+u_p=
+\frac1{2c}
+\int_0^t
+\int_{x-c(t-\tau)}^{x+c(t-\tau)}
+\psi(s,\tau),ds,d\tau .
+$$
+Derivando respecto de $x$,
+$$
+u_x
+=
+\frac1{2c}
+\int_0^t
+\Big[
+\psi(x+c(t-\tau),\tau)
+-
+\psi(x-c(t-\tau),\tau)
+\Big]
+d\tau .
+$$
+Derivando otra vez,
+$$
+u_{xx}
+=
+\frac1{2c}
+\int_0^t
+\Big[
+\psi_x(x+c(t-\tau),\tau)
+-
+\psi_x(x-c(t-\tau),\tau)
+\Big]
+d\tau .
+$$
+Multiplicando por $c^2$,
+$$
+c^2u_{xx}
+=
+\frac{c}{2}
+\int_0^t
+\Big[
+\psi_x(x+c(t-\tau),\tau)
+-
+\psi_x(x-c(t-\tau),\tau)
+\Big]
+d\tau .
+$$
+
+{\bf 4. Verificación de la ecuación}
+
+Restando,
+$$
+u_{tt}-c^2u_{xx}
+=
+\psi(x,t).
+$$
+Luego
+$$
+\boxed{
+u_{tt}-c^2u_{xx}
+=
+\psi(x,t)
+}
+$$
+y además
+$$
+\boxed{
+u(x,0)=0,
+\qquad
+u_t(x,0)=0.
+}
+$$
+Por lo tanto, la función propuesta efectivamente resuelve el problema forzado con datos iniciales nulos.
+
+{\bf Observación:} esta fórmula puede obtenerse directamente aplicando el principio de Duhamel a la solución de d'Alembert. 
+Geométricamente, $u_p(x,t)$ es la integral de la fuente $\psi$ sobre el triángulo característico del punto $(x,t)$,
+$$
+\{(s,\tau):0\le \tau\le t\,,|s-x|\le c(t-\tau)\},
+$$
+es decir, sobre el cono de influencia pasado de $(x,t)$ en $(1+1)$ dimensiones.
+
+
+
+
+
+
+
 \prob Pruebe que si los datos iniciales \(f(x)\) y \(g(x)\) tienen soporte compacto (o decaen junto con sus derivadas primeras suficientemente rápido a cero cuando \(|x|\to\infty\)), la solución de la ecuación de ondas homogénea en toda la recta conserva la energía \(E(t)=\frac{1}{2}\int_{-\infty}^{\infty}\left(u_t^2+c^2u_x^2\right)dx\).
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 14)}
+\vspace{0.5cm}
+% https://chatgpt.com/share/6a39bfe9-6ff4-83e9-b128-395b023864a2
+
+Este problema pide demostrar que la energía
+$$
+E(t)=\frac12\int_{-\infty}^{\infty}
+\Big(
+u_t^2+c^2u_x^2
+\Big)\,dx
+$$
+es constante para las soluciones de la ecuación de ondas homogénea
+$$
+u_{tt}-c^2u_{xx}=0
+$$
+cuando los datos iniciales tienen soporte compacto (o decaen suficientemente rápido en el infinito). 
+La demostración clásica consiste en derivar la energía respecto del tiempo.
+
+{\bf 1. Derivada temporal de la energía}
+
+Suponiendo que $u$ es suficientemente regular,
+$$
+\frac{dE}{dt}
+=
+\frac12
+\frac{d}{dt}
+\int_{-\infty}^{\infty}
+\left(
+u_t^2+c^2u_x^2
+\right)dx.
+$$
+Intercambiando derivada e integral,
+$$
+\frac{dE}{dt}
+=
+\int_{-\infty}^{\infty}
+\left(
+u_tu_{tt}
++
+c^2u_xu_{xt}
+\right)dx.
+$$
+
+{\bf 2. Usar la ecuación de ondas}
+
+Como
+$$
+u_{tt}=c^2u_{xx},
+$$
+obtenemos
+$$
+\frac{dE}{dt}
+=
+c^2
+\int_{-\infty}^{\infty}
+\left(
+u_tu_{xx}
++
+u_xu_{xt}
+\right)dx.
+$$
+Ahora integramos por partes el primer término:
+$$
+\int_{-\infty}^{\infty}
+u_tu_{xx}\,dx
+=
+\Big[u_tu_x\Big]_{-\infty}^{\infty}
+-
+\int_{-\infty}^{\infty}
+u_{xt}u_x\,dx.
+$$
+Por lo tanto
+$$
+\frac{dE}{dt}
+=
+c^2
+\Big[u_tu_x\Big]_{-\infty}^{\infty}
+-
+c^2
+\int_{-\infty}^{\infty}
+u_{xt}u_x\,dx
++
+c^2
+\int_{-\infty}^{\infty}
+u_xu_{xt}\,dx.
+$$
+Los dos integrales se cancelan exactamente:
+$$
+\frac{dE}{dt}
+=
+c^2
+\Big[u_tu_x\Big]_{-\infty}^{\infty}.
+$$
+Así,
+$$
+\boxed{
+\frac{dE}{dt}
+=
+c^2
+\lim_{R\to\infty}
+\Big(
+u_t(R,t)u_x(R,t)
+-
+u_t(-R,t)u_x(-R,t)
+\Big).
+}
+$$
+
+{\bf 3. Comportamiento en el infinito}
+
+Aquí entra la hipótesis del problema.
+Caso 1: soporte compacto.
+Si $f$ y $g$ tienen soporte compacto, la fórmula de d'Alembert
+$$
+u(x,t)
+=
+\frac12[f(x-ct)+f(x+ct)]
++
+\frac1{2c}
+\int_{x-ct}^{x+ct}
+g(s),ds
+$$
+muestra que para cada $t$ fijo la solución también tiene soporte compacto.
+De hecho, si
+$$
+\operatorname{supp}(f),\operatorname{supp}(g)
+\subset[-R,R],
+$$
+entonces
+$$
+u(\cdot,t)
+$$
+está contenida en
+$$
+[-R-ct,;R+ct].
+$$
+Por consiguiente,
+$$
+u_t(\pm\infty,t)=0,
+\qquad
+u_x(\pm\infty,t)=0,
+$$
+y el término de borde desaparece.
+Caso 2: decaimiento rápido
+Si $f$, $g$ y sus derivadas decaen suficientemente rápido, la fórmula de d'Alembert implica que también lo hacen $u_t$ y $u_x$.
+Entonces
+$$
+u_t(x,t)u_x(x,t)\to 0
+\qquad (|x|\to\infty),
+$$
+y nuevamente
+$$
+\Big[u_tu_x\Big]_{-\infty}^{\infty}=0.
+$$
+
+{\bf 4. Conclusión}
+
+En cualquiera de los dos casos,
+$$
+\frac{dE}{dt}=0.
+$$
+Luego
+$$
+\boxed{
+E(t)=E(0)
+}
+$$
+para todo $t\ge0$.
+Es decir,
+$$
+\boxed{
+\frac12\int_{-\infty}^{\infty}
+\left(
+u_t^2+c^2u_x^2
+\right)dx
+=
+\text{constante}.
+}
+$$
+
+{\bf Interpretación física}
+
+La densidad de energía es
+$$
+e(x,t)
+=
+\frac12\left(u_t^2+c^2u_x^2\right).
+$$
+\begin{itemize}
+\item $u_t^2/2$ representa la energía cinética local.
+\item $c^2u_x^2/2$ representa la energía potencial elástica local.
+\end{itemize}
+La ecuación de ondas homogénea no contiene ni fuentes ni disipación, por lo que la energía total sólo puede transportarse a través del espacio. Como el dominio es toda la recta y la perturbación desaparece en el infinito, no existe flujo neto de energía hacia afuera; por ello la energía total permanece constante.
+
+
+
+
+
+
+
 \prob Resuelva la ecuación de onda para una membrana en forma de cuña con CC de borde fijo a lo largo de las rectas \(\theta=0\) y \(\theta=\alpha\), que se encuentra inicialmente en reposo y con la forma \(f(r,\theta,0)=r\,\text{sen}(6\theta)\).
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 15)}
+\vspace{0.5cm}
+
+
 
 \prob Cierta cuerda de largo \(L\) cuya densidad es variable tiene sus extremos fijos y sus desplazamientos satisfacen
 \[
 u_{tt} = c^2(1+\varepsilon x)^2 u_{xx}, \quad 0<x<L.
 \]
 Resuelva la ecuación mediante separación de variables y encuentre las frecuencias propias.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 16)}
+\vspace{0.5cm}
+
+
 
 \prob Encuentre las funciones de Green y resuelva las siguientes ecuaciones:
 \begin{enumerate}
@@ -3537,10 +4043,22 @@ Resuelva la ecuación mediante separación de variables y encuentre las frecuenc
 \item \(y''+\frac{1}{4}y = x,\quad y(0)=\alpha,\; y(\pi)=\beta.\)
 \end{enumerate}
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 17)}
+\vspace{0.5cm}
+
+
+
 \prob Muestre que para \(\vec{r},\pvec{r}\in\mathbb{R}^3\) la solución fundamental de la ecuación de Helmholtz \((\nabla^2+k^2)G=\delta(\vec{r}-\pvec{r})\) es
 \[
 G(\vec{r},\pvec{r}) = -\frac{k}{4\pi}\,y_0(k\norm{\vec{r}-\pvec{r}}) = -\frac{\cos(k\norm{\vec{r}-\pvec{r}})}{4\pi\norm{\vec{r}-\pvec{r}}}.
 \]
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 18)}
+\vspace{0.5cm}
+
+
 
 \prob Muestre que la solución del problema
 \[
@@ -3552,10 +4070,25 @@ G(r,\theta,\phi;r',\theta',\phi') = -\sum_{n=0}^{\infty}\sum_{m=-n}^{n}\sum_{\el
 \]
 donde \(\kappa_{n\ell}\) son los ceros de \(j_n\).
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 19)}
+\vspace{0.5cm}
+
+
+
 \prob El plano \(z=0\) se mantiene a potencial nulo, excepto por una franja \(-a<x<a\) que se mantiene a potencial \(V_0\). Halle el potencial electrostático \(u(x,y,z)\) en todo el espacio usando como función de Green la solución fundamental de la ecuación de Laplace e integrando sobre la frontera \(z=0\). Compare con el resultado del Problema 10 de la Parte I.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 20)}
+\vspace{0.5cm}
+
+
 
 \prob Resuelva la ecuación de ondas en una cuerda finita de longitud \(L\) con extremos libres (condiciones de Neumann homogéneas) y condiciones iniciales \(u(x,0)=f(x)\), \(u_t(x,0)=g(x)\). Determine los modos normales y las frecuencias propias.
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 21)}
+\vspace{0.5cm} 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
