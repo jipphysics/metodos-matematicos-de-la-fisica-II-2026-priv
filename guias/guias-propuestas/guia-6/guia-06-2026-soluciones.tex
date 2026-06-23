@@ -4341,6 +4341,313 @@ Resuelva la ecuación mediante separación de variables y encuentre las frecuenc
 {\bf Soluci\'on }{\em 16)}
 \vspace{0.5cm}
 
+Este problema nos pide resolver: 
+$$
+u_{tt}=c^2(1+\varepsilon x)^2u_{xx},
+\qquad 0<x<L,
+$$
+con extremos fijos
+$$
+u(0,t)=u(L,t)=0
+$$
+y mediante separación de variables.
+Además se pide encontrar las frecuencias propias.
+
+{\bf 1. Separación de variables}
+
+Buscamos
+$$
+u(x,t)=X(x)T(t).
+$$
+Sustituyendo,
+$$
+XT''
+=
+c^2(1+\varepsilon x)^2X''T.
+$$
+Dividiendo por $XT$,
+$$
+\frac{T''}{T}
+=
+c^2(1+\varepsilon x)^2\frac{X''}{X}.
+$$
+Ambos lados deben ser constantes.
+Tomamos
+$$
+\frac{T''}{T}=-\omega^2.
+$$
+Entonces
+$$
+T''+\omega^2T=0,
+$$
+y la ecuación espacial es
+$$
+X''
++
+\frac{\omega^2}{c^2(1+\varepsilon x)^2}
+X
+=
+0.
+$$
+Definiendo
+$$
+k=\frac{\omega}{c},
+$$
+queda
+$$
+X''+\frac{k^2}{(1+\varepsilon x)^2}X=0.
+$$
+
+{\bf 2. Cambio de variable}
+
+Introduzcamos
+$$
+y=1+\varepsilon x.
+$$
+Entonces
+$$
+\frac{d}{dx}
+=
+\varepsilon\frac{d}{dy},
+\qquad
+\frac{d^2}{dx^2}
+=
+\varepsilon^2\frac{d^2}{dy^2}.
+$$
+La ecuación se transforma en
+$$
+\varepsilon^2X_{yy}
++
+\frac{k^2}{y^2}X=0.
+$$
+o
+$$
+X_{yy}
++
+\frac{k^2}{\varepsilon^2y^2}X=0.
+$$
+
+{\bf 3. Ecuación de Euler-Cauchy}
+
+La anterior es una ecuación de Euler.
+Buscamos soluciones de la forma
+$$
+X(y)=y^m.
+$$
+Sustituyendo,
+$$
+m(m-1)y^{m-2}
++
+\frac{k^2}{\varepsilon^2}y^{m-2}
+=0.
+$$
+Luego
+$$
+m(m-1)
++
+\frac{k^2}{\varepsilon^2}
+=0.
+$$
+o
+$$
+m^2-m+\frac{k^2}{\varepsilon^2}=0.
+$$
+Las raíces son
+$$
+m=
+\frac12
+\pm
+\sqrt{\frac14-\frac{k^2}{\varepsilon^2}}.
+$$
+
+{\bf 4. Régimen oscilatorio}
+
+Para los modos normales relevantes,
+$$
+\frac{k^2}{\varepsilon^2}>\frac14.
+$$
+Definimos
+$$
+\mu
+=
+\sqrt{
+\frac{k^2}{\varepsilon^2}
+-\frac14}.
+$$
+Entonces
+$$
+m=
+\frac12\pm i\mu.
+$$
+La solución espacial puede escribirse como
+$$
+X(y)
+=
+y^{1/2}
+\left[
+A\cos(\mu\ln y)
++
+B\sin(\mu\ln y)
+\right].
+$$
+Volviendo a $x$,
+$$
+\boxed{
+X(x)
+=
+\sqrt{1+\varepsilon x}
+\left[
+A\cos\Big(\mu\ln(1+\varepsilon x)\Big)
++
+B\sin\Big(\mu\ln(1+\varepsilon x)\Big)
+\right].
+}
+$$
+
+{\bf 5. Aplicar las condiciones de borde}
+
+En $x=0$,
+$$
+X(0)=0.
+$$
+Como
+$$
+\ln(1)=0,
+$$
+obtenemos
+$$
+A=0.
+$$
+Por tanto
+$$
+X(x)
+=
+B\sqrt{1+\varepsilon x}
+\sin\Big(
+\mu\ln(1+\varepsilon x)
+\Big).
+$$
+La condición en $x=L$ exige
+$$
+X(L)=0.
+$$
+Por lo tanto
+$$
+\sin\Big(
+\mu\ln(1+\varepsilon L)
+\Big)
+=0.
+$$
+De aquí
+$$
+\mu\ln(1+\varepsilon L)
+=
+n\pi,
+\qquad n=1,2,\ldots
+$$
+es decir
+$$
+\boxed{
+\mu_n=
+\frac{n\pi}
+{\ln(1+\varepsilon L)}.
+}
+$$
+
+{\bf 6. Frecuencias propias}
+
+Recordando que
+$$
+\mu^2
+=
+\frac{k^2}{\varepsilon^2}
+-\frac14,
+$$
+obtenemos
+$$
+k_n^2
+=
+\varepsilon^2
+\left(
+\mu_n^2+\frac14
+\right).
+$$
+Como
+$$
+\omega_n=ck_n,
+$$
+resulta
+$$
+\boxed{
+\omega_n
+=
+c\varepsilon
+\sqrt{
+\frac14
++
+\left(
+\frac{n\pi}
+{\ln(1+\varepsilon L)}
+\right)^2
+}.
+}
+$$
+Estas son las frecuencias propias de la cuerda.
+
+{\bf 7. Modos normales}
+
+Los modos espaciales asociados son
+$$
+\boxed{
+X_n(x)
+=
+\sqrt{1+\varepsilon x}\,
+\sin\left[
+\frac{n\pi}
+{\ln(1+\varepsilon L)}
+\ln(1+\varepsilon x)
+\right].
+}
+$$
+y la dependencia temporal es
+$$
+T_n(t)
+=
+A_n\cos(\omega_n t)
++
+B_n\sin(\omega_n t).
+$$
+Por consiguiente, la solución general es
+$$
+\boxed{
+u(x,t)
+=
+\sum_{n=1}^{\infty}
+\Big[
+A_n\cos(\omega_n t)
++
+B_n\sin(\omega_n t)
+\Big]
+\sqrt{1+\varepsilon x}\,
+\sin\left[
+\frac{n\pi}
+{\ln(1+\varepsilon L)}
+\ln(1+\varepsilon x)
+\right].
+}
+$$
+
+Un chequeo interesante es el límite $\varepsilon\to0$. Usando
+$$
+\ln(1+\varepsilon L)\sim \varepsilon L,
+$$
+se obtiene
+$$
+\omega_n
+\sim
+c\,\frac{n\pi}{L},
+$$
+que son exactamente las frecuencias de una cuerda homogénea con extremos fijos. Esto da una buena verificación de la solución.
 
 
 
