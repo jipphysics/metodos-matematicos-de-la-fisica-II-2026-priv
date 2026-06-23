@@ -4222,10 +4222,11 @@ Las soluciones son
 $$
 R(r)
 =
-A,J_6(kr)
+A\,J_6(kr)
 +
-B,Y_6(kr).
+B\,Y_6(kr)
 $$
+donde es $J_{\nu}$ es la función de Bessel de primera especie de orden $\nu$, mientras que $Y_{\nu}$ es la función de Bessel de segunda especie (o función de Neumann) del mismo orden.
 Como la membrana incluye el origen y $Y_6$ diverge en $r=0$, imponemos regularidad y conservamos solamente
 $$
 R(r)=J_6(kr).
@@ -4234,7 +4235,6 @@ $$
 {\bf 8. Solución general}
 
 Al no existir una frontera radial, el parámetro $k$ no queda cuantizado.
-
 Por ello el espectro radial es continuo y la solución general es una superposición integral:
 $$
 u(r,\theta,t)
@@ -4246,7 +4246,7 @@ A(k)\cos(ckt)
 +
 B(k)\sin(ckt)
 \Big]
-J_6(kr),dk.
+J_6(kr)\,dk.
 $$
 La condición
 $$
@@ -4263,9 +4263,9 @@ u(r,\theta,t)
 =
 \sin(6\theta)
 \int_0^\infty
-A(k),
-J_6(kr),
-\cos(ckt),dk.
+A(k)\,
+J_6(kr)\,
+\cos(ckt)\,dk.
 }
 $$
 
@@ -4282,8 +4282,8 @@ $$
 r
 =
 \int_0^\infty
-A(k),
-J_6(kr),dk.
+A(k)\,
+J_6(kr)\,dk.
 $$
 Formalmente, $A(k)$ se obtiene mediante la transformada de Hankel de orden $6$,
 $$
@@ -4295,7 +4295,7 @@ r^2J_6(kr)\,dr.
 $$
 Por tanto la solución queda representada por la expansión de Hankel anterior.
 
-{\bf Comentario final}
+{\bf Comentarios finales}
 
 La dificultad conceptual del ejercicio no es la ecuación de ondas sino la geometría de la región:
 \begin{itemize}
@@ -4307,7 +4307,20 @@ $$
 $$
 \end{itemize}
 Una vez reconocidos estos hechos, la separación de variables conduce de manera natural a una transformada de Hankel de orden $6$. 
-El dato inicial $r\sin(6\theta)$ {\bf no es armónico} (pues $\nabla^2(r\sin(6\theta))=-35\,\sin(6\theta)/r)$, de modo que no existe una solución estacionaria simple asociada a él.
+
+Adem\'as, cabe notar que el dato inicial $r\sin(6\theta)$ {\bf no es armónico}, pues
+$$
+\boxed{
+\nabla^2(r^p\sin(m\theta))
+=
+(p^2-m^2),
+r^{p-2}\sin(m\theta).
+}
+=
+0
+$$
+s\'olo si $p=\pm m$, lo cuál no se cumple en el presente caso en donde $p=1$ y $m=6$.
+Por ende, no existe una solución estacionaria simple asociada al dato inicial.
 
 
 
