@@ -4020,6 +4020,403 @@ La ecuación de ondas homogénea no contiene ni fuentes ni disipación, por lo q
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 15)}
 \vspace{0.5cm}
+% https://chatgpt.com/share/6a3a8d03-7bf4-83e9-9454-59ace4fbd0f8
+
+Hay que resolver la ecuación de ondas para una membrana en forma de cuña,
+$$
+u_{tt}=c^2\nabla^2u,
+$$
+en
+$$
+0<\theta<\alpha,\qquad r>0,
+$$
+con condiciones de borde
+$$
+u(r,0,t)=0,
+\qquad
+u(r,\alpha,t)=0,
+$$
+y condiciones iniciales
+$$
+u(r,\theta,0)=r\sin(6\theta),
+$$
+$$
+u_t(r,\theta,0)=0.
+$$
+
+{\bf 1. Compatibilidad de los datos}
+
+Antes de separar variables conviene verificar que el dato inicial satisfaga las condiciones de borde.
+
+En (\theta=0),
+
+[
+u(r,0,0)=r\sin 0=0.
+]
+
+En (\theta=\alpha),
+
+[
+u(r,\alpha,0)=r\sin(6\alpha).
+]
+
+Por tanto, para que los datos sean compatibles con las condiciones de borde debe cumplirse
+
+[
+\boxed{\sin(6\alpha)=0.}
+]
+
+Es decir,
+
+[
+\boxed{
+\alpha=\frac{m\pi}{6},
+\qquad m\in\mathbb N.
+}
+]
+
+Si esta condición no se satisface, no existe solución clásica que satisfaga simultáneamente los datos iniciales y las condiciones de borde.
+
+En lo que sigue asumiremos que la compatibilidad se cumple.
+
+---
+
+# 2. Separación de variables
+
+En coordenadas polares,
+
+[
+\nabla^2u
+=========
+
+u_{rr}
++\frac1r u_r
++\frac1{r^2}u_{\theta\theta}.
+]
+
+Buscamos soluciones de la forma
+
+[
+u(r,\theta,t)=R(r)\Theta(\theta)T(t).
+]
+
+Sustituyendo,
+
+[
+\frac{T''}{c^2T}
+================
+
+\frac{R''}{R}
++\frac1r\frac{R'}R
++\frac1{r^2}\frac{\Theta''}{\Theta}.
+]
+
+Multiplicando por (r^2),
+
+[
+r^2\frac{T''}{c^2T}
+===================
+
+r^2\frac{R''}{R}
++r\frac{R'}R
++\frac{\Theta''}{\Theta}.
+]
+
+Introducimos una constante de separación (\mu^2),
+
+[
+\Theta''+\mu^2\Theta=0.
+]
+
+---
+
+# 3. Problema angular
+
+Las condiciones
+
+[
+\Theta(0)=0,
+\qquad
+\Theta(\alpha)=0
+]
+
+producen
+
+[
+\Theta_n(\theta)
+================
+
+\sin!\left(\frac{n\pi}{\alpha}\theta\right),
+]
+
+con
+
+[
+\mu_n=\frac{n\pi}{\alpha}.
+]
+
+Por tanto los modos angulares son discretos.
+
+---
+
+# 4. Identificación del modo excitado
+
+El dato inicial contiene únicamente
+
+[
+\sin(6\theta).
+]
+
+Si la condición de compatibilidad
+
+[
+\sin(6\alpha)=0
+]
+
+se cumple, entonces existe un entero (n) tal que
+
+[
+6=\frac{n\pi}{\alpha}.
+]
+
+Por consiguiente,
+
+[
+\sin(6\theta)
+=============
+
+\sin!\left(\frac{n\pi}{\alpha}\theta\right).
+]
+
+Es decir, el dato inicial excita un único modo angular.
+
+Por ello podemos escribir
+
+[
+u(r,\theta,t)
+=============
+
+F(r,t)\sin(6\theta).
+]
+
+---
+
+# 5. Ecuación radial-temporal
+
+Sustituyendo en la ecuación de ondas,
+
+[
+u_{\theta\theta}
+================
+
+-36F(r,t)\sin(6\theta),
+]
+
+obtenemos
+
+[
+F_{tt}
+======
+
+c^2
+\left(
+F_{rr}
++\frac1rF_r
+-\frac{36}{r^2}F
+\right).
+]
+
+Las condiciones iniciales son
+
+[
+F(r,0)=r,
+\qquad
+F_t(r,0)=0.
+]
+
+---
+
+# 6. Separación radial-temporal
+
+Buscamos
+
+[
+F(r,t)=R(r)T(t).
+]
+
+Entonces
+
+[
+\frac{T''}{c^2T}
+================
+
+\frac{R''}{R}
++\frac1r\frac{R'}R
+-\frac{36}{r^2}.
+]
+
+Tomamos
+
+[
+\frac{T''}{T}
+=============
+
+-\omega^2,
+]
+
+de modo que
+
+[
+T''+\omega^2T=0.
+]
+
+La ecuación radial resulta
+
+[
+R''+\frac1rR'
++
+\left(
+k^2-\frac{36}{r^2}
+\right)R=0,
+]
+
+donde
+
+[
+k=\frac{\omega}{c}.
+]
+
+Esta es la ecuación de Bessel de orden (6).
+
+---
+
+# 7. Soluciones radiales
+
+Las soluciones son
+
+[
+R(r)
+====
+
+A,J_6(kr)
++
+B,Y_6(kr).
+]
+
+Como la membrana incluye el origen y (Y_6) diverge en (r=0), imponemos regularidad y conservamos solamente
+
+[
+R(r)=J_6(kr).
+]
+
+---
+
+# 8. Solución general
+
+Al no existir una frontera radial, el parámetro (k) no queda cuantizado.
+
+Por ello el espectro radial es continuo y la solución general es una superposición integral:
+
+[
+u(r,\theta,t)
+=============
+
+\sin(6\theta)
+\int_0^\infty
+\Big[
+A(k)\cos(ckt)
++
+B(k)\sin(ckt)
+\Big]
+J_6(kr),dk.
+]
+
+La condición
+
+[
+u_t(r,\theta,0)=0
+]
+
+implica
+
+[
+B(k)=0.
+]
+
+Así,
+
+[
+\boxed{
+u(r,\theta,t)
+=============
+
+\sin(6\theta)
+\int_0^\infty
+A(k),
+J_6(kr),
+\cos(ckt),dk.
+}
+]
+
+---
+
+# 9. Determinación de (A(k))
+
+La condición inicial
+
+[
+u(r,\theta,0)
+=============
+
+r\sin(6\theta)
+]
+
+requiere
+
+[
+r
+=
+
+\int_0^\infty
+A(k),
+J_6(kr),dk.
+]
+
+Formalmente, (A(k)) se obtiene mediante la transformada de Hankel de orden (6),
+
+[
+A(k)
+====
+
+k
+\int_0^\infty
+r^2J_6(kr),dr.
+]
+
+Por tanto la solución queda representada por la expansión de Hankel anterior.
+
+---
+
+# Comentario final
+
+La dificultad conceptual del ejercicio no es la ecuación de ondas sino la geometría de la región:
+
+* el problema angular tiene espectro discreto;
+* el problema radial tiene espectro continuo;
+* además, la condición inicial sólo es compatible con las condiciones de borde cuando
+
+[
+\sin(6\alpha)=0.
+]
+
+Una vez reconocidos estos hechos, la separación de variables conduce de manera natural a una transformada de Hankel de orden (6). El dato inicial (r\sin(6\theta)) **no es armónico** (pues (\nabla^2(r\sin(6\theta))=-35,\sin(6\theta)/r)), de modo que no existe una solución estacionaria simple asociada a él.
+
+
+
+
+
+
+
 
 
 
@@ -4032,6 +4429,11 @@ Resuelva la ecuación mediante separación de variables y encuentre las frecuenc
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 16)}
 \vspace{0.5cm}
+
+
+
+
+
 
 
 
