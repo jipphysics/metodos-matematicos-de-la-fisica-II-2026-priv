@@ -4860,7 +4860,7 @@ Esto da una buena verificación de la solución.
 
 El problema pide encontrar la función de Green y resolver una EDO con distintas condiciones de borde. 
 $$
-y''+\frac14,y=\sin(2x),
+y''+\frac14\,y=\sin(2x),
 \qquad
 y(0)=0,
 \qquad
@@ -4870,324 +4870,427 @@ $$
 {\bf 1. Operador diferencial}
 
 Definimos
-
-[
+$$
 L=\frac{d^2}{dx^2}+\frac14.
-]
-
+$$
 La función de Green debe satisfacer
-
-[
-L,G(x,\xi)=\delta(x-\xi),
-]
-
+$$
+L\,G(x,\xi)=\delta(x-\xi),
+$$
 con
-
-[
+$$
 G(0,\xi)=0,
 \qquad
 G(\pi,\xi)=0.
-]
+$$
 
----
-
-# 2. Soluciones homogéneas
+{\bf 2. Soluciones homogéneas}
 
 La ecuación homogénea es
-
-[
+$$
 y''+\frac14 y=0.
-]
-
+$$
 Su solución general es
-
-[
+$$
 y(x)=A\cos\frac{x}{2}
 +B\sin\frac{x}{2}.
-]
-
+$$
 Elegimos dos soluciones adaptadas a los bordes.
 
-### Solución izquierda
-
+{\em Solución izquierda.}
 La que satisface
-
-[
+$$
 u_1(0)=0
-]
-
+$$
 es
-
-[
+$$
 u_1(x)=\sin\frac{x}{2}.
-]
+$$
 
-### Solución derecha
-
+{\em Solución derecha.}
 La que satisface
-
-[
+$$
 u_2(\pi)=0
-]
-
+$$
 es
-
-[
+$$
 u_2(x)=\cos\frac{x}{2}.
-]
+$$
 
----
+{\bf 3. Wronskiano}
 
-# 3. Wronskiano
-
-[
+$$
 W=u_1u_2'-u_1'u_2.
-]
-
+$$
 Calculando,
-
-[
+$$
 u_1'=\frac12\cos\frac{x}{2},
-]
-
-[
+$$
+$$
 u_2'=-\frac12\sin\frac{x}{2}.
-]
-
+$$
 Entonces
-
-[
+$$
 W
 =
-
 -\frac12
 \Big(
 \sin^2\frac{x}{2}
 +\cos^2\frac{x}{2}
 \Big)
-=====
-
+=
 -\frac12.
-]
-
+$$
 Por tanto
-
-[
+$$
 \boxed{W=-\frac12.}
-]
+$$
 
----
-
-# 4. Función de Green
+{\bf 4. Función de Green}
 
 La fórmula general para un problema de Sturm-Liouville es
-
-[
+$$
 G(x,\xi)
-========
-
+=
 \frac{1}{W}
 \begin{cases}
 u_1(x)u_2(\xi),
 &
-x<\xi,
-[2mm]
+x<\xi, \\
 u_1(\xi)u_2(x),
 &
 x>\xi.
 \end{cases}
-]
-
-Como (W=-1/2),
-
-[
+$$
+Como $W=-1/2$,
+$$
 \boxed{
 G(x,\xi)
-========
-
+=
 -2
 \begin{cases}
-\sin\frac{x}{2},
+\sin\frac{x}{2}\,
 \cos\frac{\xi}{2},
 &
-x<\xi,
-[2mm]
-\sin\frac{\xi}{2},
+x<\xi, \\
+\sin\frac{\xi}{2}\,
 \cos\frac{x}{2},
 &
 x>\xi.
 \end{cases}
 }
-]
+$$
 
----
-
-# 5. Solución mediante Green
+{\bf 5. Solución mediante Green}
 
 La solución es
-
-[
+$$
 y(x)
-====
-
+=
 \int_0^\pi
-G(x,\xi),
-\sin(2\xi),
+G(x,\xi)\,
+\sin(2\xi)\,
 d\xi.
-]
+$$
 
-Separando en los intervalos ((0,x)) y ((x,\pi)),
-
-[
+Separando en los intervalos $(0,x)$ y $(x,\pi)$,
+$$
 y(x)
-====
-
+=
 -2\cos\frac{x}{2}
 \int_0^x
-\sin\frac{\xi}{2}\sin(2\xi),d\xi
-]
-
-[
+\sin\frac{\xi}{2}\sin(2\xi)\,d\xi
+$$
+$$
 \qquad
 -2\sin\frac{x}{2}
 \int_x^\pi
-\cos\frac{\xi}{2}\sin(2\xi),d\xi.
-]
+\cos\frac{\xi}{2}\sin(2\xi)\,d\xi.
+$$
 
----
-
-# 6. Evaluación de las integrales
+{\bf 6. Evaluación de las integrales}
 
 Usando
-
-[
+$$
 \sin a\sin b
-============
-
+=
 \frac12
 \Big[
 \cos(a-b)-\cos(a+b)
 \Big]
-]
-
+$$
 y
-
-[
+$$
 \cos a\sin b
-============
-
+=
 \frac12
 \Big[
 \sin(a+b)+\sin(b-a)
 \Big],
-]
-
+$$
 se obtiene tras integrar y simplificar
-
-[
+$$
 \boxed{
 y(x)=\frac{4}{15}\sin(2x)
 -\frac{8}{15}\sin\frac{x}{2}.
 }
-]
+$$
 
----
-
-# 7. Verificación
+{\bf 7. Verificación}
 
 Condiciones de borde:
-
-[
+$$
 y(0)=0,
-]
-
-[
+$$
+$$
 y(\pi)
-======
-
+=
 \frac{4}{15}\sin(2\pi)
 -\frac{8}{15}\sin\frac{\pi}{2}
-==============================
-
+=
 -\frac{8}{15}.
-]
-
-¡Esto indica que cometí un error de signo o de normalización en la construcción de (u_2)!
-
+$$
+¡Esto indica que cometí un error de signo o de normalización en la construcción de $u_2$!
 Y aquí aparece una observación importante: para evitar arrastrar errores algebraicos, conviene contrastar con el método clásico.
 
----
-
-# Verificación rápida por coeficientes indeterminados
+{\bf Verificación rápida por coeficientes indeterminados}
 
 Buscamos
-
-[
+$$
 y_p=A\sin(2x).
-]
-
+$$
 Entonces
-
-[
+$$
 (-4+\tfrac14)A\sin(2x)
-======================
-
+=
 \sin(2x),
-]
-
+$$
 de donde
-
-[
+$$
 A=-\frac4{15}.
-]
-
+$$
 Luego
-
-[
+$$
 y=
 C_1\cos\frac{x}{2}
 +
 C_2\sin\frac{x}{2}
 -\frac4{15}\sin(2x).
-]
-
-De (y(0)=0),
-
-[
+$$
+De $y(0)=0$,
+$$
 C_1=0.
-]
-
-De (y(\pi)=0),
-
-[
+$$
+De $y(\pi)=0$,
+$$
 C_2=0.
-]
-
+$$
 Por tanto
-
-[
+$$
 \boxed{
 y(x)
-====
-
+=
 -\frac4{15}\sin(2x).
 }
-]
-
+$$
 Esta es la solución correcta.
 
----
+Así que para el inciso $a$, la función de Green que construimos es correcta, pero al evaluar las integrales manualmente introduje un error algebraico. La solución final correcta es
 
-Así que para el inciso (a), la función de Green que construimos es correcta, pero al evaluar las integrales manualmente introduje un error algebraico. La solución final correcta es
-
-[
+$$
 \boxed{
 y(x)=
 -\frac4{15}\sin(2x).
 }
-]
+$$
 
-Si quieres, podemos hacer ahora el inciso **17(b)** usando Green desde el principio, donde la construcción resulta más interesante porque el operador no tiene coeficientes constantes.
+
+\vspace{0.5cm}
+{\em Soluci\'on 17a) alternativa}
+\vspace{0.5cm}
+
+Tenemos el operador
+$$
+L=\frac{d^2}{dx^2}+\frac14
+$$
+en el intervalo
+$$
+0<x<\pi,
+$$
+con condiciones de Dirichlet
+$$
+y(0)=y(\pi)=0.
+$$
+
+{\bf 1. Problema de autovalores}
+
+La fórmula estándar para la función de Green parte de los autofunciones del operador.
+Buscamos
+$$
+L\phi_n=\lambda_n\phi_n,
+$$
+es decir,
+$$
+\phi_n''+\frac14\phi_n=\lambda_n\phi_n.
+$$
+Reordenando,
+$$
+\phi_n''+\Big(\frac14-\lambda_n\Big)\phi_n=0.
+$$
+Con
+$$
+\phi_n(0)=\phi_n(\pi)=0.
+$$
+Sabemos que los autofunciones de Dirichlet en $(0,\pi)$ son
+$$
+\boxed{\phi_n(x)=\sin(nx)},
+\qquad n=1,2,\ldots
+$$
+porque
+$$
+\phi_n''=-n^2\phi_n.
+$$
+Luego
+$$
+L\phi_n
+=
+\left(\frac14-n^2\right)\phi_n.
+$$
+Por tanto
+$$
+\boxed{\lambda_n=\frac14-n^2.}
+$$
+
+{\bf 2. Normalización}
+
+Necesitamos
+$$
+|\phi_n|^2
+=
+\int_0^\pi \sin^2(nx),dx
+=
+\frac{\pi}{2}.
+$$
+Por ello los autofunciones ortonormales son
+$$
+\boxed{
+e_n(x)
+=
+\sqrt{\frac2\pi}\sin(nx).
+}
+$$
+
+{\bf 3. Fórmula espectral de Green}
+Como ningún autovalor es cero,
+$$
+\lambda_n=\frac14-n^2\neq0,
+$$
+la función de Green es
+$$
+\boxed{
+G(x,\xi)
+=
+\sum_{n=1}^{\infty}
+\frac{e_n(x)e_n(\xi)}
+{\lambda_n}.
+}
+$$
+Sustituyendo,
+$$
+\boxed{
+G(x,\xi)
+=
+\frac2\pi
+\sum_{n=1}^{\infty}
+\frac{\sin(nx)\sin(n\xi)}
+{\frac14-n^2}.
+}
+$$
+Esta es exactamente la fórmula estándar en términos de autofunciones.
+
+{\bf 4. Resolver la ecuación}
+
+La ecuación es
+$$
+Ly=f,
+\qquad
+f(x)=\sin(2x).
+$$
+La solución viene dada por
+$$
+y(x)
+=
+\int_0^\pi
+G(x,\xi)\sin(2\xi),d\xi.
+$$
+Insertando la expansión,
+$$
+y(x)
+=
+\frac2\pi
+\sum_{n=1}^{\infty}
+\frac{\sin(nx)}
+{\frac14-n^2}
+\int_0^\pi
+\sin(n\xi)\sin(2\xi)\,d\xi.
+$$
+
+{\bf 5. Usar ortogonalidad}
+
+La integral vale
+$$
+\int_0^\pi
+\sin(n\xi)\sin(2\xi),d\xi
+=
+\frac{\pi}{2}\delta_{n2}.
+$$
+Por tanto todos los términos desaparecen excepto (n=2):
+$$
+y(x)
+=
+\frac2\pi
+\frac{\sin(2x)}
+{\frac14-4}
+\frac{\pi}{2}.
+$$
+Entonces
+$$
+y(x)
+=
+\frac{\sin(2x)}
+{\frac14-4}.
+$$
+Como
+$$
+\frac14-4
+=
+-\frac{15}{4},
+$$
+obtenemos
+$$
+\boxed{
+y(x)
+=
+-\frac4{15}\sin(2x).
+}
+$$
+Este ejemplo es especialmente bonito porque el término fuente
+$$
+f(x)=\sin(2x)
+$$
+es exactamente uno de los autofunciones del operador. Entonces la expansión espectral ``colapsa'' a un único término y la solución sale inmediatamente:
+$$
+Ly=\lambda_2 y,
+\qquad
+\lambda_2=\frac14-4=-\frac{15}{4},
+$$
+de donde
+$$
+y=\frac1{\lambda_2}\sin(2x).
+$$
+En cierto sentido, ni siquiera hace falta construir explícitamente la serie de Green; basta reconocer que la fuente es un autofunción.
+
+
 
 
 
