@@ -883,26 +883,147 @@ In this case, solutions exist only if the source $f$ is orthogonal to the kernel
 
 \section{Fourier Methods}
 
-Useful on infinite domains.
-Transform
+\section{Fourier Methods}
+
+Fourier methods are particularly useful on infinite or periodic domains.
+
+\subsection{Fourier Series}
+
+If $u(x)$ is periodic with period $L$,
+
+$$
+u(x+L)=u(x),
+$$
+
+it can be expanded as
+
+$$
+u(x)
+=
+\sum_{n=-\infty}^{\infty}
+c_n e^{i2\pi nx/L},
+$$
+
+where
+
+$$
+c_n
+=
+\frac{1}{L}
+\int_0^L
+u(x)e^{-i2\pi nx/L}\,dx.
+$$
+
+The functions
+
+$$
+e^{i2\pi nx/L}
+$$
+
+are eigenfunctions of the derivative operator:
+
+$$
+\frac{d}{dx}
+e^{i2\pi nx/L}
+=
+i\frac{2\pi n}{L}
+e^{i2\pi nx/L}.
+$$
+
+Consequently,
+
+$$
+\frac{d}{dx}
+\longrightarrow
+i\frac{2\pi n}{L},
+$$
+
+and
+
+$$
+\frac{d^2}{dx^2}
+\longrightarrow
+-\left(\frac{2\pi n}{L}\right)^2.
+$$
+
+Thus constant-coefficient differential equations become algebraic equations for the Fourier coefficients $c_n$.
+
+\subsection{Fourier Transform}
+
+For problems on the infinite line,
+
+$$
+-\infty<x<\infty,
+$$
+
+the discrete Fourier series is replaced by the Fourier transform
+
 $$
 \hat u(k)
 =
-\int
-u(x)e^{-ikx}\,dx.
+\int_{-\infty}^{\infty}
+u(x)e^{-ikx}\,dx,
 $$
-Derivatives become
+
+with inverse transform
+
 $$
-\partial_x
-\rightarrow
+u(x)
+=
+\frac{1}{2\pi}
+\int_{-\infty}^{\infty}
+\hat u(k)e^{ikx}\,dk.
+$$
+
+The Fourier transform may be regarded as the continuum limit of the Fourier series as $L\to\infty$.
+
+Differentiation becomes multiplication:
+
+$$
+\frac{d}{dx}
+\longrightarrow
 ik,
 $$
+
 $$
-\partial_x^2
-\rightarrow
+\frac{d^2}{dx^2}
+\longrightarrow
 -k^2.
 $$
-Differential equations become algebraic equations in Fourier space.
+
+More generally,
+
+$$
+\frac{d^n}{dx^n}
+\longrightarrow
+(ik)^n.
+$$
+
+Conversely, multiplication by $x$ becomes differentiation in Fourier space:
+
+$$
+x
+\longrightarrow
+i\frac{d}{dk},
+$$
+
+$$
+x^n
+\longrightarrow
+i^n\frac{d^n}{dk^n}.
+$$
+
+Therefore constant-coefficient differential equations become algebraic equations in Fourier space, while variable-coefficient equations generally remain differential equations.
+
+\vspace{0.5cm}
+{\bf Typical Applications:}
+\begin{itemize}
+\item Heat equation on $\mathbb R$.
+\item Wave equation on $\mathbb R$.
+\item Poisson equation on $\mathbb R^n$.
+\item Construction of Green functions.
+\item Spectral analysis of translation-invariant operators.
+\end{itemize}
 
 \section{Master Formula}
 
