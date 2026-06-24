@@ -4450,18 +4450,18 @@ m(m-1)y^{m-2}
 \frac{k^2}{\varepsilon^2}y^{m-2}
 =0.
 $$
-Luego
+resulta en la ecuación característica
 $$
 m(m-1)
 +
 \frac{k^2}{\varepsilon^2}
 =0.
 $$
-o
-$$
-m^2-m+\frac{k^2}{\varepsilon^2}=0.
-$$
-Las raíces son
+%o
+%$$
+%m^2-m+\frac{k^2}{\varepsilon^2}=0.
+%$$
+cuyas raíces son
 $$
 m_{\pm}
 =
@@ -4470,25 +4470,103 @@ m_{\pm}
 \sqrt{\frac14-\frac{k^2}{\varepsilon^2}}.
 $$
 
+{\bf 4. Soluciones generales}
+
+Las soluciones generales son de la forma
+$$
+X(y) = Ay^{m_+} + By^{m_-}
+$$
+para constantes arbitrarias $A$ y $B$ cuando
+$$
+\beta = \frac{1}{4} - \frac{k^2}{\varepsilon^2} \neq 0
+$$
+o
+$$
+X(y) = A + B\ln y
+$$
+cuando $\beta=0$.
+
+
+{\bf 4. Soluciones reales}
+
+Cuando
+$$
+\beta = \frac{1}{4} - \frac{k^2}{\varepsilon^2} > 0,
+$$
+las raices son reales y las soluciones resultan hiperbólicas o algebraicas.
+La condici\'on de contorno $x=0$ implica que
+$$
+0 = X(y=1) = A + B = 0.
+$$
+Por otro lado, la condici\'on $x=L$ implica que
+$$
+0 = X(y=Y) = AY^{m_+} + BY^{m_-}
+$$
+donde $Y=1+\varepsilon L$.
+Combinando estos resultados, encontramos que
+$$
+A(Y^{m_+}-Y^{m_-}) = 0.
+$$
+Por ende, o bien $A=0$ obteniendose la soluci\'on trivial, o bien
+\begin{eqnarray}
+0
+&=&
+Y^{m_+}-Y^{m_-}
+\notag
+\\
+&=&
+Y^{m_-}
+\big(
+Y^{m_+-m_-}
+-
+1
+\big)
+\notag
+\\
+0
+&=&
+\big(
+Y^{2\sqrt{\beta}}
+-
+1
+\big)
+\notag
+\\
+2\sqrt{\beta}
+\ln Y
+&=&
+0
+\notag
+\end{eqnarray}
+lo cu\'al no puede cumplirse porque $Y=1+\varepsilon L$ es diferente de $0$ y $1$.
+En resumen, en el caso en que $\beta>0$, s\'olo la soluci\'on trivial $X=0$ es posible.
+
+Cuando $\beta=0$, las condiciones de contorno implican que
+$$
+0 = X(y=1) = A + B \ln 1 = A
+$$
+y
+$$
+0 = X(y=Y) = B \ln Y 
+$$
+por lo que $B=0$ ya que $Y\neq 1$ como mencionamos anteriormente.
+En otras palabras, tambi\'en en este otro caso $\beta=0$, s\'olo la soluci\'on trivial $X=0$ es posible.
+
 {\bf 4. R\'egimen oscilatorio}
 
-Los casos
+Se obtienen modos oscilatorios cuando las ra\'ices resultan complejas, i.e. cuando $\beta<0$ y, por ende
 $$
-\frac{k^2}{\varepsilon^2} \geq \frac{1}{4}.
+m_{\pm}=\alpha\pm i\gamma,
 $$
-producen soluciones hiperbólicas o algebraicas que no permiten satisfacer simultáneamente las condiciones $X(0)=X(L)=0$, por lo que no generan modos propios no triviales.
-En cambio, los modos oscilatorios {\bf s\'i} pueden satisfacer las condiciones de contorno, y se obtienen cuando las ra\'ices resultan complejas, i.e. cuando
-$$
-m_{\pm}=\alpha\pm i\beta,
-$$
-para $\alpha,\beta \in \RR$, donde
+donde
 $$
 \alpha = \frac{1}{2}
 $$
 y
 $$
-\beta = \frac{k^2}{\varepsilon^2}-\frac14 \geq 0.
+\gamma = \sqrt{-\beta}.
 $$
+Estos modos si pueden satisfacer las condiciones de contorno.
 
 {\bf Soluciones Complejas}
 
@@ -4496,11 +4574,11 @@ Para ra\'ices complejas, las soluciones generales son de la forma
 $$
 X(y)
 =
-A_+X_+(y)
+CX_+(y)
 +
-A_-X_-(y)
+DX_-(y)
 $$
-para dos constantes arbitrarias $A_+,A_-\in \CC$, donde sacando ventaja de que $y>0$,
+para dos constantes arbitrarias $C,D\in \CC$, donde sacando ventaja de que $y>0$,
 \begin{eqnarray}
 X_{\pm}(y)
 &=&
@@ -4512,36 +4590,36 @@ e^{\log y^{m_{\pm}}}
 \notag
 \\
 &=&
-e^{\log y^{\alpha\pm i\beta}}
+e^{\log y^{\alpha\pm i\gamma}}
 \notag
 \\
 &=&
-e^{(\alpha\pm i\beta)\log y}
+e^{(\alpha\pm i\gamma)\log y}
 \notag
 \\
 &=&
-e^{\alpha\log y}
-e^{i\beta\log y}
+e^{\gamma\log y}
+e^{i\gamma\log y}
 \notag
 \\
 &=&
 y^{\alpha}
-e^{\pm i\beta\log y}
+e^{\pm i\gamma\log y}
 \notag
 \end{eqnarray}
 Luego, usando la fórmula de Euler
 $$
 e^{i\theta} = \cos\theta + i\sin \theta,
 $$
-podemos reescribir las anteriores expresiones como
+podemos reescribir los modos mencionados como
 \begin{eqnarray}
 X_{\pm}(y)
 &=&
 y^{\alpha}
 \big(
-\cos(\beta \log y)
+\cos(\gamma \log y)
 \pm 
-i\sin(\beta \log y)
+i\sin(\gamma \log y)
 \big).
 \notag
 \end{eqnarray}
@@ -4550,14 +4628,14 @@ i\sin(\beta \log y)
 {\bf Soluciones reales}
 
 La ecuación original tiene coeficientes reales, con condiciones de contorno reales y nos interesan soluciones reales.
-Crucialmente, la parte real y la parte imaginaria de una de las soluciones complejas anteriormente obtenidas resultan linealmente independientes ante combinaciones lineales con coeficientes en $\RR$.
+Con el fin de encontrar soluciones reales, crucialmente notamos que la parte real y la parte imaginaria de las soluciones complejas anteriormente mencionadas resultan linealmente independientes ante combinaciones lineales con coeficientes en $\RR$.
 M\'as precisamente, como $y>0$, luego 
 $$
 y^{\alpha}
 \big(
-A \cos(\beta \log y)
+A \cos(\gamma \log y)
 +
-B \sin(\beta \log y)
+B \sin(\gamma \log y)
 \big)
 =
 0
@@ -4570,28 +4648,30 @@ B \sin(z)
 =
 0
 $$
-para todo $z$ en algún abierto de $\RR$, por lo que $A=B=0$ sigue necesariamente.
-Esto quiere decir que las soluciones generales reales pueden escribirse como
+vale para todo $z$ en algún abierto de $\RR$, s\'olo si $A=B=0$.
+
+La anterior observaci\'on implica que las soluciones generales reales pueden escribirse como
 $$
 X(y)
 =
 y^{\alpha}
 \big(
-A \cos(\beta \log y)
+A \cos(\gamma \log y)
 +
-B \sin(\beta \log y)
+B \sin(\gamma \log y)
 \big)
+.
 $$
-Luego, restituyendo el valor de $x$ y recondando que $\alpha=1/2$, obtenemos que la soluc\'on general oscilatoria puede escribirse como
+Luego, restituyendo el valor de $x$ y recordando que $\alpha=1/2$, obtenemos que la soluci\'on general oscilatoria puede escribirse como
 $$
 \boxed{
 X(x)
 =
 \sqrt{1+\varepsilon x}
 \left[
-A\cos\Big(\beta\ln(1+\varepsilon x)\Big)
+A\cos\Big(\gamma\ln(1+\varepsilon x)\Big)
 +
-B\sin\Big(\beta\ln(1+\varepsilon x)\Big)
+B\sin\Big(\gamma\ln(1+\varepsilon x)\Big)
 \right].
 }
 $$
@@ -4616,7 +4696,8 @@ X(x)
 =
 B\sqrt{1+\varepsilon x}
 \sin\Big(
-\beta\ln(1+\varepsilon x)
+\gamma
+\ln(1+\varepsilon x)
 \Big).
 $$
 La condición en $x=L$ exige
@@ -4626,31 +4707,34 @@ $$
 Por lo tanto
 $$
 \sin\Big(
-\beta\ln(1+\varepsilon L)
+\gamma
+\ln(1+\varepsilon L)
 \Big)
 =0.
 $$
 De aquí
 $$
-\beta\ln(1+\varepsilon L)
+\gamma\ln(1+\varepsilon L)
 =
 n\pi,
 \qquad n=1,2,\ldots
+\,.
 $$
-es decir
+Es decir, las condiciones de borde imponen que los valores admisibles de $\gamma$ resultan cuantizados
 $$
 \boxed{
-\beta_n=
+\gamma_n=
 \frac{n\pi}
 {\ln(1+\varepsilon L)}.
 }
 $$
+para $n\in \NN$.
 
 {\bf 6. Frecuencias propias}
 
 Recordando que
 $$
-\beta^2
+\gamma^2
 =
 \frac{k^2}{\varepsilon^2}
 -\frac14,
@@ -4661,7 +4745,7 @@ k_n^2
 =
 \varepsilon^2
 \left(
-\beta_n^2+\frac14
+\gamma_n^2+\frac14
 \right).
 $$
 Como
@@ -4736,10 +4820,24 @@ $$
 se obtiene
 $$
 \omega_n
+=
+c\varepsilon
+\sqrt{
+\frac14
++
+\frac{n^2\pi^2}{\varepsilon^2L^2}
++O(1)
+}.
+$$
+de donde concluimos que
+$$
+\omega_n
 \sim
 c\,\frac{n\pi}{L},
 $$
-que son exactamente las frecuencias de una cuerda homogénea con extremos fijos. Esto da una buena verificación de la solución.
+cuando $\epsilon\to 0^+$.
+Estas son exactamente las frecuencias de una cuerda homogénea con extremos fijos. 
+Esto da una buena verificación de la solución.
 
 
 
