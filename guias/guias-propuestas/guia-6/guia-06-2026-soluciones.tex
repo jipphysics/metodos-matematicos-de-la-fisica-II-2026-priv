@@ -4856,6 +4856,349 @@ Esto da una buena verificación de la solución.
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 17)}
 \vspace{0.5cm}
+% https://chatgpt.com/share/6a3be06b-2028-83e9-b729-9ff507746d26
+
+El problema 17 pide encontrar la función de Green y resolver cuatro EDOs con distintas condiciones de borde. 
+
+Te sugiero resolverlos de a uno porque cada inciso usa una técnica ligeramente distinta. Empecemos con el **17(a)**:
+
+[
+y''+\frac14,y=\sin(2x),
+\qquad
+y(0)=0,
+\qquad
+y(\pi)=0.
+]
+
+
+
+---
+
+# 1. Operador diferencial
+
+Definimos
+
+[
+L=\frac{d^2}{dx^2}+\frac14.
+]
+
+La función de Green debe satisfacer
+
+[
+L,G(x,\xi)=\delta(x-\xi),
+]
+
+con
+
+[
+G(0,\xi)=0,
+\qquad
+G(\pi,\xi)=0.
+]
+
+---
+
+# 2. Soluciones homogéneas
+
+La ecuación homogénea es
+
+[
+y''+\frac14 y=0.
+]
+
+Su solución general es
+
+[
+y(x)=A\cos\frac{x}{2}
++B\sin\frac{x}{2}.
+]
+
+Elegimos dos soluciones adaptadas a los bordes.
+
+### Solución izquierda
+
+La que satisface
+
+[
+u_1(0)=0
+]
+
+es
+
+[
+u_1(x)=\sin\frac{x}{2}.
+]
+
+### Solución derecha
+
+La que satisface
+
+[
+u_2(\pi)=0
+]
+
+es
+
+[
+u_2(x)=\cos\frac{x}{2}.
+]
+
+---
+
+# 3. Wronskiano
+
+[
+W=u_1u_2'-u_1'u_2.
+]
+
+Calculando,
+
+[
+u_1'=\frac12\cos\frac{x}{2},
+]
+
+[
+u_2'=-\frac12\sin\frac{x}{2}.
+]
+
+Entonces
+
+[
+W
+=
+
+-\frac12
+\Big(
+\sin^2\frac{x}{2}
++\cos^2\frac{x}{2}
+\Big)
+=====
+
+-\frac12.
+]
+
+Por tanto
+
+[
+\boxed{W=-\frac12.}
+]
+
+---
+
+# 4. Función de Green
+
+La fórmula general para un problema de Sturm-Liouville es
+
+[
+G(x,\xi)
+========
+
+\frac{1}{W}
+\begin{cases}
+u_1(x)u_2(\xi),
+&
+x<\xi,
+[2mm]
+u_1(\xi)u_2(x),
+&
+x>\xi.
+\end{cases}
+]
+
+Como (W=-1/2),
+
+[
+\boxed{
+G(x,\xi)
+========
+
+-2
+\begin{cases}
+\sin\frac{x}{2},
+\cos\frac{\xi}{2},
+&
+x<\xi,
+[2mm]
+\sin\frac{\xi}{2},
+\cos\frac{x}{2},
+&
+x>\xi.
+\end{cases}
+}
+]
+
+---
+
+# 5. Solución mediante Green
+
+La solución es
+
+[
+y(x)
+====
+
+\int_0^\pi
+G(x,\xi),
+\sin(2\xi),
+d\xi.
+]
+
+Separando en los intervalos ((0,x)) y ((x,\pi)),
+
+[
+y(x)
+====
+
+-2\cos\frac{x}{2}
+\int_0^x
+\sin\frac{\xi}{2}\sin(2\xi),d\xi
+]
+
+[
+\qquad
+-2\sin\frac{x}{2}
+\int_x^\pi
+\cos\frac{\xi}{2}\sin(2\xi),d\xi.
+]
+
+---
+
+# 6. Evaluación de las integrales
+
+Usando
+
+[
+\sin a\sin b
+============
+
+\frac12
+\Big[
+\cos(a-b)-\cos(a+b)
+\Big]
+]
+
+y
+
+[
+\cos a\sin b
+============
+
+\frac12
+\Big[
+\sin(a+b)+\sin(b-a)
+\Big],
+]
+
+se obtiene tras integrar y simplificar
+
+[
+\boxed{
+y(x)=\frac{4}{15}\sin(2x)
+-\frac{8}{15}\sin\frac{x}{2}.
+}
+]
+
+---
+
+# 7. Verificación
+
+Condiciones de borde:
+
+[
+y(0)=0,
+]
+
+[
+y(\pi)
+======
+
+\frac{4}{15}\sin(2\pi)
+-\frac{8}{15}\sin\frac{\pi}{2}
+==============================
+
+-\frac{8}{15}.
+]
+
+¡Esto indica que cometí un error de signo o de normalización en la construcción de (u_2)!
+
+Y aquí aparece una observación importante: para evitar arrastrar errores algebraicos, conviene contrastar con el método clásico.
+
+---
+
+# Verificación rápida por coeficientes indeterminados
+
+Buscamos
+
+[
+y_p=A\sin(2x).
+]
+
+Entonces
+
+[
+(-4+\tfrac14)A\sin(2x)
+======================
+
+\sin(2x),
+]
+
+de donde
+
+[
+A=-\frac4{15}.
+]
+
+Luego
+
+[
+y=
+C_1\cos\frac{x}{2}
++
+C_2\sin\frac{x}{2}
+-\frac4{15}\sin(2x).
+]
+
+De (y(0)=0),
+
+[
+C_1=0.
+]
+
+De (y(\pi)=0),
+
+[
+C_2=0.
+]
+
+Por tanto
+
+[
+\boxed{
+y(x)
+====
+
+-\frac4{15}\sin(2x).
+}
+]
+
+Esta es la solución correcta.
+
+---
+
+Así que para el inciso (a), la función de Green que construimos es correcta, pero al evaluar las integrales manualmente introduje un error algebraico. La solución final correcta es
+
+[
+\boxed{
+y(x)=
+-\frac4{15}\sin(2x).
+}
+]
+
+Si quieres, podemos hacer ahora el inciso **17(b)** usando Green desde el principio, donde la construcción resulta más interesante porque el operador no tiene coeficientes constantes.
+
+
+
+
 
 
 
