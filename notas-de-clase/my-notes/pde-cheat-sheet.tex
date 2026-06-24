@@ -1,0 +1,926 @@
+%% ****** Start of file apstemplate.tex ****** %
+%%
+%%
+%%   This file is part of the APS files in the REVTeX 4.2 distribution.
+%%   Version 4.2a of REVTeX, January, 2015
+%%
+%%
+%%   Copyright (c) 2015 The American Physical Society.
+%%
+%%   See the REVTeX 4 README file for restrictions and more information.
+%%
+%
+% This is a template for producing manuscripts for use with REVTEX 4.2
+% Copy this file to another name and then work on that file.
+% That way, you always have this original template file to use.
+%
+% Group addresses by affiliation; use superscriptaddress for long
+% author lists, or if there are many overlapping affiliations.
+% For Phys. Rev. appearance, change preprint to twocolumn.
+% Choose pra, prb, prc, prd, pre, prl, prstab, prstper, or rmp for journal
+%  Add 'draft' option to mark overfull boxes with black boxes
+%  Add 'showkeys' option to make keywords appear
+%\documentclass[aps,prl,preprint,groupedaddress]{revtex4-2}
+\documentclass[aps,prl,twocolumn,groupedaddress]{revtex4-2}
+%\documentclass[aps,prl,preprint,superscriptaddress]{revtex4-2}
+%\documentclass[aps,prl,reprint,groupedaddress]{revtex4-2}
+
+% You should use BibTeX and apsrev.bst for references
+% Choosing a journal automatically selects the correct APS
+% BibTeX style file (bst file), so only uncomment the line
+% below if necessary.
+%\bibliographystyle{apsrev4-2}
+
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{caption}
+%\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+%\usepackage{amsthm}
+%\usepackage{amsfonts}
+%\usepackage{subfigure}
+%\usepackage{hhline}
+%\usepackage[miktex]{gnuplottex}
+%\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{hyperref}
+%\usepackage[percent]{overpic}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{wasysym}
+\usepackage{tikz-cd}
+%\usepackage{linearb}
+%\usepackage{wsuipa}
+\usepackage{calc}
+\usepackage{tipa}
+\usepackage{booktabs}
+
+%\usepackage{stix} %\fisheye
+\usepackage{stackengine,scalerel}
+
+% so sections, subsections, etc. become numerated.
+\setcounter{secnumdepth}{3}
+
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\GG}{\mathbb{G}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\avrg}[1]{\left\langle #1 \right\rangle}
+\newcommand{\nelta}{\bar{\delta}}
+\newcommand{\bra}[1]{\left\langle #1\right|}
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\sbra}[1]{\langle #1|}
+\newcommand{\sket}[1]{| #1 \rangle}
+\newcommand{\bek}[3]{\left\langle #1 \right| #2 \left| #3 \right\rangle}
+\newcommand{\sbek}[3]{\langle #1 | #2 | #3 \rangle}
+\newcommand{\braket}[2]{\left\langle #1 \middle| #2 \right\rangle}
+\newcommand{\ketbra}[2]{\left| #1 \middle\rangle \middle\langle #2  \right|}
+\newcommand{\sbraket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\sketbra}[2]{| #1 \rangle  \langle #2 |}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\snorm}[1]{\lVert#1\rVert}
+\newcommand{\bvec}[1]{\boldsymbol{\mathsf{#1}}}
+\newcommand{\bcov}[1]{\boldsymbol{#1}}
+\newcommand{\bdua}[1]{\boldsymbol{\check{#1}}}
+%\newcommand{\bdov}[1]{\boldsymbol{\breve{#1}}}
+\newcommand{\bdov}[1]{\breve{#1}}
+%\newcommand{\bten}[1]{\boldsymbol{\mathfrak{#1}}}
+\newcommand{\bten}[1]{\boldsymbol{\mathfrak{#1}}}
+\newcommand{\forany}{\tilde{\forall}}
+\newcommand{\qed}{$\overset{\circ}{.}\;$}
+\newcommand{\bigo}{\mathcal{O}}
+\newcommand{\spn}{\mathrm{spn}\,}
+\newcommand{\krn}{\mathrm{krn}\,}
+\newcommand{\biy}{\leftrightarrow}
+\newcommand{\ugh}{\mathbin{\textlinb{\BPwheel}}}
+
+\newcommand\bigeye{\ensurestackMath{\stackinset{c}{}{c}{-.3pt}%
+  {\bullet}{\scriptstyle\bigcirc}}}
+\newcommand\eye{\scalerel*{\bigeye}{x}}
+%\newcommand*{\fisheye}{%
+%    \mathbin{%
+%        \ooalign{$\circledcirc$\cr\hidewidth$\bullet$\hidewidth}%
+%    }%
+%}
+
+% double angle-bracket
+% https://tex.stackexchange.com/questions/79657/how-to-get-double-angle-bracket-without-using-mnsymbol-package
+\makeatletter
+\newsavebox{\@brx}
+\newcommand{\llangle}[1][]{\savebox{\@brx}{\(\m@th{#1\langle}\)}%
+  \mathopen{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+\newcommand{\rrangle}[1][]{\savebox{\@brx}{\(\m@th{#1\rangle}\)}%
+  \mathclose{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+\makeatother
+
+% https://tex.stackexchange.com/questions/297362/bar-through-letter-in-mathmode
+%\usepackage{calc}
+\newsavebox\CBox
+\newcommand\hcancel[2][0.5pt]{%
+  \ifmmode\sbox\CBox{$#2$}\else\sbox\CBox{#2}\fi%
+  \makebox[0pt][l]{\usebox\CBox}%  
+  \rule[0.77\ht\CBox-#1/2]{\wd\CBox}{#1}}
+\newcommand{\cb}{\hcancel{b}}
+\newcommand{\cd}{\hcancel{d}}
+\newcommand{\ct}{\hcancel{\partial}}
+%\newcommand{\supp}{\mathsf{supp}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\csupp}{\overline{\mathrm{supp}}}
+\newcommand{\supr}[2]{\underset{#1}{\text{supr}}}
+
+\begin{document}
+
+% Use the \preprint command to place your local institutional report
+% number in the upper righthand corner of the title page in preprint mode.
+% Multiple \preprint commands are allowed.
+% Use the 'preprintnumbers' class option to override journal defaults
+% to display numbers if necessary
+%\preprint{}
+
+%Title of paper
+\title{
+M\'etodos Matem\'aticos de la F\'isica II\\
+Cheat Sheet: Solving PDEs in Mathematical Physics
+}
+
+% repeat the \author .. \affiliation  etc. as needed
+% \email, \thanks, \homepage, \altaffiliation all apply to the current
+% author. Explanatory text should go in the []'s, actual e-mail
+% address or url should go in the {}'s for \email and \homepage.
+% Please use the appropriate macro foreach each type of information
+
+% \affiliation command applies to all authors since the last
+% \affiliation command. The \affiliation command should follow the
+% other information
+% \affiliation can be followed by \email, \homepage, \thanks as well.
+\author{Juan I. Perotti}
+\email[]{juan.perotti@unc.edu.ar}
+%\homepage[]{Your web page}
+%\thanks{}
+%\altaffiliation{}
+%\affiliation{}
+\affiliation{Instituto de F\'isica Enrique Gaviola (IFEG-CONICET), Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+\affiliation{Facultad de Matem\'atica, Astronom\'ia, F\'isica y Computaci\'on, Universidad Nacional de C\'ordoba, Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+
+% \author{Colaborador}
+% \affiliation{Instituto de F\'isica Enrique Gaviola (IFEG-CONICET), Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+% \affiliation{Facultad de Matem\'atica, Astronom\'ia, F\'isica y Computaci\'on, Universidad Nacional de C\'ordoba, Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+% \email[E-mail: ]{xxx.yyy@unc.edu.ar }
+
+%Collaboration name if desired (requires use of superscriptaddress
+%option in \documentclass). \noaffiliation is required (may also be
+%used with the \author command).
+%\collaboration can be followed by \email, \homepage, \thanks as well.
+%\collaboration{Claudio J. Tessone}
+%\noaffiliation
+
+\date{\today}
+
+%\begin{abstract}
+%Bla bla bla... resumen...
+%\end{abstract}
+
+% insert suggested keywords - APS authors don't need to do this
+%\keywords{}
+
+%\maketitle must follow title, authors, abstract, and keywords
+\maketitle
+\onecolumngrid
+
+% https://chatgpt.com/share/6a3bfb0e-e684-83e9-860b-2d90353eec33
+
+\section{The General Philosophy}
+
+Most linear PDEs encountered in physics can be written schematically as
+$$
+(\mathcal M u)(\mathbf x,t)
+=
+(\mathcal L u)(\mathbf x,t)
++
+f(\mathbf x,t),
+$$
+where:
+\begin{itemize}
+\item $\mathcal L$ is a spatial differential operator,
+\item $\mathcal M$ is a temporal differential operator,
+\item $f$ is a source term.
+\end{itemize}
+The central idea is:
+$$
+\boxed{
+\text{Geometry}
+\rightarrow
+\text{Boundary Conditions}
+\rightarrow
+\text{Spatial Eigenvalue Problem}
+\rightarrow
+\text{Eigenfunctions}
+\rightarrow
+\text{Expansion of Solutions}
+}
+$$
+The fundamental step is therefore not solving the PDE directly, but solving the associated spatial eigenvalue problem.
+
+\section{Spatial Eigenvalue Problem}
+
+Given a spatial operator $\mathcal L$, solve the equation
+$$
+\mathcal L \phi_n
+=
+-\lambda_n \phi_n
+$$
+subject to the prescribed boundary conditions.
+{\color{red}[Comment: Is this the Helmholtz equation?]}
+
+The eigenfunctions ${\phi_n}$:
+\begin{itemize}
+\item form an orthogonal basis,
+\item determine the structure of the solution, and
+\item are reused for Laplace, Poisson, Heat, Wave, Helmholtz and Schr\"odinger equations.
+\end{itemize}
+
+\section{Sturm-Liouville Theory}
+
+Most one-dimensional eigenvalue problems can be written as
+$$
+-\frac{d}{dx}
+\left(
+p(x)\frac{dy}{dx}
+\right)
++
+q(x)y
+=
+\lambda w(x)y.
+$$
+Properties:
+\begin{itemize}
+\item {\bf Real eigenvalues:}
+$$
+\lambda_n\in\mathbb R.
+$$
+
+\item {\bf Orthogonality:}
+$$
+\langle y_n,y_m \rangle
+=
+\int_a^b
+y_n(x)y_m(x)w(x)\,dx
+=
+0,
+\qquad
+n\neq m.
+$$
+{\color{red}[Comment: If the functions are complex, is the inner product modified?]}
+
+\item {\bf Completeness:}
+Any sufficiently regular function can be expanded as
+$$
+f(x)
+=
+\sum_n
+a_n y_n(x)
+$$
+where
+$$
+a_n 
+= 
+\langle y_n,f\rangle
+=
+\int_a^b
+y_n(x)f(x)w(x)\,dx
+$$
+\end{itemize}
+
+\section{Boundary Conditions}
+
+Assume that $\Omega$ is the spatial domain under consideration.
+
+\subsection{Dirichlet}
+
+{\color{red}[Comment: the use of $u$ in the following equations is confusing. Is this $u$ a function of $x$ alone, or is it also a function of $t$? In the latter case, the equation should hold for a particular $t$ or for all $t$?]}
+
+Value prescribed:
+$$
+u=g
+\quad\text{on }\partial\Omega.
+$$
+Examples:
+\begin{itemize}
+\item fixed temperature,
+\item fixed electrostatic potential.
+\end{itemize}
+
+\subsection{Neumann}
+
+Normal derivative prescribed:
+$$
+\frac{\partial u}{\partial \hat n}=g.
+$$
+where $\hat n$ is the unit vector (pointing to the outside) normal to the boundary at each point $x\in \partial \Omega$.
+In other words, it is the unit vector orthogonal to the tanget space of $\partial \Omega$ at each point.
+
+Examples:
+\begin{itemize}
+\item heat flux,
+\item normal electric field.
+\end{itemize}
+
+\subsection{Robin (Mixed)}
+
+$$
+a u+b\frac{\partial u}{\partial \hat n}=g.
+$$
+
+Examples:
+\begin{itemize}
+\item convective heat transfer.
+\end{itemize}
+
+\subsection{Periodic}
+
+$$
+u(\mathbf x+L)=u(\mathbf x).
+$$
+Examples:
+\begin{itemize}
+\item rings,
+\item crystals,
+\item Fourier analysis.
+\end{itemize}
+
+\section{Separation of Variables}
+
+Assume
+$$
+u(\mathbf x,t)
+=
+X(\mathbf x)T(t).
+$$
+Then
+$$
+\frac{\mathcal M T}{T}
+=
+\frac{\mathcal L X}{X}
+=
+-\lambda.
+$$
+This produces:
+
+\begin{itemize}
+\item A {\bf spatial problem}
+$$
+\mathcal L X
+=
+-\lambda X.
+$$
+\item and a {\bf temporal problem} determined by the PDE under study.
+\end{itemize}
+Thus every separable PDE ultimately reduces to solving the same spatial eigenvalue problem.
+{\color{red}[Comment: what do you mean by ``same'' here?]}
+
+\section{Coordinate Systems and Eigenfunctions}
+
+\subsection{Cartesian Coordinates}
+
+\subsubsection{Interval $[0,L]$}
+
+Eigenproblem:
+$$
+X''+\lambda X=0.
+$$
+
+\begin{itemize}
+\item Dirichlet
+$$
+X(0)=X(L)=0.
+$$
+Eigenfunctions:
+$$
+X_n(x)
+=
+\sin\frac{n\pi x}{L}.
+$$
+Eigenvalues:
+$$
+\lambda_n
+=
+\left(\frac{n\pi}{L}\right)^2.
+$$
+\item Neumann
+$$
+X'(0)=X'(L)=0.
+$$
+Eigenfunctions:
+$$
+X_n(x)
+=
+\cos\frac{n\pi x}{L}.
+$$
+Eigenvalues:
+$$
+\lambda_n
+=
+\left(\frac{n\pi}{L}\right)^2.
+$$
+\end{itemize}
+
+\subsubsection{Periodic}
+
+$$
+X(0)=X(L),
+\qquad
+X'(0)=X'(L).
+$$
+Eigenfunctions:
+$$
+e^{i2\pi nx/L}.
+$$
+Eigenvalues:
+$$
+\lambda_n
+=
+\left(\frac{2\pi n}{L}\right)^2.
+$$
+
+\subsection{Rectangular Domains}
+
+$$
+0<x<L_x,
+\qquad
+0<y<L_y.
+$$
+Dirichlet eigenfunctions:
+$$
+\phi_{nm}(x,y)
+=
+\sin\frac{n\pi x}{L_x}
+\sin\frac{m\pi y}{L_y}.
+$$
+Eigenvalues:
+$$
+\lambda_{nm}
+=
+\left(\frac{n\pi}{L_x}\right)^2
++
+\left(\frac{m\pi}{L_y}\right)^2.
+$$
+
+\subsection{Polar Coordinates}
+
+$$
+(r,\theta).
+$$
+Laplacian:
+$$
+\nabla^2
+=
+\frac1r
+\frac{\partial}{\partial r}
+\left(
+r\frac{\partial}{\partial r}
+\right)
++
+\frac1{r^2}
+\frac{\partial^2}{\partial\theta^2}.
+$$
+\begin{itemize}
+\item Angular Part
+$$
+\Theta''+m^2\Theta=0.
+$$
+Eigenfunctions:
+$$
+e^{im\theta}.
+$$
+Eigenvalues:
+$$
+m^2.
+$$
+
+\item Radial Part
+$$
+r^2R''
++rR'
++
+(k^2r^2-m^2)R
+=
+0.
+$$
+Solutions:
+$$
+J_m(kr),
+\qquad
+Y_m(kr).
+$$
+(Bessel functions)
+\end{itemize}
+
+\subsection{Disk of Radius $a$}
+
+Regular eigenfunctions:
+$$
+J_m(k_{mn}r)e^{im\theta}.
+$$
+with
+$$
+J_m(k_{mn}a)=0.
+$$
+Eigenvalues:
+$$
+\lambda_{mn}
+=
+k_{mn}^2
+\left(
+\frac{j_{mn}}{a}
+\right)^2.
+$$
+{\color{red}[Comment: Here $j_{mn}$ is the $n$-th root of the $m$-th Bessel function?]}
+
+\subsection{Cylindrical Coordinates}
+
+$$
+(r,\phi,z).
+$$
+Eigenfunctions:
+$$
+J_m(k_r r)
+e^{im\phi}
+e^{ik_z z}.
+$$
+Eigenvalues:
+$$
+\lambda
+=
+k_r^2+k_z^2.
+$$
+{\color{red}[Comment: The eigenvalues does not depend on $m$?]}
+
+\subsection{Spherical Coordinates}
+
+$$
+(r,\theta,\phi).
+$$
+
+\begin{itemize}
+\item Angular Part
+$$
+L^2Y
+=
+\ell(\ell+1)Y.
+$$
+Eigenfunctions:
+$$
+Y_\ell^m(\theta,\phi).
+$$
+(Spherical harmonics)
+Eigenvalues:
+$$
+\ell(\ell+1).
+$$
+
+\item Radial Part
+$$
+r^2R''
++
+2rR'
++
+\left(
+k^2r^2-\ell(\ell+1)
+\right)
+R
+=
+0.
+$$
+Solutions:
+$$
+j_\ell(kr),
+\qquad
+y_\ell(kr).
+$$
+(Spherical Bessel functions)
+{\color{red}[Comment: Why the $j_{\ell}$ are written using a lower-case letter $j$? Is this correct?]}
+
+\item Sphere of Radius $a$
+
+Eigenfunctions:
+$$
+j_\ell(k_{\ell n}r)
+Y_\ell^m(\theta,\phi).
+$$
+with
+$$
+j_\ell(k_{\ell n}a)=0.
+$$
+Eigenvalues:
+$$
+\lambda_{\ell n}
+=
+k_{\ell n}^2.
+$$
+\end{itemize}
+
+\section{Common Special Functions}
+
+%| Function                       | Differential Equation                     |
+%| ------------------------------ | ----------------------------------------- |
+%| Bessel (J_\nu,Y_\nu)           | (x^2y''+xy'+(x^2-\nu^2)y=0)               |
+%| Legendre (P_\ell)              | ((1-x^2)y''-2xy'+\ell(\ell+1)y=0)         |
+%| Associated Legendre (P_\ell^m) | Angular equation in spherical coordinates |
+%| Hermite (H_n)                  | Harmonic oscillator                       |
+%| Laguerre (L_n^\alpha)          | Hydrogen atom radial equation             |
+
+\begin{table}[h]
+\centering
+\caption{Special Functions and Differential Equations}
+\label{tab:special_functions}
+\begin{tabular}{ll}
+\toprule
+\textbf{Function} & \textbf{Differential Equation} \\
+\midrule
+Bessel ($J_\nu, Y_\nu$) & $x^2y''+xy'+(x^2-\nu^2)y=0$ \\ \addlinespace
+Legendre ($P_\ell$) & $(1-x^2)y''-2xy'+\ell(\ell+1)y=0$ \\ \addlinespace
+Associated Legendre ($P_\ell^m$) & Angular equation in spherical coordinates \\ \addlinespace
+Hermite ($H_n$) & Harmonic oscillator \\ \addlinespace
+Laguerre ($L_n^\alpha$) & Hydrogen atom radial equation \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Solving PDEs Using the Eigenbasis}
+
+Once
+$$
+\mathcal L\phi_n=-\lambda_n\phi_n
+$$
+is known, expand
+$$
+u
+=
+\sum_n a_n(t)\phi_n.
+$$
+The PDE reduces to equations for the coefficients $a_n(t)$.
+
+\section{Laplace Equation}
+
+$$
+\nabla^2u=0.
+$$
+No source term.
+Solutions are harmonic functions.
+Usually solved directly by separation of variables.
+
+\section{Poisson Equation}
+
+$$
+\nabla^2u=f.
+$$
+Expand
+$$
+f
+=
+\sum_n f_n\phi_n.
+$$
+Then
+$$
+-\lambda_n a_n=f_n.
+$$
+Therefore
+$$
+a_n
+=
+-\frac{f_n}{\lambda_n}.
+$$
+Hence
+$$
+u
+=
+-\sum_n
+\frac{f_n}{\lambda_n}
+\phi_n.
+$$
+
+\section{Helmholtz Equation}
+
+$$
+\nabla^2u+k^2u=0.
+$$
+Equivalent to
+$$
+\mathcal L u=-k^2u.
+$$
+This is precisely the spatial eigenvalue problem.
+
+\section{Heat Equation}
+
+$$
+u_t
+=
+D\nabla^2u.
+$$
+Expand
+$$
+u
+=
+\sum_n a_n(t)\phi_n.
+$$
+Then
+$$
+a_n'
+=
+-D\lambda_n a_n.
+$$
+Solution:
+$$
+a_n(t)
+=
+a_n(0)
+e^{-D\lambda_n t}.
+$$
+Therefore
+$$
+u(\mathbf x,t)
+=
+\sum_n
+a_n(0)
+e^{-D\lambda_n t}
+\phi_n(\mathbf x).
+$$
+
+\section{Wave Equation}
+
+$$
+u_{tt}
+=
+c^2\nabla^2u.
+$$
+Expansion gives
+$$
+a_n''
++
+c^2\lambda_n a_n
+=
+0.
+$$
+Solution:
+$$
+a_n(t)
+=
+A_n\cos(c\sqrt{\lambda_n}t)
++
+B_n\sin(c\sqrt{\lambda_n}t).
+$$
+Hence
+$$
+u
+=
+\sum_n
+\left[
+A_n\cos(c\sqrt{\lambda_n}t)
++
+B_n\sin(c\sqrt{\lambda_n}t)
+\right]
+\phi_n.
+$$
+
+\section{Schrödinger Equation}
+
+$$
+i\hbar\frac{\partial\psi}{\partial t}
+=
+-\frac{\hbar^2}{2m}
+\nabla^2\psi.
+$$
+Expansion yields
+$$
+a_n'
+=
+-i
+\frac{\hbar\lambda_n}{2m}
+a_n.
+$$
+Thus
+$$
+a_n(t)
+=
+a_n(0)
+e^{-iE_nt/\hbar},
+$$
+where
+$$
+E_n
+=
+\frac{\hbar^2\lambda_n}{2m}.
+$$
+
+\section{Green Functions}
+
+For
+$$
+\mathcal L u=f,
+$$
+define
+$$
+\mathcal L G(x,x')
+=
+\delta(x-x').
+$$
+Then
+$$
+u(x)
+=
+\int
+G(x,x')
+f(x')\,dx'.
+$$
+
+\subsection{Spectral Representation}
+
+If
+$$
+\mathcal L\phi_n
+=
+-\lambda_n\phi_n,
+$$
+then
+$$
+G(x,x')
+=
+-\sum_n
+\frac{\phi_n(x)\phi_n(x')}
+{\lambda_n}.
+$$
+Thus Green functions are simply the inverse operator written in the eigenbasis.
+{\color{red}[Comment: Isn't there a zero eigenvalue?]}
+
+\section{Fourier Methods}
+
+Useful on infinite domains.
+{\color{red}[In infinite domains is useful the fourier transform? What about periodic spaces? What about Fourier series?]}
+Transform
+$$
+\hat u(k)
+=
+\int
+u(x)e^{-ikx},dx.
+$$
+Derivatives become
+$$
+\partial_x
+\rightarrow
+ik,
+$$
+$$
+\partial_x^2
+\rightarrow
+-k^2.
+$$
+Differential equations become algebraic equations in Fourier space.
+{\color{red}[Comment: This is true given that there are no explicit powers of $x$ in the equation?]}
+
+\section{Master Formula}
+
+Almost every linear PDE solved in a standard Mathematical Methods course eventually takes the form
+
+$$
+u(\mathbf x,t)
+=
+\sum_n
+a_n(t)\phi_n(\mathbf x),
+$$
+where:
+\begin{itemize}
+\item $\phi_n$ are eigenfunctions of the spatial operator,
+\item $\lambda_n$ are the corresponding eigenvalues,
+\item $a_n(t)$ are determined by the temporal equation,
+\item coefficients are fixed by initial and boundary conditions.
+\end{itemize}
+The entire theory can therefore be summarized as
+$$
+\boxed{
+\text{PDE}
+\longrightarrow
+\text{Eigenvalue Problem}
+\longrightarrow
+\text{Eigenfunctions}
+\longrightarrow
+\text{Series Expansion}
+\longrightarrow
+\text{Solution}
+}
+$$
+which unifies Fourier series, Bessel functions, spherical harmonics, Sturm-Liouville theory, Green functions, and separation of variables into a single spectral framework.
+
+
+\end{document}
+%
+% ****** End of file apstemplate.tex ******
+
+
