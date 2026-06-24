@@ -65,6 +65,15 @@
 
 \newcommand{\tder}[2]{\frac{d #1}{d #2}}
 
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Counters definitions (old)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -4454,52 +4463,135 @@ m^2-m+\frac{k^2}{\varepsilon^2}=0.
 $$
 Las raíces son
 $$
-m=
+m_{\pm}
+=
 \frac12
 \pm
 \sqrt{\frac14-\frac{k^2}{\varepsilon^2}}.
 $$
 
-{\bf 4. Régimen oscilatorio}
+{\bf 4. R\'egimen oscilatorio}
 
-Para los modos normales relevantes,
+Los casos
 $$
-\frac{k^2}{\varepsilon^2}>\frac14.
+\frac{k^2}{\varepsilon^2} \geq \frac{1}{4}.
 $$
-Definimos
+producen soluciones hiperbólicas o algebraicas que no permiten satisfacer simultáneamente las condiciones $X(0)=X(L)=0$, por lo que no generan modos propios no triviales.
+En cambio, los modos oscilatorios {\bf s\'i} pueden satisfacer las condiciones de contorno, y se obtienen cuando las ra\'ices resultan complejas, i.e. cuando
 $$
-\mu
-=
-\sqrt{
-\frac{k^2}{\varepsilon^2}
--\frac14}.
+m_{\pm}=\alpha\pm i\beta,
 $$
-Entonces
+para $\alpha,\beta \in \RR$, donde
 $$
-m=
-\frac12\pm i\mu.
+\alpha = \frac{1}{2}
 $$
-La solución espacial puede escribirse como
+y
+$$
+\beta = \frac{k^2}{\varepsilon^2}-\frac14 \geq 0.
+$$
+
+{\bf Soluciones Complejas}
+
+Para ra\'ices complejas, las soluciones generales son de la forma
 $$
 X(y)
 =
-y^{1/2}
-\left[
-A\cos(\mu\ln y)
+A_+X_+(y)
 +
-B\sin(\mu\ln y)
-\right].
+A_-X_-(y)
 $$
-Volviendo a $x$,
+para dos constantes arbitrarias $A_+,A_-\in \CC$, donde sacando ventaja de que $y>0$,
+\begin{eqnarray}
+X_{\pm}(y)
+&=&
+y^{m_{\pm}}
+\notag
+\\
+&=&
+e^{\log y^{m_{\pm}}}
+\notag
+\\
+&=&
+e^{\log y^{\alpha\pm i\beta}}
+\notag
+\\
+&=&
+e^{(\alpha\pm i\beta)\log y}
+\notag
+\\
+&=&
+e^{\alpha\log y}
+e^{i\beta\log y}
+\notag
+\\
+&=&
+y^{\alpha}
+e^{\pm i\beta\log y}
+\notag
+\end{eqnarray}
+Luego, usando la fórmula de Euler
+$$
+e^{i\theta} = \cos\theta + i\sin \theta,
+$$
+podemos reescribir las anteriores expresiones como
+\begin{eqnarray}
+X_{\pm}(y)
+&=&
+y^{\alpha}
+\big(
+\cos(\beta \log y)
+\pm 
+i\sin(\beta \log y)
+\big).
+\notag
+\end{eqnarray}
+
+
+{\bf Soluciones reales}
+
+La ecuación original tiene coeficientes reales, con condiciones de contorno reales y nos interesan soluciones reales.
+Crucialmente, la parte real y la parte imaginaria de una de las soluciones complejas anteriormente obtenidas resultan linealmente independientes ante combinaciones lineales con coeficientes en $\RR$.
+M\'as precisamente, como $y>0$, luego 
+$$
+y^{\alpha}
+\big(
+A \cos(\beta \log y)
++
+B \sin(\beta \log y)
+\big)
+=
+0
+\quad
+\Rightarrow
+\quad
+A \cos(z)
++
+B \sin(z)
+=
+0
+$$
+para todo $z$ en algún abierto de $\RR$, por lo que $A=B=0$ sigue necesariamente.
+Esto quiere decir que las soluciones generales reales pueden escribirse como
+$$
+X(y)
+=
+y^{\alpha}
+\big(
+A \cos(\beta \log y)
++
+B \sin(\beta \log y)
+\big)
+$$
+Luego, restituyendo el valor de $x$ y recondando que $\alpha=1/2$, obtenemos que la soluc\'on general oscilatoria puede escribirse como
 $$
 \boxed{
 X(x)
 =
 \sqrt{1+\varepsilon x}
 \left[
-A\cos\Big(\mu\ln(1+\varepsilon x)\Big)
+A\cos\Big(\beta\ln(1+\varepsilon x)\Big)
 +
-B\sin\Big(\mu\ln(1+\varepsilon x)\Big)
+B\sin\Big(\beta\ln(1+\varepsilon x)\Big)
 \right].
 }
 $$
@@ -4524,7 +4616,7 @@ X(x)
 =
 B\sqrt{1+\varepsilon x}
 \sin\Big(
-\mu\ln(1+\varepsilon x)
+\beta\ln(1+\varepsilon x)
 \Big).
 $$
 La condición en $x=L$ exige
@@ -4534,13 +4626,13 @@ $$
 Por lo tanto
 $$
 \sin\Big(
-\mu\ln(1+\varepsilon L)
+\beta\ln(1+\varepsilon L)
 \Big)
 =0.
 $$
 De aquí
 $$
-\mu\ln(1+\varepsilon L)
+\beta\ln(1+\varepsilon L)
 =
 n\pi,
 \qquad n=1,2,\ldots
@@ -4548,7 +4640,7 @@ $$
 es decir
 $$
 \boxed{
-\mu_n=
+\beta_n=
 \frac{n\pi}
 {\ln(1+\varepsilon L)}.
 }
@@ -4558,7 +4650,7 @@ $$
 
 Recordando que
 $$
-\mu^2
+\beta^2
 =
 \frac{k^2}{\varepsilon^2}
 -\frac14,
@@ -4569,19 +4661,19 @@ k_n^2
 =
 \varepsilon^2
 \left(
-\mu_n^2+\frac14
+\beta_n^2+\frac14
 \right).
 $$
 Como
 $$
-\omega_n=ck_n,
+\omega_n=c\,k_n,
 $$
 resulta
 $$
 \boxed{
 \omega_n
 =
-c\varepsilon
+c\,\varepsilon\,
 \sqrt{
 \frac14
 +
