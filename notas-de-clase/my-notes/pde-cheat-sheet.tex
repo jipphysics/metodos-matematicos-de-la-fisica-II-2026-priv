@@ -238,7 +238,8 @@ $$
 -\lambda_n \phi_n
 $$
 subject to the prescribed boundary conditions.
-{\color{red}[Comment: Is this the Helmholtz equation?]}
+This reduces to the Helmholtz equation in the particular case where $\mathcal L=\nabla^2$.
+
 
 The eigenfunctions ${\phi_n}$:
 \begin{itemize}
@@ -249,17 +250,19 @@ The eigenfunctions ${\phi_n}$:
 
 \section{Sturm-Liouville Theory}
 
-Most one-dimensional eigenvalue problems can be written as
+Most one-dimensional eigenvalue problems can be written as a Sturm-Liouville problem, which is about solving the ODE
 $$
 -\frac{d}{dx}
 \left(
-p(x)\frac{dy}{dx}
+p\frac{dy}{dx}
 \right)
 +
-q(x)y
+q\,y
 =
-\lambda w(x)y.
+\lambda w\,y.
 $$
+under prescribed boundary conditions, and where $p:x\to p(x)\in \RR$, $q:x\to w(x)\in \RR$ and $w:x\to w(x)\in \RR$ denote some prescribed functions and $y:x\to y(x)\in \RR$ denotes a solution.
+
 Properties:
 \begin{itemize}
 \item {\bf Real eigenvalues:}
@@ -268,17 +271,20 @@ $$
 $$
 
 \item {\bf Orthogonality:}
+Two eigenfunctions $y_n$ and $y_m$ obtained for different eigenvalues $\lambda_n$ and $\lambda_m$ (i.e. for $n\neq m$) satisfy the orthogonality condition
 $$
 \langle y_n,y_m \rangle
 =
-\int_a^b
-y_n(x)y_m(x)w(x)\,dx
-=
-0,
-\qquad
-n\neq m.
+0
 $$
-{\color{red}[Comment: If the functions are complex, is the inner product modified?]}
+where
+$$
+\langle f,g \rangle
+=
+\int_a^b
+f^*(x)g(x)w(x)\,dx
+$$
+denotes an inner product.
 
 \item {\bf Completeness:}
 Any sufficiently regular function can be expanded as
@@ -292,10 +298,10 @@ where
 $$
 a_n 
 = 
-\langle y_n,f\rangle
-=
-\int_a^b
-y_n(x)f(x)w(x)\,dx
+\frac{\langle y_n,f\rangle}{\langle y_n,y_n\rangle}
+%=
+%\int_a^b
+%y_n^*(x)f(x)w(x)\,dx
 $$
 \end{itemize}
 
@@ -305,12 +311,10 @@ Assume that $\Omega$ is the spatial domain under consideration.
 
 \subsection{Dirichlet}
 
-{\color{red}[Comment: the use of $u$ in the following equations is confusing. Is this $u$ a function of $x$ alone, or is it also a function of $t$? In the latter case, the equation should hold for a particular $t$ or for all $t$?]}
-
 Value prescribed:
 $$
-u=g
-\quad\text{on }\partial\Omega.
+u(\mathbf x,t)=g(\mathbf x,t)
+\quad\text{for all $\mathbf x\in \partial\Omega$ and all $t$.}
 $$
 Examples:
 \begin{itemize}
@@ -322,9 +326,10 @@ Examples:
 
 Normal derivative prescribed:
 $$
-\frac{\partial u}{\partial \hat n}=g.
+\frac{\partial u}{\partial \hat n}(\mathbf x,t)=g(\mathbf x,t)
+\quad\text{for all $\mathbf x\in \partial\Omega$ and all $t$.}
 $$
-where $\hat n$ is the unit vector (pointing to the outside) normal to the boundary at each point $x\in \partial \Omega$.
+where $\hat n$ is the unit vector (pointing to the outside) normal to the boundary at each point $\mathbf x\in \partial \Omega$.
 In other words, it is the unit vector orthogonal to the tanget space of $\partial \Omega$ at each point.
 
 Examples:
@@ -336,7 +341,8 @@ Examples:
 \subsection{Robin (Mixed)}
 
 $$
-a u+b\frac{\partial u}{\partial \hat n}=g.
+a\, u(\mathbf x,t)+b\,\frac{\partial u}{\partial \hat n}(\mathbf x,t)=g(\mathbf x,t)
+\quad\text{for all $\mathbf x\in \partial\Omega$ and all $t$.}
 $$
 
 Examples:
@@ -347,7 +353,7 @@ Examples:
 \subsection{Periodic}
 
 $$
-u(\mathbf x+L)=u(\mathbf x).
+u(\mathbf x+L,t)=u(\mathbf x,t).
 $$
 Examples:
 \begin{itemize}
@@ -383,8 +389,7 @@ $$
 $$
 \item and a {\bf temporal problem} determined by the PDE under study.
 \end{itemize}
-Thus every separable PDE ultimately reduces to solving the same spatial eigenvalue problem.
-{\color{red}[Comment: what do you mean by ``same'' here?]}
+Thus every separable PDE ultimately reduces to solving the a few spatial eigenvalue problems, since the heat, wave, Schr\"odinger, Poisson, etc., all involve the same spatial operator $\mathcal L$, and therefore the same eigenfunctions $\phi_n$.
 
 \section{Coordinate Systems and Eigenfunctions}
 
@@ -542,8 +547,8 @@ k_{mn}^2
 \frac{j_{mn}}{a}
 \right)^2.
 $$
-{\color{red}[Comment: Here $j_{mn}$ is the $n$-th root of the $m$-th Bessel function?]}
-
+where $j_{mn}$ denotes the $n$-th positive zero of $J_m$.
+ 
 \subsection{Cylindrical Coordinates}
 
 $$
@@ -561,7 +566,7 @@ $$
 =
 k_r^2+k_z^2.
 $$
-{\color{red}[Comment: The eigenvalues does not depend on $m$?]}
+where the dependence of $\lambda$ on $m$ goes through the value $k_r$ that appears in the radial equation.
 
 \subsection{Spherical Coordinates}
 
@@ -599,14 +604,19 @@ R
 =
 0.
 $$
-Solutions:
+The solutions are:
 $$
-j_\ell(kr),
+j_\ell(kr)
 \qquad
-y_\ell(kr).
+y_\ell(kr)
 $$
-(Spherical Bessel functions)
-{\color{red}[Comment: Why the $j_{\ell}$ are written using a lower-case letter $j$? Is this correct?]}
+where 
+$$
+j_\ell(x) = \sqrt{\frac{\pi}{2 x}}J_{\ell+\frac{1}{2}}(x)
+\qquad
+y_\ell(x) = \sqrt{\frac{\pi}{2 x}}Y_{\ell+\frac{1}{2}}(x)
+$$
+are the spherical Bessel functions.
 
 \item Sphere of Radius $a$
 
@@ -858,18 +868,28 @@ G(x,x')
 {\lambda_n}.
 $$
 Thus Green functions are simply the inverse operator written in the eigenbasis.
-{\color{red}[Comment: Isn't there a zero eigenvalue?]}
+
+{\bf Observation:}
+Previous expansion assumes that all eigenvalues satisfy $\lambda_n\neq 0$.
+If a zero mode exists (e.g. for Neumann or periodic boundary conditions), then the operator $\mathcal L$ is not invertible and the Green function must be modified by excluding the zero mode:
+$$
+G(x,x')
+=
+-\sum_{\lambda_n\neq0}
+\frac{\phi_n(x)\phi_n(x')}
+{\lambda_n}.
+$$
+In this case, solutions exist only if the source $f$ is orthogonal to the kernel of $\mathcal L$ (compatibility condition).
 
 \section{Fourier Methods}
 
 Useful on infinite domains.
-{\color{red}[In infinite domains is useful the fourier transform? What about periodic spaces? What about Fourier series?]}
 Transform
 $$
 \hat u(k)
 =
 \int
-u(x)e^{-ikx},dx.
+u(x)e^{-ikx}\,dx.
 $$
 Derivatives become
 $$
@@ -883,7 +903,6 @@ $$
 -k^2.
 $$
 Differential equations become algebraic equations in Fourier space.
-{\color{red}[Comment: This is true given that there are no explicit powers of $x$ in the equation?]}
 
 \section{Master Formula}
 
