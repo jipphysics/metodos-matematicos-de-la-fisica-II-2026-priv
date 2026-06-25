@@ -4853,260 +4853,260 @@ Esto da una buena verificación de la solución.
 \item \(y''+\frac{1}{4}y = x,\quad y(0)=\alpha,\; y(\pi)=\beta.\)
 \end{enumerate}
 
+%\vspace{0.5cm}
+%{\bf Soluci\'on }{\em 17a)}
+%\vspace{0.5cm}
+%% https://chatgpt.com/share/6a3be06b-2028-83e9-b729-9ff507746d26
+%
+%El problema pide encontrar la función de Green y resolver una EDO con distintas condiciones de borde. 
+%$$
+%y''+\frac14\,y=\sin(2x),
+%\qquad
+%y(0)=0,
+%\qquad
+%y(\pi)=0.
+%$$
+%
+%{\bf 1. Operador diferencial}
+%
+%Definimos
+%$$
+%L=\frac{d^2}{dx^2}+\frac14.
+%$$
+%La función de Green debe satisfacer
+%$$
+%L\,G(x,\xi)=\delta(x-\xi),
+%$$
+%con
+%$$
+%G(0,\xi)=0,
+%\qquad
+%G(\pi,\xi)=0.
+%$$
+%
+%{\bf 2. Soluciones homogéneas}
+%
+%La ecuación homogénea es
+%$$
+%y''+\frac14 y=0.
+%$$
+%Su solución general es
+%$$
+%y(x)=A\cos\frac{x}{2}
+%+B\sin\frac{x}{2}.
+%$$
+%Elegimos dos soluciones adaptadas a los bordes.
+%
+%{\em Solución izquierda.}
+%La que satisface
+%$$
+%u_1(0)=0
+%$$
+%es
+%$$
+%u_1(x)=\sin\frac{x}{2}.
+%$$
+%
+%{\em Solución derecha.}
+%La que satisface
+%$$
+%u_2(\pi)=0
+%$$
+%es
+%$$
+%u_2(x)=\cos\frac{x}{2}.
+%$$
+%
+%{\bf 3. Wronskiano}
+%
+%$$
+%W=u_1u_2'-u_1'u_2.
+%$$
+%Calculando,
+%$$
+%u_1'=\frac12\cos\frac{x}{2},
+%$$
+%$$
+%u_2'=-\frac12\sin\frac{x}{2}.
+%$$
+%Entonces
+%$$
+%W
+%=
+%-\frac12
+%\Big(
+%\sin^2\frac{x}{2}
+%+\cos^2\frac{x}{2}
+%\Big)
+%=
+%-\frac12.
+%$$
+%Por tanto
+%$$
+%\boxed{W=-\frac12.}
+%$$
+%
+%{\bf 4. Función de Green}
+%
+%La fórmula general para un problema de Sturm-Liouville es
+%$$
+%G(x,\xi)
+%=
+%\frac{1}{W}
+%\begin{cases}
+%u_1(x)u_2(\xi),
+%&
+%x<\xi, \\
+%u_1(\xi)u_2(x),
+%&
+%x>\xi.
+%\end{cases}
+%$$
+%Como $W=-1/2$,
+%$$
+%\boxed{
+%G(x,\xi)
+%=
+%-2
+%\begin{cases}
+%\sin\frac{x}{2}\,
+%\cos\frac{\xi}{2},
+%&
+%x<\xi, \\
+%\sin\frac{\xi}{2}\,
+%\cos\frac{x}{2},
+%&
+%x>\xi.
+%\end{cases}
+%}
+%$$
+%
+%{\bf 5. Solución mediante Green}
+%
+%La solución es
+%$$
+%y(x)
+%=
+%\int_0^\pi
+%G(x,\xi)\,
+%\sin(2\xi)\,
+%d\xi.
+%$$
+%
+%Separando en los intervalos $(0,x)$ y $(x,\pi)$,
+%$$
+%y(x)
+%=
+%-2\cos\frac{x}{2}
+%\int_0^x
+%\sin\frac{\xi}{2}\sin(2\xi)\,d\xi
+%$$
+%$$
+%\qquad
+%-2\sin\frac{x}{2}
+%\int_x^\pi
+%\cos\frac{\xi}{2}\sin(2\xi)\,d\xi.
+%$$
+%
+%{\bf 6. Evaluación de las integrales}
+%
+%Usando
+%$$
+%\sin a\sin b
+%=
+%\frac12
+%\Big[
+%\cos(a-b)-\cos(a+b)
+%\Big]
+%$$
+%y
+%$$
+%\cos a\sin b
+%=
+%\frac12
+%\Big[
+%\sin(a+b)+\sin(b-a)
+%\Big],
+%$$
+%se obtiene tras integrar y simplificar
+%$$
+%\boxed{
+%y(x)=\frac{4}{15}\sin(2x)
+%-\frac{8}{15}\sin\frac{x}{2}.
+%}
+%$$
+%
+%{\bf 7. Verificación}
+%
+%Condiciones de borde:
+%$$
+%y(0)=0,
+%$$
+%$$
+%y(\pi)
+%=
+%\frac{4}{15}\sin(2\pi)
+%-\frac{8}{15}\sin\frac{\pi}{2}
+%=
+%-\frac{8}{15}.
+%$$
+%¡Esto indica que cometí un error de signo o de normalización en la construcción de $u_2$!
+%Y aquí aparece una observación importante: para evitar arrastrar errores algebraicos, conviene contrastar con el método clásico.
+%
+%{\bf Verificación rápida por coeficientes indeterminados}
+%
+%Buscamos
+%$$
+%y_p=A\sin(2x).
+%$$
+%Entonces
+%$$
+%(-4+\tfrac14)A\sin(2x)
+%=
+%\sin(2x),
+%$$
+%de donde
+%$$
+%A=-\frac4{15}.
+%$$
+%Luego
+%$$
+%y=
+%C_1\cos\frac{x}{2}
+%+
+%C_2\sin\frac{x}{2}
+%-\frac4{15}\sin(2x).
+%$$
+%De $y(0)=0$,
+%$$
+%C_1=0.
+%$$
+%De $y(\pi)=0$,
+%$$
+%C_2=0.
+%$$
+%Por tanto
+%$$
+%\boxed{
+%y(x)
+%=
+%-\frac4{15}\sin(2x).
+%}
+%$$
+%Esta es la solución correcta.
+%
+%Así que para el inciso $a$, la función de Green que construimos es correcta, pero al evaluar las integrales manualmente introduje un error algebraico. La solución final correcta es
+%
+%$$
+%\boxed{
+%y(x)=
+%-\frac4{15}\sin(2x).
+%}
+%$$
+
 \vspace{0.5cm}
-{\bf Soluci\'on }{\em 17a)}
-\vspace{0.5cm}
-% https://chatgpt.com/share/6a3be06b-2028-83e9-b729-9ff507746d26
-
-El problema pide encontrar la función de Green y resolver una EDO con distintas condiciones de borde. 
-$$
-y''+\frac14\,y=\sin(2x),
-\qquad
-y(0)=0,
-\qquad
-y(\pi)=0.
-$$
-
-{\bf 1. Operador diferencial}
-
-Definimos
-$$
-L=\frac{d^2}{dx^2}+\frac14.
-$$
-La función de Green debe satisfacer
-$$
-L\,G(x,\xi)=\delta(x-\xi),
-$$
-con
-$$
-G(0,\xi)=0,
-\qquad
-G(\pi,\xi)=0.
-$$
-
-{\bf 2. Soluciones homogéneas}
-
-La ecuación homogénea es
-$$
-y''+\frac14 y=0.
-$$
-Su solución general es
-$$
-y(x)=A\cos\frac{x}{2}
-+B\sin\frac{x}{2}.
-$$
-Elegimos dos soluciones adaptadas a los bordes.
-
-{\em Solución izquierda.}
-La que satisface
-$$
-u_1(0)=0
-$$
-es
-$$
-u_1(x)=\sin\frac{x}{2}.
-$$
-
-{\em Solución derecha.}
-La que satisface
-$$
-u_2(\pi)=0
-$$
-es
-$$
-u_2(x)=\cos\frac{x}{2}.
-$$
-
-{\bf 3. Wronskiano}
-
-$$
-W=u_1u_2'-u_1'u_2.
-$$
-Calculando,
-$$
-u_1'=\frac12\cos\frac{x}{2},
-$$
-$$
-u_2'=-\frac12\sin\frac{x}{2}.
-$$
-Entonces
-$$
-W
-=
--\frac12
-\Big(
-\sin^2\frac{x}{2}
-+\cos^2\frac{x}{2}
-\Big)
-=
--\frac12.
-$$
-Por tanto
-$$
-\boxed{W=-\frac12.}
-$$
-
-{\bf 4. Función de Green}
-
-La fórmula general para un problema de Sturm-Liouville es
-$$
-G(x,\xi)
-=
-\frac{1}{W}
-\begin{cases}
-u_1(x)u_2(\xi),
-&
-x<\xi, \\
-u_1(\xi)u_2(x),
-&
-x>\xi.
-\end{cases}
-$$
-Como $W=-1/2$,
-$$
-\boxed{
-G(x,\xi)
-=
--2
-\begin{cases}
-\sin\frac{x}{2}\,
-\cos\frac{\xi}{2},
-&
-x<\xi, \\
-\sin\frac{\xi}{2}\,
-\cos\frac{x}{2},
-&
-x>\xi.
-\end{cases}
-}
-$$
-
-{\bf 5. Solución mediante Green}
-
-La solución es
-$$
-y(x)
-=
-\int_0^\pi
-G(x,\xi)\,
-\sin(2\xi)\,
-d\xi.
-$$
-
-Separando en los intervalos $(0,x)$ y $(x,\pi)$,
-$$
-y(x)
-=
--2\cos\frac{x}{2}
-\int_0^x
-\sin\frac{\xi}{2}\sin(2\xi)\,d\xi
-$$
-$$
-\qquad
--2\sin\frac{x}{2}
-\int_x^\pi
-\cos\frac{\xi}{2}\sin(2\xi)\,d\xi.
-$$
-
-{\bf 6. Evaluación de las integrales}
-
-Usando
-$$
-\sin a\sin b
-=
-\frac12
-\Big[
-\cos(a-b)-\cos(a+b)
-\Big]
-$$
-y
-$$
-\cos a\sin b
-=
-\frac12
-\Big[
-\sin(a+b)+\sin(b-a)
-\Big],
-$$
-se obtiene tras integrar y simplificar
-$$
-\boxed{
-y(x)=\frac{4}{15}\sin(2x)
--\frac{8}{15}\sin\frac{x}{2}.
-}
-$$
-
-{\bf 7. Verificación}
-
-Condiciones de borde:
-$$
-y(0)=0,
-$$
-$$
-y(\pi)
-=
-\frac{4}{15}\sin(2\pi)
--\frac{8}{15}\sin\frac{\pi}{2}
-=
--\frac{8}{15}.
-$$
-¡Esto indica que cometí un error de signo o de normalización en la construcción de $u_2$!
-Y aquí aparece una observación importante: para evitar arrastrar errores algebraicos, conviene contrastar con el método clásico.
-
-{\bf Verificación rápida por coeficientes indeterminados}
-
-Buscamos
-$$
-y_p=A\sin(2x).
-$$
-Entonces
-$$
-(-4+\tfrac14)A\sin(2x)
-=
-\sin(2x),
-$$
-de donde
-$$
-A=-\frac4{15}.
-$$
-Luego
-$$
-y=
-C_1\cos\frac{x}{2}
-+
-C_2\sin\frac{x}{2}
--\frac4{15}\sin(2x).
-$$
-De $y(0)=0$,
-$$
-C_1=0.
-$$
-De $y(\pi)=0$,
-$$
-C_2=0.
-$$
-Por tanto
-$$
-\boxed{
-y(x)
-=
--\frac4{15}\sin(2x).
-}
-$$
-Esta es la solución correcta.
-
-Así que para el inciso $a$, la función de Green que construimos es correcta, pero al evaluar las integrales manualmente introduje un error algebraico. La solución final correcta es
-
-$$
-\boxed{
-y(x)=
--\frac4{15}\sin(2x).
-}
-$$
-
-
-\vspace{0.5cm}
-{\em Soluci\'on 17a) alternativa}
+%{\em Soluci\'on 17a) alternativa}
+{\em Soluci\'on 17a)}
 \vspace{0.5cm}
 
 Tenemos el operador
@@ -5291,6 +5291,462 @@ $$
 y=\frac1{\lambda_2}\sin(2x).
 $$
 En cierto sentido, ni siquiera hace falta construir explícitamente la serie de Green; basta reconocer que la fuente es un autofunción.
+
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 17b)}
+\vspace{0.5cm}
+
+
+El problema pide resolver mediante función de Green
+$$
+x^2y''+2xy'-2y=x^2,
+\qquad
+y(0)=0,
+\qquad
+y(1)=0.
+$$
+
+{\bf 0. Funci\'on de Green}
+
+Recordemos que, para un operador diferencial de la forma
+$$
+L[y](x)
+=
+a_2(x)
+y''(x)
++
+a_1(x)
+y'(x)
++
+a_0(x),
+$$
+la funci\'on de Green es de la forma
+$$
+G(x,\chi)
+= 
+frac{1}{a_2(\chi)W(\chi)}
+\begin{array}{ll}
+u_1(x)u_2(\chi), & x<\chi, \\ 
+u_1(\chi)u_2(x), & x>\chi,  
+\end{array}
+$$
+donde $u_1$  y $u_2$ son dos soluciones linealmente independientes de la ecuaci\'on homog\'enea
+$$
+L[u] = 0,
+$$
+tales que $u_1$ satisface las condiciones de borde para $x<\chi$ y $u_2$ para $x>\chi$, y donde
+$$
+W(x) = u_1(x)u_2'(x) - u_1'(x)u_2(x)
+$$
+es el Wronskiano de $u_1$ y $u_2$.
+
+{\bf 1. Operador diferencial}
+
+Es conveniente escribir la ecuación como
+$$
+L[y]=x^2,
+$$
+donde
+$$
+L
+=
+x^2\frac{d^2}{dx^2}
++
+2x\frac{d}{dx}
+-2.
+$$
+La función de Green debe satisfacer
+$$
+L\,G(x,\xi)=\delta(x-\xi),
+$$
+con
+$$
+G(0,\xi)=0,
+\qquad
+G(1,\xi)=0.
+$$
+
+{\bf 2. Soluciones homogéneas}
+
+Primero resolvemos
+$$
+x^2y''+2xy'-2y=0.
+$$
+Es una ecuación de Euler-Cauchy.
+Buscamos
+$$
+y=x^m.
+$$
+Sustituyendo,
+$$
+m(m-1)+2m-2=0,
+$$
+es decir,
+$$
+m^2+m-2=0.
+$$
+Factorizando,
+$$
+(m-1)(m+2)=0.
+$$
+Las raíces son
+$$
+m_1=1,
+\qquad
+m_2=-2.
+$$
+Por tanto las soluciones de la ecuación homog\'enea son de la forma
+$$
+y_h(x)=A\,x+B\,x^{-2}.
+$$
+
+{\bf 3. Soluciones adaptadas a los bordes}
+
+Necesitamos una solución que satisfaga el borde izquierdo.
+Como
+$$
+x^{-2}
+$$
+diverge en $x=0$, la solución regular es
+$$
+u_1(x)=x.
+$$
+Ahora buscamos una solución que satisfaga
+$$
+u_2(1)=0.
+$$
+Tomamos
+$$
+u_2(x)=x-x^{-2}.
+$$
+En efecto,
+$$
+u_2(1)=1-1=0.
+$$
+
+{\bf 4. Wronskiano}
+
+Calculamos
+$$
+u_1=x,
+\qquad
+u_1'=1,
+$$
+$$
+u_2=x-x^{-2},
+\qquad
+u_2'=1+2x^{-3}.
+$$
+Entonces
+%$$
+%W
+%=
+%u_1u_2'
+%-u_1'u_2.
+%$$
+%Sustituyendo,
+$$
+W(x)
+=
+x(1+2x^{-3})
+-(x-x^{-2}).
+$$
+Los términos $x$ se cancelan:
+$$
+W(x)
+=
+3x^{-2}.
+$$
+Luego
+$$
+\boxed{
+W(x)=\frac{3}{x^2}.
+}
+$$
+
+{\bf 5. Construcción de la función de Green}
+
+Primero dividimos el operador por $x^2$:
+$$
+y''
++\frac2x y'
+-\frac2{x^2}y
+=
+f(x).
+$$
+Para esta forma estándar,
+$$
+G(x,\xi)
+=
+\frac{1}{W(\xi)}
+\begin{cases}
+u_1(x)u_2(\xi),
+&
+x<\xi,
+[2mm]
+u_1(\xi)u_2(x),
+&
+x>\xi.
+\end{cases}
+$$
+Como
+$$
+W(\xi)=\frac3{\xi^2},
+$$
+obtenemos
+$$
+\boxed{
+G(x,\xi)
+=
+\frac{\xi^2}{3}
+\begin{cases}
+x(\xi-\xi^{-2}),
+&
+x<\xi,
+[2mm]
+\xi(x-x^{-2}),
+&
+x>\xi.
+\end{cases}
+}
+$$
+Simplificando,
+$$
+\boxed{
+G(x,\xi)
+=
+\begin{cases}
+\dfrac{x(\xi^3-1)}{3},
+&
+x<\xi,
+[3mm]
+\dfrac{\xi^3x-\xi^3x^{-2}}{3},
+&
+x>\xi.
+\end{cases}
+}
+$$
+
+{\bf 6. Solución integral}
+
+El término fuente es
+
+$$
+f(x)=1,
+$$
+porque al dividir por $x^2$ la ecuación queda
+$$
+y''
++\frac2x y'
+-\frac2{x^2}y
+=1.
+$$
+Por tanto
+$$
+y(x)
+=
+\int_0^1
+G(x,\xi),d\xi.
+$$
+Separamos:
+$$
+y(x)
+=
+\int_0^x
+G(x,\xi)\,d\xi
++
+\int_x^1
+G(x,\xi)\,d\xi.
+$$
+
+{\bf Primer integral}
+
+Para $\xi<x$,
+$$
+G(x,\xi)
+=
+\frac{\xi^3x-\xi^3x^{-2}}{3}.
+$$
+Luego
+$$
+I_1
+=
+\frac{x-x^{-2}}3
+\int_0^x \xi^3,d\xi.
+$$
+Como
+$$
+\int_0^x\xi^3d\xi
+=
+\frac{x^4}{4},
+$$
+resulta
+$$
+I_1
+=
+\frac1{12}(x^5-x^2).
+$$
+
+{\bf Segundo integral}
+
+Para (\xi>x),
+
+[
+G(x,\xi)
+========
+
+\frac{x(\xi^3-1)}3.
+]
+
+Entonces
+
+[
+I_2
+===
+
+\frac{x}{3}
+\int_x^1(\xi^3-1),d\xi.
+]
+
+Calculando,
+
+[
+I_2
+===
+
+\frac{x}{3}
+\left[
+\frac14-\frac{x^4}{4}
+-(1-x)
+\right].
+]
+
+Es decir,
+
+[
+I_2
+===
+
+-\frac{x}{4}
++\frac{x^2}{3}
+-\frac{x^5}{12}.
+]
+
+---
+
+# 7. Solución final
+
+Sumando,
+
+[
+y(x)
+====
+
+\left(\frac{x^5}{12}-\frac{x^2}{12}\right)
++
+\left(
+-\frac{x}{4}
++\frac{x^2}{3}
+-\frac{x^5}{12}
+\right).
+]
+
+Los términos (x^5) se cancelan:
+
+[
+y(x)
+====
+
+-\frac{x}{4}
++
+\frac{x^2}{4}.
+]
+
+Por tanto
+
+[
+\boxed{
+y(x)
+====
+
+\frac{x^2-x}{4}.
+}
+]
+
+---
+
+# 8. Verificación directa
+
+[
+y=\frac{x^2-x}{4},
+]
+
+[
+y'=\frac{2x-1}{4},
+]
+
+[
+y''=\frac12.
+]
+
+Entonces
+
+[
+x^2y''+2xy'-2y
+==============
+
+\frac{x^2}{2}
++\frac{x(2x-1)}2
+-\frac{x^2-x}{2}.
+]
+
+Simplificando,
+
+# [
+
+# \frac{x^2+2x^2-x-x^2+x}{2}
+
+x^2.
+]
+
+Además,
+
+[
+y(0)=0,
+\qquad
+y(1)=0.
+]
+
+Todo verifica correctamente.
+
+Por lo tanto,
+
+[
+\boxed{
+G(x,\xi)
+========
+
+\begin{cases}
+\dfrac{x(\xi^3-1)}{3},
+&
+x<\xi,
+[3mm]
+\dfrac{\xi^3(x-x^{-2})}{3},
+&
+x>\xi,
+\end{cases}
+}
+]
+
+y
+
+[
+\boxed{
+y(x)=\frac{x^2-x}{4}.
+}
+]
+
 
 
 
