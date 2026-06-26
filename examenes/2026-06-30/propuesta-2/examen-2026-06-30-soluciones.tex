@@ -68,9 +68,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcounter{problema}
+\newcounter{solucion}
 
-\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
-\newcommand{\solu}{\stepcounter{Soluci\'on} \vspace{.5cm} \noindent{\bf Soluci\'on} {\em \arabic{problema})}}
+\newcommand{\prob}{
+	\stepcounter{problema} \vspace{.5cm} 
+	\noindent{\bf Problema \arabic{problema}: }
+}
+\newcommand{\solu}[1]{
+	%\stepcounter{solucion} 
+	\vspace{.5cm} 
+	\noindent{ \bf Soluci\'on {\em \arabic{problema}#1)} }
+	\vspace{.3cm} 
+	
+}
+
 \renewcommand{\labelenumi}{\alph{enumi})}
 \renewcommand{\labelenumii}{\arabic{enumii})}
 \newcommand\al{\alpha}
@@ -142,43 +153,34 @@ A = \left(\begin{array}{rrr}
 \]
 {\em Ayuda:} Transforme $A$ a forma de Jordan, exponencie y antitransforme.
 
-El problema pide calcular la exponencial de la matriz
-
-[
+\solu{} El problema pide calcular la exponencial de la matriz
+$$
 A=
 \begin{pmatrix}
 -2&0&1\
 -1&-3&3\
 -1&-1&1
 \end{pmatrix},
-]
-
+$$
 utilizando su forma de Jordan.
 
----
-
-# 1. Autovalores
+{\bf 1. Autovalores}
 
 Calculamos el polinomio característico
-
-[
+$$
 \det(A-\lambda I).
-]
-
+$$
 Tenemos
-
-[
+$$
 A-\lambda I=
 \begin{pmatrix}
 -2-\lambda&0&1\
 -1&-3-\lambda&3\
 -1&-1&1-\lambda
 \end{pmatrix}.
-]
-
+$$
 Expandiendo por la primera fila,
-
-[
+$$
 \begin{aligned}
 \det(A-\lambda I)
 &=(-2-\lambda)
@@ -192,181 +194,143 @@ Expandiendo por la primera fila,
 -1&-1
 \end{vmatrix}.
 \end{aligned}
-]
-
+$$
 El primer determinante vale
-
-[
+$$
 (-3-\lambda)(1-\lambda)+3
 =\lambda^2+2\lambda
 =\lambda(\lambda+2),
-]
-
+$$
 mientras que el segundo es
-
-[
+$$
 (-1)(-1)-(-3-\lambda)(-1)
 =-(\lambda+2).
-]
-
+$$
 Por tanto,
-
-[
+$$
 \det(A-\lambda I)
 =(-2-\lambda)\lambda(\lambda+2)-(\lambda+2).
-]
-
+$$
 Factorizando,
-
-[
+$$
 \det(A-\lambda I)
 =-(\lambda+2)(\lambda^2+2\lambda+1)
 =-(\lambda+2)(\lambda+1)^2.
-]
-
+$$
 Luego los autovalores son
-
-[
+$$
 \boxed{\lambda_1=-2,\qquad
 \lambda_2=\lambda_3=-1.}
-]
+$$
 
----
+{\bf 2. Autovectores}
 
-# 2. Autovectores
-
-## Autovalor (\lambda=-2)
+\begin{itemize}
+\item Autovalor $\lambda=-2$:
 
 Resolvemos
-
-[
+$$
 (A+2I)x=0.
-]
-
-[
+$$
+$$
 A+2I=
 \begin{pmatrix}
 0&0&1\
 -1&-1&3\
 -1&-1&3
 \end{pmatrix}.
-]
-
+$$
 Las ecuaciones son
-
-[
+$$
 z=0,\qquad
 x+y=0.
-]
-
-Tomando (y=-1),
-
-[
+$$
+Tomando $y=-1$,
+$$
 v_1=
 \begin{pmatrix}
 1\
 -1\
 0
 \end{pmatrix}.
-]
+$$
 
----
-
-## Autovalor (\lambda=-1)
+\item Autovalor $\lambda=-1$:
 
 Resolvemos
 
-[
+$$
 (A+I)x=0,
-]
-
+$$
 con
-
-[
+$$
 A+I=
 \begin{pmatrix}
 -1&0&1\
 -1&-2&3\
 -1&-1&2
 \end{pmatrix}.
-]
-
+$$
 Las soluciones satisfacen
-
-[
+$$
 x=z,\qquad y=z.
-]
-
+$$
 Por tanto,
-
-[
+$$
 v_2=
 \begin{pmatrix}
 1\
 1\
 1
 \end{pmatrix}.
-]
+$$
+Como la multiplicidad algebraica es $2$ y sólo existe un autovector independiente, aparece un bloque de Jordan de tamaño $2$.
+\end{itemize}
 
-Como la multiplicidad algebraica es (2) y sólo existe un autovector independiente, aparece un bloque de Jordan de tamaño (2).
+{\bf 3. Vector generalizado}
 
----
-
-# 3. Vector generalizado
-
-Buscamos (v_3) tal que
-
-[
+Buscamos $v_3$ tal que
+$$
 (A+I)v_3=v_2.
-]
-
+$$
 Una solución sencilla es
-
-[
+$$
 v_3=
 \begin{pmatrix}
 -1\
 1\
 0
 \end{pmatrix},
-]
-
+$$
 ya que
-
-[
+$$
 (A+I)
 \begin{pmatrix}
 -1\
 1\
 0
 \end{pmatrix}
-=============
-
+=
 \begin{pmatrix}
 1\
 1\
 1
 \end{pmatrix}.
-]
+$$
 
----
-
-# 4. Forma de Jordan
+{\bf 4. Forma de Jordan}
 
 Tomando como columnas
-
-[
+$$
 P=
 \begin{pmatrix}
 1&1&-1\
 -1&1&1\
 0&1&0
 \end{pmatrix},
-]
-
+$$
 se verifica
-
-[
+$$
 P^{-1}AP=
 J=
 \begin{pmatrix}
@@ -374,79 +338,62 @@ J=
 0&-1&1\
 0&0&-1
 \end{pmatrix}.
-]
-
+$$
 Es decir,
-
-[
+$$
 A=PJP^{-1}.
-]
+$$
 
----
-
-# 5. Exponencial del bloque de Jordan
+{\bf 5. Exponencial del bloque de Jordan}
 
 Para el bloque
-
-[
+$$
 J_2=
 \begin{pmatrix}
 -1&1\
 0&-1
 \end{pmatrix}
-=============
-
+=
 -I+
 \underbrace{\begin{pmatrix}
 0&1\
 0&0
 \end{pmatrix}}_{N},
-]
-
-con (N^2=0),
-
-[
+$$
+con $N^2=0$,
+$$
 e^{J_2}
-=======
-
-# e^{-1}e^N
-
-# e^{-1}(I+N)
-
+=
+e^{-1}e^N
+=
+e^{-1}(I+N)
+=
 e^{-1}
 \begin{pmatrix}
 1&1\
 0&1
 \end{pmatrix}.
-]
-
+$$
 Por tanto,
-
-[
+$$
 e^J=
 \begin{pmatrix}
 e^{-2}&0&0\
 0&e^{-1}&e^{-1}\
 0&0&e^{-1}
 \end{pmatrix}.
-]
+$$
 
----
-
-# 6. Antitransformación
+{\bf 6. Antitransformación}
 
 Finalmente,
-
-[
+$$
 e^A
-===
-
+=
 Pe^JP^{-1}.
-]
-
+$$
 Realizando el producto matricial se obtiene
-
-[
+$$
 \boxed{
 e^A=
 \begin{pmatrix}
@@ -461,7 +408,7 @@ e^{-2}+e^{-1}
 e^{-2}-e^{-1}
 &
 3e^{-1}-e^{-2}
-[2mm]
+\\
 -e^{-1}
 &
 -e^{-1}
@@ -469,20 +416,17 @@ e^{-2}-e^{-1}
 3e^{-1}
 \end{pmatrix}.
 }
-]
-
+$$
 Puede verificarse que
-
-* (e^{A}(0)=I),
-* (\displaystyle \frac{d}{dt}e^{tA}\big|_{t=1}=Ae^A),
-
+\begin{itemize}
+\item $e^{A}(0)=I$,
+\item $\displaystyle \frac{d}{dt}e^{tA}\big|_{t=1}=Ae^A$,
+\end{itemize}
 lo que confirma el resultado.
 
----
+{\bf Respuesta final}
 
-## Respuesta final
-
-[
+$$
 \boxed{
 \exp(A)=
 \begin{pmatrix}
@@ -491,20 +435,20 @@ lo que confirma el resultado.
 -e^{-2}
 &
 e^{-2}+e^{-1}
-[2mm]
+\\
 -e^{-1}
 &
 e^{-2}-e^{-1}
 &
 3e^{-1}-e^{-2}
-[2mm]
+\\
 -e^{-1}
 &
 -e^{-1}
 &
 3e^{-1}
 \end{pmatrix}.}
-]
+$$
 
 
 
