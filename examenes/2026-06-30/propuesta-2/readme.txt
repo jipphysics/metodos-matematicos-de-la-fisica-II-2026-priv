@@ -16,5 +16,10 @@ Dr. Omar E. Ortiz
 FAMAF, Universidad Nacional de Córdoba.
 ********************************************************************************
 2026-06-26
+
+Propuesta problema geometria diff.
 https://chatgpt.com/share/6a3eea16-d408-83e9-b306-826951b511ca
+
+Soluciones
+https://chatgpt.com/share/6a3eec41-2fb8-83e9-bb55-37e7f52ce582
 ********************************************************************************
