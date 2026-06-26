@@ -6307,43 +6307,7 @@ G(R)
 \frac{A\cos(kR)+B\sin(kR)}R.
 $$
 
-{\bf 5. Determinación de la constante singular}
-
-Ahora debemos imponer la presencia de la delta.
-Integramos la ecuación sobre una esfera de radio $\varepsilon$:
-$$
-\int_{B_\varepsilon}
-(\nabla^2+k^2)G\,dV
-=
-1.
-$$
-Como
-$$
-G(R)\sim\frac1R,
-$$
-el término
-$$
-k^2\int G\,dV
-=
-O(\varepsilon^2)
-\longrightarrow0.
-$$
-Por tanto
-$$
-\int_{B_\varepsilon}
-\nabla^2G\,dV
-=
-1.
-$$
-Aplicando el teorema de Gauss,
-$$
-\oint_{S_\varepsilon}
-\frac{\partial G}{\partial n}\,dS
-=
-1.
-$$
-
-{\bf 6. Comportamiento cerca del origen}
+{\bf 5. Comportamiento cerca del origen}
 
 Para
 $$
@@ -6363,20 +6327,96 @@ G(R)
 +Bk
 +O(R).
 $$
-Así,
+
+
+{\bf 6. Determinación de la constante singular}
+
+Ahora debemos imponer la presencia de la delta.
+Integramos la ecuación sobre una esfera de radio $\varepsilon$:
 $$
-G'
+\int_{B_\varepsilon}
+(\nabla^2+k^2)G\,dV
+=
+1.
+$$
+Como
+$$
+G(R)\sim\frac1R,
+$$
+y
+$$
+dV = 4\pi R^2\,dR,
+$$
+el término
+$$
+k^2\int G\,dV
+=
+O(\varepsilon^2)
+\longrightarrow0.
+$$
+Por tanto
+$$
+\int_{B_\varepsilon}
+\nabla^2G\,dV
+=
+1.
+$$
+Aqu\'i conviene recordar el teorema de Gauss,
+$$
+\boxed{
+\int_{B_\varepsilon}\nabla^2G\,dV
+=
+\oint_{S_\varepsilon}
+\nabla G\cdot\mathbf n\,dS.
+}
+$$
+y sacar ventaja de la simetr\'ia radial
+$$
+\nabla G
+=
+\frac{dG}{dR}\,\widehat{\mathbf R}
+$$
+donde $\widehat{\mathbf R} = \mathbf n$, para encontrar
+$$
+\oint_{S_\varepsilon}
+\nabla G\cdot\mathbf n\,dS.
+=
+\oint_{S_\varepsilon}
+\frac{dG}{dR}\,dS
+=
+\frac{dG}{dR}(\varepsilon)
+\oint_{S_\varepsilon}dS
+=
+\frac{dG}{dR}(\varepsilon)
+\,4\pi \varepsilon^2
+=
+1
+$$
+donde hemos usado que el factor
+$$
+\frac{dG}{dR}(\varepsilon)
+$$
+puede sacarse fuera de la integarl porque $G$ depende únicamente de $R$, y que
+$$
+\oint_{S_\varepsilon}dS = 4\pi\varepsilon^2.
+$$
+Luego, notando que
+$$
+G'(R)
 =
 -\frac{A}{R^2}
-+O(1).
++O(1),
 $$
-Entonces
+encontramos que
 $$
-4\pi R^2G'
+4\pi \varepsilon^2\,G'(\varepsilon)
+=
+-
+4\pi \varepsilon^2\,\frac{A}{\varepsilon^2}
 \longrightarrow
--4\pi A.
+-4\pi A,
 $$
-La condición de Gauss exige
+y por ende, la condición de Gauss exige
 $$
 -4\pi A=1,
 $$
