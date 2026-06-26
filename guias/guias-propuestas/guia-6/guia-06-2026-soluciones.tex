@@ -5914,6 +5914,273 @@ Este problema ilustra una diferencia importante con los incisos anteriores:
 
 
 
+\vspace{0.5cm}
+{\bf Soluci\'on}{\em 17d)}
+\vspace{0.5cm}
+
+En este inciso, se pide resolver
+$$
+y''+\frac14\,y=x,
+$$
+con condiciones de contorno no homogéneas
+$$
+y(0)=\alpha,
+\qquad
+y(\pi)=\beta.
+$$
+Este problema introduce una diferencia importante respecto del inciso (a), ya que {\em la función de Green sólo puede utilizarse directamente cuando las condiciones de contorno son homogéneas}.
+
+{\bf 1. Homogeneización de las condiciones de contorno}
+
+Buscamos
+$$
+y(x)=u(x)+v(x),
+$$
+donde $v$ satisfaga únicamente las condiciones de borde
+$$
+v(0)=\alpha,
+\qquad
+v(\pi)=\beta.
+$$
+La elección más simple es una función lineal,
+$$
+v(x)
+=
+\alpha
++
+\frac{\beta-\alpha}{\pi}x.
+$$
+Como
+$$
+v''=0,
+$$
+al sustituir en la ecuación obtenemos
+$$
+u''+\frac14u
+=
+x-\frac14v(x),
+$$
+con
+$$
+u(0)=u(\pi)=0.
+$$
+
+{\bf 2. Nuevo término fuente}
+
+Calculamos
+$$
+\frac14v (x)
+=
+\frac{\alpha}{4}
++
+\frac{\beta-\alpha}{4\pi}x.
+$$
+Por tanto
+$$
+f(x)
+=
+x-\frac14 v(x)
+=
+\left(
+1-\frac{\beta-\alpha}{4\pi}
+\right)x
+-
+\frac{\alpha}{4}.
+$$
+La ecuación queda
+$$
+u''+\frac14u=f(x),
+$$
+con condiciones homogéneas.
+
+{\bf 3. Función de Green}
+
+Es exactamente la misma del inciso $a$:
+$$
+\boxed{
+G(x,\xi)
+=
+-2
+\begin{cases}
+\sin\dfrac{x}{2}\,
+\cos\dfrac{\xi}{2},
+&
+x<\xi,\\
+\sin\dfrac{\xi}{2}\,
+\cos\dfrac{x}{2},
+&
+x>\xi.
+\end{cases}
+}
+$$
+
+{\bf 4. Solución integral}
+
+Entonces
+$$
+u(x)
+=
+\int_0^\pi
+G(x,\xi)
+f(\xi)\,d\xi.
+$$
+Es decir,
+$$
+\boxed{
+u(x)
+=
+\int_0^\pi
+G(x,\xi)
+\left[
+\left(
+1-\frac{\beta-\alpha}{4\pi}
+\right)\xi
+-\frac{\alpha}{4}
+\right]
+d\xi.
+}
+$$
+Por consiguiente,
+$$
+\boxed{
+y(x)
+=
+\alpha
++
+\frac{\beta-\alpha}{\pi}x
++
+\int_0^\pi
+G(x,\xi)
+\left[
+\left(
+1-\frac{\beta-\alpha}{4\pi}
+\right)\xi
+-\frac{\alpha}{4}
+\right]
+d\xi.
+}
+$$
+Esta ya es una representación completamente válida mediante función de Green.
+
+{\bf 5. Evaluación explícita}
+
+Como el término fuente es un polinomio de grado uno, también puede obtenerse una expresión cerrada.
+Buscamos una solución particular de la forma
+$$
+y_p=Ax+B.
+$$
+Entonces
+$$
+y_p''=0,
+$$
+y
+$$
+\frac14(Ax+B)=x.
+$$
+De aquí
+$$
+A=4,
+\qquad
+B=0.
+$$
+Por tanto
+$$
+y_p=4x.
+$$
+La solución general es
+$$
+y(x)
+=
+C_1\cos\frac{x}{2}
++
+C_2\sin\frac{x}{2}
++
+4x.
+$$
+
+{\bf 6. Aplicar las condiciones de borde}
+
+En $x=0$,
+$$
+C_1=\alpha.
+$$
+En $x=\pi$,
+$$
+\alpha\cos\frac{\pi}{2}
++
+C_2\sin\frac{\pi}{2}
++
+4\pi
+=
+\beta,
+$$
+de donde
+$$
+C_2
+=
+\beta-4\pi.
+$$
+Así obtenemos
+$$
+\boxed{
+y(x)
+=
+\alpha\cos\frac{x}{2}
++
+(\beta-4\pi)\sin\frac{x}{2}
++
+4x.
+}
+$$
+
+{\bf 7. Verificación}
+
+Se verifica inmediatamente que
+$$
+y(0)=\alpha,
+$$
+$$
+y(\pi)=\beta,
+$$
+y además
+$$
+y''+\frac14y
+=
+-\frac{\alpha}{4}\cos\frac{x}{2}
+-\frac{\beta-4\pi}{4}\sin\frac{x}{2}
++\frac14\left(
+\alpha\cos\frac{x}{2}
++
+(\beta-4\pi)\sin\frac{x}{2}
++
+4x
+\right)
+=
+x.
+$$
+Por tanto,
+$$
+\boxed{
+y(x)
+=
+\alpha\cos\frac{x}{2}
++
+(\beta-4\pi)\sin\frac{x}{2}
++
+4x
+}
+$$
+es la solución buscada.
+
+{\bf Comentario}
+
+Este inciso ilustra una técnica muy utilizada en problemas de contorno: {\bf cuando las condiciones de borde no son homogéneas, primero se las homogeneiza} restando una función sencilla que satisfaga únicamente dichas condiciones. Una vez hecho esto, puede emplearse la misma función de Green construida para el operador con condiciones homogéneas, exactamente la del inciso (a). Esto evita tener que construir una nueva función de Green para cada elección de $\alpha$ y $\beta$.
+
+
+
+
+
+
 
 
 
@@ -5925,6 +6192,302 @@ G(\vec{r},\pvec{r}) = -\frac{k}{4\pi}\,y_0(k\norm{\vec{r}-\pvec{r}}) = -\frac{\c
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 18)}
 \vspace{0.5cm}
+% https://chatgpt.com/share/6a3e7abd-d69c-83e9-b50a-f262cd8bf959
+
+Este problema pide demostrar que la solución fundamental de la ecuación de Helmholtz en $\mathbb{R}^3$,
+$$
+(\nabla^2+k^2)G(\mathbf r,\mathbf r')
+=
+\delta(\mathbf r-\mathbf r'),
+$$
+es
+$$
+\boxed{
+G(\mathbf r,\mathbf r')
+=
+-\frac{\cos(kR)}{4\pi R},
+}
+$$
+donde
+$$
+R=|\mathbf r-\mathbf r'|.
+$$
+Equivalente, usando la función de Bessel esférica de segunda especie de orden cero,
+$$
+y_0(z)=-\frac{\cos z}{z},
+$$
+puede escribirse como
+$$
+G
+=
+-\frac{k}{4\pi}y_0(kR).
+$$
+
+{\bf 1. Reducción por simetría}
+
+Como la ecuación es invariante por traslaciones,
+$$
+G(\mathbf r,\mathbf r')
+=
+G(R),
+\qquad
+R=|\mathbf r-\mathbf r'|.
+$$
+Basta entonces resolver
+$$
+(\nabla^2+k^2)G(R)=\delta(\mathbf R),
+$$
+donde
+$$
+\mathbf R=\mathbf r-\mathbf r'.
+$$
+
+{\bf 2. Ecuación homogénea}
+
+Para
+$$
+R\neq0,
+$$
+la ecuación es
+$$
+\nabla^2G+k^2G=0.
+$$
+Como $G$ depende sólo de $R$,
+$$
+\nabla^2G
+=
+G''+\frac2RG'.
+$$
+Luego
+$$
+G''+\frac2RG'+k^2G=0.
+$$
+
+{\bf 3. Eliminación del término de primera derivada}
+
+Introducimos
+$$
+G(R)=\frac{u(R)}{R}.
+$$
+Calculando,
+$$
+G'
+=
+\frac{u'}R-\frac{u}{R^2},
+$$
+$$
+G''
+=
+\frac{u''}R-\frac{2u'}{R^2}
++\frac{2u}{R^3}.
+$$
+Entonces
+$$
+G''+\frac2RG'
+=
+\frac{u''}R.
+$$
+La ecuación queda
+$$
+u''+k^2u=0.
+$$
+
+{\bf 4. Solución general}
+
+La solución general es
+$$
+u(R)
+=
+A\cos(kR)+B\sin(kR).
+$$
+Por tanto
+$$
+G(R)
+=
+\frac{A\cos(kR)+B\sin(kR)}R.
+$$
+
+{\bf 5. Determinación de la constante singular}
+
+Ahora debemos imponer la presencia de la delta.
+Integramos la ecuación sobre una esfera de radio $\varepsilon$:
+$$
+\int_{B_\varepsilon}
+(\nabla^2+k^2)G,dV
+=
+1.
+$$
+Como
+$$
+G(R)\sim\frac1R,
+$$
+el término
+$$
+k^2\int G,dV
+=
+O(\varepsilon^2)
+\longrightarrow0.
+$$
+Por tanto
+$$
+\int_{B_\varepsilon}
+\nabla^2G,dV
+=
+1.
+$$
+Aplicando el teorema de Gauss,
+$$
+\oint_{S_\varepsilon}
+\frac{\partial G}{\partial n},dS
+=
+1.
+$$
+
+{\bf 6. Comportamiento cerca del origen}
+
+Para
+$$
+R\to0,
+$$
+$$
+\cos(kR)=1+O(R^2),
+$$
+$$
+\sin(kR)=kR+O(R^3).
+$$
+Luego
+$$
+G(R)
+=
+\frac{A}{R}
++Bk
++O(R).
+$$
+Así,
+$$
+G'
+=
+-\frac{A}{R^2}
++O(1).
+$$
+Entonces
+$$
+4\pi R^2G'
+\longrightarrow
+-4\pi A.
+$$
+La condición de Gauss exige
+$$
+-4\pi A=1,
+$$
+de donde
+$$
+\boxed{
+A=-\frac1{4\pi}.
+}
+$$
+
+{\bf 7. ¿Cómo determinar $B$?}
+
+Aquí hay un punto importante.
+La ecuación
+$$
+(\nabla^2+k^2)G=\delta
+$$
+{\em no determina de manera única} la solución fundamental.
+En efecto,
+$$
+\frac{\sin(kR)}R
+$$
+también satisface la ecuación homogénea para $R\neq0$ y es regular en el origen.
+Por tanto,
+$$
+B
+$$
+queda completamente libre mientras no se impongan condiciones adicionales.
+La familia completa de soluciones fundamentales es
+$$
+\boxed{
+G(R)
+=
+-\frac{\cos(kR)}{4\pi R}
++
+C,\frac{\sin(kR)}R.
+}
+$$
+
+{\bf 8. Elección del problema}
+
+El enunciado pide demostrar que
+$$
+G
+=
+-\frac{\cos(kR)}{4\pi R}.
+$$
+Esto corresponde simplemente a elegir
+$$
+C=0.
+$$
+Como
+$$
+y_0(z)
+=
+-\frac{\cos z}{z},
+$$
+obtenemos finalmente
+$$
+\boxed{
+G(\mathbf r,\mathbf r')
+=
+-\frac{k}{4\pi}
+y_0(kR)
+=
+-\frac{\cos(kR)}
+{4\pi R}.
+}
+$$
+
+{\bf Comentario}
+
+Este problema deja en evidencia una diferencia importante entre las ecuaciones de Laplace y Helmholtz:
+\begin{itemize}
+\item Para la ecuación de Laplace, la solución fundamental está completamente determinada (salvo suma de una función armónica global).
+\item Para la ecuación de Helmholtz, la solución fundamental {\em no es única}. Se puede sumar cualquier solución homogénea regular sin modificar la singularidad en el origen.
+\end{itemize}
+En aplicaciones físicas suele imponerse una condición adicional para seleccionar una solución particular. Por ejemplo, si se exige la {\em condición de radiación de Sommerfeld}, se obtiene la función de Green saliente
+$$
+\boxed{
+G_+(\mathbf r,\mathbf r')
+=
+-\frac{e^{ikR}}{4\pi R},
+}
+$$
+mientras que la condición de ondas entrantes conduce a
+$$
+\boxed{
+G_-(\mathbf r,\mathbf r')
+=
+-\frac{e^{-ikR}}{4\pi R}.
+}
+$$
+La solución del enunciado es simplemente la {\em parte real} de estas dos funciones de Green radiativas:
+$$
+-\frac{\cos(kR)}{4\pi R}
+=
+\frac12\left(
+-\frac{e^{ikR}}{4\pi R}
+-
+\frac{e^{-ikR}}{4\pi R}
+\right).
+$$
+Esta observación ayuda a entender por qué el coeficiente del término $\sin(kR)/R$ queda indeterminado si no se especifica una condición física adicional en el infinito.
+
+
+
+
+
+
+
 
 
 
