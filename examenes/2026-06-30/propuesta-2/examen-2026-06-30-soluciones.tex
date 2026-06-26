@@ -154,15 +154,15 @@ A = \left(\begin{array}{rrr}
 {\em Ayuda:} Transforme $A$ a forma de Jordan, exponencie y antitransforme.
 
 \solu{} El problema pide calcular la exponencial de la matriz
-$$
-A=
-\begin{pmatrix}
--2&0&1\
--1&-3&3\
--1&-1&1
-\end{pmatrix},
-$$
-utilizando su forma de Jordan.
+%$$
+%A=
+%\begin{pmatrix}
+%-2&0&1\
+%-1&-3&3\
+%-1&-1&1
+%\end{pmatrix},
+%$$
+$A$ utilizando su forma de Jordan.
 
 {\bf 1. Autovalores}
 
@@ -174,8 +174,8 @@ Tenemos
 $$
 A-\lambda I=
 \begin{pmatrix}
--2-\lambda&0&1\
--1&-3-\lambda&3\
+-2-\lambda&0&1\\
+-1&-3-\lambda&3\\
 -1&-1&1-\lambda
 \end{pmatrix}.
 $$
@@ -185,12 +185,12 @@ $$
 \det(A-\lambda I)
 &=(-2-\lambda)
 \begin{vmatrix}
--3-\lambda&3\
+-3-\lambda&3\\
 -1&1-\lambda
 \end{vmatrix}
 +
 \begin{vmatrix}
--1&-3-\lambda\
+-1&-3-\lambda\\
 -1&-1
 \end{vmatrix}.
 \end{aligned}
@@ -235,8 +235,8 @@ $$
 $$
 A+2I=
 \begin{pmatrix}
-0&0&1\
--1&-1&3\
+0&0&1\\
+-1&-1&3\\
 -1&-1&3
 \end{pmatrix}.
 $$
@@ -249,8 +249,8 @@ Tomando $y=-1$,
 $$
 v_1=
 \begin{pmatrix}
-1\
--1\
+1\\
+-1\\
 0
 \end{pmatrix}.
 $$
@@ -266,8 +266,8 @@ con
 $$
 A+I=
 \begin{pmatrix}
--1&0&1\
--1&-2&3\
+-1&0&1\\
+-1&-2&3\\
 -1&-1&2
 \end{pmatrix}.
 $$
@@ -279,8 +279,8 @@ Por tanto,
 $$
 v_2=
 \begin{pmatrix}
-1\
-1\
+1\\
+1\\
 1
 \end{pmatrix}.
 $$
@@ -297,23 +297,27 @@ Una solución sencilla es
 $$
 v_3=
 \begin{pmatrix}
--1\
-1\
-0
+0\\
+1\\
+1
 \end{pmatrix},
 $$
 ya que
 $$
-(A+I)
 \begin{pmatrix}
--1\
-1\
-0
+-1&0&1\\
+-1&-2&3\\
+-1&-1&2
+\end{pmatrix}
+\begin{pmatrix}
+0\\
+1\\
+1
 \end{pmatrix}
 =
 \begin{pmatrix}
-1\
-1\
+1\\
+1\\
 1
 \end{pmatrix}.
 $$
@@ -324,18 +328,29 @@ Tomando como columnas
 $$
 P=
 \begin{pmatrix}
-1&1&-1\
--1&1&1\
-0&1&0
+1&1&0\\
+-1&1&1\\
+0&1&1
 \end{pmatrix},
 $$
-se verifica
+y notando que
+$$
+%\boxed{
+P^{-1}=
+\begin{pmatrix}
+0&-1&1\\
+1&1&-1\\
+-1&-1&2
+\end{pmatrix},
+%}
+$$
+se verifica que
 $$
 P^{-1}AP=
 J=
 \begin{pmatrix}
--2&0&0\
-0&-1&1\
+-2&0&0\\
+0&-1&1\\
 0&0&-1
 \end{pmatrix}.
 $$
@@ -350,13 +365,13 @@ Para el bloque
 $$
 J_2=
 \begin{pmatrix}
--1&1\
+-1&1\\
 0&-1
 \end{pmatrix}
 =
 -I+
 \underbrace{\begin{pmatrix}
-0&1\
+0&1\\
 0&0
 \end{pmatrix}}_{N},
 $$
@@ -370,7 +385,7 @@ e^{-1}(I+N)
 =
 e^{-1}
 \begin{pmatrix}
-1&1\
+1&1\\
 0&1
 \end{pmatrix}.
 $$
@@ -378,8 +393,8 @@ Por tanto,
 $$
 e^J=
 \begin{pmatrix}
-e^{-2}&0&0\
-0&e^{-1}&e^{-1}\
+e^{-2}&0&0\\
+0&e^{-1}&e^{-1}\\
 0&0&e^{-1}
 \end{pmatrix}.
 $$
@@ -402,7 +417,7 @@ e^A=
 -e^{-2}
 &
 e^{-2}+e^{-1}
-[2mm]
+\\
 -e^{-1}
 &
 e^{-2}-e^{-1}
@@ -417,38 +432,38 @@ e^{-2}-e^{-1}
 \end{pmatrix}.
 }
 $$
-Puede verificarse que
-\begin{itemize}
-\item $e^{A}(0)=I$,
-\item $\displaystyle \frac{d}{dt}e^{tA}\big|_{t=1}=Ae^A$,
-\end{itemize}
-lo que confirma el resultado.
+%Puede verificarse que
+%\begin{itemize}
+%\item $e^{A}(0)=I$,
+%\item $\displaystyle \frac{d}{dt}e^{tA}\big|_{t=1}=Ae^A$,
+%\end{itemize}
+%lo que confirma el resultado.
 
-{\bf Respuesta final}
-
-$$
-\boxed{
-\exp(A)=
-\begin{pmatrix}
-0
-&
--e^{-2}
-&
-e^{-2}+e^{-1}
-\\
--e^{-1}
-&
-e^{-2}-e^{-1}
-&
-3e^{-1}-e^{-2}
-\\
--e^{-1}
-&
--e^{-1}
-&
-3e^{-1}
-\end{pmatrix}.}
-$$
+%{\bf Respuesta final}
+%
+%$$
+%\boxed{
+%\exp(A)=
+%\begin{pmatrix}
+%0
+%&
+%-e^{-2}
+%&
+%e^{-2}+e^{-1}
+%\\
+%-e^{-1}
+%&
+%e^{-2}-e^{-1}
+%&
+%3e^{-1}-e^{-2}
+%\\
+%-e^{-1}
+%&
+%-e^{-1}
+%&
+%3e^{-1}
+%\end{pmatrix}.}
+%$$
 
 
 
@@ -465,6 +480,295 @@ x=uv\, \quad y=\frac{1}{2}(u^2-v^2)
 \item Calcule los símbolos de Christoffel no nulos.
 \item Escriba el laplaciano de un campo escalar $f(u,v)$.
 \end{enumerate}
+
+\solu{}
+
+El problema pide estudiar el cambio de coordenadas
+$$
+x=uv,\qquad
+y=\frac12(u^2-v^2),
+$$
+que corresponde a las {\em coordenadas parabólicas} en el plano.
+
+\solu{a}
+
+Métrica inducida.
+Partimos del elemento de línea euclídeo
+$$
+ds^2=dx^2+dy^2.
+$$
+Calculamos los diferenciales:
+$$
+dx=v\,du+u\,dv,
+$$
+$$
+dy=u\,du-v\,dv.
+$$
+Entonces,
+$$
+\begin{aligned}
+ds^2
+&=(v\,du+u\,dv)^2+(u\,du-v\,dv)^2\\
+&=(u^2+v^2)du^2
++2uv\,du\,dv
++(u^2+v^2)dv^2
+-2uv\,du\,dv.
+\end{aligned}
+$$
+Los términos cruzados se cancelan:
+$$
+\boxed{
+ds^2=(u^2+v^2)(du^2+dv^2).
+}
+$$
+Por tanto,
+$$
+(g_{ij})
+=
+\begin{pmatrix}
+u^2+v^2&0\\
+0&u^2+v^2
+\end{pmatrix},
+$$
+es decir,
+$$
+\boxed{
+g_{uu}=g_{vv}=u^2+v^2,\qquad
+g_{uv}=g_{vu}=0.
+}
+$$
+
+\solu{b}
+
+Ortogonalidad y factores de escala.
+Como
+$$
+g_{uv}=0,
+$$
+las curvas coordenadas son ortogonales.
+Los factores de escala son
+$$
+h_i=\sqrt{g_{ii}},
+$$
+luego
+$$
+\boxed{
+h_u=h_v=\sqrt{u^2+v^2}.
+}
+$$
+
+\solu{c}
+
+Símbolos de Christoffel.
+La métrica inversa es
+$$
+g^{ij}
+=
+\frac1{u^2+v^2}
+\begin{pmatrix}
+1&0\\
+0&1
+\end{pmatrix}.
+$$
+Usamos
+$$
+\Gamma^k_{ij}
+=
+\frac12g^{k\ell}
+\left(
+\partial_i g_{j\ell}
++\partial_j g_{i\ell}
+-\partial_\ell g_{ij}
+\right).
+$$
+Como
+$$
+g_{uu}=g_{vv}=u^2+v^2,
+$$
+tenemos
+$$
+\partial_u g_{uu}
+=
+\partial_u g_{vv}
+=
+2u,
+$$
+$$
+\partial_v g_{uu}
+=
+\partial_v g_{vv}
+=
+2v.
+$$
+
+
+\begin{itemize}
+\item Componentes con índice superior $u$.
+
+$$
+\Gamma^u_{uu}
+=
+\frac12g^{uu}\partial_u g_{uu}
+=
+\frac{u}{u^2+v^2}.
+$$
+$$
+\Gamma^u_{uv}
+=
+\frac12g^{uu}\partial_v g_{uu}
+=
+\frac{v}{u^2+v^2}.
+$$
+$$
+\Gamma^u_{vv}
+=
+-\frac12g^{uu}\partial_u g_{vv}
+=
+-\frac{u}{u^2+v^2}.
+$$
+
+\item Componentes con índice superior $v$.
+
+Por simetría,
+$$
+\Gamma^v_{vv}
+=
+\frac{v}{u^2+v^2},
+$$
+$$
+\Gamma^v_{uv}
+=
+\Gamma^v_{vu}
+=
+\frac{u}{u^2+v^2},
+$$
+$$
+\Gamma^v_{uu}
+=
+-\frac{v}{u^2+v^2}.
+$$
+\end{itemize}
+En resumen,
+$$
+\boxed{
+\begin{aligned}
+\Gamma^u_{uu}&=\frac{u}{u^2+v^2},&
+\Gamma^u_{uv}&=\Gamma^u_{vu}=\frac{v}{u^2+v^2},&
+\Gamma^u_{vv}&=-\frac{u}{u^2+v^2},\\
+\Gamma^v_{vv}&=\frac{v}{u^2+v^2},&
+\Gamma^v_{uv}&=\Gamma^v_{vu}=\frac{u}{u^2+v^2},&
+\Gamma^v_{uu}&=-\frac{v}{u^2+v^2}.
+\end{aligned}
+}
+$$
+
+\solu{d} 
+
+Laplaciano.
+En coordenadas curvilíneas,
+$$
+\nabla^2f
+=
+\frac1{\sqrt g}
+\partial_i
+\left(
+\sqrt g,g^{ij}\partial_jf
+\right),
+$$
+donde
+$$
+g=\det(g_{ij})=(u^2+v^2)^2.
+$$
+Así,
+$$
+\sqrt g=u^2+v^2,
+$$
+y
+$$
+g^{ij}
+=
+\frac1{u^2+v^2}\delta^{ij}.
+$$
+Por tanto,
+$$
+\sqrt g\,g^{ij}
+=
+\delta^{ij},
+$$
+lo que simplifica enormemente el cálculo:
+$$
+\begin{aligned}
+\nabla^2f
+&=
+\frac1{u^2+v^2}
+\left(
+\frac{\partial^2f}{\partial u^2}
++
+\frac{\partial^2f}{\partial v^2}
+\right).
+\end{aligned}
+$$
+En consecuencia,
+$$
+\boxed{
+\nabla^2f
+=
+\frac1{u^2+v^2}
+\left(
+\frac{\partial^2f}{\partial u^2}
++
+\frac{\partial^2f}{\partial v^2}
+\right).
+}
+$$
+
+{\bf Resumen}
+
+$$
+\boxed{
+g_{ij}
+=
+\begin{pmatrix}
+u^2+v^2&0\\
+0&u^2+v^2
+\end{pmatrix},
+}
+$$
+$$
+\boxed{
+h_u=h_v=\sqrt{u^2+v^2},
+}
+$$
+$$
+\boxed{
+\begin{aligned}
+\Gamma^u_{uu}&=\frac{u}{u^2+v^2},&
+\Gamma^u_{uv}&=\Gamma^u_{vu}=\frac{v}{u^2+v^2},&
+\Gamma^u_{vv}&=-\frac{u}{u^2+v^2},\\
+\Gamma^v_{uu}&=-\frac{v}{u^2+v^2},&
+\Gamma^v_{uv}&=\Gamma^v_{vu}=\frac{u}{u^2+v^2},&
+\Gamma^v_{vv}&=\frac{v}{u^2+v^2},
+\end{aligned}
+}
+$$
+y
+$$
+\boxed{
+\nabla^2f
+=
+\frac{1}{u^2+v^2}
+\left(
+\frac{\partial^2f}{\partial u^2}
++
+\frac{\partial^2f}{\partial v^2}
+\right).
+}
+$$
+Esta sería una resolución completa y apropiada para un examen final.
+
+
+
+
 
 
 \prob{} Sea $l^2(\mathbb{C})$ el conjunto de las sucesiones infinitas de números
