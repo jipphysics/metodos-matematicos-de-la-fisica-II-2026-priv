@@ -5621,6 +5621,270 @@ $$
 $$
 %This is a nice example because the integrals simplify almost completely, illustrating how the Green's function automatically builds the unique solution satisfying the boundary conditions.
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 17c)}
+\vspace{0.5cm}
+% https://chatgpt.com/share/6a3e5005-4b14-83e9-b5dc-84266b537a64
+
+Este inciso pide resolver 
+$$
+y''+\alpha y'=e^{-\beta x},
+\qquad x>0,
+\qquad
+\alpha,\beta>0,
+$$
+con
+$$
+y(0)=0,
+\qquad
+y'(0)=0.
+$$
+Este problema es interesante porque {\bf no es un problema de contorno}, sino un {\bf problema de valores iniciales}. 
+En consecuencia, la función de Green es {\bf causal}, es decir,
+$$
+G(x,\xi)=0,
+\qquad x<\xi.
+$$
+
+{\bf 1. Función de Green}
+
+Buscamos
+$$
+G''+\alpha G'
+=
+\delta(x-\xi),
+$$
+con
+$$
+G(0,\xi)=0,
+\qquad
+G_x(0,\xi)=0.
+$$
+Como la fuente sólo actúa en $x=\xi$, para $x\neq\xi$,
+$$
+G''+\alpha G'=0.
+$$
+
+{\bf 2. Solución homogénea}
+
+La ecuación característica es
+$$
+r(r+\alpha)=0,
+$$
+por lo que
+$$
+G_h=C_1+C_2e^{-\alpha x}.
+$$
+Como Green es causal,
+$$
+G(x,\xi)=0,
+\qquad x<\xi.
+$$
+Para $x>\xi$,
+$$
+G(x,\xi)
+=
+A(\xi)
++
+B(\xi)e^{-\alpha x}.
+$$
+
+{\bf 3. Continuidad}
+
+La función de Green debe ser continua en $x=\xi$:
+$$
+G(\xi^+,\xi)=G(\xi^-,\xi)=0.
+$$
+Luego
+$$
+A+B e^{-\alpha\xi}=0.
+$$
+
+{\bf 4. Condición de salto}
+
+Integramos
+$$
+G''+\alpha G'
+=
+\delta(x-\xi)
+$$
+entre
+$$
+\xi-\varepsilon
+\quad\text{y}\quad
+\xi+\varepsilon.
+$$
+Obtenemos
+$$
+G'(\xi^+)-G'(\xi^-)
++
+\alpha
+\left[
+G(\xi^+)-G(\xi^-)
+\right]
+=1.
+$$
+Como $G$ es continua,
+$$
+G'(\xi^+)-G'(\xi^-)=1.
+$$
+Pero
+$$
+G'=0
+$$
+a la izquierda de $\xi$, ya que allí $G\equiv0$.
+Luego
+$$
+G'(\xi^+)=1.
+$$
+Ahora
+$$
+G'(x,\xi)
+=
+-\alpha B e^{-\alpha x},
+$$
+de modo que
+$$
+-\alpha B e^{-\alpha\xi}=1,
+$$
+es decir,
+$$
+B
+=
+-\frac{e^{\alpha\xi}}{\alpha}.
+$$
+Entonces
+$$
+A=\frac1\alpha.
+$$
+
+{\bf 5. Función de Green}
+
+Finalmente,
+$$
+\boxed{
+G(x,\xi)
+=
+\begin{cases}
+0,
+&
+x<\xi,\\
+\dfrac1\alpha
+\left(
+1-e^{-\alpha(x-\xi)}
+\right),
+&
+x>\xi.
+\end{cases}
+}
+$$
+Puede escribirse más compactamente como
+$$
+\boxed{
+G(x,\xi)
+=
+\frac1\alpha
+\left(
+1-e^{-\alpha(x-\xi)}
+\right)
+H(x-\xi),
+}
+$$
+donde $H$ es la función escalón de Heaviside.
+
+{\bf 6. Solución}
+
+La solución es
+$$
+y(x)
+=
+\int_0^\infty
+G(x,\xi)e^{-\beta\xi},d\xi.
+$$
+Como $G=0$ para $\xi>x$,
+$$
+y(x)
+=
+\frac1\alpha
+\int_0^x
+\left(
+1-e^{-\alpha(x-\xi)}
+\right)
+e^{-\beta\xi}\,d\xi.
+$$
+Separando,
+$$
+y(x)
+=
+\frac1\alpha
+\left[
+\int_0^x e^{-\beta\xi}\,d\xi
+-
+e^{-\alpha x}
+\int_0^x
+e^{(\alpha-\beta)\xi}\,d\xi
+\right].
+$$
+
+{\bf 7. Caso $\alpha\neq\beta$}
+
+Las integrales son
+$$
+\int_0^x e^{-\beta\xi}\,d\xi
+=
+\frac{1-e^{-\beta x}}{\beta},
+$$
+y
+$$
+\int_0^x
+e^{(\alpha-\beta)\xi}\,d\xi
+=
+\frac{e^{(\alpha-\beta)x}-1}
+{\alpha-\beta}.
+$$
+Así,
+$$
+\boxed{
+y(x)
+=
+\frac1\alpha
+\left[
+\frac{1-e^{-\beta x}}{\beta}
+-
+\frac{e^{-\beta x}-e^{-\alpha x}}
+{\alpha-\beta}
+\right].
+}
+$$
+
+{\bf 8. Caso resonante $\alpha=\beta$}
+
+En este caso,
+$$
+\int_0^x e^{0\cdot\xi}\,d\xi=x,
+$$
+y la solución resulta
+$$
+\boxed{
+y(x)
+=
+\frac1\alpha
+\left[
+\frac{1-e^{-\alpha x}}{\alpha}
+-
+xe^{-\alpha x}
+\right].
+}
+$$
+
+{\bf Observación}
+
+Este problema ilustra una diferencia importante con los incisos anteriores:
+\begin{itemize}
+\item En los problemas de contorno, la función de Green suele ser {\bf simétrica} y se construye con dos soluciones homogéneas adaptadas a los extremos.
+\item En un problema de valores iniciales como éste, la función de Green es {\bf causal}: sólo depende de las fuentes ubicadas en $\xi<x$, lo que se refleja en el factor $H(x-\xi)$. Esto es completamente análogo a las funciones de Green retardadas que aparecen en ecuaciones de evolución.
+\end{itemize}
+
 
 
 
