@@ -5667,14 +5667,25 @@ $$
 
 {\bf 2. Solución homogénea}
 
+Proponemos soluciones de la forma
+$$
+u(x) = e^{rx}
+$$
 La ecuación característica es
 $$
-r(r+\alpha)=0,
+0
+=
+u''+\alpha u'
+=
+r^2\, u + \alpha \,r\, u
+=
+r(r+\alpha)\,u,
 $$
 por lo que
 $$
-G_h=C_1+C_2e^{-\alpha x}.
+u(x)=A+Be^{-\alpha x}.
 $$
+Con esto en mente, construimos la funci\'on de Green.
 Como Green es causal,
 $$
 G(x,\xi)=0,
@@ -5699,6 +5710,21 @@ Luego
 $$
 A+B e^{-\alpha\xi}=0.
 $$
+
+Nota: se puede mostrar por el absurdo que $G$ es contínua en $x=\xi$.
+Supongamos que $G$ tiene un salto en $x=\xi$.
+Luego, tendríamos que
+$$
+G' = \text{parte regular} + C\,\delta(x-\xi)
+$$
+para alguna constante $C$.
+Pero luego,
+$$
+G'' = \text{parte regular} + D\,\delta(x-\xi) + C\,\delta'(x-\xi)
+$$
+para alguna constante $D$.
+Pero $\delta'$ no aparece en la ecuación diferencial.
+Luego la suposición lleva a un absurdo.
 
 {\bf 4. Condición de salto}
 
