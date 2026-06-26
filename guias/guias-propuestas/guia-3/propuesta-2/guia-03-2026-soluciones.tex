@@ -1,0 +1,875 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=50\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Guía 3}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Guía N$^\txt{o}$ 3 -- 2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Begin text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{Parte I: Problemas Centrales (para desarrollar en clase)}
+
+% https://gemini.google.com/app/723624546b22fe0d?hl=es_419
+
+\prob Determine cuáles de las siguientes funciones están en $L^2(0,\infty)$; para aquellas que lo estén, calcule su norma.\\
+\begin{center}
+a) $e^{-x}$.\qquad
+b) $\operatorname{sen} x$.\qquad
+c) $\displaystyle \frac{1}{1+x}$.\qquad
+d) $\displaystyle \frac{1}{\sqrt{x}}$.
+\end{center}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1)}
+\vspace{0.5cm}
+
+Para que una función pertenezca a $L^2(0,\infty)$, su norma al cuadrado debe ser finita: $\int_0^\infty |f(x)|^2 dx < \infty$.
+
+{\bf a)} $f(x) = e^{-x}$:
+
+$$\int_0^\infty (e^{-x})^2 dx = \int_0^\infty e^{-2x} dx = \left[ -\frac{1}{2} e^{-2x} \right]_0^\infty = 0 - \left(-\frac{1}{2}\right) = \frac{1}{2}$$
+Como el resultado es finito, sí pertenece a $L^2(0,\infty)$. Su norma es $\|f\| = \sqrt{\frac{1}{2}} = \frac{\sqrt{2}}{2}$.
+
+{\bf b)} $f(x) = \operatorname{sen}(x)$:
+
+\begin{eqnarray}
+\int_0^\infty \operatorname{sen}^2(x) dx 
+&=& 
+\lim_{R\to \infty}
+\int_0^R \operatorname{sen}^2(x) dx 
+\notag
+\\
+&=&
+\lim_{R\to \infty}
+\int_0^R \frac{1 - \cos(2x)}{2} dx
+\notag
+\\
+&=&
+\lim_{R\to \infty}
+\frac{R}{2}
+-
+\frac{1}{2}
+\int_0^R \cos(2x)\, dx
+\notag
+\\
+&=&
+\lim_{R\to \infty}
+\frac{R}{2}
+-
+\frac{1}{4}
+\sin(2R)
+\notag
+\end{eqnarray}
+El primer t\'ermino diverge mientras que el segundo est\'a acotado.
+Luego, la integral diverge y por ende, no pertenece a $L^2(0,\infty)$.
+
+{\bf c)} $f(x) = \frac{1}{1+x}$:
+
+$$\int_0^\infty \left( \frac{1}{1+x} \right)^2 dx = \lim_{b \to \infty} \left[ -\frac{1}{1+x} \right]_0^b = 0 - (-1) = 1$$
+El resultado es finito, por lo que sí pertenece a $L^2(0,\infty)$. Su norma es $\|f\| = \sqrt{1} = 1$.
+
+{\bf d)} $f(x) = \frac{1}{\sqrt{x}}$
+
+$$\int_0^\infty \left( \frac{1}{\sqrt{x}} \right)^2 dx = \int_0^\infty \frac{1}{x} dx = \lim_{b \to \infty, a \to 0^+} \left[ \ln(x) \right]_a^b$$
+La integral diverge tanto en el límite superior ($\infty$) como en el inferior (0). No pertenece a $L^2(0,\infty)$.
+
+
+\prob Determine el límite en $L^2$ de cada una de las siguientes sucesiones de funciones, si existe.\\
+\begin{center}
+a) $\sqrt{x}$, $0\le x\le 1$.\qquad
+b) $\displaystyle \begin{cases}
+nx, & 0 \le x < 1/n,\\
+1, & 1/n \le x \le 1.
+\end{cases}$\qquad
+c) $n x (1-x)^n$, $0\le x\le 1$.
+\end{center}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+Matemáticamente, decimos que $f_n \xrightarrow{L^2} f$ si:
+$$\lim_{n \to \infty} \|f_n - f\|_{L^2} = 0$$
+
+{\bf a)} $f_n(x) = \sqrt{x}, \quad 0 \le x \le 1$:
+
+Al no depender de $n$, se trata de una sucesión constante. Converge trivialmente a sí misma en $L^2$, es decir, el límite es $f(x) = \sqrt{x}$.
+
+\vspace{0.5cm}
+{\bf b)} $f_n(x) = \begin{cases} nx, & 0 \le x < 1/n \\ 1, & 1/n \le x \le 1 \end{cases}$:
+
+El límite puntual de esta sucesión es $f(x) = 1$ para todo $x \in (0, 1]$. Evaluamos si converge a $1$ en la norma $L^2$:
+$$\int_0^1 |f_n(x) - 1|^2 dx = \int_0^{1/n} (nx - 1)^2 dx + \int_{1/n}^1 (1 - 1)^2 dx$$
+$$= \left[ \frac{(nx - 1)^3}{3n} \right]_0^{1/n} + 0 = \frac{0 - (-1)^3}{3n} = \frac{1}{3n}$$
+Tomando el límite: $\lim_{n \to \infty} \frac{1}{3n} = 0$. Por lo tanto, la sucesión converge en $L^2$ a la función constante $f(x) = 1$.
+
+\vspace{0.5cm}
+{\bf c)} $f_n(x) = nx(1-x)^n, \quad 0 \le x \le 1$:
+
+El límite puntual es la función nula $f(x) = 0$. Calculamos la norma $L^2$ de la diferencia con $0$:
+$$\int_0^1 (nx(1-x)^n - 0)^2 dx = n^2 \int_0^1 x^2 (1-x)^{2n} dx$$
+Esta integral es la función Beta $B(\alpha, \beta) = \int_0^1 x^{\alpha-1}(1-x)^{\beta-1} dx = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$ con $\alpha=3$ y $\beta=2n+1$:
+$$n^2 B(3, 2n+1) = n^2 \frac{\Gamma(3)\Gamma(2n+1)}{\Gamma(2n+4)} = n^2 \frac{2!}{(2n+3)(2n+2)(2n+1)}$$
+El numerador crece como $2n^2$ y el denominador como $8n^3$. Al tomar el límite $n \to \infty$, la expresión tiende a $0$. Por ende, la sucesión converge en $L^2$ a $f(x) = 0$.
+
+
+\prob Muestre que las funciones $\{1, \cos(nx), \operatorname{sen}(nx),\; n=1,2,\dots\}$ son ortogonales dos a dos en $L^2[-\pi,\pi]$. Ídem para las funciones $\{e^{inx},\; n\in\mathbb{Z}\}$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 3)}
+\vspace{0.5cm}
+
+Dos funciones son ortogonales si su producto interno $\langle f, g \rangle = \int_{-\pi}^\pi f(x)\overline{g(x)} dx$ es igual a cero.
+
+\begin{itemize}
+
+\item Entre $1$ y $\cos(nx)$ o $\operatorname{sen}(nx)$:
+    $$\int_{-\pi}^\pi 1 \cdot \cos(nx) dx = \left[ \frac{\operatorname{sen}(nx)}{n} \right]_{-\pi}^\pi = 0$$
+    $$\int_{-\pi}^\pi 1 \cdot \operatorname{sen}(nx) dx = 0 \quad \text{(la integral de una función impar en un intervalo simétrico es 0)}$$
+
+\item Entre $\operatorname{sen}(nx)$ y $\cos(mx)$:
+    $$\int_{-\pi}^\pi \operatorname{sen}(nx)\cos(mx) dx = 0 \quad \text{(el producto de una función impar y una par es impar)}$$
+
+\item Entre cosenos de distintos índices ($n \neq m$):
+    Utilizando la identidad $\cos(a)\cos(b) = \frac{1}{2}[\cos(a-b) + \cos(a+b)]$:
+    $$\frac{1}{2} \int_{-\pi}^\pi [\cos((n-m)x) + \cos((n+m)x)] dx = 0$$
+puesto que el coseno es par, por lo que la primitiva resultante (el seno) es impar y como el intervalo es simétrico, la integral definida resulta identicamente cero.
+
+\item Para la base exponencial $\{e^{inx}, n \in \mathbb{Z}\}$:
+    Con $n \neq m$, el producto interno es:
+    $$\langle e^{inx}, e^{imx} \rangle = \int_{-\pi}^\pi e^{inx} e^{-imx} dx = \int_{-\pi}^\pi e^{i(n-m)x} dx$$
+    $$= \left[ \frac{e^{i(n-m)x}}{i(n-m)} \right]_{-\pi}^\pi = \frac{e^{i(n-m)\pi} - e^{-i(n-m)\pi}}{i(n-m)}$$
+    Como $e^{ik\pi} = (-1)^k$ para todo entero $k$, ambos términos del numerador son iguales, dando un resultado de $0$.
+
+\end{itemize}
+
+\prob (Desigualdad de Hölder) Sea la norma $L^p$:
+\[
+\|u\|_{L^p} = \left( \int_a^b |u(x)|^p \,dx \right)^{1/p}, \qquad p\ge 1.
+\]
+Pruebe que vale la desigualdad
+\[
+\|uv\|_{L^s} \le \|u\|_{L^p} \|v\|_{L^q}, \qquad \text{para } s^{-1}=p^{-1}+q^{-1}.
+\]
+Sugerencia: Utilice la desigualdad de Hölder para la función $(uv)^s$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4)}
+\vspace{0.5cm}
+
+La desigualdad de Hölder estándar establece que para funciones $f \in L^{p'}$ y $g \in L^{q'}$ donde $\frac{1}{p'} + \frac{1}{q'} = 1$, se cumple:
+$$\int_a^b |f(x)g(x)| dx \le \left( \int_a^b |f(x)|^{p'} dx \right)^{1/p'} \left( \int_a^b |g(x)|^{q'} dx \right)^{1/q'}$$
+Definimos $f(x) = |u(x)|^s$ y $g(x) = |v(x)|^s$. Para aplicar Hölder, elegimos los exponentes conjugados $p' = \frac{p}{s}$ y $q' = \frac{q}{s}$. Verificamos que suman 1:
+$$\frac{1}{p'} + \frac{1}{q'} = \frac{s}{p} + \frac{s}{q} = s \left( \frac{1}{p} + \frac{1}{q} \right) = s \left( \frac{1}{s} \right) = 1$$
+Aplicando la desigualdad a estas funciones:
+$$\int_a^b |u(x)|^s |v(x)|^s dx \le \left( \int_a^b (|u(x)|^s)^{p/s} dx \right)^{s/p} \left( \int_a^b (|v(x)|^s)^{q/s} dx \right)^{s/q}$$
+Simplificando los exponentes:
+$$\int_a^b |u(x)v(x)|^s dx \le \left( \int_a^b |u(x)|^p dx \right)^{s/p} \left( \int_a^b |v(x)|^q dx \right)^{s/q}$$
+Finalmente, elevamos ambos lados a la potencia $1/s$:
+$$\left( \int_a^b |u(x)v(x)|^s dx \right)^{1/s} \le \left( \int_a^b |u(x)|^p dx \right)^{1/p} \left( \int_a^b |v(x)|^q dx \right)^{1/q}$$
+Lo que se traduce exactamente en su forma de norma como $\|uv\|_{L^s} \le \|u\|_{L^p} \|v\|_{L^q}$.
+
+
+\prob Pruebe que si $T:X\to Y$ es lineal ($X$ e $Y$ son espacios de Banach) entonces $T$ es continua en todo punto de $X$ si y solo si $T$ es continua en cero.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 5)}
+\vspace{0.5cm}
+
+\begin{itemize}
+
+\item Ida ($\implies$): Si $T$ es continua en todo el espacio $X$, entonces lógicamente es continua en el punto específico $x = 0$.
+
+\item Vuelta ($\impliedby$): Supongamos que $T$ es continua en $0$. Esto implica que para cualquier sucesión $h_n \to 0$ en $X$, se tiene que $T(h_n) \to T(0)$. Dado que $T$ es un operador lineal, $T(0) = T(0-0) = 0$, por lo que $T(h_n) \to 0$.
+    Ahora, tomemos un punto arbitrario $x_0 \in X$ y una sucesión cualquiera $x_n \to x_0$.
+    Definimos $h_n = x_n - x_0$. Es evidente que cuando $x_n \to x_0$, la diferencia $h_n \to 0$.
+    Usando la continuidad de $T$ en cero, sabemos que $T(h_n) \to 0$. Por la linealidad de $T$:
+    $$T(h_n) = T(x_n - x_0) = T(x_n) - T(x_0)$$
+    Por ende, $T(x_n) - T(x_0) \to 0$, lo cual equivale a decir que $T(x_n) \to T(x_0)$. Como esto se cumple para cualquier $x_0$, hemos demostrado que la continuidad en el origen garantiza la continuidad en todo el espacio $X$.
+
+\end{itemize}
+
+
+\prob Sea $H$ un espacio de Hilbert separable y $\{\hat{e}_1,\hat{e}_2,\dots\}$ una base ortonormal. Pruebe que si $x\in H$,
+\[
+\text{a) } x = \sum_{j=1}^{\infty} \langle \hat{e}_j, x \rangle \hat{e}_j, \qquad
+\text{b) Identidad de Parseval: } \|x\|^2 = \sum_{j=1}^{\infty} |\langle \hat{e}_j, x \rangle|^2.
+\]
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 6)}
+\vspace{0.5cm}
+
+{\bf a)}
+Demostración de $x = \sum_{j=1}^{\infty} \langle \hat{e}_j, x \rangle \hat{e}_j$.
+
+Para probar esto, debemos recordar qué significa que $\{\hat{e}_1, \hat{e}_2, \dots\}$ sea una base ortonormal (o un sistema ortonormal completo) en un espacio de Hilbert $H$. Por definición, significa que los vectores son mutuamente ortogonales y de norma 1 ($\langle \hat{e}_j, \hat{e}_k \rangle = \delta_{jk}$) y que el único vector que es ortogonal a todos los elementos de la base es el vector nulo.
+
+Definamos la suma parcial (que es la proyección ortogonal de $x$ sobre el subespacio generado por los primeros $N$ vectores de la base):
+$$S_N = \sum_{j=1}^N \langle \hat{e}_j, x \rangle \hat{e}_j$$
+
+Queremos ver que el límite de $S_N$ cuando $N \to \infty$ es exactamente $x$. Para ello, analicemos el vector diferencia o "vector error" $r_N = x - S_N$. 
+
+Veamos el producto interno de este vector $r_N$ con un vector cualquiera de la base $\hat{e}_k$ (asumiendo $k \le N$):
+$$\langle \hat{e}_k, x - S_N \rangle = \langle \hat{e}_k, x \rangle - \langle \hat{e}_k, S_N \rangle$$
+$$\langle \hat{e}_k, x - S_N \rangle = \langle \hat{e}_k, x \rangle - \left\langle \hat{e}_k, \sum_{j=1}^N \langle \hat{e}_j, x \rangle \hat{e}_j \right\rangle$$
+
+Por la linealidad del producto interno, podemos sacar la sumatoria y los escalares $\langle \hat{e}_j, x \rangle$:
+$$\langle \hat{e}_k, x - S_N \rangle = \langle \hat{e}_k, x \rangle - \sum_{j=1}^N \langle \hat{e}_j, x \rangle \langle \hat{e}_k, \hat{e}_j \rangle$$
+
+Como el conjunto es ortonormal, $\langle \hat{e}_k, \hat{e}_j \rangle = 1$ si $j=k$, y $0$ si $j \neq k$. Por lo tanto, toda la sumatoria colapsa al término donde $j=k$:
+$$\langle \hat{e}_k, x - S_N \rangle = \langle \hat{e}_k, x \rangle - \langle \hat{e}_k, x \rangle \cdot 1 = 0$$
+
+Esto demuestra que el vector $(x - \lim_{N \to \infty} S_N)$ es ortogonal a todos los vectores de la base $\hat{e}_k$. Puesto que la base es un conjunto completo en el espacio de Hilbert $H$, el único vector ortogonal a todo el espacio es el vector nulo. Por consiguiente:
+$$x - \lim_{N \to \infty} S_N = 0 \implies x = \lim_{N \to \infty} \sum_{j=1}^N \langle \hat{e}_j, x \rangle \hat{e}_j = \sum_{j=1}^{\infty} \langle \hat{e}_j, x \rangle \hat{e}_j$$
+Lo que concluye la demostración.
+
+\vspace{0.5cm}
+{\bf b)} Demostración de la Identidad de Parseval: $\|x\|^2 = \sum_{j=1}^{\infty} |\langle \hat{e}_j, x \rangle|^2$.
+
+Partiendo del resultado que acabamos de demostrar en {\bf a)}, sabemos que podemos expresar la norma al cuadrado del vector $x$ usando el producto interno de $x$ consigo mismo y reemplazando $x$ por su desarrollo en la base ortonormal:
+$$\|x\|^2 = \langle x, x \rangle$$
+
+Sustituimos la serie infinita:
+$$\|x\|^2 = \left\langle \lim_{N \to \infty} \sum_{j=1}^N \langle \hat{e}_j, x \rangle \hat{e}_j , \lim_{M \to \infty} \sum_{k=1}^M \langle \hat{e}_k, x \rangle \hat{e}_k \right\rangle$$
+
+Debido a que el producto interno en un espacio de Hilbert es una función continua, podemos sacar el límite fuera del producto interno:
+$$\|x\|^2 = \lim_{N \to \infty} \left\langle \sum_{j=1}^N \langle \hat{e}_j, x \rangle \hat{e}_j , \sum_{k=1}^N \langle \hat{e}_k, x \rangle \hat{e}_k \right\rangle$$
+
+Aplicamos la linealidad (y antilinealidad) del producto interno para expandir las sumas:
+$$\|x\|^2 = \lim_{N \to \infty} \sum_{j=1}^N \sum_{k=1}^N \overline{\langle \hat{e}_j, x \rangle} \langle \hat{e}_k, x \rangle \langle \hat{e}_j, \hat{e}_k \rangle$$
+
+Nuevamente, utilizamos la condición de ortonormalidad $\langle \hat{e}_j, \hat{e}_k \rangle = \delta_{jk}$. Esto hace que de la doble sumatoria solo sobrevivan los términos donde $j = k$ (la diagonal):
+$$\|x\|^2 = \lim_{N \to \infty} \sum_{j=1}^N \overline{\langle \hat{e}_j, x \rangle} \langle \hat{e}_j, x \rangle$$
+
+Recordando que para cualquier número complejo $z$, el producto $z \overline{z} = |z|^2$, obtenemos:
+$$\|x\|^2 = \lim_{N \to \infty} \sum_{j=1}^N |\langle \hat{e}_j, x \rangle|^2$$
+$$\|x\|^2 = \sum_{j=1}^{\infty} |\langle \hat{e}_j, x \rangle|^2$$
+
+Con esto queda demostrada la Identidad de Parseval.
+
+
+
+\prob Considere la función de prueba $\varphi \in C_0^\infty(\mathbb{R})$ definida como
+\[
+\varphi(x) = \begin{cases}
+e^{-\frac{1}{1-x^2}}, & |x| < 1,\\
+0, & |x| \geq 1.
+\end{cases}
+\]
+Muestre que, efectivamente, $\varphi$ y todas sus derivadas son continuas en $\mathbb{R}$.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 7)}
+\vspace{0.5cm}
+
+
+Para demostrar que $\varphi \in C_0^\infty(\mathbb{R})$ (es decir, que tiene soporte compacto y es infinitamente diferenciable), debemos comprobar que no existen discontinuidades ni en la función ni en ninguna de sus derivadas en todo el dominio real. 
+
+Primero, analicemos los intervalos abiertos:
+\begin{itemize}
+\item Para $|x| > 1$, la función es una constante ($\varphi(x) = 0$), la cual es continua y tiene derivadas continuas (todas nulas).
+\item Para $|x| < 1$, la función es $\varphi(x) = e^{-\frac{1}{1-x^2}}$. Como el denominador $(1-x^2)$ nunca se anula en el intervalo $(-1, 1)$, esta función es una composición de funciones elementales suaves (la exponencial y una función racional), por lo que es infinitamente diferenciable y continua dentro del intervalo.
+\end{itemize}
+
+El único ``problema'' está en las fronteras de estos intervalos, es decir, en los puntos de unión $x = 1$ y $x = -1$. Demostraremos que la función y sus derivadas se ``pegan'' suavemente con el cero en estos puntos. Por simetría (la función es par), basta con analizar qué ocurre cuando $x \to 1$.
+
+\begin{enumerate}
+\item Continuidad de $\varphi(x)$ en $x = 1$.
+Debemos verificar que $\lim_{x \to 1^-} \varphi(x) = \lim_{x \to 1^+} \varphi(x) = \varphi(1)$.
+Por la definición para $|x|\ge 1$, sabemos que el límite por la derecha es $0$ y $\varphi(1) = 0$.
+Veamos el límite por la izquierda:
+$$\lim_{x \to 1^-} \varphi(x) = \lim_{x \to 1^-} e^{-\frac{1}{1-x^2}}$$
+Hagamos el cambio de variable $u = \frac{1}{1-x^2}$. Cuando $x$ se acerca a $1$ desde números más pequeños ($1^-$), el término $1-x^2$ tiende a $0$ por valores positivos ($0^+$). Por lo tanto, $u \to +\infty$.
+$$\lim_{u \to \infty} e^{-u} = \lim_{u \to \infty} \frac{1}{e^u} = 0$$
+Ambos límites laterales coinciden y valen $0$. La función es continua en todo $\mathbb{R}$.
+
+\item Continuidad de la primera derivada en $x = 1$.
+Calculemos la primera derivada para $|x| < 1$ usando la regla de la cadena:
+$$\varphi'(x) = \frac{d}{dx} \left( e^{-\frac{1}{1-x^2}} \right) = e^{-\frac{1}{1-x^2}} \cdot \frac{d}{dx} \left( -(1-x^2)^{-1} \right)$$
+$$\varphi'(x) = e^{-\frac{1}{1-x^2}} \cdot \left[ (1-x^2)^{-2} \cdot (-2x) \right] = \frac{-2x}{(1-x^2)^2} e^{-\frac{1}{1-x^2}}$$
+Calculamos su límite cuando $x \to 1^-$ usando el mismo cambio de variable $u = \frac{1}{1-x^2}$ (notando que $(1-x^2)^2 = 1/u^2$):
+$$\lim_{x \to 1^-} \varphi'(x) = \lim_{u \to \infty} (-2 \cdot 1 \cdot u^2) e^{-u} = -2 \lim_{u \to \infty} \frac{u^2}{e^u}$$
+Nos enfrentamos a una indeterminación del tipo $\infty / \infty$. Sin embargo, es un hecho conocido del análisis matemático que la función exponencial $e^u$ crece asintóticamente mucho más rápido que cualquier polinomio en $u$. (Podemos aplicar la Regla de L'Hôpital dos veces para comprobarlo). Por lo tanto, el denominador gana y el límite es exacto:
+$$\lim_{x \to 1^-} \varphi'(x) = 0$$
+Como la derivada por la derecha es $0$ (derivada de una constante), concluimos que $\varphi'(1)$ existe y vale $0$. La primera derivada es continua.
+
+\item Continuidad de la derivada $k$-ésima.
+Podemos generalizar este resultado. Si seguimos derivando repetidamente usando la regla del producto y de la cadena para $|x| < 1$, es posible demostrar por inducción que cualquier derivada de orden $k$ tendrá la forma general:
+$$\varphi^{(k)}(x) = \frac{P_k(x)}{(1-x^2)^{m_k}} e^{-\frac{1}{1-x^2}}$$
+Donde $P_k(x)$ es un polinomio de cierto grado, y $m_k$ es un entero positivo.
+Si tomamos el límite cuando $x \to 1^-$, al hacer el reemplazo $u = \frac{1}{1-x^2}$, la expresión $\frac{1}{(1-x^2)^{m_k}}$ se convierte en $u^{m_k}$. El límite siempre tomará la forma de:
+$$\lim_{u \to \infty} (\text{Polinomio en } u) \cdot e^{-u} = \lim_{u \to \infty} \frac{\text{Polinomio}(u)}{e^u}$$
+Nuevamente, debido a que el crecimiento exponencial domina el crecimiento polinómico de cualquier grado, este límite será siempre $0$.
+Por lo tanto, $\lim_{x \to \pm 1} \varphi^{(k)}(x) = 0$ para todo número natural $k$. 
+
+Esto prueba formalmente que todas las derivadas de la función existen, se empalman suavemente con la región nula y son continuas, lo que confirma que la función "campana" modificada $\varphi$ es de clase $C^\infty(\mathbb{R})$.
+\end{enumerate}
+
+
+
+\prob Considere la sucesión de funciones en $C^\infty(\mathbb{R})$
+\[
+f_n = \frac{n}{\sqrt{\pi}} e^{-n^2 x^2}.
+\]
+Muestre que
+\[
+f_n \xrightarrow{n \to \infty} \delta.
+\]
+¿A qué converge $f'_n$? ¿Y $f_n^{(k)}$? (Ayuda: note que toda función de prueba en $C_0^\infty(\mathbb{R})$ o $\mathcal{S}(\mathbb{R})$ es entera, y por consiguiente tiene un desarrollo de Taylor con radio de convergencia infinito.)
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 8)}
+\vspace{0.5cm}
+
+\begin{enumerate}
+\item Demostrar que $f_n \xrightarrow{n \to \infty} \delta$.
+
+Para demostrar que una sucesión de funciones converge a la delta de Dirac en el sentido distribucional, debemos probar que para cualquier función de prueba $\varphi(x)$, el límite del producto interno (la integral) coincide con la acción de la delta sobre dicha función:
+$$\lim_{n \to \infty} \langle f_n, \varphi \rangle = \lim_{n \to \infty} \int_{-\infty}^{\infty} f_n(x) \varphi(x) dx = \varphi(0)$$
+
+Siguiendo la ayuda sugerida, expandimos la función de prueba $\varphi(x)$ en su serie de Taylor alrededor del origen $x=0$:
+$$\varphi(x) = \varphi(0) + \varphi'(0)x + \frac{\varphi''(0)}{2!}x^2 + \frac{\varphi'''(0)}{3!}x^3 + \dots = \sum_{m=0}^{\infty} \frac{\varphi^{(m)}(0)}{m!} x^m$$
+
+Sustituimos esta expansión en la integral:
+$$\langle f_n, \varphi \rangle = \int_{-\infty}^{\infty} \frac{n}{\sqrt{\pi}} e^{-n^2 x^2} \left( \sum_{m=0}^{\infty} \frac{\varphi^{(m)}(0)}{m!} x^m \right) dx$$
+
+Podemos intercambiar la suma y la integral (asumiendo convergencia adecuada gracias a que $\varphi$ es una función de prueba):
+$$\langle f_n, \varphi \rangle = \sum_{m=0}^{\infty} \frac{\varphi^{(m)}(0)}{m!} \int_{-\infty}^{\infty} \frac{n}{\sqrt{\pi}} e^{-n^2 x^2} x^m dx$$
+
+Ahora analizamos estas integrales dependientes del grado $m$:
+\begin{itemize}
+\item Si $m$ es impar: La función $e^{-n^2 x^2} x^m$ es impar, y al estar integrada en un intervalo simétrico $(-\infty, \infty)$, la integral es exactamente 0. Por lo tanto, todos los términos con derivadas impares desaparecen.
+\item Si $m$ es par ($m = 2k$): Hacemos el cambio de variable $y = nx \implies dx = \frac{dy}{n}$ y $x^{2k} = \frac{y^{2k}}{n^{2k}}$:
+    $$\int_{-\infty}^{\infty} \frac{n}{\sqrt{\pi}} e^{-n^2 x^2} x^{2k} dx = \int_{-\infty}^{\infty} \frac{n}{\sqrt{\pi}} e^{-y^2} \frac{y^{2k}}{n^{2k}} \frac{dy}{n} = \frac{1}{n^{2k}} \left( \frac{1}{\sqrt{\pi}} \int_{-\infty}^{\infty} e^{-y^2} y^{2k} dy \right)$$
+    El término entre paréntesis es simplemente una constante que no depende de $n$.
+\end{itemize}
+
+Observemos el factor $\frac{1}{n^{2k}}$. 
+\begin{itemize}
+\item Para $k = 0$ (es decir, $m = 0$), el factor es $\frac{1}{n^0} = 1$. La integral vale $\frac{1}{\sqrt{\pi}} \int e^{-y^2} dy = 1$.
+\item Para $k \ge 1$ (es decir, $m \ge 2$), el factor $\frac{1}{n^{2k}}$ hará que ese término tienda a cero cuando $n \to \infty$.
+\end{itemize}
+
+Tomando el límite de toda la suma cuando $n \to \infty$, todos los términos con $m \ge 1$ se anulan y solo sobrevive el término con $m=0$:
+$$\lim_{n \to \infty} \langle f_n, \varphi \rangle = \frac{\varphi(0)}{0!} \cdot 1 + 0 + 0 + \dots = \varphi(0)$$
+
+Como la acción de la delta de Dirac se define precisamente como $\langle \delta, \varphi \rangle = \varphi(0)$, concluimos que:
+$$f_n \xrightarrow{n \to \infty} \delta$$
+
+\item Convergencia de $f'_n$.
+
+En la teoría de distribuciones, la convergencia es compatible con la derivación. Es decir, si una sucesión converge a una distribución, las derivadas de la sucesión convergen a la derivada de la distribución. Demostrémoslo formalmente usando la definición de derivada distribucional:
+$$\langle f'_n, \varphi \rangle = - \langle f_n, \varphi' \rangle$$
+
+Dado que $\varphi$ es una función de prueba, su derivada $\varphi'$ también lo es. Podemos aplicar el resultado que acabamos de demostrar en el Paso a) para la función de prueba $\varphi'$:
+$$\lim_{n \to \infty} \langle f'_n, \varphi \rangle = -\lim_{n \to \infty} \langle f_n, \varphi' \rangle = - \varphi'(0)$$
+
+Por definición, la acción de la derivada de la delta de Dirac sobre una función de prueba es $\langle \delta', \varphi \rangle = -\varphi'(0)$. Por lo tanto:
+$$f'_n \xrightarrow{n \to \infty} \delta'$$
+
+\item Convergencia de $f_n^{(k)}$.
+
+Aplicando inducción y la misma lógica generalizada para la derivada $k$-ésima:
+$$\langle f_n^{(k)}, \varphi \rangle = (-1)^k \langle f_n, \varphi^{(k)} \rangle$$
+
+Sabiendo que $\varphi^{(k)}$ sigue siendo una función de prueba, tomamos el límite $n \to \infty$:
+$$\lim_{n \to \infty} \langle f_n^{(k)}, \varphi \rangle = (-1)^k \lim_{n \to \infty} \langle f_n, \varphi^{(k)} \rangle = (-1)^k \varphi^{(k)}(0)$$
+
+Esta expresión $(-1)^k \varphi^{(k)}(0)$ es la definición matemática de la acción de la $k$-ésima derivada de la delta de Dirac, es decir, $\langle \delta^{(k)}, \varphi \rangle$. Por consiguiente:
+$$f_n^{(k)} \xrightarrow{n \to \infty} \delta^{(k)}$$
+\end{enumerate}
+
+
+\prob Muestre que
+\[
+\int_a^b f(x)\,\delta(g(x))\,dx = \frac{f(x_0)}{|g'(x_0)|},
+\]
+asumiendo que la ecuación $g(x)=0$ posee una sola raíz en el intervalo $a<x<b$.
+{\color{red} [Habría que agregar la hipótesis $g'(x_0)\neq 0$ y aclarar que $x_0$ denota la raíz es $g$ mencioanda.]}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 9)}
+\vspace{0.5cm}
+
+Sabemos por hipótesis que la función $g(x)$ tiene un único cero en $x = x_0$ dentro del intervalo de integración $(a, b)$. Es decir, $g(x_0) = 0$. La distribución delta de Dirac, $\delta(g(x))$, solo es no nula cuando su argumento es cero, por lo que toda la contribución a la integral proviene de un entorno infinitamente pequeño alrededor de $x_0$.
+
+Para resolver la integral, proponemos un cambio de variable:
+$$u = g(x)$$
+Diferenciando esta expresión, obtenemos:
+$$du = g'(x) dx \implies dx = \frac{du}{g'(x)}$$
+
+Para realizar el cambio de variable en la integral, debemos considerar el signo de la derivada $g'(x_0)$ (asumimos que $g'(x_0) \neq 0$, es decir, es una raíz simple). Hay dos casos posibles: que la función sea creciente o decreciente al pasar por $x_0$.
+
+\begin{itemize}
+\item Caso 1: $g'(x_0) > 0$ (La función es creciente en $x_0$)
+Si $g(x)$ es creciente al cruzar el cero en $x_0$, entonces $g(a) < 0$ y $g(b) > 0$.
+Aplicamos el cambio de variable a la integral:
+$$\int_a^b f(x)\,\delta(g(x))\,dx = \int_{g(a)}^{g(b)} f(x(u))\,\delta(u)\,\frac{du}{g'(x(u))}$$
+Dado que el nuevo intervalo de integración va desde un valor negativo $g(a)$ hasta un valor positivo $g(b)$, el punto $u=0$ está incluido. Usando la propiedad fundamental de la delta de Dirac $\int \varphi(u)\delta(u)du = \varphi(0)$, evaluamos el integrando en $u=0$.
+Recordemos que cuando $u=0$, la variable original es $x=x_0$.
+$$= \left[ \frac{f(x(u))}{g'(x(u))} \right]_{u=0} = \frac{f(x_0)}{g'(x_0)}$$
+Como $g'(x_0) > 0$, entonces $g'(x_0) = |g'(x_0)|$, por lo que el resultado se puede escribir como $\frac{f(x_0)}{|g'(x_0)|}$.
+
+\item Caso 2: $g'(x_0) < 0$ (i.e. la función es decreciente en $x_0$).
+Si $g(x)$ es decreciente al cruzar el cero, entonces arranca de un valor positivo y termina en uno negativo: $g(a) > 0$ y $g(b) < 0$.
+Al hacer el cambio de variable, los límites de integración quedan invertidos respecto al caso anterior:
+$$\int_a^b f(x)\,\delta(g(x))\,dx = \int_{g(a)}^{g(b)} f(x(u))\,\delta(u)\,\frac{du}{g'(x(u))}$$
+Para usar la propiedad de la delta en su forma estándar, necesitamos que el límite inferior sea menor que el superior. Invertimos los límites de integración, lo cual introduce un signo menos:
+$$= -\int_{g(b)}^{g(a)} f(x(u))\,\delta(u)\,\frac{du}{g'(x(u))}$$
+Ahora integramos desde un valor negativo $g(b)$ hasta uno positivo $g(a)$, incluyendo el $u=0$. Evaluando el integrando en $u=0$ (es decir, $x=x_0$):
+$$= -\frac{f(x_0)}{g'(x_0)}$$
+Como en este caso $g'(x_0)$ es un número negativo, se cumple que $-g'(x_0) = |g'(x_0)|$. Sustituyendo esto, obtenemos nuevamente:
+$$= \frac{f(x_0)}{|g'(x_0)|}$$
+\end{itemize}
+
+Conclusión. 
+En ambos casos, sin importar si la función $g(x)$ cruza el eje horizontal creciendo o decreciendo en $x_0$, el valor de la integral es el mismo:
+$$\int_a^b f(x)\,\delta(g(x))\,dx = \frac{f(x_0)}{|g'(x_0)|}$$
+Lo cual concluye la demostración. (Nota: Esta es la base para la propiedad más general $\delta(g(x)) = \sum_i \frac{\delta(x-x_i)}{|g'(x_i)|}$ que usarás más adelante).
+
+
+
+
+
+
+\prob Sea $f\in L^1(\mathbb{R})$ y sea $T_f$ la funcional definida como
+\[
+T_f(\varphi) = \int_0^{\infty} f(x)\varphi(x)\,dx,
+\]
+para toda $\varphi\in\mathcal{D}(\mathbb{R})$. Muestre que $T_f$ es una distribución.
+{\color{red} $\mathcal{D}(\mathbb{R})$ es espacio de las funciones de prueba. Podr\'ia ser el conjunto de las funciones definidas sobre los números reales que son infinitamente diferenciables, $C_0^{\infty}(\mathbb{R})$, o el espacio de Schwartz, $\mathcal{S}(\mathbb{R})$, i.e. el espacio de funciones infinitamente diferenciables definidas en los reales que, junto con todas sus derivadas, decaen a cero más rápido que cualquier polinomio cuando $x \to \pm\infty$ (por ejemplo, $e^{-x^2}$).}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 10)}
+\vspace{0.5cm}
+
+Para demostrar que una funcional $T_f : \mathcal{D}(\mathbb{R}) \to \mathbb{R}$ (o $\mathbb{C}$) es una distribución, debemos probar que cumple con dos propiedades fundamentales: Linealidad y Continuidad.
+
+\begin{itemize}
+\item Linealidad:
+Debemos probar que para cualesquiera funciones de prueba $\varphi, \psi \in \mathcal{D}(\mathbb{R})$ y constantes $\alpha, \beta \in \mathbb{C}$, se cumple que $T_f(\alpha\varphi + \beta\psi) = \alpha T_f(\varphi) + \beta T_f(\psi)$.
+
+Partimos de la definición de la funcional:
+$$T_f(\alpha\varphi + \beta\psi) = \int_0^{\infty} f(x) \left[ \alpha\varphi(x) + \beta\psi(x) \right] dx$$
+
+Utilizando la propiedad distributiva del producto y la linealidad de la integral, podemos separar los términos y sacar las constantes:
+$$T_f(\alpha\varphi + \beta\psi) = \int_0^{\infty} \alpha f(x)\varphi(x) dx + \int_0^{\infty} \beta f(x)\psi(x) dx$$
+$$T_f(\alpha\varphi + \beta\psi) = \alpha \int_0^{\infty} f(x)\varphi(x) dx + \beta \int_0^{\infty} f(x)\psi(x) dx$$
+
+Sustituyendo nuevamente por la definición de $T_f$:
+$$T_f(\alpha\varphi + \beta\psi) = \alpha T_f(\varphi) + \beta T_f(\psi)$$
+Con esto queda demostrada la linealidad.
+
+\item Continuidad:
+La continuidad en el sentido de las distribuciones significa que si una sucesión de funciones de prueba $\varphi_n$ converge a $0$ en el espacio $\mathcal{D}(\mathbb{R})$ (denotado como $\varphi_n \xrightarrow{\mathcal{D}} 0$), entonces la sucesión de números reales (o complejos) $T_f(\varphi_n)$ converge a $0$.
+
+Recordemos qué significa que $\varphi_n \xrightarrow{\mathcal{D}} 0$:
+\begin{itemize}
+\item Existe un conjunto compacto $K \subset \mathbb{R}$ tal que el soporte de todas las funciones $\varphi_n$ está contenido en $K$ (es decir, $\operatorname{supp}(\varphi_n) \subset K$ para todo $n$).
+\item La sucesión $\varphi_n(x)$ y todas sus derivadas convergen uniformemente a $0$ en $K$.
+\end{itemize}
+
+Vamos a evaluar el valor absoluto (o módulo) de la funcional aplicada a la sucesión:
+$$|T_f(\varphi_n)| = \left| \int_0^{\infty} f(x)\varphi_n(x) dx \right|$$
+
+Por la desigualdad triangular para integrales, el valor absoluto de una integral es menor o igual a la integral del valor absoluto:
+$$|T_f(\varphi_n)| \le \int_0^{\infty} |f(x)| |\varphi_n(x)| dx$$
+
+Como sabemos que $\varphi_n$ tiene soporte compacto en $K$, la función $\varphi_n(x)$ vale exactamente cero fuera de $K$. Por lo tanto, podemos restringir la región de integración al conjunto $K_+ = K \cap [0, \infty)$:
+$$|T_f(\varphi_n)| \le \int_{K_+} |f(x)| |\varphi_n(x)| dx$$
+
+Dado que $\varphi_n$ converge uniformemente a 0 en $K$, podemos acotar $|\varphi_n(x)|$ por su valor máximo en $K_+$, al que llamaremos $\|\varphi_n\|_{\infty}$. Podemos sacar este término de la integral:
+$$|T_f(\varphi_n)| \le \|\varphi_n\|_{\infty} \int_{K_+} |f(x)| dx$$
+
+Como por hipótesis $f \in L^1(\mathbb{R})$, sabemos que la integral de su valor absoluto sobre todo $\mathbb{R}$ (y en consecuencia, sobre cualquier subconjunto $K_+$) es finita Sea $C = \int_{K_+} |f(x)| dx < \infty$. Entonces:
+$$|T_f(\varphi_n)| \le C \|\varphi_n\|_{\infty}$$
+
+Finalmente, como $\varphi_n \to 0$ uniformemente, sabemos que el máximo $\|\varphi_n\|_{\infty} \to 0$ cuando $n \to \infty$. Por consiguiente:
+$$\lim_{n \to \infty} |T_f(\varphi_n)| \le C \cdot 0 = 0$$
+Lo que implica que $T_f(\varphi_n) \to 0$.
+Finalmente, recordando el Problema 5, conclu\'imos que, por ser lineal, $T$ es cont\'inua en todas partes por ser cont\'inua en $\varphi=0$.
+\end{itemize}
+
+Hemos demostrado que la funcional es tanto lineal como continua, por lo que $T_f$ es formalmente una distribución.
+
+
+
+\prob Pensando a la delta de Dirac como una función generalizada, pruebe las siguientes propiedades:
+\begin{enumerate}
+\item $\displaystyle \int_{-a}^{b} \delta(t)\,dt = 1$, para $a,b>0$.
+\item $\displaystyle \int \delta(t-a)\,dt = 1$, si el rango de integración incluye $t=a$.
+\item $\delta(t) = \delta(-t)$.
+\item $\displaystyle \delta(at) = \frac{1}{|a|}\delta(t)$.
+\item $t^n\delta(t)=0$, con $n>0$.
+\item $\displaystyle \delta(h(t)) = \sum_i \frac{\delta(t-t_i)}{|h'(t_i)|}$, donde $t_i$ son todos los valores de $t$ para los cuales $h(t)=0$.
+\item $\displaystyle h(t)\delta'(t-a) = h(a)\delta'(t-a) - h'(a)\delta(t-a)$.
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 11)}
+\vspace{0.5cm}
+
+
+Todas estas propiedades se demuestran aplicando la distribución sobre una función de prueba genérica $\varphi(t) \in \mathcal{D}(\mathbb{R})$ y utilizando la definición fundamental de la delta de Dirac: $\langle \delta(t), \varphi(t) \rangle = \int_{-\infty}^{\infty} \delta(t)\varphi(t) dt = \varphi(0)$.
+
+\begin{enumerate}
+
+\item $\int_{-a}^{b} \delta(t)\,dt = 1$, para $a,b>0$:
+
+Podemos reescribir esta integral pensándola como la acción de la delta sobre una función indicatriz o escalón que vale $1$ en el intervalo $(-a, b)$ y $0$ fuera de él. Llamemos a esta función $\varphi(t)$.
+$$\int_{-a}^{b} \delta(t)\,dt = \int_{-\infty}^{\infty} \delta(t)\varphi(t) dt = \langle \delta, \varphi \rangle$$
+Por la propiedad fundamental de la delta, sabemos que esto es igual a evaluar la función en el origen: $\varphi(0)$.
+Dado que $a > 0$ y $b > 0$, el origen $t=0$ está estrictamente contenido dentro del intervalo $(-a, b)$. Por lo tanto, la función evaluada en cero vale $1$.
+$$\varphi(0) = 1 \implies \int_{-a}^{b} \delta(t)\,dt = 1$$
+
+\item $\int \delta(t-a)\,dt = 1$, si el rango de integración incluye $t=a$:
+
+Análogamente al caso anterior, si el rango de integración (digamos desde $c$ hasta $d$) incluye al punto $t=a$, significa que $c < a < d$.
+Consideramos una función de prueba $\varphi(t)$ que valga $1$ en $(c, d)$ y $0$ fuera.
+$$\int_c^d \delta(t-a)\,dt = \int_{-\infty}^{\infty} \delta(t-a)\varphi(t) dt = \langle \delta(t-a), \varphi(t) \rangle$$
+La delta desplazada $\delta(t-a)$ evalúa la función de prueba en el punto de desplazamiento $t=a$.
+Como $a$ está en el intervalo donde $\varphi(t) = 1$, entonces $\varphi(a) = 1$, lo que demuestra la propiedad.
+
+\item $\delta(t) = \delta(-t)$ (La delta de Dirac es una distribución par):
+
+Aplicamos $\delta(-t)$ a una función de prueba $\varphi(t)$:
+$$\langle \delta(-t), \varphi(t) \rangle = \int_{-\infty}^{\infty} \delta(-t)\varphi(t) dt$$
+Hacemos un cambio de variable $u = -t$, lo que implica $du = -dt$. Además, los límites de integración se invierten (de $\infty$ a $-\infty$):
+$$= \int_{\infty}^{-\infty} \delta(u)\varphi(-u)(-du) = \int_{-\infty}^{\infty} \delta(u)\varphi(-u) du = \langle \delta(u), \varphi(-u) \rangle$$
+Por definición, la delta evalúa su argumento en $u=0$:
+$$= \varphi(-0) = \varphi(0) = \langle \delta(t), \varphi(t) \rangle$$
+Como la acción sobre cualquier función de prueba es idéntica, concluimos que $\delta(t) = \delta(-t)$.
+
+\item $\delta(at) = \frac{1}{|a|}\delta(t)$:
+
+Aplicamos $\delta(at)$ a una función de prueba arbitraria $\varphi(t)$ asumiendo que $a \neq 0$:
+$$\langle \delta(at), \varphi(t) \rangle = \int_{-\infty}^{\infty} \delta(at)\varphi(t) dt$$
+Planteamos el cambio de variable $u = at$, entonces $dt = \frac{du}{a}$. Aquí debemos separar en dos casos según el signo de $a$:
+\begin{itemize}
+\item Si $a > 0$: Los límites de integración no cambian.
+    $$= \int_{-\infty}^{\infty} \delta(u)\varphi\left(\frac{u}{a}\right) \frac{du}{a} = \frac{1}{a} \varphi(0) = \frac{1}{|a|}\int_{-\infty}^{\infty} \delta(t) \varphi(t)\,dt$$
+\item Si $a < 0$: Los límites de integración se invierten de $\infty$ a $-\infty$. Para volver a ordenarlos de menor a mayor, multiplicamos por $-1$:
+    $$= \int_{\infty}^{-\infty} \delta(u)\varphi\left(\frac{u}{a}\right) \frac{du}{a} = - \int_{-\infty}^{\infty} \delta(u)\varphi\left(\frac{u}{a}\right) \frac{du}{a} = -\frac{1}{a} \varphi(0)= \frac{1}{|a|}\int_{-\infty}^{\infty} \delta(t) \varphi(t)\,dt$$
+Podemos combinar ambos resultados notando que $a$ cuando $a>0$, y $-a$ cuando $a<0$, son exactamente la definición de valor absoluto $|a|$. Por ende:
+$$\langle \delta(at), \varphi(t) \rangle = \frac{1}{|a|} \varphi(0) = \frac{1}{|a|} \langle \delta(t), \varphi(t) \rangle$$
+Lo que prueba que $\delta(at) = \frac{1}{|a|}\delta(t)$.
+\end{itemize}
+
+\item $t^n\delta(t)=0$, con $n>0$:
+
+Aplicamos la distribución $t^n\delta(t)$ a una función de prueba $\varphi(t)$:
+$$\langle t^n\delta(t), \varphi(t) \rangle = \int_{-\infty}^{\infty} t^n \delta(t) \varphi(t) dt$$
+Podemos agrupar $t^n \varphi(t)$ como una nueva función de prueba $\psi(t) = t^n \varphi(t)$. Evaluamos la acción de la delta:
+$$= \langle \delta(t), \psi(t) \rangle = \psi(0) = 0^n \cdot \varphi(0)$$
+Como $n > 0$, $0^n = 0$. Entonces el resultado es $0$. En el sentido distribucional, $t^n\delta(t) = 0$.
+
+\item $\delta(h(t)) = \sum_i \frac{\delta(t-t_i)}{|h'(t_i)|}$:
+
+(Nota: Asumimos raíces simples, es decir, $h'(t_i) \neq 0$).
+Esta propiedad es la generalización directa de lo que demostramos en el Problema 9.
+Para evaluarla sobre una función de prueba, notamos que $\delta(h(t))$ solo es no nula cerca de los puntos $t_i$ donde $h(t_i) = 0$.
+Podemos separar la integral en la suma de pequeñas integrales alrededor de cada raíz $t_i$:
+$$\langle \delta(h(t)), \varphi(t) \rangle = \sum_i \int_{t_i-\epsilon}^{t_i+\epsilon} \delta(h(t))\varphi(t) dt$$
+Para cada una de estas integrales locales, la función $h(t)$ cruza por cero una sola vez. Aplicando exactamente el resultado del Problema 9 a cada término de la sumatoria:
+$$\int_{t_i-\epsilon}^{t_i+\epsilon} \delta(h(t))\varphi(t) dt = \frac{\varphi(t_i)}{|h'(t_i)|}$$
+Por lo tanto:
+$$\langle \delta(h(t)), \varphi(t) \rangle = \sum_i \frac{\varphi(t_i)}{|h'(t_i)|} = \sum_i \frac{1}{|h'(t_i)|} \langle \delta(t-t_i), \varphi(t) \rangle$$
+$$\delta(h(t)) = \sum_i \frac{\delta(t-t_i)}{|h'(t_i)|}$$
+
+\item $h(t)\delta'(t-a) = h(a)\delta'(t-a) - h'(a)\delta(t-a)$:
+
+Aplicamos la distribución de la izquierda a una función de prueba $\varphi(t)$:
+$$\langle h(t)\delta'(t-a), \varphi(t) \rangle = \langle \delta'(t-a), h(t)\varphi(t) \rangle$$
+Recordemos la definición de la derivada de una distribución: $\langle T', \psi \rangle = -\langle T, \psi' \rangle$.
+$$= - \left\langle \delta(t-a), \frac{d}{dt}[h(t)\varphi(t)] \right\rangle$$
+Aplicamos la regla del producto para la derivada:
+$$= - \langle \delta(t-a), h'(t)\varphi(t) + h(t)\varphi'(t) \rangle$$
+La delta evalúa esta función en $t=a$:
+$$= - \left( h'(a)\varphi(a) + h(a)\varphi'(a) \right) = - h'(a)\varphi(a) - h(a)\varphi'(a) \quad \text{--- (Ec. 1)}$$
+
+Ahora, tomamos la expresión de la derecha del enunciado y la aplicamos a la misma función $\varphi(t)$:
+$$\langle h(a)\delta'(t-a) - h'(a)\delta(t-a), \varphi(t) \rangle = h(a)\langle \delta'(t-a), \varphi(t) \rangle - h'(a)\langle \delta(t-a), \varphi(t) \rangle$$
+$$= h(a) (-\varphi'(a)) - h'(a) \varphi(a)$$
+$$= - h(a)\varphi'(a) - h'(a)\varphi(a) \quad \text{--- (Ec. 2)}$$
+Como vemos, la (Ec. 1) y la (Ec. 2) son idénticas, lo que demuestra que ambas expresiones distribucionales son equivalentes.
+
+\end{enumerate}
+
+
+\prob Sean $f:\mathbb{R}\to\mathbb{R}$, $\varphi$ y $\psi$ dos funciones de prueba. Considere la distribución definida como
+\[
+T_f(\phi) = \int_{-\infty}^{\infty} f(x)\phi(x)\,dx.
+\]
+\begin{enumerate}
+\item Muestre que $\operatorname{sen}(ax)\,\delta'(x) = -a\delta(x)$, con $a\in\mathbb{R}$.
+\item Demuestre que $(\varphi\psi)' = \varphi'\psi + \varphi\psi'$ en el sentido distribucional.
+\item Utilizando los incisos anteriores, muestre que
+\[
+\frac{d^2}{dx^2}\bigl[H(x)\operatorname{sen}(ax)\bigr] = a\delta(x) - H(x)\,a^2\operatorname{sen}(ax),
+\]
+donde $H(x)$ es la función escalón de Heaviside.
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 12)}
+\vspace{0.5cm}
+
+\begin{enumerate}
+
+\item Demostrar que $\operatorname{sen}(ax)\,\delta'(x) = -a\delta(x)$
+
+Para demostrar esta igualdad distribucional, aplicaremos la distribución de la izquierda a una función de prueba genérica $\phi(x) \in \mathcal{D}(\mathbb{R})$:
+$$\langle \operatorname{sen}(ax)\delta'(x), \phi(x) \rangle = \langle \delta'(x), \operatorname{sen}(ax)\phi(x) \rangle$$
+
+Por la definición de la derivada de una distribución ($\langle T', \phi \rangle = -\langle T, \phi' \rangle$), el operador derivada pasa a la función de la derecha con un cambio de signo:
+$$= -\left\langle \delta(x), \frac{d}{dx}[\operatorname{sen}(ax)\phi(x)] \right\rangle$$
+
+Aplicamos la regla del producto clásica en el término a derivar:
+$$= -\langle \delta(x), a\cos(ax)\phi(x) + \operatorname{sen}(ax)\phi'(x) \rangle$$
+
+La acción de la delta de Dirac es evaluar la función de prueba en $x=0$:
+$$= -\left[ a\cos(a\cdot 0)\phi(0) + \operatorname{sen}(a\cdot 0)\phi'(0) \right]$$
+$$= -\left[ a(1)\phi(0) + (0)\phi'(0) \right] = -a\phi(0)$$
+
+Podemos reescribir este resultado usando nuevamente la definición de la delta de Dirac:
+$$-a\phi(0) = \langle -a\delta(x), \phi(x) \rangle$$
+
+Como se cumple para cualquier función de prueba $\phi$, concluimos que $\operatorname{sen}(ax)\,\delta'(x) = -a\delta(x)$.
+
+\item Demostrar que $(\varphi\psi)' = \varphi'\psi + \varphi\psi'$ en sentido distribucional
+
+Sean $\varphi$ y $\psi$ funciones de prueba. Su producto $(\varphi\psi)$ es una función regular $C_0^\infty(\mathbb{R})$ y genera una distribución. Evaluamos su derivada distribucional sobre otra función de prueba $\phi$:
+$$\langle (\varphi\psi)', \phi \rangle = -\langle \varphi\psi, \phi' \rangle = -\int_{-\infty}^{\infty} \varphi(x)\psi(x)\phi'(x) dx$$
+
+Podemos resolver esta integral aplicando integración por partes. Como todas las funciones involucradas son de prueba (tienen soporte compacto, es decir, se anulan en los infinitos), el término de borde evaluado en $\pm\infty$ es cero:
+$$\int_{-\infty}^{\infty} u \, dv = u \, v\Big|_{-\infty}^{\infty} - \int_{-\infty}^{\infty} v \, du \implies -\int_{-\infty}^{\infty} (\varphi\psi) \phi' dx = \int_{-\infty}^{\infty} (\varphi\psi)' \phi \, dx$$
+
+Dado que $\varphi$ y $\psi$ son funciones suaves, su derivada clásica existe y cumple la regla de Leibniz, $(\varphi\psi)' = \varphi'\psi + \varphi\psi'$. Reemplazando en la integral:
+$$= \int_{-\infty}^{\infty} (\varphi'\psi + \varphi\psi') \phi \, dx = \langle \varphi'\psi + \varphi\psi', \phi \rangle$$
+
+Esto prueba que la derivada distribucional coincide con la clásica regla del producto cuando trabajamos con funciones regulares. Esta regla es extensible al producto de una distribución y una función infinitamente diferenciable.
+
+\item Calcular la derivada segunda de $H(x)\operatorname{sen}(ax)$
+
+Basándonos en el inciso anterior, si generalizamos la regla del producto para la segunda derivada (similar a desarrollar un binomio al cuadrado), obtenemos:
+$$(uv)'' = (u'v + uv')' = u''v + 2u'v' + uv''$$
+
+Asignamos $u(x) = H(x)$ y $v(x) = \operatorname{sen}(ax)$. El inciso 2 nos garantiza que podemos usar esta regla del producto. Procedemos a encontrar las derivadas de cada función:
+\begin{itemize}
+\item Para $u(x) = H(x)$ sabemos que su primera derivada distribucional es la delta de Dirac, $u'(x) = \delta(x)$. Por ende, $u''(x) = \delta'(x)$.
+\item Para la función suave $v(x) = \operatorname{sen}(ax)$, sus derivadas son regulares: $v'(x) = a\cos(ax)$ y $v''(x) = -a^2\operatorname{sen}(ax)$.
+\end{itemize}
+
+Sustituimos estos componentes en nuestra fórmula de la segunda derivada:
+$$\frac{d^2}{dx^2}\bigl[H(x)\operatorname{sen}(ax)\bigr] = \delta'(x)\operatorname{sen}(ax) + 2\delta(x)a\cos(ax) + H(x)(-a^2\operatorname{sen}(ax))$$
+
+Ahora, simplificamos cada término aprovechando las propiedades distribucionales que ya conocemos:
+\begin{itemize}
+\item Primer término: Por el inciso 1 que acabamos de demostrar, sabemos que $\delta'(x)\operatorname{sen}(ax) = -a\delta(x)$.
+\item Segundo término: Utilizamos la propiedad del producto de una delta por una función suave $\alpha(x)\delta(x) = \alpha(0)\delta(x)$. En este caso $\alpha(x) = 2a\cos(ax)$, la cual evaluada en el origen es $2a\cos(0) = 2a$. Así, el término se reduce a $2a\delta(x)$.
+\item Tercer término: Este término no requiere reducción, simplemente acomodamos los factores a $-a^2 H(x)\operatorname{sen}(ax)$.
+\end{itemize}
+
+Sumando los tres términos simplificados obtenemos:
+$$\frac{d^2}{dx^2}\bigl[H(x)\operatorname{sen}(ax)\bigr] = -a\delta(x) + 2a\delta(x) - a^2H(x)\operatorname{sen}(ax)$$
+$$\frac{d^2}{dx^2}\bigl[H(x)\operatorname{sen}(ax)\bigr] = a\delta(x) - a^2H(x)\operatorname{sen}(ax)$$
+
+Con esto queda concluida y demostrada la proposición del inciso 3.
+
+\end{enumerate}
+
+
+
+\section*{Parte II: Problemas Propuestos (para profundización y repaso)}
+
+
+\prob Sea la norma $l^p$:
+\[
+\|u\|_{l^p} = \left( \sum_{j=0}^{\infty} |u^j|^p \right)^{1/p}, \qquad p\ge 1.
+\]
+\begin{enumerate}
+\item Pruebe que está bien definida.
+\item Pruebe que el subconjunto de sucesiones con norma $l^p$ finita está contenido en el subconjunto de las sucesiones con norma $l^q$ finita si $p<q$.
+\end{enumerate}
+
+\prob Pruebe que $\|x\| = \sqrt{\langle x,x\rangle}$ satisface la desigualdad triangular. A tal fin utilice la desigualdad de Schwarz.
+
+\prob Considere el espacio de sucesiones infinitas de números complejos con norma $l^2$ finita. Sea $\hat{e}_i\in l^2$ la sucesión que tiene un $1$ en el $i$-ésimo lugar y cero en todos los restantes. Pruebe que definiendo estos elementos para $i=1,2,\dots$, el conjunto $B=\{\hat{e}_1,\hat{e}_2,\dots\}\subset l^2$ es una base ortonormal de $l^2$.
+
+\prob Sea $H$ un espacio de Hilbert y $\{\hat{e}_1,\hat{e}_2,\dots,\hat{e}_N\}$ un conjunto ortonormal (no necesariamente una base). Pruebe que
+\begin{enumerate}
+\item Identidad de Pitágoras: si $x\in H$,
+\[
+\|x\|^2 = \sum_{j=1}^{N} |\langle \hat{e}_j,x\rangle|^2 + \Bigl\|x - \sum_{j=1}^{N} \langle \hat{e}_j,x\rangle \hat{e}_j\Bigr\|^2.
+\]
+\item Desigualdad de Bessel: $\displaystyle \sum_{j=1}^{N} |\langle \hat{e}_j,x\rangle|^2 \le \|x\|^2$.
+\end{enumerate}
+
+\prob Muestre que $C_0^\infty(\mathbb{R})$ no s\'olo es un espacio vectorial, sino además un álgebra con el producto usual de funciones. Halle el soporte de $fg$ en términos de los soportes de $f$ y $g$.
+
+\prob Demuestre que $h(x)\in C^\infty(\mathbb{R})$, donde
+\[
+h(x) = \begin{cases}
+0, & \text{si } x\le 0,\\
+\exp(-1/x^2), & \text{si } x>0.
+\end{cases}
+\]
+
+\prob Muestre que en el caso de tener un espacio de Banach con la noción de convergencia dada por la norma, la definición de continuidad de una funcional coincide con la definición usual $\varepsilon$-$\delta$. Muestre además que, como con cualquier noción de continuidad, para ser verificada en el caso de una funcional lineal, es suficiente verificarla en un solo punto y eso garantiza la continuidad en todos lados.
+
+\prob Demuestre que la derivada de una distribución es lineal.
+
+\prob Dada
+\[
+h(x) = \begin{cases}
+\exp(x+1), & \text{si } x<-1,\\
+x^4, & \text{si } -1\le x\le 0,\\
+\operatorname{sen}(x), & \text{si } 0<x<\pi/2,\\
+1, & \text{si } \pi/2\le x,
+\end{cases}
+\]
+calcule las dos primeras derivadas de $h$ en el sentido distribucional.
+
+%\prob Considere la ecuación diferencial ordinaria
+%\[
+%\frac{d^2 u}{dx^2} - \gamma^2 u = \delta(x^2-3x+2), \qquad u(x)\in\mathbb{R},
+%\]
+%donde $\gamma>0$ y $\delta(x)$ es la delta de Dirac. Utilizando transformada de Fourier, halle la solución $u(x)$ suponiendo que es una función que decae rápidamente cuando $|x|\to\infty$.
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% End text (problems)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
