@@ -5319,23 +5319,26 @@ y''(x)
 a_1(x)
 y'(x)
 +
-a_0(x),
+a_0(x)
+y(x),
 $$
 la funci\'on de Green es de la forma
 $$
-G(x,\chi)
+G(x,\xi)
 = 
-frac{1}{a_2(\chi)W(\chi)}
+\frac{1}{a_2(\xi)W(\xi)}
+\left\{
 \begin{array}{ll}
-u_1(x)u_2(\chi), & x<\chi, \\ 
-u_1(\chi)u_2(x), & x>\chi,  
+u_1(x)u_2(\xi), & x<\xi, \\ 
+u_1(\xi)u_2(x), & x>\xi,  
 \end{array}
+\right.
 $$
 donde $u_1$  y $u_2$ son dos soluciones linealmente independientes de la ecuaci\'on homog\'enea
 $$
 L[u] = 0,
 $$
-tales que $u_1$ satisface las condiciones de borde para $x<\chi$ y $u_2$ para $x>\chi$, y donde
+tales que $u_1$ satisface las condiciones de borde para $x<\xi$ y $u_2$ para $x>\xi$, y donde
 $$
 W(x) = u_1(x)u_2'(x) - u_1'(x)u_2(x)
 $$
@@ -5354,11 +5357,21 @@ L
 x^2\frac{d^2}{dx^2}
 +
 2x\frac{d}{dx}
--2.
+-2
+$$
+y, por ende
+$$
+a_2(x) = x^2,
+\quad
+a_1(x) = 2x
+\quad
+\text{y}
+\quad
+a_0(x) = -2.
 $$
 La función de Green debe satisfacer
 $$
-L\,G(x,\xi)=\delta(x-\xi),
+L[G](x,\xi)=\delta(x-\xi),
 $$
 con
 $$
@@ -5374,17 +5387,21 @@ $$
 x^2y''+2xy'-2y=0.
 $$
 Es una ecuación de Euler-Cauchy.
-Buscamos
+Buscamos soluciones de la forma
 $$
 y=x^m.
 $$
 Sustituyendo,
 $$
-m(m-1)+2m-2=0,
+x^2\,m(m-1)\,x^{m-2}+x\,2m\,x^{m-1}-2\,x^m=0,
 $$
 es decir,
 $$
-m^2+m-2=0.
+m(m-1)+2m-2
+=
+m^2+m-2
+=
+0.
 $$
 Factorizando,
 $$
@@ -5398,7 +5415,15 @@ m_2=-2.
 $$
 Por tanto las soluciones de la ecuación homog\'enea son de la forma
 $$
-y_h(x)=A\,x+B\,x^{-2}.
+y(x)=A\,y_1(x)+B\,y_2(x)
+$$
+con
+$$
+y_1(x) = x
+\quad
+\text{y}
+\quad
+y_2(x) = x^{-2}.
 $$
 
 {\bf 3. Soluciones adaptadas a los bordes}
@@ -5450,78 +5475,30 @@ $$
 W(x)
 =
 x(1+2x^{-3})
--(x-x^{-2}).
-$$
-Los términos $x$ se cancelan:
-$$
-W(x)
+-(x-x^{-2})
+=
+x+2x^{-2}-x+x^{-2}
 =
 3x^{-2}.
-$$
-Luego
-$$
-\boxed{
-W(x)=\frac{3}{x^2}.
-}
 $$
 
 {\bf 5. Construcción de la función de Green}
 
-Primero dividimos el operador por $x^2$:
-$$
-y''
-+\frac2x y'
--\frac2{x^2}y
-=
-f(x).
-$$
-Para esta forma estándar,
-$$
-G(x,\xi)
-=
-\frac{1}{W(\xi)}
-\begin{cases}
-u_1(x)u_2(\xi),
-&
-x<\xi,
-[2mm]
-u_1(\xi)u_2(x),
-&
-x>\xi.
-\end{cases}
-$$
 Como
 $$
-W(\xi)=\frac3{\xi^2},
+a_2(\xi)\,W(\xi) = \xi^2\,3\xi^{-2} = 3,
 $$
 obtenemos
 $$
 \boxed{
 G(x,\xi)
 =
-\frac{\xi^2}{3}
+\frac{1}{3}
 \begin{cases}
 x(\xi-\xi^{-2}),
 &
-x<\xi,
-[2mm]
+x<\xi,\\
 \xi(x-x^{-2}),
-&
-x>\xi.
-\end{cases}
-}
-$$
-Simplificando,
-$$
-\boxed{
-G(x,\xi)
-=
-\begin{cases}
-\dfrac{x(\xi^3-1)}{3},
-&
-x<\xi,
-[3mm]
-\dfrac{\xi^3x-\xi^3x^{-2}}{3},
 &
 x>\xi.
 \end{cases}
@@ -5531,224 +5508,118 @@ $$
 {\bf 6. Solución integral}
 
 El término fuente es
-
 $$
-f(x)=1,
-$$
-porque al dividir por $x^2$ la ecuación queda
-$$
-y''
-+\frac2x y'
--\frac2{x^2}y
-=1.
+f(x)=x^2,
 $$
 Por tanto
-$$
+\begin{eqnarray}
 y(x)
-=
+&=&
 \int_0^1
-G(x,\xi),d\xi.
-$$
-Separamos:
-$$
-y(x)
-=
+G(x,\xi)\,f(\xi)\,d\xi
+\notag
+\\
+&=&
 \int_0^x
-G(x,\xi)\,d\xi
+G(x,\xi)\,f(\xi)\,d\xi
 +
 \int_x^1
-G(x,\xi)\,d\xi.
+G(x,\xi)\,f(\xi)\,d\xi.
+\notag
+\\
+&=&
+\frac13
+\int_0^x
+\xi(x-x^{-2})\xi^2,d\xi
++
+\frac13
+\int_x^1
+x(\xi-\xi^{-2})\xi^2,d\xi.
+\notag
+\end{eqnarray}
+Simplificamos ahora cada integral.
+La primera integral resulta
 $$
-
-{\bf Primer integral}
-
-Para $\xi<x$,
-$$
-G(x,\xi)
+\frac13(x-x^{-2})
+\int_0^x\xi^3\,d\xi
 =
-\frac{\xi^3x-\xi^3x^{-2}}{3}.
-$$
-Luego
-$$
-I_1
-=
-\frac{x-x^{-2}}3
-\int_0^x \xi^3,d\xi.
-$$
-Como
-$$
-\int_0^x\xi^3d\xi
-=
-\frac{x^4}{4},
-$$
-resulta
-$$
-I_1
+\frac13(x-x^{-2})\frac{x^4}{4}
 =
 \frac1{12}(x^5-x^2).
 $$
-
-{\bf Segundo integral}
-
-Para (\xi>x),
-
-[
-G(x,\xi)
-========
-
-\frac{x(\xi^3-1)}3.
-]
-
+Para la segunda, notamos que
+$$
+\int_x^1(\xi^3-1)\,d\xi
+=
+\left(\frac14-1\right)
+-
+\left(\frac{x^4}{4}-x\right)
+=
+x-\frac34-\frac{x^4}{4}.
+$$
 Entonces
-
-[
-I_2
-===
-
+$$
 \frac{x}{3}
-\int_x^1(\xi^3-1),d\xi.
-]
-
-Calculando,
-
-[
-I_2
-===
-
-\frac{x}{3}
-\left[
-\frac14-\frac{x^4}{4}
--(1-x)
-\right].
-]
-
-Es decir,
-
-[
-I_2
-===
-
--\frac{x}{4}
-+\frac{x^2}{3}
--\frac{x^5}{12}.
-]
-
----
-
-# 7. Solución final
-
-Sumando,
-
-[
-y(x)
-====
-
-\left(\frac{x^5}{12}-\frac{x^2}{12}\right)
-+
 \left(
+x-\frac34-\frac{x^4}{4}
+\right)
+=
+\frac{x^2}{3}
 -\frac{x}{4}
-+\frac{x^2}{3}
--\frac{x^5}{12}
-\right).
-]
-
-Los términos (x^5) se cancelan:
-
-[
+-\frac{x^5}{12}.
+$$
+Sumando ambas contribuciones
+$$
 y(x)
-====
-
--\frac{x}{4}
+=
+\frac1{12}(x^5-x^2)
 +
-\frac{x^2}{4}.
-]
+\frac{x^2}{3}
+-\frac{x}{4}
+-\frac{x^5}{12} \
+=
+\left(\frac13-\frac1{12}\right)x^2
+-\frac{x}{4}
+=
+\frac{x^2-x}{4}
+=
+\frac{x(x-1)}{4}
+$$
 
-Por tanto
+{\bf 4. Verificaci\'on}
 
-[
-\boxed{
-y(x)
-====
-
-\frac{x^2-x}{4}.
-}
-]
-
----
-
-# 8. Verificación directa
-
-[
-y=\frac{x^2-x}{4},
-]
-
-[
-y'=\frac{2x-1}{4},
-]
-
-[
-y''=\frac12.
-]
-
-Entonces
-
-[
-x^2y''+2xy'-2y
-==============
-
-\frac{x^2}{2}
-+\frac{x(2x-1)}2
--\frac{x^2-x}{2}.
-]
-
-Simplificando,
-
-# [
-
-# \frac{x^2+2x^2-x-x^2+x}{2}
-
-x^2.
-]
-
-Además,
-
-[
+Las condiciones de contorno se verifican inmediatamente:
+$$
 y(0)=0,
 \qquad
 y(1)=0.
-]
-
-Todo verifica correctamente.
-
-Por lo tanto,
-
-[
-\boxed{
-G(x,\xi)
-========
-
-\begin{cases}
-\dfrac{x(\xi^3-1)}{3},
-&
-x<\xi,
-[3mm]
-\dfrac{\xi^3(x-x^{-2})}{3},
-&
-x>\xi,
-\end{cases}
-}
-]
-
-y
-
-[
-\boxed{
-y(x)=\frac{x^2-x}{4}.
-}
-]
-
-
-
+$$
+Por otro lado,
+$$
+y'(x)=\frac{2x-1}{4},
+\qquad
+y''(x)=\frac12.
+$$
+Por ende
+$$
+\begin{aligned}
+x^2y''+2xy'-2y
+&=
+\frac{x^2}{2}
++\frac{x(2x-1)}{2}
+-\frac{x^2-x}{2} \
+&=
+\frac{x^2+2x^2-x-x^2+x}{2} \
+&=
+x^2,
+\end{aligned}
+$$
+que es justamente el lado derecho de la ecuaci\'on.
+En resumen, la soluci\'on obtenida utilizando la funci\'on de Green es
+$$
+\boxed{y(x)=\frac{x(x-1)}{4}.}
+$$
+%This is a nice example because the integrals simplify almost completely, illustrating how the Green's function automatically builds the unique solution satisfying the boundary conditions.
 
 
 
