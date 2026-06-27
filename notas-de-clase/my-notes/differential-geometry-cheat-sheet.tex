@@ -1,0 +1,578 @@
+%% ****** Start of file apstemplate.tex ****** %
+%%
+%%
+%%   This file is part of the APS files in the REVTeX 4.2 distribution.
+%%   Version 4.2a of REVTeX, January, 2015
+%%
+%%
+%%   Copyright (c) 2015 The American Physical Society.
+%%
+%%   See the REVTeX 4 README file for restrictions and more information.
+%%
+%
+% This is a template for producing manuscripts for use with REVTEX 4.2
+% Copy this file to another name and then work on that file.
+% That way, you always have this original template file to use.
+%
+% Group addresses by affiliation; use superscriptaddress for long
+% author lists, or if there are many overlapping affiliations.
+% For Phys. Rev. appearance, change preprint to twocolumn.
+% Choose pra, prb, prc, prd, pre, prl, prstab, prstper, or rmp for journal
+%  Add 'draft' option to mark overfull boxes with black boxes
+%  Add 'showkeys' option to make keywords appear
+%\documentclass[aps,prl,preprint,groupedaddress]{revtex4-2}
+\documentclass[aps,prl,twocolumn,groupedaddress]{revtex4-2}
+%\documentclass[aps,prl,preprint,superscriptaddress]{revtex4-2}
+%\documentclass[aps,prl,reprint,groupedaddress]{revtex4-2}
+
+% You should use BibTeX and apsrev.bst for references
+% Choosing a journal automatically selects the correct APS
+% BibTeX style file (bst file), so only uncomment the line
+% below if necessary.
+%\bibliographystyle{apsrev4-2}
+
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{caption}
+%\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+%\usepackage{amsthm}
+%\usepackage{amsfonts}
+%\usepackage{subfigure}
+%\usepackage{hhline}
+%\usepackage[miktex]{gnuplottex}
+%\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{hyperref}
+%\usepackage[percent]{overpic}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{wasysym}
+\usepackage{tikz-cd}
+%\usepackage{linearb}
+%\usepackage{wsuipa}
+\usepackage{calc}
+\usepackage{tipa}
+\usepackage{booktabs}
+
+%\usepackage{stix} %\fisheye
+\usepackage{stackengine,scalerel}
+
+% so sections, subsections, etc. become numerated.
+\setcounter{secnumdepth}{3}
+
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\GG}{\mathbb{G}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\avrg}[1]{\left\langle #1 \right\rangle}
+\newcommand{\nelta}{\bar{\delta}}
+\newcommand{\bra}[1]{\left\langle #1\right|}
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\sbra}[1]{\langle #1|}
+\newcommand{\sket}[1]{| #1 \rangle}
+\newcommand{\bek}[3]{\left\langle #1 \right| #2 \left| #3 \right\rangle}
+\newcommand{\sbek}[3]{\langle #1 | #2 | #3 \rangle}
+\newcommand{\braket}[2]{\left\langle #1 \middle| #2 \right\rangle}
+\newcommand{\ketbra}[2]{\left| #1 \middle\rangle \middle\langle #2  \right|}
+\newcommand{\sbraket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\sketbra}[2]{| #1 \rangle  \langle #2 |}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\snorm}[1]{\lVert#1\rVert}
+\newcommand{\bvec}[1]{\boldsymbol{\mathsf{#1}}}
+\newcommand{\bcov}[1]{\boldsymbol{#1}}
+\newcommand{\bdua}[1]{\boldsymbol{\check{#1}}}
+%\newcommand{\bdov}[1]{\boldsymbol{\breve{#1}}}
+\newcommand{\bdov}[1]{\breve{#1}}
+%\newcommand{\bten}[1]{\boldsymbol{\mathfrak{#1}}}
+\newcommand{\bten}[1]{\boldsymbol{\mathfrak{#1}}}
+\newcommand{\forany}{\tilde{\forall}}
+\newcommand{\qed}{$\overset{\circ}{.}\;$}
+\newcommand{\bigo}{\mathcal{O}}
+\newcommand{\spn}{\mathrm{spn}\,}
+\newcommand{\krn}{\mathrm{krn}\,}
+\newcommand{\biy}{\leftrightarrow}
+\newcommand{\ugh}{\mathbin{\textlinb{\BPwheel}}}
+
+\newcommand\bigeye{\ensurestackMath{\stackinset{c}{}{c}{-.3pt}%
+  {\bullet}{\scriptstyle\bigcirc}}}
+\newcommand\eye{\scalerel*{\bigeye}{x}}
+%\newcommand*{\fisheye}{%
+%    \mathbin{%
+%        \ooalign{$\circledcirc$\cr\hidewidth$\bullet$\hidewidth}%
+%    }%
+%}
+
+% double angle-bracket
+% https://tex.stackexchange.com/questions/79657/how-to-get-double-angle-bracket-without-using-mnsymbol-package
+\makeatletter
+\newsavebox{\@brx}
+\newcommand{\llangle}[1][]{\savebox{\@brx}{\(\m@th{#1\langle}\)}%
+  \mathopen{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+\newcommand{\rrangle}[1][]{\savebox{\@brx}{\(\m@th{#1\rangle}\)}%
+  \mathclose{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+\makeatother
+
+% https://tex.stackexchange.com/questions/297362/bar-through-letter-in-mathmode
+%\usepackage{calc}
+\newsavebox\CBox
+\newcommand\hcancel[2][0.5pt]{%
+  \ifmmode\sbox\CBox{$#2$}\else\sbox\CBox{#2}\fi%
+  \makebox[0pt][l]{\usebox\CBox}%  
+  \rule[0.77\ht\CBox-#1/2]{\wd\CBox}{#1}}
+\newcommand{\cb}{\hcancel{b}}
+\newcommand{\cd}{\hcancel{d}}
+\newcommand{\ct}{\hcancel{\partial}}
+%\newcommand{\supp}{\mathsf{supp}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\csupp}{\overline{\mathrm{supp}}}
+\newcommand{\supr}[2]{\underset{#1}{\text{supr}}}
+
+\begin{document}
+
+% Use the \preprint command to place your local institutional report
+% number in the upper righthand corner of the title page in preprint mode.
+% Multiple \preprint commands are allowed.
+% Use the 'preprintnumbers' class option to override journal defaults
+% to display numbers if necessary
+%\preprint{}
+
+%Title of paper
+\title{
+M\'etodos Matem\'aticos de la F\'isica II\\
+Cheat Sheet: 
+Differential Geometry
+}
+
+% repeat the \author .. \affiliation  etc. as needed
+% \email, \thanks, \homepage, \altaffiliation all apply to the current
+% author. Explanatory text should go in the []'s, actual e-mail
+% address or url should go in the {}'s for \email and \homepage.
+% Please use the appropriate macro foreach each type of information
+
+% \affiliation command applies to all authors since the last
+% \affiliation command. The \affiliation command should follow the
+% other information
+% \affiliation can be followed by \email, \homepage, \thanks as well.
+\author{Juan I. Perotti}
+\email[]{juan.perotti@unc.edu.ar}
+%\homepage[]{Your web page}
+%\thanks{}
+%\altaffiliation{}
+%\affiliation{}
+\affiliation{Instituto de F\'isica Enrique Gaviola (IFEG-CONICET), Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+\affiliation{Facultad de Matem\'atica, Astronom\'ia, F\'isica y Computaci\'on, Universidad Nacional de C\'ordoba, Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+
+% \author{Colaborador}
+% \affiliation{Instituto de F\'isica Enrique Gaviola (IFEG-CONICET), Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+% \affiliation{Facultad de Matem\'atica, Astronom\'ia, F\'isica y Computaci\'on, Universidad Nacional de C\'ordoba, Ciudad Universitaria, 5000 C\'ordoba, Argentina}
+% \email[E-mail: ]{xxx.yyy@unc.edu.ar }
+
+%Collaboration name if desired (requires use of superscriptaddress
+%option in \documentclass). \noaffiliation is required (may also be
+%used with the \author command).
+%\collaboration can be followed by \email, \homepage, \thanks as well.
+%\collaboration{Claudio J. Tessone}
+%\noaffiliation
+
+\date{\today}
+
+%\begin{abstract}
+%Bla bla bla... resumen...
+%\end{abstract}
+
+% insert suggested keywords - APS authors don't need to do this
+%\keywords{}
+
+%\maketitle must follow title, authors, abstract, and keywords
+\maketitle
+\onecolumngrid
+
+\section{Manifolds}
+
+An $n$-dimensional manifold $M$ is a set equipped with a set of invertible maps $\varphi_i:D_i\leftrightarrow \RR^n$ between open subsets $D_i$ of $M$ and $\RR^n$.
+Crucially, this set of maps is defined to be such that $\cup_i D_i = M$, i.e. the union of the domains of these maps cover $M$.
+Moreover, these maps are required to satisfy a very important property.
+Namely, if $p \in D_i\cap D_j$, i.e. it is a point in the intersection of two of such domains, and $x = \varphi_i(p)\in \RR^n$, then the map
+$$
+\varphi_j \circ \varphi_i^{-1} : \RR^n \leftrightarrow D_i\cap D_j \leftrightarrow \RR^n
+$$
+is infinitely differentiable at $x$.
+This is how the notions of {\em continuity} and {\em smoothness} is attributed to $M$.
+A set of such maps is called an {\em atlas} of $M$.
+Any of such maps $\varphi_i$ is called a {\em chart}.
+
+Remark: often a chart $\varphi_i$ is defined by mapping $D_i$ to an open subset $U$ of $\RR^n$ as opposed to the full euclidean space $\RR^n$, which looks more general.
+However, since we can allways find an invertible smooth map between any open subset $U$ of $\RR^n$ and $\RR^n$ itself, our definitions are as general as the alternative.
+
+\subsection{Coordinate systems}
+
+Any chart $\varphi:D\leftrightarrow M$ defines a {\em coordinate system}, assigning the coordinates
+$$
+\RR^n \ni (x^1,...,x^n) = x = \varphi(p)
+$$
+to each point $p\in D$.
+We can always add new maps to an atlas, given that the prescribed properties are satisfied.
+This is how we can always define new coordinate systems over some open domain $D$ of $M$.
+
+\section{Tangent spaces}
+
+\subsection{Derivations}
+
+Let $C^{\infty}(M)$ be the set of {\em smooth} functions (i.e. infinitely differentiable) from $M$ to $\RR$.
+
+A {\em derivation} over a given and fixed point $p$ in $M$ is a map $v:C^{\infty}\to \RR$ such that it satisfies:
+\begin{itemize}
+\item linearity
+$$
+v(a\,f+b\,g) = a\,v(f)+b\,v(g),
+$$
+\item and Leibniz rule
+$$
+v(fg)
+=
+f(p)\,v(g)
++
+g(p)\,v(f)
+$$
+\end{itemize}
+for any two arbitrary smooth functions $f,g\in C^{\infty}(M)$ and any two constants $a,b\in \RR$.
+Here, $fg$ denotes the function such that
+$$
+(fg)(p)
+=
+f(p)\,g(p)
+$$
+for each $p\in M$.
+
+\subsection{Tangent space}
+
+The set of derivations over a given point $p\in M$ is a vector space called the {\em tangent space} of $M$ at $p$, and is denoted by $T_pM$.
+The elements or vectors in $T_pM$ are called tangent vectors.
+
+\subsection{Coordinate basis}
+
+Given a coordinate system $p \to \varphi(p) = (x^1,...,x^n)$, a partial derivative operator $\partial_i$ defined by
+$$
+(\partial_i f)
+:=
+\frac{\partial (f\circ \varphi^{-1})}{\partial x^i}(x=\varphi(p))
+$$
+for any function $f\in C^{\infty}(M)$ and a given and fixed $p=\varphi^{-1}(x) \in M$, is a tangent vector in $T_pM$.
+Namely, $\partial_i$ is a derivation at $p$ because, it is clearly linear and it satisfies Leibniz rule
+\begin{eqnarray}
+(\partial_i (fg))
+&=&
+\frac{\partial (fg\circ \varphi^{-1})}{\partial x^i}(x=\varphi(p))
+\notag
+\\
+&=&
+\frac{\partial (f\circ \varphi^{-1}) (g\circ \varphi^{-1})}{\partial x^i}(x=\varphi(p))
+\notag
+\\
+&=&
+(g\circ \varphi^{-1} \circ \varphi)(p)
+\,
+\frac{\partial (f\circ \varphi^{-1})}{\partial x^i}(x=\varphi(p))
++
+(f\circ \varphi^{-1} \circ \varphi)(p)
+\,
+\frac{\partial (g\circ \varphi^{-1})}{\partial x^i}(x=\varphi(p))
+\notag
+\\
+&=&
+g(p)
+\,
+(\partial_i f)
++
+f(p)
+\,
+(\partial_i g)
+\notag
+\end{eqnarray}
+for any smooth functions $f,g\in C^{\infty}(M)$.
+
+Crucially, without proof, we claim that the set of partial derivatives $\{\partial_1,...,\partial_n\}$ is a basis of $T_pM$ called the coordinate basis associated to the coordinate system defined by a chart $\varphi:D\ni p\to \varphi(p)=(x^1,...,x^n)\in \RR^n$.
+Hence, any tangent vector $v\in T_pM$ can be written as the linear combination
+$$
+v = v^i\partial_i,
+$$
+where the $v^i\in \RR$ are the unique scalars or coordinates representing $v$.
+
+\section{Differential 1-forms}
+
+Let $T_p^*M$ denote the dual space of $T_pM$.
+If $\{\partial_1,...,\partial_n\}$ is a coordinate basis of $T_pM$, let $\{dx^1,...,dx^n\}$ denote the corresponding dual basis, so
+$$
+dx^i(\partial_j)
+=
+\delta^i{}_j.
+$$
+The covectors or dual basis vectors $dx^i$ are called {\em differential 1-forms} or simply 1-forms.
+
+\appendix
+
+\section{Coordinate basis}
+
+Here we show that $\{\partial_1,...,\partial_n\}$ is a basis of $T_pM$.
+
+\noindent {\bf 1. Tangent vectors as derivations}
+
+Let $M$ be an $n$-dimensional smooth manifold and let $p\in M$.
+The tangent space $T_pM$ is defined as the set of linear maps
+$$
+X:C^\infty(M)\longrightarrow\mathbb{R}
+$$
+satisfying the Leibniz rule
+$$
+X(fg)=X(f)g(p)+f(p)X(g).
+$$
+Such maps are called {\em derivations at $p$}.
+
+\noindent {\bf 2. Coordinate functions}
+
+Choose a coordinate chart
+$$
+(x^1,\ldots,x^n)
+$$
+defined near $p$.
+Each coordinate function
+$$
+x^i:M\longrightarrow\mathbb{R}
+$$
+is smooth.
+
+\noindent {\bf 3. Coordinate derivations}
+
+For every $i$, define
+$$
+\boxed{
+\partial_i(f)
+:=
+\left.
+\frac{\partial(f\circ x^{-1})}{\partial x^i}
+\right|_{x(p)}.
+}
+$$
+That is,
+\begin{enumerate}
+\item express $f$ in coordinates,
+\item take the ordinary partial derivative,
+\item evaluate at the coordinates of $p$.
+\end{enumerate}
+These are derivations because ordinary partial derivatives satisfy linearity and the product rule.
+
+\noindent {\bf 4. Linear independence}
+
+Suppose
+$$
+a^i\partial_i=0.
+$$
+We apply this derivation to the coordinate functions.
+Since
+$$
+\partial_i(x^j)=\delta_i^j,
+$$
+we obtain
+$$
+0
+=
+\left(a^i\partial_i\right)(x^j)
+=
+a^i\delta_i^j
+=
+a^j.
+$$
+Thus every coefficient vanishes.
+Hence
+$$
+\boxed{
+\{\partial_1,\ldots,\partial_n\}
+\text{ is linearly independent.}
+}
+$$
+
+\noindent {\bf 5. Spanning}
+
+Now let
+$$
+X\in T_pM
+$$
+be an arbitrary derivation.
+We want to show
+$$
+X
+=
+X^i\partial_i.
+$$
+The key is to determine the coefficients.
+Define
+$$
+X^i:=X(x^i).
+$$
+These are just real numbers.
+
+Now consider an arbitrary smooth function $f$ over $M$.
+
+\begin{itemize}
+\item Taylor expansion.
+
+Near $p$,
+$$
+f(x)
+=
+f(p)
++
+(x^i-x^i(p))
+\frac{\partial f}{\partial x^i}(p)
++
+R(x),
+$$
+where
+$$
+R(x)=O(|x-x(p)|^2).
+$$
+
+\item Apply the derivation.
+
+Since derivations kill constants,
+$$
+X(f(p))=0.
+$$
+Therefore
+$$
+X(f)
+=
+X
+\left(
+(x^i-x^i(p))
+\frac{\partial f}{\partial x^i}(p)
++
+R
+\right).
+$$
+Because
+$$
+\frac{\partial f}{\partial x^i}(p)
+$$
+is just a constant,
+$$
+X(f)
+=
+\frac{\partial f}{\partial x^i}(p)
+X(x^i)
++
+X(R).
+$$
+Thus everything boils down to showing
+$$
+X(R)=0.
+$$
+
+\item Why $X(R)=0$.
+
+Since $R$ vanishes to second order,
+it can be written locally as
+$$
+R
+=
+\sum_{i,j}
+(x^i-x^i(p))
+(x^j-x^j(p))
+r_{ij}(x),
+$$
+for smooth functions $r_{ij}$.
+Applying the Leibniz rule,
+every term contains a factor
+$$
+x^k-x^k(p),
+$$
+which vanishes at $p$.
+For example,
+$$
+\begin{aligned}
+X\left((x^i-a^i)(x^j-a^j)\right)
+&=
+X(x^i-a^i)(x^j-a^j)(p)\\
+&\quad+
+(x^i-a^i)(p)X(x^j-a^j)\\
+&=0.
+\end{aligned}
+$$
+Hence
+$$
+X(R)=0.
+$$
+\end{itemize}
+Therefore, 
+$$
+X(f)
+=
+X(x^i)
+\frac{\partial f}{\partial x^i}(p).
+$$
+Since
+$$
+\partial_i(f)
+=
+\frac{\partial f}{\partial x^i}(p),
+$$
+we obtain
+$$
+\boxed{
+X
+=
+X(x^i)\partial_i.
+}
+$$
+Thus every derivation is a linear combination of the coordinate derivations.
+
+
+\noindent {\bf 6. Conclusion}
+
+Since the $\partial_i$ are linearly independent and span $T_pM$,
+$$
+\boxed{
+\left\{
+\frac{\partial}{\partial x^1},
+\ldots,
+\frac{\partial}{\partial x^n}
+\right\}
+\text{ is a basis of }T_pM.
+}
+$$
+
+\noindent {\bf Geometric interpretation}
+
+This proof also explains {\em why the coordinate functions are so special}. A derivation $X$ is completely determined by its action on the $n$ coordinate functions:
+$$
+X
+\longleftrightarrow
+\bigl(X(x^1),\ldots,X(x^n)\bigr)\in\mathbb{R}^n.
+$$
+Indeed, the map
+$$
+X\mapsto \bigl(X(x^1),\ldots,X(x^n)\bigr)
+$$
+is an isomorphism $T_pM\simeq\mathbb{R}^n$. In coordinates, a tangent vector is therefore identified with its components $X^i=X(x^i)$, and the basis vectors $\partial_i$ are precisely those derivations that satisfy
+$$
+\partial_i(x^j)=\delta_i^{,j}.
+$$
+This is the derivation-based analogue of the standard basis $(1,0,\ldots,0),\ldots,(0,\ldots,0,1)$ of $\mathbb{R}^n$. It also makes clear why tangent vectors are often thought of as ``directional derivatives'': once a coordinate system is chosen, every derivation acts exactly like a first-order differential operator
+$$
+X = X^i\frac{\partial}{\partial x^i}.
+$$
+
+\end{document}
+%
+% ****** End of file apstemplate.tex ******
+
+
