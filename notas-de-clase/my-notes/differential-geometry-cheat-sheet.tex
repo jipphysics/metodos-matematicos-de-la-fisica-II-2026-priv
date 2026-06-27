@@ -228,7 +228,6 @@ This is how we can always define new coordinate systems over some open domain $D
 \subsection{Derivations}
 
 Let $C^{\infty}(M)$ be the set of {\em smooth} functions (i.e. infinitely differentiable) from $M$ to $\RR$.
-
 A {\em derivation} over a given and fixed point $p$ in $M$ is a map $v:C^{\infty}\to \RR$ such that it satisfies:
 \begin{itemize}
 \item linearity
@@ -252,6 +251,8 @@ $$
 f(p)\,g(p)
 $$
 for each $p\in M$.
+
+{\em Remark:} Notice how the dependency of a derivation $v$ on the fact that is defined for a particular $p\in M$ is omitted in the notation for simplicity.
 
 \subsection{Tangent space}
 
@@ -309,14 +310,124 @@ where the $v^i\in \RR$ are the unique scalars or coordinates representing $v$.
 
 \section{Differential 1-forms}
 
-Let $T_p^*M$ denote the dual space of $T_pM$.
+Given a function $f\in C^{\infty}(M)$ and a point $p\in M$, the differential of $f$ at $p$ is the map $df:T_pM\to \RR$ defined by
+$$
+df(v) = v(f)
+$$
+for each $v\in T_pM$.
+Such map is linear since
+$$
+df(a\,v+b\,w)
+=
+(a\,v+b\,w)(f)
+=
+a\,v(f)+b\,w(f)
+=
+a\,df(v)
++
+b\,df(w)
+$$
+for any $a,b\in \RR$ and $v,w\in T_pM$.
+In fact, $df$ is an element of the dual space $T_p*M$ of $T_pM$ called the {\em cotangent space} of $M$ at $p$.
+The covectors in $T_p^*M$ are called {\em 1-forms}.
+
+{\em Remark:} Notice how the dependency of a 1-form $df$ on the fact that is defined for a particular $p\in M$ is omitted in the notation for simplicity.
+
+\subsection{Cobasis}
+
+Notice that $M\ni p\to x^i=\varphi^i(p)\in \RR$ defines a smooth function over $M$, i.e. an element of $C^{\infty}(M)$.
+Therefore, the notation $dx^i$ is consistent with the notation $df$ for the particular case in which $f(p)=\varphi^i(p)=x^i$ for each $p\in M$.
+This motivates the following definition.
 If $\{\partial_1,...,\partial_n\}$ is a coordinate basis of $T_pM$, let $\{dx^1,...,dx^n\}$ denote the corresponding dual basis, so
 $$
 dx^i(\partial_j)
 =
 \delta^i{}_j.
 $$
-The covectors or dual basis vectors $dx^i$ are called {\em differential 1-forms} or simply 1-forms.
+
+\section{Tensor spaces}
+
+Let
+$$
+\boxed{
+T_p^{(r,s)}M
+:=
+\underbrace{T_pM\otimes\cdots\otimes T_pM}_{r}
+\otimes
+\underbrace{T_p^*M\otimes\cdots\otimes T_p^*M}_{s}.
+}
+$$
+denote the tensor product of type $(r,s)$ at the point $p$ of $M$.
+In particular, 
+$$
+T^{(0,0)}_pM=C^{\infty}(M),
+$$
+$$
+T^{(1,0)}_pM=T_pM
+$$
+and
+$$
+T^{(0,1)}_pM=T_p^*M.
+$$
+
+\subsection{Tensor coordinates}
+
+In what follows we adopt Einstein's summation convention.
+Given a tensor $t\in T_p^{(r,s)}M$ and a basis $\{\partial_1,...,\partial_n\}$ with corresponding dual basis $\{dx^1,...,dx^n\}$, we can always write
+\begin{eqnarray}
+t(\alpha_{1},...,\alpha_{r},v_1,...,v_s)
+&=&
+t((\alpha_{1})_{i_1}dx^{i_1},...,(\alpha_{1})_{i_r}dx^{i_r},(v_1)^{j_1}\partial_{j_1},...,(v_s)^{j_s}\partial_{j_s})
+\notag
+\\
+&=&
+(\alpha_{1})_{i_1}...\alpha_{1})_{i_r}(v_1)^{j_1}...(v_s)^{j_s}\,
+t(dx^{i_1},...,dx^{i_r},\partial_{j_1},...,\partial_{j_s})
+\notag
+\\
+&=&
+(\alpha_{1})_{i_1}...\alpha_{1})_{i_r}(v_1)^{j_1}...(v_s)^{j_s}\,
+t^{i_1...i_r}{}_{j_1...j_s}
+\notag
+\end{eqnarray}
+where
+$$
+\alpha_k = (\alpha_k)_{i_k}\,dx^{i_k}
+$$
+denotes an arbitrary covector for $k=1,...,r$ and
+$$
+v_q = (v_q)^{j_q}\,\partial_{j_q}
+$$
+denotes an arbitrary vector for $q=1,...,s$.
+We have also introduced the tensor coordinates
+$$
+t^{i_1...i_r}{}_{j_1...j_s}
+:=
+t(dx^{i_1},...,dx^{i_r},\partial_{j_1},...,\partial_{j_s})
+$$
+corresponding to the given basis.
+
+\section{Metric tensor}
+
+A type $(0,2)$ tensor $g\in T^{(0,2)}_pM$ is called a metric if:
+\begin{itemize}
+\item It is symmetric, meaning $g(v,w)=g(w,v)$ for all $v,w\in T_pM$.
+\item It is non-degenerate, meaning $g(v,w)=0$ for every $w\in T_pM$ implies $v=0$.
+\item In some cases, we also say that it is positive definite, meaning that $g(v,v)\geq 0$ for all $v\in T_pM$.
+\end{itemize}
+In coordinates,
+$$
+g(v,w)
+=
+g(v^i\partial i,w^j \partial_j)
+=
+v^i w^j g(\partial i,\partial_j)
+=
+g_{ij}v^iw^j
+$$
+
+\subsection{Musical isomorphisms}
+
 
 \appendix
 
