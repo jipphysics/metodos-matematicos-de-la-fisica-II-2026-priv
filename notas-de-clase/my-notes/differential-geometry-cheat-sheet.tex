@@ -428,6 +428,116 @@ $$
 
 \subsection{Musical isomorphisms}
 
+A metric $g$ defines an inner product on $T_pM$ for each $p\in M$.
+Given a $v\in T_pM$, the mapping
+$$
+T_pM\ni w\to g(v,w)\in \RR
+$$
+defines a covector $\tilde{v}$ in $T_p^*M$.
+Moreover, and without proof, the no-degeracy property of $g$ implies that for each covector $\alpha\in T_p^*M$, there exists an unique $v\in T_pM$ such that
+$$
+\alpha(w) = g(v,w) = \tilde{v}(w)
+$$
+for each $w\in T_pM$.
+Therefore, the mapping $\Phi:T_pM\ni v\to \tilde{v}=\Phi(v)\in T_p^*M$ is not only linear, but also invertible.
+In other words, this mapping establishes an isomorphism $\Phi$ between $T_pM$ and $T_p^*M$ called the {\em musical isomorphism}.
+The inverse of such mapping is also an isomorphism and determines an unique vector $\tilde{\alpha} = \Phi^{-1}(\alpha)\in T_pM$ for each covector $\alpha\in T_p^*M$.
+Furthermore, the mapping induces an inner product or metric $\tilde{g}$ over $T_p^*M$ given by
+$$
+\tilde{g}(\alpha,\beta) = g(\tilde{\alpha},\tilde{\beta})
+$$
+for each $\alpha,\beta\in T_p^*M$.
+
+\subsection{Identification o $T_pM$ and $T_p^*M$}
+
+Consider a vector $v\in T_pM$ and the corresponding covector $\tilde{v}=\Phi(v)$.
+In a given basis, these have coordinates given by
+$$
+v = v^i\,\partial_i
+$$
+$$
+\tilde{v} = \tilde{v}_j\,dx^j
+$$
+which are not independent but satisfy
+$$
+\tilde{v}_k
+=
+\tilde{v}_j \delta^j{}_k
+=
+\tilde{v}_j dx^j(\partial_k)
+=
+(\tilde{v}_j dx^j)(\partial_k)
+=
+\tilde{v}(\partial_k)
+=
+g(v,\partial_k)
+=
+g(v^i\partial_i,\partial_k)
+=
+v^i\,
+g(\partial_i,\partial_k)
+=
+g_{ik}\,
+v^i.
+$$
+Similarly, for any covector $\alpha\in T_p^*M$ and the corresponding vector $\tilde{\alpha}\in T_pM$ with coordinates given by
+$$
+\alpha = \alpha_j\,dx^j
+$$
+$$
+\tilde{\alpha} = \tilde{\alpha}^j\,\partial_j
+$$
+we find these to be related by
+$$
+\tilde{\alpha}^k
+=
+\tilde{\alpha}^j\delta_j{}^k
+=
+\tilde{\alpha}^j\partial_j(dx^k)
+=
+(\tilde{\alpha}^j\partial_j)(dx^k)
+=
+\tilde{\alpha}(dx^k)
+=
+\tilde{g}(\alpha,dx^k)
+=
+\tilde{g}(\alpha_jdx^j,dx^k)
+=
+\alpha_j\tilde{g}(dx^j,dx^k)
+=
+\alpha_j\tilde{g}^{jk}
+$$
+where we have used in many places that $T_pM\cong T_p^{**}M$, i.e. that a vector space is naturally isomorphic to its double dual.
+In particular, previous results imply that
+$$
+\tilde{g}^{ij}g_{jk} = \delta^i{}_k
+\quad
+\text{and}
+\quad
+g_{ij}\tilde{g}^{jk} = \delta_i{}^k.
+$$
+
+
+Since $T_pM$ and $T_p* M$ become isomorphic via $g$, there is no need to keep distinguishing vector from covectors, so we can conveniently simplify the notation.
+Namely, we can identify each vector $v$ with its corresponding covector $\tilde{v}$ and vice-versa.
+In this way, we say that $v$ has coordinates $v^i$ in the basis $\{\partial_1,...,\partial_n\}$ and coordinates $v^j$ in the corresponding cobasis $\{dx^1,...,dx^n\}$, and that these coordinates are related by
+$$
+v_i = g_{ij}\,v^j
+\quad
+\text{and}
+\quad
+v^i = g^{ij}\,v_j
+$$
+where
+$$
+g^{ij}g_{jk} = \delta^i{}_k
+\quad
+\text{and}
+\quad
+g_{ij}g^{jk} = \delta_i{}^k.
+$$
+The same idea can be also applied to any tensor of any type.
+
 
 \appendix
 
