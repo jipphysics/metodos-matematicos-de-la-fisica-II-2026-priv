@@ -1145,7 +1145,7 @@ con $\kappa$ constante. Calcule la temperatura en el interior del cilindro para 
 
 \solu{}
 
-En este problema, la clave es reconocer que la condición de contorno no depende ni de $z$ ni del tiempo (para $t>0$), por lo que el problema se simplifica enormemente. 
+Este es un problema clásico de difusión del calor en un cilindro infinito. La clave es reconocer que la condición de contorno no depende ni de $z$ ni del tiempo (para $t>0$), por lo que el problema se simplifica enormemente. 
 Como todo es independiente de $z$, la solución también será independiente de $z$, y el Laplaciano cilíndrico queda
 $$
 \nabla^2
@@ -1362,97 +1362,6 @@ T_3(\rho)
 =
 -\frac14T_0\left(\frac{\rho}{a}\right)^3.
 $$
-En nuestro caso,
-$$
-A_m
-=
--\frac{3T_0}{2a^3J_2(\alpha_{1m})^2}
-\int_0^a
-\rho^2
-J_1
-\left(
-\alpha_{1m}\frac{\rho}{a}
-\right)
-d\rho.
-$$
-Haciendo el cambio de variable
-$$
-x=\frac{\alpha_{1m}}{a}\rho,
-$$
-se obtiene
-$$
-A_m
-=
--\frac{3T_0}{2\alpha_{1m}^3J_2(\alpha_{1m})^2}
-\int_0^{\alpha_{1m}}
-x^2J_1(x)\,dx.
-$$
-Ahora usamos la identidad
-$$
-\frac{d}{dx}\left(x^nJ_n(x)\right)
-=
-x^nJ_{n-1}(x),
-$$
-que para $n=2$ implica
-$$
-\int x^2J_1(x)\,dx
-=
-x^2J_2(x).
-$$
-Como $J_2(0)=0$,
-$$
-\int_0^{\alpha_{1m}}
-x^2J_1(x)\,dx
-=
-\alpha_{1m}^2J_2(\alpha_{1m}),
-$$
-y por tanto
-$$
-\boxed{
-A_m
-=
--\frac{3T_0}
-{2\alpha_{1m}J_2(\alpha_{1m})}.
-}
-$$
-
-Análogamente,
-$$
-B_m
-=
-\frac{T_0}{2a^5J_4(\alpha_{3m})^2}
-\int_0^a
-\rho^4
-J_3
-\left(
-\alpha_{3m}\frac{\rho}{a}
-\right)
-d\rho.
-$$
-Con el mismo cambio de variable,
-$$
-B_m
-=
-\frac{T_0}
-{2\alpha_{3m}^5J_4(\alpha_{3m})^2}
-\int_0^{\alpha_{3m}}
-x^4J_3(x)\,dx.
-$$
-Aplicando nuevamente la identidad anterior, ahora con $n=4$,
-$$
-\int x^4J_3(x)\,dx
-=
-x^4J_4(x),
-$$
-se obtiene
-$$
-\boxed{
-B_m
-=
-\frac{T_0}
-{2\alpha_{3m}J_4(\alpha_{3m})}.
-}
-$$
 
 {\bf Solución final}
 
@@ -1474,13 +1383,10 @@ T_0
 \right]
 \\
 &\quad
-%+
--
++
 \sin\theta
 \sum_{m=1}^{\infty}
-%A_m
-\frac{3T_0}
-{2\alpha_{1m}J_2(\alpha_{1m})}
+A_m
 J_1\left(\alpha_{1m}\frac{\rho}{a}\right)
 e^{-\kappa\alpha_{1m}^2t/a^2}
 \\
@@ -1488,9 +1394,7 @@ e^{-\kappa\alpha_{1m}^2t/a^2}
 +
 \sin3\theta
 \sum_{m=1}^{\infty}
-%B_m
-\frac{T_0}
-{2\alpha_{3m}J_4(\alpha_{3m})}
+B_m
 J_3\left(\alpha_{3m}\frac{\rho}{a}\right)
 e^{-\kappa\alpha_{3m}^2t/a^2}.
 \end{aligned}
@@ -1507,7 +1411,7 @@ Esta solución satisface:
   como era de esperar físicamente.
 \end{itemize}
 
-{\bf Comentario.} La principal dificultad del ejercicio consiste en reconocer que la condición de borde contiene únicamente los armónicos $n=1$ y $n=3$, gracias a la identidad trigonométrica
+{\bf Comentario.} En un examen de Métodos Matemáticos II, yo esperaría que el alumno llegara al menos hasta la expresión anterior. No es necesario calcular explícitamente los coeficientes $A_m$ y $B_m$; basta con indicar que se obtienen mediante la ortogonalidad de las funciones de Bessel. De hecho, la principal dificultad del ejercicio consiste en reconocer que la condición de borde contiene únicamente los armónicos $n=1$ y $n=3$, gracias a la identidad trigonométrica
 $$
 \sin^3\theta=\frac34\sin\theta-\frac14\sin3\theta,
 $$
