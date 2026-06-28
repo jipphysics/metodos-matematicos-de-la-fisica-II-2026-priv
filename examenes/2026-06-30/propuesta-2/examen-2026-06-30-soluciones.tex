@@ -904,6 +904,231 @@ orden
 \frac{y}{x} \frac{\partial u}{\partial x} - \frac{\partial u}{\partial y} = xy, \qquad u(x,y=0)=1, \qquad x>0.
 \]
 
+\solu{}
+
+Escribimos la ecuación en la forma estándar
+$$
+a(x,y)u_x+b(x,y)u_y=c(x,y),
+$$
+donde
+$$
+a(x,y)=\frac{y}{x},
+\qquad
+b(x,y)=-1,
+\qquad
+c(x,y)=xy.
+$$
+El método de las características consiste en resolver el sistema
+$$
+\frac{dx}{ds}=\frac{y}{x},
+$$
+$$
+\frac{dy}{ds}=-1,
+$$
+$$
+\frac{du}{ds}=xy.
+$$
+Las curvas características parten de la curva inicial
+$$
+(x,y)=(\xi,0),
+\qquad
+\xi>0,
+$$
+sobre la cual
+$$
+u=1.
+$$
+
+{\bf 1. Cálculo de las características}
+
+La segunda ecuación es inmediata:
+$$
+\frac{dy}{ds}=-1,
+$$
+de donde
+$$
+y=-s,
+$$
+ya que elegimos $s=0$ sobre la curva inicial.
+En consecuencia,
+$$
+s=-y.
+$$
+Sustituyendo en la ecuación para $x$,
+$$
+\frac{dx}{ds}
+=
+-\frac{s}{x}.
+$$
+Multiplicando por $x$,
+$$
+x\frac{dx}{ds}=-s.
+$$
+Como
+$$
+\frac{d}{ds}(x^2)=2x\frac{dx}{ds},
+$$
+obtenemos
+$$
+\frac{d}{ds}(x^2)=-2s.
+$$
+Integrando,
+$$
+x^2=-s^2+C.
+$$
+En $s=0$,
+$$
+x=\xi,
+$$
+luego
+$$
+C=\xi^2.
+$$
+Así,
+$$
+\boxed{x^2+s^2=\xi^2.}
+$$
+Puesto que $s=-y$,
+$$
+\boxed{\xi^2=x^2+y^2.}
+$$
+Por lo tanto, las características son los semicírculos
+$$
+x^2+y^2=\text{constante},
+$$
+con $x>0$.
+
+{\bf 2. Evolución de $u$}
+
+Tenemos
+$$
+\frac{du}{ds}=xy.
+$$
+Como
+$$
+y=-s,
+$$
+y
+$$
+x=\sqrt{\xi^2-s^2},
+$$
+resulta
+$$
+\frac{du}{ds}
+=
+-s\sqrt{\xi^2-s^2}.
+$$
+Integrando desde 0 hasta $s$,
+$$
+u(s)-1
+=
+\int_0^s
+-\tau\sqrt{\xi^2-\tau^2}\,d\tau.
+$$
+Haciendo el cambio
+$$
+r=\xi^2-\tau^2,
+\qquad
+dr=-2\tau\,d\tau,
+$$
+se obtiene
+$$
+u(s)-1
+=
+\frac12
+\int_{\xi^2-s^2}^{\xi^2}
+r^{1/2}\,dr.
+$$
+Por tanto,
+$$
+u(s)
+=
+1
++
+\frac13
+\left[
+(\xi^2)^{3/2}
+-
+(\xi^2-s^2)^{3/2}
+\right].
+$$
+Ahora sustituimos
+$$
+\xi^2=x^2+y^2,
+\qquad
+s=-y.
+$$
+Como
+$$
+\xi^2-s^2=x^2,
+$$
+y adem\'as $x>0$,
+$$
+(\xi^2-s^2)^{3/2}=x^3.
+$$
+Finalmente,
+$$
+\boxed{
+u(x,y)
+=
+1
++
+\frac13
+\left[
+(x^2+y^2)^{3/2}
+-
+x^3
+\right].
+}
+$$
+
+{\bf Verificación}
+
+Sobre la curva inicial,
+$$
+y=0,
+$$
+se obtiene
+$$
+u(x,0)
+=
+1+\frac13(x^3-x^3)=1,
+$$
+como exige la condición de borde.
+Además,
+$$
+u_x
+=
+x\sqrt{x^2+y^2}-x^2,
+$$
+$$
+u_y
+=
+y\sqrt{x^2+y^2},
+$$
+por lo que
+$$
+\frac{y}{x}u_x-u_y
+=
+\frac{y}{x}\left(x\sqrt{x^2+y^2}-x^2\right)
+-y\sqrt{x^2+y^2}
+=
+xy.
+$$
+Luego la solución satisface la ecuación diferencial.
+$$
+\boxed{
+u(x,y)
+=
+1+\frac13\left((x^2+y^2)^{3/2}-x^3\right).
+}
+$$
+Esta es la solución única del problema de Cauchy.
+
+
+
+
+
 
 \prob{} Considere un cilindro de un material diatérmico, infinitamente largo,
 homogéneo, cuyo eje de simetría coincide con el eje de $z$ de coordenadas. Inicialmente la
