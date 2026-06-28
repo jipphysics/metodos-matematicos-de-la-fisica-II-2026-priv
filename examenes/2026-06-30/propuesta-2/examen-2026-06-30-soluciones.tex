@@ -1143,6 +1143,279 @@ Recuerde que la temperatura obedece la ecuación de difusión
 \]
 con $\kappa$ constante. Calcule la temperatura en el interior del cilindro para $t>0$.
 
+\solu{}
+
+El problema 5 es un problema clásico de difusión del calor en un cilindro infinito. La clave es reconocer que la condición de contorno no depende ni de $z$ ni del tiempo (para $t>0$), por lo que el problema se simplifica enormemente. 
+Como todo es independiente de $z$, la solución también será independiente de $z$, y el Laplaciano cilíndrico queda
+$$
+\nabla^2
+=
+\frac1\rho\frac{\partial}{\partial\rho}
+\left(
+\rho\frac{\partial}{\partial\rho}
+\right)
++
+\frac1{\rho^2}
+\frac{\partial^2}{\partial\theta^2}.
+$$
+
+{\bf 1. Descomposición en estado estacionario y transitorio}
+
+Como la condición de borde es independiente del tiempo, escribimos
+$$
+T(\rho,\theta,t)
+=
+T_s(\rho,\theta)
++
+U(\rho,\theta,t),
+$$
+donde
+\begin{itemize}
+\item $T_s$ es la solución estacionaria;
+\item $U$ satisface condiciones homogéneas en la frontera.
+\end{itemize}
+
+{\bf 2. Solución estacionaria}
+
+Debe satisfacer
+$$
+\nabla^2T_s=0,
+$$
+con
+$$
+T_s(a,\theta)
+=
+T_0\sin^3\theta.
+$$
+Usamos
+$$
+\boxed{
+\sin^3\theta
+=
+\frac34\sin\theta
+-
+\frac14\sin3\theta.
+}
+$$
+Las soluciones armónicas interiores correspondientes son
+$$
+\rho^n\sin(n\theta).
+$$
+Por tanto,
+$$
+T_s
+=
+A\rho\sin\theta
++
+B\rho^3\sin3\theta.
+$$
+Imponiendo la condición de borde,
+$$
+Aa=\frac34T_0,
+$$
+$$
+Ba^3=-\frac14T_0.
+$$
+Así,
+$$
+\boxed{
+T_s(\rho,\theta)
+=
+T_0
+\left[
+\frac34
+\frac{\rho}{a}
+\sin\theta
+-
+\frac14
+\left(\frac{\rho}{a}\right)^3
+\sin3\theta
+\right].
+}
+$$
+
+{\bf 3. Problema transitorio}
+
+Definimos
+$$
+U=T-T_s.
+$$
+Entonces
+$$
+\frac{\partial U}{\partial t}
+=
+\kappa\nabla^2U,
+$$
+con
+$$
+U(a,\theta,t)=0,
+$$
+e
+$$
+U(\rho,\theta,0)
+=
+-
+T_s(\rho,\theta).
+$$
+
+{\bf 4. Separación de variables}
+
+Buscamos
+$$
+U
+=
+R(\rho)\Theta(\theta)e^{-\kappa\lambda t}.
+$$
+La parte angular produce
+$$
+\Theta=\sin(n\theta),
+$$
+mientras que la radial satisface la ecuación de Bessel
+$$
+\rho^2R''
++\rho R'
++
+(\lambda\rho^2-n^2)R
+=
+0.
+$$
+Las soluciones regulares son
+$$
+J_n(\sqrt\lambda,\rho).
+$$
+La condición
+$$
+U(a,\theta,t)=0
+$$
+impone
+$$
+J_n(\alpha_{nm})=0,
+$$
+donde $\alpha_{nm}$ es el $m$-ésimo cero positivo de $J_n$.
+Los autovalores son
+$$
+\lambda_{nm}
+=
+\frac{\alpha_{nm}^2}{a^2}.
+$$
+
+{\bf 5. Solución general}
+
+Como únicamente aparecen los modos
+$$
+n=1
+\quad\text{y}\quad
+n=3,
+$$
+la solución transitoria es
+$$
+\boxed{
+\begin{aligned}
+U(\rho,\theta,t)
+&=
+\sin\theta
+\sum_{m=1}^\infty
+A_m
+J_1
+\left(
+\alpha_{1m}\frac{\rho}{a}
+\right)
+e^{-\kappa\alpha_{1m}^2t/a^2}
+%\ 
+%&\quad+
++
+\sin3\theta
+\sum_{m=1}^\infty
+B_m
+J_3
+\left(
+\alpha_{3m}\frac{\rho}{a}
+\right)
+e^{-\kappa\alpha_{3m}^2t/a^2}.
+\end{aligned}
+}
+$$
+Los coeficientes $A_m$ y $B_m$ se obtienen desarrollando
+$$
+-T_s
+$$
+en series de Fourier–Bessel. Usando la ortogonalidad,
+$$
+A_m
+=
+-\frac{2}{a^2J_2(\alpha_{1m})^2}
+\int_0^a
+\rho\,T_1(\rho)
+J_1
+\left(
+\alpha_{1m}\frac{\rho}{a}
+\right)
+d\rho,
+$$
+y análogamente para $B_m$, donde
+$$
+T_1(\rho)
+=
+\frac34T_0\frac{\rho}{a},
+\qquad
+T_3(\rho)
+=
+-\frac14T_0\left(\frac{\rho}{a}\right)^3.
+$$
+
+{\bf Solución final}
+
+La temperatura en el interior del cilindro queda
+$$
+\boxed{
+\begin{aligned}
+T(\rho,\theta,t)
+&=
+T_0
+\left[
+\frac34
+\frac{\rho}{a}
+\sin\theta
+-
+\frac14
+\left(\frac{\rho}{a}\right)^3
+\sin3\theta
+\right]
+\\
+&\quad
++
+\sin\theta
+\sum_{m=1}^{\infty}
+A_m
+J_1\left(\alpha_{1m}\frac{\rho}{a}\right)
+e^{-\kappa\alpha_{1m}^2t/a^2}
+\\
+&\quad
++
+\sin3\theta
+\sum_{m=1}^{\infty}
+B_m
+J_3\left(\alpha_{3m}\frac{\rho}{a}\right)
+e^{-\kappa\alpha_{3m}^2t/a^2}.
+\end{aligned}
+}
+$$
+Esta solución satisface:
+\begin{itemize}
+\item $T(\rho,\theta,0)=0$,
+\item $T(a,\theta,t)=T_0\sin^3\theta$,
+\item y
+  $$
+  \lim_{t\to\infty}T(\rho,\theta,t)=T_s(\rho,\theta),
+  $$
+  como era de esperar físicamente.
+\end{itemize}
+
+{\bf Comentario.} En un examen de Métodos Matemáticos II, yo esperaría que el alumno llegara al menos hasta la expresión anterior. No es necesario calcular explícitamente los coeficientes $A_m$ y $B_m$; basta con indicar que se obtienen mediante la ortogonalidad de las funciones de Bessel. De hecho, la principal dificultad del ejercicio consiste en reconocer que la condición de borde contiene únicamente los armónicos $n=1$ y $n=3$, gracias a la identidad trigonométrica
+$$
+\sin^3\theta=\frac34\sin\theta-\frac14\sin3\theta,
+$$
+lo que reduce considerablemente el desarrollo en series de Fourier–Bessel.
 
 
 
