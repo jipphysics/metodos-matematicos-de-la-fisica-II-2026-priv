@@ -407,10 +407,6 @@ t(dx^{i_1},...,dx^{i_r},\partial_{j_1},...,\partial_{j_s})
 $$
 corresponding to the given basis.
 
-\section{Fields}
-
-...
-
 \section{Metric tensor}
 
 A type $(0,2)$ tensor $g\in T^{(0,2)}_pM$ is called a metric if:
@@ -430,178 +426,115 @@ v^i w^j g(\partial i,\partial_j)
 g_{ij}v^iw^j
 $$
 
-```latex
 \subsection{Musical isomorphisms}
 
-In general, the tangent space $T_pM$ and the cotangent space $T_p^*M$ are different vector spaces. Their elements are different kinds of objects:
+A metric $g$ defines an inner product on $T_pM$ for each $p\in M$.
+Given a $v\in T_pM$, the mapping
+$$
+T_pM\ni w\to g(v,w)\in \RR
+$$
+defines a covector $\tilde{v}$ in $T_p^*M$.
+Moreover, and without proof, the no-degeracy property of $g$ implies that for each covector $\alpha\in T_p^*M$, there exists an unique $v\in T_pM$ such that
+$$
+\alpha(w) = g(v,w) = \tilde{v}(w)
+$$
+for each $w\in T_pM$.
+Therefore, the mapping $\Phi:T_pM\ni v\to \tilde{v}=\Phi(v)\in T_p^*M$ is not only linear, but also invertible.
+In other words, this mapping establishes an isomorphism $\Phi$ between $T_pM$ and $T_p^*M$ called the {\em musical isomorphism}.
+The inverse of such mapping is also an isomorphism and determines an unique vector $\tilde{\alpha} = \Phi^{-1}(\alpha)\in T_pM$ for each covector $\alpha\in T_p^*M$.
+Furthermore, the mapping induces an inner product or metric $\tilde{g}$ over $T_p^*M$ given by
+$$
+\tilde{g}(\alpha,\beta) = g(\tilde{\alpha},\tilde{\beta})
+$$
+for each $\alpha,\beta\in T_p^*M$.
 
-\begin{itemize}
-\item vectors belong to $T_pM$,
-\item covectors (or differential $1$-forms) belong to $T_p^*M$.
-\end{itemize}
+\subsection{Identification o $T_pM$ and $T_p^*M$}
 
-Without additional structure there is no natural way of identifying vectors with covectors.
-
-Now suppose that $M$ is endowed with a metric
+Consider a vector $v\in T_pM$ and the corresponding covector $\tilde{v}=\Phi(v)$.
+In a given basis, these have coordinates given by
 $$
-g:T_pM\times T_pM\longrightarrow\RR.
+v = v^i\,\partial_i
 $$
-For each vector $v\in T_pM$, the mapping
 $$
-w\longmapsto g(v,w)
+\tilde{v} = \tilde{v}_j\,dx^j
 $$
-is linear in $w$, and therefore defines a covector in $T_p^*M$. We denote this covector by
+which are not independent but satisfy
 $$
-v^\flat,
-$$
-and define the mapping
-$$
-\flat:T_pM\longrightarrow T_p^*M,
-\qquad
-v\longmapsto v^\flat,
-$$
-by
-$$
-v^\flat(w)=g(v,w),
-\qquad
-\forall\,w\in T_pM.
-$$
-
-Since the metric is non-degenerate, the only vector satisfying
-$$
-g(v,w)=0
-\qquad
-\forall\,w\in T_pM
-$$
-is $v=0$. Hence the mapping $\flat$ is injective. Since
-$$
-\dim T_pM=\dim T_p^*M,
-$$
-it is necessarily an isomorphism.
-
-Its inverse,
-$$
-\sharp:T_p^*M\longrightarrow T_pM,
-$$
-is defined by
-$$
-\alpha^\sharp=\sharp(\alpha),
-$$
-where $\alpha^\sharp$ is the unique vector satisfying
-$$
-g(\alpha^\sharp,w)=\alpha(w),
-\qquad
-\forall\,w\in T_pM.
-$$
-
-The maps
-$$
-\flat:T_pM\rightarrow T_p^*M,
-\qquad
-\sharp:T_p^*M\rightarrow T_pM,
-$$
-are called the \emph{musical isomorphisms}. They establish a one-to-one correspondence between vectors and covectors.
-
-\subsection{Coordinates and index notation}
-
-Choose local coordinates
-$$
-(x^1,\ldots,x^n)
-$$
-around $p$. The associated basis of $T_pM$ and dual basis of $T_p^*M$ are
-$$
-\{\partial_1,\ldots,\partial_n\},
-\qquad
-\{dx^1,\ldots,dx^n\},
-$$
-respectively.
-
-Let
-$$
-v=v^i\partial_i
-$$
-be a vector. Its associated covector is
-$$
-v^\flat=v_i\,dx^i.
-$$
-The coefficients $v_i$ are determined by
-$$
-\begin{aligned}
-v_i
-&=
-v^\flat(\partial_i)\\
-&=
-g(v,\partial_i)\\
-&=
-g(v^j\partial_j,\partial_i)\\
-&=
-v^j g(\partial_j,\partial_i).
-\end{aligned}
-$$
-Introducing the metric coefficients
-$$
-g_{ij}=g(\partial_i,\partial_j),
-$$
-we obtain
-$$
-\boxed{
-v_i=g_{ij}v^j.
-}
-$$
-
-Conversely, let
-$$
-\alpha=\alpha_i\,dx^i
-$$
-be a covector. Its associated vector is
-$$
-\alpha^\sharp=\alpha^i\partial_i.
-$$
-If $(g^{ij})$ denotes the inverse matrix of $(g_{ij})$, namely
-$$
-g^{ik}g_{kj}
+\tilde{v}_k
 =
-\delta^i{}_j,
+\tilde{v}_j \delta^j{}_k
+=
+\tilde{v}_j dx^j(\partial_k)
+=
+(\tilde{v}_j dx^j)(\partial_k)
+=
+\tilde{v}(\partial_k)
+=
+g(v,\partial_k)
+=
+g(v^i\partial_i,\partial_k)
+=
+v^i\,
+g(\partial_i,\partial_k)
+=
+g_{ik}\,
+v^i.
 $$
-then
+Similarly, for any covector $\alpha\in T_p^*M$ and the corresponding vector $\tilde{\alpha}\in T_pM$ with coordinates given by
 $$
-\boxed{
-\alpha^i=g^{ij}\alpha_j.
-}
+\alpha = \alpha_j\,dx^j
+$$
+$$
+\tilde{\alpha} = \tilde{\alpha}^j\,\partial_j
+$$
+we find these to be related by
+$$
+\tilde{\alpha}^k
+=
+\tilde{\alpha}^j\,\delta_j{}^k
+=
+\tilde{\alpha}^j\,\partial_j(dx^k)
+=
+(\tilde{\alpha}^j\,\partial_j)(dx^k)
+=
+\tilde{\alpha}(dx^k)
+=
+\tilde{g}(\alpha,dx^k)
+=
+\tilde{g}(\alpha_j\,dx^j,dx^k)
+=
+\alpha_j\,\tilde{g}(dx^j,dx^k)
+=
+\alpha_j\,\tilde{g}^{jk}
+$$
+where we have used in many places that $T_pM\cong T_p^{**}M$, i.e. that a vector space is naturally isomorphic to its double dual.
+In particular, previous results imply that
+$$
+\tilde{g}^{ij}g_{jk} = \delta^i{}_k
+\quad
+\text{and}
+\quad
+g_{ij}\tilde{g}^{jk} = \delta_i{}^k.
 $$
 
-Thus the metric converts contravariant components into covariant ones,
+Since $T_pM$ and $T_p^*M$ become isomorphic via $g$, there is no need to keep distinguishing vector from covectors, and we can conveniently simplify the notation.
+Namely, we may say that $v$ has coordinates $v^i$ in the basis $\{\partial_1,...,\partial_n\}$, coordinates $v^j$ in the corresponding cobasis $\{dx^1,...,dx^n\}$, and that these coordinates are related by
 $$
-v_i=g_{ij}v^j,
+v_i = g_{ij}\,v^j
+\quad
+\text{and}
+\quad
+v^i = g^{ij}\,v_j
 $$
-while its inverse performs the opposite operation,
+where
 $$
-v^i=g^{ij}v_j.
+g^{ij}g_{jk} = \delta^i{}_k
+\quad
+\text{and}
+\quad
+g_{ij}g^{jk} = \delta_i{}^k.
 $$
-
-Notice, however, that the vector
-$$
-v=v^i\partial_i
-$$
-and the covector
-$$
-v^\flat=v_i\,dx^i
-$$
-remain different geometric objects. They belong to different vector spaces,
-$$
-v\in T_pM,
-\qquad
-v^\flat\in T_p^*M,
-$$
-and are related only through the metric.
-
-In practice, once a metric has been fixed, it is customary to denote a vector and its associated covector by the same letter, distinguishing them only by the position of their indices:
-$$
-v=v^i\partial_i,
-\qquad
-v=v_i\,dx^i.
-$$
-With this convention, lowering an index means applying the map $\flat$, while raising an index means applying the map $\sharp$. The same idea extends naturally to arbitrary tensors, allowing any covariant index to be raised and any contravariant index to be lowered.
+The same idea can be also applied to any tensor to {\em raise} or {\em lower} any of its indices.
 
 \appendix
 

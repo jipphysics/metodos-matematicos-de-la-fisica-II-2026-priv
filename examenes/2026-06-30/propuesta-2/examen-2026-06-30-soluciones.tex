@@ -63,6 +63,20 @@
 \newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
 \newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
 
+\newcommand{\CC}{\mathbb C}
+\newcommand{\FF}{\mathbb F}
+\newcommand{\BB}{\mathbb G}
+\newcommand{\HH}{\mathbb H}
+\newcommand{\II}{\mathbb I}
+\newcommand{\JJ}{\mathbb J}
+\newcommand{\KK}{\mathbb K}
+\newcommand{\LL}{\mathbb L}
+\newcommand{\MM}{\mathbb M}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\ZZ}{\mathbb Z}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Counters definitions (old)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -785,6 +799,103 @@ z^2, z^1, z^6, z^5, z^4, \dots\}.$
 ¿Es el operador $A$ acotado?. Calcule $A^*$, ¿Es $A$ autoadjunto? justifique
 claramente sus respuestas.
 \end{enumerate}
+
+\solu{}
+
+Sea ${e_1,e_2,e_3,\ldots}$ la base canónica de $\ell^2(\mathbb C)$.
+Observemos que $A$ deja fijos los vectores
+$$
+e_2,\ e_5,\ e_8,\ \ldots,
+$$
+mientras que intercambia los pares
+$$
+(e_1,e_3),\quad
+(e_4,e_6),\quad
+(e_7,e_9),\quad\ldots
+$$
+Por ello, reordenamos la base como
+$$
+\mathcal B
+=
+\{
+e_2,e_5,e_8,\ldots,,
+e_1,e_3,
+e_4,e_6,
+e_7,e_9,
+\ldots
+\}.
+$$
+En esta base, la matriz de $A$ toma la forma
+$$
+A_{\mathcal B}
+=
+\II
+\oplus
+J
+\oplus
+J
+\oplus
+\cdots,
+\qquad
+J=
+\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix}.
+$$
+Ahora, para cada uno de los bloques $2\times2$ caracterizados por $J$, introducimos la nueva base
+$$
+u_k^+
+=
+\frac{e_{3k-2}+e_{3k}}{\sqrt2},
+\qquad
+u_k^-
+=
+\frac{e_{3k-2}-e_{3k}}{\sqrt2}.
+$$
+En esta base,
+$$
+J
+\sim
+\begin{pmatrix}
+1&0\\
+0&-1
+\end{pmatrix}.
+$$
+Por lo tanto, en la base
+$$
+{
+e_2,e_5,e_8,\ldots,,
+u_1^+,u_1^-,,
+u_2^+,u_2^-,,
+u_3^+,u_3^-,,
+\ldots
+},
+$$
+el operador $A$ queda representado por la matriz diagonal
+$$
+\operatorname{diag}
+(1,1,1,\ldots,1,-1,1,-1,\ldots).
+$$
+De aquí se deduce inmediatamente que:
+\begin{itemize}
+\item $A$ es un operador acotado y
+$$
+|A|=1.
+$$
+\item Como su matriz es diagonal real,
+$$
+A^*=A.
+$$
+\item En consecuencia, $A$ es autoadjunto.
+\end{itemize}
+Además,
+$$
+A^2=I,
+$$
+por lo que también es un operador unitario.
+
+
 
 
 \prob{} Resuelva, usando el método de las características, el problema de primer
