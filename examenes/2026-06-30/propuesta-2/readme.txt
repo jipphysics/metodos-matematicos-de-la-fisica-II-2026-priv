@@ -24,3 +24,24 @@ Soluciones
 https://chatgpt.com/share/6a3eec41-2fb8-83e9-bb55-37e7f52ce582
 https://chatgpt.com/share/6a4199df-9b18-83e9-8f74-2d0bef59223c
 ********************************************************************************
+de:	OMAR EDUARDO ORTIZ <omar.ortiz@unc.edu.ar>
+para:	
+CARLOS BRUNO BRIOZZO <carlos.briozzo@unc.edu.ar>
+CC:	
+Juan Ignacio Perotti <juan.perotti@unc.edu.ar>,
+Jorge Revelli <jorge.revelli@unc.edu.ar>,
+César Maglione <cesar.maglione@unc.edu.ar>
+fecha:	29 jun 2026, 11:50 a.m.
+asunto:	Re: Examen (4 problemas)
+enviado por:	unc.edu.ar
+firmado por:	unc.edu.ar
+
+Hola. Aquí mando el examen como va quedando. Retoqué un poco el enunciado del problema de Juan, sobre todo por una cuestión de terminología. 
+Opinen...
+Omar
+
+
+
+Dr. Omar E. Ortiz
+FAMAF, Universidad Nacional de Córdoba.
+********************************************************************************
