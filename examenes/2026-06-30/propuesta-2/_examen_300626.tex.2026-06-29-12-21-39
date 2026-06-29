@@ -131,6 +131,17 @@ Se permite el uso de tablas de transformadas y de funciones especiales
 
 \vspace{5mm}
 
+\prob{} Calcule $\exp(A)$, donde $A$ es la matriz
+\[
+A = \left(\begin{array}{rrr}
+-2 & 0 & 1 \\
+-1 & -3 & 3 \\
+-1 & -1 & 1
+\end{array}\right)
+\]
+{\em Ayuda:} Transforme $A$ a forma de Jordan, exponencie y antitransforme.
+
+
 \prob{} Sea $l^2(\mathbb{C})$ el conjunto de las sucesiones infinitas de números
 complejos $\vec z=\{z^j\}_{j=1}^\infty,~z^j\in{\mathbb C}$ de módulo al cuadrado
 sumable (donde $j$ es el super índice de componente, no confundir con una potencia!). Sea $A$
@@ -144,18 +155,6 @@ z^2, z^1, z^6, z^5, z^4, \dots\}.$
 \]
 ¿Es el operador $A$ acotado?. Calcule $A^*$, ¿Es $A$ autoadjunto? justifique
 claramente sus respuestas.
-\end{enumerate}
-
-\prob{} Sean $\{x,y\}$ coordenadas Cartesianas en el plano (con la métrica
-Euclídea). Considere el cambio de coordenadas 
-\[
-x=uv\, \quad y=\frac{1}{2}(u^2-v^2)
-\]
-\begin{enumerate}
-\item Obtenga la métrica $g_{ij}$ en las nuevas coordenadas.
-\item Muestre que las nuevas coordenadas son ortogonales y halle los factores de escala.
-\item Calcule los símbolos de Christoffel no nulos.
-\item Escriba el laplaciano de un campo escalar $f(u,v)$.
 \end{enumerate}
 
 \prob{} Resuelva, usando el método de las características, el problema de primer
@@ -183,19 +182,3 @@ con $\kappa$ constante. Calcule la temperatura en el interior del cilindro para 
 
  
 \end{document}
-
-
-% Sobras
-\prob{} Calcule $\exp(A)$, donde $A$ es la matriz
-\[
-A = \left(\begin{array}{rrr}
--2 & 0 & 1 \\
--1 & -3 & 3 \\
--1 & -1 & 1
-\end{array}\right)
-\]
-{\em Ayuda:} Transforme $A$ a forma de Jordan, exponencie y antitransforme.
-
-
-
-
