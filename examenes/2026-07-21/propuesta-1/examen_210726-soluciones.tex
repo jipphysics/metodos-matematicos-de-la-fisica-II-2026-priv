@@ -150,8 +150,221 @@ Justifique claramente.
 \end{enumerate}
 
 \vspace{0.5cm}
-{\bf Soluci\'on }{\em 1.a)}
+{\bf Soluci\'on }{\em 1)}
 \vspace{0.5cm}
+
+El único autovalor es
+$$
+\boxed{\lambda=-2}
+$$
+con multiplicidad algebraica $4$.
+
+{\bf a) Autovectores}
+
+Debemos resolver
+$$
+(A+2I)\mathbf v=0.
+$$
+Se tiene
+$$
+A+2I=
+\begin{pmatrix}
+-2&0&-1&0\\
+0&0&0&0\\
+4&1&2&0\\
+6&1&3&0
+\end{pmatrix}.
+$$
+Sea
+$$
+\mathbf v=(x,y,z,w)^T.
+$$
+Las ecuaciones son
+$$
+\begin{cases}
+-2x-z=0,\\
+4x+y+2z=0,\\
+6x+y+3z=0.
+\end{cases}
+$$
+De la primera,
+$$
+z=-2x.
+$$
+La segunda da
+$$
+4x+y-4x=0
+\quad\Longrightarrow\quad
+y=0.
+$$
+La tercera queda
+$$
+6x-6x=0,
+$$
+por lo que no aporta información nueva.
+La coordenada $w$ es completamente libre.
+Así,
+$$
+\mathbf v
+=
+x
+\begin{pmatrix}
+1\\0\\-2\\0
+\end{pmatrix}
++
+w
+\begin{pmatrix}
+0\\0\\0\\1
+\end{pmatrix}.
+$$
+Una base del autoespacio es
+$$
+\boxed{
+\left\{
+\begin{pmatrix}
+1\\0\\-2\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\0\\0\\1
+\end{pmatrix}
+\right\}.
+}
+$$
+Por lo tanto,
+$$
+\boxed{\dim E_{-2}=2.}
+$$
+
+{\bf b) Forma de Jordan}
+
+La multiplicidad algebraica es
+$$
+m_a=4,
+$$
+mientras que la geométrica es
+$$
+m_g=2.
+$$
+Luego existen exactamente dos bloques de Jordan.
+Las posibles particiones de $4$ en dos bloques son
+\begin{itemize}
+\item $3+1$,
+\item $2+2$.
+\end{itemize}
+Para decidir cuál corresponde, estudiamos
+$$
+N=A+2I.
+$$
+Calculamos
+$$
+N^2=
+\begin{pmatrix}
+0&-1&0&0\\
+0&0&0&0\\
+0&2&0&0\\
+0&4&0&0
+\end{pmatrix},
+$$
+y
+$$
+N^3=0.
+$$
+Entonces
+$$
+N^2\neq0,\qquad N^3=0.
+$$
+El índice de nilpotencia es
+$$
+3,
+$$
+por lo que el mayor bloque de Jordan tiene tamaño $3$.
+Como sólo existen dos bloques,
+$$
+3+1=4.
+$$
+Así, la forma de Jordan es
+$$
+\boxed{
+J=
+\begin{pmatrix}
+-2&1&0&0\\
+0&-2&1&0\\
+0&0&-2&0\\
+0&0&0&-2
+\end{pmatrix}.
+}
+$$
+Equivalentemente,
+$$
+J=
+J_3(-2)\oplus J_1(-2).
+$$
+
+{\bf c) Subespacios invariantes irreducibles}
+
+Cada bloque de Jordan corresponde a un subespacio invariante indecomponible.
+Como la forma de Jordan posee
+\begin{itemize}
+\item un bloque de tamaño $3$,
+\item un bloque de tamaño $1$,
+\end{itemize}
+el espacio vectorial se descompone como
+$$
+V=V_3\oplus V_1,
+$$
+donde
+$$
+\dim V_3=3,\qquad
+\dim V_1=1.
+$$
+Por consiguiente,
+$$
+\boxed{\text{Existen exactamente dos subespacios invariantes irreducibles.}}
+$$
+Sus dimensiones son
+$$
+\boxed{3\quad\text{y}\quad1.}
+$$
+La justificación es que cada bloque de Jordan genera un subespacio cíclico invariante que no puede descomponerse en suma directa de subespacios invariantes más pequeños.
+
+{\bf Respuestas finales}
+
+\begin{itemize}
+\item {\bf a)} Una base del autoespacio es
+$$
+\boxed{
+\left\{
+\begin{pmatrix}
+1\\0\\-2\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\0\\0\\1
+\end{pmatrix}
+\right\}.
+}
+$$
+
+\item {\bf b)}
+$$
+\boxed{
+J=J_3(-2)\oplus J_1(-2).
+}
+$$
+
+\item {\bf c)}
+$$
+\boxed{
+V=V_3\oplus V_1,\qquad
+\dim V_3=3,\quad
+\dim V_1=1.
+}
+$$
+\end{itemize}
+
+
+
+
+
 
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 1.b)}
@@ -183,6 +396,333 @@ $\Delta u(\theta,\alpha) = g^{ij} \nabla_i \nabla_j u.$
 {\bf Soluci\'on }{\em 2)}
 \vspace{0.5cm}
 
+La métrica del toro viene dada por
+$$
+ds^2=(R+a\cos\theta)^2\,d\theta^2+a^2\,d\alpha^2,
+$$
+donde $R>a>0$, y las coordenadas son
+$$
+x^1=\theta,\qquad x^2=\alpha.
+$$
+Debemos calcular:
+\begin{itemize}
+\item la métrica inversa $g^{ij}$,
+\item los símbolos de Christoffel,
+\item el Laplaciano
+\end{itemize}
+$$
+\Delta u=g^{ij}\nabla_i\nabla_j u.
+$$
+
+{\bf 1. Tensor métrico}
+
+La métrica es diagonal:
+$$
+g_{ij}=
+\begin{pmatrix}
+(R+a\cos\theta)^2 & 0\\
+0 & a^2
+\end{pmatrix}.
+$$
+Su determinante es
+$$
+g=\det(g_{ij})
+=a^2(R+a\cos\theta)^2,
+$$
+de donde
+$$
+\sqrt g
+=a(R+a\cos\theta).
+$$
+
+{\bf 2. Métrica inversa}
+
+Al ser diagonal,
+$$
+g^{ij}=
+\begin{pmatrix}
+\dfrac1{(R+a\cos\theta)^2} & 0\\
+0 & \dfrac1{a^2}
+\end{pmatrix}.
+$$
+Es decir,
+$$
+\boxed{
+g^{\theta\theta}
+=\frac1{(R+a\cos\theta)^2},
+\qquad
+g^{\alpha\alpha}
+=\frac1{a^2}.
+}
+$$
+
+{\bf 3. Símbolos de Christoffel}
+
+Recordemos
+$$
+\Gamma^k_{ij}
+=
+\frac12
+g^{kl}
+\left(
+\partial_i g_{jl}
++\partial_j g_{il}
+-\partial_l g_{ij}
+\right).
+$$
+Como
+$$
+g_{\alpha\alpha}=a^2
+$$
+es constante,
+$$
+\partial_\theta g_{\alpha\alpha}=0,
+\qquad
+\partial_\alpha g_{ij}=0.
+$$
+Además,
+$$
+g_{\theta\theta}
+=(R+a\cos\theta)^2,
+$$
+por lo que
+$$
+\partial_\theta g_{\theta\theta}
+=
+2(R+a\cos\theta)(-a\sin\theta).
+$$
+Es decir,
+$$
+\partial_\theta g_{\theta\theta}
+=
+-2a(R+a\cos\theta)\sin\theta.
+$$
+
+{\bf Cálculo de $\Gamma^\theta_{\theta\theta}$}
+
+$$
+\Gamma^\theta_{\theta\theta}
+=
+\frac12
+g^{\theta\theta}
+\partial_\theta g_{\theta\theta}.
+$$
+Entonces
+$$
+\frac12
+\frac1{(R+a\cos\theta)^2}
+(-2a(R+a\cos\theta)\sin\theta),
+$$
+de donde
+$$
+\boxed{
+\Gamma^\theta_{\theta\theta}
+=
+-\frac{a\sin\theta}
+{R+a\cos\theta}.
+}
+$$
+
+{\bf Cálculo de $\Gamma^\theta_{\alpha\alpha}$}
+
+Como
+$$
+g_{\alpha\alpha}
+=\text{cte},
+$$
+resulta
+$$
+\boxed{
+\Gamma^\theta_{\alpha\alpha}=0.
+}
+$$
+
+{\bf Cálculo de $\Gamma^\alpha_{\theta\alpha}$}
+
+$$
+\Gamma^\alpha_{\theta\alpha}
+=
+\frac12
+g^{\alpha\alpha}
+\partial_\theta g_{\alpha\alpha}=0.
+$$
+Luego
+$$
+\boxed{
+\Gamma^\alpha_{\theta\alpha}
+=
+\Gamma^\alpha_{\alpha\theta}
+=0.
+}
+$$
+Todos los demás símbolos también son nulos.
+Por lo tanto,
+$$
+\boxed{
+\Gamma^\theta_{\theta\theta}
+=
+-\frac{a\sin\theta}
+{R+a\cos\theta},
+}
+$$
+es el único símbolo distinto de cero.
+
+{\bf 4. Laplaciano}
+
+Para un escalar,
+$$
+\nabla_i u=\partial_i u,
+$$
+y
+$$
+\nabla_i\nabla_j u
+=
+\partial_i\partial_j u
+-
+\Gamma^k_{ij}\partial_k u.
+$$
+Así,
+$$
+\Delta u
+=
+g^{ij}\nabla_i\nabla_ju.
+$$
+Como sólo existe
+$$
+\Gamma^\theta_{\theta\theta},
+$$
+tenemos
+$$
+\Delta u
+=
+g^{\theta\theta}
+\left(
+u_{\theta\theta}
+-
+\Gamma^\theta_{\theta\theta}u_\theta
+\right)
++
+g^{\alpha\alpha}
+u_{\alpha\alpha}.
+$$
+Sustituyendo,
+$$
+\frac1{(R+a\cos\theta)^2}
+\left(
+u_{\theta\theta}
++
+\frac{a\sin\theta}
+{R+a\cos\theta}
+u_\theta
+\right)
++
+\frac1{a^2}
+u_{\alpha\alpha}.
+$$
+Finalmente,
+$$
+\boxed{
+\Delta u
+=
+\frac{1}{(R+a\cos\theta)^2}
+\frac{\partial^2u}{\partial\theta^2}
++
+\frac{a\sin\theta}
+{(R+a\cos\theta)^3}
+\frac{\partial u}{\partial\theta}
++
+\frac1{a^2}
+\frac{\partial^2u}{\partial\alpha^2}.
+}
+$$
+
+{\bf Verificación mediante la expresión de Laplace–Beltrami}
+
+Como control, usemos
+$$
+\Delta u
+=
+\frac1{\sqrt g}
+\partial_i
+\left(
+\sqrt g\,g^{ij}\partial_j u
+\right).
+$$
+Aquí,
+$$
+\sqrt g
+=a(R+a\cos\theta),
+$$
+por lo que
+$$
+\sqrt g\,g^{\theta\theta}
+=
+\frac{a}{R+a\cos\theta},
+$$
+y
+$$
+\sqrt g\,g^{\alpha\alpha}
+=
+\frac{R+a\cos\theta}{a}.
+$$
+Entonces,
+$$
+\Delta u
+=
+\frac1{a(R+a\cos\theta)}
+\left[
+\partial_\theta
+\left(
+\frac{a}{R+a\cos\theta}
+u_\theta
+\right)
++
+\partial_\alpha
+\left(
+\frac{R+a\cos\theta}{a}
+u_\alpha
+\right)
+\right].
+$$
+Como el factor $(R+a\cos\theta)/a$ no depende de $\alpha$, se obtiene exactamente la misma expresión anterior, lo que confirma el resultado.
+
+{\bf Resumen}
+
+$$
+\boxed{
+g^{ij}
+=
+\begin{pmatrix}
+\dfrac1{(R+a\cos\theta)^2} & 0\\
+0 & \dfrac1{a^2}
+\end{pmatrix},
+}
+$$
+$$
+\boxed{
+\Gamma^\theta_{\theta\theta}
+=
+-\frac{a\sin\theta}{R+a\cos\theta},
+}
+$$
+todos los demás símbolos de Christoffel son nulos, y
+$$
+\boxed{
+\Delta u
+=
+\frac1{(R+a\cos\theta)^2}
+u_{\theta\theta}
++
+\frac{a\sin\theta}{(R+a\cos\theta)^3}
+u_\theta
++
+\frac1{a^2}
+u_{\alpha\alpha}.
+}
+$$
+Este resultado coincide con el operador de Laplace–Beltrami para la métrica dada.
+
+
 
 
 
@@ -198,6 +738,535 @@ sabiendo que $u(x,y=0) = x.$
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 3)}
 \vspace{0.5cm}
+
+{\bf 1. Sistema característico}
+
+Una EDP de la forma
+$$
+a(x,y)u_x+b(x,y)u_y=c(x,y,u)
+$$
+se resuelve mediante el sistema
+$$
+\frac{dx}{ds}=a,
+\qquad
+\frac{dy}{ds}=b,
+\qquad
+\frac{du}{ds}=c.
+$$
+Aquí,
+$$
+a=2xy,\qquad
+b=1,\qquad
+c=u.
+$$
+Luego
+$$
+\boxed{
+\begin{aligned}
+\frac{dx}{ds}&=2xy,\\
+\frac{dy}{ds}&=1,\\
+\frac{du}{ds}&=u.
+\end{aligned}
+}
+$$
+
+{\bf 2. Curvas características}
+
+Como
+$$
+\frac{dy}{ds}=1,
+$$
+podemos elegir
+$$
+s=y+C.
+$$
+Es más cómodo tomar simplemente
+$$
+\boxed{s=y.}
+$$
+Entonces
+$$
+\frac{dx}{dy}=2xy.
+$$
+Esta ecuación es separable:
+$$
+\frac{dx}{x}=2y,dy.
+$$
+Integrando,
+$$
+\ln|x|=y^2+C.
+$$
+Por lo tanto,
+$$
+\boxed{
+xe^{-y^2}=C.
+}
+$$
+Esta es la primera integral de las características.
+Si llamamos
+$$
+\xi=xe^{-y^2},
+$$
+cada característica queda identificada por un valor constante de $\xi$.
+
+{\bf 3. Evolución de $u$}
+
+Ahora
+$$
+\frac{du}{dy}=u,
+$$
+cuya solución es
+$$
+u=A(\xi)e^y,
+$$
+donde $A$ sólo depende de la constante característica,
+$$
+\xi=xe^{-y^2}.
+$$
+Así,
+$$
+\boxed{
+u(x,y)
+=
+e^y
+A\left(xe^{-y^2}\right).
+}
+$$
+
+{\bf 4. Imposición de la condición inicial}
+
+Cuando
+$$
+y=0,
+$$
+se tiene
+$$
+u(x,0)=A(x).
+$$
+Pero el dato inicial es
+$$
+u(x,0)=x.
+$$
+Luego
+$$
+A(x)=x.
+$$
+En consecuencia,
+$$
+A(\xi)=\xi.
+$$
+Finalmente,
+$$
+u(x,y)
+=
+e^y
+\left(xe^{-y^2}\right).
+$$
+Es decir,
+$$
+\boxed{
+u(x,y)
+=
+x,e^{,y-y^2}.
+}
+$$
+
+{\bf 5. Verificación}
+
+Calculemos las derivadas.
+$$
+u_x=e^{y-y^2},
+$$
+$$
+u_y
+=
+x(1-2y)e^{y-y^2}.
+$$
+Entonces
+$$
+2xy\,u_x
+=
+2xy\,e^{y-y^2},
+$$
+y
+$$
+2xy\,u_x+u_y-u
+=
+xe^{y-y^2}
+\left[
+2y+(1-2y)-1
+\right]
+=0.
+$$
+Además,
+$$
+u(x,0)=xe^0=x,
+$$
+por lo que la condición inicial también se satisface.
+
+{\bf Respuesta final}
+
+La solución del problema es
+$$
+\boxed{
+u(x,y)=x\,e^{y-y^2}.
+}
+$$
+Esta función satisface tanto la ecuación diferencial
+$$
+2xy\,u_x+u_y-u=0
+$$
+como la condición inicial
+$$
+u(x,0)=x.
+$$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 3bis)}
+\vspace{0.5cm}
+
+Soluci\'on en t\'erminos de flujos de un campo vectorial.
+Supongamos una ecuación lineal de primer orden
+$$
+\boxed{
+X(u)=cu+f,
+}
+$$
+donde
+$$
+X=\sum_{i=1}^n a_i(x),\frac{\partial}{\partial x_i}
+$$
+es un campo vectorial sobre un dominio $\Omega\subset\mathbb{R}^n$.
+La ecuación también puede escribirse como
+$$
+\sum_i a_i(x),\partial_i u=c(x)u+f(x).
+$$
+
+{\bf 1. Las características son las curvas integrales de $X$}
+
+Las características no son otra cosa que las curvas integrales del campo vectorial $X$:
+$$
+\boxed{
+\frac{d\gamma}{ds}=X(\gamma(s)).
+}
+$$
+En coordenadas,
+$$
+\boxed{
+\frac{dx_i}{ds}=a_i(x(s)).
+}
+$$
+Estas curvas forman el flujo del campo vectorial.
+
+{\bf 2. Restricción de la solución a una característica}
+
+Sea
+$$
+U(s)=u(\gamma(s)).
+$$
+Aplicando la regla de la cadena,
+$$
+\frac{dU}{ds}
+=
+\sum_i
+\frac{\partial u}{\partial x_i}
+\frac{dx_i}{ds}.
+$$
+Como
+$$
+\frac{dx_i}{ds}=a_i,
+$$
+obtenemos
+$$
+\boxed{
+\frac{dU}{ds}
+=
+X(u).
+}
+$$
+Pero la EDP dice que
+$$
+X(u)=cu+f.
+$$
+Luego, sobre cada característica,
+$$
+\boxed{
+\frac{dU}{ds}
+=
+c(\gamma(s)),U
++
+f(\gamma(s)).
+}
+$$
+Es decir, la EDP se transforma en una ecuación diferencial ordinaria.
+
+{\bf 3. Resolución de la EDO}
+
+La solución es
+$$
+U(s)
+=
+e^{\int_0^s c(\gamma(\tau)),d\tau}
+\left[
+U(0)
++
+\int_0^s
+e^{-\int_0^\sigma c(\gamma(\tau)),d\tau}
+f(\gamma(\sigma))
+,d\sigma
+\right].
+$$
+Cuando $f=0$,
+$$
+\boxed{
+U(s)
+=
+U(0)
+\exp\left(
+\int_0^s c(\gamma(\tau)),d\tau
+\right).
+}
+$$
+
+{\bf Interpretación geométrica}
+
+Toda la información puede resumirse así:
+\begin{itemize}
+\item El campo vectorial $X$ determina un flujo
+$$
+\varphi_s.
+$$
+\item Las características son las órbitas de ese flujo,
+$$
+\gamma(s)=\varphi_s(p).
+$$
+\item Sobre cada órbita, la función $u$ satisface únicamente una EDO.
+\end{itemize}
+
+En otras palabras, el método de las características consiste en ``rectificar'' el campo vectorial $X$. 
+En las coordenadas adaptadas al flujo, $X$ se convierte simplemente en
+$$
+\frac{\partial}{\partial s},
+$$
+y la EDP pasa a ser una EDO.
+
+{\bf Aplicación al Problema 3}
+
+En el ejercicio,
+$$
+X
+=
+2xy,\frac{\partial}{\partial x}
++
+\frac{\partial}{\partial y}.
+$$
+Las características son las curvas integrales de este campo:
+$$
+\begin{cases}
+\dot x=2xy,\
+\dot y=1.
+\end{cases}
+$$
+Como $y=s$,
+$$
+\frac{dx}{dy}=2xy,
+$$
+de donde
+$$
+xe^{-y^2}=\text{constante}.
+$$
+Sobre cada una de esas curvas,
+$$
+\frac{du}{ds}=u,
+$$
+es decir,
+$$
+\frac{du}{dy}=u,
+$$
+que es precisamente la EDO que resolvimos para obtener
+$$
+u(x,y)=x\,e^{y-y^2}.
+$$
+Esta formulación pone de manifiesto que el método de las características es, en esencia, el estudio del flujo de un campo vectorial y de la evolución de $u$ a lo largo de sus curvas integrales. En geometría diferencial suele expresarse de forma muy compacta como
+$$
+\boxed{X(u)=cu+f,}
+$$
+donde $X$ actúa como una derivada direccional o, equivalentemente, como la derivada de Lie de la función $u$ a lo largo del campo vectorial $X$.
+
+
+
+
+
+
+
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 3tris)}
+\vspace{0.5cm}
+
+Resolvemos incluyendo a $u$ como una coordenada más de un campo vectorial extendido.
+Hay dos formas de hacerlo.
+
+{\bf Forma 1. Extender el espacio agregando $u$}
+
+En lugar de trabajar en el espacio
+$$
+(x,y),
+$$
+se considera el espacio ampliado
+$$
+(x,y,u).
+$$
+La EDP
+$$
+2xy\,u_x+u_y=u
+$$
+se reemplaza por el sistema de ODE
+$$
+\boxed{
+\begin{aligned}
+\dot x &=2xy,\\
+\dot y &=1,\\
+\dot u &=u.
+\end{aligned}
+}
+$$
+Esto equivale a introducir el campo vectorial
+$$
+\boxed{
+\widetilde X
+=
+2xy\,\frac{\partial}{\partial x}
++
+\frac{\partial}{\partial y}
++
+u\,\frac{\partial}{\partial u}.
+}
+$$
+Las soluciones son simplemente las curvas integrales de $\widetilde X$.
+
+{\bf ¿Por qué funciona?}
+
+Si
+$$
+\Gamma(s)=\bigl(x(s),y(s),u(s)\bigr)
+$$
+es una curva integral de $\widetilde X$, entonces
+$$
+\dot u
+=
+u_x\dot x
++
+u_y\dot y.
+$$
+Pero
+$$
+\dot x=2xy,\qquad
+\dot y=1,
+$$
+luego
+$$
+\dot u
+=
+2xy\,u_x+u_y,
+$$
+y la EDP exige precisamente
+$$
+\dot u=u.
+$$
+Así, la EDP queda completamente absorbida en el campo vectorial del espacio ampliado.
+
+{\bf Forma 2. Como una variedad integral}
+
+Hay otra interpretación todavía más geométrica.
+La solución $u(x,y)$ determina la superficie
+$$
+\Sigma
+=
+\{(x,y,u(x,y))\}
+\subset
+\mathbb R^3.
+$$
+La condición
+$$
+2xy\,u_x+u_y=u
+$$
+dice exactamente que el campo
+$$
+\widetilde X
+=
+2xy\,\partial_x
++\partial_y
++u\,\partial_u
+$$
+es tangente a la superficie $\Sigma$.
+En efecto, un vector tangente a la gráfica es
+$$
+2xy
+\left(
+\partial_x+u_x\partial_u
+\right)
++
+\left(
+\partial_y+u_y\partial_u
+\right),
+$$
+que vale
+$$
+2xy\,\partial_x+\partial_y+
+(2xy\,u_x+u_y)\partial_u.
+$$
+Usando la EDP,
+$$
+2xy\,u_x+u_y=u,
+$$
+queda
+$$
+2xy\,\partial_x+\partial_y+u\,\partial_u
+=
+\widetilde X.
+$$
+Es decir,
+$$
+\boxed{\widetilde X\ \text{es tangente a la gráfica de }u.}
+$$
+Esta es probablemente la interpretación geométrica más bonita.
+
+{\bf Relación con la teoría de contacto}
+
+Esto es justamente el primer paso hacia la formulación general del método de las características para ecuaciones no lineales de primer orden (Hamilton–Jacobi). 
+Allí se trabaja en el espacio
+$$
+(x^i,u,p_i),
+$$
+donde
+$$
+p_i=\frac{\partial u}{\partial x^i},
+$$
+y las características son curvas integrales de un campo vectorial en ese espacio de dimensión $2n+1$, relacionado con la estructura de contacto.
+
+En resumen, puede pensarse que $u$ es una coordenada adicional. En ese caso, la EDP deja de verse como una ecuación para una función y pasa a describir las curvas integrales del campo vectorial
+$$
+\boxed{
+\widetilde X
+=
+\sum_i a_i(x)\,\partial_{x_i}
++
+(cu+f)\,\partial_u,
+}
+$$
+que es, en esencia, la formulación geométrica del método de las características.
+Para ecuaciones lineales de primer orden, esta es probablemente la forma más conceptual de entender el método.
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -234,6 +1303,325 @@ Hágalo.
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 4)}
 \vspace{0.5cm}
+
+El potencial satisface la ecuación de Laplace en el interior de un cilindro infinito de radio $b$
+$$
+\nabla^2\Phi=0,
+$$
+con condición de borde
+$$
+\Phi(b,\theta)=
+\begin{cases}
++V,&0<\theta\le\pi/2,\\
+-V,&\pi/2<\theta\le\pi,\\
++V,&\pi<\theta\le3\pi/2,\\
+-V,&3\pi/2<\theta\le2\pi.
+\end{cases}
+$$
+Como el dato de borde no depende de $z$, la solución tampoco dependerá de $z$.
+La ecuación de Laplace queda entonces
+$$
+\frac1r\frac{\partial}{\partial r}
+\left(r\frac{\partial\Phi}{\partial r}\right)
++\frac1{r^2}\frac{\partial^2\Phi}{\partial\theta^2}=0.
+$$
+
+{\bf a) Serie de potencias}
+
+{\em Separación de variables}
+
+Buscamos
+$$
+\Phi(r,\theta)=R(r)\Theta(\theta).
+$$
+Sustituyendo,
+$$
+\frac{r^2R''+rR'}R
+=
+-\frac{\Theta''}{\Theta}
+=n^2.
+$$
+Obtenemos
+$$
+\Theta=A_n\cos n\theta+B_n\sin n\theta,
+$$
+y
+$$
+R=C_nr^n+D_nr^{-n}.
+$$
+Como queremos una solución regular en el origen,
+$$
+D_n=0.
+$$
+Además, el valor medio del potencial de borde es cero, por lo que no hay término constante.
+Así,
+$$
+\boxed{
+\Phi(r,\theta)
+=
+\sum_{n=1}^\infty
+\left(\frac rb\right)^n
+\left(
+a_n\cos n\theta
++
+b_n\sin n\theta
+\right).
+}
+$$
+
+{\em Simetrías del dato de borde}
+
+La función de borde verifica
+$$
+f(\theta+\pi)=f(\theta),
+$$
+por lo que sólo aparecen armónicos pares.
+Además,
+$$
+f(-\theta)=-f(\theta),
+$$
+es decir, es impar respecto de $\theta=0$.
+Luego sólo aparecen senos.
+Por tanto,
+$$
+\boxed{
+\Phi(r,\theta)
+=
+\sum_{m=1}^\infty
+b_{2m}
+\left(\frac rb\right)^{2m}
+\sin(2m\theta).
+}
+$$
+
+{\em Cálculo de los coeficientes}
+
+Los coeficientes son
+$$
+b_n=\frac1\pi
+\int_0^{2\pi}
+f(\theta)\sin(n\theta),d\theta.
+$$
+Como $f=\pm V$,
+$$
+b_n
+=
+\frac{V}{\pi}
+\left[
+\int_0^{\pi/2}\sin n\theta\,d\theta
+-
+\int_{\pi/2}^{\pi}\sin n\theta\,d\theta
++\cdots
+\right].
+$$
+Un cálculo directo da
+$$
+b_n=
+\frac{4V}{\pi n},
+\qquad
+n=2,6,10,\ldots
+$$
+y
+$$
+b_n=
+-\frac{4V}{\pi n},
+\qquad
+n=4,8,12,\ldots
+$$
+o, equivalentemente,
+$$
+\boxed{
+b_{4k+2}
+=
+\frac{4V}{(4k+2)\pi},
+\qquad
+b_{4k}=-
+\frac{4V}{4k,\pi}.
+}
+$$
+Puede escribirse de forma compacta como
+$$
+b_{2m}
+=
+\frac{2V}{m\pi}(-1)^{m+1}.
+$$
+
+{\em Solución en serie}
+
+Finalmente,
+$$
+\boxed{
+\Phi(r,\theta)
+=
+\frac{2V}{\pi}
+\sum_{m=1}^{\infty}
+(-1)^{m+1}
+\frac1m
+\left(\frac rb\right)^{2m}
+\sin(2m\theta).
+}
+$$
+Esta es la solución pedida en el inciso $a$.
+
+{\bf b) Suma de la serie}
+
+Escribimos
+$$
+\sin(2m\theta)
+=
+\Im(e^{2im\theta}),
+$$
+por lo que
+$$
+\Phi
+=
+\frac{2V}{\pi}
+\Im
+\left[
+\sum_{m=1}^{\infty}
+(-1)^{m+1}
+\frac1m
+\left(
+\frac rb
+\right)^{2m}
+e^{2im\theta}
+\right].
+$$
+Definamos
+$$
+z=
+-\left(\frac rb\right)^2e^{2i\theta}.
+$$
+Entonces
+$$
+(-1)^{m+1}
+\left(\frac rb\right)^{2m}
+e^{2im\theta}
+=
+-z^m,
+$$
+y
+$$
+\Phi
+=
+-\frac{2V}{\pi}
+\Im
+\left[
+\sum_{m=1}^{\infty}
+\frac{z^m}{m}
+\right].
+$$
+Usando
+$$
+\sum_{m=1}^{\infty}\frac{z^m}{m}
+=
+-\log(1-z),
+$$
+resulta
+$$
+\Phi
+=
+\frac{2V}{\pi}
+\Im
+\log(1-z).
+$$
+Como
+$$
+z=
+-\left(\frac rb\right)^2e^{2i\theta},
+$$
+obtenemos
+$$
+\boxed{
+\Phi(r,\theta)
+=
+\frac{2V}{\pi}
+\Im
+\log
+\left[
+1+
+\left(\frac rb\right)^2
+e^{2i\theta}
+\right].
+}
+$$
+
+{\em Forma real}
+
+Usando
+$$
+\Im\log(x+iy)=\arg(x+iy),
+$$
+la solución también puede escribirse como
+$$
+\boxed{
+\Phi(r,\theta)
+=
+\frac{2V}{\pi}
+\arctan
+\left(
+\frac{\left(\frac rb\right)^2\sin2\theta}
+{1+\left(\frac rb\right)^2\cos2\theta}
+\right),
+}
+$$
+tomando la rama continua del argumento en el disco $r<b$.
+
+{\bf Respuestas finales}
+
+\begin{itemize}
+\item {\bf a)}
+$$
+\boxed{
+\Phi(r,\theta)
+=
+\frac{2V}{\pi}
+\sum_{m=1}^{\infty}
+(-1)^{m+1}
+\frac1m
+\left(\frac rb\right)^{2m}
+\sin(2m\theta).
+}
+$$
+
+\item {\bf b)}
+La serie se suma exactamente a
+$$
+\boxed{
+\Phi(r,\theta)
+=
+\frac{2V}{\pi}
+\Im
+\log
+\left[
+1+
+\left(\frac rb\right)^2e^{2i\theta}
+\right],
+}
+$$
+o, de forma equivalente,
+$$
+\boxed{
+\Phi(r,\theta)
+=
+\frac{2V}{\pi}
+\arctan
+\left(
+\frac{\left(\frac rb\right)^2\sin2\theta}
+{1+\left(\frac rb\right)^2\cos2\theta}
+\right).
+}
+$$
+Esta última es la expresión cerrada del potencial en todo el interior del cilindro $(r<b)$.
+\end{itemize}
+
+
+
+
+
+
+
+
 
 
 
