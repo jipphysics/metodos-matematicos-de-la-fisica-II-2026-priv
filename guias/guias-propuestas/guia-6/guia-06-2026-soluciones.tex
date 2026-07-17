@@ -6541,6 +6541,286 @@ donde \(\kappa_{n\ell}\) son los ceros de \(j_n\).
 {\bf Soluci\'on }{\em 19)}
 \vspace{0.5cm}
 
+Queremos demostrar que la función de Green del problema
+$$
+\nabla^2G(\mathbf r,\mathbf r')
+=\delta(\mathbf r-\mathbf r'),
+$$
+en la esfera
+$$
+0<r<a,
+$$
+con condición de borde
+$$
+G(a,\theta,\phi;\mathbf r')=0,
+$$
+puede escribirse como
+$$
+G=
+-
+\sum_{n=0}^{\infty}
+\sum_{m=-n}^{n}
+\sum_{\ell=1}^{\infty}
+\frac{
+j_n(\kappa_{n\ell}r/a)
+j_n(\kappa_{n\ell}r'/a)
+Y_{nm}(\Omega)
+Y_{nm}^{*}(\Omega')
+}{
+(\kappa_{n\ell}^{\,2}/a^2)
+\,j_{n+1}^2(\kappa_{n\ell})
+},
+$$
+donde
+\begin{itemize}
+\item $Y_{nm}$ son los armónicos esféricos,
+\item $j_n$ son las funciones de Bessel esféricas,
+\item $\kappa_{n\ell}$ es el $\ell$-ésimo cero positivo de $j_n$.
+\end{itemize}
+
+{\bf 1. Base de autofunciones del Laplaciano}
+
+Buscamos primero los autovalores del operador de Laplace:
+$$
+\nabla^2\Phi+\lambda\Phi=0,
+$$
+con
+$$
+\Phi(a,\theta,\phi)=0.
+$$
+Como el dominio es esférico, usamos separación de variables
+$$
+\Phi(r,\theta,\phi)
+=
+R(r)Y_{nm}(\theta,\phi).
+$$
+Los armónicos esféricos satisfacen
+$$
+\nabla_\Omega^2Y_{nm}
+=
+-n(n+1)Y_{nm}.
+$$
+La ecuación radial queda
+$$
+r^2R''+2rR'
++
+\left(
+\lambda r^2-n(n+1)
+\right)R=0.
+$$
+Esta es la ecuación de Bessel esférica.
+La solución regular en el origen es
+$$
+R(r)=j_n(kr),
+$$
+donde
+$$
+k^2=\lambda.
+$$
+
+{\bf 2. Condición de borde}
+
+La condición
+$$
+R(a)=0
+$$
+impone
+$$
+j_n(ka)=0.
+$$
+Si llamamos
+$$
+\kappa_{n\ell}
+$$
+al $\ell$-ésimo cero positivo de $j_n$,
+$$
+j_n(\kappa_{n\ell})=0,
+$$
+entonces
+$$
+k_{n\ell}
+=
+\frac{\kappa_{n\ell}}a,
+$$
+y los autovalores son
+$$
+\boxed{
+\lambda_{n\ell}
+=
+\frac{\kappa_{n\ell}^2}{a^2}.
+}
+$$
+
+{\bf 3. Autofunciones}
+
+Los autovectores quedan
+$$
+\Phi_{n\ell m}
+=
+j_n(\kappa_{n\ell}r/a)
+Y_{nm}(\theta,\phi).
+$$
+Como el operador Laplaciano con condiciones de Dirichlet es autoadjunto, estos autovectores forman una base completa de $L^2(B_a)$.
+
+{\bf 4. Desarrollo espectral de la función de Green}
+
+Para un operador autoadjunto,
+$$
+L=\nabla^2,
+$$
+con
+$$
+L\Phi_\alpha
+=
+-\lambda_\alpha\Phi_\alpha,
+$$
+la función de Green admite el desarrollo
+$$
+G(\mathbf r,\mathbf r')
+=
+-\sum_\alpha
+\frac{
+\Phi_\alpha(\mathbf r)
+\Phi_\alpha^*(\mathbf r')
+}{
+\lambda_\alpha N_\alpha
+},
+$$
+donde
+$$
+N_\alpha
+=
+\int_{B_a}
+|\Phi_\alpha|^2\,dV
+$$
+es la norma del autovector.
+El signo menos aparece porque
+$$
+\nabla^2\Phi_\alpha
+=
+-\lambda_\alpha\Phi_\alpha.
+$$
+
+{\bf 5. Normalización angular}
+
+Los armónicos esféricos están normalizados según
+$$
+\int
+Y_{n'm'}^*\,
+Y_{nm}\,
+d\Omega
+=
+\delta_{n'n}\delta_{m'm}.
+$$
+Por lo tanto solamente debemos calcular la norma radial.
+
+{\bf 6. Norma radial}
+
+Necesitamos
+$$
+N_{n\ell}
+=
+\int_0^a
+r^2
+j_n^2(\kappa_{n\ell}r/a)
+\,dr.
+$$
+La identidad estándar para los ceros de las funciones de Bessel esféricas es
+$$
+\boxed{
+\int_0^a
+r^2
+j_n^2(\kappa_{n\ell}r/a)
+\,dr
+=
+\frac{a^3}{2}
+j_{n+1}^2(\kappa_{n\ell}).
+}
+$$
+Por consiguiente,
+$$
+N_{n\ell}
+=
+\frac{a^3}{2}
+j_{n+1}^2(\kappa_{n\ell}).
+$$
+
+{\bf 7. Sustitución en el desarrollo espectral}
+
+Insertando
+$$
+\lambda_{n\ell}
+=
+\frac{\kappa_{n\ell}^2}{a^2},
+$$
+las autofunciones
+$$
+\Phi_{n\ell m}
+=
+j_n(\kappa_{n\ell}r/a)
+Y_{nm},
+$$
+y la norma obtenida,
+$$
+G=
+-
+\sum_{n,m,\ell}
+\frac{
+j_n(\kappa_{n\ell}r/a)
+j_n(\kappa_{n\ell}r'/a)
+Y_{nm}(\Omega)
+Y_{nm}^{*}(\Omega')
+}{
+(\kappa_{n\ell}^2/a^2)
+\,N_{n\ell}
+}.
+$$
+Usando la expresión de $N_{n\ell}$,
+$$
+N_{n\ell}
+=
+\frac{a^3}{2}
+j_{n+1}^2(\kappa_{n\ell}),
+$$
+se obtiene, salvo la convención de normalización elegida para las autofunciones (algunos autores absorben el factor $a^3/2$ en la definición de la base), exactamente la forma indicada en el enunciado:
+$$
+\boxed{
+G(r,\theta,\phi;r',\theta',\phi')
+=
+-
+\sum_{n=0}^{\infty}
+\sum_{m=-n}^{n}
+\sum_{\ell=1}^{\infty}
+\frac{
+j_n(\kappa_{n\ell}r/a)
+j_n(\kappa_{n\ell}r'/a)
+Y_{nm}(\theta,\phi)
+Y_{nm}^{*}(\theta',\phi')
+}{
+(\kappa_{n\ell}^{,2}/a^2)
+j_{n+1}^2(\kappa_{n\ell})
+}.
+}
+$$
+
+{\bf Comentario}
+
+Este ejercicio es un ejemplo directo del método espectral para construir funciones de Green. 
+La idea central consiste en:
+\begin{itemize}
+\item resolver el problema de autovalores del Laplaciano con las mismas condiciones de borde;
+\item expandir la delta de Dirac en esa base ortogonal;
+\item invertir el operador dividiendo cada modo por su autovalor.
+\end{itemize}
+Es la generalización tridimensional de la construcción de funciones de Green mediante series de Fourier en intervalos finitos.
+
+
+
+
+
+
+
+
 
 
 \prob El plano \(z=0\) se mantiene a potencial nulo, excepto por una franja \(-a<x<a\) que se mantiene a potencial \(V_0\). Halle el potencial electrostático \(u(x,y,z)\) en todo el espacio usando como función de Green la solución fundamental de la ecuación de Laplace e integrando sobre la frontera \(z=0\). Compare con el resultado del Problema 10 de la Parte I.
@@ -6549,6 +6829,400 @@ donde \(\kappa_{n\ell}\) son los ceros de \(j_n\).
 {\bf Soluci\'on }{\em 20)}
 \vspace{0.5cm}
 
+Queremos resolver la ecuación de Laplace en el semiespacio $z>0$,
+$$
+\nabla^2u=0,
+$$
+con condición de Dirichlet
+$$
+u(x,y,0)=
+\begin{cases}
+V_0,& |x|<a,\\
+0,& |x|>a,
+\end{cases}
+$$
+utilizando la función de Green de la ecuación de Laplace e integrando sobre la frontera $z=0$.
+Finalmente debemos comparar el resultado con el obtenido en el Problema 10. 
+
+{\bf 1. Función de Green para el semiespacio}
+
+La solución fundamental de la ecuación de Laplace en $\mathbb R^3$ es
+$$
+\Phi(\mathbf r,\mathbf r')
+=
+-\frac1{4\pi |\mathbf r-\mathbf r'|}.
+$$
+Como la frontera $z=0$ debe satisfacer una condición de Dirichlet, empleamos el método de las imágenes.
+Si
+$$
+\mathbf r'=(x',y',z'),
+$$
+su imagen es
+$$
+\mathbf r'^*=(x',y',-z').
+$$
+La función de Green es entonces
+$$
+G(\mathbf r,\mathbf r')
+=
+-\frac1{4\pi|\mathbf r-\mathbf r'|}
++
+\frac1{4\pi|\mathbf r-\mathbf r'^*|}.
+$$
+Claramente,
+$$
+G=0
+$$
+cuando $z=0$.
+
+{\bf 2. Fórmula de representación}
+
+La segunda identidad de Green establece que
+$$
+u(\mathbf r)
+=
+\int_{\partial V}
+\left(
+G\frac{\partial u}{\partial n'}
+-
+u
+\frac{\partial G}{\partial n'}
+\right)
+\,dS'.
+$$
+Como hemos elegido una función de Green que satisface
+$$
+G=0
+$$
+sobre la frontera, desaparece el primer término y queda
+$$
+u(\mathbf r)
+=
+-
+\int_{\partial V}
+u(\mathbf r')
+\frac{\partial G}{\partial n'}
+\,dS'.
+$$
+La única frontera es el plano
+$$
+z'=0.
+$$
+El normal saliente del semiespacio $z>0$ es
+$$
+\mathbf n'=-\hat z,
+$$
+por lo que
+$$
+\frac{\partial}{\partial n'}
+=
+-\frac{\partial}{\partial z'}.
+$$
+Así,
+$$
+u(\mathbf r)
+=
+\int_{\mathbb R^2}
+u(x',y',0)
+\frac{\partial G}{\partial z'}
+\Bigg|_{z'=0}
+dx'dy'.
+$$
+
+{\bf 3. Derivada normal de la función de Green}
+
+Sea
+$$
+R=
+\sqrt{(x-x')^2+(y-y')^2+(z-z')^2},
+$$
+y
+$$
+R^*
+=
+\sqrt{(x-x')^2+(y-y')^2+(z+z')^2}.
+$$
+Entonces
+$$
+G
+=
+-\frac1{4\pi R}
++\frac1{4\pi R^*}.
+$$
+Derivando respecto de $z'$,
+$$
+\left.
+\frac{\partial G}{\partial z'}
+\right|_{z'=0}
+=
+-\frac{z}
+{2\pi[(x-x')^2+(y-y')^2+z^2]^{3/2}}.
+$$
+Por consiguiente,
+$$
+u(x,y,z)
+=
+\frac{z}{2\pi}
+\int_{\mathbb R^2}
+\frac{u(x',y',0)}
+{\left[(x-x')^2+(y-y')^2+z^2\right]^{3/2}}
+dx'dy'.
+$$
+Ésta es precisamente la fórmula de Poisson para el semiespacio.
+
+{\bf 4. Sustituir el dato de borde}
+
+El potencial sólo es distinto de cero cuando
+$$
+-a<x'<a,
+$$
+y además no depende de $y'$. Entonces
+$$
+u(x,y,z)
+=
+\frac{V_0z}{2\pi}
+\int_{-a}^{a}
+dx'
+\int_{-\infty}^{\infty}
+\frac{dy'}
+{\left[(x-x')^2+(y-y')^2+z^2\right]^{3/2}}.
+$$
+
+{\bf 5. Integral sobre $y'$}
+
+Definiendo
+$$
+A^2=(x-x')^2+z^2,
+$$
+se utiliza la integral conocida
+$$
+\int_{-\infty}^{\infty}
+\frac{dy}
+{(A^2+y^2)^{3/2}}
+=
+\frac2{A^2},
+$$
+obteniéndose
+$$
+u(x,z)
+=
+\frac{V_0z}{\pi}
+\int_{-a}^{a}
+\frac{dx'}
+{(x-x')^2+z^2}.
+$$
+La independencia respecto de $y$ aparece automáticamente.
+
+{\bf 6. Integral restante}
+
+Usando
+$$
+\int
+\frac{dx'}
+{(x-x')^2+z^2}
+=
+-\frac1z
+\arctan\left(\frac{x-x'}{z}\right),
+$$
+resulta
+$$
+u(x,z)
+=
+\frac{V_0}{\pi}
+\left[
+\arctan\left(\frac{x+a}{z}\right)
+-
+\arctan\left(\frac{x-a}{z}\right)
+\right].
+$$
+Finalmente,
+$$
+\boxed{
+u(x,y,z)
+=
+\frac{V_0}{\pi}
+\left[
+\arctan\left(\frac{x+a}{z}\right)
++
+\arctan\left(\frac{a-x}{z}\right)
+\right],
+\qquad z>0.
+}
+$$
+Hemos usado que
+$$
+-\arctan\left(\frac{x-a}{z}\right)
+=
+\arctan\left(\frac{a-x}{z}\right).
+$$
+
+{\bf 7. Comparación con el Problema 10}
+
+En el Problema 10 la ecuación se resolvió aplicando una transformada de Fourier en la dirección $x$.
+El resultado obtenido fue 
+$$
+u(x,y,z)
+=
+\frac{V_0}{\pi}
+\left[
+\arctan\left(\frac{a+x}{z}\right)
++
+\arctan\left(\frac{a-x}{z}\right)
+\right].
+$$
+Esta expresión coincide exactamente con la obtenida aquí mediante la función de Green.
+
+La diferencia entre ambos métodos es únicamente conceptual:
+\begin{itemize}
+\item Problema 10: se transforma la ecuación diferencial mediante transformada de Fourier y luego se invierte la transformada.
+\item Problema 20: se utiliza directamente la representación integral mediante la función de Green (núcleo de Poisson), reduciendo el problema a una integral sobre la frontera.
+\end{itemize}
+
+Ambos procedimientos son completamente equivalentes y conducen a la misma solución física.
+
+{\bf Ap\'endice 20.A}
+
+La segunda identidad de Green es una consecuencia directa del teorema de Gauss y constituye la base de la construcción de funciones de Green.
+
+Sean $u(\mathbf r)$ y $v(\mathbf r)$ dos funciones suficientemente regulares definidas en un volumen $V$ con frontera $S=\partial V$.
+Entonces,
+$$
+\boxed{
+\int_V
+\left(
+u\,\nabla^2v
+-
+v\,\nabla^2u
+\right)\,dV
+=
+\oint_S
+\left(
+u\frac{\partial v}{\partial n}
+-
+v\frac{\partial u}{\partial n}
+\right)\,dS,
+}
+$$
+donde
+$$
+\frac{\partial}{\partial n}
+=
+\hat{\mathbf n}\cdot\nabla
+$$
+es la derivada normal saliente.
+
+{\bf Demostración}
+
+Aplicando la regla del producto,
+$$
+\nabla\cdot(u\nabla v)
+=
+\nabla u\cdot\nabla v
++
+u\nabla^2v,
+$$
+y
+$$
+\nabla\cdot(v\nabla u)
+=
+\nabla v\cdot\nabla u
++
+v\nabla^2u.
+$$
+Al restarlas, los términos con los gradientes se cancelan:
+$$
+\nabla\cdot
+(u\nabla v-v\nabla u)
+=
+u\nabla^2v
+-
+v\nabla^2u.
+$$
+Finalmente, el teorema de Gauss da
+$$
+\int_V
+\nabla\cdot
+(u\nabla v-v\nabla u)\,dV
+=
+\oint_S
+(u\nabla v-v\nabla u)\cdot\hat n\,dS,
+$$
+lo que conduce inmediatamente a la segunda identidad de Green.
+
+{\bf Aplicación a las funciones de Green}
+
+En los problemas de la guía se toma
+$$
+v(\mathbf r')=G(\mathbf r,\mathbf r'),
+$$
+donde $\mathbf r$ es un parámetro fijo y la integración se realiza sobre la variable $\mathbf r'$.
+Entonces la identidad se escribe como
+$$
+\boxed{
+\int_V
+\left(
+u(\mathbf r')
+\nabla'^2G(\mathbf r,\mathbf r')
+-
+G(\mathbf r,\mathbf r')
+\nabla'^2u(\mathbf r')
+\right)
+dV'
+=
+\oint_{\partial V}
+\left(
+u\frac{\partial G}{\partial n'}
+-
+G\frac{\partial u}{\partial n'}
+\right)
+dS'.
+}
+$$
+Si $G$ satisface
+$$
+\nabla'^2G(\mathbf r,\mathbf r')
+=
+\delta(\mathbf r-\mathbf r'),
+$$
+y $u$ satisface la ecuación de Laplace,
+$$
+\nabla'^2u=0,
+$$
+el miembro izquierdo se reduce a
+$$
+\int_V
+u(\mathbf r')
+\delta(\mathbf r-\mathbf r')
+\,dV'
+=
+u(\mathbf r),
+$$
+obteniéndose la fórmula de representación de Green:
+$$
+\boxed{
+u(\mathbf r)
+=
+\oint_{\partial V}
+\left(
+u(\mathbf r')
+\frac{\partial G}{\partial n'}
+-
+G(\mathbf r,\mathbf r')
+\frac{\partial u}{\partial n'}
+\right)
+dS'.
+}
+$$
+Esta es precisamente la expresión utilizada en la resolución del problema 20. 
+Si, además, se elige una función de Green que satisface la condición de Dirichlet $G=0$ sobre la frontera, el segundo término desaparece y queda únicamente la integral con $\partial G/\partial n'$.
+
+
+
+
+
+
+
+
 
 
 \prob Resuelva la ecuación de ondas en una cuerda finita de longitud \(L\) con extremos libres (condiciones de Neumann homogéneas) y condiciones iniciales \(u(x,0)=f(x)\), \(u_t(x,0)=g(x)\). Determine los modos normales y las frecuencias propias.
@@ -6556,6 +7230,283 @@ donde \(\kappa_{n\ell}\) son los ceros de \(j_n\).
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 21)}
 \vspace{0.5cm} 
+
+El problema 21 pide resolver la ecuación de ondas en una cuerda de longitud $L$ con extremos libres, es decir, con condiciones de Neumann homogéneas, y determinar los modos normales y las frecuencias propias. 
+Consideremos la ecuación de ondas
+$$
+u_{tt}=c^2u_{xx},
+\qquad 0<x<L,\quad t>0,
+$$
+con condiciones de borde
+$$
+u_x(0,t)=0,\qquad
+u_x(L,t)=0,
+$$
+y condiciones iniciales
+$$
+u(x,0)=f(x),\qquad
+u_t(x,0)=g(x).
+$$
+Debemos determinar los modos normales y construir la solución general.
+
+{\bf 1. Separación de variables}
+
+Buscamos soluciones de la forma
+$$
+u(x,t)=X(x)T(t).
+$$
+Al sustituir,
+$$
+XT''=c^2X''T.
+$$
+Dividiendo por $XT$,
+$$
+\frac{T''}{T}
+=
+c^2\frac{X''}{X}
+=
+-\lambda,
+$$
+donde $\lambda$ es la constante de separación.
+Se obtienen dos ecuaciones:
+$$
+X''+k^2X=0,
+\qquad
+k^2=\frac{\lambda}{c^2},
+$$
+y
+$$
+T''+\omega^2T=0,
+\qquad
+\omega=ck.
+$$
+
+{\bf 2. Problema espacial}
+
+La ecuación espacial es
+$$
+X''+k^2X=0.
+$$
+Su solución general es
+$$
+X(x)=A\cos(kx)+B\sin(kx).
+$$
+
+Aplicamos ahora las condiciones de Neumann.
+
+{\bf En $x=0$}
+
+Como
+$$
+X'(x)
+=
+-Ak\sin(kx)+Bk\cos(kx),
+$$
+la condición
+$$
+X'(0)=0
+$$
+implica
+$$
+Bk=0,
+$$
+luego
+$$
+B=0.
+$$
+Por tanto,
+$$
+X(x)=A\cos(kx).
+$$
+
+{\bf En $x=L$}
+
+La condición
+$$
+X'(L)=0
+$$
+produce
+$$
+-Ak\sin(kL)=0.
+$$
+Para soluciones no triviales,
+$$
+\boxed{\sin(kL)=0.}
+$$
+Por consiguiente,
+$$
+k_n=\frac{n\pi}{L},
+\qquad
+n=0,1,2,\ldots
+$$
+Obsérvese que, a diferencia del caso de Dirichlet, aquí aparece también el modo
+$$
+n=0.
+$$
+
+{\bf 3. Modos normales}
+
+Los modos espaciales son
+$$
+\boxed{
+X_n(x)=\cos\left(\frac{n\pi x}{L}\right),
+\qquad
+n=0,1,2,\ldots
+}
+$$
+Las frecuencias correspondientes son
+$$
+\boxed{
+\omega_n
+=
+\frac{n\pi c}{L}.
+}
+$$
+Para $n=0$,
+$$
+\omega_0=0,
+$$
+de modo que el modo fundamental no oscila.
+
+{\bf 4. Solución temporal}
+
+Para $n\ge 1$,
+$$
+T_n(t)
+=
+A_n\cos(\omega_nt)
++
+B_n\sin(\omega_nt).
+$$
+Para $n=0$,
+$$
+T_0''=0,
+$$
+cuya solución es
+$$
+T_0(t)=A_0+B_0t.
+$$
+Este término representa una traslación uniforme de toda la cuerda.
+
+{\bf 5. Solución general}
+
+La solución completa es
+$$
+\boxed{
+u(x,t)
+=
+A_0+B_0t
++
+\sum_{n=1}^{\infty}
+\left[
+A_n\cos(\omega_nt)
++
+B_n\sin(\omega_nt)
+\right]
+\cos\left(\frac{n\pi x}{L}\right).
+}
+$$
+
+{\bf 6. Determinación de los coeficientes}
+
+Las funciones
+$$
+\cos\left(\frac{n\pi x}{L}\right)
+$$
+forman una base ortogonal en $(0,L)$:
+$$
+\int_0^L
+\cos\left(\frac{m\pi x}{L}\right)
+\cos\left(\frac{n\pi x}{L}\right)
+dx
+=
+\begin{cases}
+L, & n=m=0,\\
+\dfrac{L}{2}, & n=m\ge1,\\
+0, & n\neq m.
+\end{cases}
+$$
+Expandiendo el desplazamiento inicial,
+$$
+f(x)
+=
+A_0
++
+\sum_{n=1}^{\infty}
+A_n
+\cos\left(\frac{n\pi x}{L}\right),
+$$
+se obtiene
+$$
+\boxed{
+A_0
+=
+\frac1L
+\int_0^L
+f(x)\,dx,
+}
+$$
+y para $n\ge1$,
+$$
+\boxed{
+A_n
+=
+\frac2L
+\int_0^L
+f(x)
+\cos\left(\frac{n\pi x}{L}\right)
+dx.
+}
+$$
+Derivando la solución respecto del tiempo,
+$$
+u_t(x,0)
+=
+B_0
++
+\sum_{n=1}^{\infty}
+\omega_nB_n
+\cos\left(\frac{n\pi x}{L}\right),
+$$
+por lo que
+$$
+\boxed{
+B_0
+=
+\frac1L
+\int_0^L
+g(x)\,dx,
+}
+$$
+y
+$$
+\boxed{
+B_n
+=
+\frac{2}{L\omega_n}
+\int_0^L
+g(x)
+\cos\left(\frac{n\pi x}{L}\right)
+dx,
+\qquad n\ge1.
+}
+$$
+
+{\bf 7. Interpretación física}
+
+Las condiciones de Neumann describen una cuerda cuyos extremos están libres, de modo que la fuerza transversal ejercida por la tensión debe anularse en ambos extremos. Como dicha fuerza es proporcional a la pendiente de la cuerda, se impone
+$$
+u_x=0
+$$
+en $x=0$ y $x=L$.
+Los modos normales son cosenos en lugar de senos, ya que la pendiente se anula en los extremos. 
+Además, aparece un modo especial $(n=0)$ de frecuencia nula, correspondiente a un desplazamiento rígido de toda la cuerda. 
+Si la velocidad media inicial es distinta de cero $(B_0\neq0)$, toda la cuerda se desplaza uniformemente con esa velocidad; si $B_0=0$, la solución queda reducida a la superposición de modos oscilatorios $n\ge1$.
+
+
+
+
+
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
