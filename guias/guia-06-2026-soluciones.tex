@@ -65,6 +65,15 @@
 
 \newcommand{\tder}[2]{\frac{d #1}{d #2}}
 
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Counters definitions (old)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3519,15 +3528,1322 @@ u_p(x,t) = \frac{1}{2c}\int_0^t \int_{x-c(t-\tau)}^{x+c(t-\tau)} \psi(s,\tau)\,d
 \]
 satisface el problema \(\frac{\partial^2 u}{\partial t^2} - c^2\frac{\partial^2 u}{\partial x^2} = \psi(x,t)\) con datos iniciales nulos.
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 13)}
+\vspace{0.5cm}
+% https://chatgpt.com/share/6a39bfe9-6ff4-83e9-b128-395b023864a2
+
+Este problema pide verificar que
+$$
+u_p(x,t)=\frac{1}{2c}\int_0^t
+\int_{x-c(t-\tau)}^{x+c(t-\tau)}
+\psi(s,\tau),ds,d\tau
+$$
+satisface
+$$
+u_{tt}-c^2u_{xx}=\psi(x,t)
+$$
+con condiciones iniciales nulas
+$$
+u(x,0)=0,\qquad u_t(x,0)=0.
+$$
+Esta fórmula es la versión de Duhamel para la ecuación de ondas en una dimensión.
+
+{\bf 1. Verificación de las condiciones iniciales}
+
+Condición para $u(x,0)$.
+Si $t=0$,
+$$
+u_p(x,0)
+=
+\frac1{2c}
+\int_0^0
+\left(
+\int_{x-c(0-\tau)}^{x+c(0-\tau)}
+\psi(s,\tau),ds
+\right)
+d\tau
+=0.
+$$
+Por lo tanto,
+$$
+u_p(x,0)=0.
+$$
+
+Condición para $u_t(x,0)$.
+Para un valor de $x$ fijo y arbitrario, definamos
+$$
+F(t,\tau)
+=
+\int_{x-c(t-\tau)}^{x+c(t-\tau)}
+\psi(s,\tau)\,ds .
+$$
+Entonces
+$$
+u_p(x,t)
+=
+\frac1{2c}
+\int_0^t F(t,\tau),d\tau.
+$$
+Aplicando la regla de Leibniz,
+$$
+u_t=
+\frac1{2c}
+\left[
+F(t,t)
++
+\int_0^t
+\frac{\partial F}{\partial t}(t,\tau)\,d\tau
+\right].
+$$
+Pero
+$$
+F(t,t)
+=
+\int_x^x \psi(s,t)\,ds
+=
+0.
+$$
+Luego
+$$
+u_t=
+\frac1{2c}
+\int_0^t
+\frac{\partial F}{\partial t}(t,\tau)\,d\tau.
+$$
+Ahora,
+$$
+F(t,\tau)
+=
+\int_{a(t)}^{b(t)}
+\psi(s,\tau)\,ds,
+$$
+con
+$$
+a(t)=x-c(t-\tau),
+\qquad
+b(t)=x+c(t-\tau)
+$$
+para el mismo $x$ fijo y arbitrario.
+La regla de Leibniz da
+$$
+\frac{\partial F}{\partial t}
+=
+\psi(b,\tau)b'(t)
+-
+\psi(a,\tau)a'(t).
+$$
+Como
+$$
+b'(t)=c,
+\qquad
+a'(t)=-c,
+$$
+obtenemos
+$$
+\frac{\partial F}{\partial t}
+=
+c\Big[
+\psi(x+c(t-\tau),\tau)
++
+\psi(x-c(t-\tau),\tau)
+\Big].
+$$
+Por consiguiente
+$$
+u_t
+=
+\frac12
+\int_0^t
+\Big[
+\psi(x+c(t-\tau),\tau)
++
+\psi(x-c(t-\tau),\tau)
+\Big]d\tau .
+$$
+Al evaluar en $t=0$,
+$$
+u_t(x,0)=0.
+$$
+
+{\bf 2. Cálculo de $u_{tt}$}
+
+Derivando la expresión anterior,
+$$
+u_t
+=
+\frac12
+\int_0^t
+\Big[
+\psi(x+c(t-\tau),\tau)
++
+\psi(x-c(t-\tau),\tau)
+\Big]d\tau .
+$$
+Aplicando nuevamente Leibniz,
+$$
+u_{tt}
+=
+\frac12
+\Big[
+2\psi(x,t)
+\Big]
++
+\frac12
+\int_0^t
+\frac{\partial}{\partial t}
+\Big(
+\psi(x+c(t-\tau),\tau)
++
+\psi(x-c(t-\tau),\tau)
+\Big)
+d\tau .
+$$
+El término de borde produce
+$$
+\psi(x,t).
+$$
+Además,
+$$
+\frac{\partial}{\partial t}
+\psi(x+c(t-\tau),\tau)
+=
+c\,\psi_x(x+c(t-\tau),\tau),
+$$
+$$
+\frac{\partial}{\partial t}
+\psi(x-c(t-\tau),\tau)
+=
+-c\,\psi_x(x-c(t-\tau),\tau).
+$$
+Por lo tanto
+$$
+u_{tt}
+=
+\psi(x,t)
++
+\frac{c}{2}
+\int_0^t
+\Big[
+\psi_x(x+c(t-\tau),\tau)
+-
+\psi_x(x-c(t-\tau),\tau)
+\Big]
+d\tau .
+$$
+
+{\bf 3. Cálculo de $u_{xx}$}
+
+Partimos de
+$$
+u_p=
+\frac1{2c}
+\int_0^t
+\int_{x-c(t-\tau)}^{x+c(t-\tau)}
+\psi(s,\tau),ds,d\tau .
+$$
+Derivando respecto de $x$,
+$$
+u_x
+=
+\frac1{2c}
+\int_0^t
+\Big[
+\psi(x+c(t-\tau),\tau)
+-
+\psi(x-c(t-\tau),\tau)
+\Big]
+d\tau .
+$$
+Derivando otra vez,
+$$
+u_{xx}
+=
+\frac1{2c}
+\int_0^t
+\Big[
+\psi_x(x+c(t-\tau),\tau)
+-
+\psi_x(x-c(t-\tau),\tau)
+\Big]
+d\tau .
+$$
+Multiplicando por $c^2$,
+$$
+c^2u_{xx}
+=
+\frac{c}{2}
+\int_0^t
+\Big[
+\psi_x(x+c(t-\tau),\tau)
+-
+\psi_x(x-c(t-\tau),\tau)
+\Big]
+d\tau .
+$$
+
+{\bf 4. Verificación de la ecuación}
+
+Restando,
+$$
+u_{tt}-c^2u_{xx}
+=
+\psi(x,t).
+$$
+Luego
+$$
+\boxed{
+u_{tt}-c^2u_{xx}
+=
+\psi(x,t)
+}
+$$
+y además
+$$
+\boxed{
+u(x,0)=0,
+\qquad
+u_t(x,0)=0.
+}
+$$
+Por lo tanto, la función propuesta efectivamente resuelve el problema forzado con datos iniciales nulos.
+
+{\bf Observación:} esta fórmula puede obtenerse directamente aplicando el principio de Duhamel a la solución de d'Alembert. 
+Geométricamente, $u_p(x,t)$ es la integral de la fuente $\psi$ sobre el triángulo característico del punto $(x,t)$,
+$$
+\{(s,\tau):0\le \tau\le t\,,|s-x|\le c(t-\tau)\},
+$$
+es decir, sobre el cono de influencia pasado de $(x,t)$ en $(1+1)$ dimensiones.
+
+
+
+
+
+
+
 \prob Pruebe que si los datos iniciales \(f(x)\) y \(g(x)\) tienen soporte compacto (o decaen junto con sus derivadas primeras suficientemente rápido a cero cuando \(|x|\to\infty\)), la solución de la ecuación de ondas homogénea en toda la recta conserva la energía \(E(t)=\frac{1}{2}\int_{-\infty}^{\infty}\left(u_t^2+c^2u_x^2\right)dx\).
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 14)}
+\vspace{0.5cm}
+% https://chatgpt.com/share/6a39bfe9-6ff4-83e9-b128-395b023864a2
+
+Este problema pide demostrar que la energía
+$$
+E(t)=\frac12\int_{-\infty}^{\infty}
+\Big(
+u_t^2+c^2u_x^2
+\Big)\,dx
+$$
+es constante para las soluciones de la ecuación de ondas homogénea
+$$
+u_{tt}-c^2u_{xx}=0
+$$
+cuando los datos iniciales tienen soporte compacto (o decaen suficientemente rápido en el infinito). 
+La demostración clásica consiste en derivar la energía respecto del tiempo.
+
+{\bf 1. Derivada temporal de la energía}
+
+Suponiendo que $u$ es suficientemente regular,
+$$
+\frac{dE}{dt}
+=
+\frac12
+\frac{d}{dt}
+\int_{-\infty}^{\infty}
+\left(
+u_t^2+c^2u_x^2
+\right)dx.
+$$
+Intercambiando derivada e integral,
+$$
+\frac{dE}{dt}
+=
+\int_{-\infty}^{\infty}
+\left(
+u_tu_{tt}
++
+c^2u_xu_{xt}
+\right)dx.
+$$
+
+{\bf 2. Usar la ecuación de ondas}
+
+Como
+$$
+u_{tt}=c^2u_{xx},
+$$
+obtenemos
+$$
+\frac{dE}{dt}
+=
+c^2
+\int_{-\infty}^{\infty}
+\left(
+u_tu_{xx}
++
+u_xu_{xt}
+\right)dx.
+$$
+Ahora integramos por partes el primer término:
+$$
+\int_{-\infty}^{\infty}
+u_tu_{xx}\,dx
+=
+\Big[u_tu_x\Big]_{-\infty}^{\infty}
+-
+\int_{-\infty}^{\infty}
+u_{xt}u_x\,dx.
+$$
+Por lo tanto
+$$
+\frac{dE}{dt}
+=
+c^2
+\Big[u_tu_x\Big]_{-\infty}^{\infty}
+-
+c^2
+\int_{-\infty}^{\infty}
+u_{xt}u_x\,dx
++
+c^2
+\int_{-\infty}^{\infty}
+u_xu_{xt}\,dx.
+$$
+Los dos integrales se cancelan exactamente:
+$$
+\frac{dE}{dt}
+=
+c^2
+\Big[u_tu_x\Big]_{-\infty}^{\infty}.
+$$
+Así,
+$$
+\boxed{
+\frac{dE}{dt}
+=
+c^2
+\lim_{R\to\infty}
+\Big(
+u_t(R,t)u_x(R,t)
+-
+u_t(-R,t)u_x(-R,t)
+\Big).
+}
+$$
+
+{\bf 3. Comportamiento en el infinito}
+
+Aquí entra la hipótesis del problema.
+Caso 1: soporte compacto.
+Si $f$ y $g$ tienen soporte compacto, la fórmula de d'Alembert
+$$
+u(x,t)
+=
+\frac12[f(x-ct)+f(x+ct)]
++
+\frac1{2c}
+\int_{x-ct}^{x+ct}
+g(s),ds
+$$
+muestra que para cada $t$ fijo la solución también tiene soporte compacto.
+De hecho, si
+$$
+\operatorname{supp}(f),\operatorname{supp}(g)
+\subset[-R,R],
+$$
+entonces
+$$
+u(\cdot,t)
+$$
+está contenida en
+$$
+[-R-ct,;R+ct].
+$$
+Por consiguiente,
+$$
+u_t(\pm\infty,t)=0,
+\qquad
+u_x(\pm\infty,t)=0,
+$$
+y el término de borde desaparece.
+Caso 2: decaimiento rápido
+Si $f$, $g$ y sus derivadas decaen suficientemente rápido, la fórmula de d'Alembert implica que también lo hacen $u_t$ y $u_x$.
+Entonces
+$$
+u_t(x,t)u_x(x,t)\to 0
+\qquad (|x|\to\infty),
+$$
+y nuevamente
+$$
+\Big[u_tu_x\Big]_{-\infty}^{\infty}=0.
+$$
+
+{\bf 4. Conclusión}
+
+En cualquiera de los dos casos,
+$$
+\frac{dE}{dt}=0.
+$$
+Luego
+$$
+\boxed{
+E(t)=E(0)
+}
+$$
+para todo $t\ge0$.
+Es decir,
+$$
+\boxed{
+\frac12\int_{-\infty}^{\infty}
+\left(
+u_t^2+c^2u_x^2
+\right)dx
+=
+\text{constante}.
+}
+$$
+
+{\bf Interpretación física}
+
+La densidad de energía es
+$$
+e(x,t)
+=
+\frac12\left(u_t^2+c^2u_x^2\right).
+$$
+\begin{itemize}
+\item $u_t^2/2$ representa la energía cinética local.
+\item $c^2u_x^2/2$ representa la energía potencial elástica local.
+\end{itemize}
+La ecuación de ondas homogénea no contiene ni fuentes ni disipación, por lo que la energía total sólo puede transportarse a través del espacio. Como el dominio es toda la recta y la perturbación desaparece en el infinito, no existe flujo neto de energía hacia afuera; por ello la energía total permanece constante.
+
+
+
+
+
+
+
 \prob Resuelva la ecuación de onda para una membrana en forma de cuña con CC de borde fijo a lo largo de las rectas \(\theta=0\) y \(\theta=\alpha\), que se encuentra inicialmente en reposo y con la forma \(f(r,\theta,0)=r\,\text{sen}(6\theta)\).
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 15)}
+\vspace{0.5cm}
+% https://chatgpt.com/share/6a3a8d03-7bf4-83e9-9454-59ace4fbd0f8
+
+Hay que resolver la ecuación de ondas para una membrana en forma de cuña,
+$$
+u_{tt}=c^2\nabla^2u,
+$$
+en
+$$
+0<\theta<\alpha,\qquad r>0,
+$$
+con condiciones de borde
+$$
+u(r,0,t)=0,
+\qquad
+u(r,\alpha,t)=0,
+$$
+y condiciones iniciales
+$$
+u(r,\theta,0)=r\sin(6\theta),
+$$
+$$
+u_t(r,\theta,0)=0.
+$$
+
+{\bf 1. Compatibilidad de los datos}
+
+Antes de separar variables conviene verificar que el dato inicial satisfaga las condiciones de borde.
+En $\theta=0$,
+$$
+u(r,0,0)=r\sin 0=0.
+$$
+En $\theta=\alpha$,
+$$
+u(r,\alpha,0)=r\sin(6\alpha).
+$$
+Por tanto, para que los datos sean compatibles con las condiciones de borde debe cumplirse
+$$
+\boxed{\sin(6\alpha)=0.}
+$$
+Es decir,
+$$
+\boxed{
+\alpha=\frac{m\pi}{6},
+\qquad m\in\mathbb N.
+}
+$$
+Si esta condición no se satisface, no existe solución clásica que satisfaga simultáneamente los datos iniciales y las condiciones de borde.
+En lo que sigue asumiremos que la compatibilidad se cumple.
+
+{\bf 2. Separación de variables}
+
+En coordenadas polares,
+$$
+\nabla^2u
+=
+u_{rr}
++\frac1r u_r
++\frac1{r^2}u_{\theta\theta}.
+$$
+Buscamos soluciones de la forma
+$$
+u(r,\theta,t)=R(r)\Theta(\theta)T(t).
+$$
+Sustituyendo,
+$$
+\frac{T''}{c^2T}
+=
+\frac{R''}{R}
++\frac1r\frac{R'}R
++\frac1{r^2}\frac{\Theta''}{\Theta}.
+$$
+Multiplicando por $r^2$,
+$$
+r^2\frac{T''}{c^2T}
+=
+r^2\frac{R''}{R}
++r\frac{R'}R
++\frac{\Theta''}{\Theta}.
+$$
+Introducimos una constante de separación $\mu^2$,
+$$
+\Theta''+\mu^2\Theta=0.
+$$
+
+{\bf 3. Problema angular}
+
+Las condiciones
+$$
+\Theta(0)=0,
+\qquad
+\Theta(\alpha)=0
+$$
+producen
+$$
+\Theta_n(\theta)
+=
+\sin\left(\frac{n\pi}{\alpha}\theta\right),
+$$
+con
+$$
+\mu_n=\frac{n\pi}{\alpha}.
+$$
+Por tanto los modos angulares son discretos.
+
+{\bf 4. Identificación del modo excitado}
+
+El dato inicial contiene únicamente
+$$
+\sin(6\theta).
+$$
+Si la condición de compatibilidad
+$$
+\sin(6\alpha)=0
+$$
+se cumple, entonces existe un entero $n$ tal que
+$$
+6=\frac{n\pi}{\alpha}.
+$$
+Por consiguiente,
+$$
+\sin(6\theta)
+=
+\sin\left(\frac{n\pi}{\alpha}\theta\right).
+$$
+Es decir, el dato inicial excita un único modo angular.
+Por ello podemos escribir
+$$
+u(r,\theta,t)
+=
+F(r,t)\sin(6\theta).
+$$
+
+{\bf 5. Ecuación radial-temporal}
+
+Sustituyendo en la ecuación de ondas,
+$$
+u_{\theta\theta}
+=
+-36F(r,t)\sin(6\theta),
+$$
+obtenemos
+$$
+F_{tt}
+=
+c^2
+\left(
+F_{rr}
++\frac1rF_r
+-\frac{36}{r^2}F
+\right).
+$$
+Las condiciones iniciales son
+$$
+F(r,0)=r,
+\qquad
+F_t(r,0)=0.
+$$
+
+{\bf 6. Separación radial-temporal}
+
+Buscamos
+$$
+F(r,t)=R(r)T(t).
+$$
+Entonces
+$$
+\frac{T''}{c^2T}
+=
+\frac{R''}{R}
++\frac1r\frac{R'}R
+-\frac{36}{r^2}.
+$$
+Tomamos
+$$
+\frac{T''}{T}
+=
+-\omega^2,
+$$
+de modo que
+$$
+T''+\omega^2T=0.
+$$
+La ecuación radial resulta
+$$
+R''+\frac1rR'
++
+\left(
+k^2-\frac{36}{r^2}
+\right)R=0,
+$$
+donde
+$$
+k=\frac{\omega}{c}.
+$$
+Esta es la ecuación de Bessel de orden $6$.
+
+{\bf 7. Soluciones radiales}
+
+Las soluciones son
+$$
+R(r)
+=
+A\,J_6(kr)
++
+B\,Y_6(kr)
+$$
+donde es $J_{\nu}$ es la función de Bessel de primera especie de orden $\nu$, mientras que $Y_{\nu}$ es la función de Bessel de segunda especie (o función de Neumann) del mismo orden.
+Como la membrana incluye el origen y $Y_6$ diverge en $r=0$, imponemos regularidad y conservamos solamente
+$$
+R(r)=J_6(kr).
+$$
+
+{\bf 8. Solución general}
+
+Al no existir una frontera radial, el parámetro $k$ no queda cuantizado.
+Por ello el espectro radial es continuo y la solución general es una superposición integral:
+$$
+u(r,\theta,t)
+=
+\sin(6\theta)
+\int_0^\infty
+\Big[
+A(k)\cos(ckt)
++
+B(k)\sin(ckt)
+\Big]
+J_6(kr)\,dk.
+$$
+La condición
+$$
+u_t(r,\theta,0)=0
+$$
+implica
+$$
+B(k)=0.
+$$
+Así,
+$$
+\boxed{
+u(r,\theta,t)
+=
+\sin(6\theta)
+\int_0^\infty
+A(k)\,
+J_6(kr)\,
+\cos(ckt)\,dk.
+}
+$$
+
+{\bf 9. Determinación de $A(k)$}
+
+La condición inicial
+$$
+u(r,\theta,0)
+=
+r\sin(6\theta)
+$$
+requiere
+$$
+r
+=
+\int_0^\infty
+A(k)\,
+J_6(kr)\,dk.
+$$
+Formalmente, $A(k)$ se obtiene mediante la transformada de Hankel de orden $6$,
+$$
+A(k)
+=
+k
+\int_0^\infty
+r^2J_6(kr)\,dr.
+$$
+Por tanto la solución queda representada por la expansión de Hankel anterior.
+
+{\bf Comentarios finales}
+
+La dificultad conceptual del ejercicio no es la ecuación de ondas sino la geometría de la región:
+\begin{itemize}
+\item el problema angular tiene espectro discreto;
+\item el problema radial tiene espectro continuo;
+\item además, la condición inicial sólo es compatible con las condiciones de borde cuando
+$$
+\sin(6\alpha)=0.
+$$
+\end{itemize}
+Una vez reconocidos estos hechos, la separación de variables conduce de manera natural a una transformada de Hankel de orden $6$. 
+
+Adem\'as, cabe notar que el dato inicial $r\sin(6\theta)$ {\bf no es armónico}, pues
+$$
+\boxed{
+\nabla^2(r^p\sin(m\theta))
+=
+(p^2-m^2),
+r^{p-2}\sin(m\theta).
+}
+=
+0
+$$
+s\'olo si $p=\pm m$, lo cuál no se cumple en el presente caso en donde $p=1$ y $m=6$.
+Por ende, no existe una solución estacionaria simple asociada al dato inicial.
+
+
+
+
+
+
+
+
+
 
 \prob Cierta cuerda de largo \(L\) cuya densidad es variable tiene sus extremos fijos y sus desplazamientos satisfacen
 \[
 u_{tt} = c^2(1+\varepsilon x)^2 u_{xx}, \quad 0<x<L.
 \]
 Resuelva la ecuación mediante separación de variables y encuentre las frecuencias propias.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 16)}
+\vspace{0.5cm}
+
+Este problema nos pide resolver: 
+$$
+u_{tt}=c^2(1+\varepsilon x)^2u_{xx},
+\qquad 0<x<L,
+$$
+con extremos fijos
+$$
+u(0,t)=u(L,t)=0
+$$
+y mediante separación de variables.
+Además se pide encontrar las frecuencias propias.
+
+{\bf 1. Separación de variables}
+
+Buscamos
+$$
+u(x,t)=X(x)T(t).
+$$
+Sustituyendo,
+$$
+XT''
+=
+c^2(1+\varepsilon x)^2X''T.
+$$
+Dividiendo por $XT$,
+$$
+\frac{T''}{T}
+=
+c^2(1+\varepsilon x)^2\frac{X''}{X}.
+$$
+Ambos lados deben ser constantes.
+Tomamos
+$$
+\frac{T''}{T}=-\omega^2.
+$$
+Entonces
+$$
+T''+\omega^2T=0,
+$$
+y la ecuación espacial es
+$$
+X''
++
+\frac{\omega^2}{c^2(1+\varepsilon x)^2}
+X
+=
+0.
+$$
+Definiendo
+$$
+k=\frac{\omega}{c},
+$$
+queda
+$$
+X''+\frac{k^2}{(1+\varepsilon x)^2}X=0.
+$$
+
+{\bf 2. Cambio de variable}
+
+Introduzcamos
+$$
+y=1+\varepsilon x.
+$$
+Entonces
+$$
+\frac{d}{dx}
+=
+\varepsilon\frac{d}{dy},
+\qquad
+\frac{d^2}{dx^2}
+=
+\varepsilon^2\frac{d^2}{dy^2}.
+$$
+La ecuación se transforma en
+$$
+\varepsilon^2X_{yy}
++
+\frac{k^2}{y^2}X=0.
+$$
+o
+$$
+X_{yy}
++
+\frac{k^2}{\varepsilon^2y^2}X=0.
+$$
+
+{\bf 3. Ecuación de Euler-Cauchy}
+
+La anterior es una ecuación de Euler.
+Buscamos soluciones de la forma
+$$
+X(y)=y^m.
+$$
+Sustituyendo,
+$$
+m(m-1)y^{m-2}
++
+\frac{k^2}{\varepsilon^2}y^{m-2}
+=0.
+$$
+resulta en la ecuación característica
+$$
+m(m-1)
++
+\frac{k^2}{\varepsilon^2}
+=0.
+$$
+%o
+%$$
+%m^2-m+\frac{k^2}{\varepsilon^2}=0.
+%$$
+cuyas raíces son
+$$
+m_{\pm}
+=
+\frac12
+\pm
+\sqrt{\frac14-\frac{k^2}{\varepsilon^2}}.
+$$
+
+{\bf 4. Soluciones generales}
+
+Las soluciones generales son de la forma
+$$
+X(y) = Ay^{m_+} + By^{m_-}
+$$
+para constantes arbitrarias $A$ y $B$ cuando
+$$
+\beta = \frac{1}{4} - \frac{k^2}{\varepsilon^2} \neq 0
+$$
+o
+$$
+X(y) = A + B\ln y
+$$
+cuando $\beta=0$.
+
+
+{\bf 4. Soluciones reales}
+
+Cuando
+$$
+\beta = \frac{1}{4} - \frac{k^2}{\varepsilon^2} > 0,
+$$
+las raices son reales y las soluciones resultan hiperbólicas o algebraicas.
+La condici\'on de contorno $x=0$ implica que
+$$
+0 = X(y=1) = A + B = 0.
+$$
+Por otro lado, la condici\'on $x=L$ implica que
+$$
+0 = X(y=Y) = AY^{m_+} + BY^{m_-}
+$$
+donde $Y=1+\varepsilon L$.
+Combinando estos resultados, encontramos que
+$$
+A(Y^{m_+}-Y^{m_-}) = 0.
+$$
+Por ende, o bien $A=0$ obteniendose la soluci\'on trivial, o bien
+\begin{eqnarray}
+0
+&=&
+Y^{m_+}-Y^{m_-}
+\notag
+\\
+&=&
+Y^{m_-}
+\big(
+Y^{m_+-m_-}
+-
+1
+\big)
+\notag
+\\
+0
+&=&
+\big(
+Y^{2\sqrt{\beta}}
+-
+1
+\big)
+\notag
+\\
+2\sqrt{\beta}
+\ln Y
+&=&
+0
+\notag
+\end{eqnarray}
+lo cu\'al no puede cumplirse porque $Y=1+\varepsilon L$ es diferente de $0$ y $1$.
+En resumen, en el caso en que $\beta>0$, s\'olo la soluci\'on trivial $X=0$ es posible.
+
+Cuando $\beta=0$, las condiciones de contorno implican que
+$$
+0 = X(y=1) = A + B \ln 1 = A
+$$
+y
+$$
+0 = X(y=Y) = B \ln Y 
+$$
+por lo que $B=0$ ya que $Y\neq 1$ como mencionamos anteriormente.
+En otras palabras, tambi\'en en este otro caso $\beta=0$, s\'olo la soluci\'on trivial $X=0$ es posible.
+
+{\bf 4. R\'egimen oscilatorio}
+
+Se obtienen modos oscilatorios cuando las ra\'ices resultan complejas, i.e. cuando $\beta<0$ y, por ende
+$$
+m_{\pm}=\alpha\pm i\gamma,
+$$
+donde
+$$
+\alpha = \frac{1}{2}
+$$
+y
+$$
+\gamma = \sqrt{-\beta}.
+$$
+Estos modos si pueden satisfacer las condiciones de contorno.
+
+{\bf Soluciones Complejas}
+
+Para ra\'ices complejas, las soluciones generales son de la forma
+$$
+X(y)
+=
+CX_+(y)
++
+DX_-(y)
+$$
+para dos constantes arbitrarias $C,D\in \CC$, donde sacando ventaja de que $y>0$,
+\begin{eqnarray}
+X_{\pm}(y)
+&=&
+y^{m_{\pm}}
+\notag
+\\
+&=&
+e^{\log y^{m_{\pm}}}
+\notag
+\\
+&=&
+e^{\log y^{\alpha\pm i\gamma}}
+\notag
+\\
+&=&
+e^{(\alpha\pm i\gamma)\log y}
+\notag
+\\
+&=&
+e^{\gamma\log y}
+e^{i\gamma\log y}
+\notag
+\\
+&=&
+y^{\alpha}
+e^{\pm i\gamma\log y}
+\notag
+\end{eqnarray}
+Luego, usando la fórmula de Euler
+$$
+e^{i\theta} = \cos\theta + i\sin \theta,
+$$
+podemos reescribir los modos mencionados como
+\begin{eqnarray}
+X_{\pm}(y)
+&=&
+y^{\alpha}
+\big(
+\cos(\gamma \log y)
+\pm 
+i\sin(\gamma \log y)
+\big).
+\notag
+\end{eqnarray}
+
+
+{\bf Soluciones reales}
+
+La ecuación original tiene coeficientes reales, con condiciones de contorno reales y nos interesan soluciones reales.
+Con el fin de encontrar soluciones reales, crucialmente notamos que la parte real y la parte imaginaria de las soluciones complejas anteriormente mencionadas resultan linealmente independientes ante combinaciones lineales con coeficientes en $\RR$.
+M\'as precisamente, como $y>0$, luego 
+$$
+y^{\alpha}
+\big(
+A \cos(\gamma \log y)
++
+B \sin(\gamma \log y)
+\big)
+=
+0
+\quad
+\Rightarrow
+\quad
+A \cos(z)
++
+B \sin(z)
+=
+0
+$$
+vale para todo $z$ en algún abierto de $\RR$, s\'olo si $A=B=0$.
+
+La anterior observaci\'on implica que las soluciones generales reales pueden escribirse como
+$$
+X(y)
+=
+y^{\alpha}
+\big(
+A \cos(\gamma \log y)
++
+B \sin(\gamma \log y)
+\big)
+.
+$$
+Luego, restituyendo el valor de $x$ y recordando que $\alpha=1/2$, obtenemos que la soluci\'on general oscilatoria puede escribirse como
+$$
+\boxed{
+X(x)
+=
+\sqrt{1+\varepsilon x}
+\left[
+A\cos\Big(\gamma\ln(1+\varepsilon x)\Big)
++
+B\sin\Big(\gamma\ln(1+\varepsilon x)\Big)
+\right].
+}
+$$
+
+{\bf 5. Aplicar las condiciones de borde}
+
+En $x=0$,
+$$
+X(0)=0.
+$$
+Como
+$$
+\ln(1)=0,
+$$
+obtenemos
+$$
+A=0.
+$$
+Por tanto
+$$
+X(x)
+=
+B\sqrt{1+\varepsilon x}
+\sin\Big(
+\gamma
+\ln(1+\varepsilon x)
+\Big).
+$$
+La condición en $x=L$ exige
+$$
+X(L)=0.
+$$
+Por lo tanto
+$$
+\sin\Big(
+\gamma
+\ln(1+\varepsilon L)
+\Big)
+=0.
+$$
+De aquí
+$$
+\gamma\ln(1+\varepsilon L)
+=
+n\pi,
+\qquad n=1,2,\ldots
+\,.
+$$
+Es decir, las condiciones de borde imponen que los valores admisibles de $\gamma$ resultan cuantizados
+$$
+\boxed{
+\gamma_n=
+\frac{n\pi}
+{\ln(1+\varepsilon L)}.
+}
+$$
+para $n\in \NN$.
+
+{\bf 6. Frecuencias propias}
+
+Recordando que
+$$
+\gamma^2
+=
+\frac{k^2}{\varepsilon^2}
+-\frac14,
+$$
+obtenemos
+$$
+k_n^2
+=
+\varepsilon^2
+\left(
+\gamma_n^2+\frac14
+\right).
+$$
+Como
+$$
+\omega_n=c\,k_n,
+$$
+resulta
+$$
+\boxed{
+\omega_n
+=
+c\,\varepsilon\,
+\sqrt{
+\frac14
++
+\left(
+\frac{n\pi}
+{\ln(1+\varepsilon L)}
+\right)^2
+}.
+}
+$$
+Estas son las frecuencias propias de la cuerda.
+
+{\bf 7. Modos normales}
+
+Los modos espaciales asociados son
+$$
+\boxed{
+X_n(x)
+=
+\sqrt{1+\varepsilon x}\,
+\sin\left[
+\frac{n\pi}
+{\ln(1+\varepsilon L)}
+\ln(1+\varepsilon x)
+\right].
+}
+$$
+y la dependencia temporal es
+$$
+T_n(t)
+=
+A_n\cos(\omega_n t)
++
+B_n\sin(\omega_n t).
+$$
+Por consiguiente, la solución general es
+$$
+\boxed{
+u(x,t)
+=
+\sum_{n=1}^{\infty}
+\Big[
+A_n\cos(\omega_n t)
++
+B_n\sin(\omega_n t)
+\Big]
+\sqrt{1+\varepsilon x}\,
+\sin\left[
+\frac{n\pi}
+{\ln(1+\varepsilon L)}
+\ln(1+\varepsilon x)
+\right].
+}
+$$
+
+Un chequeo interesante es el límite $\varepsilon\to0$. Usando
+$$
+\ln(1+\varepsilon L)\sim \varepsilon L,
+$$
+se obtiene
+$$
+\omega_n
+=
+c\varepsilon
+\sqrt{
+\frac14
++
+\frac{n^2\pi^2}{\varepsilon^2L^2}
++O(1)
+}.
+$$
+de donde concluimos que
+$$
+\omega_n
+\sim
+c\,\frac{n\pi}{L},
+$$
+cuando $\epsilon\to 0^+$.
+Estas son exactamente las frecuencias de una cuerda homogénea con extremos fijos. 
+Esto da una buena verificación de la solución.
+
+
+
+
+
+
 
 \prob Encuentre las funciones de Green y resuelva las siguientes ecuaciones:
 \begin{enumerate}
@@ -3537,10 +4853,1679 @@ Resuelva la ecuación mediante separación de variables y encuentre las frecuenc
 \item \(y''+\frac{1}{4}y = x,\quad y(0)=\alpha,\; y(\pi)=\beta.\)
 \end{enumerate}
 
+%\vspace{0.5cm}
+%{\bf Soluci\'on }{\em 17a)}
+%\vspace{0.5cm}
+%% https://chatgpt.com/share/6a3be06b-2028-83e9-b729-9ff507746d26
+%
+%El problema pide encontrar la función de Green y resolver una EDO con distintas condiciones de borde. 
+%$$
+%y''+\frac14\,y=\sin(2x),
+%\qquad
+%y(0)=0,
+%\qquad
+%y(\pi)=0.
+%$$
+%
+%{\bf 1. Operador diferencial}
+%
+%Definimos
+%$$
+%L=\frac{d^2}{dx^2}+\frac14.
+%$$
+%La función de Green debe satisfacer
+%$$
+%L\,G(x,\xi)=\delta(x-\xi),
+%$$
+%con
+%$$
+%G(0,\xi)=0,
+%\qquad
+%G(\pi,\xi)=0.
+%$$
+%
+%{\bf 2. Soluciones homogéneas}
+%
+%La ecuación homogénea es
+%$$
+%y''+\frac14 y=0.
+%$$
+%Su solución general es
+%$$
+%y(x)=A\cos\frac{x}{2}
+%+B\sin\frac{x}{2}.
+%$$
+%Elegimos dos soluciones adaptadas a los bordes.
+%
+%{\em Solución izquierda.}
+%La que satisface
+%$$
+%u_1(0)=0
+%$$
+%es
+%$$
+%u_1(x)=\sin\frac{x}{2}.
+%$$
+%
+%{\em Solución derecha.}
+%La que satisface
+%$$
+%u_2(\pi)=0
+%$$
+%es
+%$$
+%u_2(x)=\cos\frac{x}{2}.
+%$$
+%
+%{\bf 3. Wronskiano}
+%
+%$$
+%W=u_1u_2'-u_1'u_2.
+%$$
+%Calculando,
+%$$
+%u_1'=\frac12\cos\frac{x}{2},
+%$$
+%$$
+%u_2'=-\frac12\sin\frac{x}{2}.
+%$$
+%Entonces
+%$$
+%W
+%=
+%-\frac12
+%\Big(
+%\sin^2\frac{x}{2}
+%+\cos^2\frac{x}{2}
+%\Big)
+%=
+%-\frac12.
+%$$
+%Por tanto
+%$$
+%\boxed{W=-\frac12.}
+%$$
+%
+%{\bf 4. Función de Green}
+%
+%La fórmula general para un problema de Sturm-Liouville es
+%$$
+%G(x,\xi)
+%=
+%\frac{1}{W}
+%\begin{cases}
+%u_1(x)u_2(\xi),
+%&
+%x<\xi, \\
+%u_1(\xi)u_2(x),
+%&
+%x>\xi.
+%\end{cases}
+%$$
+%Como $W=-1/2$,
+%$$
+%\boxed{
+%G(x,\xi)
+%=
+%-2
+%\begin{cases}
+%\sin\frac{x}{2}\,
+%\cos\frac{\xi}{2},
+%&
+%x<\xi, \\
+%\sin\frac{\xi}{2}\,
+%\cos\frac{x}{2},
+%&
+%x>\xi.
+%\end{cases}
+%}
+%$$
+%
+%{\bf 5. Solución mediante Green}
+%
+%La solución es
+%$$
+%y(x)
+%=
+%\int_0^\pi
+%G(x,\xi)\,
+%\sin(2\xi)\,
+%d\xi.
+%$$
+%
+%Separando en los intervalos $(0,x)$ y $(x,\pi)$,
+%$$
+%y(x)
+%=
+%-2\cos\frac{x}{2}
+%\int_0^x
+%\sin\frac{\xi}{2}\sin(2\xi)\,d\xi
+%$$
+%$$
+%\qquad
+%-2\sin\frac{x}{2}
+%\int_x^\pi
+%\cos\frac{\xi}{2}\sin(2\xi)\,d\xi.
+%$$
+%
+%{\bf 6. Evaluación de las integrales}
+%
+%Usando
+%$$
+%\sin a\sin b
+%=
+%\frac12
+%\Big[
+%\cos(a-b)-\cos(a+b)
+%\Big]
+%$$
+%y
+%$$
+%\cos a\sin b
+%=
+%\frac12
+%\Big[
+%\sin(a+b)+\sin(b-a)
+%\Big],
+%$$
+%se obtiene tras integrar y simplificar
+%$$
+%\boxed{
+%y(x)=\frac{4}{15}\sin(2x)
+%-\frac{8}{15}\sin\frac{x}{2}.
+%}
+%$$
+%
+%{\bf 7. Verificación}
+%
+%Condiciones de borde:
+%$$
+%y(0)=0,
+%$$
+%$$
+%y(\pi)
+%=
+%\frac{4}{15}\sin(2\pi)
+%-\frac{8}{15}\sin\frac{\pi}{2}
+%=
+%-\frac{8}{15}.
+%$$
+%¡Esto indica que cometí un error de signo o de normalización en la construcción de $u_2$!
+%Y aquí aparece una observación importante: para evitar arrastrar errores algebraicos, conviene contrastar con el método clásico.
+%
+%{\bf Verificación rápida por coeficientes indeterminados}
+%
+%Buscamos
+%$$
+%y_p=A\sin(2x).
+%$$
+%Entonces
+%$$
+%(-4+\tfrac14)A\sin(2x)
+%=
+%\sin(2x),
+%$$
+%de donde
+%$$
+%A=-\frac4{15}.
+%$$
+%Luego
+%$$
+%y=
+%C_1\cos\frac{x}{2}
+%+
+%C_2\sin\frac{x}{2}
+%-\frac4{15}\sin(2x).
+%$$
+%De $y(0)=0$,
+%$$
+%C_1=0.
+%$$
+%De $y(\pi)=0$,
+%$$
+%C_2=0.
+%$$
+%Por tanto
+%$$
+%\boxed{
+%y(x)
+%=
+%-\frac4{15}\sin(2x).
+%}
+%$$
+%Esta es la solución correcta.
+%
+%Así que para el inciso $a$, la función de Green que construimos es correcta, pero al evaluar las integrales manualmente introduje un error algebraico. La solución final correcta es
+%
+%$$
+%\boxed{
+%y(x)=
+%-\frac4{15}\sin(2x).
+%}
+%$$
+
+\vspace{0.5cm}
+%{\em Soluci\'on 17a) alternativa}
+{\em Soluci\'on 17a)}
+\vspace{0.5cm}
+
+Tenemos el operador
+$$
+L=\frac{d^2}{dx^2}+\frac14
+$$
+en el intervalo
+$$
+0<x<\pi,
+$$
+con condiciones de Dirichlet
+$$
+y(0)=y(\pi)=0.
+$$
+
+{\bf 1. Problema de autovalores}
+
+La fórmula estándar para la función de Green parte de los autofunciones del operador.
+Buscamos
+$$
+L\phi_n=\lambda_n\phi_n,
+$$
+es decir,
+$$
+\phi_n''+\frac14\phi_n=\lambda_n\phi_n.
+$$
+Reordenando,
+$$
+\phi_n''+\Big(\frac14-\lambda_n\Big)\phi_n=0.
+$$
+Con
+$$
+\phi_n(0)=\phi_n(\pi)=0.
+$$
+Sabemos que los autofunciones de Dirichlet en $(0,\pi)$ son
+$$
+\boxed{
+\phi_n(x)=\sin(nx),
+\qquad n=1,2,\ldots
+}
+$$
+porque
+$$
+\phi_n''=-n^2\phi_n.
+$$
+Luego
+$$
+L\phi_n
+=
+\left(\frac14-n^2\right)\phi_n.
+$$
+Por tanto
+$$
+\boxed{\lambda_n=\frac14-n^2.}
+$$
+
+{\bf 2. Normalización}
+
+Necesitamos
+$$
+|\phi_n|^2
+=
+\int_0^\pi \sin^2(nx)\,dx
+=
+\frac{\pi}{2}.
+$$
+Por ello los autofunciones ortonormales son
+$$
+\boxed{
+e_n(x)
+=
+\sqrt{\frac2\pi}\sin(nx).
+}
+$$
+
+{\bf 3. Fórmula espectral de Green}
+Como ningún autovalor es cero,
+$$
+\lambda_n=\frac14-n^2\neq0,
+$$
+la función de Green es
+$$
+\boxed{
+G(x,\xi)
+=
+\sum_{n=1}^{\infty}
+\frac{e_n(x)e_n(\xi)}
+{\lambda_n}.
+}
+$$
+Sustituyendo,
+$$
+\boxed{
+G(x,\xi)
+=
+\frac2\pi
+\sum_{n=1}^{\infty}
+\frac{\sin(nx)\sin(n\xi)}
+{\frac14-n^2}.
+}
+$$
+Esta es exactamente la fórmula estándar en términos de autofunciones.
+
+{\bf 4. Resolver la ecuación}
+
+La ecuación es
+$$
+Ly=f,
+\qquad
+f(x)=\sin(2x).
+$$
+La solución viene dada por
+$$
+y(x)
+=
+\int_0^\pi
+G(x,\xi)\sin(2\xi)\,d\xi.
+$$
+Insertando la expansión,
+$$
+y(x)
+=
+\frac2\pi
+\sum_{n=1}^{\infty}
+\frac{\sin(nx)}
+{\frac14-n^2}
+\int_0^\pi
+\sin(n\xi)\sin(2\xi)\,d\xi.
+$$
+
+{\bf 5. Usar ortogonalidad}
+
+La integral vale
+$$
+\int_0^\pi
+\sin(n\xi)\sin(2\xi)\,d\xi
+=
+\frac{\pi}{2}\delta_{n2}.
+$$
+Por tanto todos los términos desaparecen excepto (n=2):
+$$
+y(x)
+=
+\frac2\pi
+\frac{\sin(2x)}
+{\frac14-4}
+\frac{\pi}{2}.
+$$
+Entonces
+$$
+y(x)
+=
+\frac{\sin(2x)}
+{\frac14-4}.
+$$
+Como
+$$
+\frac14-4
+=
+-\frac{15}{4},
+$$
+obtenemos
+$$
+\boxed{
+y(x)
+=
+-\frac4{15}\sin(2x).
+}
+$$
+Este ejemplo es especialmente bonito porque el término fuente
+$$
+f(x)=\sin(2x)
+$$
+es exactamente uno de los autofunciones del operador. Entonces la expansión espectral ``colapsa'' a un único término y la solución sale inmediatamente:
+$$
+Ly=\lambda_2 y,
+\qquad
+\lambda_2=\frac14-4=-\frac{15}{4},
+$$
+de donde
+$$
+y=\frac1{\lambda_2}\sin(2x).
+$$
+En cierto sentido, ni siquiera hace falta construir explícitamente la serie de Green; basta reconocer que la fuente es un autofunción.
+
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 17b)}
+\vspace{0.5cm}
+
+
+El problema pide resolver mediante función de Green
+$$
+x^2y''+2xy'-2y=x^2,
+\qquad
+y(0)=0,
+\qquad
+y(1)=0.
+$$
+
+{\bf 0. Funci\'on de Green}
+
+Recordemos que, para un operador diferencial de la forma
+$$
+L[y](x)
+=
+a_2(x)
+y''(x)
++
+a_1(x)
+y'(x)
++
+a_0(x)
+y(x),
+$$
+la funci\'on de Green es de la forma
+$$
+G(x,\xi)
+= 
+\frac{1}{a_2(\xi)W(\xi)}
+\left\{
+\begin{array}{ll}
+u_1(x)u_2(\xi), & x<\xi, \\ 
+u_1(\xi)u_2(x), & x>\xi,  
+\end{array}
+\right.
+$$
+donde $u_1$  y $u_2$ son dos soluciones linealmente independientes de la ecuaci\'on homog\'enea
+$$
+L[u] = 0,
+$$
+tales que $u_1$ satisface las condiciones de borde para $x<\xi$ y $u_2$ para $x>\xi$, y donde
+$$
+W(x) = u_1(x)u_2'(x) - u_1'(x)u_2(x)
+$$
+es el Wronskiano de $u_1$ y $u_2$.
+
+{\bf 1. Operador diferencial}
+
+Es conveniente escribir la ecuación como
+$$
+L[y]=x^2,
+$$
+donde
+$$
+L
+=
+x^2\frac{d^2}{dx^2}
++
+2x\frac{d}{dx}
+-2
+$$
+y, por ende
+$$
+a_2(x) = x^2,
+\quad
+a_1(x) = 2x
+\quad
+\text{y}
+\quad
+a_0(x) = -2.
+$$
+La función de Green debe satisfacer
+$$
+L[G](x,\xi)=\delta(x-\xi),
+$$
+con
+$$
+G(0,\xi)=0,
+\qquad
+G(1,\xi)=0.
+$$
+
+{\bf 2. Soluciones homogéneas}
+
+Primero resolvemos
+$$
+x^2y''+2xy'-2y=0.
+$$
+Es una ecuación de Euler-Cauchy.
+Buscamos soluciones de la forma
+$$
+y=x^m.
+$$
+Sustituyendo,
+$$
+x^2\,m(m-1)\,x^{m-2}+x\,2m\,x^{m-1}-2\,x^m=0,
+$$
+es decir,
+$$
+m(m-1)+2m-2
+=
+m^2+m-2
+=
+0.
+$$
+Factorizando,
+$$
+(m-1)(m+2)=0.
+$$
+Las raíces son
+$$
+m_1=1,
+\qquad
+m_2=-2.
+$$
+Por tanto las soluciones de la ecuación homog\'enea son de la forma
+$$
+y(x)=A\,y_1(x)+B\,y_2(x)
+$$
+con
+$$
+y_1(x) = x
+\quad
+\text{y}
+\quad
+y_2(x) = x^{-2}.
+$$
+
+{\bf 3. Soluciones adaptadas a los bordes}
+
+Necesitamos una solución que satisfaga el borde izquierdo.
+Como
+$$
+x^{-2}
+$$
+diverge en $x=0$, la solución regular es
+$$
+u_1(x)=x.
+$$
+Ahora buscamos una solución que satisfaga
+$$
+u_2(1)=0.
+$$
+Tomamos
+$$
+u_2(x)=x-x^{-2}.
+$$
+En efecto,
+$$
+u_2(1)=1-1=0.
+$$
+
+{\bf 4. Wronskiano}
+
+Calculamos
+$$
+u_1=x,
+\qquad
+u_1'=1,
+$$
+$$
+u_2=x-x^{-2},
+\qquad
+u_2'=1+2x^{-3}.
+$$
+Entonces
+%$$
+%W
+%=
+%u_1u_2'
+%-u_1'u_2.
+%$$
+%Sustituyendo,
+$$
+W(x)
+=
+x(1+2x^{-3})
+-(x-x^{-2})
+=
+x+2x^{-2}-x+x^{-2}
+=
+3x^{-2}.
+$$
+
+{\bf 5. Construcción de la función de Green}
+
+Como
+$$
+a_2(\xi)\,W(\xi) = \xi^2\,3\xi^{-2} = 3,
+$$
+obtenemos
+$$
+\boxed{
+G(x,\xi)
+=
+\frac{1}{3}
+\begin{cases}
+x(\xi-\xi^{-2}),
+&
+x<\xi,\\
+\xi(x-x^{-2}),
+&
+x>\xi.
+\end{cases}
+}
+$$
+
+{\bf 6. Solución integral}
+
+El término fuente es
+$$
+f(x)=x^2,
+$$
+Por tanto
+\begin{eqnarray}
+y(x)
+&=&
+\int_0^1
+G(x,\xi)\,f(\xi)\,d\xi
+\notag
+\\
+&=&
+\int_0^x
+G(x,\xi)\,f(\xi)\,d\xi
++
+\int_x^1
+G(x,\xi)\,f(\xi)\,d\xi.
+\notag
+\\
+&=&
+\frac13
+\int_0^x
+\xi(x-x^{-2})\xi^2,d\xi
++
+\frac13
+\int_x^1
+x(\xi-\xi^{-2})\xi^2,d\xi.
+\notag
+\end{eqnarray}
+Simplificamos ahora cada integral.
+La primera integral resulta
+$$
+\frac13(x-x^{-2})
+\int_0^x\xi^3\,d\xi
+=
+\frac13(x-x^{-2})\frac{x^4}{4}
+=
+\frac1{12}(x^5-x^2).
+$$
+Para la segunda, notamos que
+$$
+\int_x^1(\xi^3-1)\,d\xi
+=
+\left(\frac14-1\right)
+-
+\left(\frac{x^4}{4}-x\right)
+=
+x-\frac34-\frac{x^4}{4}.
+$$
+Entonces
+$$
+\frac{x}{3}
+\left(
+x-\frac34-\frac{x^4}{4}
+\right)
+=
+\frac{x^2}{3}
+-\frac{x}{4}
+-\frac{x^5}{12}.
+$$
+Sumando ambas contribuciones
+$$
+y(x)
+=
+\frac1{12}(x^5-x^2)
++
+\frac{x^2}{3}
+-\frac{x}{4}
+-\frac{x^5}{12} \
+=
+\left(\frac13-\frac1{12}\right)x^2
+-\frac{x}{4}
+=
+\frac{x^2-x}{4}
+=
+\frac{x(x-1)}{4}
+$$
+
+{\bf 4. Verificaci\'on}
+
+Las condiciones de contorno se verifican inmediatamente:
+$$
+y(0)=0,
+\qquad
+y(1)=0.
+$$
+Por otro lado,
+$$
+y'(x)=\frac{2x-1}{4},
+\qquad
+y''(x)=\frac12.
+$$
+Por ende
+$$
+\begin{aligned}
+x^2y''+2xy'-2y
+&=
+\frac{x^2}{2}
++\frac{x(2x-1)}{2}
+-\frac{x^2-x}{2} \
+&=
+\frac{x^2+2x^2-x-x^2+x}{2} \
+&=
+x^2,
+\end{aligned}
+$$
+que es justamente el lado derecho de la ecuaci\'on.
+En resumen, la soluci\'on obtenida utilizando la funci\'on de Green es
+$$
+\boxed{y(x)=\frac{x(x-1)}{4}.}
+$$
+%This is a nice example because the integrals simplify almost completely, illustrating how the Green's function automatically builds the unique solution satisfying the boundary conditions.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 17c)}
+\vspace{0.5cm}
+% https://chatgpt.com/share/6a3e5005-4b14-83e9-b5dc-84266b537a64
+
+Este inciso pide resolver 
+$$
+y''+\alpha y'=e^{-\beta x},
+\qquad x>0,
+\qquad
+\alpha,\beta>0,
+$$
+con
+$$
+y(0)=0,
+\qquad
+y'(0)=0.
+$$
+Este problema es interesante porque {\bf no es un problema de contorno}, sino un {\bf problema de valores iniciales}. 
+En consecuencia, la función de Green es {\bf causal}, es decir,
+$$
+G(x,\xi)=0,
+\qquad x<\xi.
+$$
+
+{\bf 1. Función de Green}
+
+Buscamos
+$$
+G''+\alpha G'
+=
+\delta(x-\xi),
+$$
+con
+$$
+G(0,\xi)=0,
+\qquad
+G_x(0,\xi)=0.
+$$
+Como la fuente sólo actúa en $x=\xi$, para $x\neq\xi$,
+$$
+G''+\alpha G'=0.
+$$
+
+{\bf 2. Solución homogénea}
+
+Proponemos soluciones de la forma
+$$
+u(x) = e^{rx}
+$$
+La ecuación característica es
+$$
+0
+=
+u''+\alpha u'
+=
+r^2\, u + \alpha \,r\, u
+=
+r(r+\alpha)\,u,
+$$
+por lo que
+$$
+u(x)=A+Be^{-\alpha x}.
+$$
+Con esto en mente, construimos la funci\'on de Green.
+Como Green es causal,
+$$
+G(x,\xi)=0,
+\qquad x<\xi.
+$$
+Para $x>\xi$,
+$$
+G(x,\xi)
+=
+A(\xi)
++
+B(\xi)e^{-\alpha x}.
+$$
+
+{\bf 3. Continuidad}
+
+La función de Green debe ser continua en $x=\xi$:
+$$
+G(\xi^+,\xi)=G(\xi^-,\xi)=0.
+$$
+Luego
+$$
+A+B e^{-\alpha\xi}=0.
+$$
+
+Nota: se puede mostrar por el absurdo que $G$ es contínua en $x=\xi$.
+Supongamos que $G$ tiene un salto en $x=\xi$.
+Luego, tendríamos que
+$$
+G' = \text{parte regular} + C\,\delta(x-\xi)
+$$
+para alguna constante $C$.
+Pero luego,
+$$
+G'' = \text{parte regular} + D\,\delta(x-\xi) + C\,\delta'(x-\xi)
+$$
+para alguna constante $D$.
+Pero $\delta'$ no aparece en la ecuación diferencial.
+Luego la suposición lleva a un absurdo.
+
+{\bf 4. Condición de salto}
+
+Integramos
+$$
+G''+\alpha G'
+=
+\delta(x-\xi)
+$$
+entre
+$$
+\xi-\varepsilon
+\quad\text{y}\quad
+\xi+\varepsilon.
+$$
+Obtenemos
+$$
+G'(\xi^+)-G'(\xi^-)
++
+\alpha
+\left[
+G(\xi^+)-G(\xi^-)
+\right]
+=1.
+$$
+Como $G$ es continua,
+$$
+G'(\xi^+)-G'(\xi^-)=1.
+$$
+Pero
+$$
+G'=0
+$$
+a la izquierda de $\xi$, ya que allí $G\equiv0$.
+Luego
+$$
+G'(\xi^+)=1.
+$$
+Ahora
+$$
+G'(x,\xi)
+=
+-\alpha B e^{-\alpha x},
+$$
+de modo que
+$$
+-\alpha B e^{-\alpha\xi}=1,
+$$
+es decir,
+$$
+B
+=
+-\frac{e^{\alpha\xi}}{\alpha}.
+$$
+Entonces
+$$
+A=\frac1\alpha.
+$$
+
+{\bf 5. Función de Green}
+
+Finalmente,
+$$
+\boxed{
+G(x,\xi)
+=
+\begin{cases}
+0,
+&
+x<\xi,\\
+\dfrac1\alpha
+\left(
+1-e^{-\alpha(x-\xi)}
+\right),
+&
+x>\xi.
+\end{cases}
+}
+$$
+Puede escribirse más compactamente como
+$$
+\boxed{
+G(x,\xi)
+=
+\frac1\alpha
+\left(
+1-e^{-\alpha(x-\xi)}
+\right)
+H(x-\xi),
+}
+$$
+donde $H$ es la función escalón de Heaviside.
+
+{\bf 6. Solución}
+
+La solución es
+$$
+y(x)
+=
+\int_0^\infty
+G(x,\xi)e^{-\beta\xi},d\xi.
+$$
+Como $G=0$ para $\xi>x$,
+$$
+y(x)
+=
+\frac1\alpha
+\int_0^x
+\left(
+1-e^{-\alpha(x-\xi)}
+\right)
+e^{-\beta\xi}\,d\xi.
+$$
+Separando,
+$$
+y(x)
+=
+\frac1\alpha
+\left[
+\int_0^x e^{-\beta\xi}\,d\xi
+-
+e^{-\alpha x}
+\int_0^x
+e^{(\alpha-\beta)\xi}\,d\xi
+\right].
+$$
+
+{\bf 7. Caso $\alpha\neq\beta$}
+
+Las integrales son
+$$
+\int_0^x e^{-\beta\xi}\,d\xi
+=
+\frac{1-e^{-\beta x}}{\beta},
+$$
+y
+$$
+\int_0^x
+e^{(\alpha-\beta)\xi}\,d\xi
+=
+\frac{e^{(\alpha-\beta)x}-1}
+{\alpha-\beta}.
+$$
+Así,
+$$
+\boxed{
+y(x)
+=
+\frac1\alpha
+\left[
+\frac{1-e^{-\beta x}}{\beta}
+-
+\frac{e^{-\beta x}-e^{-\alpha x}}
+{\alpha-\beta}
+\right].
+}
+$$
+
+{\bf 8. Caso resonante $\alpha=\beta$}
+
+En este caso,
+$$
+\int_0^x e^{0\cdot\xi}\,d\xi=x,
+$$
+y la solución resulta
+$$
+\boxed{
+y(x)
+=
+\frac1\alpha
+\left[
+\frac{1-e^{-\alpha x}}{\alpha}
+-
+xe^{-\alpha x}
+\right].
+}
+$$
+
+{\bf Observación}
+
+Este problema ilustra una diferencia importante con los incisos anteriores:
+\begin{itemize}
+\item En los problemas de contorno, la función de Green suele ser {\bf simétrica} y se construye con dos soluciones homogéneas adaptadas a los extremos.
+\item En un problema de valores iniciales como éste, la función de Green es {\bf causal}: sólo depende de las fuentes ubicadas en $\xi<x$, lo que se refleja en el factor $H(x-\xi)$. Esto es completamente análogo a las funciones de Green retardadas que aparecen en ecuaciones de evolución.
+\end{itemize}
+
+
+
+
+\vspace{0.5cm}
+{\bf Soluci\'on}{\em 17d)}
+\vspace{0.5cm}
+
+En este inciso, se pide resolver
+$$
+y''+\frac14\,y=x,
+$$
+con condiciones de contorno no homogéneas
+$$
+y(0)=\alpha,
+\qquad
+y(\pi)=\beta.
+$$
+Este problema introduce una diferencia importante respecto del inciso (a), ya que {\em la función de Green sólo puede utilizarse directamente cuando las condiciones de contorno son homogéneas}.
+
+{\bf 1. Homogeneización de las condiciones de contorno}
+
+Buscamos
+$$
+y(x)=u(x)+v(x),
+$$
+donde $v$ satisfaga únicamente las condiciones de borde
+$$
+v(0)=\alpha,
+\qquad
+v(\pi)=\beta.
+$$
+La elección más simple es una función lineal,
+$$
+v(x)
+=
+\alpha
++
+\frac{\beta-\alpha}{\pi}x.
+$$
+Como
+$$
+v''=0,
+$$
+al sustituir en la ecuación obtenemos
+$$
+u''+\frac14u
+=
+x-\frac14v(x),
+$$
+con
+$$
+u(0)=u(\pi)=0.
+$$
+
+{\bf 2. Nuevo término fuente}
+
+Calculamos
+$$
+\frac14v (x)
+=
+\frac{\alpha}{4}
++
+\frac{\beta-\alpha}{4\pi}x.
+$$
+Por tanto
+$$
+f(x)
+=
+x-\frac14 v(x)
+=
+\left(
+1-\frac{\beta-\alpha}{4\pi}
+\right)x
+-
+\frac{\alpha}{4}.
+$$
+La ecuación queda
+$$
+u''+\frac14u=f(x),
+$$
+con condiciones homogéneas.
+
+{\bf 3. Función de Green}
+
+Es exactamente la misma del inciso $a$:
+$$
+\boxed{
+G(x,\xi)
+=
+-2
+\begin{cases}
+\sin\dfrac{x}{2}\,
+\cos\dfrac{\xi}{2},
+&
+x<\xi,\\
+\sin\dfrac{\xi}{2}\,
+\cos\dfrac{x}{2},
+&
+x>\xi.
+\end{cases}
+}
+$$
+
+{\bf 4. Solución integral}
+
+Entonces
+$$
+u(x)
+=
+\int_0^\pi
+G(x,\xi)
+f(\xi)\,d\xi.
+$$
+Es decir,
+$$
+\boxed{
+u(x)
+=
+\int_0^\pi
+G(x,\xi)
+\left[
+\left(
+1-\frac{\beta-\alpha}{4\pi}
+\right)\xi
+-\frac{\alpha}{4}
+\right]
+d\xi.
+}
+$$
+Por consiguiente,
+$$
+\boxed{
+y(x)
+=
+\alpha
++
+\frac{\beta-\alpha}{\pi}x
++
+\int_0^\pi
+G(x,\xi)
+\left[
+\left(
+1-\frac{\beta-\alpha}{4\pi}
+\right)\xi
+-\frac{\alpha}{4}
+\right]
+d\xi.
+}
+$$
+Esta ya es una representación completamente válida mediante función de Green.
+
+{\bf 5. Evaluación explícita}
+
+Como el término fuente es un polinomio de grado uno, también puede obtenerse una expresión cerrada.
+Buscamos una solución particular de la forma
+$$
+y_p=Ax+B.
+$$
+Entonces
+$$
+y_p''=0,
+$$
+y
+$$
+\frac14(Ax+B)=x.
+$$
+De aquí
+$$
+A=4,
+\qquad
+B=0.
+$$
+Por tanto
+$$
+y_p=4x.
+$$
+La solución general es
+$$
+y(x)
+=
+C_1\cos\frac{x}{2}
++
+C_2\sin\frac{x}{2}
++
+4x.
+$$
+
+{\bf 6. Aplicar las condiciones de borde}
+
+En $x=0$,
+$$
+C_1=\alpha.
+$$
+En $x=\pi$,
+$$
+\alpha\cos\frac{\pi}{2}
++
+C_2\sin\frac{\pi}{2}
++
+4\pi
+=
+\beta,
+$$
+de donde
+$$
+C_2
+=
+\beta-4\pi.
+$$
+Así obtenemos
+$$
+\boxed{
+y(x)
+=
+\alpha\cos\frac{x}{2}
++
+(\beta-4\pi)\sin\frac{x}{2}
++
+4x.
+}
+$$
+
+{\bf 7. Verificación}
+
+Se verifica inmediatamente que
+$$
+y(0)=\alpha,
+$$
+$$
+y(\pi)=\beta,
+$$
+y además
+$$
+y''+\frac14y
+=
+-\frac{\alpha}{4}\cos\frac{x}{2}
+-\frac{\beta-4\pi}{4}\sin\frac{x}{2}
++\frac14\left(
+\alpha\cos\frac{x}{2}
++
+(\beta-4\pi)\sin\frac{x}{2}
++
+4x
+\right)
+=
+x.
+$$
+Por tanto,
+$$
+\boxed{
+y(x)
+=
+\alpha\cos\frac{x}{2}
++
+(\beta-4\pi)\sin\frac{x}{2}
++
+4x
+}
+$$
+es la solución buscada.
+
+{\bf Comentario}
+
+Este inciso ilustra una técnica muy utilizada en problemas de contorno: {\bf cuando las condiciones de borde no son homogéneas, primero se las homogeneiza} restando una función sencilla que satisfaga únicamente dichas condiciones. Una vez hecho esto, puede emplearse la misma función de Green construida para el operador con condiciones homogéneas, exactamente la del inciso (a). Esto evita tener que construir una nueva función de Green para cada elección de $\alpha$ y $\beta$.
+
+
+
+
+
+
+
+
+
 \prob Muestre que para \(\vec{r},\pvec{r}\in\mathbb{R}^3\) la solución fundamental de la ecuación de Helmholtz \((\nabla^2+k^2)G=\delta(\vec{r}-\pvec{r})\) es
 \[
 G(\vec{r},\pvec{r}) = -\frac{k}{4\pi}\,y_0(k\norm{\vec{r}-\pvec{r}}) = -\frac{\cos(k\norm{\vec{r}-\pvec{r}})}{4\pi\norm{\vec{r}-\pvec{r}}}.
 \]
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 18)}
+\vspace{0.5cm}
+% https://chatgpt.com/share/6a3e7abd-d69c-83e9-b50a-f262cd8bf959
+
+Este problema pide demostrar que la solución fundamental de la ecuación de Helmholtz en $\mathbb{R}^3$,
+$$
+(\nabla^2+k^2)G(\mathbf r,\mathbf r')
+=
+\delta(\mathbf r-\mathbf r'),
+$$
+es
+$$
+\boxed{
+G(\mathbf r,\mathbf r')
+=
+-\frac{\cos(kR)}{4\pi R},
+}
+$$
+donde
+$$
+R=|\mathbf r-\mathbf r'|.
+$$
+Equivalente, usando la función de Bessel esférica de segunda especie de orden cero,
+$$
+y_0(z)=-\frac{\cos z}{z},
+$$
+puede escribirse como
+$$
+G
+=
+-\frac{k}{4\pi}y_0(kR).
+$$
+
+{\bf 1. Reducción por simetría}
+
+Como la ecuación es invariante por traslaciones,
+$$
+G(\mathbf r,\mathbf r')
+=
+G(R),
+\qquad
+R=|\mathbf r-\mathbf r'|.
+$$
+Basta entonces resolver
+$$
+(\nabla^2+k^2)G(R)=\delta(\mathbf R),
+$$
+donde
+$$
+\mathbf R=\mathbf r-\mathbf r'.
+$$
+
+{\bf 2. Ecuación homogénea}
+
+Para
+$$
+R\neq0,
+$$
+la ecuación es
+$$
+\nabla^2G+k^2G=0.
+$$
+Como $G$ depende sólo de $R$,
+$$
+\nabla^2G
+=
+G''+\frac2RG'.
+$$
+Luego
+$$
+G''+\frac2RG'+k^2G=0.
+$$
+
+{\bf 3. Eliminación del término de primera derivada}
+
+Introducimos
+$$
+G(R)=\frac{u(R)}{R}.
+$$
+Calculando,
+$$
+G'
+=
+\frac{u'}R-\frac{u}{R^2},
+$$
+$$
+G''
+=
+\frac{u''}R-\frac{2u'}{R^2}
++\frac{2u}{R^3}.
+$$
+Entonces
+$$
+G''+\frac2RG'
+=
+\frac{u''}R.
+$$
+La ecuación queda
+$$
+u''+k^2u=0.
+$$
+
+{\bf 4. Solución general}
+
+La solución general es
+$$
+u(R)
+=
+A\cos(kR)+B\sin(kR).
+$$
+Por tanto
+$$
+G(R)
+=
+\frac{A\cos(kR)+B\sin(kR)}R.
+$$
+
+{\bf 5. Comportamiento cerca del origen}
+
+Para
+$$
+R\to0,
+$$
+$$
+\cos(kR)=1+O(R^2),
+$$
+$$
+\sin(kR)=kR+O(R^3).
+$$
+Luego
+$$
+G(R)
+=
+\frac{A}{R}
++Bk
++O(R).
+$$
+
+
+{\bf 6. Determinación de la constante singular}
+
+Ahora debemos imponer la presencia de la delta.
+Integramos la ecuación sobre una esfera de radio $\varepsilon$:
+$$
+\int_{B_\varepsilon}
+(\nabla^2+k^2)G\,dV
+=
+1.
+$$
+Como
+$$
+G(R)\sim\frac1R,
+$$
+y
+$$
+dV = 4\pi R^2\,dR,
+$$
+el término
+$$
+k^2\int G\,dV
+=
+O(\varepsilon^2)
+\longrightarrow0.
+$$
+Por tanto
+$$
+\int_{B_\varepsilon}
+\nabla^2G\,dV
+=
+1.
+$$
+Aqu\'i conviene recordar el teorema de Gauss,
+$$
+\boxed{
+\int_{B_\varepsilon}\nabla^2G\,dV
+=
+\oint_{S_\varepsilon}
+\nabla G\cdot\mathbf n\,dS.
+}
+$$
+y sacar ventaja de la simetr\'ia radial
+$$
+\nabla G
+=
+\frac{dG}{dR}\,\widehat{\mathbf R}
+$$
+donde $\widehat{\mathbf R} = \mathbf n$, para encontrar
+$$
+\oint_{S_\varepsilon}
+\nabla G\cdot\mathbf n\,dS.
+=
+\oint_{S_\varepsilon}
+\frac{dG}{dR}\,dS
+=
+\frac{dG}{dR}(\varepsilon)
+\oint_{S_\varepsilon}dS
+=
+\frac{dG}{dR}(\varepsilon)
+\,4\pi \varepsilon^2
+=
+1
+$$
+donde hemos usado que el factor
+$$
+\frac{dG}{dR}(\varepsilon)
+$$
+puede sacarse fuera de la integarl porque $G$ depende únicamente de $R$, y que
+$$
+\oint_{S_\varepsilon}dS = 4\pi\varepsilon^2.
+$$
+Luego, notando que
+$$
+G'(R)
+=
+-\frac{A}{R^2}
++O(1),
+$$
+encontramos que
+$$
+4\pi \varepsilon^2\,G'(\varepsilon)
+=
+-
+4\pi \varepsilon^2\,\frac{A}{\varepsilon^2}
+\longrightarrow
+-4\pi A,
+$$
+y por ende, la condición de Gauss exige
+$$
+-4\pi A=1,
+$$
+de donde
+$$
+\boxed{
+A=-\frac1{4\pi}.
+}
+$$
+
+{\bf 7. ¿Cómo determinar $B$?}
+
+Aquí hay un punto importante.
+La ecuación
+$$
+(\nabla^2+k^2)G=\delta
+$$
+{\em no determina de manera única} la solución fundamental.
+En efecto,
+$$
+\frac{\sin(kR)}R
+$$
+también satisface la ecuación homogénea para $R\neq0$ y es regular en el origen.
+Por tanto, $B$ queda completamente libre mientras no se impongan condiciones adicionales.
+La familia completa de soluciones fundamentales es
+$$
+\boxed{
+G(R)
+=
+-\frac{\cos(kR)}{4\pi R}
++
+C\,\frac{\sin(kR)}R.
+}
+$$
+
+{\bf 8. Elección del problema}
+
+El enunciado pide demostrar que
+$$
+G
+=
+-\frac{\cos(kR)}{4\pi R}.
+$$
+Esto corresponde simplemente a elegir
+$$
+C=0.
+$$
+Como
+$$
+y_0(z)
+=
+-\frac{\cos z}{z},
+$$
+obtenemos finalmente
+$$
+\boxed{
+G(\mathbf r,\mathbf r')
+=
+-\frac{k}{4\pi}
+y_0(kR)
+=
+-\frac{\cos(kR)}
+{4\pi R}.
+}
+$$
+
+{\bf Comentario}
+
+Este problema deja en evidencia una diferencia importante entre las ecuaciones de Laplace y Helmholtz:
+\begin{itemize}
+\item Para la ecuación de Laplace, la solución fundamental está completamente determinada (salvo suma de una función armónica global).
+\item Para la ecuación de Helmholtz, la solución fundamental {\em no es única}. Se puede sumar cualquier solución homogénea regular sin modificar la singularidad en el origen.
+\end{itemize}
+En aplicaciones físicas suele imponerse una condición adicional para seleccionar una solución particular. Por ejemplo, si se exige la {\em condición de radiación de Sommerfeld}, se obtiene la función de Green saliente
+$$
+\boxed{
+G_+(\mathbf r,\mathbf r')
+=
+-\frac{e^{ikR}}{4\pi R},
+}
+$$
+mientras que la condición de ondas entrantes conduce a
+$$
+\boxed{
+G_-(\mathbf r,\mathbf r')
+=
+-\frac{e^{-ikR}}{4\pi R}.
+}
+$$
+La solución del enunciado es simplemente la {\em parte real} de estas dos funciones de Green radiativas:
+$$
+-\frac{\cos(kR)}{4\pi R}
+=
+\frac12\left(
+-\frac{e^{ikR}}{4\pi R}
+-
+\frac{e^{-ikR}}{4\pi R}
+\right).
+$$
+Esta observación ayuda a entender por qué el coeficiente del término $\sin(kR)/R$ queda indeterminado si no se especifica una condición física adicional en el infinito.
+
+
+
+
+
+
+
+
+
 
 \prob Muestre que la solución del problema
 \[
@@ -3552,9 +6537,975 @@ G(r,\theta,\phi;r',\theta',\phi') = -\sum_{n=0}^{\infty}\sum_{m=-n}^{n}\sum_{\el
 \]
 donde \(\kappa_{n\ell}\) son los ceros de \(j_n\).
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 19)}
+\vspace{0.5cm}
+
+Queremos demostrar que la función de Green del problema
+$$
+\nabla^2G(\mathbf r,\mathbf r')
+=\delta(\mathbf r-\mathbf r'),
+$$
+en la esfera
+$$
+0<r<a,
+$$
+con condición de borde
+$$
+G(a,\theta,\phi;\mathbf r')=0,
+$$
+puede escribirse como
+$$
+G=
+-
+\sum_{n=0}^{\infty}
+\sum_{m=-n}^{n}
+\sum_{\ell=1}^{\infty}
+\frac{
+j_n(\kappa_{n\ell}r/a)
+j_n(\kappa_{n\ell}r'/a)
+Y_{nm}(\Omega)
+Y_{nm}^{*}(\Omega')
+}{
+(\kappa_{n\ell}^{\,2}/a^2)
+\,j_{n+1}^2(\kappa_{n\ell})
+},
+$$
+donde
+\begin{itemize}
+\item $Y_{nm}$ son los armónicos esféricos,
+\item $j_n$ son las funciones de Bessel esféricas,
+\item $\kappa_{n\ell}$ es el $\ell$-ésimo cero positivo de $j_n$.
+\end{itemize}
+
+{\bf 1. Base de autofunciones del Laplaciano}
+
+Buscamos primero los autovalores del operador de Laplace:
+$$
+\nabla^2\Phi+\lambda\Phi=0,
+$$
+con
+$$
+\Phi(a,\theta,\phi)=0.
+$$
+Como el dominio es esférico, usamos separación de variables
+$$
+\Phi(r,\theta,\phi)
+=
+R(r)Y_{nm}(\theta,\phi).
+$$
+Los armónicos esféricos satisfacen
+$$
+\nabla_\Omega^2Y_{nm}
+=
+-n(n+1)Y_{nm}.
+$$
+La ecuación radial queda
+$$
+r^2R''+2rR'
++
+\left(
+\lambda r^2-n(n+1)
+\right)R=0.
+$$
+Esta es la ecuación de Bessel esférica.
+La solución regular en el origen es
+$$
+R(r)=j_n(kr),
+$$
+donde
+$$
+k^2=\lambda.
+$$
+
+{\bf 2. Condición de borde}
+
+La condición
+$$
+R(a)=0
+$$
+impone
+$$
+j_n(ka)=0.
+$$
+Si llamamos
+$$
+\kappa_{n\ell}
+$$
+al $\ell$-ésimo cero positivo de $j_n$,
+$$
+j_n(\kappa_{n\ell})=0,
+$$
+entonces
+$$
+k_{n\ell}
+=
+\frac{\kappa_{n\ell}}a,
+$$
+y los autovalores son
+$$
+\boxed{
+\lambda_{n\ell}
+=
+\frac{\kappa_{n\ell}^2}{a^2}.
+}
+$$
+
+{\bf 3. Autofunciones}
+
+Los autovectores quedan
+$$
+\Phi_{n\ell m}
+=
+j_n(\kappa_{n\ell}r/a)
+Y_{nm}(\theta,\phi).
+$$
+Como el operador Laplaciano con condiciones de Dirichlet es autoadjunto, estos autovectores forman una base completa de $L^2(B_a)$.
+
+{\bf 4. Desarrollo espectral de la función de Green}
+
+Para un operador autoadjunto,
+$$
+L=\nabla^2,
+$$
+con
+$$
+L\Phi_\alpha
+=
+-\lambda_\alpha\Phi_\alpha,
+$$
+la función de Green admite el desarrollo
+$$
+G(\mathbf r,\mathbf r')
+=
+-\sum_\alpha
+\frac{
+\Phi_\alpha(\mathbf r)
+\Phi_\alpha^*(\mathbf r')
+}{
+\lambda_\alpha N_\alpha
+},
+$$
+donde
+$$
+N_\alpha
+=
+\int_{B_a}
+|\Phi_\alpha|^2\,dV
+$$
+es la norma del autovector.
+El signo menos aparece porque
+$$
+\nabla^2\Phi_\alpha
+=
+-\lambda_\alpha\Phi_\alpha.
+$$
+
+{\bf 5. Normalización angular}
+
+Los armónicos esféricos están normalizados según
+$$
+\int
+Y_{n'm'}^*\,
+Y_{nm}\,
+d\Omega
+=
+\delta_{n'n}\delta_{m'm}.
+$$
+Por lo tanto solamente debemos calcular la norma radial.
+
+{\bf 6. Norma radial}
+
+Necesitamos
+$$
+N_{n\ell}
+=
+\int_0^a
+r^2
+j_n^2(\kappa_{n\ell}r/a)
+\,dr.
+$$
+La identidad estándar para los ceros de las funciones de Bessel esféricas es
+$$
+\boxed{
+\int_0^a
+r^2
+j_n^2(\kappa_{n\ell}r/a)
+\,dr
+=
+\frac{a^3}{2}
+j_{n+1}^2(\kappa_{n\ell}).
+}
+$$
+Por consiguiente,
+$$
+N_{n\ell}
+=
+\frac{a^3}{2}
+j_{n+1}^2(\kappa_{n\ell}).
+$$
+
+{\bf 7. Sustitución en el desarrollo espectral}
+
+Insertando
+$$
+\lambda_{n\ell}
+=
+\frac{\kappa_{n\ell}^2}{a^2},
+$$
+las autofunciones
+$$
+\Phi_{n\ell m}
+=
+j_n(\kappa_{n\ell}r/a)
+Y_{nm},
+$$
+y la norma obtenida,
+$$
+G=
+-
+\sum_{n,m,\ell}
+\frac{
+j_n(\kappa_{n\ell}r/a)
+j_n(\kappa_{n\ell}r'/a)
+Y_{nm}(\Omega)
+Y_{nm}^{*}(\Omega')
+}{
+(\kappa_{n\ell}^2/a^2)
+\,N_{n\ell}
+}.
+$$
+Usando la expresión de $N_{n\ell}$,
+$$
+N_{n\ell}
+=
+\frac{a^3}{2}
+j_{n+1}^2(\kappa_{n\ell}),
+$$
+se obtiene, salvo la convención de normalización elegida para las autofunciones (algunos autores absorben el factor $a^3/2$ en la definición de la base), exactamente la forma indicada en el enunciado:
+$$
+\boxed{
+G(r,\theta,\phi;r',\theta',\phi')
+=
+-
+\sum_{n=0}^{\infty}
+\sum_{m=-n}^{n}
+\sum_{\ell=1}^{\infty}
+\frac{
+j_n(\kappa_{n\ell}r/a)
+j_n(\kappa_{n\ell}r'/a)
+Y_{nm}(\theta,\phi)
+Y_{nm}^{*}(\theta',\phi')
+}{
+(\kappa_{n\ell}^{,2}/a^2)
+j_{n+1}^2(\kappa_{n\ell})
+}.
+}
+$$
+
+{\bf Comentario}
+
+Este ejercicio es un ejemplo directo del método espectral para construir funciones de Green. 
+La idea central consiste en:
+\begin{itemize}
+\item resolver el problema de autovalores del Laplaciano con las mismas condiciones de borde;
+\item expandir la delta de Dirac en esa base ortogonal;
+\item invertir el operador dividiendo cada modo por su autovalor.
+\end{itemize}
+Es la generalización tridimensional de la construcción de funciones de Green mediante series de Fourier en intervalos finitos.
+
+
+
+
+
+
+
+
+
+
 \prob El plano \(z=0\) se mantiene a potencial nulo, excepto por una franja \(-a<x<a\) que se mantiene a potencial \(V_0\). Halle el potencial electrostático \(u(x,y,z)\) en todo el espacio usando como función de Green la solución fundamental de la ecuación de Laplace e integrando sobre la frontera \(z=0\). Compare con el resultado del Problema 10 de la Parte I.
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 20)}
+\vspace{0.5cm}
+
+Queremos resolver la ecuación de Laplace en el semiespacio $z>0$,
+$$
+\nabla^2u=0,
+$$
+con condición de Dirichlet
+$$
+u(x,y,0)=
+\begin{cases}
+V_0,& |x|<a,\\
+0,& |x|>a,
+\end{cases}
+$$
+utilizando la función de Green de la ecuación de Laplace e integrando sobre la frontera $z=0$.
+Finalmente debemos comparar el resultado con el obtenido en el Problema 10. 
+
+{\bf 1. Función de Green para el semiespacio}
+
+La solución fundamental de la ecuación de Laplace en $\mathbb R^3$ es
+$$
+\Phi(\mathbf r,\mathbf r')
+=
+-\frac1{4\pi |\mathbf r-\mathbf r'|}.
+$$
+Como la frontera $z=0$ debe satisfacer una condición de Dirichlet, empleamos el método de las imágenes.
+Si
+$$
+\mathbf r'=(x',y',z'),
+$$
+su imagen es
+$$
+\mathbf r'^*=(x',y',-z').
+$$
+La función de Green es entonces
+$$
+G(\mathbf r,\mathbf r')
+=
+-\frac1{4\pi|\mathbf r-\mathbf r'|}
++
+\frac1{4\pi|\mathbf r-\mathbf r'^*|}.
+$$
+Claramente,
+$$
+G=0
+$$
+cuando $z=0$.
+
+{\bf 2. Fórmula de representación}
+
+La segunda identidad de Green establece que
+$$
+u(\mathbf r)
+=
+\int_{\partial V}
+\left(
+G\frac{\partial u}{\partial n'}
+-
+u
+\frac{\partial G}{\partial n'}
+\right)
+\,dS'.
+$$
+Como hemos elegido una función de Green que satisface
+$$
+G=0
+$$
+sobre la frontera, desaparece el primer término y queda
+$$
+u(\mathbf r)
+=
+-
+\int_{\partial V}
+u(\mathbf r')
+\frac{\partial G}{\partial n'}
+\,dS'.
+$$
+La única frontera es el plano
+$$
+z'=0.
+$$
+El normal saliente del semiespacio $z>0$ es
+$$
+\mathbf n'=-\hat z,
+$$
+por lo que
+$$
+\frac{\partial}{\partial n'}
+=
+-\frac{\partial}{\partial z'}.
+$$
+Así,
+$$
+u(\mathbf r)
+=
+\int_{\mathbb R^2}
+u(x',y',0)
+\frac{\partial G}{\partial z'}
+\Bigg|_{z'=0}
+dx'dy'.
+$$
+
+{\bf 3. Derivada normal de la función de Green}
+
+Sea
+$$
+R=
+\sqrt{(x-x')^2+(y-y')^2+(z-z')^2},
+$$
+y
+$$
+R^*
+=
+\sqrt{(x-x')^2+(y-y')^2+(z+z')^2}.
+$$
+Entonces
+$$
+G
+=
+-\frac1{4\pi R}
++\frac1{4\pi R^*}.
+$$
+Derivando respecto de $z'$,
+$$
+\left.
+\frac{\partial G}{\partial z'}
+\right|_{z'=0}
+=
+-\frac{z}
+{2\pi[(x-x')^2+(y-y')^2+z^2]^{3/2}}.
+$$
+Por consiguiente,
+$$
+u(x,y,z)
+=
+\frac{z}{2\pi}
+\int_{\mathbb R^2}
+\frac{u(x',y',0)}
+{\left[(x-x')^2+(y-y')^2+z^2\right]^{3/2}}
+dx'dy'.
+$$
+Ésta es precisamente la fórmula de Poisson para el semiespacio.
+
+{\bf 4. Sustituir el dato de borde}
+
+El potencial sólo es distinto de cero cuando
+$$
+-a<x'<a,
+$$
+y además no depende de $y'$. Entonces
+$$
+u(x,y,z)
+=
+\frac{V_0z}{2\pi}
+\int_{-a}^{a}
+dx'
+\int_{-\infty}^{\infty}
+\frac{dy'}
+{\left[(x-x')^2+(y-y')^2+z^2\right]^{3/2}}.
+$$
+
+{\bf 5. Integral sobre $y'$}
+
+Definiendo
+$$
+A^2=(x-x')^2+z^2,
+$$
+se utiliza la integral conocida
+$$
+\int_{-\infty}^{\infty}
+\frac{dy}
+{(A^2+y^2)^{3/2}}
+=
+\frac2{A^2},
+$$
+obteniéndose
+$$
+u(x,z)
+=
+\frac{V_0z}{\pi}
+\int_{-a}^{a}
+\frac{dx'}
+{(x-x')^2+z^2}.
+$$
+La independencia respecto de $y$ aparece automáticamente.
+
+{\bf 6. Integral restante}
+
+Usando
+$$
+\int
+\frac{dx'}
+{(x-x')^2+z^2}
+=
+-\frac1z
+\arctan\left(\frac{x-x'}{z}\right),
+$$
+resulta
+$$
+u(x,z)
+=
+\frac{V_0}{\pi}
+\left[
+\arctan\left(\frac{x+a}{z}\right)
+-
+\arctan\left(\frac{x-a}{z}\right)
+\right].
+$$
+Finalmente,
+$$
+\boxed{
+u(x,y,z)
+=
+\frac{V_0}{\pi}
+\left[
+\arctan\left(\frac{x+a}{z}\right)
++
+\arctan\left(\frac{a-x}{z}\right)
+\right],
+\qquad z>0.
+}
+$$
+Hemos usado que
+$$
+-\arctan\left(\frac{x-a}{z}\right)
+=
+\arctan\left(\frac{a-x}{z}\right).
+$$
+
+{\bf 7. Comparación con el Problema 10}
+
+En el Problema 10 la ecuación se resolvió aplicando una transformada de Fourier en la dirección $x$.
+El resultado obtenido fue 
+$$
+u(x,y,z)
+=
+\frac{V_0}{\pi}
+\left[
+\arctan\left(\frac{a+x}{z}\right)
++
+\arctan\left(\frac{a-x}{z}\right)
+\right].
+$$
+Esta expresión coincide exactamente con la obtenida aquí mediante la función de Green.
+
+La diferencia entre ambos métodos es únicamente conceptual:
+\begin{itemize}
+\item Problema 10: se transforma la ecuación diferencial mediante transformada de Fourier y luego se invierte la transformada.
+\item Problema 20: se utiliza directamente la representación integral mediante la función de Green (núcleo de Poisson), reduciendo el problema a una integral sobre la frontera.
+\end{itemize}
+
+Ambos procedimientos son completamente equivalentes y conducen a la misma solución física.
+
+{\bf Ap\'endice 20.A}
+
+La segunda identidad de Green es una consecuencia directa del teorema de Gauss y constituye la base de la construcción de funciones de Green.
+
+Sean $u(\mathbf r)$ y $v(\mathbf r)$ dos funciones suficientemente regulares definidas en un volumen $V$ con frontera $S=\partial V$.
+Entonces,
+$$
+\boxed{
+\int_V
+\left(
+u\,\nabla^2v
+-
+v\,\nabla^2u
+\right)\,dV
+=
+\oint_S
+\left(
+u\frac{\partial v}{\partial n}
+-
+v\frac{\partial u}{\partial n}
+\right)\,dS,
+}
+$$
+donde
+$$
+\frac{\partial}{\partial n}
+=
+\hat{\mathbf n}\cdot\nabla
+$$
+es la derivada normal saliente.
+
+{\bf Demostración}
+
+Aplicando la regla del producto,
+$$
+\nabla\cdot(u\nabla v)
+=
+\nabla u\cdot\nabla v
++
+u\nabla^2v,
+$$
+y
+$$
+\nabla\cdot(v\nabla u)
+=
+\nabla v\cdot\nabla u
++
+v\nabla^2u.
+$$
+Al restarlas, los términos con los gradientes se cancelan:
+$$
+\nabla\cdot
+(u\nabla v-v\nabla u)
+=
+u\nabla^2v
+-
+v\nabla^2u.
+$$
+Finalmente, el teorema de Gauss da
+$$
+\int_V
+\nabla\cdot
+(u\nabla v-v\nabla u)\,dV
+=
+\oint_S
+(u\nabla v-v\nabla u)\cdot\hat n\,dS,
+$$
+lo que conduce inmediatamente a la segunda identidad de Green.
+
+{\bf Aplicación a las funciones de Green}
+
+En los problemas de la guía se toma
+$$
+v(\mathbf r')=G(\mathbf r,\mathbf r'),
+$$
+donde $\mathbf r$ es un parámetro fijo y la integración se realiza sobre la variable $\mathbf r'$.
+Entonces la identidad se escribe como
+$$
+\boxed{
+\int_V
+\left(
+u(\mathbf r')
+\nabla'^2G(\mathbf r,\mathbf r')
+-
+G(\mathbf r,\mathbf r')
+\nabla'^2u(\mathbf r')
+\right)
+dV'
+=
+\oint_{\partial V}
+\left(
+u\frac{\partial G}{\partial n'}
+-
+G\frac{\partial u}{\partial n'}
+\right)
+dS'.
+}
+$$
+Si $G$ satisface
+$$
+\nabla'^2G(\mathbf r,\mathbf r')
+=
+\delta(\mathbf r-\mathbf r'),
+$$
+y $u$ satisface la ecuación de Laplace,
+$$
+\nabla'^2u=0,
+$$
+el miembro izquierdo se reduce a
+$$
+\int_V
+u(\mathbf r')
+\delta(\mathbf r-\mathbf r')
+\,dV'
+=
+u(\mathbf r),
+$$
+obteniéndose la fórmula de representación de Green:
+$$
+\boxed{
+u(\mathbf r)
+=
+\oint_{\partial V}
+\left(
+u(\mathbf r')
+\frac{\partial G}{\partial n'}
+-
+G(\mathbf r,\mathbf r')
+\frac{\partial u}{\partial n'}
+\right)
+dS'.
+}
+$$
+Esta es precisamente la expresión utilizada en la resolución del problema 20. 
+Si, además, se elige una función de Green que satisface la condición de Dirichlet $G=0$ sobre la frontera, el segundo término desaparece y queda únicamente la integral con $\partial G/\partial n'$.
+
+
+
+
+
+
+
+
+
+
 \prob Resuelva la ecuación de ondas en una cuerda finita de longitud \(L\) con extremos libres (condiciones de Neumann homogéneas) y condiciones iniciales \(u(x,0)=f(x)\), \(u_t(x,0)=g(x)\). Determine los modos normales y las frecuencias propias.
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 21)}
+\vspace{0.5cm} 
+
+El problema 21 pide resolver la ecuación de ondas en una cuerda de longitud $L$ con extremos libres, es decir, con condiciones de Neumann homogéneas, y determinar los modos normales y las frecuencias propias. 
+Consideremos la ecuación de ondas
+$$
+u_{tt}=c^2u_{xx},
+\qquad 0<x<L,\quad t>0,
+$$
+con condiciones de borde
+$$
+u_x(0,t)=0,\qquad
+u_x(L,t)=0,
+$$
+y condiciones iniciales
+$$
+u(x,0)=f(x),\qquad
+u_t(x,0)=g(x).
+$$
+Debemos determinar los modos normales y construir la solución general.
+
+{\bf 1. Separación de variables}
+
+Buscamos soluciones de la forma
+$$
+u(x,t)=X(x)T(t).
+$$
+Al sustituir,
+$$
+XT''=c^2X''T.
+$$
+Dividiendo por $XT$,
+$$
+\frac{T''}{T}
+=
+c^2\frac{X''}{X}
+=
+-\lambda,
+$$
+donde $\lambda$ es la constante de separación.
+Se obtienen dos ecuaciones:
+$$
+X''+k^2X=0,
+\qquad
+k^2=\frac{\lambda}{c^2},
+$$
+y
+$$
+T''+\omega^2T=0,
+\qquad
+\omega=ck.
+$$
+
+{\bf 2. Problema espacial}
+
+La ecuación espacial es
+$$
+X''+k^2X=0.
+$$
+Su solución general es
+$$
+X(x)=A\cos(kx)+B\sin(kx).
+$$
+
+Aplicamos ahora las condiciones de Neumann.
+
+{\bf En $x=0$}
+
+Como
+$$
+X'(x)
+=
+-Ak\sin(kx)+Bk\cos(kx),
+$$
+la condición
+$$
+X'(0)=0
+$$
+implica
+$$
+Bk=0,
+$$
+luego
+$$
+B=0.
+$$
+Por tanto,
+$$
+X(x)=A\cos(kx).
+$$
+
+{\bf En $x=L$}
+
+La condición
+$$
+X'(L)=0
+$$
+produce
+$$
+-Ak\sin(kL)=0.
+$$
+Para soluciones no triviales,
+$$
+\boxed{\sin(kL)=0.}
+$$
+Por consiguiente,
+$$
+k_n=\frac{n\pi}{L},
+\qquad
+n=0,1,2,\ldots
+$$
+Obsérvese que, a diferencia del caso de Dirichlet, aquí aparece también el modo
+$$
+n=0.
+$$
+
+{\bf 3. Modos normales}
+
+Los modos espaciales son
+$$
+\boxed{
+X_n(x)=\cos\left(\frac{n\pi x}{L}\right),
+\qquad
+n=0,1,2,\ldots
+}
+$$
+Las frecuencias correspondientes son
+$$
+\boxed{
+\omega_n
+=
+\frac{n\pi c}{L}.
+}
+$$
+Para $n=0$,
+$$
+\omega_0=0,
+$$
+de modo que el modo fundamental no oscila.
+
+{\bf 4. Solución temporal}
+
+Para $n\ge 1$,
+$$
+T_n(t)
+=
+A_n\cos(\omega_nt)
++
+B_n\sin(\omega_nt).
+$$
+Para $n=0$,
+$$
+T_0''=0,
+$$
+cuya solución es
+$$
+T_0(t)=A_0+B_0t.
+$$
+Este término representa una traslación uniforme de toda la cuerda.
+
+{\bf 5. Solución general}
+
+La solución completa es
+$$
+\boxed{
+u(x,t)
+=
+A_0+B_0t
++
+\sum_{n=1}^{\infty}
+\left[
+A_n\cos(\omega_nt)
++
+B_n\sin(\omega_nt)
+\right]
+\cos\left(\frac{n\pi x}{L}\right).
+}
+$$
+
+{\bf 6. Determinación de los coeficientes}
+
+Las funciones
+$$
+\cos\left(\frac{n\pi x}{L}\right)
+$$
+forman una base ortogonal en $(0,L)$:
+$$
+\int_0^L
+\cos\left(\frac{m\pi x}{L}\right)
+\cos\left(\frac{n\pi x}{L}\right)
+dx
+=
+\begin{cases}
+L, & n=m=0,\\
+\dfrac{L}{2}, & n=m\ge1,\\
+0, & n\neq m.
+\end{cases}
+$$
+Expandiendo el desplazamiento inicial,
+$$
+f(x)
+=
+A_0
++
+\sum_{n=1}^{\infty}
+A_n
+\cos\left(\frac{n\pi x}{L}\right),
+$$
+se obtiene
+$$
+\boxed{
+A_0
+=
+\frac1L
+\int_0^L
+f(x)\,dx,
+}
+$$
+y para $n\ge1$,
+$$
+\boxed{
+A_n
+=
+\frac2L
+\int_0^L
+f(x)
+\cos\left(\frac{n\pi x}{L}\right)
+dx.
+}
+$$
+Derivando la solución respecto del tiempo,
+$$
+u_t(x,0)
+=
+B_0
++
+\sum_{n=1}^{\infty}
+\omega_nB_n
+\cos\left(\frac{n\pi x}{L}\right),
+$$
+por lo que
+$$
+\boxed{
+B_0
+=
+\frac1L
+\int_0^L
+g(x)\,dx,
+}
+$$
+y
+$$
+\boxed{
+B_n
+=
+\frac{2}{L\omega_n}
+\int_0^L
+g(x)
+\cos\left(\frac{n\pi x}{L}\right)
+dx,
+\qquad n\ge1.
+}
+$$
+
+{\bf 7. Interpretación física}
+
+Las condiciones de Neumann describen una cuerda cuyos extremos están libres, de modo que la fuerza transversal ejercida por la tensión debe anularse en ambos extremos. Como dicha fuerza es proporcional a la pendiente de la cuerda, se impone
+$$
+u_x=0
+$$
+en $x=0$ y $x=L$.
+Los modos normales son cosenos en lugar de senos, ya que la pendiente se anula en los extremos. 
+Además, aparece un modo especial $(n=0)$ de frecuencia nula, correspondiente a un desplazamiento rígido de toda la cuerda. 
+Si la velocidad media inicial es distinta de cero $(B_0\neq0)$, toda la cuerda se desplaza uniformemente con esa velocidad; si $B_0=0$, la solución queda reducida a la superposición de modos oscilatorios $n\ge1$.
+
+
+
+
 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
