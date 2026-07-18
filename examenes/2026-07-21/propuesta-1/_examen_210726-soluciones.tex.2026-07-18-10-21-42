@@ -928,6 +928,344 @@ $$
 u(x,0)=x.
 $$
 
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 3bis)}
+\vspace{0.5cm}
+
+Soluci\'on en t\'erminos de flujos de un campo vectorial.
+Supongamos una ecuación lineal de primer orden
+$$
+\boxed{
+X(u)=cu+f,
+}
+$$
+donde
+$$
+X=\sum_{i=1}^n a_i(x),\frac{\partial}{\partial x_i}
+$$
+es un campo vectorial sobre un dominio $\Omega\subset\mathbb{R}^n$.
+La ecuación también puede escribirse como
+$$
+\sum_i a_i(x),\partial_i u=c(x)u+f(x).
+$$
+
+{\bf 1. Las características son las curvas integrales de $X$}
+
+Las características no son otra cosa que las curvas integrales del campo vectorial $X$:
+$$
+\boxed{
+\frac{d\gamma}{ds}=X(\gamma(s)).
+}
+$$
+En coordenadas,
+$$
+\boxed{
+\frac{dx_i}{ds}=a_i(x(s)).
+}
+$$
+Estas curvas forman el flujo del campo vectorial.
+
+{\bf 2. Restricción de la solución a una característica}
+
+Sea
+$$
+U(s)=u(\gamma(s)).
+$$
+Aplicando la regla de la cadena,
+$$
+\frac{dU}{ds}
+=
+\sum_i
+\frac{\partial u}{\partial x_i}
+\frac{dx_i}{ds}.
+$$
+Como
+$$
+\frac{dx_i}{ds}=a_i,
+$$
+obtenemos
+$$
+\boxed{
+\frac{dU}{ds}
+=
+X(u).
+}
+$$
+Pero la EDP dice que
+$$
+X(u)=cu+f.
+$$
+Luego, sobre cada característica,
+$$
+\boxed{
+\frac{dU}{ds}
+=
+c(\gamma(s)),U
++
+f(\gamma(s)).
+}
+$$
+Es decir, la EDP se transforma en una ecuación diferencial ordinaria.
+
+{\bf 3. Resolución de la EDO}
+
+La solución es
+$$
+U(s)
+=
+e^{\int_0^s c(\gamma(\tau)),d\tau}
+\left[
+U(0)
++
+\int_0^s
+e^{-\int_0^\sigma c(\gamma(\tau)),d\tau}
+f(\gamma(\sigma))
+,d\sigma
+\right].
+$$
+Cuando $f=0$,
+$$
+\boxed{
+U(s)
+=
+U(0)
+\exp\left(
+\int_0^s c(\gamma(\tau)),d\tau
+\right).
+}
+$$
+
+{\bf Interpretación geométrica}
+
+Toda la información puede resumirse así:
+\begin{itemize}
+\item El campo vectorial $X$ determina un flujo
+$$
+\varphi_s.
+$$
+\item Las características son las órbitas de ese flujo,
+$$
+\gamma(s)=\varphi_s(p).
+$$
+\item Sobre cada órbita, la función $u$ satisface únicamente una EDO.
+\end{itemize}
+
+En otras palabras, el método de las características consiste en ``rectificar'' el campo vectorial $X$. 
+En las coordenadas adaptadas al flujo, $X$ se convierte simplemente en
+$$
+\frac{\partial}{\partial s},
+$$
+y la EDP pasa a ser una EDO.
+
+{\bf Aplicación al Problema 3}
+
+En el ejercicio,
+$$
+X
+=
+2xy,\frac{\partial}{\partial x}
++
+\frac{\partial}{\partial y}.
+$$
+Las características son las curvas integrales de este campo:
+$$
+\begin{cases}
+\dot x=2xy,\
+\dot y=1.
+\end{cases}
+$$
+Como $y=s$,
+$$
+\frac{dx}{dy}=2xy,
+$$
+de donde
+$$
+xe^{-y^2}=\text{constante}.
+$$
+Sobre cada una de esas curvas,
+$$
+\frac{du}{ds}=u,
+$$
+es decir,
+$$
+\frac{du}{dy}=u,
+$$
+que es precisamente la EDO que resolvimos para obtener
+$$
+u(x,y)=x\,e^{y-y^2}.
+$$
+Esta formulación pone de manifiesto que el método de las características es, en esencia, el estudio del flujo de un campo vectorial y de la evolución de $u$ a lo largo de sus curvas integrales. En geometría diferencial suele expresarse de forma muy compacta como
+$$
+\boxed{X(u)=cu+f,}
+$$
+donde $X$ actúa como una derivada direccional o, equivalentemente, como la derivada de Lie de la función $u$ a lo largo del campo vectorial $X$.
+
+
+
+
+
+
+
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 3tris)}
+\vspace{0.5cm}
+
+Resolvemos incluyendo a $u$ como una coordenada más de un campo vectorial extendido.
+Hay dos formas de hacerlo.
+
+{\bf Forma 1. Extender el espacio agregando $u$}
+
+En lugar de trabajar en el espacio
+$$
+(x,y),
+$$
+se considera el espacio ampliado
+$$
+(x,y,u).
+$$
+La EDP
+$$
+2xy\,u_x+u_y=u
+$$
+se reemplaza por el sistema de ODE
+$$
+\boxed{
+\begin{aligned}
+\dot x &=2xy,\\
+\dot y &=1,\\
+\dot u &=u.
+\end{aligned}
+}
+$$
+Esto equivale a introducir el campo vectorial
+$$
+\boxed{
+\widetilde X
+=
+2xy\,\frac{\partial}{\partial x}
++
+\frac{\partial}{\partial y}
++
+u\,\frac{\partial}{\partial u}.
+}
+$$
+Las soluciones son simplemente las curvas integrales de $\widetilde X$.
+
+{\bf ¿Por qué funciona?}
+
+Si
+$$
+\Gamma(s)=\bigl(x(s),y(s),u(s)\bigr)
+$$
+es una curva integral de $\widetilde X$, entonces
+$$
+\dot u
+=
+u_x\dot x
++
+u_y\dot y.
+$$
+Pero
+$$
+\dot x=2xy,\qquad
+\dot y=1,
+$$
+luego
+$$
+\dot u
+=
+2xy\,u_x+u_y,
+$$
+y la EDP exige precisamente
+$$
+\dot u=u.
+$$
+Así, la EDP queda completamente absorbida en el campo vectorial del espacio ampliado.
+
+{\bf Forma 2. Como una variedad integral}
+
+Hay otra interpretación todavía más geométrica.
+La solución $u(x,y)$ determina la superficie
+$$
+\Sigma
+=
+\{(x,y,u(x,y))\}
+\subset
+\mathbb R^3.
+$$
+La condición
+$$
+2xy\,u_x+u_y=u
+$$
+dice exactamente que el campo
+$$
+\widetilde X
+=
+2xy\,\partial_x
++\partial_y
++u\,\partial_u
+$$
+es tangente a la superficie $\Sigma$.
+En efecto, un vector tangente a la gráfica es
+$$
+2xy
+\left(
+\partial_x+u_x\partial_u
+\right)
++
+\left(
+\partial_y+u_y\partial_u
+\right),
+$$
+que vale
+$$
+2xy\,\partial_x+\partial_y+
+(2xy\,u_x+u_y)\partial_u.
+$$
+Usando la EDP,
+$$
+2xy\,u_x+u_y=u,
+$$
+queda
+$$
+2xy\,\partial_x+\partial_y+u\,\partial_u
+=
+\widetilde X.
+$$
+Es decir,
+$$
+\boxed{\widetilde X\ \text{es tangente a la gráfica de }u.}
+$$
+Esta es probablemente la interpretación geométrica más bonita.
+
+{\bf Relación con la teoría de contacto}
+
+Esto es justamente el primer paso hacia la formulación general del método de las características para ecuaciones no lineales de primer orden (Hamilton–Jacobi). 
+Allí se trabaja en el espacio
+$$
+(x^i,u,p_i),
+$$
+donde
+$$
+p_i=\frac{\partial u}{\partial x^i},
+$$
+y las características son curvas integrales de un campo vectorial en ese espacio de dimensión $2n+1$, relacionado con la estructura de contacto.
+
+En resumen, puede pensarse que $u$ es una coordenada adicional. En ese caso, la EDP deja de verse como una ecuación para una función y pasa a describir las curvas integrales del campo vectorial
+$$
+\boxed{
+\widetilde X
+=
+\sum_i a_i(x)\,\partial_{x_i}
++
+(cu+f)\,\partial_u,
+}
+$$
+que es, en esencia, la formulación geométrica del método de las características.
+Para ecuaciones lineales de primer orden, esta es probablemente la forma más conceptual de entender el método.
+
+
 
 
 
@@ -973,154 +1311,233 @@ Hágalo.
 {\bf Soluci\'on }{\em 4)}
 \vspace{0.5cm}
 
-Como el dato de borde no depende de $z$, la solución tampoco depende de esa coordenada. La ecuación de Laplace se reduce a
+El potencial satisface la ecuación de Laplace en el interior de un cilindro infinito de radio $b$
+$$
+\nabla^2\Phi=0,
+$$
+con condición de borde
+$$
+\Phi(b,\theta)=
+\begin{cases}
++V,&0<\theta\le\pi/2,\\
+-V,&\pi/2<\theta\le\pi,\\
++V,&\pi<\theta\le3\pi/2,\\
+-V,&3\pi/2<\theta\le2\pi.
+\end{cases}
+$$
+Como el dato de borde no depende de $z$, la solución tampoco dependerá de $z$.
+La ecuación de Laplace queda entonces
 $$
 \frac1r\frac{\partial}{\partial r}
 \left(r\frac{\partial\Phi}{\partial r}\right)
-+\frac1{r^2}
-\frac{\partial^2\Phi}{\partial\theta^2}=0.
++\frac1{r^2}\frac{\partial^2\Phi}{\partial\theta^2}=0.
 $$
 
-{\bf a) Solución como serie de potencias}
+{\bf a) Serie de potencias}
 
-{\em Separación de variables.}
+{\em Separación de variables}
 
-Buscamos soluciones de la forma
+Buscamos
 $$
 \Phi(r,\theta)=R(r)\Theta(\theta).
 $$
-Sustituyendo en la ecuación de Laplace,
+Sustituyendo,
 $$
 \frac{r^2R''+rR'}R
 =
 -\frac{\Theta''}{\Theta}
 =n^2.
 $$
-Las soluciones son
+Obtenemos
 $$
-\Theta=A_n\cos(n\theta)+B_n\sin(n\theta),
+\Theta=A_n\cos n\theta+B_n\sin n\theta,
 $$
 y
 $$
 R=C_nr^n+D_nr^{-n}.
 $$
-Como el potencial debe permanecer finito en el origen,
+Como queremos una solución regular en el origen,
 $$
 D_n=0.
 $$
-Además, el valor medio del potencial sobre el borde es cero, por lo que no aparece un término constante.
+Además, el valor medio del potencial de borde es cero, por lo que no hay término constante.
 Así,
 $$
+\boxed{
 \Phi(r,\theta)
 =
-\sum_{n=1}^{\infty}
+\sum_{n=1}^\infty
 \left(\frac rb\right)^n
 \left(
-A_n\cos n\theta
+a_n\cos n\theta
 +
-B_n\sin n\theta
-\right).
-$$
-
-{\em Serie de Fourier del dato de borde.}
-
-Observemos primero que
-$$
-\boxed{
-\Phi(b,\theta)
-=
-V\,\operatorname{sgn}(\sin2\theta).
-}
-$$
-Esta función es impar y periódica, por lo que sólo posee términos seno.
-Su serie de Fourier es la conocida expansión de una onda cuadrada:
-$$
-\boxed{
-\operatorname{sgn}(\sin x)
-=
-\frac4\pi
-\left(
-\sin x
-+\frac{\sin3x}{3}
-+\frac{\sin5x}{5}
-+\cdots
+b_n\sin n\theta
 \right).
 }
 $$
-Tomando $x=2\theta$,
+
+{\em Simetrías del dato de borde}
+
+La función de borde verifica
 $$
-\boxed{
-\Phi(b,\theta)
-=
-\frac{4V}{\pi}
-\sum_{k=0}^{\infty}
-\frac{\sin[(4k+2)\theta]}{2k+1}.
-}
+f(\theta+\pi)=f(\theta),
 $$
-Comparando con la solución general, obtenemos inmediatamente
+por lo que sólo aparecen armónicos pares.
+Además,
+$$
+f(-\theta)=-f(\theta),
+$$
+es decir, es impar respecto de $\theta=0$.
+Luego sólo aparecen senos.
+Por tanto,
 $$
 \boxed{
 \Phi(r,\theta)
 =
-\frac{4V}{\pi}
-\sum_{k=0}^{\infty}
-\frac1{2k+1}
-\left(\frac rb\right)^{4k+2}
-\sin[(4k+2)\theta].
+\sum_{m=1}^\infty
+b_{2m}
+\left(\frac rb\right)^{2m}
+\sin(2m\theta).
 }
 $$
-Esta es la solución pedida en forma de serie de potencias.
+
+{\em Cálculo de los coeficientes}
+
+Los coeficientes son
+$$
+b_n=\frac1\pi
+\int_0^{2\pi}
+f(\theta)\sin(n\theta),d\theta.
+$$
+Como $f=\pm V$,
+$$
+b_n
+=
+\frac{V}{\pi}
+\left[
+\int_0^{\pi/2}\sin n\theta\,d\theta
+-
+\int_{\pi/2}^{\pi}\sin n\theta\,d\theta
++\cdots
+\right].
+$$
+Un cálculo directo da
+$$
+b_n=
+\frac{4V}{\pi n},
+\qquad
+n=2,6,10,\ldots
+$$
+y
+$$
+b_n=
+-\frac{4V}{\pi n},
+\qquad
+n=4,8,12,\ldots
+$$
+o, equivalentemente,
+$$
+\boxed{
+b_{4k+2}
+=
+\frac{4V}{(4k+2)\pi},
+\qquad
+b_{4k}=-
+\frac{4V}{4k,\pi}.
+}
+$$
+Puede escribirse de forma compacta como
+$$
+b_{2m}
+=
+\frac{2V}{m\pi}(-1)^{m+1}.
+$$
+
+{\em Solución en serie}
+
+Finalmente,
+$$
+\boxed{
+\Phi(r,\theta)
+=
+\frac{2V}{\pi}
+\sum_{m=1}^{\infty}
+(-1)^{m+1}
+\frac1m
+\left(\frac rb\right)^{2m}
+\sin(2m\theta).
+}
+$$
+Esta es la solución pedida en el inciso $a$.
 
 {\bf b) Suma de la serie}
 
 Escribimos
 $$
-\sin[(4k+2)\theta]
+\sin(2m\theta)
 =
-\Im\left(e^{i(4k+2)\theta}\right).
+\Im(e^{2im\theta}),
 $$
-Por lo tanto,
+por lo que
 $$
-\Phi(r,\theta)
+\Phi
 =
-\frac{4V}{\pi}
-\Im\left[
-\sum_{k=0}^{\infty}
-\frac1{2k+1}
+\frac{2V}{\pi}
+\Im
+\left[
+\sum_{m=1}^{\infty}
+(-1)^{m+1}
+\frac1m
 \left(
-\left(\frac rb\right)^2
-e^{2i\theta}
-\right)^{2k+1}
+\frac rb
+\right)^{2m}
+e^{2im\theta}
 \right].
 $$
-Definimos
+Definamos
 $$
 z=
-\left(\frac rb\right)^2e^{2i\theta},
+-\left(\frac rb\right)^2e^{2i\theta}.
 $$
-con $|z|<1$ porque $r<b$.
-La serie anterior queda
+Entonces
 $$
-\sum_{k=0}^{\infty}\frac{z^{2k+1}}{2k+1}.
-$$
-Ahora utilizamos exactamente la identidad suministrada en el enunciado,
-$$
-\frac12
-\log\left(\frac{1+z}{1-z}\right)
+(-1)^{m+1}
+\left(\frac rb\right)^{2m}
+e^{2im\theta}
 =
-z+\frac{z^3}{3}+\frac{z^5}{5}+\cdots.
+-z^m,
 $$
-De aquí,
+y
 $$
-\Phi(r,\theta)
+\Phi
 =
-\frac{4V}{\pi}
-\Im\left[
-\frac12
-\log\left(\frac{1+z}{1-z}\right)
+-\frac{2V}{\pi}
+\Im
+\left[
+\sum_{m=1}^{\infty}
+\frac{z^m}{m}
 \right].
 $$
-Finalmente,
+Usando
+$$
+\sum_{m=1}^{\infty}\frac{z^m}{m}
+=
+-\log(1-z),
+$$
+resulta
+$$
+\Phi
+=
+\frac{2V}{\pi}
+\Im
+\log(1-z).
+$$
+Como
+$$
+z=
+-\left(\frac rb\right)^2e^{2i\theta},
+$$
+obtenemos
 $$
 \boxed{
 \Phi(r,\theta)
@@ -1128,65 +1545,34 @@ $$
 \frac{2V}{\pi}
 \Im
 \log
-\left(
-\frac{1+\left(\frac rb\right)^2e^{2i\theta}}
-{1-\left(\frac rb\right)^2e^{2i\theta}}
-\right).
+\left[
+1+
+\left(\frac rb\right)^2
+e^{2i\theta}
+\right].
 }
 $$
 
-{\em Expresión completamente real.}
+{\em Forma real}
 
-Si escribimos
+Usando
 $$
-z=\rho e^{2i\theta},
-\qquad
-\rho=\left(\frac rb\right)^2,
+\Im\log(x+iy)=\arg(x+iy),
 $$
-entonces
-$$
-\frac{1+z}{1-z}
-=
-\frac{1+\rho e^{2i\theta}}
-{1-\rho e^{2i\theta}}.
-$$
-Como la parte imaginaria del logaritmo es el argumento del número complejo,
-$$
-\Im\log w=\arg(w),
-$$
-obtenemos
-$$
-\arg\left(\frac{1+z}{1-z}\right)
-=
-\arctan\left(
-\frac{2\rho\sin2\theta}
-{1-\rho^2}
-\right),
-$$
-ya que
-$$
-\frac{1+\rho e^{i\varphi}}
-{1-\rho e^{i\varphi}}
-=
-\frac{1-\rho^2+2i\rho\sin\varphi}
-{|1-\rho e^{i\varphi}|^2}.
-$$
-Con $\varphi=2\theta$, resulta finalmente
+la solución también puede escribirse como
 $$
 \boxed{
 \Phi(r,\theta)
 =
 \frac{2V}{\pi}
-\arctan\left(
-\frac{
-2\left(\frac rb\right)^2\sin2\theta
-}{
-1-\left(\frac rb\right)^4
-}
+\arctan
+\left(
+\frac{\left(\frac rb\right)^2\sin2\theta}
+{1+\left(\frac rb\right)^2\cos2\theta}
 \right),
-\qquad r<b.
 }
 $$
+tomando la rama continua del argumento en el disco $r<b$.
 
 {\bf Respuestas finales}
 
@@ -1196,14 +1582,17 @@ $$
 \boxed{
 \Phi(r,\theta)
 =
-\frac{4V}{\pi}
-\sum_{k=0}^{\infty}
-\frac1{2k+1}
-\left(\frac rb\right)^{4k+2}
-\sin[(4k+2)\theta].
+\frac{2V}{\pi}
+\sum_{m=1}^{\infty}
+(-1)^{m+1}
+\frac1m
+\left(\frac rb\right)^{2m}
+\sin(2m\theta).
 }
 $$
-\item {\bf b)} Utilizando la identidad indicada en el enunciado,
+
+\item {\bf b)}
+La serie se suma exactamente a
 $$
 \boxed{
 \Phi(r,\theta)
@@ -1211,10 +1600,10 @@ $$
 \frac{2V}{\pi}
 \Im
 \log
-\left(
-\frac{1+\left(\frac rb\right)^2e^{2i\theta}}
-{1-\left(\frac rb\right)^2e^{2i\theta}}
-\right),
+\left[
+1+
+\left(\frac rb\right)^2e^{2i\theta}
+\right],
 }
 $$
 o, de forma equivalente,
@@ -1223,16 +1612,19 @@ $$
 \Phi(r,\theta)
 =
 \frac{2V}{\pi}
-\arctan\left(
-\frac{
-2\left(\frac rb\right)^2\sin2\theta
-}{
-1-\left(\frac rb\right)^4
-}
+\arctan
+\left(
+\frac{\left(\frac rb\right)^2\sin2\theta}
+{1+\left(\frac rb\right)^2\cos2\theta}
 \right).
 }
 $$
+Esta última es la expresión cerrada del potencial en todo el interior del cilindro $(r<b)$.
 \end{itemize}
+
+
+
+
 
 
 
