@@ -1,0 +1,247 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=51\baselineskip
+\parindent 0pt
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textcolor[rgb]{0.0,0.4,0.0}{MMFII 2026 -- Segundo Parcial}\hfill\textcolor[rgb]{0.0,0.4,0.0}{\thepage}}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color[rgb]{0.0,0.4,0.0}{\leaders\hrule height \headrulewidth\hfill}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added by CBB 2023.03.06
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header - by CBB 2023.03.13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Examen Final -- 21/07/2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+\vspace{-0.7\baselineskip}
+\begin{center}
+\bf
+Escriba su nombre en cada página y numere todas las páginas\\
+Resuelva cada problema en hojas separadas\\
+Se permite el uso de tablas de transformadas y de funciones especiales
+\end{center}
+%\vspace{-1.0\baselineskip}
+%
+\hrule
+
+
+\vspace{5mm}
+
+\prob{} La siguente matriz opera sobre un espacio vectorial $V$ de dimensión 4.
+\[
+A= \left( \begin{array}{rrrr}
+-4 & 0 & -1 & 0 \\
+0 & -2 &  0 & 0 \\
+4 & 1 & 0 & 0 \\
+6 & 1 & 3 & -2
+\end{array} \right).
+\]
+Sabiendo que $det(A-\lambda I) = (\lambda+2)^4,$ Calcule:
+\begin{enumerate}
+\item Los autovectores de $A$.
+\item La forma de Jordan de la matriz $A$ (no le pedimos el cambio de base)
+\item Responda: >En cuántos subespacios invariantes irreducibles se descompone
+$V$ bajo la acción de $A$? >Qué dimensión tiene cada uno de esos subespacios?
+Justifique claramente.
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1)}
+\vspace{0.5cm}
+
+
+
+
+
+
+
+\prob{} La métrica sobre una superficie toroidal de radio grande $R$ y radio
+pequeño $a$ ($a<R$), está dada en coordenadas $\{\theta, \alpha\}$ por
+\[
+ds^2 = (R + a \cos(\theta))^2 d\theta^2 + a^2 d\alpha^2,
+\]
+donde $\theta$ es el ángulo que mide la rotación alrededor al eje de simetría
+axial del toroide y $\alpha$ mide la rotación sobre la circunferencia de radio
+$a$ en un plano $\theta =$const. Calcule la métrica inversa $g^{ij}$, los símbolos de Christoffel y el
+operador Laplaciano actuando sobre una función $u(\theta,\alpha)$, es decir
+$\Delta u(\theta,\alpha) = g^{ij} \nabla_i \nabla_j u.$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+
+
+
+
+
+
+\prob{} Resuelva mediante el método de las características
+\[
+2xy \frac{\partial u}{\partial x} + \frac{\partial u}{\partial y}  - u = 0,
+\]
+sabiendo que $u(x,y=0) = x.$
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 3)}
+\vspace{0.5cm}
+
+
+
+
+
+
+
+
+\prob{} El potencial $\Phi(r,\theta,z)$ satisface la ecuación de Laplace en el interior de un 
+cilindro infinitamente largo de radio $b.$ En el borde del cilindro la función
+satisface, para $V>0,$
+\[
+ \Phi(r=b, \theta,z) = \left\lbrace
+\begin{array}{lcl}
+ +V & \quad \mbox{si} \quad & 0<\theta\leq \pi/2 \\
+-V & \mbox{si}   & \pi/2<\theta\leq \pi \\
++V & \quad \mbox{si} \quad & \pi<\theta\leq 3\pi/2 \\
+-V & \mbox{si}   & 3\pi/2<\theta\leq 2\pi \\
+\end{array}
+\right.
+\]
+\begin{enumerate}
+\item Represente la condición de contorno gráficamente como función de $\theta$
+y diga cuál es el período fundamental de la misma.
+\item Calcule $\Phi$ en el interior del cilindro. 
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 4)}
+\vspace{0.5cm}
+
+
+
+
+
+
+
+
+ 
+\end{document}
+
+
+% Sobras
+\prob{} Calcule $\exp(A)$, donde $A$ es la matriz
+\[
+A = \left(\begin{array}{rrr}
+-2 & 0 & 1 \\
+-1 & -3 & 3 \\
+-1 & -1 & 1
+\end{array}\right)
+\]
+{\em Ayuda:} Transforme $A$ a forma de Jordan, exponencie y antitransforme.
+
+
+
+
