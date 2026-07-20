@@ -1,3 +1,4 @@
+********************************************************************************
 de:	OMAR EDUARDO ORTIZ <omar.ortiz@unc.edu.ar>
 para:	
 Juan Ignacio Perotti <juan.perotti@unc.edu.ar>
@@ -25,3 +26,9 @@ Omar.
 
 Dr. Omar E. Ortiz
 FAMAF, Universidad Nacional de Córdoba.
+
+--------------------------------------------------------------------------------
+
+https://chatgpt.com/share/6a5e9b8e-fc60-83e9-9696-2266d346f19e
+
+********************************************************************************
