@@ -2891,39 +2891,13 @@ V_0, & 0<\phi<\pi,\\
 \end{cases}
 \]
 
-\vspace{0.5cm}
-{\bf Soluci\'on }{\em 13)}
-\vspace{0.5cm}
-
-
-
-
-
-
-
 \prob Resuelva la ecuación de Laplace en la región \(0<x<a\), \(0<y<\infty\) con las condiciones
 \[
 \psi(0,y)=0,\quad \psi(a,y)=0,\quad \psi(x,0)=A\left(1-\frac{x}{a}\right),
 \]
 donde \(A\) es constante.
 
-\vspace{0.5cm}
-{\bf Soluci\'on }{\em 14)}
-\vspace{0.5cm}
-
-
-
-
-
 \prob Obtenga la temperatura estacionaria \(T(r,\phi,z)\) en el interior de un cilindro recto finito de longitud \(L\) y radio \(a\) si las superficies \(z=0\) y \(z=L\) se mantienen a \(T=0\) y la superficie lateral \(r=a\) se mantiene a \(T=T_0\) (constante).
-
-\vspace{0.5cm}
-{\bf Soluci\'on }{\em 15)}
-\vspace{0.5cm}
-
-
-
-
 
 \prob Resuelva la ecuación de Laplace \(\nabla^2 u = 0\) en el exterior de una esfera de radio \(a\) con condición de borde
 \[
@@ -2934,49 +2908,11 @@ V_0, & 0<\theta<\pi/2,\\
 \]
 ¿Cuál es el comportamiento asintótico para \(r\to\infty\)?
 
-\vspace{0.5cm}
-{\bf Soluci\'on }{\em 16)}
-\vspace{0.5cm}
-
-
-
-
-
-
-
 \prob Una esfera conductora de radio \(a\) se divide por su ecuador; la mitad superior se mantiene a potencial \(V_0\) y la inferior a \(-V_0\). El interior contiene una densidad de carga uniforme \(\rho_0\). Halle el potencial electrostático \(V(r,\theta,\phi)\) en el interior de la cáscara.
-
-\vspace{0.5cm}
-{\bf Soluci\'on }{\em 17)}
-\vspace{0.5cm}
-
-
-
-
-
-
 
 \prob Se construye una antena partiendo una esfera conductora de radio \(a\) por su ecuador y aplicando a las dos mitades voltajes alternos y opuestos \(\pm V_0 e^{i\omega t}\). Encuentre el potencial electrostático para \(r>a\) en el estado de régimen (frecuencia \(\omega\)), asumiendo la condición de ondas salientes para \(r\to\infty\). La ecuación a resolver es \((\nabla^2 + k^2)u=0\) con \(k=\omega/c\).
 
-\vspace{0.5cm}
-{\bf Soluci\'on }{\em 18)}
-\vspace{0.5cm}
-
-
-
-
-
-
 \prob Una esfera homogénea de radio \(a\) y difusividad térmica \(\alpha\) es forzada a mantener su superficie a temperatura \(T_0 + T_1\cos(\omega t)\). Encuentre la temperatura \(T(r,\theta,\phi,t)\) dentro de la esfera en el estado de régimen. (Redúzcase a una ecuación de Helmholtz para la componente estacionaria oscilante.)
-
-\vspace{0.5cm}
-{\bf Soluci\'on }{\em 19)}
-\vspace{0.5cm}
-
-
-
-
-
 
 \prob La superficie terrestre (modelada como un semi-espacio \(z<0\) con difusividad \(D\)) está sometida a una variación periódica de temperatura
 \[
@@ -2984,25 +2920,7 @@ T(z=0,t) = T_0 + A_d\cos(\omega_d t) + A_a\cos(\omega_a t).
 \]
 Resuelva la ecuación de difusión del calor \(\partial_t T = D\nabla^2 T\) para \(z<0\) y halle la solución de régimen (estacionaria periódica). Determine la profundidad a la que la amplitud de la variación anual se reduce a menos de \(1^\circ\mathrm{C}\) si \(A_a=6.2^\circ\mathrm{C}\) y \(D=2\times10^{-6}\,\mathrm{m^2/s}\).
 
-\vspace{0.5cm}
-{\bf Soluci\'on }{\em 20)}
-\vspace{0.5cm}
-
-
-
-
-
 \prob Un tubo de órgano se modela como un cilindro de radio \(a\) y longitud \(L\) (\(L\gg a\)), con su extremo inferior cerrado (condición de Neumann homogénea para la sobrepresión \(p\)) y el superior abierto (condición de Dirichlet homogénea). La ecuación es \((\nabla^2 + k^2)p=0\). Encuentre las frecuencias de los modos estacionarios y la frecuencia del modo fundamental. ¿Qué longitud debe tener el tubo para que su fundamental sea el La de 55 Hz? (Velocidad del sonido \(c=343\,\mathrm{m/s}\)).
-
-\vspace{0.5cm}
-{\bf Soluci\'on }{\em 21)}
-\vspace{0.5cm}
-
-
-
-
-
-
 
 \prob Para una membrana circular de radio \(a\) fija en su borde:
 \begin{itemize}
@@ -3010,13 +2928,6 @@ Resuelva la ecuación de difusión del calor \(\partial_t T = D\nabla^2 T\) para
 \item[b)] Grafique cualitativamente las líneas nodales de los modos de frecuencias más bajas.
 \item[c)] Si se percute la membrana en el centro, ¿qué modos se excitan y cuáles no?
 \end{itemize}
-
-\vspace{0.5cm}
-{\bf Soluci\'on }{\em 22)}
-\vspace{0.5cm}
-
-
-
 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
