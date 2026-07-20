@@ -153,6 +153,216 @@ Justifique claramente.
 {\bf Soluci\'on }{\em 1)}
 \vspace{0.5cm}
 
+El único autovalor es
+$$
+\boxed{\lambda=-2}
+$$
+con multiplicidad algebraica $4$.
+
+{\bf a) Autovectores}
+
+Debemos resolver
+$$
+(A+2I)\mathbf v=0.
+$$
+Se tiene
+$$
+A+2I=
+\begin{pmatrix}
+-2&0&-1&0\\
+0&0&0&0\\
+4&1&2&0\\
+6&1&3&0
+\end{pmatrix}.
+$$
+Sea
+$$
+\mathbf v=(x,y,z,w)^T.
+$$
+Las ecuaciones son
+$$
+\begin{cases}
+-2x-z=0,\\
+4x+y+2z=0,\\
+6x+y+3z=0.
+\end{cases}
+$$
+De la primera,
+$$
+z=-2x.
+$$
+La segunda da
+$$
+4x+y-4x=0
+\quad\Longrightarrow\quad
+y=0.
+$$
+La tercera queda
+$$
+6x-6x=0,
+$$
+por lo que no aporta información nueva.
+La coordenada $w$ es completamente libre.
+Así,
+$$
+\mathbf v
+=
+x
+\begin{pmatrix}
+1\\0\\-2\\0
+\end{pmatrix}
++
+w
+\begin{pmatrix}
+0\\0\\0\\1
+\end{pmatrix}.
+$$
+Una base del autoespacio es
+$$
+\boxed{
+\left\{
+\begin{pmatrix}
+1\\0\\-2\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\0\\0\\1
+\end{pmatrix}
+\right\}.
+}
+$$
+Por lo tanto,
+$$
+\boxed{\dim E_{-2}=2.}
+$$
+
+{\bf b) Forma de Jordan}
+
+La multiplicidad algebraica es
+$$
+m_a=4,
+$$
+mientras que la geométrica es
+$$
+m_g=2.
+$$
+Luego existen exactamente dos bloques de Jordan.
+Las posibles particiones de $4$ en dos bloques son
+\begin{itemize}
+\item $3+1$,
+\item $2+2$.
+\end{itemize}
+Para decidir cuál corresponde, estudiamos
+$$
+N=A+2I.
+$$
+Calculamos
+$$
+N^2=
+\begin{pmatrix}
+0&-1&0&0\\
+0&0&0&0\\
+0&2&0&0\\
+0&4&0&0
+\end{pmatrix},
+$$
+y
+$$
+N^3=0.
+$$
+Entonces
+$$
+N^2\neq0,\qquad N^3=0.
+$$
+El índice de nilpotencia es
+$$
+3,
+$$
+por lo que el mayor bloque de Jordan tiene tamaño $3$.
+Como sólo existen dos bloques,
+$$
+3+1=4.
+$$
+Así, la forma de Jordan es
+$$
+\boxed{
+J=
+\begin{pmatrix}
+-2&1&0&0\\
+0&-2&1&0\\
+0&0&-2&0\\
+0&0&0&-2
+\end{pmatrix}.
+}
+$$
+Equivalentemente,
+$$
+J=
+J_3(-2)\oplus J_1(-2).
+$$
+
+{\bf c) Subespacios invariantes irreducibles}
+
+Cada bloque de Jordan corresponde a un subespacio invariante indecomponible.
+Como la forma de Jordan posee
+\begin{itemize}
+\item un bloque de tamaño $3$,
+\item un bloque de tamaño $1$,
+\end{itemize}
+el espacio vectorial se descompone como
+$$
+V=V_3\oplus V_1,
+$$
+donde
+$$
+\dim V_3=3,\qquad
+\dim V_1=1.
+$$
+Por consiguiente,
+$$
+\boxed{\text{Existen exactamente dos subespacios invariantes irreducibles.}}
+$$
+Sus dimensiones son
+$$
+\boxed{3\quad\text{y}\quad1.}
+$$
+La justificación es que cada bloque de Jordan genera un subespacio cíclico invariante que no puede descomponerse en suma directa de subespacios invariantes más pequeños.
+
+{\bf Respuestas finales}
+
+\begin{itemize}
+\item {\bf a)} Una base del autoespacio es
+$$
+\boxed{
+\left\{
+\begin{pmatrix}
+1\\0\\-2\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\0\\0\\1
+\end{pmatrix}
+\right\}.
+}
+$$
+
+\item {\bf b)}
+$$
+\boxed{
+J=J_3(-2)\oplus J_1(-2).
+}
+$$
+
+\item {\bf c)}
+$$
+\boxed{
+V=V_3\oplus V_1,\qquad
+\dim V_3=3,\quad
+\dim V_1=1.
+}
+$$
+\end{itemize}
+
+
+
 
 
 
@@ -174,6 +384,333 @@ $\Delta u(\theta,\alpha) = g^{ij} \nabla_i \nabla_j u.$
 {\bf Soluci\'on }{\em 2)}
 \vspace{0.5cm}
 
+La métrica del toro viene dada por
+$$
+ds^2=(R+a\cos\theta)^2\,d\theta^2+a^2\,d\alpha^2,
+$$
+donde $R>a>0$, y las coordenadas son
+$$
+x^1=\theta,\qquad x^2=\alpha.
+$$
+Debemos calcular:
+\begin{itemize}
+\item la métrica inversa $g^{ij}$,
+\item los símbolos de Christoffel,
+\item el Laplaciano
+\end{itemize}
+$$
+\Delta u=g^{ij}\nabla_i\nabla_j u.
+$$
+
+{\bf 1. Tensor métrico}
+
+La métrica es diagonal:
+$$
+g_{ij}=
+\begin{pmatrix}
+(R+a\cos\theta)^2 & 0\\
+0 & a^2
+\end{pmatrix}.
+$$
+Su determinante es
+$$
+g=\det(g_{ij})
+=a^2(R+a\cos\theta)^2,
+$$
+de donde
+$$
+\sqrt g
+=a(R+a\cos\theta).
+$$
+
+{\bf 2. Métrica inversa}
+
+Al ser diagonal,
+$$
+g^{ij}=
+\begin{pmatrix}
+\dfrac1{(R+a\cos\theta)^2} & 0\\
+0 & \dfrac1{a^2}
+\end{pmatrix}.
+$$
+Es decir,
+$$
+\boxed{
+g^{\theta\theta}
+=\frac1{(R+a\cos\theta)^2},
+\qquad
+g^{\alpha\alpha}
+=\frac1{a^2}.
+}
+$$
+
+{\bf 3. Símbolos de Christoffel}
+
+Recordemos
+$$
+\Gamma^k_{ij}
+=
+\frac12
+g^{kl}
+\left(
+\partial_i g_{jl}
++\partial_j g_{il}
+-\partial_l g_{ij}
+\right).
+$$
+Como
+$$
+g_{\alpha\alpha}=a^2
+$$
+es constante,
+$$
+\partial_\theta g_{\alpha\alpha}=0,
+\qquad
+\partial_\alpha g_{ij}=0.
+$$
+Además,
+$$
+g_{\theta\theta}
+=(R+a\cos\theta)^2,
+$$
+por lo que
+$$
+\partial_\theta g_{\theta\theta}
+=
+2(R+a\cos\theta)(-a\sin\theta).
+$$
+Es decir,
+$$
+\partial_\theta g_{\theta\theta}
+=
+-2a(R+a\cos\theta)\sin\theta.
+$$
+
+{\bf Cálculo de $\Gamma^\theta_{\theta\theta}$}
+
+$$
+\Gamma^\theta_{\theta\theta}
+=
+\frac12
+g^{\theta\theta}
+\partial_\theta g_{\theta\theta}.
+$$
+Entonces
+$$
+\frac12
+\frac1{(R+a\cos\theta)^2}
+(-2a(R+a\cos\theta)\sin\theta),
+$$
+de donde
+$$
+\boxed{
+\Gamma^\theta_{\theta\theta}
+=
+-\frac{a\sin\theta}
+{R+a\cos\theta}.
+}
+$$
+
+{\bf Cálculo de $\Gamma^\theta_{\alpha\alpha}$}
+
+Como
+$$
+g_{\alpha\alpha}
+=\text{cte},
+$$
+resulta
+$$
+\boxed{
+\Gamma^\theta_{\alpha\alpha}=0.
+}
+$$
+
+{\bf Cálculo de $\Gamma^\alpha_{\theta\alpha}$}
+
+$$
+\Gamma^\alpha_{\theta\alpha}
+=
+\frac12
+g^{\alpha\alpha}
+\partial_\theta g_{\alpha\alpha}=0.
+$$
+Luego
+$$
+\boxed{
+\Gamma^\alpha_{\theta\alpha}
+=
+\Gamma^\alpha_{\alpha\theta}
+=0.
+}
+$$
+Todos los demás símbolos también son nulos.
+Por lo tanto,
+$$
+\boxed{
+\Gamma^\theta_{\theta\theta}
+=
+-\frac{a\sin\theta}
+{R+a\cos\theta},
+}
+$$
+es el único símbolo distinto de cero.
+
+{\bf 4. Laplaciano}
+
+Para un escalar,
+$$
+\nabla_i u=\partial_i u,
+$$
+y
+$$
+\nabla_i\nabla_j u
+=
+\partial_i\partial_j u
+-
+\Gamma^k_{ij}\partial_k u.
+$$
+Así,
+$$
+\Delta u
+=
+g^{ij}\nabla_i\nabla_ju.
+$$
+Como sólo existe
+$$
+\Gamma^\theta_{\theta\theta},
+$$
+tenemos
+$$
+\Delta u
+=
+g^{\theta\theta}
+\left(
+u_{\theta\theta}
+-
+\Gamma^\theta_{\theta\theta}u_\theta
+\right)
++
+g^{\alpha\alpha}
+u_{\alpha\alpha}.
+$$
+Sustituyendo,
+$$
+\frac1{(R+a\cos\theta)^2}
+\left(
+u_{\theta\theta}
++
+\frac{a\sin\theta}
+{R+a\cos\theta}
+u_\theta
+\right)
++
+\frac1{a^2}
+u_{\alpha\alpha}.
+$$
+Finalmente,
+$$
+\boxed{
+\Delta u
+=
+\frac{1}{(R+a\cos\theta)^2}
+\frac{\partial^2u}{\partial\theta^2}
++
+\frac{a\sin\theta}
+{(R+a\cos\theta)^3}
+\frac{\partial u}{\partial\theta}
++
+\frac1{a^2}
+\frac{\partial^2u}{\partial\alpha^2}.
+}
+$$
+
+{\bf Verificación mediante la expresión de Laplace–Beltrami}
+
+Como control, usemos
+$$
+\Delta u
+=
+\frac1{\sqrt g}
+\partial_i
+\left(
+\sqrt g\,g^{ij}\partial_j u
+\right).
+$$
+Aquí,
+$$
+\sqrt g
+=a(R+a\cos\theta),
+$$
+por lo que
+$$
+\sqrt g\,g^{\theta\theta}
+=
+\frac{a}{R+a\cos\theta},
+$$
+y
+$$
+\sqrt g\,g^{\alpha\alpha}
+=
+\frac{R+a\cos\theta}{a}.
+$$
+Entonces,
+$$
+\Delta u
+=
+\frac1{a(R+a\cos\theta)}
+\left[
+\partial_\theta
+\left(
+\frac{a}{R+a\cos\theta}
+u_\theta
+\right)
++
+\partial_\alpha
+\left(
+\frac{R+a\cos\theta}{a}
+u_\alpha
+\right)
+\right].
+$$
+Como el factor $(R+a\cos\theta)/a$ no depende de $\alpha$, se obtiene exactamente la misma expresión anterior, lo que confirma el resultado.
+
+{\bf Resumen}
+
+$$
+\boxed{
+g^{ij}
+=
+\begin{pmatrix}
+\dfrac1{(R+a\cos\theta)^2} & 0\\
+0 & \dfrac1{a^2}
+\end{pmatrix},
+}
+$$
+$$
+\boxed{
+\Gamma^\theta_{\theta\theta}
+=
+-\frac{a\sin\theta}{R+a\cos\theta},
+}
+$$
+todos los demás símbolos de Christoffel son nulos, y
+$$
+\boxed{
+\Delta u
+=
+\frac1{(R+a\cos\theta)^2}
+u_{\theta\theta}
++
+\frac{a\sin\theta}{(R+a\cos\theta)^3}
+u_\theta
++
+\frac1{a^2}
+u_{\alpha\alpha}.
+}
+$$
+Este resultado coincide con el operador de Laplace–Beltrami para la métrica dada.
+
+
 
 
 
@@ -189,6 +726,211 @@ sabiendo que $u(x,y=0) = x.$
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 3)}
 \vspace{0.5cm}
+
+Se desea resolver la ecuación en derivadas parciales
+
+\[
+2xy\,\frac{\partial u}{\partial x}
++\frac{\partial u}{\partial y}
+-u=0,
+\]
+
+con condición inicial
+
+\[
+u(x,0)=x.
+\]
+
+{\bf Método de las características}
+
+Escribimos la ecuación como
+
+\[
+X(u)=u,
+\]
+
+donde
+
+\[
+X
+=
+2xy\,\frac{\partial}{\partial x}
++
+\frac{\partial}{\partial y}
+\]
+
+es un campo vectorial sobre el plano $(x,y)$.
+
+Introducimos ahora el espacio ampliado de coordenadas $(x,y,u)$ y consideramos el
+campo vectorial
+
+\[
+\widetilde X
+=
+2xy\,\frac{\partial}{\partial x}
++
+\frac{\partial}{\partial y}
++
+u\,\frac{\partial}{\partial u}.
+\]
+
+Las curvas características son las curvas integrales de $\widetilde X$, es decir,
+las soluciones del sistema
+
+\[
+\boxed{
+\begin{aligned}
+\dot x &=2xy,\\
+\dot y &=1,\\
+\dot u &=u,
+\end{aligned}
+}
+\]
+
+donde el punto denota derivación respecto del parámetro de la característica.
+
+{\bf Cálculo de las características}
+
+Como
+
+\[
+\dot y=1,
+\]
+
+podemos tomar
+
+\[
+y=s.
+\]
+
+La ecuación para $x$ queda
+
+\[
+\frac{dx}{dy}=2xy,
+\]
+
+que es una ecuación diferencial separable:
+
+\[
+\frac{dx}{x}=2y\,dy.
+\]
+
+Integrando,
+
+\[
+\ln|x|=y^2+C,
+\]
+
+o equivalentemente,
+
+\[
+\boxed{
+xe^{-y^2}=C.
+}
+\]
+
+Por lo tanto, cada característica queda identificada por el valor constante de
+
+\[
+\xi=xe^{-y^2}.
+\]
+
+{\bf Evolución del potencial}
+
+Sobre cada característica,
+
+\[
+\frac{du}{dy}=u,
+\]
+
+cuya solución es
+
+\[
+u=A(\xi)e^y,
+\]
+
+donde $A$ depende únicamente de la constante característica
+$\xi=xe^{-y^2}$.
+
+En consecuencia,
+
+\[
+u(x,y)
+=
+e^yA\!\left(xe^{-y^2}\right).
+\]
+
+{\bf Condición inicial}
+
+Imponiendo la condición
+
+\[
+u(x,0)=x,
+\]
+
+se obtiene
+
+\[
+A(x)=x.
+\]
+
+Por lo tanto,
+
+\[
+A(\xi)=\xi,
+\]
+
+y finalmente
+
+\[
+\boxed{
+u(x,y)
+=
+x\,e^{\,y-y^2}.
+}
+\]
+
+{\bf Verificación}
+
+Calculamos
+
+\[
+u_x=e^{y-y^2},
+\]
+
+y
+
+\[
+u_y
+=
+x(1-2y)e^{y-y^2}.
+\]
+
+Entonces,
+
+\[
+2xy\,u_x+u_y-u
+=
+xe^{y-y^2}
+\left[
+2y+(1-2y)-1
+\right]
+=0,
+\]
+
+por lo que la ecuación diferencial queda satisfecha. Además,
+
+\[
+u(x,0)=x,
+\]
+
+verificando también la condición inicial.
+
+\[
+\boxed{
+u(x,y)=x\,e^{\,y-y^2}.
+}
+\]
 
 
 
@@ -220,8 +962,195 @@ y diga cuál es el período fundamental de la misma.
 {\bf Soluci\'on }{\em 4)}
 \vspace{0.5cm}
 
+El potencial electrostático $\Phi(r,\theta,z)$ satisface la ecuación de Laplace
+en el interior de un cilindro infinitamente largo de radio $b$. Como la
+condición de contorno no depende de la coordenada $z$, la solución tampoco
+dependerá de ella. Por lo tanto,
+
+\[
+\Phi=\Phi(r,\theta),
+\]
+
+y la ecuación de Laplace se reduce a
+
+\[
+\frac{1}{r}\frac{\partial}{\partial r}
+\left(r\frac{\partial\Phi}{\partial r}\right)
++
+\frac{1}{r^2}
+\frac{\partial^2\Phi}{\partial\theta^2}
+=0,
+\qquad 0\le r<b.
+\]
+
+La condición de borde es
+
+\[
+\Phi(b,\theta)=
+\begin{cases}
+ V,&0<\theta\le\pi/2,\\[1ex]
+-V,&\pi/2<\theta\le\pi,\\[1ex]
+ V,&\pi<\theta\le3\pi/2,\\[1ex]
+-V,&3\pi/2<\theta\le2\pi.
+\end{cases}
+\]
+
+\subsection*{a) Representación gráfica y período fundamental}
+
+La condición de contorno corresponde a una onda cuadrada que alterna entre los valores $+V$ y $-V$ cada intervalo de longitud $\pi/2$ (ver Fig.~\ref{fig:boundary_condition}).
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{fig-4-1.pdf}
+    \caption{Condiciones de contorno en la superficie del cilindro visto desde arriba.}
+    \label{fig:boundary_condition}
+\end{figure}
 
 
+Puede escribirse de forma compacta como
+
+\[
+\boxed{
+\Phi(b,\theta)=
+V\,\operatorname{sgn}(\sin2\theta).
+}
+\]
+
+Además,
+
+\[
+\Phi(b,\theta+\pi)
+=
+\Phi(b,\theta),
+\]
+
+mientras que
+
+\[
+\Phi(b,\theta+\pi/2)
+=
+-\Phi(b,\theta).
+\]
+
+Por lo tanto, el período fundamental de la función es
+
+\[
+\boxed{T=\pi.}
+\]
+
+{\bf b) Potencial en el interior del cilindro}
+
+Buscamos una solución por separación de variables,
+
+\[
+\Phi(r,\theta)=R(r)\Theta(\theta).
+\]
+
+Sustituyendo en la ecuación de Laplace,
+
+\[
+\frac{r^2R''+rR'}{R}
+=
+-\frac{\Theta''}{\Theta}
+=n^2,
+\]
+
+donde $n$ es la constante de separación.
+
+Las ecuaciones resultantes son
+
+\[
+\Theta''+n^2\Theta=0,
+\]
+
+y
+
+\[
+r^2R''+rR'-n^2R=0.
+\]
+
+Sus soluciones generales son
+
+\[
+\Theta(\theta)
+=
+A_n\cos(n\theta)
++
+B_n\sin(n\theta),
+\]
+
+y
+
+\[
+R(r)
+=
+C_nr^n
++
+D_nr^{-n}.
+\]
+
+Como el potencial debe permanecer finito en el origen, debe ser
+
+\[
+D_n=0.
+\]
+
+Además, el valor medio de la condición de contorno es nulo, por lo que no
+aparece un término constante.
+
+En consecuencia,
+
+\[
+\Phi(r,\theta)
+=
+\sum_{n=1}^{\infty}
+\left(\frac{r}{b}\right)^n
+\left[
+A_n\cos(n\theta)
++
+B_n\sin(n\theta)
+\right].
+\]
+
+Para determinar los coeficientes utilizamos la serie de Fourier de la onda
+cuadrada,
+
+\[
+\operatorname{sgn}(\sin x)
+=
+\frac{4}{\pi}
+\sum_{k=0}^{\infty}
+\frac{\sin[(2k+1)x]}{2k+1}.
+\]
+
+Tomando $x=2\theta$,
+
+\[
+\Phi(b,\theta)
+=
+\frac{4V}{\pi}
+\sum_{k=0}^{\infty}
+\frac{\sin[(4k+2)\theta]}{2k+1}.
+\]
+
+Comparando esta expresión con la solución general, se concluye que sólo
+contribuyen los armónicos $n=4k+2$, obteniéndose finalmente
+
+\[
+\boxed{
+\Phi(r,\theta)
+=
+\frac{4V}{\pi}
+\sum_{k=0}^{\infty}
+\frac{1}{2k+1}
+\left(\frac{r}{b}\right)^{4k+2}
+\sin[(4k+2)\theta],
+\qquad 0\le r<b.
+}
+\]
+
+Esta función satisface la ecuación de Laplace en el interior del cilindro y
+reproduce la condición de contorno al tomar el límite $r\rightarrow b^{-}$.
 
 
 
