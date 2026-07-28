@@ -1,0 +1,183 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{\textbf{Métodos Matemáticos de la Física II} \\ Examen Final – 04/08/2026}
+\author{Nombre: \underline{\hspace{6cm}}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Problema 1}
+Sea \(A\) una matriz \(4 \times 4\) cuyo polinomio característico es
+\[
+p_A(\lambda) = (\lambda - 2)^2(\lambda + 1)^2.
+\]
+Además, se sabe que
+\[
+\operatorname{rang}(A - 2I) = 2, \qquad \operatorname{rang}(A + I) = 3.
+\]
+\begin{enumerate}
+    \item[(a)] Determine las multiplicidades geométricas de cada autovalor.
+    \item[(b)] Encuentre la forma canónica de Jordan de \(A\) (no se pide la matriz de cambio de base).
+    \item[(c)] ¿Cuántos subespacios invariantes irreducibles tiene la descomposición de \(\mathbb{R}^4\) bajo la acción de \(A\)? Indique la dimensión de cada uno.
+\end{enumerate}
+
+\section*{Problema 2}
+Considere la superficie de un paraboloide de revolución parametrizada por
+\[
+x = r \cos \theta, \qquad y = r \sin \theta, \qquad z = \frac{r^2}{2},
+\]
+con \(r > 0\) y \(0 \le \theta < 2\pi\). La métrica inducida es:
+\[
+ds^2 = (1 + r^2)\,dr^2 + r^2\,d\theta^2.
+\]
+\begin{enumerate}
+    \item[(a)] Calcule la métrica inversa \(g^{ij}\).
+    \item[(b)] Determine todos los símbolos de Christoffel \(\Gamma^k_{ij}\) no nulos.
+    \item[(c)] Obtenga el operador Laplaciano \(\Delta u(r, \theta) = g^{ij}\nabla_i\nabla_j u\) para una función escalar \(u(r, \theta)\).
+\end{enumerate}
+
+\section*{Problema 3}
+Utilice el método de las características para resolver el siguiente problema de Cauchy:
+\[
+\frac{\partial u}{\partial t} + 2t \frac{\partial u}{\partial x} = u, \qquad u(x, 0) = \sin x.
+\]
+
+\section*{Problema 4}
+En el interior de un cilindro infinito de radio \(R\), el potencial \(\Phi(r, \theta)\) satisface la ecuación de Laplace. En la pared \(r = R\) se impone la condición
+\[
+\Phi(R, \theta) = V_0 \cos^2 \theta,
+\]
+donde \(V_0\) es una constante.
+\begin{enumerate}
+    \item[(a)] Exprese \(\cos^2 \theta\) como combinación lineal de armónicos circulares (es decir, en términos de senos y cosenos de \(n\theta\)).
+    \item[(b)] Encuentre \(\Phi(r, \theta)\) en el interior del cilindro, como una serie de potencias de \(r\) (finita, en este caso).
+    \item[(c)] Escriba la solución en forma cerrada.
+\end{enumerate}
+
+\section*{Problema 5}
+Resuelva la ecuación de Poisson \(\nabla^2 u(r, \phi) = \beta_0 \sen(\phi)\) (con \(\beta_0\) constante) dentro de un disco de radio \(R\), sabiendo que en su borde la condición es \(u(R, \phi) = \cos(\phi)\).
+
+\section*{Problema 6}
+Encuentre la función de Green correspondiente a la ecuación diferencial ordinaria
+\[
+x^2 y'' + 4xy' + (x^2 + 2)y = 0, \qquad 1 < x < 2,
+\]
+con condiciones de contorno
+\[
+y(1) = 0, \qquad y(2) = 0.
+\]
+\textit{Ayuda:} Considere el cambio de variable \(v(x) = x^2 y(x)\).
+
+\section*{Problema 7}
+Una cuerda elástica de longitud \(L\) se halla fija en sus extremos y sumergida en un fluido que presenta resistencia a su movimiento, de modo que la desviación \(u(x, t)\) satisface la ecuación
+\[
+u_{tt} + \gamma u_t - c^2 u_{xx} = 0,
+\]
+con \(\gamma\) una constante positiva y condiciones de contorno \(u(0,t) = u(L,t) = 0\).
+\begin{enumerate}
+    \item[(a)] Proponiendo \(u(x,t) = X(x)T(t)\), escriba las ecuaciones diferenciales satisfechas por \(X\) y por \(T\).
+    \item[(b)] Muestre que las autofunciones espaciales que satisfacen las condiciones de contorno son de la forma \(X_n(x) = \sen(k_n x)\), y determine \(k_n\).
+    \item[(c)] Proponiendo ahora una solución en la forma
+    \[
+    u(x, t) = \sum_{n=1}^{\infty} A_n X_n(x) T_n(t),
+    \]
+    determine la ecuación diferencial satisfecha por cada función \(T_n(t)\).
+    \item[(d)] Muestre que \(T_n(t)\) oscila (amortiguadamente) sólo si \(n < \dfrac{L\gamma}{\pi c}\).
+\end{enumerate}
+
+\section*{Problema 8}
+Encuentre la temperatura \(u(r, \phi, t)\) en un cuarto de círculo de radio \(a\) que satisface la ecuación de calor:
+\[
+\frac{\partial u}{\partial t} = k \nabla^2 u,
+\]
+sujeto a las condiciones de frontera:
+\[
+u(r, 0, t) = 0, \qquad u(a, \phi, t) = 0, \qquad u(r, \pi/2, t) = 0,
+\]
+y a la condición inicial:
+\[
+u(r, \phi, 0) = r \sen(4\phi).
+\]
+
+\section*{Problema 9 (Ecuación de ondas en 2D)}
+Considere la ecuación de ondas en dos dimensiones espaciales:
+\[
+\frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right),
+\]
+definida en el rectángulo \(0 < x < a\), \(0 < y < b\), con condiciones de contorno homogéneas:
+\[
+u(0, y, t) = u(a, y, t) = 0, \qquad u(x, 0, t) = u(x, b, t) = 0,
+\]
+y condiciones iniciales:
+\[
+u(x, y, 0) = f(x, y), \qquad \frac{\partial u}{\partial t}(x, y, 0) = g(x, y).
+\]
+\begin{enumerate}
+    \item[(a)] Proponga una solución por separación de variables \(u(x,y,t) = X(x)Y(y)T(t)\) y obtenga las ecuaciones diferenciales ordinarias para \(X\), \(Y\) y \(T\).
+    \item[(b)] Determine las autofunciones espaciales \(X_m(x)\) y \(Y_n(y)\) y los correspondientes autovalores.
+    \item[(c)] Escriba la solución general como una serie doble.
+    \item[(d)] En el caso particular \(f(x,y) = \sen\left(\frac{2\pi x}{a}\right) \sen\left(\frac{3\pi y}{b}\right)\) y \(g(x,y) = 0\), obtenga la solución explícita.
+\end{enumerate}
+
+\section*{Problema 10 (Ondas en una membrana circular)}
+Una membrana circular de radio \(R\) se encuentra fija en su borde. Su desplazamiento vertical \(u(r, \theta, t)\) satisface la ecuación de ondas en coordenadas polares:
+\[
+\frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial u}{\partial r} \right) + \frac{1}{r^2} \frac{\partial^2 u}{\partial \theta^2} \right),
+\]
+con condición de borde \(u(R, \theta, t) = 0\).
+\begin{enumerate}
+    \item[(a)] Proponga una solución de la forma \(u(r,\theta,t) = R(r)\Theta(\theta)T(t)\) y obtenga las ecuaciones diferenciales para cada función.
+    \item[(b)] Resuelva la ecuación para \(\Theta(\theta)\) imponiendo periodicidad en \(\theta\).
+    \item[(c)] Muestre que la ecuación radial se reduce a la ecuación de Bessel y escriba su solución general (en términos de funciones de Bessel).
+    \item[(d)] Aplique la condición de borde para determinar los autovalores permitidos y escriba la forma general de la solución.
+\end{enumerate}
+
+\section*{Problema 11 (Ondas en un sector circular)}
+Considere la ecuación de ondas en un sector circular de radio \(R\) y ángulo \(\alpha\) (\(0 < \alpha < 2\pi\)):
+\[
+\frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial u}{\partial r} \right) + \frac{1}{r^2} \frac{\partial^2 u}{\partial \theta^2} \right),
+\]
+con condiciones de contorno:
+\[
+u(r, 0, t) = 0, \qquad u(r, \alpha, t) = 0, \qquad u(R, \theta, t) = 0,
+\]
+y condiciones iniciales \(u(r, \theta, 0) = f(r, \theta)\), \(\partial_t u(r, \theta, 0) = g(r, \theta)\).
+\begin{enumerate}
+    \item[(a)] Proponga una solución por separación de variables y obtenga las ecuaciones para \(R(r)\), \(\Theta(\theta)\) y \(T(t)\).
+    \item[(b)] Resuelva la ecuación angular y determine los autovalores \(\lambda_n\).
+    \item[(c)] Muestre que la ecuación radial se reduce a la ecuación de Bessel y determine los autovalores radiales a partir de la condición de borde en \(r = R\).
+    \item[(d)] Escriba la solución general como una serie doble.
+\end{enumerate}
+
+\section*{Problema 12 (Membrana circular con dos densidades)}
+Una membrana circular de radio \(R\) está compuesta por dos materiales de distintas densidades. La densidad superficial \(\rho(r)\) es:
+\[
+\rho(r) = 
+\begin{cases}
+\rho_1, & 0 < r < a, \\
+\rho_2, & a < r < R,
+\end{cases}
+\]
+con \(\rho_1 \neq \rho_2\). La ecuación de ondas para cada región es:
+\[
+\frac{\partial^2 u_i}{\partial t^2} = c_i^2 \nabla^2 u_i, \qquad i = 1, 2,
+\]
+donde \(c_i^2 = T/\rho_i\) (siendo \(T\) la tensión uniforme). La membrana está fija en su borde: \(u_2(R, \theta, t) = 0\). Además, en la interfaz \(r = a\) se deben cumplir las condiciones de continuidad:
+\[
+u_1(a, \theta, t) = u_2(a, \theta, t), \qquad \frac{\partial u_1}{\partial r}(a, \theta, t) = \frac{\partial u_2}{\partial r}(a, \theta, t).
+\]
+Suponga soluciones de la forma \(u_i(r, \theta, t) = R_i(r) e^{i m \theta} e^{i \omega t}\) (con \(m \in \mathbb{Z}\)).
+\begin{enumerate}
+    \item[(a)] Escriba la ecuación diferencial para \(R_i(r)\) en cada región y muestre que se trata de la ecuación de Bessel.
+    \item[(b)] Proponga la forma de la solución radial en cada región (use funciones de Bessel y Neumann, o Hankel, según convenga) y justifique la elección en el centro.
+    \item[(c)] Aplique las condiciones de contorno e interfaz para obtener un sistema de ecuaciones para los coeficientes.
+    \item[(d)] Escriba la ecuación que determina las frecuencias propias \(\omega\) (no es necesario resolverla explícitamente, solo plantear el determinante).
+\end{enumerate}
+
+\end{document}
