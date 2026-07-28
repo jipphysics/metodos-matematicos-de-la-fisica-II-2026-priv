@@ -202,6 +202,321 @@ ds^2 = (1 + r^2)\,dr^2 + r^2\,d\theta^2.
 {\bf Soluci\'on }{\em 2)}
 \vspace{0.5cm}
 
+El enunciado establece que el paraboloide de revolución está parametrizado por 
+$$
+x=r\cos\theta,\qquad
+y=r\sin\theta,\qquad
+z=\frac{r^2}{2},
+$$
+y que la métrica inducida es
+$$
+ds^2=(1+r^2),dr^2+r^2,d\theta^2.
+$$
+Por lo tanto,
+$$
+(g_{ij})=
+\begin{pmatrix}
+1+r^2 & 0\\
+0 & r^2
+\end{pmatrix},
+$$
+donde las coordenadas son
+$$
+x^1=r,\qquad x^2=\theta.
+$$
+
+{\bf (a) Métrica inversa}
+
+Como la métrica es diagonal, la inversa se obtiene inmediatamente:
+$$
+(g^{ij})
+=
+\begin{pmatrix}
+\dfrac1{1+r^2} & 0\\
+0 & \dfrac1{r^2}
+\end{pmatrix}.
+$$
+Por consiguiente,
+$$
+\boxed{
+g^{rr}=\frac1{1+r^2},
+\qquad
+g^{\theta\theta}=\frac1{r^2},
+\qquad
+g^{r\theta}=g^{\theta r}=0.
+}
+$$
+
+{\bf (b) Símbolos de Christoffel}
+
+Usamos
+$$
+\Gamma^k_{ij}
+=
+\frac12\,g^{k\ell}
+\left(
+\partial_i g_{j\ell}
++
+\partial_j g_{i\ell}
+-
+\partial_\ell g_{ij}
+\right).
+$$
+Las únicas derivadas no nulas de la métrica son
+$$
+\partial_r g_{rr}=2r,
+\qquad
+\partial_r g_{\theta\theta}=2r.
+$$
+Todas las derivadas respecto de $\theta$ son cero.
+
+{\em Cálculo de $\Gamma^r_{rr}$}
+
+$$
+\Gamma^r_{rr}
+=
+\frac12 g^{rr}\partial_r g_{rr}
+=
+\frac12\frac1{1+r^2}(2r)
+=
+\frac{r}{1+r^2}.
+$$
+
+$$
+\boxed{\Gamma^r_{rr}=\frac{r}{1+r^2}}
+$$
+
+{\em Cálculo de $\Gamma^r_{\theta\theta}$}
+
+$$
+\Gamma^r_{\theta\theta}
+=
+-\frac12 g^{rr}\partial_r g_{\theta\theta}
+=
+-\frac12\frac1{1+r^2}(2r)
+=
+-\frac{r}{1+r^2}.
+$$
+
+$$
+\boxed{\Gamma^r_{\theta\theta}
+=
+-\frac{r}{1+r^2}}
+$$
+
+{\em Cálculo de $\Gamma^\theta_{r\theta}$}
+
+$$
+\Gamma^\theta_{r\theta}
+=
+\Gamma^\theta_{\theta r}
+=
+\frac12 g^{\theta\theta}
+\partial_r g_{\theta\theta}
+=
+\frac12\frac1{r^2}(2r)
+=
+\frac1r.
+$$
+
+$$
+\boxed{
+\Gamma^\theta_{r\theta}
+=
+\Gamma^\theta_{\theta r}
+=
+\frac1r
+}
+$$
+
+{\em Los demás}
+
+Todos los demás símbolos se anulan.
+En resumen,
+$$
+\boxed{
+\Gamma^r_{rr}=\frac{r}{1+r^2},
+\qquad
+\Gamma^r_{\theta\theta}
+=
+-\frac{r}{1+r^2},
+\qquad
+\Gamma^\theta_{r\theta}
+=
+\Gamma^\theta_{\theta r}
+=
+\frac1r.
+}
+$$
+
+{\bf (c) Laplaciano}
+
+Para una función escalar $u(r,\theta)$,
+$$
+\nabla_i\nabla_j u
+=
+\partial_i\partial_j u
+-
+\Gamma^k_{ij}\partial_k u.
+$$
+El Laplaciano es
+$$
+\Delta u
+=
+g^{ij}\nabla_i\nabla_j u.
+$$
+Como la métrica es diagonal,
+$$
+\Delta u
+=
+g^{rr}\nabla_r\nabla_r u
++
+g^{\theta\theta}\nabla_\theta\nabla_\theta u.
+$$
+
+{\em Parte radial}
+
+$$
+\nabla_r\nabla_r u
+=
+u_{rr}
+=
+\Gamma^r_{rr}u_r
+-
+u_{rr}
+=
+\frac{r}{1+r^2}u_r.
+$$
+Por tanto
+$$
+g^{rr}\nabla_r\nabla_r u
+=
+\frac{u_{rr}}{1+r^2}
+-
+\frac{r}{(1+r^2)^2}u_r.
+$$
+
+{\em Parte angular}
+
+$$
+\nabla_\theta\nabla_\theta u
+=
+u_{\theta\theta}
+-
+\Gamma^r_{\theta\theta}u_r.
+$$
+Como
+$$
+\Gamma^r_{\theta\theta}
+=
+-\frac{r}{1+r^2},
+$$
+resulta
+$$
+\nabla_\theta\nabla_\theta u
+=
+u_{\theta\theta}
++
+\frac{r}{1+r^2}u_r.
+$$
+Multiplicando por $g^{\theta\theta}=1/r^2$,
+$$
+g^{\theta\theta}\nabla_\theta\nabla_\theta u
+=
+\frac{u_{\theta\theta}}{r^2}
++
+\frac1{r(1+r^2)}u_r.
+$$
+
+{\em Sumando}
+
+$$
+\Delta u
+=
+\frac{u_{rr}}{1+r^2}
++
+\frac{u_{\theta\theta}}{r^2}
++
+\left[
+\frac1{r(1+r^2)}
+-
+\frac{r}{(1+r^2)^2}
+\right]u_r.
+$$
+Llevando al mismo denominador:
+$$
+\frac1{r(1+r^2)}
+-
+\frac{r}{(1+r^2)^2}
+=
+\frac1{r(1+r^2)^2}.
+$$
+Finalmente,
+$$
+\boxed{
+\Delta u(r,\theta)
+=
+\frac1{1+r^2}\,
+\frac{\partial^2u}{\partial r^2}
++
+\frac1{r^2}\,
+\frac{\partial^2u}{\partial\theta^2}
++
+\frac1{r(1+r^2)^2}\,
+\frac{\partial u}{\partial r}
+}.
+$$
+Como verificación, si se utiliza la fórmula alternativa
+$$
+\Delta u
+=
+\frac1{\sqrt g}
+\partial_i
+\left(
+\sqrt g,g^{ij}\partial_j u
+\right),
+\qquad
+\sqrt g=r\sqrt{1+r^2},
+$$
+se obtiene exactamente el mismo resultado.
+
+{\bf Respuesta final:}
+
+$$
+g^{ij}
+=
+\begin{pmatrix}
+\dfrac1{1+r^2} & 0\\
+0 & \dfrac1{r^2}
+\end{pmatrix},
+$$
+
+$$
+\Gamma^r_{rr}=\frac{r}{1+r^2},
+\qquad
+\Gamma^r_{\theta\theta}=-\frac{r}{1+r^2},
+\qquad
+\Gamma^\theta_{r\theta}
+=
+\Gamma^\theta_{\theta r}
+=
+\frac1r,
+$$
+
+$$
+\boxed{
+\Delta u
+=
+\frac{u_{rr}}{1+r^2}
++
+\frac{u_{\theta\theta}}{r^2}
++
+\frac{1}{r(1+r^2)^2}\,u_r.
+}
+$$
+
+
+
 
 
 
