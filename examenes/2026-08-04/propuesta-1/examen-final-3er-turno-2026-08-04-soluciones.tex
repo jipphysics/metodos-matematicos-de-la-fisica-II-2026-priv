@@ -31,6 +31,152 @@ Además, se sabe que
 {\bf Soluci\'on }{\em 1)}
 \vspace{0.5cm}
 
+{\bf (a) Multiplicidades geométricas}
+
+Los autovalores son
+$$
+\lambda_1=2,\qquad \lambda_2=-1,
+$$
+ambos con multiplicidad algebraica
+$$
+m_a(2)=2,\qquad m_a(-1)=2.
+$$
+La multiplicidad geométrica es
+$$
+m_g(\lambda)=\dim\ker(A-\lambda I).
+$$
+Usamos rango-nulidad:
+$$
+\dim\ker(A-2I)
+=
+4-\operatorname{rang}(A-2I)
+=
+4-2
+=
+2.
+$$
+Por tanto
+$$
+m_g(2)=2.
+$$
+Asimismo,
+$$
+\dim\ker(A+I)
+=
+4-\operatorname{rang}(A+I)
+=
+4-3
+=
+1,
+$$
+luego
+$$
+m_g(-1)=1.
+$$
+
+{\em Respuesta:}
+
+$$
+\boxed{m_g(2)=2,\qquad m_g(-1)=1.}
+$$
+
+{\bf (b) Forma canónica de Jordan}
+
+Para $\lambda=2$, tenemos
+$$
+m_a(2)=2,\qquad m_g(2)=2.
+$$
+El número de bloques de Jordan asociados a $\lambda=2$ es igual a $m_g(2)$, es decir, 2 bloques.
+Como la suma de sus tamaños debe ser 2, necesariamente son dos bloques $1\times 1$:
+$$
+J_{2}=
+\begin{pmatrix}
+2&0\
+0&2
+\end{pmatrix}.
+$$
+
+Para $\lambda=-1$, tenemos
+$$
+m_a(-1)=2,\qquad m_g(-1)=1.
+$$
+Hay un único bloque de Jordan asociado a $-1$, y su tamaño debe ser 2.
+Por tanto,
+$$
+J_{-1}
+=
+\begin{pmatrix}
+-1&1\
+0&-1
+\end{pmatrix}.
+$$
+
+{\em Forma de Jordan total.}
+Uniendo ambos sectores:
+$$
+\boxed{
+J=
+\begin{pmatrix}
+2&0&0&0\\
+0&2&0&0\\
+0&0&-1&1\\
+0&0&0&-1
+\end{pmatrix}.
+}
+$$
+
+{\bf (c) Subespacios invariantes irreducibles}
+
+En la forma de Jordan, cada bloque de Jordan corresponde a un subespacio invariante indecomponible (irreducible en el sentido usado en Álgebra Lineal para la descomposición de Jordan).
+
+Tenemos:
+\begin{itemize}
+\item un bloque $J_1(2)$,
+\item otro bloque $J_1(2)$,
+\item un bloque $J_2(-1)$.
+\end{itemize}
+Por lo tanto la descomposición de $\mathbb R^4$ es
+$$
+\mathbb R^4
+=
+V_1\oplus V_2\oplus V_3,
+$$
+con
+$$
+\dim V_1=1,\qquad
+\dim V_2=1,\qquad
+\dim V_3=2.
+$$
+Así, el número de subespacios invariantes irreducibles es
+$$
+\boxed{3}
+$$
+y sus dimensiones son
+$$
+\boxed{1,\;1,\;2.}
+$$
+
+{\em Resumen final}
+
+$$
+\boxed{m_g(2)=2,\qquad m_g(-1)=1}
+$$
+$$
+\boxed{
+J=
+\begin{pmatrix}
+2&0&0&0\\
+0&2&0&0\\
+0&0&-1&1\\
+0&0&0&-1
+\end{pmatrix}
+}
+$$
+$$
+\boxed{\mathbb R^4=V_1\oplus V_2\oplus V_3,\qquad
+\dim(V_1,V_2,V_3)=(1,1,2).}
+$$
+
 
 
 
