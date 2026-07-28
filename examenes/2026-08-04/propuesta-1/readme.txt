@@ -18,3 +18,5 @@ Es simplemente una propuesta de problemas como para ir definiendo el examen.
 
 Saludos  Jorge
 ********************************************************************************
+https://chatgpt.com/share/6a68c7a6-b7cc-83e9-be61-54401259f572
+********************************************************************************
