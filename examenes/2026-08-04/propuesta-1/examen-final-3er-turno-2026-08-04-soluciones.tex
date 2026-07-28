@@ -532,6 +532,163 @@ Utilice el método de las características para resolver el siguiente problema d
 {\bf Soluci\'on }{\em 3)}
 \vspace{0.5cm}
 
+{\bf 1. Ecuaciones características}
+
+La ecuación es de la forma
+$$
+u_t+a(x,t)u_x=b(x,t,u),
+$$
+con
+$$
+a(x,t)=2t,
+\qquad
+b(x,t,u)=u.
+$$
+Las ecuaciones características son
+$$
+\frac{dt}{ds}=1,
+$$
+$$
+\frac{dx}{ds}=2t,
+$$
+$$
+\frac{du}{ds}=u.
+$$
+Además, la curva inicial es
+$$
+t=0,
+\qquad
+x=\alpha,
+\qquad
+u=\sin\alpha,
+$$
+
+donde $\alpha$ parametriza los puntos de la condición inicial.
+
+{\bf 2. Resolver la ecuación para $t$}
+
+De
+$$
+\frac{dt}{ds}=1,
+$$
+obtenemos
+$$
+t=s+C.
+$$
+Imponiendo que sobre la curva inicial (t=0) cuando $s=0$,
+$$
+C=0.
+$$
+Por lo tanto,
+$$
+\boxed{t=s}.
+$$
+
+{\bf 3. Resolver la ecuación para $x$}
+
+Sustituyendo $t=s$,
+$$
+\frac{dx}{ds}=2s.
+$$
+Integrando,
+$$
+x=s^2+C_1.
+$$
+Sobre la curva inicial,
+$$
+x(0)=\alpha,
+$$
+de modo que
+$$
+C_1=\alpha.
+$$
+Así,
+$$
+\boxed{x=s^2+\alpha}.
+$$
+Como $s=t$,
+$$
+\boxed{x=t^2+\alpha}.
+$$
+Luego
+$$
+\boxed{\alpha=x-t^2}.
+$$
+
+{\bf 4. Resolver la ecuación para $u$}
+
+Tenemos
+$$
+\frac{du}{ds}=u.
+$$
+Integrando,
+$$
+u=C_2e^s.
+$$
+Sobre la curva inicial,
+$$
+u(0)=\sin\alpha,
+$$
+por lo que
+$$
+C_2=\sin\alpha.
+$$
+Entonces
+$$
+u(s)=e^s\sin\alpha.
+$$
+Como $s=t$,
+$$
+u=e^t\sin\alpha.
+$$
+Finalmente sustituimos
+$$
+\alpha=x-t^2.
+$$
+
+{\bf 5. Solución}
+
+$$
+\boxed{
+u(x,t)
+=
+e^t\sin(x-t^2).
+}
+$$
+
+{\bf Verificación}
+
+Calculemos:
+$$
+u_x=e^t\cos(x-t^2),
+$$
+$$
+u_t
+=
+e^t\sin(x-t^2)
+-2t,e^t\cos(x-t^2).
+$$
+Entonces
+$$
+u_t+2t\,u_x
+=
+e^t\sin(x-t^2)
+=u.
+$$
+Además,
+$$
+u(x,0)=e^0\sin(x)=\sin x.
+$$
+La solución satisface tanto la EDP como la condición inicial.
+
+{\bf Respuesta final}
+
+$$
+\boxed{
+u(x,t)=e^t\sin(x-t^2).
+}
+$$
+El punto clave es identificar correctamente la constante característica $\alpha=x-t^2$.
 
 
 
