@@ -867,12 +867,233 @@ Resuelva la ecuación de Poisson \(\nabla^2 u(r, \phi) = \beta_0 \sen(\phi)\) (c
 {\bf Soluci\'on }{\em 5)}
 \vspace{0.5cm}
 
+{\bf 1. Idea general}
+
+La ecuación es de Poisson, así que escribimos
+$$
+u=u_p+u_h,
+$$
+donde
+$$
+\nabla^2u_p=\beta_0\sin\varphi
+$$
+es una solución particular, y
+$$
+\nabla^2u_h=0
+$$
+es una solución armónica que ajustará la condición de borde.
+
+{\bf 2. Buscar una solución particular}
+
+El término fuente tiene dependencia angular $\sin\varphi$, por lo que intentamos
+$$
+u_p(r,\varphi)=f(r)\sin\varphi.
+$$
+En coordenadas polares,
+$$
+\nabla^2u=
+u_{rr}
++\frac1r u_r
++\frac1{r^2}u_{\varphi\varphi}.
+$$
+Calculamos:
+$$
+u_r=f'(r)\sin\varphi,
+$$
+$$
+u_{rr}=f''(r)\sin\varphi,
+$$
+$$
+u_{\varphi\varphi}
+=-f(r)\sin\varphi.
+$$
+Entonces
+$$
+\nabla^2u_p
+=
+\left(
+f''+\frac1r f'
+-\frac{f}{r^2}
+\right)\sin\varphi.
+$$
+Queremos que esto sea
+$$
+\beta_0\sin\varphi,
+$$
+por lo que $f$ debe satisfacer
+$$
+f''+\frac1r f'
+-\frac{f}{r^2}
+=
+\beta_0.
+$$
+
+{\bf 3. Resolver para $f(r)$}
+
+Probamos un polinomio
+$$
+f(r)=Ar^2.
+$$
+Entonces
+$$
+f'=2Ar,
+\qquad
+f''=2A.
+$$
+Sustituyendo:
+$$
+2A+\frac1r(2Ar)-\frac{Ar^2}{r^2}
+=
+2A+2A-A
+=
+3A.
+$$
+Para obtener $\beta_0$,
+$$
+3A=\beta_0
+\quad\Longrightarrow\quad
+A=\frac{\beta_0}{3}.
+$$
+Por tanto,
+$$
+\boxed{
+u_p(r,\varphi)
+=
+\frac{\beta_0}{3}r^2\sin\varphi.
+}
+$$
+
+{\bf 4. Solución de Laplace}
+
+La solución regular de Laplace en el disco es
+$$
+u_h
+=
+A_0
++
+\sum_{n=1}^{\infty}
+r^n
+\left(
+A_n\cos n\varphi
++
+B_n\sin n\varphi
+\right).
+$$
+La condición de borde contiene solamente un modo $\cos\varphi$, por lo que bastará tomar
+$$
+u_h
+=
+A\,r\cos\varphi
++
+B\,r\sin\varphi .
+$$
+
+{\bf 5. Imponer la condición de borde}
+
+La solución total es
+$$
+u(r,\varphi)
+=
+A r\cos\varphi
++
+B r\sin\varphi
++
+\frac{\beta_0}{3}r^2\sin\varphi.
+$$
+En $r=R$,
+$$
+A R\cos\varphi
++
+\left(
+BR+\frac{\beta_0}{3}R^2
+\right)\sin\varphi
+=
+\cos\varphi.
+$$
+Igualando coeficientes de Fourier:
+
+{\em Modo $\cos\varphi$}
+
+$$
+AR=1
+\quad\Longrightarrow\quad
+A=\frac1R.
+$$
+
+{\bf Modo $\sin\varphi$}
+
+$$
+BR+\frac{\beta_0}{3}R^2=0,
+$$
+de donde
+$$
+B=-\frac{\beta_0}{3}R.
+$$
+
+{\bf 6. Solución final}
+
+Sustituyendo $A$ y $B$,
+$$
+u(r,\varphi)
+=
+\frac{r}{R}\cos\varphi
+-\frac{\beta_0R}{3}\,r\sin\varphi
++\frac{\beta_0}{3}r^2\sin\varphi.
+$$
+Agrupando los términos con $\sin\varphi$,
+$$
+\boxed{
+u(r,\varphi)
+=
+\frac{r}{R}\cos\varphi
++
+\frac{\beta_0}{3}
+\left(r^2-Rr\right)\sin\varphi.
+}
+$$
+
+{\bf Verificación}
+
+En el borde:
+$$
+u(R,\varphi)
+=
+\cos\varphi
++
+\frac{\beta_0}{3}(R^2-R^2)\sin\varphi
+=
+\cos\varphi.
+$$
+Además,
+$$
+\nabla^2\left(\frac{r}{R}\cos\varphi\right)=0,
+$$
+$$
+\nabla^2\left[\frac{\beta_0}{3}(r^2-Rr)\sin\varphi\right]
+=
+\beta_0\sin\varphi,
+$$
+porque $r\sin\varphi$ es armónica.
+Por lo tanto,
+$$
+\boxed{
+u(r,\varphi)
+=
+\frac{r}{R}\cos\varphi
++
+\frac{\beta_0}{3}(r^2-Rr)\sin\varphi
+}
+$$
+es la solución buscada.
+
+
 
 
 
 
 
 \section*{Problema 6}
+
 Encuentre la función de Green correspondiente a la ecuación diferencial ordinaria
 \[
 x^2 y'' + 4xy' + (x^2 + 2)y = 0, \qquad 1 < x < 2,
@@ -886,6 +1107,254 @@ y(1) = 0, \qquad y(2) = 0.
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 6)}
 \vspace{0.5cm}
+
+{\bf 1. Transformación de la ecuación}
+
+Escribimos
+$$
+y=\frac{v}{x^2}.
+$$
+Entonces
+$$
+y'
+=\frac{v'}{x^2}-\frac{2v}{x^3},
+$$
+$$
+y''
+=\frac{v''}{x^2}
+-\frac{4v'}{x^3}
++\frac{6v}{x^4}.
+$$
+Sustituyendo en la ecuación:
+$$
+x^2y''
+=
+v''
+-\frac{4}{x}v'
++\frac{6}{x^2}v,
+$$
+$$
+4xy'
+=
+\frac{4}{x}v'
+-\frac{8}{x^2}v,
+$$
+$$
+(x^2+2)y
+=
+v+\frac{2}{x^2}v.
+$$
+Sumando:
+$$
+v''
+-\frac{4}{x}v'
++\frac{6}{x^2}v
++\frac{4}{x}v'
+-\frac{8}{x^2}v
++v+\frac{2}{x^2}v.
+$$
+Los términos con $v'$ se cancelan y también los de $1/x^2$:
+$$
+v''+v=0.
+$$
+Así, el operador original queda reducido a
+$$
+\boxed{v''+v=0.}
+$$
+
+{\bf 2. Condiciones de contorno}
+
+Como
+$$
+v=x^2y,
+$$
+resulta
+$$
+v(1)=1^2y(1)=0,
+$$
+$$
+v(2)=2^2y(2)=0.
+$$
+Por tanto:
+$$
+\boxed{
+v''+v=0,
+\qquad
+v(1)=v(2)=0.
+}
+$$
+
+{\bf 3. Soluciones homogéneas}
+
+Dos soluciones independientes son
+$$
+u_1(x)=\sin x,
+\qquad
+u_2(x)=\cos x.
+$$
+Necesitamos soluciones adaptadas a cada borde.
+
+{\em Solución izquierda}
+
+Que satisfaga $v(1)=0$:
+$$
+\phi(x)=\sin(x-1).
+$$
+
+{\em Solución derecha}
+
+Que satisfaga $v(2)=0$:
+$$
+\psi(x)=\sin(2-x).
+$$
+
+{\bf 4. Wronskiano}
+
+Calculamos
+$$
+W=\phi\psi'-\phi'\psi.
+$$
+Como
+$$
+\phi'=\cos(x-1),
+$$
+$$
+\psi'=-\cos(2-x),
+$$
+obtenemos
+$$
+W
+=
+-\sin(x-1)\cos(2-x)
+-\cos(x-1)\sin(2-x).
+$$
+Usando
+$$
+\sin A\cos B+\cos A\sin B
+=
+\sin(A+B),
+$$
+obtenemos que el Wronskiano
+$$
+W
+=
+-\sin[(x-1)+(2-x)]
+=
+-\sin 1.
+$$
+resulta constante.
+
+{\bf 5. Función de Green para $v''+v$}
+
+La fórmula estándar es
+$$
+G_v(x,\xi)
+=
+\frac{\phi(x_<)\psi(x_>)}{W},
+$$
+donde
+$$
+x_< = \min(x,\xi),
+\qquad
+x_> = \max(x,\xi).
+$$
+Luego
+$$
+\boxed{
+G_v(x,\xi)
+=
+-\frac{
+\sin(x_<-1),
+\sin(2-x_>)
+}{
+\sin 1
+}.
+}
+$$
+Equivalentemente,
+$$
+G_v(x,\xi)=
+\begin{cases}
+-\dfrac{\sin(x-1)\sin(2-\xi)}
+{\sin1},
+& x<\xi,
+\\
+-\dfrac{\sin(\xi-1)\sin(2-x)}
+{\sin1},
+& x>\xi.
+\end{cases}
+$$
+
+{\bf 6. Volver a la variable $y$}
+
+La ecuación original puede escribirse como
+$$
+L_y[y]=f(x).
+$$
+Multiplicando por $x^2$,
+$$
+v''+v=x^2f(x).
+$$
+Por definición,
+$$
+v(x)
+=
+\int_1^2
+G_v(x,\xi),
+\xi^2f(\xi),
+d\xi.
+$$
+Como
+$$
+y(x)=\frac{v(x)}{x^2},
+$$
+la función de Green del operador original es
+$$
+G_y(x,\xi)
+=
+\frac{\xi^2}{x^2}
+,G_v(x,\xi).
+$$
+Por tanto,
+$$
+\boxed{
+G(x,\xi)
+=
+-\frac{\xi^2}{x^2\sin1}
+\begin{cases}
+\sin(x-1)\sin(2-\xi),
+&
+x<\xi,
+\\
+\sin(\xi-1)\sin(2-x),
+&
+x>\xi.
+\end{cases}
+}
+$$
+
+{\bf Respuesta final}
+
+La función de Green asociada al problema de contorno
+$$
+x^2y''+4xy'+(x^2+2)y=f(x),
+\qquad
+y(1)=y(2)=0,
+$$
+es
+$$
+\boxed{
+G(x,\xi)
+=
+-\frac{\xi^2}{x^2\sin1}
+\begin{cases}
+\sin(x-1)\sin(2-\xi), & x<\xi,\\
+\sin(\xi-1)\sin(2-x), & x>\xi.
+\end{cases}
+}
+$$
+La clave del ejercicio era reconocer que el cambio sugerido $v=x^2y$ elimina completamente el término de primera derivada y transforma la ecuación en el problema elemental $v''+v=0$.
+
 
 
 
