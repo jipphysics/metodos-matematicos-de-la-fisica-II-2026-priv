@@ -712,6 +712,148 @@ donde \(V_0\) es una constante.
 {\bf Soluci\'on }{\em 4)}
 \vspace{0.5cm}
 
+{\bf (a) Expresar $\cos^2\theta$ en armónicos circulares}
+
+Utilizamos la identidad trigonométrica
+$$
+\cos^2\theta
+=
+\frac{1+\cos(2\theta)}{2}.
+$$
+Por tanto,
+$$
+\Phi(R,\theta)
+=
+\frac{V_0}{2}
++
+\frac{V_0}{2}\cos(2\theta).
+$$
+La condición de borde contiene únicamente los modos
+$$
+n=0,
+\qquad
+n=2.
+$$
+
+{\bf (b) Solución general de Laplace en el disco}
+
+La ecuación de Laplace en coordenadas polares es
+$$
+\nabla^2\Phi
+=
+\frac{\partial^2\Phi}{\partial r^2}
++\frac1r\frac{\partial\Phi}{\partial r}
++\frac1{r^2}
+\frac{\partial^2\Phi}{\partial\theta^2}
+=0.
+$$
+La solución regular en el origen tiene la forma
+$$
+\Phi(r,\theta)
+=
+A_0
++
+\sum_{n=1}^{\infty}
+r^n
+\left(
+A_n\cos n\theta
++
+B_n\sin n\theta
+\right).
+$$
+Los términos $r^{-n}$ se descartan porque divergen en $r=0$.
+Como el borde sólo contiene un término constante y un $\cos(2\theta)$, la solución debe ser
+$$
+\Phi(r,\theta)
+=
+A_0+A_2r^2\cos(2\theta).
+$$
+
+{\bf Determinación de los coeficientes}
+
+Imponemos la condición en $r=R$:
+$$
+A_0+A_2R^2\cos(2\theta)
+=
+\frac{V_0}{2}
++
+\frac{V_0}{2}\cos(2\theta).
+$$
+Comparando coeficientes:
+
+{\em Modo constante}
+
+$$
+A_0=\frac{V_0}{2}.
+$$
+
+{\em Modo $n=2$}
+
+$$
+A_2R^2=\frac{V_0}{2},
+$$
+de donde
+$$
+A_2=\frac{V_0}{2R^2}.
+$$
+
+{\bf (c) Forma cerrada}
+
+Sustituyendo:
+$$
+\boxed{
+\Phi(r,\theta)
+=
+\frac{V_0}{2}
++
+\frac{V_0}{2R^2}r^2\cos(2\theta).
+}
+$$
+También puede escribirse como
+$$
+\boxed{
+\Phi(r,\theta)
+=
+\frac{V_0}{2}
+\left(
+1+\frac{r^2}{R^2}\cos(2\theta)
+\right).
+}
+$$
+
+{\bf Verificación}
+
+En el borde $r=R$:
+$$
+\Phi(R,\theta)
+=
+\frac{V_0}{2}
+\left(1+\cos2\theta\right)
+=
+V_0\cos^2\theta,
+$$
+usando nuevamente
+$$
+\cos^2\theta=\frac{1+\cos2\theta}{2}.
+$$
+Por lo tanto la solución satisface exactamente la condición de contorno.
+
+{\bf Respuesta final}
+
+$$
+\boxed{
+\Phi(r,\theta)
+=
+\frac{V_0}{2}
+\left(
+1+\frac{r^2}{R^2}\cos 2\theta
+\right).
+}
+$$
+
+Observación: este es uno de los ejercicios más sencillos de separación de variables en el disco porque la condición de borde contiene un único armónico no trivial $(n=2)$, por lo que la serie de Fourier se trunca inmediatamente.
+
+
 
 
 
