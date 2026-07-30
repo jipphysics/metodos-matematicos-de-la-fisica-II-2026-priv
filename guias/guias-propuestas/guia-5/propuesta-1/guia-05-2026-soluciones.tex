@@ -4554,6 +4554,467 @@ importantes únicamente cerca de la superficie.
 {\bf Soluci\'on }{\em 18)}
 \vspace{0.5cm}
 
+% https://chatgpt.com/share/6a6b5346-0ee4-83e9-a2d0-d10c353d8d6f
+
+Se desea resolver la ecuación de Helmholtz
+
+\[
+(\nabla^2+k^2)u=0,
+\qquad r>a,
+\]
+
+con condición de borde
+
+\[
+u(a,\theta)=
+\begin{cases}
+V_0,&0<\theta<\pi/2,\\[1ex]
+-V_0,&\pi/2<\theta<\pi,
+\end{cases}
+\]
+
+y condición de radiación (ondas salientes)
+
+\[
+u(r,\theta)\sim \frac{e^{ikr}}{r},
+\qquad r\to\infty.
+\]
+
+El potencial físico es
+
+\[
+\Phi(r,\theta,t)
+=
+\Re\!\left\{
+u(r,\theta)e^{i\omega t}
+\right\}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{a) Simetría}
+
+La condición de borde es independiente de \(\varphi\).
+
+Por lo tanto,
+
+\[
+u=u(r,\theta).
+\]
+
+La ecuación de Helmholtz en coordenadas esféricas queda
+
+\[
+\frac1{r^2}
+\frac{\partial}{\partial r}
+\left(
+r^2\frac{\partial u}{\partial r}
+\right)
++
+\frac1{r^2\sin\theta}
+\frac{\partial}{\partial\theta}
+\left(
+\sin\theta
+\frac{\partial u}{\partial\theta}
+\right)
++
+k^2u
+=
+0.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{b) Separación de variables}
+
+Buscamos soluciones de la forma
+
+\[
+u(r,\theta)=R(r)\Theta(\theta).
+\]
+
+La separación conduce a
+
+\[
+\frac1{\sin\theta}
+\frac{d}{d\theta}
+\left(
+\sin\theta\frac{d\Theta}{d\theta}
+\right)
++
+\ell(\ell+1)\Theta
+=
+0,
+\]
+
+y
+
+\[
+r^2R''+2rR'
++
+\left(k^2r^2-\ell(\ell+1)\right)R
+=
+0.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{c) Solución angular}
+
+Las soluciones regulares son los polinomios de Legendre
+
+\[
+\Theta_\ell(\theta)
+=
+P_\ell(\cos\theta).
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{d) Solución radial}
+
+La ecuación radial es la ecuación de Bessel esférica.
+
+Sus soluciones son
+
+\[
+R_\ell(r)
+=
+A_\ell j_\ell(kr)
++
+B_\ell y_\ell(kr),
+\]
+
+o equivalentemente
+
+\[
+R_\ell(r)
+=
+C_\ell h_\ell^{(1)}(kr)
++
+D_\ell h_\ell^{(2)}(kr),
+\]
+
+donde \(h_\ell^{(1)}\) y \(h_\ell^{(2)}\) son las funciones de Hankel esféricas.
+
+La condición de ondas salientes exige
+
+\[
+h_\ell^{(1)}(kr)
+\sim
+(-i)^{\ell+1}
+\frac{e^{ikr}}{kr},
+\qquad
+r\to\infty.
+\]
+
+Por lo tanto,
+
+\[
+D_\ell=0.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{e) Solución general exterior}
+
+La solución exterior es
+
+\[
+u(r,\theta)
+=
+\sum_{\ell=0}^{\infty}
+A_\ell
+h_\ell^{(1)}(kr)
+P_\ell(\cos\theta).
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{f) Desarrollo de la condición de borde}
+
+Definimos
+
+\[
+f(\theta)
+=
+\begin{cases}
+V_0,&0<\theta<\pi/2,\\
+-V_0,&\pi/2<\theta<\pi.
+\end{cases}
+\]
+
+Como
+
+\[
+f(\pi-\theta)
+=
+-f(\theta),
+\]
+
+solamente aparecen multipolos impares.
+
+%Desarrollamos
+%
+%\[
+%f(\theta)
+%=
+%\sum_{\ell=0}^{\infty}
+%c_\ell P_\ell(\cos\theta),
+%\]
+%
+%con
+%
+%\[
+%c_\ell
+%=
+%\frac{2\ell+1}{2}
+%\int_{-1}^{1}
+%f(x)P_\ell(x)\,dx.
+%\]
+%
+%Usando la paridad de \(P_\ell\),
+%
+%\[
+%c_\ell=0,
+%\qquad
+%\ell \ \text{par},
+%\]
+%
+%y para \(\ell\) impar,
+%
+%\[
+%c_\ell
+%=
+%(2\ell+1)V_0
+%\int_0^1 P_\ell(x)\,dx.
+%\]
+
+Conviene reescribir esta condición utilizando $x=\cos \theta$, por lo que
+$$
+f(x)
+=
+\left\{
+\begin{array}{ll}
+V_0, & x > 0 \\
+-V_0, & x < 0
+\end{array}
+\right.
+=
+V_0\, \mathrm{sgn}(x).
+$$
+Luego, proponemos
+$$
+f(x)
+=
+\sum_{\ell = 0}^{\infty}
+c_{\ell}
+P_{\ell}(x)
+$$
+y utilizamos la ortoginalidad de los polinomios de Legendre
+$$
+\int_{-1}^1
+dx\,
+P_{\ell}(x)
+P_{m}(x)
+=
+\frac{2}{2\ell+1}
+\delta_{\ell m}
+$$
+para obtener
+\begin{eqnarray}
+\int_{-1}^1
+dx\,
+f(x)
+P_m(x)
+&=&
+c_m
+\frac{2}{2m+1}
+\notag
+\\
+c_m
+&=&
+\frac{2m+1}{2}
+\int_{-1}^1
+dx\,
+f(x)
+P_m(x)
+\notag
+\\
+%c_m
+&=&
+\frac{2m+1}{2}
+V_0\,
+\bigg(
+-
+\int_{-1}^0
+dx\,
+P_m(x)
++
+\int_0^1
+dx\,
+P_m(x)
+\bigg)
+\notag
+\\
+%c_m
+&=&
+\frac{2m+1}{2}
+V_0\,
+\bigg(
+(-1)^m
+\int_0^1
+dy\,
+P_m(y)
++
+\int_0^1
+dx\,
+P_m(x)
+\bigg)
+\notag
+\\
+%c_m
+&=&
+(2m+1)
+V_0\,
+\left\{
+\begin{array}{ll}
+\int_0^1
+dx\,
+P_m(x), & \text{$m$ es par},\\
+0, & \text{$m$ es impar.}
+\end{array}
+\right.
+\notag
+\end{eqnarray}
+donde hemos usado $y=-x$ y que $P_m(-x)=(-1)^mP(x)$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{g) Determinación de los coeficientes}
+
+En \(r=a\),
+
+\[
+u(a,\theta)
+=
+\sum_{\ell}
+A_\ell
+h_\ell^{(1)}(ka)
+P_\ell(\cos\theta)
+=
+\sum_{\ell}
+c_\ell
+P_\ell(\cos\theta).
+\]
+
+Por unicidad del desarrollo de Legendre,
+
+\[
+A_\ell
+=
+\frac{c_\ell}
+     {h_\ell^{(1)}(ka)}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{h) Solución final}
+
+Finalmente,
+
+\[
+\boxed{
+u(r,\theta)
+=
+\sum_{\substack{\ell=1\\ \ell\ {\rm impar}}}^{\infty}
+\frac{
+(2\ell+1)V_0
+\displaystyle\int_0^1 P_\ell(x)\,dx
+}{
+h_\ell^{(1)}(ka)
+}
+\,h_\ell^{(1)}(kr)
+\,P_\ell(\cos\theta).
+}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{i) Aproximación dipolar}
+
+El primer término (\(\ell=1\)) domina lejos de la antena.
+
+Como
+
+\[
+P_1(x)=x,
+\qquad
+\int_0^1x\,dx=\frac12,
+\]
+
+resulta
+
+\[
+c_1=\frac32V_0.
+\]
+
+Por consiguiente,
+
+\[
+u(r,\theta)
+\simeq
+\frac{\frac32V_0}
+     {h_1^{(1)}(ka)}
+h_1^{(1)}(kr)
+\cos\theta.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{j) Campo lejano}
+
+Usando
+
+\[
+h_1^{(1)}(kr)
+\sim
+-\frac{e^{ikr}}{kr},
+\qquad
+r\to\infty,
+\]
+
+obtenemos
+
+\[
+\boxed{
+u(r,\theta)
+\propto
+\frac{e^{ikr}}{r}\cos\theta.
+}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{k) Interpretación física}
+
+La esfera partida constituye una antena dipolar.
+La condición de borde es antisimétrica respecto del ecuador, por lo que sólo
+se excitan multipolos impares. El modo dominante es el dipolo
+\(\ell=1\), mientras que los multipolos superiores corrigen el campo cerca
+de la esfera.
+Lejos de la antena el campo radiado es una onda esférica saliente
+
+\[
+u(r,\theta)
+\sim
+\frac{e^{ikr}}{r}\cos\theta,
+\]
+
+que es exactamente el patrón angular característico de un dipolo oscilante.
+
+
 
 
 
@@ -4564,6 +5025,294 @@ importantes únicamente cerca de la superficie.
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 19)}
 \vspace{0.5cm}
+
+Una esfera homogénea de radio \(a\) y difusividad térmica \(\alpha\)
+satisface la ecuación de difusión
+
+\[
+\frac{\partial T}{\partial t}
+=
+\alpha \nabla^2 T,
+\qquad r<a,
+\]
+
+con condición de borde {\bf dependiente del tiempo}
+
+\[
+T(a,t)=T_0+T_1\cos(\omega t).
+\]
+
+Se desea hallar la solución de régimen periódico.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{a) Separación de la parte estacionaria}
+
+Escribimos
+
+\[
+T(r,t)=T_0+\Theta(r,t).
+\]
+
+Entonces
+
+\[
+\frac{\partial\Theta}{\partial t}
+=
+\alpha\nabla^2\Theta,
+\]
+
+y la condición de borde queda
+
+\[
+\Theta(a,t)=T_1\cos(\omega t).
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{b) Representación compleja}
+
+Buscamos la solución periódica de régimen mediante
+
+\[
+\Theta(r,t)
+=
+\Re\!\left\{
+u(r)e^{i\omega t}
+\right\}.
+\]
+
+Sustituyendo en la ecuación de difusión,
+
+\[
+i\omega u e^{i\omega t}
+=
+\alpha e^{i\omega t}\nabla^2u.
+\]
+
+Dividiendo por \(\alpha e^{i\omega t}\),
+
+\[
+\nabla^2u
+-
+\frac{i\omega}{\alpha}u
+=
+0.
+\]
+
+Definimos
+
+\[
+k^2=\frac{i\omega}{\alpha}.
+\]
+
+Obtenemos una ecuación de Helmholtz compleja:
+
+\[
+\boxed{
+\nabla^2u-k^2u=0.
+}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{c) Simetría esférica}
+
+La condición de borde es uniforme sobre toda la superficie.
+
+Por lo tanto,
+
+\[
+u=u(r).
+\]
+
+La ecuación radial es
+
+\[
+u''+\frac{2}{r}u'-k^2u=0.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{d) Solución radial}
+
+Introducimos
+
+\[
+u(r)=\frac{v(r)}{r}.
+\]
+
+Entonces
+
+\[
+v''-k^2v=0,
+\]
+
+cuya solución general es
+
+\[
+v(r)=Ae^{kr}+Be^{-kr}.
+\]
+
+Por tanto
+
+\[
+u(r)
+=
+\frac{Ae^{kr}+Be^{-kr}}{r}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{e) Regularidad en el origen}
+
+La temperatura debe permanecer finita cuando
+
+\[
+r\to0.
+\]
+
+Como
+
+\[
+\frac{e^{kr}-e^{-kr}}{r}
+=
+\frac{2\sinh(kr)}{r}
+\]
+
+es regular en \(r=0\), mientras que
+
+\[
+\frac{e^{kr}+e^{-kr}}{r}
+=
+\frac{2\cosh(kr)}{r}
+\]
+
+diverge como \(1/r\), debemos imponer
+
+\[
+A=-B.
+\]
+
+Luego
+
+\[
+u(r)
+=
+C\,
+\frac{\sinh(kr)}{r}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{f) Imposición de la condición de borde}
+
+En la superficie
+
+\[
+u(a)=T_1.
+\]
+
+Entonces
+
+\[
+C\,
+\frac{\sinh(ka)}{a}
+=
+T_1,
+\]
+
+de donde
+
+\[
+C=
+\frac{aT_1}{\sinh(ka)}.
+\]
+
+Por consiguiente,
+
+\[
+\boxed{
+u(r)
+=
+T_1
+\frac{a}{r}
+\frac{\sinh(kr)}
+{\sinh(ka)}.
+}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{g) Solución compleja}
+
+La amplitud compleja es
+
+\[
+\boxed{
+u(r)
+=
+T_1
+\frac{a}{r}
+\frac{\sinh(kr)}
+{\sinh(ka)},
+\qquad
+k=\sqrt{\frac{i\omega}{\alpha}}.
+}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{h) Solución física}
+
+Tomando la parte real,
+
+\[
+\boxed{
+T(r,t)
+=
+T_0
++
+\Re\!\left[
+T_1
+\frac{a}{r}
+\frac{\sinh(kr)}
+{\sinh(ka)}
+e^{i\omega t}
+\right].
+}
+\]
+
+Ésta es la solución periódica de régimen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{i) Interpretación física}
+
+Como
+
+\[
+k=\sqrt{\frac{i\omega}{\alpha}}
+=
+(1+i)
+\sqrt{\frac{\omega}{2\alpha}},
+\]
+
+la amplitud térmica disminuye al penetrar hacia el interior y además
+aparece un desfase temporal.
+
+Las oscilaciones de temperatura en el centro son menores que en la
+superficie y ocurren con retraso.
+
+Para frecuencias altas o difusividades pequeñas, la penetración térmica
+
+\[
+\delta
+=
+\sqrt{\frac{2\alpha}{\omega}}
+\]
+
+es pequeña y las oscilaciones quedan confinadas cerca de la superficie.
 
 
 
@@ -4580,6 +5329,421 @@ Resuelva la ecuación de difusión del calor \(\partial_t T = D\nabla^2 T\) para
 {\bf Soluci\'on }{\em 20)}
 \vspace{0.5cm}
 
+La temperatura en la superficie terrestre satisface
+
+\[
+T(0,t)
+=
+T_0
++
+A_d\cos(\omega_d t)
++
+A_a\cos(\omega_a t),
+\]
+
+y en el interior del suelo (\(z<0\)) se cumple la ecuación de difusión
+
+\[
+\frac{\partial T}{\partial t}
+=
+D\frac{\partial^2 T}{\partial z^2}.
+\]
+
+Se busca la solución periódica de régimen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{a) Descomposición en componentes}
+
+La ecuación es lineal, por lo que podemos escribir
+
+\[
+T(z,t)
+=
+T_0
++
+T_d(z,t)
++
+T_a(z,t),
+\]
+
+donde
+
+\[
+T_d(0,t)=A_d\cos(\omega_d t),
+\qquad
+T_a(0,t)=A_a\cos(\omega_a t).
+\]
+
+Basta resolver una componente genérica
+
+\[
+T_\omega(0,t)=A\cos(\omega t).
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{b) Representación compleja}
+
+Buscamos una solución de la forma
+
+\[
+T_\omega(z,t)
+=
+\Re\!\left\{
+u(z)e^{i\omega t}
+\right\}.
+\]
+
+Sustituyendo en la ecuación de difusión,
+
+%\[
+%i\omega u
+%=
+%D u''.
+%\]
+%
+%Por lo tanto,
+
+\[
+u''-\frac{i\omega}{D}u=0.
+\]
+
+Definimos
+
+\[
+k^2=\frac{i\omega}{D}.
+\]
+
+Entonces
+
+\[
+u''-k^2u=0.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{c) Solución espacial}
+
+La solución general es
+
+\[
+u(z)=C_1e^{kz}+C_2e^{-kz}.
+\]
+
+Como el suelo ocupa \(z<0\), exigimos que la solución permanezca acotada cuando
+
+\[
+z\rightarrow -\infty.
+\]
+
+Debemos elegir la rama de \(k\) con parte real positiva.
+
+Como
+
+\[
+k
+=
+\sqrt{\frac{i\omega}{D}}
+=
+(1+i)\sqrt{\frac{\omega}{2D}},
+\]
+
+tenemos
+
+\[
+\Re(k)>0.
+\]
+
+Por ello
+
+\[
+e^{-kz}
+\]
+
+diverge cuando \(z\to-\infty\), y debe eliminarse.
+
+La solución admisible es
+
+\[
+u(z)=Ce^{kz}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{d) Imposición de la condición de borde}
+
+En \(z=0\),
+
+\[
+u(0)=A.
+\]
+
+Por lo tanto
+
+\[
+C=A.
+\]
+
+Obtenemos
+
+\[
+u(z)
+=
+A e^{kz}.
+\]
+
+Así,
+
+\[
+T_\omega(z,t)
+=
+\Re
+\left\{
+A e^{kz}e^{i\omega t}
+\right\}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{e) Forma física}
+
+Escribimos
+
+\[
+k
+=
+(1+i)\beta,
+\qquad
+\beta
+=
+\sqrt{\frac{\omega}{2D}}.
+\]
+
+Entonces
+
+\[
+e^{kz}
+=
+e^{\beta z}
+e^{i\beta z}.
+\]
+
+Por consiguiente,
+
+\[
+T_\omega(z,t)
+=
+A e^{\beta z}
+\cos(\omega t+\beta z).
+\]
+
+Como \(z<0\),
+
+\[
+e^{\beta z}
+=
+e^{-|z|/\delta},
+\]
+
+donde
+
+\[
+\boxed{
+\delta
+=
+\frac1\beta
+=
+\sqrt{\frac{2D}{\omega}}.
+}
+\]
+
+Finalmente,
+
+\[
+\boxed{
+T_\omega(z,t)
+=
+A
+e^{-|z|/\delta}
+\cos
+\left(
+\omega t
+-
+\frac{|z|}{\delta}
+\right).
+}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{f) Solución completa}
+
+Superponiendo las componentes diaria y anual,
+
+\[
+\boxed{
+\begin{aligned}
+T(z,t)
+=&\;
+T_0
++
+A_d
+e^{-|z|/\delta_d}
+\cos
+\left(
+\omega_d t
+-
+\frac{|z|}{\delta_d}
+\right)
+\\[1ex]
+&
++
+A_a
+e^{-|z|/\delta_a}
+\cos
+\left(
+\omega_a t
+-
+\frac{|z|}{\delta_a}
+\right),
+\end{aligned}
+}
+\]
+
+con
+
+\[
+\delta_d
+=
+\sqrt{\frac{2D}{\omega_d}},
+\qquad
+\delta_a
+=
+\sqrt{\frac{2D}{\omega_a}}.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{g) Profundidad de penetración anual}
+
+La amplitud anual a profundidad \(|z|\) es
+
+\[
+A_a(z)
+=
+A_a
+e^{-|z|/\delta_a}.
+\]
+
+Queremos que sea menor que \(1^\circ{\rm C}\):
+
+\[
+A_a e^{-|z|/\delta_a}<1.
+\]
+
+Por lo tanto,
+
+\[
+|z|
+>
+\delta_a \ln(A_a).
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{h) Cálculo numérico}
+
+Dado
+
+\[
+A_a=6.2^\circ{\rm C},
+\qquad
+D=2\times10^{-6}\ {\rm m^2/s},
+\]
+
+y
+
+\[
+\omega_a
+=
+\frac{2\pi}{365\times24\times3600}
+=
+1.99\times10^{-7}\ {\rm s^{-1}},
+\]
+
+obtenemos
+
+\[
+\delta_a
+=
+\sqrt{
+\frac{2D}{\omega_a}
+}
+=
+\sqrt{
+\frac{4\times10^{-6}}
+     {1.99\times10^{-7}}
+}
+\simeq
+4.48\ {\rm m}.
+\]
+
+Entonces
+
+\[
+|z|
+>
+4.48\,
+\ln(6.2).
+\]
+
+Como
+
+\[
+\ln(6.2)\simeq1.825,
+\]
+
+resulta
+
+\[
+\boxed{
+|z|
+>
+8.2\ {\rm m}.
+}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{i) Interpretación física}
+
+Las oscilaciones térmicas penetran en el suelo como ondas difusivas.
+
+La amplitud disminuye exponencialmente con la profundidad y aparece un retraso temporal de fase
+
+\[
+\Delta\phi
+=
+\frac{|z|}{\delta}.
+\]
+
+Como
+
+\[
+\omega_d \gg \omega_a,
+\]
+
+se tiene
+
+\[
+\delta_d \ll \delta_a.
+\]
+
+Por ello las oscilaciones diarias desaparecen a pocos centímetros de profundidad, mientras que las oscilaciones anuales penetran varios metros en el subsuelo.
+
+
+
 
 
 
@@ -4589,6 +5753,311 @@ Resuelva la ecuación de difusión del calor \(\partial_t T = D\nabla^2 T\) para
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 21)}
 \vspace{0.5cm}
+
+Un tubo de órgano se modela como un cilindro de radio \(a\) y longitud \(L\),
+con \(L\gg a\).
+
+La sobrepresión acústica \(p\) satisface la ecuación de Helmholtz
+
+\[
+(\nabla^2+k^2)p=0,
+\qquad
+k=\frac{\omega}{c},
+\]
+
+donde \(c\) es la velocidad del sonido.
+
+Las condiciones de borde son:
+
+\[
+\left.\frac{\partial p}{\partial z}\right|_{z=0}=0
+\qquad
+\text{(extremo cerrado)},
+\]
+
+\[
+p(L)=0
+\qquad
+\text{(extremo abierto)}.
+\]
+
+Se pide hallar los modos estacionarios y sus frecuencias.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{a) Aproximación unidimensional}
+
+Como
+
+\[
+L\gg a,
+\]
+
+los modos de menor frecuencia tienen una variación muy débil en la dirección
+transversal.
+
+Tomamos entonces
+
+\[
+p=p(z).
+\]
+
+La ecuación de Helmholtz se reduce a
+
+\[
+p''+k^2p=0.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{b) Solución general}
+
+La solución general es
+
+\[
+p(z)
+=
+A\cos(kz)
++
+B\sin(kz).
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{c) Condición en el extremo cerrado}
+
+En \(z=0\),
+
+\[
+p'(z)
+=
+-Ak\sin(kz)
++
+Bk\cos(kz).
+\]
+
+Por lo tanto,
+
+\[
+p'(0)=Bk=0.
+\]
+
+Luego
+
+\[
+\boxed{B=0.}
+\]
+
+La solución queda
+
+\[
+p(z)=A\cos(kz).
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{d) Condición en el extremo abierto}
+
+En \(z=L\),
+
+\[
+p(L)=0.
+\]
+
+Entonces
+
+\[
+A\cos(kL)=0.
+\]
+
+Para soluciones no triviales (\(A\neq0\)),
+
+\[
+\cos(kL)=0.
+\]
+
+Por lo tanto,
+
+\[
+kL=\frac{\pi}{2}+n\pi,
+\qquad
+n=0,1,2,\ldots
+\]
+
+o equivalentemente
+
+\[
+\boxed{
+k_n
+=
+\frac{(2n+1)\pi}{2L}.
+}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{e) Modos normales}
+
+Los modos propios son
+
+\[
+\boxed{
+p_n(z)
+=
+A_n
+\cos\!\left(
+\frac{(2n+1)\pi z}{2L}
+\right).
+}
+\]
+
+Sólo aparecen armónicos impares.
+
+Los primeros modos son
+
+\[
+p_0(z)=A_0\cos\!\left(\frac{\pi z}{2L}\right),
+\]
+
+\[
+p_1(z)=A_1\cos\!\left(\frac{3\pi z}{2L}\right),
+\]
+
+\[
+p_2(z)=A_2\cos\!\left(\frac{5\pi z}{2L}\right).
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{f) Frecuencias de resonancia}
+
+Como
+
+\[
+\omega_n=ck_n,
+\]
+
+obtenemos
+
+\[
+\omega_n
+=
+c\,
+\frac{(2n+1)\pi}{2L}.
+\]
+
+Las frecuencias ordinarias son
+
+\[
+f_n
+=
+\frac{\omega_n}{2\pi}.
+\]
+
+Por consiguiente,
+
+\[
+\boxed{
+f_n
+=
+\frac{(2n+1)c}{4L}.
+}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{g) Frecuencia fundamental}
+
+El modo fundamental corresponde a
+
+\[
+n=0.
+\]
+
+Luego
+
+\[
+\boxed{
+f_0
+=
+\frac{c}{4L}.
+}
+\]
+
+Éste es el resultado clásico para un tubo cerrado-abierto.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{h) Tubo afinado en La de 55 Hz}
+
+Queremos
+
+\[
+f_0=55\ {\rm Hz}.
+\]
+
+Usando
+
+\[
+c=343\ {\rm m/s},
+\]
+
+\[
+55
+=
+\frac{343}{4L}.
+\]
+
+Despejando,
+
+\[
+L
+=
+\frac{343}{220}
+=
+1.559\ {\rm m}.
+\]
+
+Por lo tanto,
+
+\[
+\boxed{
+L\simeq1.56\ {\rm m}.
+}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{i) Interpretación física}
+
+En un extremo cerrado la velocidad del aire debe anularse.
+Como la velocidad acústica es proporcional a
+
+\[
+-\frac{\partial p}{\partial z},
+\]
+
+ello conduce a una condición de Neumann para la presión.
+
+En un extremo abierto la presión debe igualarse a la atmosférica,
+lo que produce una condición de Dirichlet
+
+\[
+p=0.
+\]
+
+Como consecuencia, el tubo sólo admite armónicos impares:
+
+\[
+f_n=(2n+1)f_0.
+\]
+
+Ésta es la característica distintiva de los tubos cerrados en un extremo,
+a diferencia de los tubos abiertos en ambos extremos, que admiten todos los armónicos.
+
+
+
+
 
 
 
@@ -4606,6 +6075,389 @@ Resuelva la ecuación de difusión del calor \(\partial_t T = D\nabla^2 T\) para
 \vspace{0.5cm}
 {\bf Soluci\'on }{\em 22)}
 \vspace{0.5cm}
+
+Considere una membrana circular de radio $a$, fija en todo su borde.
+La ecuación de ondas para el desplazamiento transversal $u(r,\theta,t)$ es
+
+\[
+\frac{\partial^2 u}{\partial t^2}
+=
+c^2\nabla^2u,
+\]
+
+donde $c$ es la velocidad de propagación de las ondas sobre la membrana.
+
+La condición de borde es
+
+\[
+u(a,\theta,t)=0.
+\]
+
+\subsection*{a) Separación de variables}
+
+Buscamos soluciones de la forma
+
+\[
+u(r,\theta,t)=R(r)\Theta(\theta)T(t).
+\]
+
+Sustituyendo en la ecuación de ondas,
+
+\[
+R\Theta T''
+=
+c^2T
+\left[
+\Theta
+\left(
+R''+\frac{1}{r}R'
+\right)
++
+\frac{R}{r^2}\Theta''
+\right].
+\]
+
+Dividiendo por $c^2R\Theta T$,
+
+\[
+\frac{T''}{c^2T}
+=
+\frac{R''+\frac{1}{r}R'}{R}
++
+\frac{1}{r^2}
+\frac{\Theta''}{\Theta}.
+\]
+
+Introducimos una constante de separación $-k^2$:
+
+\[
+\frac{T''}{c^2T}=-k^2.
+\]
+
+Entonces
+
+\[
+T''+\omega^2T=0,
+\qquad
+\omega=ck.
+\]
+
+La solución temporal es
+
+\[
+T(t)
+=
+A\cos(\omega t)
++
+B\sin(\omega t).
+\]
+
+\subsection*{b) Ecuación angular}
+
+La separación conduce a
+
+\[
+\Theta''+m^2\Theta=0,
+\]
+
+cuyas soluciones son
+
+\[
+\Theta(\theta)
+=
+C\cos(m\theta)
++
+D\sin(m\theta).
+\]
+
+La periodicidad
+
+\[
+\Theta(\theta+2\pi)=\Theta(\theta)
+\]
+
+exige
+
+\[
+m=0,1,2,\ldots
+\]
+
+\subsection*{c) Ecuación radial}
+
+La ecuación radial queda
+
+\[
+r^2R''
++
+rR'
++
+(k^2r^2-m^2)R
+=
+0.
+\]
+
+Esta es la ecuación de Bessel de orden $m$.
+
+Su solución general es
+
+\[
+R(r)
+=
+A\,J_m(kr)
++
+B\,Y_m(kr).
+\]
+
+Como $Y_m$ diverge en el origen, debe descartarse:
+
+\[
+R(r)
+=
+A\,J_m(kr).
+\]
+
+\subsection*{d) Condición de borde}
+
+La membrana está fija en $r=a$, por lo que
+
+\[
+R(a)=0.
+\]
+
+Entonces
+
+\[
+J_m(ka)=0.
+\]
+
+Sea $\alpha_{mn}$ el $n$-ésimo cero positivo de $J_m$.
+
+Entonces
+
+\[
+\boxed{
+k_{mn}
+=
+\frac{\alpha_{mn}}{a}
+}.
+\]
+
+\subsection*{e) Frecuencias propias}
+
+Como
+
+\[
+\omega_{mn}=ck_{mn},
+\]
+
+resulta
+
+\[
+\boxed{
+\omega_{mn}
+=
+c\,
+\frac{\alpha_{mn}}{a}
+}.
+\]
+
+Las frecuencias ordinarias son
+
+\[
+\boxed{
+f_{mn}
+=
+\frac{c}{2\pi a}\,
+\alpha_{mn}
+}.
+\]
+
+\subsection*{f) Modos propios}
+
+Los modos normales quedan
+
+\[
+\boxed{
+u_{mn}(r,\theta,t)
+=
+J_m\!\left(
+\frac{\alpha_{mn}r}{a}
+\right)
+\Big[
+C\cos(m\theta)
++
+D\sin(m\theta)
+\Big]
+\Big[
+E\cos(\omega_{mn}t)
++
+F\sin(\omega_{mn}t)
+\Big].
+}
+\]
+
+\subsection*{g) Primeros modos}
+
+Los primeros ceros de Bessel son
+
+\[
+\alpha_{01}\approx2.4048,
+\]
+
+\[
+\alpha_{11}\approx3.8317,
+\]
+
+\[
+\alpha_{21}\approx5.1356,
+\]
+
+\[
+\alpha_{02}\approx5.5201.
+\]
+
+Por lo tanto, el modo fundamental es
+
+\[
+(m,n)=(0,1).
+\]
+
+\subsection*{h) Líneas nodales}
+
+\paragraph{Modo $(0,1)$}
+
+\[
+u_{01}
+\propto
+J_0\!\left(
+\frac{\alpha_{01}r}{a}
+\right).
+\]
+
+No posee nodos interiores.
+
+\paragraph{Modo $(1,1)$}
+
+\[
+u_{11}
+\propto
+J_1\!\left(
+\frac{\alpha_{11}r}{a}
+\right)
+\cos\theta.
+\]
+
+La condición
+
+\[
+\cos\theta=0
+\]
+
+produce un diámetro nodal.
+
+\paragraph{Modo $(2,1)$}
+
+\[
+u_{21}
+\propto
+J_2\!\left(
+\frac{\alpha_{21}r}{a}
+\right)
+\cos(2\theta).
+\]
+
+Las líneas nodales son dos diámetros perpendiculares.
+
+\paragraph{Modo $(0,2)$}
+
+\[
+u_{02}
+\propto
+J_0\!\left(
+\frac{\alpha_{02}r}{a}
+\right).
+\]
+
+Existe un nodo radial interior dado por
+
+\[
+\frac{\alpha_{02}r}{a}
+=
+\alpha_{01},
+\]
+
+es decir,
+
+\[
+r
+=
+a\,
+\frac{\alpha_{01}}{\alpha_{02}}
+\approx
+0.435\,a.
+\]
+
+\subsection*{i) Excitación mediante un golpe central}
+
+Si la membrana es golpeada exactamente en el centro,
+
+\[
+r=0,
+\]
+
+recordamos que
+
+\[
+J_m(0)=0,
+\qquad m\ge 1,
+\]
+
+mientras que
+
+\[
+J_0(0)=1.
+\]
+
+Por consiguiente, los modos con dependencia angular no son excitados.
+
+Sólo aparecen modos con
+
+\[
+m=0.
+\]
+
+En particular,
+
+\[
+(0,1),\quad (0,2),\quad (0,3),\ldots
+\]
+
+pueden excitarse, mientras que
+
+\[
+(1,1),\quad (2,1),\quad (3,1),\ldots
+\]
+
+no contribuyen.
+
+\subsection*{j) Interpretación física}
+
+El número cuántico $m$ determina el número de nodos angulares (diámetros), mientras que $n-1$ determina el número de nodos radiales interiores.
+
+Las frecuencias están gobernadas por los ceros de las funciones de Bessel,
+
+\[
+f_{mn}
+=
+\frac{c}{2\pi a}\alpha_{mn},
+\]
+
+por lo que no forman una serie armónica. Ésta es la razón por la cual un tambor no produce una altura tonal tan definida como una cuerda vibrante.
+
+
+
+
+
 
 
 
