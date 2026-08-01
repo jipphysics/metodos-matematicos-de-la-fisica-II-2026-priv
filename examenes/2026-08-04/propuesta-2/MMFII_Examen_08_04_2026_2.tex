@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{center}
+\textbf{\Large Métodos Matemáticos de la Física II} \\
+\textbf{\large Examen Final – 01/08/2026}
+\end{center}
+
+Nombre: \hrulefill
+
+\vspace{1cm}
+
+\section*{Problema 1}
+
+Sea $A$ una matriz $4 \times 4$ cuyo polinomio característico es
+\[p_A(\lambda) = (\lambda - 2)^2(\lambda + 1)^2.\]
+Además, se sabe que
+\[ \operatorname{rang}(A - 2I) = 2, \qquad \operatorname{rang}(A + I) = 3. \]
+
+\begin{enumerate}
+\item[(a)] Determine las multiplicidades geométricas de cada autovalor.
+\item[(b)] Encuentre la forma canónica de Jordan de $A$ (no se pide la matriz de cambio de base).
+\item[(c)] ¿Cuántos subespacios invariantes irreducibles tiene la descomposición de $\mathbb{R}^4$ bajo la acción de $A$? Indique la dimensión de cada uno.
+\end{enumerate}
+
+\vspace{1cm}
+
+\section*{Problema 2}
+
+Considere la superficie de un paraboloide de revolución parametrizada por
+\[x = r \cos \theta, \quad y = r \sin \theta, \quad z = \frac{r^2}{2},\]
+con $r > 0$ y $0 \le \theta < 2\pi$. La métrica inducida es:
+\[ds^2 = (1 + r^2) dr^2 + r^2 d\theta^2.\]
+
+\begin{enumerate}
+\item[(a)] Calcule la métrica inversa $g^{ij}$.
+\item[(b)] Determine todos los símbolos de Christoffel $\Gamma_{ij}^k$ no nulos.
+\item[(c)] Obtenga el operador Laplaciano $\Delta u(r, \theta) = g^{ij}\nabla_i\nabla_j u$ para una función escalar $u(r, \theta)$.
+\end{enumerate}
+
+\vspace{1cm}
+
+\section*{Problema 3}
+
+Considere la ecuación diferencial ordinaria con condición de contorno en toda la recta real:
+\[-D\frac{d^2u}{dx^2} + \alpha u(x) = \delta(x), \qquad -\infty < x < \infty,\]
+donde $D > 0$, $\alpha > 0$ son constantes, y $\delta(x)$ representa la delta de Dirac. Se exige que:
+\[u(x) \to 0 \quad \text{para} \quad |x| \to \infty.\]
+
+\begin{enumerate}
+\item[(a)] Obtenga la solución $u(x)$ aplicando la transformada de Fourier y antitransformando para expresar el resultado en el espacio real.
+\item[(b)] Encuentre la solución mediante el método de la función de Green, identificando explícitamente el núcleo de Green del operador.
+\end{enumerate}
+
+\vspace{1cm}
+
+\section*{Problema 4}
+
+En el interior de un cilindro infinito de radio $R$, el potencial $\Phi(r, \theta)$ satisface la ecuación de Laplace. En la pared $r = R$ se impone la condición
+\[ \Phi(R, \theta) = V_0 \cos^2 \theta, \]
+donde $V_0$ es una constante.
+
+\begin{enumerate}
+\item[(a)] Exprese $\cos^2 \theta$ como combinación lineal de armónicos circulares (es decir, en términos de senos y cosenos de $n\theta$).
+\item[(b)] Encuentre $\Phi(r, \theta)$ en el interior del cilindro, como una serie de potencias de $r$ (finita, en este caso).
+\item[(c)] Escriba la solución en forma cerrada.
+\end{enumerate}
+
+\end{document}
