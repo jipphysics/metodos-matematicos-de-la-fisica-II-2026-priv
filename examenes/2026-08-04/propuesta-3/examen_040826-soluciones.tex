@@ -1,0 +1,1596 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=51\baselineskip
+\parindent 0pt
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Examen Final -- 4/8/2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+\vspace{-0.7\baselineskip}
+\begin{center}
+\bf
+Escriba su nombre en cada página y numere todas las páginas\\
+Resuelva cada problema en hojas separadas\\
+Se permite el uso de tablas de transformadas y de funciones especiales
+\end{center}
+%\vspace{-1.0\baselineskip}
+%
+\hrule
+\setlength{\marginparsep}{-1em}
+\reversemarginpar
+
+\vspace{5mm}
+
+\prob{}\marginpar{[1.5 pt.]} Sea \(A\) una matriz \(4 \times 4\) cuyo polinomio característico es
+\[
+p_A(\lambda) = (\lambda - 2)^2(\lambda + 1)^2.
+\]
+Además, se sabe que: La dimensión del rango de $A - 2I$ es 2, y la dimensión del
+rango de $A + I$ es 3.
+\begin{enumerate}
+    \item[(a)] Determine las multiplicidades geométricas de cada autovalor.
+    \item[(b)] Encuentre la forma canónica de Jordan de \(A\) (no se pide la matriz de cambio de base).
+    \item[(c)] ¿Cuántos subespacios invariantes irreducibles tiene la descomposición de \(\mathbb{R}^4\) bajo la acción de \(A\)? Indique la dimensión de cada uno.
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 1)}
+\vspace{0.5cm}
+
+{\bf (a) Multiplicidades geométricas}
+
+Los autovalores son
+$$
+\lambda_1=2,\qquad \lambda_2=-1,
+$$
+ambos con multiplicidad algebraica
+$$
+m_a(2)=2,\qquad m_a(-1)=2.
+$$
+La multiplicidad geométrica es
+$$
+m_g(\lambda)=\dim\ker(A-\lambda I).
+$$
+Usamos rango-nulidad:
+$$
+\dim\ker(A-2I)
+=
+4-\operatorname{rang}(A-2I)
+=
+4-2
+=
+2.
+$$
+Por tanto
+$$
+m_g(2)=2.
+$$
+Asimismo,
+$$
+\dim\ker(A+I)
+=
+4-\operatorname{rang}(A+I)
+=
+4-3
+=
+1,
+$$
+luego
+$$
+m_g(-1)=1.
+$$
+
+{\em Respuesta:}
+
+$$
+\boxed{m_g(2)=2,\qquad m_g(-1)=1.}
+$$
+
+{\bf (b) Forma canónica de Jordan}
+
+Para $\lambda=2$, tenemos
+$$
+m_a(2)=2,\qquad m_g(2)=2.
+$$
+El número de bloques de Jordan asociados a $\lambda=2$ es igual a $m_g(2)$, es decir, 2 bloques.
+Como la suma de sus tamaños debe ser 2, necesariamente son dos bloques $1\times 1$:
+$$
+J_{2}=
+\begin{pmatrix}
+2&0\
+0&2
+\end{pmatrix}.
+$$
+
+Para $\lambda=-1$, tenemos
+$$
+m_a(-1)=2,\qquad m_g(-1)=1.
+$$
+Hay un único bloque de Jordan asociado a $-1$, y su tamaño debe ser 2.
+Por tanto,
+$$
+J_{-1}
+=
+\begin{pmatrix}
+-1&1\
+0&-1
+\end{pmatrix}.
+$$
+
+{\em Forma de Jordan total.}
+Uniendo ambos sectores:
+$$
+\boxed{
+J=
+\begin{pmatrix}
+2&0&0&0\\
+0&2&0&0\\
+0&0&-1&1\\
+0&0&0&-1
+\end{pmatrix}.
+}
+$$
+
+{\bf (c) Subespacios invariantes irreducibles}
+
+En la forma de Jordan, cada bloque de Jordan corresponde a un subespacio invariante indecomponible (irreducible en el sentido usado en Álgebra Lineal para la descomposición de Jordan).
+
+Tenemos:
+\begin{itemize}
+\item un bloque $J_1(2)$,
+\item otro bloque $J_1(2)$,
+\item un bloque $J_2(-1)$.
+\end{itemize}
+Por lo tanto la descomposición de $\mathbb R^4$ es
+$$
+\mathbb R^4
+=
+V_1\oplus V_2\oplus V_3,
+$$
+con
+$$
+\dim V_1=1,\qquad
+\dim V_2=1,\qquad
+\dim V_3=2.
+$$
+Así, el número de subespacios invariantes irreducibles es
+$$
+\boxed{3}
+$$
+y sus dimensiones son
+$$
+\boxed{1,\;1,\;2.}
+$$
+
+{\em Resumen final}
+
+$$
+\boxed{m_g(2)=2,\qquad m_g(-1)=1}
+$$
+$$
+\boxed{
+J=
+\begin{pmatrix}
+2&0&0&0\\
+0&2&0&0\\
+0&0&-1&1\\
+0&0&0&-1
+\end{pmatrix}
+}
+$$
+$$
+\boxed{\mathbb R^4=V_1\oplus V_2\oplus V_3,\qquad
+\dim(V_1,V_2,V_3)=(1,1,2).}
+$$
+
+
+
+
+
+
+
+
+
+
+\prob{} Considere la superficie de un paraboloide de revolución parametrizada,
+en coordenadas cilíndricas por, por
+\[x = r \cos \theta, \quad y = r \sin \theta, \quad z = \frac{r^2}{2},\]
+con $r > 0$ y $0 \le \theta < 2\pi$. La métrica inducida sobre el parabolide,
+dada por el elemento de línea, es:
+\[
+ds^2 = (1 + r^2) dr^2 + r^2 d\theta^2.
+\]
+\begin{enumerate}
+\item[(a)] Calcule la métrica inversa $g^{ij}$.
+\item[(b)] Determine todos los símbolos de Christoffel $\Gamma_{ij}^k$ no nulos.
+\item[(c)] Obtenga el operador Laplaciano $\Delta u(r, \theta) = g^{ij}\nabla_i\nabla_j u$ para una función escalar $u(r, \theta)$.
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 2)}
+\vspace{0.5cm}
+
+El enunciado establece que el paraboloide de revolución está parametrizado por 
+$$
+x=r\cos\theta,\qquad
+y=r\sin\theta,\qquad
+z=\frac{r^2}{2},
+$$
+y que la métrica inducida es
+$$
+ds^2=(1+r^2),dr^2+r^2,d\theta^2.
+$$
+Por lo tanto,
+$$
+(g_{ij})=
+\begin{pmatrix}
+1+r^2 & 0\\
+0 & r^2
+\end{pmatrix},
+$$
+donde las coordenadas son
+$$
+x^1=r,\qquad x^2=\theta.
+$$
+
+{\bf (a) Métrica inversa}
+
+Como la métrica es diagonal, la inversa se obtiene inmediatamente:
+$$
+(g^{ij})
+=
+\begin{pmatrix}
+\dfrac1{1+r^2} & 0\\
+0 & \dfrac1{r^2}
+\end{pmatrix}.
+$$
+Por consiguiente,
+$$
+\boxed{
+g^{rr}=\frac1{1+r^2},
+\qquad
+g^{\theta\theta}=\frac1{r^2},
+\qquad
+g^{r\theta}=g^{\theta r}=0.
+}
+$$
+
+{\bf (b) Símbolos de Christoffel}
+
+Usamos
+$$
+\Gamma^k_{ij}
+=
+\frac12\,g^{k\ell}
+\left(
+\partial_i g_{j\ell}
++
+\partial_j g_{i\ell}
+-
+\partial_\ell g_{ij}
+\right).
+$$
+Las únicas derivadas no nulas de la métrica son
+$$
+\partial_r g_{rr}=2r,
+\qquad
+\partial_r g_{\theta\theta}=2r.
+$$
+Todas las derivadas respecto de $\theta$ son cero.
+
+{\em Cálculo de $\Gamma^r_{rr}$}
+
+$$
+\Gamma^r_{rr}
+=
+\frac12 g^{rr}\partial_r g_{rr}
+=
+\frac12\frac1{1+r^2}(2r)
+=
+\frac{r}{1+r^2}.
+$$
+
+$$
+\boxed{\Gamma^r_{rr}=\frac{r}{1+r^2}}
+$$
+
+{\em Cálculo de $\Gamma^r_{\theta\theta}$}
+
+$$
+\Gamma^r_{\theta\theta}
+=
+-\frac12 g^{rr}\partial_r g_{\theta\theta}
+=
+-\frac12\frac1{1+r^2}(2r)
+=
+-\frac{r}{1+r^2}.
+$$
+
+$$
+\boxed{\Gamma^r_{\theta\theta}
+=
+-\frac{r}{1+r^2}}
+$$
+
+{\em Cálculo de $\Gamma^\theta_{r\theta}$}
+
+$$
+\Gamma^\theta_{r\theta}
+=
+\Gamma^\theta_{\theta r}
+=
+\frac12 g^{\theta\theta}
+\partial_r g_{\theta\theta}
+=
+\frac12\frac1{r^2}(2r)
+=
+\frac1r.
+$$
+
+$$
+\boxed{
+\Gamma^\theta_{r\theta}
+=
+\Gamma^\theta_{\theta r}
+=
+\frac1r
+}
+$$
+
+{\em Los demás}
+
+Todos los demás símbolos se anulan.
+En resumen,
+$$
+\boxed{
+\Gamma^r_{rr}=\frac{r}{1+r^2},
+\qquad
+\Gamma^r_{\theta\theta}
+=
+-\frac{r}{1+r^2},
+\qquad
+\Gamma^\theta_{r\theta}
+=
+\Gamma^\theta_{\theta r}
+=
+\frac1r.
+}
+$$
+
+{\bf (c) Laplaciano}
+
+Para una función escalar $u(r,\theta)$,
+$$
+\nabla_i\nabla_j u
+=
+\partial_i\partial_j u
+-
+\Gamma^k_{ij}\partial_k u.
+$$
+El Laplaciano es
+$$
+\Delta u
+=
+g^{ij}\nabla_i\nabla_j u.
+$$
+Como la métrica es diagonal,
+$$
+\Delta u
+=
+g^{rr}\nabla_r\nabla_r u
++
+g^{\theta\theta}\nabla_\theta\nabla_\theta u.
+$$
+
+{\em Parte radial}
+
+$$
+\nabla_r\nabla_r u
+=
+u_{rr}
+=
+\Gamma^r_{rr}u_r
+-
+u_{rr}
+=
+\frac{r}{1+r^2}u_r.
+$$
+Por tanto
+$$
+g^{rr}\nabla_r\nabla_r u
+=
+\frac{u_{rr}}{1+r^2}
+-
+\frac{r}{(1+r^2)^2}u_r.
+$$
+
+{\em Parte angular}
+
+$$
+\nabla_\theta\nabla_\theta u
+=
+u_{\theta\theta}
+-
+\Gamma^r_{\theta\theta}u_r.
+$$
+Como
+$$
+\Gamma^r_{\theta\theta}
+=
+-\frac{r}{1+r^2},
+$$
+resulta
+$$
+\nabla_\theta\nabla_\theta u
+=
+u_{\theta\theta}
++
+\frac{r}{1+r^2}u_r.
+$$
+Multiplicando por $g^{\theta\theta}=1/r^2$,
+$$
+g^{\theta\theta}\nabla_\theta\nabla_\theta u
+=
+\frac{u_{\theta\theta}}{r^2}
++
+\frac1{r(1+r^2)}u_r.
+$$
+
+{\em Sumando}
+
+$$
+\Delta u
+=
+\frac{u_{rr}}{1+r^2}
++
+\frac{u_{\theta\theta}}{r^2}
++
+\left[
+\frac1{r(1+r^2)}
+-
+\frac{r}{(1+r^2)^2}
+\right]u_r.
+$$
+Llevando al mismo denominador:
+$$
+\frac1{r(1+r^2)}
+-
+\frac{r}{(1+r^2)^2}
+=
+\frac1{r(1+r^2)^2}.
+$$
+Finalmente,
+$$
+\boxed{
+\Delta u(r,\theta)
+=
+\frac1{1+r^2}\,
+\frac{\partial^2u}{\partial r^2}
++
+\frac1{r^2}\,
+\frac{\partial^2u}{\partial\theta^2}
++
+\frac1{r(1+r^2)^2}\,
+\frac{\partial u}{\partial r}
+}.
+$$
+Como verificación, si se utiliza la fórmula alternativa
+$$
+\Delta u
+=
+\frac1{\sqrt g}
+\partial_i
+\left(
+\sqrt g,g^{ij}\partial_j u
+\right),
+\qquad
+\sqrt g=r\sqrt{1+r^2},
+$$
+se obtiene exactamente el mismo resultado.
+
+{\bf Respuesta final:}
+
+$$
+g^{ij}
+=
+\begin{pmatrix}
+\dfrac1{1+r^2} & 0\\
+0 & \dfrac1{r^2}
+\end{pmatrix},
+$$
+
+$$
+\Gamma^r_{rr}=\frac{r}{1+r^2},
+\qquad
+\Gamma^r_{\theta\theta}=-\frac{r}{1+r^2},
+\qquad
+\Gamma^\theta_{r\theta}
+=
+\Gamma^\theta_{\theta r}
+=
+\frac1r,
+$$
+
+$$
+\boxed{
+\Delta u
+=
+\frac{u_{rr}}{1+r^2}
++
+\frac{u_{\theta\theta}}{r^2}
++
+\frac{1}{r(1+r^2)^2}\,u_r.
+}
+$$
+
+
+
+
+
+
+
+
+
+
+\prob{} Considere la ecuación diferencial ordinaria con condición de contorno en toda la recta real:
+\begin{equation}\label{eq}
+L[u] = -D\frac{d^2u}{dx^2} + \alpha u(x) = \delta(x), \qquad -\infty < x < \infty,
+\end{equation}
+donde $D > 0$, $\alpha > 0$ son constantes, y $\delta(x)$ representa la delta de Dirac. Se exige que:
+\begin{equation}\label{BC}
+u(x) \to 0 \quad \text{para} \quad |x| \to \infty.
+\end{equation}
+\begin{enumerate}
+\item[(a)] Obtenga la solución $u(x)$ del problema \eqref{eq}-\eqref{BC} aplicando la transformada de Fourier y antitransformando para expresar el resultado en el espacio real.
+\item[(b)] Sin utilizar transformada de Fouerier, calcule la función de Green $G(x,x')$ del operador $L$ definido en
+\eqref{eq}, con las condiciones asintóticas (o de contorno en infinito), \eqref{BC}. 
+Calcule la solución del problema \eqref{eq}-\eqref{BC} utilizando dicha función de Green.
+%Exprese ahora la solución del problema \eqref{eq}-\eqref{BC} utilizando la función de Green calculada en (a).
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on} {\em 3)}
+\vspace{0.5cm}
+
+%Consideremos el operador diferencial
+%
+%\begin{equation}
+%L=-D\frac{d^2}{dx^2}+\alpha,
+%\qquad D>0,\quad \alpha>0,
+%\end{equation}
+%
+%y el problema
+%
+%\begin{equation}
+%-Du''(x)+\alpha u(x)=\delta(x),
+%\qquad -\infty<x<\infty,
+%\end{equation}
+%
+%con la condición de contorno
+%
+%\begin{equation}
+%u(x)\longrightarrow0,
+%\qquad |x|\longrightarrow\infty.
+%\end{equation}
+
+\subsubsection*{(a) Solución mediante transformada de Fourier}
+
+Adoptamos la convención
+
+\begin{equation}
+\widehat{u}(k)
+=
+\int_{-\infty}^{\infty}
+u(x)e^{-ikx}\,dx,
+\end{equation}
+
+\begin{equation}
+u(x)
+=
+\frac{1}{2\pi}
+\int_{-\infty}^{\infty}
+\widehat{u}(k)e^{ikx}\,dk.
+\end{equation}
+
+Recordemos que
+
+\[
+\mathcal{F}[u'']
+=
+-k^2\widehat{u},
+\]
+
+y
+
+\[
+\mathcal{F}[\delta(x)]
+=
+1.
+\]
+
+Aplicando la transformada de Fourier a la ecuación diferencial,
+
+\[
+-D(-k^2)\widehat{u}(k)
++
+\alpha\widehat{u}(k)
+=
+1,
+\]
+
+es decir,
+
+\begin{equation}
+(Dk^2+\alpha)\widehat{u}(k)=1.
+\end{equation}
+
+Por lo tanto,
+
+\begin{equation}
+\boxed{
+\widehat{u}(k)
+=
+\frac{1}{Dk^2+\alpha}.
+}
+\end{equation}
+
+\paragraph{Antitransformada}
+
+La solución en el espacio real viene dada por
+
+\begin{equation}
+u(x)
+=
+\frac{1}{2\pi}
+\int_{-\infty}^{\infty}
+\frac{e^{ikx}}
+{Dk^2+\alpha}\,dk.
+\end{equation}
+
+Extrayendo un factor $D$,
+
+\[
+u(x)
+=
+\frac{1}{2\pi D}
+\int_{-\infty}^{\infty}
+\frac{e^{ikx}}
+{k^2+\alpha/D}\,dk.
+\]
+
+Definimos
+
+\begin{equation}
+\lambda=\sqrt{\frac{\alpha}{D}}.
+\end{equation}
+
+Entonces
+
+\begin{equation}
+u(x)
+=
+\frac{1}{2\pi D}
+\int_{-\infty}^{\infty}
+\frac{e^{ikx}}
+{k^2+\lambda^2}\,dk.
+\end{equation}
+
+Utilizando la identidad conocida
+
+\begin{equation}
+\int_{-\infty}^{\infty}
+\frac{e^{ikx}}
+{k^2+\lambda^2}\,dk
+=
+\frac{\pi}{\lambda}
+e^{-\lambda|x|},
+\end{equation}
+
+se obtiene
+
+\begin{equation}
+u(x)
+=
+\frac{1}{2D\lambda}
+e^{-\lambda|x|}.
+\end{equation}
+
+Finalmente,
+
+\begin{equation}
+\boxed{
+u(x)
+=
+\frac{1}{2\sqrt{\alpha D}}
+\exp\!\left(
+-\sqrt{\frac{\alpha}{D}}\,|x|
+\right).
+}
+\end{equation}
+
+Esta solución satisface la ecuación diferencial y verifica la condición
+
+\[
+u(x)\rightarrow0,
+\qquad
+|x|\rightarrow\infty.
+\]
+
+\subsubsection*{(b) Solución mediante la función de Green}
+
+Buscamos la función de Green
+
+\[
+G(x,x')
+\]
+
+que satisface
+
+\begin{equation}
+-D\frac{\partial^2G}{\partial x^2}
++\alpha G
+=
+\delta(x-x'),
+\end{equation}
+
+junto con la condición
+
+\begin{equation}
+G(x,x')
+\longrightarrow0,
+\qquad
+|x|\longrightarrow\infty.
+\end{equation}
+
+\paragraph{Solución homogénea}
+
+Para
+
+\[
+x\neq x',
+\]
+
+la ecuación se reduce a
+
+\begin{equation}
+-DG''+\alpha G=0.
+\end{equation}
+
+Definiendo nuevamente
+
+\[
+\lambda=\sqrt{\frac{\alpha}{D}},
+\]
+
+obtenemos
+
+\begin{equation}
+G''-\lambda^2G=0,
+\end{equation}
+
+cuya solución general es
+
+\begin{equation}
+G(x)
+=
+Ae^{\lambda x}
++
+Be^{-\lambda x}.
+\end{equation}
+
+\paragraph{Región $x<x'$}
+
+Para que la solución permanezca acotada cuando
+
+\[
+x\rightarrow-\infty,
+\]
+
+debe anularse el término creciente. Luego,
+
+\begin{equation}
+G_<(x)
+=
+Ae^{\lambda x}.
+\end{equation}
+
+\paragraph{Región $x>x'$}
+
+Análogamente, para que
+
+\[
+G(x)\rightarrow0,
+\qquad
+x\rightarrow+\infty,
+\]
+
+debe cumplirse
+
+\begin{equation}
+G_>(x)
+=
+Be^{-\lambda x}.
+\end{equation}
+
+\paragraph{Continuidad}
+
+La función de Green es continua en
+
+\[
+x=x',
+\]
+
+de modo que
+
+\begin{equation}
+Ae^{\lambda x'}
+=
+Be^{-\lambda x'}.
+\end{equation}
+
+Por consiguiente,
+
+\begin{equation}
+B
+=
+Ae^{2\lambda x'}.
+\end{equation}
+
+\paragraph{Discontinuidad de la derivada}
+
+Integrando la ecuación diferencial entre
+
+\[
+x'-\varepsilon
+\quad\text{y}\quad
+x'+\varepsilon,
+\]
+
+y haciendo
+
+\[
+\varepsilon\rightarrow0,
+\]
+
+se obtiene
+
+\begin{equation}
+-D
+\left(
+G'_+-G'_-
+\right)
+=
+1.
+\end{equation}
+
+Ahora,
+
+\[
+G'_-
+=
+\lambda Ae^{\lambda x'},
+\]
+
+mientras que
+
+\[
+G'_+
+=
+-\lambda Be^{-\lambda x'}
+=
+-\lambda Ae^{\lambda x'}.
+\]
+
+Luego,
+
+\[
+G'_+-G'_-
+=
+-2\lambda Ae^{\lambda x'}.
+\]
+
+Sustituyendo,
+
+\[
+2D\lambda
+Ae^{\lambda x'}
+=
+1,
+\]
+
+de donde
+
+\begin{equation}
+A
+=
+\frac{e^{-\lambda x'}}
+{2D\lambda},
+\end{equation}
+
+y
+
+\begin{equation}
+B
+=
+\frac{e^{\lambda x'}}
+{2D\lambda}.
+\end{equation}
+
+\paragraph{Función de Green}
+
+Por lo tanto,
+
+\[
+G(x,x')
+=
+\begin{cases}
+\dfrac{1}{2D\lambda}
+e^{-\lambda(x'-x)},
+&
+x<x',
+\\[3mm]
+\dfrac{1}{2D\lambda}
+e^{-\lambda(x-x')},
+&
+x>x'.
+\end{cases}
+\]
+
+Ambos casos pueden escribirse de forma compacta como
+
+\begin{equation}
+\boxed{
+G(x,x')
+=
+\frac{1}{2D\lambda}
+e^{-\lambda|x-x'|}.
+}
+\end{equation}
+
+Finalmente,
+
+\begin{equation}
+\boxed{
+G(x,x')
+=
+\frac{1}{2\sqrt{\alpha D}}
+\exp\!\left(
+-\sqrt{\frac{\alpha}{D}}
+\,|x-x'|
+\right).
+}
+\end{equation}
+
+\paragraph{Obtención de la solución}
+
+La solución del problema general
+
+\[
+Lu=f
+\]
+
+se escribe como
+
+\begin{equation}
+u(x)
+=
+\int_{-\infty}^{\infty}
+G(x,x')f(x')\,dx'.
+\end{equation}
+
+En este problema,
+
+\[
+f(x)=\delta(x),
+\]
+
+por lo que
+
+\begin{equation}
+u(x)
+=
+\int_{-\infty}^{\infty}
+G(x,x')\delta(x')\,dx'
+=
+G(x,0).
+\end{equation}
+
+En consecuencia,
+
+\begin{equation}
+\boxed{
+u(x)
+=
+\frac{1}{2\sqrt{\alpha D}}
+\exp\!\left(
+-\sqrt{\frac{\alpha}{D}}
+\,|x|
+\right).
+}
+\end{equation}
+
+Esta solución coincide exactamente con la obtenida mediante la transformada de Fourier, como debe ocurrir.
+
+
+
+
+
+
+
+
+
+
+\prob{} Considere la ecuación de ondas en dos dimensiones espaciales:
+\[
+\frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right),
+\]
+definida en el rectángulo \(0 < x < a\), \(0 < y < b\), con condiciones de contorno homogéneas:
+\[
+u(0, y, t) = u(a, y, t) = 0, \qquad u(x, 0, t) = u(x, b, t) = 0,
+\]
+y condiciones iniciales:
+\[
+u(x, y, 0) = f(x, y), \qquad \frac{\partial u}{\partial t}(x, y, 0) = g(x, y).
+\]
+\begin{enumerate}
+    \item[(a)] Proponga una solución por separación de variables \(u(x,y,t) = X(x)Y(y)T(t)\) y obtenga las ecuaciones diferenciales ordinarias para \(X\), \(Y\) y \(T\).
+    \item[(b)] Determine las autofunciones espaciales \(X_m(x)\) y \(Y_n(y)\) y los correspondientes autovalores.
+    \item[(c)] Escriba la solución general como una serie doble.
+    \item[(d)] En el caso particular \(f(x,y) = \sen\left(\frac{2\pi x}{a}\right) \sen\left(\frac{3\pi y}{b}\right)\) y \(g(x,y) = 0\), obtenga la solución explícita.
+\end{enumerate}
+
+\vspace{0.5cm}
+{\bf Soluci\'on }{\em 9)}
+\vspace{0.5cm}
+
+Consideremos la ecuación de ondas en dos dimensiones
+
+\begin{equation}
+\frac{\partial^2u}{\partial t^2}
+=
+c^2
+\left(
+\frac{\partial^2u}{\partial x^2}
++
+\frac{\partial^2u}{\partial y^2}
+\right),
+\end{equation}
+
+definida en el rectángulo
+
+\[
+0<x<a,\qquad
+0<y<b,
+\]
+
+con condiciones de contorno
+
+\begin{equation}
+u(0,y,t)=u(a,y,t)=0,
+\end{equation}
+
+\begin{equation}
+u(x,0,t)=u(x,b,t)=0,
+\end{equation}
+
+y condiciones iniciales
+
+\begin{equation}
+u(x,y,0)=f(x,y),
+\end{equation}
+
+\begin{equation}
+\frac{\partial u}{\partial t}(x,y,0)=g(x,y).
+\end{equation}
+
+\subsubsection*{(a) Separación de variables}
+
+Buscamos una solución de la forma
+
+\begin{equation}
+u(x,y,t)=X(x)Y(y)T(t).
+\end{equation}
+
+Sustituyendo en la ecuación de ondas,
+
+\[
+XYT''
+=
+c^2
+\left(
+X''YT
++
+XY''T
+\right).
+\]
+
+Dividiendo por $XYT$,
+
+\begin{equation}
+\frac{T''}{c^2T}
+=
+\frac{X''}{X}
++
+\frac{Y''}{Y}.
+\end{equation}
+
+El miembro izquierdo depende únicamente del tiempo, mientras que el derecho depende únicamente de las coordenadas espaciales.
+
+Introducimos una constante de separación $-\lambda$,
+
+\begin{equation}
+\frac{T''}{c^2T}
+=
+-\lambda,
+\end{equation}
+
+obteniéndose
+
+\begin{equation}
+\frac{X''}{X}
++
+\frac{Y''}{Y}
+=
+-\lambda.
+\end{equation}
+
+Separamos nuevamente mediante otra constante $-\mu$,
+
+\begin{equation}
+\frac{X''}{X}
+=
+-\mu,
+\end{equation}
+
+y
+
+\begin{equation}
+\frac{Y''}{Y}
+=
+-(\lambda-\mu).
+\end{equation}
+
+Por consiguiente,
+
+\[
+\boxed{
+X''+\mu X=0,
+}
+\]
+
+\[
+\boxed{
+Y''+(\lambda-\mu)Y=0,
+}
+\]
+
+y
+
+\[
+\boxed{
+T''+c^2\lambda T=0.
+}
+\]
+
+Éstas son las ecuaciones diferenciales buscadas.
+
+\subsubsection*{(b) Autofunciones espaciales}
+
+\paragraph{Dirección $x$.}
+
+Debemos resolver
+
+\[
+X''+\mu X=0,
+\]
+
+con
+
+\[
+X(0)=X(a)=0.
+\]
+
+La solución general es
+
+\[
+X(x)=A\cos(\sqrt{\mu}\,x)
++
+B\sin(\sqrt{\mu}\,x).
+\]
+
+La condición en $x=0$ implica
+
+\[
+A=0.
+\]
+
+La condición en $x=a$ exige
+
+\[
+\sin(\sqrt{\mu}\,a)=0,
+\]
+
+de donde
+
+\begin{equation}
+\sqrt{\mu}
+=
+\frac{m\pi}{a},
+\qquad
+m=1,2,\ldots
+\end{equation}
+
+Así,
+
+\begin{equation}
+X_m(x)
+=
+\sin\!\left(\frac{m\pi x}{a}\right).
+\end{equation}
+
+\paragraph{Dirección $y$.}
+
+De manera completamente análoga,
+
+\[
+Y''+\nu Y=0,
+\]
+
+con
+
+\[
+Y(0)=Y(b)=0,
+\]
+
+produce
+
+\begin{equation}
+\nu
+=
+\left(\frac{n\pi}{b}\right)^2,
+\qquad
+n=1,2,\ldots
+\end{equation}
+
+y
+
+\begin{equation}
+Y_n(y)
+=
+\sin\!\left(\frac{n\pi y}{b}\right).
+\end{equation}
+
+Como
+
+\[
+\lambda=\mu+\nu,
+\]
+
+resulta
+
+\begin{equation}
+\lambda_{mn}
+=
+\left(\frac{m\pi}{a}\right)^2
++
+\left(\frac{n\pi}{b}\right)^2.
+\end{equation}
+
+\subsubsection*{Ecuación temporal}
+
+Cada modo espacial satisface
+
+\begin{equation}
+T_{mn}''
++
+\omega_{mn}^2T_{mn}=0,
+\end{equation}
+
+donde
+
+\begin{equation}
+\omega_{mn}
+=
+c
+\sqrt{
+\left(\frac{m\pi}{a}\right)^2
++
+\left(\frac{n\pi}{b}\right)^2
+}.
+\end{equation}
+
+La solución general es
+
+\begin{equation}
+T_{mn}(t)
+=
+A_{mn}\cos(\omega_{mn}t)
++
+B_{mn}\sin(\omega_{mn}t).
+\end{equation}
+
+\subsubsection*{(c) Solución general}
+
+Superponiendo todos los modos normales,
+
+\begin{equation}
+\boxed{
+u(x,y,t)
+=
+\sum_{m=1}^{\infty}
+\sum_{n=1}^{\infty}
+\left[
+A_{mn}\cos(\omega_{mn}t)
++
+B_{mn}\sin(\omega_{mn}t)
+\right]
+\sin\!\left(\frac{m\pi x}{a}\right)
+\sin\!\left(\frac{n\pi y}{b}\right).
+}
+\end{equation}
+
+Los coeficientes se obtienen a partir de las condiciones iniciales.
+
+De
+
+\[
+u(x,y,0)=f(x,y),
+\]
+
+se obtiene
+
+\begin{equation}
+A_{mn}
+=
+\frac{4}{ab}
+\int_0^a
+\int_0^b
+f(x,y)
+\sin\!\left(\frac{m\pi x}{a}\right)
+\sin\!\left(\frac{n\pi y}{b}\right)
+dx\,dy.
+\end{equation}
+
+Derivando respecto del tiempo,
+
+\[
+u_t(x,y,t)
+=
+\sum_{m,n}
+\omega_{mn}
+B_{mn}
+\cos(\omega_{mn}t)
+\sin\!\left(\frac{m\pi x}{a}\right)
+\sin\!\left(\frac{n\pi y}{b}\right)
++\cdots
+\]
+
+y evaluando en $t=0$,
+
+\[
+u_t(x,y,0)=g(x,y),
+\]
+
+obtenemos
+
+\begin{equation}
+B_{mn}
+=
+\frac{4}
+{ab\,\omega_{mn}}
+\int_0^a
+\int_0^b
+g(x,y)
+\sin\!\left(\frac{m\pi x}{a}\right)
+\sin\!\left(\frac{n\pi y}{b}\right)
+dx\,dy.
+\end{equation}
+
+\subsubsection*{(d) Caso particular}
+
+Supongamos ahora
+
+\begin{equation}
+f(x,y)
+=
+\sin\!\left(\frac{2\pi x}{a}\right)
+\sin\!\left(\frac{3\pi y}{b}\right),
+\end{equation}
+
+y
+
+\[
+g(x,y)=0.
+\]
+
+Por ortogonalidad de las funciones seno,
+
+\[
+A_{mn}=0,
+\qquad
+(m,n)\neq(2,3),
+\]
+
+mientras que
+
+\[
+A_{23}=1,
+\]
+
+y todos los coeficientes
+
+\[
+B_{mn}=0.
+\]
+
+Por lo tanto, únicamente sobrevive un modo normal.
+
+Su frecuencia angular es
+
+\begin{equation}
+\omega_{23}
+=
+c
+\sqrt{
+\left(\frac{2\pi}{a}\right)^2
++
+\left(\frac{3\pi}{b}\right)^2
+}.
+\end{equation}
+
+Finalmente,
+
+\begin{equation}
+\boxed{
+u(x,y,t)
+=
+\cos(\omega_{23}t)
+\sin\!\left(\frac{2\pi x}{a}\right)
+\sin\!\left(\frac{3\pi y}{b}\right),
+}
+\end{equation}
+
+donde
+
+\begin{equation}
+\boxed{
+\omega_{23}
+=
+c
+\sqrt{
+\left(\frac{2\pi}{a}\right)^2
++
+\left(\frac{3\pi}{b}\right)^2
+}.
+}
+\end{equation}
+
+Esta solución satisface tanto la ecuación de ondas como las condiciones de contorno homogéneas y las condiciones iniciales especificadas.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+\end{document}
+
+
+% Sobras
+\prob{} Calcule $\exp(A)$, donde $A$ es la matriz
+\[
+A = \left(\begin{array}{rrr}
+-2 & 0 & 1 \\
+-1 & -3 & 3 \\
+-1 & -1 & 1
+\end{array}\right)
+\]
+{\em Ayuda:} Transforme $A$ a forma de Jordan, exponencie y antitransforme.
+
+
+
+
