@@ -1,0 +1,197 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{fancyhdr}
+\oddsidemargin=0.0cm
+\textwidth=17cm
+\topmargin=-1.5cm
+\textheight=51\baselineskip
+\parindent 0pt
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\Arg}{arg}
+
+\newcommand{\abs}[1]{\lvert{#1}\rvert}
+\newcommand{\norm}[1]{\lVert{#1}\,\rVert}
+\newcommand{\txt}[1]{\textnormal{#1}}
+\newcommand{\cc}[1]{\bar{#1}}
+\newcommand{\der}[2]{\frac{d {#1}}{d {#2}}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\sca}[1]{\mathbb{#1}}
+\newcommand{\op}[1]{{\cal{#1}}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\gmat}[1]{\boldsymbol{#1}}
+\newcommand{\cev}[1]{\reflectbox{$\vec{\reflectbox{$#1$}}$}}
+\newcommand{\pvec}[1]{\vec{#1}{\,}'}
+\newcommand{\svec}[1]{\vec{#1}{\,}\mbox{}}
+
+\newcommand{\aplic}[3]{#1 : #2 \to #3}
+
+\newcommand{\ud}[2]{^{#1}_{\phantom{#1}#2}}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+\newcommand{\inpr}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\matel}[3]{\left\langle{#1}\left\vert{#2}\right\vert{#3}\right\rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counters definitions (old)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problema}
+
+\newcommand{\prob}{\stepcounter{problema} \vspace{.5cm} \noindent{\bf Problema \arabic{problema}: }}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand\al{\alpha}
+\newcommand\noi{\noindent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin custom header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} % no LaTeX-generated header for 1st page
+
+\mbox{}\\
+\begin{minipage}[c][0cm]{\textwidth}
+%%%
+\begin{tabular}{lcr}
+%%
+\includegraphics[scale=0.3,trim=0 0 40 0]{logo_unc.jpg}
+%%
+&
+%%
+\begin{minipage}[b][0cm]{0.5\textwidth}
+%
+\centering
+{\large Métodos Matemáticos de la Física II} \\
+\centering
+{\large Examen Final -- 4/8/2026}  \\[-0.4\baselineskip]
+\mbox{}
+%
+\end{minipage}
+%%
+&
+%%
+\includegraphics[scale=0.4,trim=80 65 0 0]{logo-FAMAF-2016.jpg}
+%%
+\end{tabular}
+%%%
+\\[5pt]
+\hrule
+\mbox{}\\[5\baselineskip]
+%%%
+\end{minipage}
+
+\vspace{-0.7\baselineskip}
+\begin{center}
+\bf
+Escriba su nombre en cada página y numere todas las páginas\\
+Resuelva cada problema en hojas separadas\\
+Se permite el uso de tablas de transformadas y de funciones especiales
+\end{center}
+%\vspace{-1.0\baselineskip}
+%
+\hrule
+\setlength{\marginparsep}{-1em}
+\reversemarginpar
+
+\vspace{5mm}
+
+\prob{}\marginpar{[1.5 pt.]} Sea \(A\) una matriz \(4 \times 4\) cuyo polinomio característico es
+\[
+p_A(\lambda) = (\lambda - 2)^2(\lambda + 1)^2.
+\]
+Además, se sabe que: La dimensión del rango de $A - 2I$ es 2, y la dimensión del
+rango de $A + I$ es 3.
+\begin{enumerate}
+    \item[(a)] Determine las multiplicidades geométricas de cada autovalor.
+    \item[(b)] Encuentre la forma canónica de Jordan de \(A\) (no se pide la matriz de cambio de base).
+    \item[(c)] ¿Cuántos subespacios invariantes irreducibles tiene la descomposición de \(\mathbb{R}^4\) bajo la acción de \(A\)? Indique la dimensión de cada uno.
+\end{enumerate}
+
+\prob{} Considere la superficie de un paraboloide de revolución parametrizada,
+en coordenadas cilíndricas por, por
+\[x = r \cos \theta, \quad y = r \sin \theta, \quad z = \frac{r^2}{2},\]
+con $r > 0$ y $0 \le \theta < 2\pi$. La métrica inducida sobre el parabolide,
+dada por el elemento de línea, es:
+\[
+ds^2 = (1 + r^2) dr^2 + r^2 d\theta^2.
+\]
+\begin{enumerate}
+\item[(a)] Calcule la métrica inversa $g^{ij}$.
+\item[(b)] Determine todos los símbolos de Christoffel $\Gamma_{ij}^k$ no nulos.
+\item[(c)] Obtenga el operador Laplaciano $\Delta u(r, \theta) = g^{ij}\nabla_i\nabla_j u$ para una función escalar $u(r, \theta)$.
+\end{enumerate}
+
+\prob{} Considere la ecuación diferencial ordinaria con condición de contorno en toda la recta real:
+\begin{equation}\label{eq}
+L[u] = -D\frac{d^2u}{dx^2} + \alpha u(x) = \delta(x), \qquad -\infty < x < \infty,
+\end{equation}
+donde $D > 0$, $\alpha > 0$ son constantes, y $\delta(x)$ representa la delta de Dirac. Se exige que:
+\begin{equation}\label{BC}
+u(x) \to 0 \quad \text{para} \quad |x| \to \infty.
+\end{equation}
+\begin{enumerate}
+\item[(a)] Obtenga la solución $u(x)$ del problema \eqref{eq}-\eqref{BC} aplicando la transformada de Fourier y antitransformando para expresar el resultado en el espacio real.
+\item[(b)] Sin utilizar transformada de Fouerier, calcule la función de Green $G(x,x')$ del operador $L$ definido en
+\eqref{eq}, con las condiciones asintóticas (o de contorno en infinito), \eqref{BC}. Calcule la solución del
+problema \eqref{eq}-\eqref{BC} utilizando dicha función de Green.
+\end{enumerate}
+
+\prob{} Considere la ecuación de ondas en dos dimensiones espaciales:
+\[
+\frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right),
+\]
+definida en el rectángulo \(0 < x < a\), \(0 < y < b\), con condiciones de contorno homogéneas:
+\[
+u(0, y, t) = u(a, y, t) = 0, \qquad u(x, 0, t) = u(x, b, t) = 0,
+\]
+y condiciones iniciales:
+\[
+u(x, y, 0) = f(x, y), \qquad \frac{\partial u}{\partial t}(x, y, 0) = g(x, y).
+\]
+\begin{enumerate}
+    \item[(a)] Proponga una solución por separación de variables \(u(x,y,t) = X(x)Y(y)T(t)\) y obtenga las ecuaciones diferenciales ordinarias para \(X\), \(Y\) y \(T\).
+    \item[(b)] Determine las autofunciones espaciales \(X_m(x)\) y \(Y_n(y)\) y los correspondientes autovalores.
+    \item[(c)] Escriba la solución general como una serie doble.
+    \item[(d)] En el caso particular \(f(x,y) = \sen\left(\frac{2\pi x}{a}\right) \sen\left(\frac{3\pi y}{b}\right)\) y \(g(x,y) = 0\), obtenga la solución explícita.
+\end{enumerate}
+
+ 
+ 
+\end{document}
+
+
+% Sobras
+\prob{} Calcule $\exp(A)$, donde $A$ es la matriz
+\[
+A = \left(\begin{array}{rrr}
+-2 & 0 & 1 \\
+-1 & -3 & 3 \\
+-1 & -1 & 1
+\end{array}\right)
+\]
+{\em Ayuda:} Transforme $A$ a forma de Jordan, exponencie y antitransforme.
+
+
+
+
