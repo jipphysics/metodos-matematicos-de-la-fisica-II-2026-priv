@@ -116,7 +116,7 @@ Se permite el uso de tablas de transformadas y de funciones especiales
 
 \vspace{5mm}
 
-\prob{} Sea \(A\) una matriz \(4 \times 4\) cuyo polinomio característico es
+\prob{}\marginpar{[1.5 pt.]} Sea \(A\) una matriz \(4 \times 4\) cuyo polinomio característico es
 \[
 p_A(\lambda) = (\lambda - 2)^2(\lambda + 1)^2.
 \]
@@ -131,7 +131,7 @@ rango de $A + I$ es 3.
 \prob{} Considere la superficie de un paraboloide de revolución parametrizada,
 en coordenadas cilíndricas por, por
 \[x = r \cos \theta, \quad y = r \sin \theta, \quad z = \frac{r^2}{2},\]
-con $r > 0$ y $0 \le \theta < 2\pi$. La métrica inducida sobre el paraboloide,
+con $r > 0$ y $0 \le \theta < 2\pi$. La métrica inducida sobre el parabolide,
 dada por el elemento de línea, es:
 \[
 ds^2 = (1 + r^2) dr^2 + r^2 d\theta^2.
@@ -152,7 +152,7 @@ u(x) \to 0 \quad \text{para} \quad |x| \to \infty.
 \end{equation}
 \begin{enumerate}
 \item[(a)] Obtenga la solución $u(x)$ del problema \eqref{eq}-\eqref{BC} aplicando la transformada de Fourier y antitransformando para expresar el resultado en el espacio real.
-\item[(b)] Sin utilizar transformada de Fourier, calcule la función de Green $G(x,x')$ del operador $L$ definido en
+\item[(b)] Sin utilizar transformada de Fouerier, calcule la función de Green $G(x,x')$ del operador $L$ definido en
 \eqref{eq}, con las condiciones asintóticas (o de contorno en infinito), \eqref{BC}. Calcule la solución del
 problema \eqref{eq}-\eqref{BC} utilizando dicha función de Green.
 \end{enumerate}
